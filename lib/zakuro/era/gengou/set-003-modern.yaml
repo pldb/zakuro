@@ -1,0 +1,12 @@
+id: 3
+name: "近代（一世一元）"
+end_date: "9999-12-31"
+list:
+  - name: "明治"
+    start_date: "1868-1-25"
+  - name: "大正"
+    start_date: "1912-7-30"
+  - name: "昭和"
+    start_date: "1926-12-25"
+  - name: "令和"
+    start_date: "2019-5-1"
