@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# :nodoc:
 module Zakuro
-  VERSION = "0.1.0"
+  # @return [String] library version
+  VERSION = '0.0.0'
 end

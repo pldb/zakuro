@@ -1,6 +1,9 @@
-require "zakuro/version"
+# frozen_string_literal: true
 
+require_relative './zakuro/merchant'
+
+#
+# top level module
+#
 module Zakuro
-  class Error < StandardError; end
-  # Your code goes here...
 end

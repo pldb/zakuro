@@ -1,0 +1,11 @@
+id: 1
+name: "test-001"
+end_date: "555-2-3"
+list:
+  - name: "元号名1"
+    start_date: "501-1-10"
+    start_year: 11
+  - name: "元号名2"
+    start_date: "510-10-11"
+  - name: "元号名3"
+    start_date: "550-1-2"

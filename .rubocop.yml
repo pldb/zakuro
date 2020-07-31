@@ -1,0 +1,14 @@
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# Windows対応
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Metrics/MethodLength:
+  Max: 15
+
+# https://lkml.org/lkml/2020/5/29/1038
+Layout/LineLength:
+  Max: 100

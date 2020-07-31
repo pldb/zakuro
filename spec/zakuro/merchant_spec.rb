@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
-require File.expand_path('../lib/zakuro',
+require File.expand_path('../../lib/zakuro/merchant',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength

@@ -1,10 +1,16 @@
-# Zakuro
+# Zakuro - 石榴
+zakuro は日本の暦を扱う暦算ライブラリです
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zakuro`. To experiment with that code, run `bin/console` for an interactive prompt.
+# 前掲
+石榴（ざくろ）は古来より珍重され、シルクロードを通じて洋の東西に広く伝播した落葉小高木です。
 
-TODO: Delete this and the text above, and describe your gem
+すなわち、中華世界においては太陰太陽暦、地中海世界においては太陽暦のもとで育ち、これら東西の暦はシルクロードの東端たる日本に深い影響を与えております。
 
-## Installation
+日本の暦は中国に端を発しますが、江戸時代以降は西洋の文物からも深く学び、日本人は暦算を自らのものとしました。
+
+石榴はただ伝来しただけでなく、日本の地に根づいております。これを日本の暦になぞらえ、和名の「ざくろ」を冠することと致します。
+
+## 導入
 
 Add this line to your application's Gemfile:
 
@@ -20,21 +26,19 @@ Or install it yourself as:
 
     $ gem install zakuro
 
-## Usage
+# 使用方法
 
-TODO: Write usage instructions here
+TODO: sample
 
-## Development
+# 準拠
+『日本暦日原典』を範とします。
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+# 暦算
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+[宣明暦](./lib/zakuro/version/senmyou/README.md) のみ記載しています
 
-## Contributing
+# 進捗
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/zakuro.
+開発途中です。
 
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+現時点では宣明暦の暦日の1日検索のみ対応しております。
