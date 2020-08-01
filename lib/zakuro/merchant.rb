@@ -3,11 +3,13 @@
 require_relative './version_factory'
 require_relative './condition'
 
+require_relative './output/error'
+
 # :nodoc:
 module Zakuro
   #
   # Merchant ざくろ商人
-  #   東西の暦を取引する
+  #   東西の暦を取引する、素敵な笑顔の持ち主
   #
   class Merchant
     # @return [Hash<Symbol, Object>] 条件
