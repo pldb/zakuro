@@ -173,7 +173,7 @@ module Zakuro
   class Condition
     # @return [Date] 基準日
     attr_reader :date
-    # @return [Hash<Symbol>] 範囲
+    # @return [Hash<Symbol, Date>] 範囲
     attr_reader :range
     # @return [Array<String>] 列
     attr_reader :columns
@@ -185,7 +185,7 @@ module Zakuro
     #
     # @param [Hash<Symbol, Object>] hash パラメータ
     # @option hash [Date] :date 基準日
-    # @option hash [Hash<Symbol>] :range 範囲
+    # @option hash [Hash<Symbol, Date>] :range 範囲
     # @option hash [Array<String>] :columns 列
     # @option hash [Array<String>] :options オプション
     #
