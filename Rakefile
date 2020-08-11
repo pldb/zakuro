@@ -15,6 +15,6 @@ YARD::Rake::YardocTask.new do |t|
   t.files = %w[
     lib/**/*.rb
   ]
-  t.options = []
+  t.options = %w[--output-dir doc/.yardoc]
   # t.options = %w[--debug --verbose] if $trace
 end
