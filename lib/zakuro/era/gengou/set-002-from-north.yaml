@@ -7,399 +7,479 @@ list:
     # 1年4月28日
     start_year: 1
     start_date: "1332-5-23"
+    new_year_date: "1332-1-28"
     note: ""
   - name: "建武"
     # 1年1月29日
     start_year: 1
     start_date: "1334-3-5"
+    new_year_date: "1334-2-5"
     note: ""
   - name: "暦応"
     # 1年8月28日
     start_year: 1
     start_date: "1338-10-11"
+    new_year_date: "1338-1-22"
     note: ""
   - name: "康永"
     # 1年4月27日
     start_year: 1
     start_date: "1342-6-1"
+    new_year_date: "1342-2-6"
     note: ""
   - name: "貞和"
     # 1年10月21日
     start_year: 1
     start_date: "1345-11-15"
+    new_year_date: "1345-2-3"
     note: ""
   - name: "観応"
     # 1年2月27日
     start_year: 1
     start_date: "1350-4-4"
+    new_year_date: "1350-2-8"
     note: ""
   - name: "文和"
     # 1年9月27日
     start_year: 1
     start_date: "1352-11-4"
+    new_year_date: "1352-1-18"
     note: ""
   - name: "延文"
     # 1年3月28日
     start_year: 1
     start_date: "1356-4-29"
+    new_year_date: "1356-2-2"
     note: ""
   - name: "康安"
     # 1年3月29日
     start_year: 1
     start_date: "1361-5-4"
+    new_year_date: "1361-2-6"
     note: ""
   - name: "貞治"
     # 1年9月23日
     start_year: 1
     start_date: "1362-10-11"
+    new_year_date: "1362-1-27"
     note: ""
   - name: "応安"
     # 1年2月18日
     start_year: 1
     start_date: "1368-3-7"
+    new_year_date: "1368-1-21"
     note: ""
   - name: "永和"
     # 1年2月27日
     start_year: 1
     start_date: "1375-3-29"
+    new_year_date: "1375-2-2"
     note: ""
   - name: "康暦"
     # 1年3月22日
     start_year: 1
     start_date: "1379-4-9"
+    new_year_date: "1379-1-19"
     note: ""
   - name: "永徳"
     # 1年2月24日
     start_year: 1
     start_date: "1381-3-20"
+    new_year_date: "1381-1-26"
     note: ""
   - name: "至徳"
     # 1年2月27日
     start_year: 1
     start_date: "1384-3-19"
+    new_year_date: "1384-1-23"
     note: ""
   - name: "嘉慶"
     # 1年8月23日
     start_year: 1
     start_date: "1387-10-5"
+    new_year_date: "1387-1-21"
     note: ""
   - name: "康応"
     # 1年2月9日
     start_year: 1
     start_date: "1389-3-7"
+    new_year_date: "1389-1-28"
     note: ""
   - name: "明徳"
     # 1年3月26日
     start_year: 1
     start_date: "1390-4-12"
+    new_year_date: "1390-1-17"
     note: ""
   - name: "応永"
     # 1年7月5日
     start_year: 1
     start_date: "1394-8-2"
+    new_year_date: "1394-2-1"
     note: ""
   - name: "正長"
     # 1年4月27日
     start_year: 1
     start_date: "1428-6-10"
+    new_year_date: "1428-1-17"
     note: ""
   - name: "永享"
     # 1年9月5日
     start_year: 1
     start_date: "1429-10-3"
+    new_year_date: "1429-2-4"
     note: ""
   - name: "嘉吉"
     # 1年2月17日
     start_year: 1
     start_date: "1441-3-10"
+    new_year_date: "1441-1-23"
     note: ""
   - name: "文安"
     # 1年2月5日
     start_year: 1
     start_date: "1444-2-23"
+    new_year_date: "1444-1-20"
     note: ""
   - name: "宝徳"
     # 1年7月28日
     start_year: 1
     start_date: "1449-8-16"
+    new_year_date: "1449-1-25"
     note: ""
   - name: "享徳"
     # 1年7月25日
     start_year: 1
     start_date: "1452-8-10"
+    new_year_date: "1452-1-22"
     note: ""
   - name: "康正"
     # 1年7月25日
     start_year: 1
     start_date: "1455-9-6"
+    new_year_date: "1455-1-18"
     note: ""
   - name: "長禄"
     # 1年9月28日
     start_year: 1
     start_date: "1457-10-16"
+    new_year_date: "1457-1-26"
     note: ""
   - name: "寛正"
     # 1年12月21日
     start_year: 1
     start_date: "1461-2-1"
+    new_year_date: "1460-1-24"
     note: ""
   - name: "文正"
     # 1年2月28日
     start_year: 1
     start_date: "1466-3-14"
+    new_year_date: "1466-1-17"
     note: ""
   - name: "応仁"
     # 1年3月5日
     start_year: 1
     start_date: "1467-4-9"
+    new_year_date: "1467-2-5"
     note: ""
   - name: "文明"
     # 1年4月28日
     start_year: 1
     start_date: "1469-6-8"
+    new_year_date: "1469-2-12"
     note: ""
   - name: "長享"
     # 1年7月20日
     start_year: 1
     start_date: "1487-8-9"
+    new_year_date: "1487-1-25"
     note: ""
   - name: "延徳"
     # 1年8月21日
     start_year: 1
     start_date: "1489-9-16"
+    new_year_date: "1489-2-1"
     note: ""
   - name: "明応"
     # 1年7月19日
     start_year: 1
     start_date: "1492-8-12"
+    new_year_date: "1492-1-30"
     note: ""
   - name: "文亀"
     # 1年2月29日
     start_year: 1
     start_date: "1501-3-18"
+    new_year_date: "1501-1-19"
     note: ""
   - name: "永正"
     # 1年2月30日
     start_year: 1
     start_date: "1504-3-16"
+    new_year_date: "1504-1-18"
     note: ""
   - name: "大永"
     # 1年8月23日
     start_year: 1
     start_date: "1521-9-23"
+    new_year_date: "1521-2-8"
     note: ""
   - name: "享禄"
     # 1年8月20日
     start_year: 1
     start_date: "1528-9-3"
+    new_year_date: "1528-1-22"
     note: ""
   - name: "天文"
     # 1年7月29日
     start_year: 1
     start_date: "1532-8-29"
+    new_year_date: "1532-2-6"
     note: ""
   - name: "弘治"
     # 1年10月23日
     start_year: 1
     start_date: "1555-11-7"
+    new_year_date: "1555-1-23"
     note: ""
   - name: "永禄"
     # 1年2月28日
     start_year: 1
     start_date: "1558-3-18"
+    new_year_date: "1558-1-20"
     note: ""
   - name: "元亀"
     # 1年4月23日
     start_year: 1
     start_date: "1570-5-27"
+    new_year_date: "1570-2-5"
     note: ""
   - name: "天正"
     # 1年7月28日
     start_year: 1
     start_date: "1573-8-25"
+    new_year_date: "1573-2-3"
     note: ""
   - name: "文禄"
     # 1年12月8日
     start_year: 1
     start_date: "1593-1-10"
+    new_year_date: "1592-2-13"
     note: ""
   - name: "慶長"
     # 1年10月27日
     start_year: 1
     start_date: "1596-12-16"
+    new_year_date: "1596-1-30"
     note: ""
   - name: "元和"
     # 1年7月13日
     start_year: 1
     start_date: "1615-9-5"
+    new_year_date: "1615-1-29"
     note: ""
   - name: "寛永"
     # 1年2月30日
     start_year: 1
     start_date: "1624-4-17"
+    new_year_date: "1624-2-19"
     note: ""
   - name: "正保"
     # 1年12月16日
     start_year: 1
     start_date: "1645-1-13"
+    new_year_date: "1644-2-8"
     note: ""
   - name: "慶安"
     # 1年2月15日
     start_year: 1
     start_date: "1648-4-7"
+    new_year_date: "1648-1-25"
     note: ""
   - name: "承応"
     # 1年9月18日
     start_year: 1
     start_date: "1652-10-20"
+    new_year_date: "1652-2-10"
     note: ""
   - name: "明暦"
     # 1年4月13日
     start_year: 1
     start_date: "1655-5-18"
+    new_year_date: "1655-2-7"
     note: ""
   - name: "万治"
     # 1年7月23日
     start_year: 1
     start_date: "1658-8-21"
+    new_year_date: "1658-2-3"
     note: ""
   - name: "寛文"
     # 1年4月25日
     start_year: 1
     start_date: "1661-5-23"
+    new_year_date: "1661-1-31"
     note: ""
   - name: "延宝"
     # 1年9月21日
     start_year: 1
     start_date: "1673-10-30"
+    new_year_date: "1673-2-17"
     note: ""
   - name: "天和"
     # 1年9月29日
     start_year: 1
     start_date: "1681-11-9"
+    new_year_date: "1681-2-19"
     note: ""
   - name: "貞享"
     # 1年2月21日
     start_year: 1
     start_date: "1684-4-5"
+    new_year_date: "1684-2-16"
     note: ""
   - name: "元禄"
     # 1年9月30日
     start_year: 1
     start_date: "1688-10-23"
+    new_year_date: "1688-2-2"
     note: ""
   - name: "宝永"
     # 1年3月13日
     start_year: 1
     start_date: "1704-4-16"
+    new_year_date: "1704-2-5"
     note: ""
   - name: "正徳"
     # 1年4月25日
     start_year: 1
     start_date: "1711-6-11"
+    new_year_date: "1711-2-17"
     note: ""
   - name: "享保"
     # 1年6月22日
     start_year: 1
     start_date: "1716-8-9"
+    new_year_date: "1716-1-25"
     note: ""
   - name: "元文"
     # 1年4月28日
     start_year: 1
     start_date: "1736-6-7"
+    new_year_date: "1736-2-12"
     note: ""
   - name: "寛保"
     # 1年2月27日
     start_year: 1
     start_date: "1741-4-12"
+    new_year_date: "1741-2-16"
     note: ""
   - name: "延享"
     # 1年2月21日
     start_year: 1
     start_date: "1744-4-3"
+    new_year_date: "1744-2-14"
     note: ""
   - name: "寛延"
     # 1年7月12日
     start_year: 1
     start_date: "1748-8-5"
+    new_year_date: "1748-1-30"
     note: ""
   - name: "宝暦"
     # 1年10月27日
     start_year: 1
     start_date: "1751-12-14"
+    new_year_date: "1751-1-27"
     note: ""
   - name: "明和"
     # 1年6月2日
     start_year: 1
     start_date: "1764-6-30"
+    new_year_date: "1764-2-2"
     note: ""
   - name: "安永"
     # 1年11月16日
     start_year: 1
     start_date: "1772-12-10"
+    new_year_date: "1772-2-4"
     note: ""
   - name: "天明"
     # 1年4月2日
     start_year: 1
     start_date: "1781-4-25"
+    new_year_date: "1781-1-24"
     note: ""
   - name: "寛政"
     # 1年1月25日
     start_year: 1
     start_date: "1789-2-19"
+    new_year_date: "1789-1-26"
     note: ""
   - name: "享和"
     # 1年2月5日
     start_year: 1
     start_date: "1801-3-19"
+    new_year_date: "1801-2-13"
     note: ""
   - name: "文化"
     # 1年2月11日
     start_year: 1
     start_date: "1804-3-22"
+    new_year_date: "1804-2-11"
     note: ""
   - name: "文政"
     # 1年4月22日
     start_year: 1
     start_date: "1818-5-26"
+    new_year_date: "1818-2-5"
     note: ""
   - name: "天保"
     # 1年12月10日
     start_year: 1
     start_date: "1831-1-23"
+    new_year_date: "1830-1-25"
     note: ""
   - name: "弘化"
     # 1年12月2日
     start_year: 1
     start_date: "1845-1-9"
+    new_year_date: "1844-2-18"
     note: ""
   - name: "嘉永"
     # 1年2月28日
     start_year: 1
     start_date: "1848-4-1"
+    new_year_date: "1848-2-5"
     note: ""
   - name: "安政"
     # 1年11月27日
     start_year: 1
     start_date: "1855-1-15"
+    new_year_date: "1854-1-29"
     note: ""
   - name: "万延"
     # 1年3月18日
     start_year: 1
     start_date: "1860-4-8"
+    new_year_date: "1860-1-23"
     note: ""
   - name: "文久"
     # 1年2月19日
     start_year: 1
     start_date: "1861-3-29"
+    new_year_date: "1861-2-10"
     note: ""
   - name: "元治"
     # 1年2月20日
     start_year: 1
     start_date: "1864-3-27"
+    new_year_date: "1864-2-8"
     note: ""
   - name: "慶応"
     # 1年4月7日
     start_year: 1
     start_date: "1865-5-1"
+    new_year_date: "1865-1-27"
     note: ""
