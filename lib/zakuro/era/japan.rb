@@ -97,6 +97,8 @@ module Zakuro
       attr_reader :name
       # @return [Western::Calendar] 開始日
       attr_reader :start_date
+      # @return [Western::Calendar] 元旦
+      attr_reader :new_year_date
       # @return [Western::Calendar] 終了日
       attr_reader :end_date
       # @return [Integer] 元号年
@@ -105,15 +107,18 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [<Type>] name 元号名
-      # @param [<Type>] start_date 開始日
-      # @param [<Type>] end_date 終了日
-      # @param [<Type>] year 元号年
+      # @param [String] name 元号名
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] new_year_date 元旦
+      # @param [Western::Calendar] end_date 終了日
+      # @param [Integer] year 元号年
       #
       def initialize(name: '', start_date: Western::Calendar.new,
+                     new_year_date: Western::Calendar.new,
                      end_date: Western::Calendar.new, year: -1)
         @name = name
         @start_date = start_date
+        @new_year_date = new_year_date
         @end_date = end_date
         @year = year
       end
@@ -187,6 +192,11 @@ module Zakuro
       def next_year
         @year += 1
         nil
+      end
+
+      def to_s
+        "name: #{@name}, start_date: #{@start_date.format}, " \
+        "end_date: #{@end_date.format}, year: #{@year}"
       end
     end
 
@@ -269,6 +279,8 @@ module Zakuro
         attr_reader :name
         # @return [String] 開始日
         attr_reader :start_date
+        # @return [String] 元旦
+        attr_reader :new_year_date
         # @return [String] 開始年
         attr_reader :start_year
 
@@ -282,6 +294,7 @@ module Zakuro
           @index = index
           @name = hash['name']
           @start_date = hash['start_date']
+          @new_year_date = hash['new_year_date']
           @start_year = hash['start_year']
         end
 
@@ -298,9 +311,14 @@ module Zakuro
 
           failed.push(prefix + "invalid name. #{@name}") unless valid_name_type?
 
-          failed.push(prefix + "invalid start_date. #{@start_date}") unless valid_date_type?
+          failed.push(prefix + "invalid start_date. #{@start_date}") unless valid_start_date_type?
 
           failed.push(prefix + "invalid start_year. #{@start_year}") unless valid_year_type?
+
+          unless valid_new_year_date_type?
+            failed.push(prefix + "invalid new_year_date. #{@new_year_date}")
+          end
+
           failed
         end
 
@@ -317,13 +335,23 @@ module Zakuro
         end
 
         #
-        # 日付文字列を検証する
+        # 開始日文字列を検証する
         #
         # @return [True] 正しい
         # @return [False] 正しくない
         #
-        def valid_date_type?
+        def valid_start_date_type?
           Western::Calendar.valid_date_string(str: @start_date)
+        end
+
+        #
+        # 元旦文字列を検証する
+        #
+        # @return [True] 正しい
+        # @return [False] 正しくない
+        #
+        def valid_new_year_date_type?
+          Western::Calendar.valid_date_string(str: @new_year_date)
         end
 
         # :reek:NilCheck
@@ -349,9 +377,11 @@ module Zakuro
         #
         def create
           start_date = Western::Calendar.parse(str: @start_date)
+          new_year_date = Western::Calendar.parse(str: @new_year_date)
           start_year = @start_year.nil? ? 1 : @start_year
 
-          Gengou.new(name: @name, start_date: start_date, year: start_year)
+          Gengou.new(name: @name, start_date: start_date, new_year_date: new_year_date,
+                     year: start_year)
         end
       end
 
