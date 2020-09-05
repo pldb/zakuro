@@ -3,7 +3,7 @@
 require_relative '../base/multi_gengou_roller'
 
 require_relative '../../../era/western'
-require_relative 'annual_data'
+require_relative './annual_range'
 
 # :nodoc:
 module Zakuro
@@ -54,7 +54,7 @@ module Zakuro
         annual_data_list = []
         ((oldest_date.year)..(newest_date.year + 2)).each do |year|
           annual_data_list.push(
-            AnnualData.collect_annual_data_after_last_november_1st(
+            AnnualRange.collect_annual_data_after_last_november_1st(
               western_year: year
             )
           )

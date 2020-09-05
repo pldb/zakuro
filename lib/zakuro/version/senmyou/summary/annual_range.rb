@@ -13,8 +13,8 @@ require_relative '../stella/lunar_orbit'
 module Zakuro
   # :nodoc:
   module Senmyou
-    # AnnualData 年間データ
-    module AnnualData
+    # AnnualRange 年間データ
+    module AnnualRange
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'annual_data')
 
