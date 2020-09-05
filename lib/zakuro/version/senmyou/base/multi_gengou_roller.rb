@@ -1,0 +1,149 @@
+# frozen_string_literal: true
+
+require_relative './era'
+
+require_relative '../../../era/japan'
+
+# :nodoc:
+module Zakuro
+  # :nodoc:
+  module Senmyou
+    # FIXME: 宣明暦に依存しない共通処理にする
+
+    #
+    # MultiGengouRoller 改元処理
+    #
+    class MultiGengouRoller
+      attr_reader :multi_gengou
+      # @return [Western::Calendar] 元旦（元号が2つある場合は再過去の日付になる）
+      attr_reader :oldest_date
+      # @return [Western::Calendar] 元号内での最未来日（元号が2つある場合は再未来の日付になる）
+      attr_reader :newest_date
+      # @return [Western::Calendar] 現在日
+      attr_reader :current_date
+
+      def initialize(start_date: Era::START_DATE, end_date: Western::Calender.new)
+        end_date = start_date if end_date.invalid?
+
+        @oldest_date = choise_oldest_gengou_date(first_line: Era.first(start_date: start_date),
+                                                 second_line: Era.second(start_date: start_date))
+        @current_date = @oldest_date.clone
+        @newest_date = choise_newest_gengou_date(first_line: Era.first(start_date: end_date),
+                                                 second_line: Era.second(start_date: end_date))
+
+        @multi_gengou = MultiGengou.new(
+          first_line: current_first_line,
+          second_line: current_second_line,
+          new_year_date: @oldest_date
+        )
+      end
+
+      #
+      # 現在日付を未来に進める
+      #
+      # @param [<Type>] days <description>
+      #
+      # @return [<Type>] <description>
+      #
+      def next(days: 0)
+        @current_date += days
+      end
+
+      #
+      # 現在日から元号（1行目）を取得する
+      #
+      # @return [Japan::Gengou] 元号（1行目）
+      #
+      def current_first_line
+        Era.first(start_date: @current_date)
+      end
+
+      #
+      # 現在日から元号（2行目）を取得する
+      #
+      # @return [Japan::Gengou] 元号（2行目）
+      #
+      def current_second_line
+        Era.second(start_date: @current_date)
+      end
+
+      #
+      # 改元する
+      #
+      # @return [MultiGengou] 自身
+      #
+      def transfer
+        @multi_gengou.transfer(
+          first_line: current_first_line,
+          second_line: current_second_line
+        )
+      end
+
+      #
+      # 次年にする
+      #
+      # @return [MultiGengou] 自身
+      #
+      def next_year
+        @multi_gengou.next_year
+      end
+
+      #
+      # 現在日からみて直近の未来に対する元号の切替前日を求める
+      # @note 2つの元号が重複した場合はより過去の日となる
+      #
+      # @param [Japan::Gengou] first_line 元号（1行目）
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      #
+      # @return [Western::Calendar] 元号の切替前日
+      #
+      def choise_nearest_end_date
+        first_end_date = current_first_line.end_date.clone
+        second_line = current_second_line
+
+        # first_lineは常に存在する
+        return first_end_date if second_line.invalid?
+
+        second_end_date = second_line.end_date.clone
+
+        first_end_date > second_end_date ? first_end_date : second_end_date
+      end
+
+      #
+      # 最過去の元旦を求める
+      # @note 2つの元号が重複した場合はより過去の日となる
+      #
+      # @param [Japan::Gengou] first_line 元号（1行目）
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      #
+      # @return [Western::Calendar] 最過去の元旦
+      #
+      def self.choise_oldest_gengou_date(first_line:, second_line:)
+        first_new_year_date = first_line.new_year_date.clone
+        second_new_year_date = second_line.new_year_date.clone
+        # first_lineは常に存在する
+        return first_new_year_date if second_line.invalid?
+
+        first_new_year_date < second_new_year_date ? first_new_year_date : second_new_year_date
+      end
+
+      #
+      # 元号内での最未来日を求める
+      # @note 2つの元号が重複した場合はより未来の日となる
+      #
+      # @param [Japan::Gengou] first_line 元号（1行目）
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      #
+      # @return [Western::Calendar] 最未来日
+      #
+      def self.choise_newest_gengou_date(first_line:, second_line:)
+        first_end_date = first_line.end_date.clone
+        second_end_date = second_line.end_date.clone
+        # first_lineは常に存在する
+        return first_end_date if second_line.invalid?
+
+        first_end_date > second_end_date ? first_end_date : second_end_date
+      end
+    end
+  end
+end
