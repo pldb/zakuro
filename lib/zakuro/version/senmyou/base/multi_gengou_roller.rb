@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './era'
+require_relative './multi_gengou'
 
 require_relative '../../../era/japan'
 
@@ -22,14 +23,18 @@ module Zakuro
       # @return [Western::Calendar] 現在日
       attr_reader :current_date
 
-      def initialize(start_date: Era::START_DATE, end_date: Western::Calender.new)
+      def initialize(start_date: Era::START_DATE, end_date: Western::Calendar.new)
         end_date = start_date if end_date.invalid?
 
-        @oldest_date = choise_oldest_gengou_date(first_line: Era.first(start_date: start_date),
-                                                 second_line: Era.second(start_date: start_date))
+        @oldest_date = MultiGengouRoller.choise_oldest_gengou_date(
+          first_line: Era.first(start_date: start_date),
+          second_line: Era.second(start_date: start_date)
+        )
         @current_date = @oldest_date.clone
-        @newest_date = choise_newest_gengou_date(first_line: Era.first(start_date: end_date),
-                                                 second_line: Era.second(start_date: end_date))
+        @newest_date = MultiGengouRoller.choise_newest_gengou_date(
+          first_line: Era.first(start_date: end_date),
+          second_line: Era.second(start_date: end_date)
+        )
 
         @multi_gengou = MultiGengou.new(
           first_line: current_first_line,
@@ -55,7 +60,7 @@ module Zakuro
       # @return [Japan::Gengou] 元号（1行目）
       #
       def current_first_line
-        Era.first(start_date: @current_date)
+        MultiGengouRoller.first_line(date: @current_date)
       end
 
       #
@@ -64,28 +69,60 @@ module Zakuro
       # @return [Japan::Gengou] 元号（2行目）
       #
       def current_second_line
-        Era.second(start_date: @current_date)
+        MultiGengouRoller.second_line(date: @current_date)
       end
 
       #
       # 改元する
       #
-      # @return [MultiGengou] 自身
+      # @return [MultiGengou] 複数元号
       #
       def transfer
-        @multi_gengou.transfer(
-          first_line: current_first_line,
-          second_line: current_second_line
-        )
+        MultiGengouRoller.transfer(multi_gengou: @multi_gengou, date: @current_date)
       end
 
       #
       # 次年にする
       #
-      # @return [MultiGengou] 自身
+      # @return [MultiGengou] 複数元号
       #
       def next_year
         @multi_gengou.next_year
+      end
+
+      #
+      # 元号（1行目）を取得する
+      #
+      # @return [Japan::Gengou] 元号（1行目）
+      #
+      def self.first_line(date: Western::Calender.new)
+        Era.first(start_date: date)
+      end
+
+      #
+      # 元号（2行目）を取得する
+      #
+      # @return [Japan::Gengou] 元号（2行目）
+      #
+      def self.second_line(date: Western::Calender.new)
+        Era.second(start_date: date)
+      end
+
+      #
+      # 改元する
+      #
+      # @param [MultiGengou] multi_gengou 複数元号
+      # @param [Western::Calendar] date 対象日
+      #
+      # @return [MultiGengou] 改元済み複数元号
+      #
+      def self.transfer(multi_gengou:, date:)
+        multi_gengou.transfer(
+          first_line: first_line(date: date),
+          second_line: second_line(date: date)
+        )
+
+        multi_gengou
       end
 
       #

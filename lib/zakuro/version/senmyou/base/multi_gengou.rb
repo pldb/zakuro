@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../era/japan'
+require_relative '../../../era/western'
 
 # :nodoc:
 module Zakuro
@@ -14,10 +15,14 @@ module Zakuro
       attr_reader :first_line
       # @return [Japan::Gengou] 元号（2行目）
       attr_reader :second_line
+      # @return [Western::Calendar] 元旦
+      attr_reader :new_year_date
 
-      def initialize(first_line:, second_line:)
+      def initialize(first_line: Japan::Gengou.new, second_line: Japan::Gengou.new,
+                     new_year_date: Western::Calendar.new)
         @first_line = first_line
         @second_line = second_line
+        @new_year_date = new_year_date
       end
 
       #

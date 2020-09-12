@@ -24,7 +24,7 @@ module Zakuro
       attr_reader :new_year_date
       attr_reader :western_year
 
-      def initialize(start_date: Western::Calender.new, end_date: Western::Calender.new)
+      def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
         @multi_gengou_roller = MultiGengouRoller.new(start_date: start_date, end_date: end_date)
         @new_year_date = @multi_gengou_roller.oldest_date.clone
         @western_year = @new_year_date.year
@@ -36,9 +36,8 @@ module Zakuro
       # @return [Array<Year>] 完全範囲
       #
       def get
-        annual_data_list = annual_data_list
-        years = rearranged_years(annual_data_list: annual_data_list)
-        years = update_gengou(years)
+        years = FullRange.rearranged_years(annual_ranges: annual_ranges)
+        years = update_gengou(years: years)
         years
       end
 
@@ -47,35 +46,35 @@ module Zakuro
       #
       # @return [Array<Year>] 年データ（冬至基準）
       #
-      def annual_data_list
+      def annual_ranges
         oldest_date = @new_year_date
         newest_date = @multi_gengou_roller.newest_date
 
-        annual_data_list = []
+        years = []
         ((oldest_date.year)..(newest_date.year + 2)).each do |year|
-          annual_data_list.push(
+          years.push(
             AnnualRange.collect_annual_data_after_last_november_1st(
               western_year: year
             )
           )
         end
 
-        annual_data_list
+        years
       end
 
       #
       # 完全範囲内の年データの開始月を変更する
       #
-      # @param [Array<Year>] annual_data_list 年データ（冬至基準）
+      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
       #
       # @return [Array<Year>] 年データ（元旦基準）
       #
-      def self.rearranged_years(annual_data_list:)
+      def self.rearranged_years(annual_ranges:)
         years = []
 
-        (0..(annual_data_list.size - 2)).each do |index|
-          current_annual_data = annual_data_list[index]
-          next_annual_data = annual_data_list[index + 1]
+        (0..(annual_ranges.size - 2)).each do |index|
+          current_annual_data = annual_ranges[index]
+          next_annual_data = annual_ranges[index + 1]
 
           year = push_current_year(annual_data: current_annual_data)
           push_last_year(annual_data: next_annual_data, year: year)
@@ -100,7 +99,7 @@ module Zakuro
         years.each do |year|
           multi_gengou = @multi_gengou_roller.multi_gengou.clone
 
-          updated_year = Year.new(multi_gengou: multi_gengou, new_year_date: @new_year_date,
+          updated_year = Year.new(multi_gengou: multi_gengou, new_year_date: @new_year_date.clone,
                                   months: year.months)
           updated_year.commit
 
@@ -129,6 +128,8 @@ module Zakuro
 
           year.push(month: month)
         end
+
+        year
       end
 
       #
@@ -140,6 +141,8 @@ module Zakuro
 
           year.push(month: month)
         end
+
+        year
       end
     end
   end

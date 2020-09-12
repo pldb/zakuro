@@ -68,15 +68,15 @@ module Zakuro
       # @return [Result::Year] 年データ
       #
       def self.save_year(year:)
-        gengou = year.gengou
-        first = gengou.first_line
-        second = gengou.second_line
+        multi_gengou = year.multi_gengou
+        first = multi_gengou.first_line
+        second = multi_gengou.second_line
         Result::Year.new(
           first_gengou:
             Result::Gengou.new(name: first.name, number: first.year),
           second_gengou:
             Result::Gengou.new(name: second.name, number: second.year),
-          zodiac_name: gengou.zodiac_name, total_days: gengou.total_days
+          zodiac_name: year.zodiac_name, total_days: year.total_days
         )
       end
       private_class_method :save_year

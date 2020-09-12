@@ -190,7 +190,7 @@ module Zakuro
       # 1元号年を追加する
       #
       def next_year
-        @year += 1
+        @year += 1 unless invalid?
         nil
       end
 

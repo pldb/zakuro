@@ -24,7 +24,7 @@ module Zakuro
       #
       # @param [Gengou] multi_gengou 元号
       #
-      def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calender.new,
+      def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
                      months: [], total_days: 0)
         @multi_gengou = multi_gengou
         @months = months

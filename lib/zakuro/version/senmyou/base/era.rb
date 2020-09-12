@@ -12,6 +12,8 @@ module Zakuro
     # Era 宣明暦時代
     #
     module Era
+      # FIXME: JOUGAN_START_DATE は不要。'貞観' かどうかだけで良い
+
       # @return [Western::Calendar] 貞観1年1月1日
       JOUGAN_START_DATE = Western::Calendar.new(year: 859, month: 2, day: 7)
       # @return [Western::Calendar] 貞観4年1月1日
