@@ -181,7 +181,7 @@ describe 'Zakuro' do
         end
         context 'set-001 and set-002' do
           it 'should be got a element' do
-            date = Zakuro::Western::Calendar.new(year: 1384, month: 1, day: 23)
+            date = Zakuro::Western::Calendar.new(year: 1384, month: 5, day: 18)
             item = Zakuro::Japan::GengouResource.first_line(date: date)
             expect(item.name).to eq('元中')
           end
@@ -198,7 +198,7 @@ describe 'Zakuro' do
         end
         context 'set-003 only' do
           it 'should be got a set-003 element instead of set-001 one' do
-            date = Zakuro::Western::Calendar.new(year: 1868, month: 1, day: 25)
+            date = Zakuro::Western::Calendar.new(year: 1868, month: 10, day: 23)
             item = Zakuro::Japan::GengouResource.first_line(date: date)
             expect(item.name).to eq('明治')
           end
@@ -207,7 +207,7 @@ describe 'Zakuro' do
       context '.second_line' do
         context 'set-001 and set-002' do
           it 'should be got a set-002 element' do
-            date = Zakuro::Western::Calendar.new(year: 1384, month: 1, day: 23)
+            date = Zakuro::Western::Calendar.new(year: 1384, month: 3, day: 19)
             item = Zakuro::Japan::GengouResource.second_line(date: date)
             expect(item.name).to eq('至徳')
           end
