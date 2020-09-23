@@ -561,7 +561,7 @@ describe 'Zakuro' do
             Zakuro::Result::SingleDay.new(
               year: Zakuro::Result::Year.new(
                 first_gengou: Zakuro::Result::Gengou.new(name: '元弘', number: 2),
-                second_gengou: Zakuro::Result::Gengou.new(name: '正慶', number: 1),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬申',
                 total_days: 355
               ),
@@ -804,6 +804,7 @@ describe 'Zakuro' do
               )
             )
           end
+          # FIXME: pass test
           context 'as 応永1年1月' do
             example '1日' do
               date = Zakuro::Western::Calendar.new(year: 1394, month: 2, day: 1)
@@ -875,6 +876,7 @@ describe 'Zakuro' do
               )
             )
           end
+          # FIXME: pass test
           context 'as 貞享2年1月' do
             example '1日' do
               date = Zakuro::Western::Calendar.new(year: 1685, month: 2, day: 4)

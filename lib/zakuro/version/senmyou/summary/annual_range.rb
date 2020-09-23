@@ -16,7 +16,7 @@ module Zakuro
     # AnnualRange 年間データ
     module AnnualRange
       # @return [Logger] ロガー
-      LOGGER = Logger.new(location: 'annual_data')
+      LOGGER = Logger.new(location: 'annual_range')
 
       # :reek:TooManyStatements { max_statements: 6 }
 

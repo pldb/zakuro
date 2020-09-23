@@ -34,10 +34,32 @@ module Zakuro
       # @return [MultiGengou] 自身
       #
       def transfer(first_line: Japan::Gengou.new, second_line: Japan::Gengou.new)
+        if integrated?(first_line: first_line, second_line: second_line)
+          @first_line = @second_line.clone
+          @second_line = second_line.clone
+        end
+
         @first_line = first_line.clone if @first_line.name != first_line.name
         @second_line = second_line.clone if @second_line.name != second_line.name
 
         self
+      end
+
+      #
+      # 複数元号を統一するかどうか
+      #
+      # @param [Japan::Gengou] first_line 元号（1行目）
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      #
+      # @return [True] 統一する
+      # @return [False] 統一しない
+      #
+      def integrated?(first_line: Japan::Gengou.new, second_line: Japan::Gengou.new)
+        return false if @second_line.name != first_line.name
+
+        return false unless second_line.invalid?
+
+        true
       end
 
       #

@@ -15,6 +15,7 @@ module Zakuro
     # MultiGengouRoller 改元処理
     #
     class MultiGengouRoller
+      # @return [MultiGengou] 複数元号
       attr_reader :multi_gengou
       # @return [Western::Calendar] 元旦（元号が2つある場合は再過去の日付になる）
       attr_reader :oldest_date
@@ -143,7 +144,7 @@ module Zakuro
 
         second_end_date = second_line.end_date.clone
 
-        first_end_date > second_end_date ? first_end_date : second_end_date
+        first_end_date < second_end_date ? first_end_date : second_end_date
       end
 
       #

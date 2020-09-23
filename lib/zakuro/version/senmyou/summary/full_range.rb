@@ -24,6 +24,9 @@ module Zakuro
       attr_reader :new_year_date
       attr_reader :western_year
 
+      # @return [Logger] ロガー
+      LOGGER = Logger.new(location: 'full_range')
+
       def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
         @multi_gengou_roller = MultiGengouRoller.new(start_date: start_date, end_date: end_date)
         @new_year_date = @multi_gengou_roller.oldest_date.clone
