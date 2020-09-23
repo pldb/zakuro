@@ -12,8 +12,10 @@ group :test do
 end
 
 group :development do
+  gem 'debase'
   gem 'reek'
   gem 'rubocop-performance'
+  gem 'ruby-debug-ide'
   gem 'solargraph'
   gem 'yard'
 end
