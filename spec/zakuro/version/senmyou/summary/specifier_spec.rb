@@ -849,7 +849,6 @@ describe 'Zakuro' do
               )
             )
           end
-          # FIXME: pass test
           context 'as 貞享2年1月' do
             example '1日' do
               date = Zakuro::Western::Calendar.new(year: 1685, month: 2, day: 4)

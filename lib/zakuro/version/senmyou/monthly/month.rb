@@ -97,6 +97,16 @@ module Zakuro
       end
 
       #
+      # 二十四節気が未設定かどうかを検証する
+      #
+      # @return [True] 設定なし
+      # @return [False] 設定あり
+      #
+      def empty_solar_term?
+        @even_term.invalid? && @odd_term.invalid?
+      end
+
+      #
       # 文字化する
       #
       # @return [String] 文字

@@ -74,9 +74,14 @@ module Zakuro
       #
       def self.apply_solar_terms_from_last_winter_solstice(annual_data:,
                                                            solar_terms:)
+
         c_idx = 0
         st_idx = 0
-        while c_idx < annual_data.size && st_idx < solar_terms.size
+        month_size = annual_data.size
+
+        while c_idx < month_size && st_idx < solar_terms.size
+          raise StandardError, "month is over. idx: #{c_idx}" if c_idx >= month_size
+
           current_month = annual_data[c_idx]
           next_month = annual_data[c_idx + 1]
           solar_term = solar_terms[st_idx]
@@ -88,6 +93,13 @@ module Zakuro
             st_idx += 1
             next
           end
+
+          # 一度も割り当てがない場合は二十四節気を進める
+          if current_month.empty_solar_term?
+            st_idx += 1
+            next
+          end
+
           c_idx += 1
         end
       end
