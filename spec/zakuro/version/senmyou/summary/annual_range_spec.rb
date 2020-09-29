@@ -1056,7 +1056,7 @@ describe 'Zakuro' do
         end
       end
 
-      describe 'collect_annual_data_after_last_november_1st' do
+      describe 'collect_annual_range_after_last_november_1st' do
         context 'all months every year' do
           # rubocop:disable Metrics/AbcSize
           # :reek:UtilityFunction
@@ -1093,7 +1093,7 @@ describe 'Zakuro' do
             fails = []
             expect_monthes.each do |year, expects|
               actuals = \
-                Zakuro::Senmyou::AnnualRange.collect_annual_data_after_last_november_1st(
+                Zakuro::Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
                   western_year: year
                 )
               actuals.each_with_index do |month, index|
@@ -1108,7 +1108,7 @@ describe 'Zakuro' do
             expect(fails).to be_empty, error_message(fails)
           end
           # it 'call example' do
-          #   Zakuro::Senmyou::AnnualRange.collect_annual_data_after_last_november_1st(
+          #   Zakuro::Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
           #     western_year: 1333
           #   )
           # end

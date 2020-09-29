@@ -56,7 +56,7 @@ module Zakuro
         years = []
         ((oldest_date.year)..(newest_date.year + 2)).each do |year|
           years.push(
-            AnnualRange.collect_annual_data_after_last_november_1st(
+            AnnualRange.collect_annual_range_after_last_november_1st(
               western_year: year
             )
           )
@@ -76,11 +76,11 @@ module Zakuro
         years = []
 
         (0..(annual_ranges.size - 2)).each do |index|
-          current_annual_data = annual_ranges[index]
-          next_annual_data = annual_ranges[index + 1]
+          current_annual_range = annual_ranges[index]
+          next_annual_range = annual_ranges[index + 1]
 
-          year = push_current_year(annual_data: current_annual_data)
-          push_last_year(annual_data: next_annual_data, year: year)
+          year = push_current_year(annual_range: current_annual_range)
+          push_last_year(annual_range: next_annual_range, year: year)
           years.push(year)
         end
 
@@ -125,8 +125,8 @@ module Zakuro
       #
       # 当年データを生成する
       #
-      def self.push_current_year(annual_data:, year: Year.new)
-        annual_data.each do |month|
+      def self.push_current_year(annual_range:, year: Year.new)
+        annual_range.each do |month|
           next if month.is_last_year
 
           year.push(month: month)
@@ -138,8 +138,8 @@ module Zakuro
       #
       # 当年データを生成する
       #
-      def self.push_last_year(annual_data:, year: Year.new)
-        annual_data.each do |month|
+      def self.push_last_year(annual_range:, year: Year.new)
+        annual_range.each do |month|
           next unless month.is_last_year
 
           year.push(month: month)

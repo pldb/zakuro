@@ -61,20 +61,20 @@ module Zakuro
       #
       # @return [Array<Month>] 1年データ
       #
-      def self.collect_annual_data_after_last_november_1st(western_year:)
-        annual_data = initialized_annual_data(western_year: western_year)
+      def self.collect_annual_range_after_last_november_1st(western_year:)
+        annual_range = initialized_annual_range(western_year: western_year)
 
-        apply_big_and_small_of_the_month(annual_data: annual_data)
+        apply_big_and_small_of_the_month(annual_range: annual_range)
 
-        SolarAverage.set_solar_terms_into_annual_data(western_year: western_year,
-                                                      annual_data: annual_data)
+        SolarAverage.set_solar_terms_into_annual_range(western_year: western_year,
+                                                       annual_range: annual_range)
 
         # 月間隔を取得するためだけの末尾要素を削除
-        annual_data.pop
+        annual_range.pop
 
-        adjust_leap_month(annual_data: annual_data)
+        adjust_leap_month(annual_range: annual_range)
 
-        annual_data
+        annual_range
       end
 
       #
@@ -112,7 +112,7 @@ module Zakuro
       #
       # @return [Array<Month>] 1年データ
       #
-      def self.initialized_annual_data(western_year:)
+      def self.initialized_annual_range(western_year:)
         result = []
         lunar_phase = LunarPhase.new(western_year: western_year)
 
@@ -133,18 +133,18 @@ module Zakuro
         end
         result
       end
-      private_class_method :initialized_annual_data
+      private_class_method :initialized_annual_range
 
       #
       # 1年データの各月に月の大小を設定する
       #
-      # @param [Array<Month>] annual_data 1年データ
+      # @param [Array<Month>] annual_range 1年データ
       #
-      def self.apply_big_and_small_of_the_month(annual_data:)
-        size = annual_data.size - 1
+      def self.apply_big_and_small_of_the_month(annual_range:)
+        size = annual_range.size - 1
         (0...size).each do |idx|
-          current_month = annual_data[idx]
-          next_month = annual_data[idx + 1]
+          current_month = annual_range[idx]
+          next_month = annual_range[idx + 1]
           current_month.is_many_days = \
             current_month.remainder.same_remainder_divided_by_ten?(
               other: next_month.remainder.day
@@ -159,12 +159,12 @@ module Zakuro
       # 閏月が存在した場合に以降の月を1つずつ減らす
       # @example 7,8,9 と続く月の8月が閏の場合、7, 閏7, 8 となる
       #
-      # @param [Array<Month>] annual_data 1年データ
+      # @param [Array<Month>] annual_range 1年データ
       #
-      def self.adjust_leap_month(annual_data:)
+      def self.adjust_leap_month(annual_range:)
         # 閏による月の再調整を行う
         leaped = false
-        annual_data.each do |month|
+        annual_range.each do |month|
           if month.even_term.invalid?
             month.leaped = true
             leaped = true
