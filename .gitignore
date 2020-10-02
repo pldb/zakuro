@@ -11,6 +11,8 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+# use binstubs
+/exe/
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -68,3 +70,6 @@ Gemfile.lock
 
 # Mac
 .DS_Store
+
+# vscode
+/.vscode/
