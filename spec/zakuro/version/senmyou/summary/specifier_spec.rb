@@ -555,6 +555,96 @@ describe 'Zakuro' do
           end
         end
 
+        context 'ancient month from western date 877-5-31' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 19),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '丁酉',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                number: 4,
+                leaped: false,
+                days_name: '小',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '壬申', remainder: '8-1019',
+                  western_date: '0877-05-17'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 11, remainder: '24-5206'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 10, remainder: '9-3371'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 15, zodiac_name: '丙戌', remainder: '22-1019',
+                western_date: '0877-05-31'
+              )
+            )
+          end
+          context 'as 貞観19年4月' do
+            example '15日' do
+              date = Zakuro::Western::Calendar.new(year: 877, month: 5, day: 31)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
+            end
+          end
+        end
+
+        context 'ancient month from western date 877-6-1' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '元慶', number: 1),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '丁酉',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                number: 4,
+                leaped: false,
+                days_name: '小',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '壬申', remainder: '8-1019',
+                  western_date: '0877-05-17'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 11, remainder: '24-5206'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 10, remainder: '9-3371'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 16, zodiac_name: '丁亥', remainder: '23-1019',
+                western_date: '0877-06-01'
+              )
+            )
+          end
+          context 'as 元慶1年4月' do
+            example '16日' do
+              date = Zakuro::Western::Calendar.new(year: 877, month: 6, day: 1)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
+            end
+          end
+        end
+
         context 'ancient month from western date 1332-1-28' do
           # 文字化け回避コメント（solargraph が日本語文字列 '正慶' を自動変換するため）
           let!(:first_day) do
@@ -695,6 +785,53 @@ describe 'Zakuro' do
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
+            end
+          end
+        end
+
+        context 'ancient month from western date 1392-11-19' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '明徳', number: 3),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '壬申',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                # 朔旦冬至による補正前（補正後は閏10月の小の月）
+                number: 11,
+                leaped: false,
+                days_name: '大',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '戊寅', remainder: '14-3986',
+                  western_date: '1392-11-15'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 23, remainder: '28-1959'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 0, remainder: '43-3795'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 5, zodiac_name: '壬午', remainder: '18-3986',
+                western_date: '1392-11-19'
+              )
+            )
+          end
+          context 'as 明徳3年閏10月' do
+            example '5日' do
+              # NOTE: 「明徳3年閏10月」としたが、11月を期待値とする（朔旦冬至による補正前）
+              date = Zakuro::Western::Calendar.new(year: 1392, month: 11, day: 19)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
             end
           end
         end
