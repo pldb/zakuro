@@ -18,6 +18,13 @@ module Zakuro
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'specifier')
 
+      #
+      # 取得する
+      #
+      # @param [Western::Calendar] date 西暦日
+      #
+      # @return [Response::SingleDay] 和暦日
+      #
       def self.get(date:)
         years = FullRange.new(start_date: date).get
 
@@ -35,25 +42,47 @@ module Zakuro
         )
       end
 
+      #
+      # 年を特定する
+      #
+      # @param [Array<Year>] years 範囲
+      # @param [Western::Calendar] date 西暦日
+      #
+      # @return [Year] 対象年
+      #
       def self.specify_year(years:, date:)
         years.reverse_each do |year|
           return year if date >= year.new_year_date
         end
 
-        LOGGER.info("years.size: #{years.size}")
-        years.each do |year|
-          LOGGER.info("year: #{year.new_year_date.format}")
-        end
-
         raise ArgumentError, "invalid year range. date: #{date.format}"
       end
 
+      #
+      # 改元する
+      #
+      # @param [Year] year 年
+      # @param [Western::Calendar] date 西暦日
+      #
+      # @return [Year] 改元後の年
+      #
       def self.transfer(year:, date:)
         multi_gengou = MultiGengouRoller.transfer(multi_gengou: year.multi_gengou, date: date)
         Year.new(multi_gengou: multi_gengou, new_year_date: year.new_year_date,
                  months: year.months, total_days: year.total_days)
       end
 
+      # :reek:TooManyStatements { max_statements: 7 }
+
+      #
+      # 月を特定する
+      #
+      # @param [Year] year 年
+      # @param [Western::Calendar] date 西暦日
+      #
+      # @return [Month] 対象月
+      # @return [Western::Calendar] 月初日
+      #
       def self.specify_month(year:, date:)
         current_month_date = year.new_year_date.clone
         next_month_date = current_month_date.clone
