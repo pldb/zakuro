@@ -136,15 +136,15 @@ module Zakuro
       # @return [Western::Calendar] 元号の切替前日
       #
       def choise_nearest_end_date
-        first_end_date = current_first_line.end_date.clone
+        condition = lambda do |first_date, second_date|
+          first_date < second_date ? first_date : second_date
+        end
+
         second_line = current_second_line
 
-        # first_lineは常に存在する
-        return first_end_date if second_line.invalid?
-
-        second_end_date = second_line.end_date.clone
-
-        first_end_date < second_end_date ? first_end_date : second_end_date
+        MultiGengouRoller.choise_date(condition: condition, second_line: second_line,
+                                      first_date: current_first_line.end_date.clone,
+                                      second_date: second_line.end_date.clone)
       end
 
       #
@@ -157,12 +157,12 @@ module Zakuro
       # @return [Western::Calendar] 最過去の元旦
       #
       def self.choise_oldest_gengou_date(first_line:, second_line:)
-        first_new_year_date = first_line.new_year_date.clone
-        second_new_year_date = second_line.new_year_date.clone
-        # first_lineは常に存在する
-        return first_new_year_date if second_line.invalid?
-
-        first_new_year_date < second_new_year_date ? first_new_year_date : second_new_year_date
+        condition = lambda do |first_date, second_date|
+          first_date < second_date ? first_date : second_date
+        end
+        choise_date(condition: condition, second_line: second_line,
+                    first_date: first_line.new_year_date.clone,
+                    second_date: second_line.new_year_date.clone)
       end
 
       #
@@ -175,12 +175,30 @@ module Zakuro
       # @return [Western::Calendar] 最未来日
       #
       def self.choise_newest_gengou_date(first_line:, second_line:)
-        first_end_date = first_line.end_date.clone
-        second_end_date = second_line.end_date.clone
-        # first_lineは常に存在する
-        return first_end_date if second_line.invalid?
+        condition = lambda do |first_date, second_date|
+          first_date > second_date ? first_date : second_date
+        end
+        choise_date(condition: condition, second_line: second_line,
+                    first_date: first_line.end_date.clone, second_date: second_line.end_date.clone)
+      end
 
-        first_end_date > second_end_date ? first_end_date : second_end_date
+      # :reek:LongParameterList {max_params: 4}
+
+      #
+      # 条件を元に日付を求める
+      #
+      # @param [Proc] condition 比較条件
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      # @param [Western::Calendar] first_date 比較対象（1行目）
+      # @param [Western::Calendar] second_date 比較対象（2行目）
+      #
+      # @return [Western::Calendar] 比較結果
+      #
+      def self.choise_date(condition:, second_line:, first_date:, second_date:)
+        # first_lineは常に存在する
+        return first_date if second_line.invalid?
+
+        condition.call(first_date, second_date)
       end
     end
   end
