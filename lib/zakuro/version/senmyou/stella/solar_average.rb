@@ -17,11 +17,11 @@ module Zakuro
       # 冬至から数えた1年データの月ごとに二十四節気を割り当てる
       #
       # @param [Integer] western_year 西暦年
-      # @param [Array<Month>] annual_data 1年データ
+      # @param [Array<Month>] annual_range 1年データ
       #
       # @return [Array<Month>] 1年データ
       #
-      def self.set_solar_terms_into_annual_data(western_year:, annual_data:)
+      def self.set_solar_terms_into_annual_range(western_year:, annual_range:)
         # 天正冬至
         winter_solstice = WinterSolstice.calc(western_year: western_year)
 
@@ -30,17 +30,17 @@ module Zakuro
           winter_solstice: winter_solstice
         )
 
-        apply_solar_terms_from_last_winter_solstice(annual_data: annual_data,
+        apply_solar_terms_from_last_winter_solstice(annual_range: annual_range,
                                                     solar_terms: solar_terms)
 
         # 前後の二十四節気
         rest_solar_terms = \
           collect_solar_terms_before_and_after(solar_terms: solar_terms)
 
-        apply_solar_terms_before_and_after(annual_data: annual_data,
+        apply_solar_terms_before_and_after(annual_range: annual_range,
                                            rest_solar_terms: rest_solar_terms)
 
-        annual_data
+        annual_range
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -69,16 +69,21 @@ module Zakuro
       #
       # 各月の二十四節気を設定する
       #
-      # @param [Array<Month>] annual_data 1年データ
+      # @param [Array<Month>] annual_range 1年データ
       # @param [Array<Remainder>] solar_terms 1年データ内の全二十四節気
       #
-      def self.apply_solar_terms_from_last_winter_solstice(annual_data:,
+      def self.apply_solar_terms_from_last_winter_solstice(annual_range:,
                                                            solar_terms:)
+
         c_idx = 0
         st_idx = 0
-        while c_idx < annual_data.size && st_idx < solar_terms.size
-          current_month = annual_data[c_idx]
-          next_month = annual_data[c_idx + 1]
+        month_size = annual_range.size
+
+        while c_idx < month_size && st_idx < solar_terms.size
+          raise StandardError, "month is over. idx: #{c_idx}" if c_idx >= month_size
+
+          current_month = annual_range[c_idx]
+          next_month = annual_range[c_idx + 1]
           solar_term = solar_terms[st_idx]
 
           if in_range_solar_term?(target: solar_term, min: current_month.remainder,
@@ -88,6 +93,13 @@ module Zakuro
             st_idx += 1
             next
           end
+
+          # 一度も割り当てがない場合は二十四節気を進める
+          if current_month.empty_solar_term?
+            st_idx += 1
+            next
+          end
+
           c_idx += 1
         end
       end
@@ -120,18 +132,18 @@ module Zakuro
       #
       # 1年データ前後の二十四節気を適用する
       #
-      # @param [Array<Month>] annual_data 1年データ
+      # @param [Array<Month>] annual_range 1年データ
       # @param [Hash<Integer, Hash<Symbol, Integer>>, Hash<Integer, Hash<Symbol, Remainder>>]
       #   rest_solar_terms 前後
       #
-      def self.apply_solar_terms_before_and_after(annual_data:, rest_solar_terms:)
+      def self.apply_solar_terms_before_and_after(annual_range:, rest_solar_terms:)
         rest_solar_terms.each do |key, value|
           index = value[:index]
           solar_term = value[:solar_term]
-          data = annual_data[index]
+          data = annual_range[index]
           next unless in_range_solar_term?(
             target: solar_term,
-            min: data.remainder, max: annual_data[index + 1].remainder
+            min: data.remainder, max: annual_range[index + 1].remainder
           )
 
           set_solar_term(month: data,

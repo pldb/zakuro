@@ -11,6 +11,8 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+# use binstubs
+/exe/
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -36,8 +38,9 @@ build-iPhoneSimulator/
 
 ## Documentation cache and generated files:
 /.yardoc/
+/doc/.yardoc/
 /_yardoc/
-/doc/
+# /doc/
 /rdoc/
 
 ## Environment normalization:
@@ -67,3 +70,6 @@ Gemfile.lock
 
 # Mac
 .DS_Store
+
+# vscode
+/.vscode/

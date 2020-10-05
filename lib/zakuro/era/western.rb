@@ -345,6 +345,16 @@ module Zakuro
       end
 
       #
+      # 無効値（引数なし）かどうかを検証する
+      #
+      # @return [True] 無効値
+      # @return [False] 無効値以外
+      #
+      def invalid?
+        (@date == Date.new)
+      end
+
+      #
       # 年月日をフォーマット化する
       #
       # @param [String] form フォーマット

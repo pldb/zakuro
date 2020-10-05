@@ -2,13 +2,13 @@
 
 require 'json'
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/summary/gengou_data',
+                         'lib/zakuro/version/senmyou/summary/specifier',
                          __dir__)
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
-    describe 'GengouData' do
-      describe '.get_ancient_date' do
+    describe 'SingleDaySpecifier' do
+      describe '.get' do
         context 'ancient month from western date 862-2-3' do
           let!(:first_day) do
             Zakuro::Result::SingleDay.new(
@@ -48,7 +48,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 3)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -61,7 +61,7 @@ describe 'Zakuro' do
                                         remainder: '7-1282', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
           end
@@ -101,7 +101,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 862, month: 3, day: 5)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -114,7 +114,7 @@ describe 'Zakuro' do
                                         remainder: '37-6432', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -127,7 +127,7 @@ describe 'Zakuro' do
                                         remainder: '4-6432', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -172,7 +172,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 862, month: 11, day: 25)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -185,7 +185,7 @@ describe 'Zakuro' do
                                         remainder: '2-5584', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '30日' do
@@ -198,7 +198,7 @@ describe 'Zakuro' do
                                         remainder: '30-5584', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -243,7 +243,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 862, month: 12, day: 25)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -256,7 +256,7 @@ describe 'Zakuro' do
                                         remainder: '32-941', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -269,7 +269,7 @@ describe 'Zakuro' do
                                         remainder: '59-941', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -314,7 +314,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 863, month: 1, day: 23)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -327,7 +327,7 @@ describe 'Zakuro' do
                                         remainder: '1-4964', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '30日' do
@@ -340,7 +340,7 @@ describe 'Zakuro' do
                                         remainder: '29-4964', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -381,7 +381,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 863, month: 7, day: 20)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -394,7 +394,7 @@ describe 'Zakuro' do
                                         remainder: '59-8284', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -407,7 +407,7 @@ describe 'Zakuro' do
                                         remainder: '26-8284', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -452,7 +452,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 876, month: 1, day: 30)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -465,7 +465,7 @@ describe 'Zakuro' do
                                         remainder: '16-5502', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -478,7 +478,7 @@ describe 'Zakuro' do
                                         remainder: '44-5502', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -523,7 +523,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 876, month: 12, day: 20)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -536,7 +536,7 @@ describe 'Zakuro' do
                                         remainder: '41-7755', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -549,8 +549,98 @@ describe 'Zakuro' do
                                         remainder: '8-7755', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
+            end
+          end
+        end
+
+        context 'ancient month from western date 877-5-31' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 19),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '丁酉',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                number: 4,
+                leaped: false,
+                days_name: '小',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '壬申', remainder: '8-1019',
+                  western_date: '0877-05-17'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 11, remainder: '24-5206'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 10, remainder: '9-3371'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 15, zodiac_name: '丙戌', remainder: '22-1019',
+                western_date: '0877-05-31'
+              )
+            )
+          end
+          context 'as 貞観19年4月' do
+            example '15日' do
+              date = Zakuro::Western::Calendar.new(year: 877, month: 5, day: 31)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
+            end
+          end
+        end
+
+        context 'ancient month from western date 877-6-1' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '元慶', number: 1),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '丁酉',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                number: 4,
+                leaped: false,
+                days_name: '小',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '壬申', remainder: '8-1019',
+                  western_date: '0877-05-17'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 11, remainder: '24-5206'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 10, remainder: '9-3371'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 16, zodiac_name: '丁亥', remainder: '23-1019',
+                western_date: '0877-06-01'
+              )
+            )
+          end
+          context 'as 元慶1年4月' do
+            example '16日' do
+              date = Zakuro::Western::Calendar.new(year: 877, month: 6, day: 1)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
             end
           end
         end
@@ -561,7 +651,7 @@ describe 'Zakuro' do
             Zakuro::Result::SingleDay.new(
               year: Zakuro::Result::Year.new(
                 first_gengou: Zakuro::Result::Gengou.new(name: '元弘', number: 2),
-                second_gengou: Zakuro::Result::Gengou.new(name: '正慶', number: 1),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬申',
                 total_days: 355
               ),
@@ -596,7 +686,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 1332, month: 1, day: 28)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -609,7 +699,7 @@ describe 'Zakuro' do
                                         remainder: '8-4787', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -622,7 +712,7 @@ describe 'Zakuro' do
                                         remainder: '36-4787', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -667,7 +757,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 1392, month: 1, day: 25)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -680,7 +770,7 @@ describe 'Zakuro' do
                                         remainder: '20-2126', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '30日' do
@@ -693,8 +783,55 @@ describe 'Zakuro' do
                                         remainder: '48-2126', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
+            end
+          end
+        end
+
+        context 'ancient month from western date 1392-11-19' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '明徳', number: 3),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '壬申',
+                total_days: 384
+              ),
+              month: Zakuro::Result::Month.new(
+                # 朔旦冬至による補正前（補正後は閏10月の小の月）
+                number: 11,
+                leaped: false,
+                days_name: '大',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '戊寅', remainder: '14-3986',
+                  western_date: '1392-11-15'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 23, remainder: '28-1959'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 0, remainder: '43-3795'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 5, zodiac_name: '壬午', remainder: '18-3986',
+                western_date: '1392-11-19'
+              )
+            )
+          end
+          context 'as 明徳3年閏10月' do
+            example '5日' do
+              # NOTE: 「明徳3年閏10月」としたが、11月を期待値とする（朔旦冬至による補正前）
+              date = Zakuro::Western::Calendar.new(year: 1392, month: 11, day: 19)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
             end
           end
         end
@@ -738,7 +875,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 1393, month: 2, day: 12)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -751,7 +888,7 @@ describe 'Zakuro' do
                                         remainder: '44-1067', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -764,7 +901,7 @@ describe 'Zakuro' do
                                         remainder: '11-1067', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end
@@ -780,63 +917,37 @@ describe 'Zakuro' do
                 total_days: 355
               ),
               month: Zakuro::Result::Month.new(
-                number: 1,
+                number: 7,
                 leaped: false,
-                days_name: '大',
+                days_name: '小',
                 first_day: Zakuro::Result::Day.new(
-                  number: 1, zodiac_name: '辛丑', remainder: '37-4527',
-                  western_date: '1394-02-01'
+                  number: 1, zodiac_name: '己亥', remainder: '35-7979',
+                  western_date: '1394-07-29'
                 ),
                 odd_solar_terms: [
                   Zakuro::Result::SolarTerm.new(
-                    index: 5, remainder: '4-6628'
+                    index: 15, remainder: '36-8184'
                   )
                 ],
                 even_solar_terms: [
                   Zakuro::Result::SolarTerm.new(
-                    index: 4, remainder: '49-4792'
+                    index: 16, remainder: '52-1620'
                   )
                 ]
               ),
               day: Zakuro::Result::Day.new(
-                number: 1, zodiac_name: '辛丑', remainder: '37-4527',
-                western_date: '1394-02-01'
+                number: 5, zodiac_name: '癸卯', remainder: '39-7979',
+                western_date: '1394-08-02'
               )
             )
           end
-          context 'as 応永1年1月' do
+          context 'as 応永1年7年5月' do
             example '1日' do
-              date = Zakuro::Western::Calendar.new(year: 1394, month: 2, day: 1)
+              date = Zakuro::Western::Calendar.new(year: 1394, month: 8, day: 2)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
-            end
-            example '2日' do
-              date = Zakuro::Western::Calendar.new(year: 1394, month: 2, day: 2)
-
-              second_day = first_day
-              second_day.instance_variable_set(
-                :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '壬寅',
-                                        remainder: '38-4527', western_date: date.format)
-              )
-              expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
-              ).to eql(second_day.to_pretty_json)
-            end
-            example '30日' do
-              date = Zakuro::Western::Calendar.new(year: 1394, month: 3, day: 2)
-
-              last_day = first_day
-              last_day.instance_variable_set(
-                :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '庚午',
-                                        remainder: '6-4527', western_date: date.format)
-              )
-              expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
-              ).to eql(last_day.to_pretty_json)
             end
           end
         end
@@ -880,7 +991,7 @@ describe 'Zakuro' do
               date = Zakuro::Western::Calendar.new(year: 1685, month: 2, day: 4)
 
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(first_day.to_pretty_json)
             end
             example '2日' do
@@ -893,7 +1004,7 @@ describe 'Zakuro' do
                                         remainder: '59-588', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(second_day.to_pretty_json)
             end
             example '29日' do
@@ -906,7 +1017,7 @@ describe 'Zakuro' do
                                         remainder: '26-588', western_date: date.format)
               )
               expect(
-                Zakuro::Senmyou::GengouData.get_ancient_date(date: date).to_pretty_json
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
               ).to eql(last_day.to_pretty_json)
             end
           end

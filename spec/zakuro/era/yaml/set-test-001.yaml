@@ -4,8 +4,11 @@ end_date: "555-2-3"
 list:
   - name: "元号名1"
     start_date: "501-1-10"
+    new_year_date: "501-1-10"
     start_year: 11
   - name: "元号名2"
     start_date: "510-10-11"
+    new_year_date: "510-10-11"
   - name: "元号名3"
     start_date: "550-1-2"
+    new_year_date: "550-1-2"

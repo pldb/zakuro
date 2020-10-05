@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/summary/annual_data',
+                         'lib/zakuro/version/senmyou/summary/annual_range',
                          __dir__)
 
 expects_november_1st = {
@@ -1040,13 +1040,13 @@ expect_monthes = {
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
-    describe 'AnnualData' do
+    describe 'AnnualRange' do
       describe '.calc_last_november_1st' do
         context 'november 1st every year' do
           it 'should be expected values' do
             (1400...1661).each do |y|
               # 11月定朔
-              actual = Zakuro::Senmyou::AnnualData.calc_last_november_1st(
+              actual = Zakuro::Senmyou::AnnualRange.calc_last_november_1st(
                 western_year: y
               )
 
@@ -1056,7 +1056,7 @@ describe 'Zakuro' do
         end
       end
 
-      describe 'collect_annual_data_after_last_november_1st' do
+      describe 'collect_annual_range_after_last_november_1st' do
         context 'all months every year' do
           # rubocop:disable Metrics/AbcSize
           # :reek:UtilityFunction
@@ -1093,7 +1093,7 @@ describe 'Zakuro' do
             fails = []
             expect_monthes.each do |year, expects|
               actuals = \
-                Zakuro::Senmyou::AnnualData.collect_annual_data_after_last_november_1st(
+                Zakuro::Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
                   western_year: year
                 )
               actuals.each_with_index do |month, index|
@@ -1108,7 +1108,7 @@ describe 'Zakuro' do
             expect(fails).to be_empty, error_message(fails)
           end
           # it 'call example' do
-          #   Zakuro::Senmyou::AnnualData.collect_annual_data_after_last_november_1st(
+          #   Zakuro::Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
           #     western_year: 1333
           #   )
           # end

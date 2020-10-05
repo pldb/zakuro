@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './era'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -9,18 +11,63 @@ module Zakuro
     #
     class Year
       # @return [Gengou] 元号
-      attr_reader :gengou
+      attr_reader :multi_gengou
       # @return [Array<Month>] 年内の全ての月
       attr_reader :months
+      # @return [Integer] 年の日数
+      attr_reader :total_days
+      # @return [Western::Calendar] 元旦
+      attr_reader :new_year_date
 
       #
       # 初期化
       #
-      # @param [Gengou] gengou 元号
+      # @param [Gengou] multi_gengou 元号
       #
-      def initialize(gengou:)
-        @gengou = gengou
-        @months = []
+      def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
+                     months: [], total_days: 0)
+        @multi_gengou = multi_gengou
+        @months = months
+        @new_year_date = new_year_date
+        @total_days = total_days
+      end
+
+      #
+      # 年の日数を確定する
+      #
+      def commit
+        @total_days = 0
+        months.each do |month|
+          @total_days += month.days
+        end
+
+        self
+      end
+
+      #
+      # 次年にする
+      #
+      # @param [Japan::Gengou] first_line 元号（1行目）
+      # @param [Japan::Gengou] second_line 元号（2行目）
+      #
+      # @return [MultiGengou] 自身
+      #
+      def next_year
+        @multi_gengou.next_year
+
+        @new_year_date += @total_days
+        @total_days = 0
+
+        self
+      end
+
+      #
+      # 十干十二支を取得する
+      #
+      # @return [String] 十干十二支
+      #
+      def zodiac_name
+        Era.zodiac_name(western_year: @new_year_date.year)
       end
 
       #
@@ -32,7 +79,6 @@ module Zakuro
         return if duplicated?(month: month)
 
         @months.push(month)
-        @gengou.add_days(days: month.days)
 
         nil
       end
