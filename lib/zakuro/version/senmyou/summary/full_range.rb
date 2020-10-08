@@ -115,6 +115,11 @@ module Zakuro
       #
       # 当年データを生成する
       #
+      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
+      # @param [Year] year 対象年
+      #
+      # @return [Year] 当年月ありの対象年
+      #
       def self.push_current_year(annual_range:, year: Year.new)
         annual_range.each do |month|
           next if month.is_last_year
@@ -126,7 +131,12 @@ module Zakuro
       end
 
       #
-      # 当年データを生成する
+      # 昨年データを生成する
+      #
+      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
+      # @param [Year] year 対象年
+      #
+      # @return [Year] 昨年月ありの対象年
       #
       def self.push_last_year(annual_range:, year: Year.new)
         annual_range.each do |month|
@@ -142,6 +152,7 @@ module Zakuro
       # 年データの開始月を変更する
       #
       # @param [Array<Year>] annual_ranges 年データ（冬至基準）
+      # @param [Integer] index 対象年の要素番号
       #
       # @return [Year] 年データ（元旦基準）
       #
