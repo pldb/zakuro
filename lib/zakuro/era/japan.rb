@@ -89,6 +89,8 @@ module Zakuro
       end
     end
 
+    # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+
     #
     # Gengou 元号情報
     #
@@ -269,6 +271,8 @@ module Zakuro
         SetParser.new(hash: yaml_hash).validate
       end
 
+      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+
       #
       # GengouParser 元号情報の検証/展開を行う
       #
@@ -298,7 +302,7 @@ module Zakuro
           @start_year = hash['start_year']
         end
 
-        # :reek:TooManyStatements { max_statements: 6 }
+        # :reek:TooManyStatements { max_statements: 7 }
 
         #
         # 検証する
