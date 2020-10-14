@@ -203,6 +203,19 @@ describe 'Zakuro' do
             expect(item.name).to eq('明治')
           end
         end
+        context 'gengou name on first lines' do
+          let!(:first_line_path) do
+            File.expand_path('./yaml/first-line.yaml', __dir__)
+          end
+          it 'should be applied historical name at boundary date' do
+            yaml = YAML.load_file(first_line_path)
+            yaml.each do |gengou|
+              date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+              item = Zakuro::Japan::GengouResource.first_line(date: date)
+              expect(gengou['name']).to eq(item.name)
+            end
+          end
+        end
       end
       context '.second_line' do
         context 'set-001 and set-002' do
@@ -217,6 +230,19 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 1393, month: 2, day: 12)
             item = Zakuro::Japan::GengouResource.second_line(date: date)
             expect(item.invalid?).to be_truthy
+          end
+        end
+        context 'gengou name on second lines' do
+          let!(:second_line_path) do
+            File.expand_path('./yaml/second-line.yaml', __dir__)
+          end
+          it 'should be applied historical name at boundary date' do
+            yaml = YAML.load_file(second_line_path)
+            yaml.each do |gengou|
+              date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+              item = Zakuro::Japan::GengouResource.second_line(date: date)
+              expect(gengou['name']).to eq(item.name)
+            end
           end
         end
       end

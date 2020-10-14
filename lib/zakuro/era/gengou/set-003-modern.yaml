@@ -21,7 +21,7 @@ list:
     new_year_date: "1926-1-1"
     note: ""
   - name: "令和"
-    # -
+    # 1年5月1日
     start_year: 1
     start_date: "2019-5-1"
     new_year_date: "2019-1-1"
