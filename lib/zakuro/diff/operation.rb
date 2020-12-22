@@ -10,7 +10,7 @@ module Zakuro
     # History 変更履歴
     #
     class History
-      attr_reader :id, :reference, :western_date, :annotations, :diff
+      attr_reader :id, :reference, :western_date, :annotations, :diffs
 
       def initialize; end
     end
@@ -34,9 +34,9 @@ module Zakuro
     end
 
     #
-    # Diff 差分
+    # Diffs 全差分
     #
-    class Diff
+    class Diffs
       attr_reader :month, :even_term, :day
 
       def initialize; end
@@ -47,6 +47,15 @@ module Zakuro
     #
     class Month
       attr_reader :number, :leaped
+
+      def initialize; end
+    end
+
+    #
+    # Diffs 差分
+    #
+    class Diff
+      attr_reader :calc, :actual
 
       def initialize; end
     end
