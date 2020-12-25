@@ -99,10 +99,16 @@ module Zakuro
         yaml = YAML.load_file(filepath)
 
         annotations = []
+        relations = {}
+        histories = []
         yaml.each do |month|
+          id = month['id']
           annotations.push(
-            Annotation.new(id: month['id'], description: month['description'], note: note['note'])
+            Annotation.new(id: id, description: month['description'], note: note['note'])
           )
+          relation_id = month['relation_id']
+
+          relations[id] = relation_id unless relation_id == '-'
 
           reference = Reference.new(page: month['page'], number: month['number'],
                                     japan_date: month['japan_date'])
@@ -124,8 +130,14 @@ module Zakuro
             day: yaml_month['day']
           )
 
-          History.new(id: month['id'], reference: reference, western_date: month['western_date'],
-                      diffs: diffs)
+          histories.push(
+            History.new(id: id, reference: reference, western_date: month['western_date'],
+                        diffs: diffs)
+          )
+        end
+
+        histories.each do |history|
+          # TODO: annotations の解決
         end
       end
     end
