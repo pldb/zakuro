@@ -113,6 +113,8 @@ module Zakuro
       # @return [Array<Month>] 1年データ
       #
       def self.initialized_annual_range(western_year:)
+        # TODO: to debug
+        p 'pass' if western_year == 940
         result = []
         lunar_phase = LunarPhase.new(western_year: western_year)
 
