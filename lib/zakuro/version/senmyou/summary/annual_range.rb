@@ -113,8 +113,6 @@ module Zakuro
       # @return [Array<Month>] 1年データ
       #
       def self.initialized_annual_range(western_year:)
-        # TODO: to debug
-        p 'pass' if western_year == 940
         result = []
         lunar_phase = LunarPhase.new(western_year: western_year)
 
@@ -166,10 +164,11 @@ module Zakuro
       def self.adjust_leap_month(annual_range:)
         # 閏による月の再調整を行う
         leaped = false
-        annual_range.each do |month|
+        annual_range.each_with_index do |month, index|
           if month.even_term.invalid?
             month.leaped = true
-            leaped = true
+            # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
+            leaped = true unless index.zero?
           end
           next unless leaped
 
