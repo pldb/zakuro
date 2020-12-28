@@ -645,6 +645,52 @@ describe 'Zakuro' do
           end
         end
 
+        # 西暦937年の前年冬至が閏11月から始まる
+        context 'ancient month from western date 937-2-14' do
+          let!(:first_day) do
+            Zakuro::Result::SingleDay.new(
+              year: Zakuro::Result::Year.new(
+                first_gengou: Zakuro::Result::Gengou.new(name: '承平', number: 7),
+                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+                zodiac_name: '丁酉',
+                total_days: 354
+              ),
+              month: Zakuro::Result::Month.new(
+                number: 1,
+                leaped: false,
+                days_name: '大',
+                first_day: Zakuro::Result::Day.new(
+                  number: 1, zodiac_name: '乙卯', remainder: '51-2479',
+                  western_date: '0937-02-14'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 5, remainder: '7-8293'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::SolarTerm.new(
+                    index: 4, remainder: '52-6457'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Day.new(
+                number: 1, zodiac_name: '乙卯', remainder: '51-2479',
+                western_date: '0937-02-14'
+              )
+            )
+          end
+          context 'as 承平7年1月' do
+            example '1日' do
+              date = Zakuro::Western::Calendar.new(year: 937, month: 2, day: 14)
+
+              expect(
+                Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
+              ).to eql(first_day.to_pretty_json)
+            end
+          end
+        end
+
         context 'ancient month from western date 1332-1-28' do
           # 文字化け回避コメント（solargraph が日本語文字列 '正慶' を自動変換するため）
           let!(:first_day) do
