@@ -137,6 +137,7 @@ module Zakuro
     class Options
       # @return [Array<String>] オプション
       attr_reader :options
+
       #
       # 初期化
       #

@@ -85,7 +85,7 @@ describe 'Zakuro' do
           def error_message(fails:)
             message = ''
             fails.each do |fail|
-              message += JSON.generate(fail) + '\n'
+              message += "#{JSON.generate(fail)}\n"
             end
             message
           end
