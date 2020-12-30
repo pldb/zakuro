@@ -9,6 +9,9 @@ Layout/EndOfLine:
 Metrics/MethodLength:
   Max: 15
 
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
 # https://lkml.org/lkml/2020/5/29/1038
 Layout/LineLength:
   Max: 100

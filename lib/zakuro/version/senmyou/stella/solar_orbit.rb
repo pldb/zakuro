@@ -302,10 +302,8 @@ module Zakuro
         per_day = adjustment.per_day
         sign, ratio = calc_ratio(day: remainder.day, per_term: per_term, per_day: per_day)
 
-        day_stack = calc_day_stack_from_ratio(sign: sign, ratio: ratio,
-                                              minute: remainder.minute)
-
-        day_stack
+        calc_day_stack_from_ratio(sign: sign, ratio: ratio,
+                                  minute: remainder.minute)
       end
       private_class_method :calc_day_stack
 
@@ -388,9 +386,7 @@ module Zakuro
         month_stack = stack + day * per_term + \
                       (1 / 2.0) * (day * (day - 1) * per_day)
         # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
-        month_stack = month_stack.negative? ? month_stack.ceil : month_stack.floor
-
-        month_stack
+        month_stack.negative? ? month_stack.ceil : month_stack.floor
       end
       private_class_method :calc_month_stack
     end

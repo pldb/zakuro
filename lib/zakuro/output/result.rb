@@ -162,6 +162,11 @@ module Zakuro
     #
     class Core
       #
+      # 初期化
+      #
+      def initialize(*_args); end
+
+      #
       # ハッシュ化する
       #
       # @return [Hash<String, Object>] ハッシュ
@@ -210,6 +215,7 @@ module Zakuro
       # @param [Day] day 日
       #
       def initialize(year:, month:, day:)
+        super
         @year = year
         @month = month
         @day = day
