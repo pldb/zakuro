@@ -193,7 +193,7 @@ module Zakuro
           { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
 
         targets.each do |key, value|
-          # NOTE 境界値は上から順に引き当てた方を返す（7日の境界値7465は上のキーで返す）
+          # NOTE: 境界値は上から順に引き当てた方を返す（7日の境界値7465は上のキーで返す）
           matched, diff = \
             extract_data_from_moon_adjustment_key(key, minute)
           # 小余の下げ幅

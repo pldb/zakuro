@@ -608,7 +608,7 @@ module Zakuro
         return lines unless lines[0].invalid?
 
         first = Japan::Gengou.new
-        lines[1..-1].each.with_index(1) do |item, index|
+        lines[1..].each.with_index(1) do |item, index|
           next if item.invalid?
 
           first = item

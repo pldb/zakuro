@@ -72,38 +72,52 @@ module Zakuro
       # @param [Array<Month>] annual_range 1年データ
       # @param [Array<Remainder>] solar_terms 1年データ内の全二十四節気
       #
-      def self.apply_solar_terms_from_last_winter_solstice(annual_range:,
-                                                           solar_terms:)
-
-        c_idx = 0
-        st_idx = 0
+      def self.apply_solar_terms_from_last_winter_solstice(annual_range:, solar_terms:)
+        month_index = 0
+        solar_term_index = 0
         month_size = annual_range.size
 
-        while c_idx < month_size && st_idx < solar_terms.size
-          raise StandardError, "month is over. idx: #{c_idx}" if c_idx >= month_size
+        while month_index < month_size && solar_term_index < solar_terms.size
+          raise StandardError, "month is over. idx: #{month_index}" if month_index >= month_size
 
-          current_month = annual_range[c_idx]
-          next_month = annual_range[c_idx + 1]
-          solar_term = solar_terms[st_idx]
-
-          if in_range_solar_term?(target: solar_term, min: current_month.remainder,
-                                  max: next_month.remainder)
-            set_solar_term(month: current_month,
-                           solar_term: solar_term, solar_term_index: st_idx)
-            st_idx += 1
+          if set_solar_term_on_current_month(current_month: annual_range[month_index],
+                                             next_month: annual_range[month_index + 1],
+                                             solar_term: solar_terms[solar_term_index],
+                                             solar_term_index: solar_term_index)
+            solar_term_index += 1
             next
           end
 
-          # 一度も割り当てがない場合は二十四節気を進める
-          if current_month.empty_solar_term?
-            st_idx += 1
-            next
-          end
-
-          c_idx += 1
+          month_index += 1
         end
       end
       private_class_method :apply_solar_terms_from_last_winter_solstice
+
+      #
+      # 当月に二十四節気を設定する
+      #
+      # @param [Remainder] current_month 当月
+      # @param [Month] next_month 次月
+      # @param [Month] solar_term 二十四節気
+      # @param [Integer] solar_term_index 二十四節気位置
+      #
+      # @return [True] 設定済
+      # @return [False] 未設定
+      #
+      def self.set_solar_term_on_current_month(current_month:,
+                                               next_month:, solar_term:, solar_term_index:)
+        if in_range_solar_term?(target: solar_term, min: current_month.remainder,
+                                max: next_month.remainder)
+          set_solar_term(month: current_month,
+                         solar_term: solar_term, solar_term_index: solar_term_index)
+          return true
+        end
+
+        # 一度も割り当てがない場合は設定済みとして次の二十四節気を進める
+        return true if current_month.empty_solar_term?
+
+        false
+      end
 
       #
       # 1年データ内の二十四節気の前後を収集する

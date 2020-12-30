@@ -20,9 +20,7 @@ module Zakuro
     #   * 引き当てたい日付が元旦ではない場合、その月日に従い元号を再度求める
     #   * この再計算が必要になるのは、元号が切り替わる年のみである
     class FullRange
-      attr_reader :multi_gengou_roller
-      attr_reader :new_year_date
-      attr_reader :western_year
+      attr_reader :multi_gengou_roller, :new_year_date, :western_year
 
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'full_range')
@@ -40,8 +38,7 @@ module Zakuro
       #
       def get
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
-        years = update_gengou(years: years)
-        years
+        update_gengou(years: years)
       end
 
       # :reek:TooManyStatements { max_statements: 6 }

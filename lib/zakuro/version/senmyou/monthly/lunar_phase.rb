@@ -145,7 +145,7 @@ module Zakuro
       # @return [Remainder] 定朔
       #
       def current_remainder
-        debug('@average_remainder.format:' + @average_remainder.format)
+        debug("@average_remainder.format: #{@average_remainder.format}")
 
         sum = correction_value
         adjusted = @average_remainder.add(

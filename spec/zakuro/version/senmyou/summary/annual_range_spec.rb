@@ -1058,7 +1058,6 @@ describe 'Zakuro' do
 
       describe 'collect_annual_range_after_last_november_1st' do
         context 'all months every year' do
-          # rubocop:disable Metrics/AbcSize
           # :reek:UtilityFunction
           def month_actual(month:)
             even_term = month.even_term
@@ -1076,7 +1075,6 @@ describe 'Zakuro' do
               odd_term_index: odd_term.index
             }
           end
-          # rubocop:enable Metrics/AbcSize
 
           # :reek:UtilityFunction
           def error_message(fails)
