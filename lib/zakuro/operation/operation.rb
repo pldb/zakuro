@@ -105,10 +105,17 @@ module Zakuro
       end
 
       def self.load(yaml_hash: {})
-        # TODO: 変換処理、リファクタリング、バリデーション
+        # TODO: バリデーション
         annotations = {}
         relations = {}
-        histories = []
+        histories = create_histories(yaml_hash: yaml_hash, annotations: annotations,
+                                     relations: relations)
+
+        add_annotations(histories: histories, annotations: annotations, relations: relations)
+      end
+
+      def self.create_histories(yaml_hash: {}, annotations: {}, relations: {})
+        result = []
         yaml_hash.each do |month|
           id = month['id']
           annotations[id] = Annotation.new(id: id, description: month['description'],
@@ -117,43 +124,49 @@ module Zakuro
 
           relations[id] = relation_id unless relation_id == '-'
 
-          reference = Reference.new(page: month['page'], number: month['number'],
-                                    japan_date: month['japan_date'])
-
           next unless month['valid'] == 'true'
 
-          yaml_diff = month['diff']
-          yaml_month = yaml_diff['month']
-          yaml_number = yaml_month['number']
-          yaml_leaped = yaml_month['leaped']
-          yaml_even_term = yaml_diff['even_term']
-
-          diffs = Diffs.new(
-            month: Month.new(
-              number: Diff.new(calc: yaml_number['calc'], actual: yaml_number['actual']),
-              leaped: Diff.new(calc: yaml_leaped['calc'], actual: yaml_leaped['actual'])
-            ),
-            even_term: Diff.new(calc: yaml_even_term['calc'], actual: yaml_even_term['actual']),
-            day: yaml_month['day']
-          )
-
-          histories.push(
-            History.new(id: id, reference: reference, western_date: month['western_date'],
-                        diffs: diffs)
-          )
+          history = create_history(yaml_hash: month)
+          result.push(history)
         end
 
-        add_annotations(histories: histories, annotations: annotations, relations: relations)
+        result
+      end
+
+      def self.create_history(yaml_hash: {})
+        diffs = create_diffs(yaml_hash: yaml_hash['diff'])
+
+        History.new(id: yaml_hash['id'],
+                    reference: Reference.new(page: yaml_hash['page'], number: yaml_hash['number'],
+                                             japan_date: yaml_hash['japan_date']),
+                    western_date: yaml_hash['western_date'],
+                    diffs: diffs)
+      end
+
+      def self.create_diffs(yaml_hash: {})
+        month = yaml_hash['month']
+        number = month['number']
+        leaped = month['leaped']
+        even_term = yaml_hash['even_term']
+
+        Diffs.new(
+          month: Month.new(
+            number: Diff.new(calc: number['calc'], actual: number['actual']),
+            leaped: Diff.new(calc: leaped['calc'], actual: leaped['actual'])
+          ),
+          even_term: Diff.new(calc: even_term['calc'], actual: even_term['actual']),
+          day: month['day']
+        )
       end
 
       def self.add_annotations(histories: [], annotations: {}, relations: {})
         result = []
         histories.each do |history|
           history_annotations = []
-          add_annotation(history_annotations: history_annotations,
-                         annotations: annotations, id: history.id)
-          add_annotation(history_annotations: history_annotations,
-                         annotations: annotations, id: relations.fetch(history.id, ''))
+          [history.id, relations.fetch(history.id, '')].each do |history_id|
+            add_annotation(history_annotations: history_annotations,
+                           annotations: annotations, id: history_id)
+          end
 
           result.push(
             History.new(id: history.id, reference: history.reference,
