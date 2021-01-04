@@ -91,6 +91,87 @@ module Zakuro
     end
 
     #
+    # Validator バリデーション
+    #
+    module Validator
+      #
+      # History 変更履歴
+      #
+      class History
+        attr_reader :id, :western_date, :valid
+
+        def initialize(yaml_hash: {})
+          @id = yaml_hash['id']
+          @western_date = yaml_hash['western_date']
+          @valid = yaml_hash['valid']
+        end
+      end
+
+      #
+      # Annotation 注釈
+      #
+      class Annotation
+        attr_reader :id, :description, :note
+
+        def initialize(yaml_hash: {})
+          @id = yaml_hash['id']
+          @description = yaml_hash['description']
+          @note = yaml_hash['note']
+        end
+      end
+
+      #
+      # Reference 参照
+      #
+      class Reference
+        attr_reader :page, :number, :japan_date
+
+        def initialize(yaml_hash: {})
+          @page = yaml_hash['page']
+          @number = yaml_hash['number']
+          @japan_date = yaml_hash['japan_date']
+        end
+      end
+
+      #
+      # Diffs 総差分
+      #
+      class Diffs
+        attr_reader :month, :even_term, :day
+
+        def initialize(yaml_hash: {})
+          @month = Month.new(yaml_hash: yaml_hash['month'])
+          @even_term = Diff.new(yaml_hash: yaml_hash['even_term'])
+          @day = yaml_hash['day']
+        end
+      end
+
+      #
+      # Month 月
+      #
+      class Month
+        attr_reader :number, :leaped
+
+        def initialize(yaml_hash: {})
+          @number = Diff.new(yaml_hash: yaml_hash['number'])
+          @leaped = Diff.new(yaml_hash: yaml_hash['leaped'])
+        end
+      end
+
+      #
+      # Diff 差分
+      #
+      class Diff
+        attr_reader :calc, :actual
+
+        def initialize(yaml_hash: {})
+          @calc = yaml_hash['calc']
+          @actual = yaml_hash['actual']
+        end
+      end
+    end
+
+    #
     # MonthParser 月情報解析（yaml）
     #
     module MonthParser
