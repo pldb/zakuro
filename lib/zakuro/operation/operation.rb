@@ -98,12 +98,39 @@ module Zakuro
       # History 変更履歴
       #
       class History
-        attr_reader :id, :western_date, :valid
+        attr_reader :id, :western_date, :modified
 
-        def initialize(yaml_hash: {})
+        def initialize(index:, yaml_hash: {})
+          @index = index
           @id = yaml_hash['id']
           @western_date = yaml_hash['western_date']
-          @valid = yaml_hash['valid']
+          @modified = yaml_hash['modified']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "#{@index}]. invalid"
+
+          failed.push("#{prefix} 'id'. #{@id}") unless id?
+
+          failed.push("#{prefix} 'western_date'. #{@western_date}") unless western_date?
+
+          failed.push("#{prefix} 'modified'. #{@modified}") unless modified?
+
+          failed
+        end
+
+        def id?
+          !@id.nil? || !@id.empty? || @id.is_a?(String)
+        end
+
+        def western_date?
+          Western::Calendar.valid_date_string(str: @western_date)
+        end
+
+        def modified?
+          @modified == 'true' || @modified == 'false'
         end
       end
 
@@ -205,7 +232,7 @@ module Zakuro
 
           relations[id] = relation_id unless relation_id == '-'
 
-          next unless month['valid'] == 'true'
+          next unless month['modified'] == 'true'
 
           history = create_history(yaml_hash: month)
           result.push(history)

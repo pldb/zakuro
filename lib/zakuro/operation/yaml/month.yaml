@@ -7,7 +7,7 @@
   western_date: 873-2-1
   description: 計算では2丙寅である, 三代実録に正月丁卯朔とある。従って正月朔のユリウス暦日は2月2日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -28,7 +28,7 @@
   western_date: 874-1-22
   description: 計算では57辛酉であるが, 三代実録に正月壬戌朔とある。従って正月朔のユリウス暦日は1月23日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -49,7 +49,7 @@
   western_date: 874-2-20
   description: 計算では26庚寅であるが, 三代実録に2月辛卯朔とある。従って2月朔のユリウス暦日は2月21日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -70,7 +70,7 @@
   western_date: 889-6-3
   description: 長暦類は扶桑略記の辛卯をとっているが, 日本紀略は計算通り壬辰である。ここは一応辛卯をとった。辛卯朔とすればユリウス暦日は6月2日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -91,7 +91,7 @@
   western_date: 891-2-13
   description: 計算では48壬子とでるが, 日本紀略に辛亥朔とある。正月辛亥朔のユリウス暦日は2月12日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -112,7 +112,7 @@
   western_date: 891-8-9
   description: 計算では45己酉とでるが, 日本紀略に戊申朔とある。7月戊申朔のユリウス暦日は8月8日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -133,7 +133,7 @@
   western_date: 892-2-2
   description: 計算では42丙午とでるが, 日本紀略に正月丁未朔とある。丁未朔ならそのユリウス暦日は2月3日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -154,7 +154,7 @@
   western_date: 892-5-1
   description: 計算では11乙亥とでるが, 北山抄により甲戌朔（大日本史料第1編の2）日本紀略の辛巳朔は間違い。したがって4月朔のユリウス暦は4月30日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -175,7 +175,7 @@
   western_date: 894-6-8
   description: 計算では59癸亥とでるが, 日本紀略に壬戌朔とある。5月壬戌朔のユリウス暦日は6月7日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -197,7 +197,7 @@
   description: 計算では小余6300。これは丁度進朔限6300と同じ値である。計算では進朔して大余1, 即ち乙丑となっているが, この場合進朔しないで甲子としたことも充分考えられる。甲子にしたがうとユリウス暦日は6月16日となる。日本長暦,
     皇和通暦は甲子, 本朝統暦は乙丑。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -218,7 +218,7 @@
   western_date: 937-2-14
   description: 計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食をさけるための変更か）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -239,7 +239,7 @@
   western_date: 937-3-16
   description: 計算は21乙酉であるが, 日本紀略に甲申朔とある。2月甲申朔のユリウス暦日は3月15日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -260,7 +260,7 @@
   western_date: 938-1-5
   description: 計算は16庚辰であるが, 中右記・九条殿記により己卯朔（大日本史料第1編の7）, 12月朔のユリウス暦日は1月4日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -281,7 +281,7 @@
   western_date: 938-2-3
   description: 計算は45己酉であるが, 貞信公記・九条殿記により戊申朔（大日本史料第1編の7）, 正月朔のユリウス暦日は2月2日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -302,7 +302,7 @@
   western_date: 938-3-5
   description: 計算は15己卯であるが, 貞信公記抄により戊寅朔（大日本史料第1編の7）, 2月朔のユリウス暦日は3月4日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -323,7 +323,7 @@
   western_date: 942-12-11
   description: 計算は17辛巳であるが, 水谷川本日本紀略。政事要略により庚辰とする（大日本史料第1編の8）。11月庚辰朔のユリウス暦日は12月10日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -344,7 +344,7 @@
   western_date: 958-5-22
   description: 計算は18壬午, 日本紀略により辛巳, ５月辛巳朔のユリウス暦日は5月21日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -365,7 +365,7 @@
   western_date: 965-2-5
   description: 計算では9癸酉であるが, 日本紀略により壬申。正月壬申朔のユリウス暦日は2月4日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -386,7 +386,7 @@
   western_date: 973-5-6
   description: 計算では21乙酉であるが, 日本紀略により甲申朔, 4月甲申朔のユリウス暦日は5月5日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -407,7 +407,7 @@
   western_date: 975-10-8
   description: 計算では6庚午であるが, 日本紀略により己巳朔, 9月己巳朔のユリウス暦日は10月7日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -428,7 +428,7 @@
   western_date: 977-10-16
   description: 計算では25己丑であるが, 日本紀略により戊子朔, 9月戊子朔のユリウス暦日は10月15日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -449,7 +449,7 @@
   western_date: 982-4-27
   description: 計算では59癸亥とでるが, 日本紀略に壬戌朔とある。4月壬戌朔のユリウス暦日は4月26日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -470,7 +470,7 @@
   western_date: 983-3-18
   description: 計算では24戊子とでるが, 日本紀略に丁亥朔とある。2月丁亥朔のユリウス暦日は3月17日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -491,7 +491,7 @@
   western_date: 994-5-14
   description: 計算では19癸未とでるが, 日本紀略に壬午朔とある。4月壬午朔のユリウス暦日は5月13日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -512,7 +512,7 @@
   western_date: 994-7-12
   description: 計算では18壬午とでるが, 日本紀略に辛巳朔とある。6月辛巳朔のユリウス暦日は7月11日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -533,7 +533,7 @@
   western_date: 997-5-10
   description: 計算では31乙未とでるが, 日本紀略に甲午朔とある。4月甲午朔のユリウス暦日は5月9日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -554,7 +554,7 @@
   western_date: 997-7-8
   description: 計算では30甲午とでるが, 日本紀略に癸巳朔とある。6月癸巳朔のユリウス暦日は7月7日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -575,7 +575,7 @@
   western_date: '1001-12-18'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -596,7 +596,7 @@
   western_date: '1002-1-16'
   description: 計算では閏11月であるが, 日本紀略などにより閏は12月。閏12月朔は, 計算では3丁卯であるが日本紀略・権記により戊辰, 閏12月戊辰朔のユリウス暦日は1月17日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -617,7 +617,7 @@
   western_date: '1002-11-8'
   description: 計算では59癸亥とでるが, 日本紀略により10月壬戌朔, したがってそのユリウス暦日は11月7日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -638,7 +638,7 @@
   western_date: '1014-4-3'
   description: 計算は23丁亥, 日本紀略は丙戌朔, 3月丙戌朔のユリウス暦日は4月2日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -659,7 +659,7 @@
   western_date: '1018-11-10'
   description: 計算では25己丑であるが, 四大を避けるため庚寅朔で実施されている。（御堂関白記・小右記・左経記など, 大日本史料第2編の13）,10月庚寅朔のユリウス暦日は11月11日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -680,7 +680,7 @@
   western_date: '1026-10-13'
   description: 計算では39癸卯であるが, 御堂関白記・左経記など（大日本史料第2編の14）により甲辰朔。これは四大を避けるための変更である。9月甲辰朔のユリウス暦日は10月14日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -701,7 +701,7 @@
   western_date: '1030-2-5'
   description: 計算では50甲寅であるが, 日本紀略乙卯朔, 正月乙卯朔のユリウス暦日は2月6日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -722,7 +722,7 @@
   western_date: '1034-9-15'
   description: 計算は53丁巳であるが, 左経記・日本紀略により戊午, 8月戊午朔のユリウス暦日は9月16日。（四大を避けるための変更である）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -743,7 +743,7 @@
   western_date: '1037-4-18'
   description: 計算は39癸卯であるが, 行親記により甲辰, 4月甲辰朔のユリウス暦日は4月19日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -764,7 +764,7 @@
   western_date: '1050-11-17'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -785,7 +785,7 @@
   western_date: '1050-12-17'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -808,7 +808,7 @@
     11月朔を50甲寅から癸丑にする必要がある。それにつれて12月は甲申を癸未にしないと11月が31日になってしまう。11月癸丑朔のユリウス暦日は12月16日。12月癸丑朔は1月15日となる。（管見記84,
     江次第, 扶桑略記などによる）。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -829,7 +829,7 @@
   western_date: '1069-11-17'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -850,7 +850,7 @@
   western_date: '1069-12-17'
   description: 計算では30甲午であるが, 朔旦冬至にするために癸巳にして11月を閏10月に, 閏11月を11月にした。11月癸巳朔のユリウス暦日は12月16日となる。（管見記84）。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -871,7 +871,7 @@
   western_date: '1089-2-14'
   description: 計算では9癸酉であるが, 四大を避けるため壬申朔となった。正月壬申朔のユリウス暦日は2月13日。（大日本史料第3編の1; 中右記・扶桑略記・後二条師通記）。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -892,7 +892,7 @@
   western_date: '1095-2-8'
   description: 計算では34戊戌であるが, 中右記により丁酉朔, 正月丁酉朔のユリウス暦日は2月7日。これは嘉保元年の年間日数が385日になるのを避けるための変更である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -914,7 +914,7 @@
   description: 計算は13丁丑であるが中右記により丙子, 8月丙子朔のユリウス暦日は9月15日となる。これは皇和通暦で中根元圭が「章首の後, 閏法もし8月を得ればまた必ず大小を消息してこれを7月に退く」と書いてあるように,
     このあとも何回かこの理由で干支が変更され, 閏が8月から7月に移された。これを退閏という。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -935,7 +935,7 @@
   western_date: '1138-2-12'
   description: 計算では24戊子であるが中右記により丁亥, 正月丁亥朔のユリウス暦日は2月11日となる。保延3年の年間日数の385日になるのを避けるためである。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -956,7 +956,7 @@
   western_date: '1156-12-15'
   description: 計算では5己巳であるが, 百錬抄・管見記により戊辰朔, 11月戊辰朔のユリウス暦日は12月14日。臨時朔旦冬至を避けるため冬至を11月1日から2日にずらしたもの。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -977,7 +977,7 @@
   western_date: '1157-2-12'
   description: 計算では4戊辰であるが百錬抄・管見記により丁卯朔, 正月丁卯朔のユリウス暦日は2月11日。保元元年の年間日数が385日になるのを避けるための干支変更。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -998,7 +998,7 @@
   western_date: '1162-3-18'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1019,7 +1019,7 @@
   western_date: '1162-4-17'
   description: 百錬抄・公卿補任などにより閏2月がたしかめられる。山槐記・公通卿記により3月朔丁酉, ３月丁酉朔とすれば, そのユリウス暦日は4月16日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1040,7 +1040,7 @@
   western_date: '1164-11-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1061,7 +1061,7 @@
   western_date: '1164-12-16'
   description: 計算のままでは冬至が11月晦日にある。朔旦冬至にするため閏を11月から10月にうつしたもの。そのため計算の48壬子を辛亥に改めた。11月辛亥朔のユリウス暦日は12月15日。（管見記）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1082,7 +1082,7 @@
   western_date: '1183-11-17'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1104,7 +1104,7 @@
   description: 計算では28壬辰, 管見記・玉葉により辛卯朔, 11月辛卯朔のユリウス暦日は12月16日。計算では11月晦日になる冬至を朔旦冬至にするため,
     閏を10月におきかえたもの。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1125,7 +1125,7 @@
   western_date: '1187-9-5'
   description: 計算では6庚午であるが, 玉葉・吾妻鏡により己巳, 8月己巳朔のユリウス暦日は9月4日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1146,7 +1146,7 @@
   western_date: '1202-11-17'
   description: 計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1167,7 +1167,7 @@
   western_date: '1202-12-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1188,7 +1188,7 @@
   western_date: '1221-12-16'
   description: 計算では47辛亥, 朔旦冬至にするため庚戌朔, そのユリウス暦日は12月15日になる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1210,7 +1210,7 @@
   description: 計算では17辛巳, 1)の変更のためここは庚辰にしないと11月が31日になってしまう。したがって12月朔のユリウス暦日は1月14日となる。（大日本史料第5編の1;
     承久3年, 4年日次記, 吾妻鏡）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1231,7 +1231,7 @@
   western_date: '1228-2-8'
   description: 計算では12丙子, 大日本史料第5編の1, 玉蘂ほか, 吾妻鏡などにより乙亥, 正月乙亥朔のユリウス暦日は2月7日となる。安貞元年の年間日数が385日になるのを避けるため。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1252,7 +1252,7 @@
   western_date: '1243-9-16'
   description: 計算では11乙亥, 妙光寺内府除目部類・吾妻鏡など（大日本史料第5編の16）により甲戌, 8月甲戌朔のユリウス暦日は9月15日。章首の後の閏8月を避けるためである。大治4（1129）年の注参照。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1273,7 +1273,7 @@
   western_date: '1259-12-16'
   description: 計算では6庚午, 百錬抄により己巳, 11月己巳朔のユリウス暦日は12月15日, 計算では冬至が11月晦日になるのを朔旦冬至にするため。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1294,7 +1294,7 @@
   western_date: '1270-12-15'
   description: 計算では3丁卯, 臨時朔旦冬至を避けるため丙寅, 11月丙寅朔のユリウス暦日は12月14日。（親長卿記, 続史愚抄ほか）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1315,7 +1315,7 @@
   western_date: '1278-11-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1336,7 +1336,7 @@
   western_date: '1278-12-16'
   description: 計算では46庚戌, 勘仲記により己酉, 11月己酉朔のユリウス暦日は12月15日となる。朔旦冬至にするための変更。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1357,7 +1357,7 @@
   western_date: '1281-8-16'
   description: 章首のあとの閏8月を避けるため（大治4年, 西暦1129年の注参照）, 閏を7月に変えている。朔干支は変えず, 秋分の干支を癸巳から甲午に変えている。（勘仲記・続史愚抄・暦断簡より）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1378,7 +1378,7 @@
   western_date: '1281-9-15'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1399,7 +1399,7 @@
   western_date: '1297-12-16'
   description: 計算では26庚寅であるが, 朔旦冬至にするため, 11月朔は己丑。（定清記・続史愚抄）, 11月己丑朔なら, そのユリウス暦日は12月15日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1420,7 +1420,7 @@
   western_date: '1308-12-14'
   description: 計算では22丙戌, 実施は11月乙酉朔（大日本史料第6編の1; 続史愚抄・日吉社並叡山行事記）。そのユリウス暦日は12月13日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1441,7 +1441,7 @@
   western_date: '1309-1-13'
   description: 計算では52丙辰であるが, 11月朔干支変更のため, 12月も乙卯にしないと11月が31日になってしまう。12月乙卯朔のユリウス暦日は1月12日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1462,7 +1462,7 @@
   western_date: '1316-11-16'
   description: 計算は36庚子であるが, 実施は35己亥である。閏10月己亥朔のユリウス暦日は11月15日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1483,7 +1483,7 @@
   western_date: '1316-12-16'
   description: 計算は6庚午であるが, 実施は4戊辰である。11月戊辰朔のユリウス暦日は12月14日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1504,7 +1504,7 @@
   western_date: '1317-1-14'
   description: 計算は35己亥であるが, 実施は34戊戌である。12月戊戌朔のユリウス暦日は1月13日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1525,7 +1525,7 @@
   western_date: '1317-2-13'
   description: 計算は5己巳であるが, 実施は4戊辰である。正月戊辰朔のユリウス暦日は2月12日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1546,7 +1546,7 @@
   western_date: '1317-4-13'
   description: 計算は4戊辰であるが, 実施は3丁卯である。3月丁卯朔のユリウス暦日は4月12日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1569,7 +1569,7 @@
     12月, 正月の朔干支も1日ずつずらす必要がある。文保元年3月は計算通りに実施すると四大が生じてしまうので丁卯とし, 2月と3月の大小を入れかえたもので,
     この変改は, 具注暦断簡, 花園院辰記によってたしかめられる。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -1590,7 +1590,7 @@
   western_date: '1335-11-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1611,7 +1611,7 @@
   western_date: '1335-12-16'
   description: 計算では45己酉であるが, 実施暦は戊申, 11月戊申朔のユリウス暦は12月15日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1632,7 +1632,7 @@
   western_date: '1336-1-15'
   description: 計算では15己卯であるが, 実施暦は戊寅, 12月戊寅朔のユリウス暦は1月14日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1654,7 +1654,7 @@
   description: 計算では冬至は11月晦日で閏は12月にある。これを朔旦冬至にするため, 計算の12月朔己酉を戊申とし11月朔日としたもの。翌建武3年2月が戊寅であるから,
     その間の12月, 正月は戊寅・戊申とせざるを得ない。大日本史料第6編の2; 朔旦冬至部類記所引大外記頼元記及び官方記による。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -1675,7 +1675,7 @@
   western_date: '1336-2-14'
   description: 計算では45己酉, 実施暦は戊申, 正月戊申朔のユリウス暦日は2月13日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1696,7 +1696,7 @@
   western_date: '1336-4-13'
   description: 計算では44戊申, 実施暦は丁未, 正月丁未朔のユリウス暦日は4月12日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1718,7 +1718,7 @@
   description: 前頁, 建武2年11月朔よりの干支移動により3月を計算通り戊申で実施すると四大が生ずるので, これを避けるため, 丁未とし2月, 3月の大小を入れかえた。大日本史料第6編の3;
     延元元年具注暦断簡, 御神楽雑記所引故殿御記。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -1739,7 +1739,7 @@
   western_date: '1338-8-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1761,7 +1761,7 @@
   description: 計算では29癸巳, 続史愚抄ほか（大日本史料第6編の5）により壬辰, 8月壬辰朔のユリウス暦日は9月14日となる。これは章首のあとの閏8月を避けたものである。（大治4,
     西暦1129年の注参照）
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1783,7 +1783,7 @@
   description: 計算は59癸亥, 園太暦・師守記など（大日本史料第6編の8）により壬戌, 正月壬戌朔のユリウス暦日は1月16日。小余が進朔限に近く,
     進朔すべきをしなかった司暦の誤りか。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1804,7 +1804,7 @@
   western_date: '1357-8-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1825,7 +1825,7 @@
   western_date: '1357-9-15'
   description: 計算では9癸酉であるが, 章首のあとの閏8月を避けるため壬申に変え閏7月にしたもの。（公卿補任・園太暦; 大日本史料第6編の21）8月壬申朔のユリウス暦日は9月14日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1846,7 +1846,7 @@
   western_date: '1373-11-15'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1867,7 +1867,7 @@
   western_date: '1373-12-15'
   description: 計算では4戊辰, 実施暦は丁卯, 11月丁卯朔のユリウス暦日は12月14日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1888,7 +1888,7 @@
   western_date: '1374-1-14'
   description: 計算では34戊戌, 実施暦は丁酉, 12月丁酉朔のユリウス暦日は1月13日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1909,7 +1909,7 @@
   western_date: '1374-4-13'
   description: 計算では3丁卯, 実施暦は丙寅, 3月丙寅朔のユリウス暦日は4月12日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1931,7 +1931,7 @@
   description: 計算では冬至が11月晦日になる。これを朔旦冬至にするため計算の閏11月朔を丁卯に改め, 閏を10月に移動させた。11月朔と翌正月朔が丁卯だから12月は丁酉とならざるを得ない。応安7年3月は推算通り丁卯にすると四大が生ずる。これを避けるため丙寅にして2月小とした。以上は御深心院関白記・洞院公定日記の暦記によるが,
     空華日用工夫略集の三島暦による暦日では丁卯となっている。京暦は四大を避け, 三島暦は避けなかったと解すべきである。（桃裕行氏;「四大を避けること」）
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -1952,7 +1952,7 @@
   western_date: '1376-8-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1973,7 +1973,7 @@
   western_date: '1376-9-15'
   description: 計算では49癸丑であるが, 章首のあとの閏8月を避けるために壬子。（大治4年; 1129年の注参照）。8月壬子朔のユリウス暦日は9月14日となる。（愚管記・続史愚抄・円覚寺文書など）。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -1994,7 +1994,7 @@
   western_date: '1392-11-15'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2015,7 +2015,7 @@
   western_date: '1392-12-15'
   description: 計算では44戊申であるが, 実施暦は丁未, 11月丁未朔のユリウス暦日は12月14日。計算では冬至が11月晦日になるのを, 11月朔日にして朔旦冬至としたもの。大日本史料第7編の１；統史愚抄・春日祭歴名部類などによる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2036,7 +2036,7 @@
   western_date: '1395-8-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2057,7 +2057,7 @@
   western_date: '1395-9-15'
   description: 計算では28壬辰, 実施暦は辛卯, 8月辛卯朔のユリウス暦日は9月14日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2078,7 +2078,7 @@
   western_date: '1395-10-15'
   description: 計算では58壬戌, 実施暦は辛丙, 9月辛酉朔のユリウス暦日は10月14日である。
   note: 日本暦日原典の誤り。「辛丙」ではなく「辛酉」
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2099,7 +2099,7 @@
   western_date: '1396-1-12'
   description: 計算では27辛卯, 実施暦は庚寅, 12月庚寅朔のユリウス暦日は1月11日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2121,7 +2121,7 @@
   description: 章首の後の閏8月を避けるために計算では閏8月朔壬辰と出たものを辛卯にし閏7月としたもの, 8月, 10月が共に辛卯だから9月は辛酉にかえないと8月が31日になってしまう。12月は計算通りにすると四大が生ずるので,
     それを避けるための変更, 大日本史料第7編の2; 荒暦, 松原家記録および具注暦による。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -2142,7 +2142,7 @@
   western_date: '1396-6-6'
   description: 計算は53丁巳, 荒暦により戊午, 5月戊午朔のユリウス暦日は6月7日である。小余が進朔限に近く, 進朔すべきでないのを誤って進朔したものであろう。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2163,7 +2163,7 @@
   western_date: '1411-11-16'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2185,7 +2185,7 @@
   description: 計算は24戊子, 実施は23丁亥, 11月丁亥朔のユリウス暦日は12月15日である。計算のままでは冬至が11月晦日となるのを, 閏10月に変え朔旦冬至としたもの。大日本史料第7編の14;
     朔旦冬至部類, 続史愚抄, および頒暦断簡による。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2206,7 +2206,7 @@
   western_date: '1433-10-14'
   description: 計算では17辛巳であるが看聞御記により庚辰, したがって9月庚辰朔のユリウス暦日は10月13日。これは小余が進朔限を僅かにこえているのに司暦の誤算で進朔しなかったものと思われる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2228,7 +2228,7 @@
   description: 計算では16庚辰であるが, 実施は己卯, したがって正月己卯朔のユリウス暦日は2月9日となる。前年9月の誤算のためにここを計算通り庚辰とすると四大となる。それを避けるためか,
     あるいはここも計算で進朔すべきをしなかったものか明らかでない。看聞御記, 師郷記などによる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2249,7 +2249,7 @@
   western_date: '1441-12-14'
   description: 計算では0甲子であるが, 建内記により癸亥, 11月癸亥朔のユリウス暦日は12月13日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2270,7 +2270,7 @@
   western_date: '1442-1-13'
   description: 計算では30甲午であるが, 建内記により癸巳, 11月癸巳朔のユリウス暦日は1月12日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2291,7 +2291,7 @@
   western_date: 1441-12-14/1442-1-13
   description: 計算では朔旦冬至となる。これを臨時朔旦冬至として避けるために甲子を癸亥にして冬至を11月2日にしたもの。12月の変更は計算通り甲午にしておくと11月が31日になってしまうから。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -2312,7 +2312,7 @@
   western_date: '1449-11-16'
   description: 計算では14戊寅, 康富記により丁丑, 閏10月丁丑朔のユリウス暦日は11月15日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2333,7 +2333,7 @@
   western_date: '1449-12-15'
   description: 計算では43丁未, 康富記により丙午, 11月丙午朔のユリウス暦日は12月14日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2354,7 +2354,7 @@
   western_date: '1450-1-14'
   description: 計算では13丁丑, 康富記により丙子, 12月丙子朔のユリウス暦日は1月13日となる。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2376,7 +2376,7 @@
   description: 計算では冬至が11月晦日になるのを, 強いて朔旦冬至にするため計算の12月丁未朔を11月丙子朔に変え閏を10月に移動させた。閏10月朔を計算通り戊寅朔にしておくと閏10月は28日しかなくなってしまう。11月朔丙午,
     翌宝徳2年2月丙子とからその間の12月正月の干支は丙子, 丙子に変えないと31日の月ができてしまう。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -2397,7 +2397,7 @@
   western_date: '1450-2-13'
   description: 計算では13丁未, 康富記により丙午, 正月丙午朔のユリウス暦日は2月12日となる。（前項の注記参照）
   note: 日本暦日原典の誤り。「丁未」ではなく「丁丑」
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2418,7 +2418,7 @@
   western_date: '1468-11-15'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2439,7 +2439,7 @@
   western_date: '1468-12-15'
   description: 計算では23丁亥, 碧山日録など（大日本史料第8編の2）により丙戌, 11月丙戌朔のユリウス暦日は12月14日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2460,7 +2460,7 @@
   western_date: '1469-1-14'
   description: 計算では53丁巳, 碧山日録など（大日本史料第8編の2）により丙辰, 12月丙辰朔のユリウス暦日は1月13日。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2481,7 +2481,7 @@
   western_date: 1468-12-15/1469-1-14
   description: 計算のままでは11月晦日にある冬至を移して朔旦冬至にするための変更, 12月を丙辰に変えたのは前月の変更により計算のままでは11月が31日になるから。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:
@@ -2502,7 +2502,7 @@
   western_date: '1473-7-25'
   description: 計算では26庚寅, 親元日記（大日本史料第8編の6）により27 辛卯, 7月辛卯朔ならそのユリウス暦日は7月26日となる。ただし大日本史料そのものは月朔干支に庚寅を採用している。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2524,7 +2524,7 @@
   description: 計算では19癸未, 御法興院政家記, 柳原家記録, 長興宿袮記などにより18 壬午 , 11月壬午朔のユリウス暦日は12月13日となる。これは臨時朔旦冬至を避けるため計算のままでは11月1日の冬至を11月2日にするための干支変更である。ただし長防風土記および大日本史料そのものは月朔干支に癸未を採用している。以上,
     大日本史料第8編の11。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2545,7 +2545,7 @@
   western_date: '1555-11-14'
   description: "-"
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2566,7 +2566,7 @@
   western_date: '1555-12-14'
   description: 計算は58壬戌 , 実施は辛酉, 閏11月辛酉朔のユリウス暦日は12月13日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2587,7 +2587,7 @@
   western_date: '1556-1-13'
   description: 計算は28壬辰 , 実施は辛卯, 12月辛卯朔のユリウス暦日は1月12日である。
   note: "-"
-  valid: 'true'
+  modified: 'true'
   diff:
     month:
       number:
@@ -2609,7 +2609,7 @@
   description: 臨時朔旦冬至をさけるため閏を10月から11月に移動させ冬至を閏11月2日にしたもの, 12月朔を壬辰から辛卯に変えないと閏11月が31日になってしまう。朔旦冬至旬部類古文書,
     御湯殿上日記による。
   note: "-"
-  valid: 'false'
+  modified: 'false'
   diff:
     month:
       number:

@@ -335,7 +335,7 @@ module Zakuro
         # @return [False] 正しくない
         #
         def valid_name_type?
-          !(@name.nil? || !@name.is_a?(String))
+          (!@name.nil? || @name.is_a?(String))
         end
 
         #
