@@ -218,12 +218,31 @@ module Zakuro
       # Diffs 総差分
       #
       class Diffs
-        attr_reader :month, :even_term, :day
+        attr_reader :index, :month, :even_term, :day
 
-        def initialize(yaml_hash: {})
-          @month = Month.new(yaml_hash: yaml_hash['month'])
-          @even_term = Diff.new(yaml_hash: yaml_hash['even_term'])
+        def initialize(index:, yaml_hash: {})
+          @index = index
+          @month = Month.new(index: index, yaml_hash: yaml_hash['month'])
+          @even_term = Diff.new(index: index, yaml_hash: yaml_hash['even_term'])
           @day = yaml_hash['day']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "#{@index}]. invalid"
+
+          failed += @month.validate
+
+          failed += @even_term.validate
+
+          failed.push("#{prefix} 'day'. #{@day}") unless day?
+
+          failed
+        end
+
+        def day?
+          !@number.nil? || !@number.empty? || @number =~ /^-?[0-9]+$/
         end
       end
 
@@ -231,11 +250,22 @@ module Zakuro
       # Month 月
       #
       class Month
-        attr_reader :number, :leaped
+        attr_reader :index, :number, :leaped
 
-        def initialize(yaml_hash: {})
+        def initialize(index:, yaml_hash: {})
+          @index = index
           @number = Diff.new(yaml_hash: yaml_hash['number'])
           @leaped = Diff.new(yaml_hash: yaml_hash['leaped'])
+        end
+
+        def validate
+          failed = []
+
+          failed += @number.validate
+
+          failed += @number.validate
+
+          failed
         end
       end
 
@@ -243,11 +273,20 @@ module Zakuro
       # Diff 差分
       #
       class Diff
-        attr_reader :calc, :actual
+        attr_reader :index, :calc, :actual
 
-        def initialize(yaml_hash: {})
+        def initialize(index:, yaml_hash: {})
+          @index = index
           @calc = yaml_hash['calc']
           @actual = yaml_hash['actual']
+        end
+
+        def calc?
+          !@calc.nil? || !@calc.empty? || @calc =~ /^-?[0-9]+$/
+        end
+
+        def actual?
+          !@actual.nil? || !@actual.empty? || @actual =~ /^-?[0-9]+$/
         end
       end
 
