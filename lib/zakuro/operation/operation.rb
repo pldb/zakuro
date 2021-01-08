@@ -250,6 +250,16 @@ module Zakuro
           @actual = yaml_hash['actual']
         end
       end
+
+      def self.run(yaml_hash: {})
+        failed = []
+        yaml_hash.each_with_index do |history, index|
+          failed += History.new(index: index, yaml_hash: history).validate
+          # TODO: 他クラス
+        end
+
+        failed
+      end
     end
 
     #
@@ -262,6 +272,10 @@ module Zakuro
           __dir__
         )
         hash = YAML.load_file(filepath)
+
+        failed = Validator.run(yaml_hash: hash)
+
+        raise YAML::ParseError, failed.join('\n') unless failed.empty?
 
         load(yaml_hash: hash)
       end
@@ -299,9 +313,10 @@ module Zakuro
         diffs = create_diffs(yaml_hash: yaml_hash['diff'])
 
         History.new(id: yaml_hash['id'],
-                    reference: Reference.new(page: yaml_hash['page'], number: yaml_hash['number'],
+                    reference: Reference.new(page: yaml_hash['page'].to_i,
+                                             number: yaml_hash['number'].to_i,
                                              japan_date: yaml_hash['japan_date']),
-                    western_date: yaml_hash['western_date'],
+                    western_date: Western::Calendar.parse(str: yaml_hash['western_date']),
                     diffs: diffs)
       end
 
@@ -313,12 +328,24 @@ module Zakuro
 
         Diffs.new(
           month: Month.new(
-            number: Diff.new(calc: number['calc'], actual: number['actual']),
-            leaped: Diff.new(calc: leaped['calc'], actual: leaped['actual'])
+            number: Diff.new(calc: parse_month_number(str: number['calc']),
+                             actual: parse_month_number(str: number['actual'])),
+            leaped: Diff.new(calc: parse_month_leaped(str: leaped['calc']),
+                             actual: parse_month_leaped(str: leaped['actual']))
           ),
           even_term: Diff.new(calc: even_term['calc'], actual: even_term['actual']),
           day: month['day']
         )
+      end
+
+      def self.parse_month_number(str:)
+        return -1 if str == '-'
+
+        str.to_i
+      end
+
+      def self.parse_month_leaped(str:)
+        str == 'true'
       end
 
       def self.add_annotations(histories: [], annotations: {}, relations: {})
