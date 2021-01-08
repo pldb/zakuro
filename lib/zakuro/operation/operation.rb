@@ -98,7 +98,7 @@ module Zakuro
       # History 変更履歴
       #
       class History
-        attr_reader :id, :western_date, :modified
+        attr_reader :index, :id, :western_date, :modified
 
         def initialize(index:, yaml_hash: {})
           @index = index
@@ -138,12 +138,39 @@ module Zakuro
       # Annotation 注釈
       #
       class Annotation
-        attr_reader :id, :description, :note
+        attr_reader :index, :id, :description, :note
 
-        def initialize(yaml_hash: {})
+        def initialize(index:, yaml_hash: {})
+          @index = index
           @id = yaml_hash['id']
           @description = yaml_hash['description']
           @note = yaml_hash['note']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "#{@index}]. invalid"
+
+          failed.push("#{prefix} 'id'. #{@id}") unless id?
+
+          failed.push("#{prefix} 'description'. #{@description}") unless description?
+
+          failed.push("#{prefix} 'note'. #{@note}") unless note?
+
+          failed
+        end
+
+        def id?
+          !@id.nil? || !@id.empty? || @id.is_a?(String)
+        end
+
+        def description?
+          !@description.nil? || @description.is_a?(String)
+        end
+
+        def note?
+          !@note.nil? || @note.is_a?(String)
         end
       end
 
@@ -151,12 +178,39 @@ module Zakuro
       # Reference 参照
       #
       class Reference
-        attr_reader :page, :number, :japan_date
+        attr_reader :index, :page, :number, :japan_date
 
-        def initialize(yaml_hash: {})
+        def initialize(index:, yaml_hash: {})
+          @index = index
           @page = yaml_hash['page']
           @number = yaml_hash['number']
           @japan_date = yaml_hash['japan_date']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "#{@index}]. invalid"
+
+          failed.push("#{prefix} 'page'. #{@page}") unless page?
+
+          failed.push("#{prefix} 'number'. #{@number}") unless number?
+
+          failed.push("#{prefix} 'japan_date'. #{@japan_date}") unless japan_date?
+
+          failed
+        end
+
+        def page?
+          !@page.nil? || !@page.empty? || @page =~ /^[0-9]+$/
+        end
+
+        def number?
+          !@number.nil? || !@number.empty? || @number =~ /^[0-9]+$/
+        end
+
+        def japan_date?
+          !@japan_date.nil? || @japan_date.is_a?(String)
         end
       end
 
