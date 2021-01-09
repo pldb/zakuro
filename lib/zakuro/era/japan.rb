@@ -562,7 +562,7 @@ module Zakuro
 
         parser = SetParser.new(hash: yaml)
         failed = parser.validate
-        raise YAML::ParseError, failed.join('\n') unless failed.empty?
+        raise ArgumentError, failed.join("\n") unless failed.empty?
 
         parser.create
       end

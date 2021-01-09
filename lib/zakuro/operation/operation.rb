@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
+require_relative '../era/western'
 
 # :nodoc:
 module Zakuro
@@ -110,7 +111,7 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "#{@index}]. invalid"
+          prefix = "[#{@index}] invalid"
 
           failed.push("#{prefix} 'id'. #{@id}") unless id?
 
@@ -122,7 +123,7 @@ module Zakuro
         end
 
         def id?
-          !@id.nil? || !@id.empty? || @id.is_a?(String)
+          !@id.nil? && !@id.empty? && @id.is_a?(String)
         end
 
         def western_date?
@@ -150,7 +151,7 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "#{@index}]. invalid"
+          prefix = "[#{@index}] invalid"
 
           failed.push("#{prefix} 'id'. #{@id}") unless id?
 
@@ -162,15 +163,15 @@ module Zakuro
         end
 
         def id?
-          !@id.nil? || !@id.empty? || @id.is_a?(String)
+          !@id.nil? && !@id.empty? && @id.is_a?(String)
         end
 
         def description?
-          !@description.nil? || @description.is_a?(String)
+          !@description.nil? && @description.is_a?(String)
         end
 
         def note?
-          !@note.nil? || @note.is_a?(String)
+          !@note.nil? && @note.is_a?(String)
         end
       end
 
@@ -190,7 +191,7 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "#{@index}]. invalid"
+          prefix = "[#{@index}] invalid"
 
           failed.push("#{prefix} 'page'. #{@page}") unless page?
 
@@ -202,15 +203,19 @@ module Zakuro
         end
 
         def page?
-          !@page.nil? || !@page.empty? || @page =~ /^[0-9]+$/
+          return true if @page == '-'
+
+          !@page.nil? && !@page.empty? && @page =~ /^[0-9]+$/
         end
 
         def number?
-          !@number.nil? || !@number.empty? || @number =~ /^[0-9]+$/
+          return true if @number == '-'
+
+          !@number.nil? && !@number.empty? && @number =~ /^[0-9]+$/
         end
 
         def japan_date?
-          !@japan_date.nil? || @japan_date.is_a?(String)
+          !@japan_date.nil? && @japan_date.is_a?(String)
         end
       end
 
@@ -223,14 +228,14 @@ module Zakuro
         def initialize(index:, yaml_hash: {})
           @index = index
           @month = Month.new(index: index, yaml_hash: yaml_hash['month'])
-          @even_term = Diff.new(index: index, yaml_hash: yaml_hash['even_term'])
+          @even_term = EvenTerm.new(index: index, yaml_hash: yaml_hash['even_term'])
           @day = yaml_hash['day']
         end
 
         def validate
           failed = []
 
-          prefix = "#{@index}]. invalid"
+          prefix = "[#{@index}] invalid"
 
           failed += @month.validate
 
@@ -242,7 +247,9 @@ module Zakuro
         end
 
         def day?
-          !@number.nil? || !@number.empty? || @number =~ /^-?[0-9]+$/
+          return true if @day == '-'
+
+          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
         end
       end
 
@@ -254,8 +261,8 @@ module Zakuro
 
         def initialize(index:, yaml_hash: {})
           @index = index
-          @number = Diff.new(yaml_hash: yaml_hash['number'])
-          @leaped = Diff.new(yaml_hash: yaml_hash['leaped'])
+          @number = Number.new(index: index, yaml_hash: yaml_hash['number'])
+          @leaped = Leaped.new(index: index, yaml_hash: yaml_hash['leaped'])
         end
 
         def validate
@@ -263,30 +270,121 @@ module Zakuro
 
           failed += @number.validate
 
-          failed += @number.validate
+          failed += @leaped.validate
 
           failed
         end
       end
 
       #
-      # Diff 差分
+      # EvenTerm 中気
       #
-      class Diff
-        attr_reader :index, :calc, :actual
+      class EvenTerm
+        attr_reader :index, :name, :to, :day
 
         def initialize(index:, yaml_hash: {})
           @index = index
+          @name = 'even_term'
+          @to = yaml_hash['to']
+          @day = yaml_hash['day']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "[#{@index}][#{@name}] invalid"
+
+          failed.push("#{prefix} 'to'. #{@to}") unless to?
+
+          failed.push("#{prefix} 'day'. #{@day}") unless day?
+
+          failed
+        end
+
+        def to?
+          Western::Calendar.valid_date_string(str: @to)
+        end
+
+        def day?
+          return true if @day == '-'
+
+          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
+        end
+      end
+
+      #
+      # Number 月
+      #
+      class Number
+        attr_reader :index, :name, :calc, :actual
+
+        def initialize(index:, yaml_hash: {})
+          @index = index
+          @name = 'number'
           @calc = yaml_hash['calc']
           @actual = yaml_hash['actual']
         end
 
+        def validate
+          failed = []
+
+          prefix = "[#{@index}][#{@name}] invalid"
+
+          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+
+          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+
+          failed
+        end
+
         def calc?
-          !@calc.nil? || !@calc.empty? || @calc =~ /^-?[0-9]+$/
+          return true if @calc == '-'
+
+          !@calc.nil? && !@calc.empty? && @calc =~ /^-?[0-9]+$/
         end
 
         def actual?
-          !@actual.nil? || !@actual.empty? || @actual =~ /^-?[0-9]+$/
+          return true if @calc == '-'
+
+          !@actual.nil? && !@actual.empty? && @actual =~ /^-?[0-9]+$/
+        end
+      end
+
+      #
+      # Leaped 閏有無
+      #
+      class Leaped
+        attr_reader :index, :name, :calc, :actual
+
+        def initialize(index:, yaml_hash: {})
+          @index = index
+          @name = 'leaped'
+          @calc = yaml_hash['calc']
+          @actual = yaml_hash['actual']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "[#{@index}][#{@name}] invalid"
+
+          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+
+          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+
+          failed
+        end
+
+        def calc?
+          return true if @calc == '-'
+
+          @calc == 'true' || @calc == 'false'
+        end
+
+        def actual?
+          return true if @actual == '-'
+
+          @actual == 'true' || @actual == 'false'
         end
       end
 
@@ -294,7 +392,9 @@ module Zakuro
         failed = []
         yaml_hash.each_with_index do |history, index|
           failed += History.new(index: index, yaml_hash: history).validate
-          # TODO: 他クラス
+          failed += Annotation.new(index: index, yaml_hash: history).validate
+          failed += Reference.new(index: index, yaml_hash: history).validate
+          failed += Diffs.new(index: index, yaml_hash: history['diffs']).validate
         end
 
         failed
@@ -314,7 +414,7 @@ module Zakuro
 
         failed = Validator.run(yaml_hash: hash)
 
-        raise YAML::ParseError, failed.join('\n') unless failed.empty?
+        raise ArgumentError, failed.join("\n") unless failed.empty?
 
         load(yaml_hash: hash)
       end
@@ -349,7 +449,7 @@ module Zakuro
       end
 
       def self.create_history(yaml_hash: {})
-        diffs = create_diffs(yaml_hash: yaml_hash['diff'])
+        diffs = create_diffs(yaml_hash: yaml_hash['diffs'])
 
         History.new(id: yaml_hash['id'],
                     reference: Reference.new(page: yaml_hash['page'].to_i,
