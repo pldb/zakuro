@@ -2,6 +2,7 @@
 
 require 'yaml'
 require_relative '../era/western'
+require_relative './validator'
 
 # :nodoc:
 module Zakuro
@@ -9,6 +10,11 @@ module Zakuro
   # Operation 運用
   #
   module Operation
+    #
+    # 日（差分）無効値
+    #
+    INVALID_DAY_VALUE = -30
+
     #
     # History 変更履歴
     #
@@ -65,6 +71,10 @@ module Zakuro
         @even_term = even_term
         @day = day
       end
+
+      def invalid?
+        @day == INVALID_DAY_VALUE
+      end
     end
 
     #
@@ -80,9 +90,25 @@ module Zakuro
     end
 
     #
-    # Diff 差分
+    # EvenTerm 中気
     #
-    class Diff
+    class EvenTerm
+      attr_reader :index, :name, :to, :day
+
+      def initialize(to:, day:)
+        @to = to
+        @day = day
+      end
+
+      def invalid?
+        @day == INVALID_DAY_VALUE
+      end
+    end
+
+    #
+    # Number 月
+    #
+    class Number
       attr_reader :calc, :actual
 
       def initialize(calc:, actual:)
@@ -92,312 +118,94 @@ module Zakuro
     end
 
     #
-    # Validator バリデーション
+    # Leaped 閏有無
     #
-    module Validator
+    class Leaped
+      attr_reader :calc, :actual
+
+      def initialize(calc:, actual:)
+        @calc = calc
+        @actual = actual
+      end
+    end
+
+    #
+    # TypeParser 型ごと変換
+    #
+    module TypeParser
       #
-      # History 変更履歴
+      # 無効値かを判定する
       #
-      class History
-        attr_reader :index, :id, :western_date, :modified
-
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @id = yaml_hash['id']
-          @western_date = yaml_hash['western_date']
-          @modified = yaml_hash['modified']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}] invalid"
-
-          failed.push("#{prefix} 'id'. #{@id}") unless id?
-
-          failed.push("#{prefix} 'western_date'. #{@western_date}") unless western_date?
-
-          failed.push("#{prefix} 'modified'. #{@modified}") unless modified?
-
-          failed
-        end
-
-        def id?
-          !@id.nil? && !@id.empty? && @id.is_a?(String)
-        end
-
-        def western_date?
-          Western::Calendar.valid_date_string(str: @western_date)
-        end
-
-        def modified?
-          @modified == 'true' || @modified == 'false'
-        end
+      # @param [String] str 文字列
+      #
+      # @return [True] 無効値
+      # @return [False] 有効値
+      #
+      def self.invalid?(str:)
+        str == '-'
       end
 
       #
-      # Annotation 注釈
+      # 有効行を変換する
       #
-      class Annotation
-        attr_reader :index, :id, :description, :note
-
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @id = yaml_hash['id']
-          @description = yaml_hash['description']
-          @note = yaml_hash['note']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}] invalid"
-
-          failed.push("#{prefix} 'id'. #{@id}") unless id?
-
-          failed.push("#{prefix} 'description'. #{@description}") unless description?
-
-          failed.push("#{prefix} 'note'. #{@note}") unless note?
-
-          failed
-        end
-
-        def id?
-          !@id.nil? && !@id.empty? && @id.is_a?(String)
-        end
-
-        def description?
-          !@description.nil? && @description.is_a?(String)
-        end
-
-        def note?
-          !@note.nil? && @note.is_a?(String)
-        end
+      # @param [String] str 文字列
+      #
+      # @return [True] 有効
+      # @return [False] 無効
+      #
+      def self.modified?(str:)
+        str == 'true'
       end
 
       #
-      # Reference 参照
+      # 月を変換する
       #
-      class Reference
-        attr_reader :index, :page, :number, :japan_date
+      # @param [String] str 文字列
+      #
+      # @return [Integer] 月
+      #
+      def self.month_number(str:)
+        return -1 if invalid?(str: str)
 
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @page = yaml_hash['page']
-          @number = yaml_hash['number']
-          @japan_date = yaml_hash['japan_date']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}] invalid"
-
-          failed.push("#{prefix} 'page'. #{@page}") unless page?
-
-          failed.push("#{prefix} 'number'. #{@number}") unless number?
-
-          failed.push("#{prefix} 'japan_date'. #{@japan_date}") unless japan_date?
-
-          failed
-        end
-
-        def page?
-          return true if @page == '-'
-
-          !@page.nil? && !@page.empty? && @page =~ /^[0-9]+$/
-        end
-
-        def number?
-          return true if @number == '-'
-
-          !@number.nil? && !@number.empty? && @number =~ /^[0-9]+$/
-        end
-
-        def japan_date?
-          !@japan_date.nil? && @japan_date.is_a?(String)
-        end
+        str.to_i
       end
 
       #
-      # Diffs 総差分
+      # 閏有無を変換する
       #
-      class Diffs
-        attr_reader :index, :month, :even_term, :day
-
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @month = Month.new(index: index, yaml_hash: yaml_hash['month'])
-          @even_term = EvenTerm.new(index: index, yaml_hash: yaml_hash['even_term'])
-          @day = yaml_hash['day']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}] invalid"
-
-          failed += @month.validate
-
-          failed += @even_term.validate
-
-          failed.push("#{prefix} 'day'. #{@day}") unless day?
-
-          failed
-        end
-
-        def day?
-          return true if @day == '-'
-
-          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
-        end
+      # @param [String] str 文字列
+      #
+      # @return [True] 閏あり
+      # @return [True] 閏なし/閏設定なし
+      #
+      def self.month_leaped(str:)
+        str == 'true'
       end
 
       #
-      # Month 月
+      # 西暦日を変換する
       #
-      class Month
-        attr_reader :index, :number, :leaped
+      # @param [String] str 文字列
+      #
+      # @return [Western::Calendar] 西暦日
+      #
+      def self.western_date(str:)
+        return Western::Calendar.new if invalid?(str: str)
 
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @number = Number.new(index: index, yaml_hash: yaml_hash['number'])
-          @leaped = Leaped.new(index: index, yaml_hash: yaml_hash['leaped'])
-        end
-
-        def validate
-          failed = []
-
-          failed += @number.validate
-
-          failed += @leaped.validate
-
-          failed
-        end
+        Western::Calendar.parse(str: str)
       end
 
       #
-      # EvenTerm 中気
+      # 日（差分）を変換する
       #
-      class EvenTerm
-        attr_reader :index, :name, :to, :day
-
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @name = 'even_term'
-          @to = yaml_hash['to']
-          @day = yaml_hash['day']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}][#{@name}] invalid"
-
-          failed.push("#{prefix} 'to'. #{@to}") unless to?
-
-          failed.push("#{prefix} 'day'. #{@day}") unless day?
-
-          failed
-        end
-
-        def to?
-          Western::Calendar.valid_date_string(str: @to)
-        end
-
-        def day?
-          return true if @day == '-'
-
-          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
-        end
-      end
-
+      # @param [String] str 文字列
       #
-      # Number 月
+      # @return [Integer] 日（差分）
       #
-      class Number
-        attr_reader :index, :name, :calc, :actual
+      def self.day(str:)
+        return INVALID_DAY_VALUE if invalid?(str: str)
 
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @name = 'number'
-          @calc = yaml_hash['calc']
-          @actual = yaml_hash['actual']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}][#{@name}] invalid"
-
-          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
-
-          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
-
-          failed
-        end
-
-        def calc?
-          return true if @calc == '-'
-
-          !@calc.nil? && !@calc.empty? && @calc =~ /^-?[0-9]+$/
-        end
-
-        def actual?
-          return true if @calc == '-'
-
-          !@actual.nil? && !@actual.empty? && @actual =~ /^-?[0-9]+$/
-        end
-      end
-
-      #
-      # Leaped 閏有無
-      #
-      class Leaped
-        attr_reader :index, :name, :calc, :actual
-
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @name = 'leaped'
-          @calc = yaml_hash['calc']
-          @actual = yaml_hash['actual']
-        end
-
-        def validate
-          failed = []
-
-          prefix = "[#{@index}][#{@name}] invalid"
-
-          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
-
-          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
-
-          failed
-        end
-
-        def calc?
-          return true if @calc == '-'
-
-          @calc == 'true' || @calc == 'false'
-        end
-
-        def actual?
-          return true if @actual == '-'
-
-          @actual == 'true' || @actual == 'false'
-        end
-      end
-
-      def self.run(yaml_hash: {})
-        failed = []
-        yaml_hash.each_with_index do |history, index|
-          failed += History.new(index: index, yaml_hash: history).validate
-          failed += Annotation.new(index: index, yaml_hash: history).validate
-          failed += Reference.new(index: index, yaml_hash: history).validate
-          failed += Diffs.new(index: index, yaml_hash: history['diffs']).validate
-        end
-
-        failed
+        str.to_i
       end
     end
 
@@ -405,6 +213,11 @@ module Zakuro
     # MonthParser 月情報解析（yaml）
     #
     module MonthParser
+      #
+      # 実行する
+      #
+      # @return [Array<History>] 変更履歴
+      #
       def self.run
         filepath = File.expand_path(
           './yaml/month.yaml',
@@ -419,8 +232,14 @@ module Zakuro
         load(yaml_hash: hash)
       end
 
+      #
+      # 設定ファイルを読み込む
+      #
+      # @param [Hash] yaml_hash 設定ファイルテキスト
+      #
+      # @return [Array<History>] 変更履歴
+      #
       def self.load(yaml_hash: {})
-        # TODO: バリデーション
         annotations = {}
         relations = {}
         histories = create_histories(yaml_hash: yaml_hash, annotations: annotations,
@@ -429,6 +248,15 @@ module Zakuro
         add_annotations(histories: histories, annotations: annotations, relations: relations)
       end
 
+      #
+      # 変更履歴を読み込む
+      #
+      # @param [Hash] yaml_hash 設定ファイルテキスト
+      # @param [Hash] annotations 注釈（空）
+      # @param [Hash] relations 関連ID設定（空）
+      #
+      # @return [Array<History>] 変更履歴
+      #
       def self.create_histories(yaml_hash: {}, annotations: {}, relations: {})
         result = []
         yaml_hash.each do |month|
@@ -437,9 +265,9 @@ module Zakuro
                                            note: month['note'])
           relation_id = month['relation_id']
 
-          relations[id] = relation_id unless relation_id == '-'
+          relations[id] = relation_id unless Operation::TypeParser.invalid?(str: relation_id)
 
-          next unless month['modified'] == 'true'
+          next unless Operation::TypeParser.modified?(str: month['modified'])
 
           history = create_history(yaml_hash: month)
           result.push(history)
@@ -447,45 +275,46 @@ module Zakuro
 
         result
       end
+      private_class_method :create_histories
 
       def self.create_history(yaml_hash: {})
         diffs = create_diffs(yaml_hash: yaml_hash['diffs'])
 
+        western_date = Operation::TypeParser.western_date(str: yaml_hash['western_date'])
         History.new(id: yaml_hash['id'],
                     reference: Reference.new(page: yaml_hash['page'].to_i,
                                              number: yaml_hash['number'].to_i,
                                              japan_date: yaml_hash['japan_date']),
-                    western_date: Western::Calendar.parse(str: yaml_hash['western_date']),
+                    western_date: western_date,
                     diffs: diffs)
       end
+      private_class_method :create_history
 
       def self.create_diffs(yaml_hash: {})
         month = yaml_hash['month']
-        number = month['number']
-        leaped = month['leaped']
         even_term = yaml_hash['even_term']
 
         Diffs.new(
-          month: Month.new(
-            number: Diff.new(calc: parse_month_number(str: number['calc']),
-                             actual: parse_month_number(str: number['actual'])),
-            leaped: Diff.new(calc: parse_month_leaped(str: leaped['calc']),
-                             actual: parse_month_leaped(str: leaped['actual']))
-          ),
-          even_term: Diff.new(calc: even_term['calc'], actual: even_term['actual']),
-          day: month['day']
+          month: create_month(yaml_hash: yaml_hash['month']),
+          even_term: EvenTerm.new(to: Operation::TypeParser.western_date(str: even_term['to']),
+                                  day: Operation::TypeParser.day(str: even_term['day'])),
+          day: Operation::TypeParser.day(str: month['day'])
         )
       end
+      private_class_method :create_diffs
 
-      def self.parse_month_number(str:)
-        return -1 if str == '-'
+      def self.create_month(yaml_hash: {})
+        number = yaml_hash['number']
+        leaped = yaml_hash['leaped']
 
-        str.to_i
+        Month.new(
+          number: Number.new(calc: Operation::TypeParser.month_number(str: number['calc']),
+                             actual: Operation::TypeParser.month_number(str: number['actual'])),
+          leaped: Leaped.new(calc: Operation::TypeParser.month_leaped(str: leaped['calc']),
+                             actual: Operation::TypeParser.month_leaped(str: leaped['actual']))
+        )
       end
-
-      def self.parse_month_leaped(str:)
-        str == 'true'
-      end
+      private_class_method :create_month
 
       def self.add_annotations(histories: [], annotations: {}, relations: {})
         result = []
@@ -505,11 +334,13 @@ module Zakuro
 
         result
       end
+      private_class_method :add_annotations
 
       def self.add_annotation(history_annotations: [], annotations: {}, id: '')
         annotation = annotations.fetch(id, Annotation.new)
         history_annotations.push(annotation) unless annotation.invalid?
       end
+      private_class_method :add_annotation
     end
   end
 end
