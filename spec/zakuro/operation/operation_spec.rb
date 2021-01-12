@@ -6,13 +6,12 @@ require File.expand_path('../../../' \
 
 describe 'Zakuro' do
   describe 'Operation' do
-    describe 'MonthParser' do
-      context 'run' do
-        it 'default month file should be running' do
-          result = Zakuro::Operation::MonthParser.run
+    describe 'month' do
+      context 'default month file' do
+        it 'should be loaded' do
+          result = Zakuro::Operation.month
           # 124(全行) - 9（無効行）
           expect(result.size).to eq 115
-          p result.size
         end
       end
     end
