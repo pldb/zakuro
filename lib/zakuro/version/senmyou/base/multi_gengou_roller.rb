@@ -3,7 +3,7 @@
 require_relative './era'
 require_relative './multi_gengou'
 
-require_relative '../../../era/japan'
+require_relative '../../../era/japan/gengou'
 
 # :nodoc:
 module Zakuro
