@@ -26,25 +26,25 @@ describe 'Zakuro' do
           end
         end
       end
-      describe '.parse' do
+      describe '.run' do
         context 'actual file' do
           it 'should be no error' do
-            expect { Zakuro::Japan::Parser.parse(filepath: ACTUAL_YAML_PATH) }
+            expect { Zakuro::Japan::Parser.run(filepath: ACTUAL_YAML_PATH) }
               .to_not raise_error
           end
         end
         context 'test file' do
           it 'should be no error' do
-            expect { Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH) }
+            expect { Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH) }
               .to_not raise_error
           end
           it 'is created Set class' do
-            actual = Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH)
+            actual = Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH)
             expect(actual).to be_a(Zakuro::Japan::Set)
           end
         end
         context 'internal data' do
-          let(:actual) { Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH) }
+          let(:actual) { Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH) }
           context 'id' do
             it 'is the same data in file' do
               expect(actual.id).to eq(1)
