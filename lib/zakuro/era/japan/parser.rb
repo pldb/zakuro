@@ -2,6 +2,7 @@
 
 require_relative '../western'
 require_relative './type'
+require_relative './validator'
 require 'yaml'
 
 # :nodoc:
