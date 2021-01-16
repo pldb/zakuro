@@ -50,11 +50,11 @@ module Zakuro
         #
         def validate
           failed = []
-          failed.push("invalid id. #{id}") unless valid_id_type?
+          failed.push("invalid id. #{id}") unless id?
 
-          failed.push("invalid name. #{name}") unless valid_name_type?
+          failed.push("invalid name. #{name}") unless name?
 
-          failed.push("invalid end_date. #{end_date}") unless valid_date_type?
+          failed.push("invalid end_date. #{end_date}") unless western_date?
 
           failed |= validate_list
           failed
@@ -68,7 +68,7 @@ module Zakuro
         # @return [True] 正しい
         # @return [False] 正しくない
         #
-        def valid_id_type?
+        def id?
           !(@id.nil? || !@id.is_a?(Integer))
         end
 
@@ -78,7 +78,7 @@ module Zakuro
         # @return [True] 正しい
         # @return [False] 正しくない
         #
-        def valid_name_type?
+        def name?
           !(@name.nil? || !@name.is_a?(String))
         end
 
@@ -88,7 +88,7 @@ module Zakuro
         # @return [True] 正しい
         # @return [False] 正しくない
         #
-        def valid_date_type?
+        def western_date?
           Western::Calendar.valid_date_string(str: @end_date)
         end
 
@@ -100,7 +100,7 @@ module Zakuro
         # @return [True] 正しい
         # @return [False] 正しくない
         #
-        def valid_list_type?
+        def list?
           (!@list.nil? || @list.is_a?(Array))
         end
 
@@ -111,11 +111,11 @@ module Zakuro
         # @return [False] 正しくない
         #
         def validate_list
-          return ["invalid list. #{@list.class}"] unless valid_list_type?
+          return ["invalid list. #{@list.class}"] unless list?
 
           failed = []
           list.each_with_index do |li, index|
-            failed |= GengouParser.new(hash: li, index: index).validate
+            failed |= Gengou.new(hash: li, index: index).validate
           end
           failed
         end
@@ -226,7 +226,7 @@ module Zakuro
       #
       # @return [Array<String>] 不正メッセージ
       #
-      def self.run(yaml_hash)
+      def self.run(yaml_hash:)
         Set.new(hash: yaml_hash).validate
       end
     end

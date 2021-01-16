@@ -17,17 +17,6 @@ module Zakuro
     # Parser yaml解析
     #
     module Parser
-      #
-      # 検証する
-      #
-      # @param [Hash<String, Object>] yaml_hash yaml取得結果
-      #
-      # @return [Array<String>] 不正メッセージ
-      #
-      def self.validate(yaml_hash)
-        SetParser.new(hash: yaml_hash).validate
-      end
-
       # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
 
       #
@@ -57,76 +46,6 @@ module Zakuro
           @start_date = hash['start_date']
           @new_year_date = hash['new_year_date']
           @start_year = hash['start_year']
-        end
-
-        # :reek:TooManyStatements { max_statements: 7 }
-
-        #
-        # 検証する
-        #
-        # @return [Array<String>] 不正メッセージ
-        #
-        def validate
-          prefix = "list[#{index}]. "
-          failed = []
-
-          failed.push(prefix + "invalid name. #{@name}") unless valid_name_type?
-
-          failed.push(prefix + "invalid start_date. #{@start_date}") unless valid_start_date_type?
-
-          failed.push(prefix + "invalid start_year. #{@start_year}") unless valid_year_type?
-
-          unless valid_new_year_date_type?
-            failed.push(prefix + "invalid new_year_date. #{@new_year_date}")
-          end
-
-          failed
-        end
-
-        # :reek:NilCheck
-
-        #
-        # 元号名を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_name_type?
-          (!@name.nil? || @name.is_a?(String))
-        end
-
-        #
-        # 開始日文字列を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_start_date_type?
-          Western::Calendar.valid_date_string(str: @start_date)
-        end
-
-        #
-        # 元旦文字列を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_new_year_date_type?
-          Western::Calendar.valid_date_string(str: @new_year_date)
-        end
-
-        # :reek:NilCheck
-
-        #
-        # 元号年を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_year_type?
-          return true if @start_year.nil?
-
-          @start_year.is_a?(Integer)
         end
 
         # :reek:NilCheck
@@ -169,85 +88,6 @@ module Zakuro
           @name = hash['name']
           @end_date = hash['end_date']
           @list = hash['list']
-        end
-
-        # :reek:TooManyStatements { max_statements: 6 }
-
-        #
-        # 検証する
-        #
-        # @return [Array<String>] 不正メッセージ
-        #
-        def validate
-          failed = []
-          failed.push("invalid id. #{id}") unless valid_id_type?
-
-          failed.push("invalid name. #{name}") unless valid_name_type?
-
-          failed.push("invalid end_date. #{end_date}") unless valid_date_type?
-
-          failed |= validate_list
-          failed
-        end
-
-        # :reek:NilCheck
-
-        #
-        # IDを検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_id_type?
-          !(@id.nil? || !@id.is_a?(Integer))
-        end
-
-        #
-        # 元号セット名を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_name_type?
-          !(@name.nil? || !@name.is_a?(String))
-        end
-
-        #
-        # 日付文字列を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_date_type?
-          Western::Calendar.valid_date_string(str: @end_date)
-        end
-
-        # :reek:NilCheck
-
-        #
-        # 元号情報を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def valid_list_type?
-          (!@list.nil? || @list.is_a?(Array))
-        end
-
-        #
-        # 元号情報を検証する
-        #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def validate_list
-          return ["invalid list. #{@list.class}"] unless valid_list_type?
-
-          failed = []
-          list.each_with_index do |li, index|
-            failed |= GengouParser.new(hash: li, index: index).validate
-          end
-          failed
         end
 
         #
@@ -317,10 +157,11 @@ module Zakuro
       def self.run(filepath: '')
         yaml = YAML.load_file(filepath)
 
-        parser = SetParser.new(hash: yaml)
-        failed = parser.validate
+        failed = Validator.run(yaml_hash: yaml)
+
         raise ArgumentError, failed.join("\n") unless failed.empty?
 
+        parser = SetParser.new(hash: yaml)
         parser.create
       end
     end

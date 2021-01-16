@@ -21,7 +21,7 @@ describe 'Zakuro' do
         context 'actual yaml path' do
           it 'should be no error' do
             yaml = YAML.load_file(ACTUAL_YAML_PATH)
-            fails = Zakuro::Japan::Parser.validate(yaml)
+            fails = Zakuro::Japan::Validator.run(yaml_hash: yaml)
             expect(fails).to be_empty
           end
         end
