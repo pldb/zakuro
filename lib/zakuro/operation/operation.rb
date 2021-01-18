@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './parser'
+require_relative './month/parser'
 
 # :nodoc:
 module Zakuro
@@ -11,7 +11,10 @@ module Zakuro
     #
     # 変更履歴（月）
     #
-    MONTHES = MonthParser.run
+    MONTHES = MonthParser.run(filepath: File.expand_path(
+      './yaml/month.yaml',
+      __dir__
+    ))
 
     #
     # 変更履歴（月）を返す

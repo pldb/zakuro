@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../western'
-require_relative './parser'
-require_relative './type'
+require_relative './gengou/parser'
+require_relative './gengou/type'
 
 # :nodoc:
 module Zakuro

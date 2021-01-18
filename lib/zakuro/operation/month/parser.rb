@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
-require_relative '../era/western'
+require_relative '../../era/western'
 require_relative './validator'
 require_relative './type'
 
@@ -106,11 +106,7 @@ module Zakuro
       #
       # @return [Array<History>] 変更履歴
       #
-      def self.run
-        filepath = File.expand_path(
-          './yaml/month.yaml',
-          __dir__
-        )
+      def self.run(filepath:)
         hash = YAML.load_file(filepath)
 
         failed = Validator.run(yaml_hash: hash)
