@@ -25,6 +25,12 @@ module Zakuro
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'full_range')
 
+      #
+      # 初期化
+      #
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] end_date 終了日
+      #
       def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
         @multi_gengou_roller = MultiGengouRoller.new(start_date: start_date, end_date: end_date)
         @new_year_date = @multi_gengou_roller.oldest_date.clone
