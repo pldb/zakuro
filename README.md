@@ -60,84 +60,92 @@ puts merchant.commit.to_json
 
 条件（condition）のバリエーションを示します。
 
-|項目名|キー名|hash内キー名|データ型|備考|
-|:----|:----|:----|:----|:----|
-|基準日|date| |Date| 西暦日 |
-| | | |String| 和暦日 |
-|範囲（開始日）|range|start|Date| |
-|範囲（終了日）| |last|Date| |
-|列|columns| |Array<String>|取得したい列の列名|
-|オプション|options| |Array<String>|取得オプション|
+| 項目名         | キー名  | hash内キー名 | データ型 | 備考               |
+|----------------|---------|--------------|----------|--------------------|
+| 基準日         | date    |              | Date     | 西暦日             |
+|                |         |              | String   | 和暦日             |
+| 範囲（開始日） | range   | start        | Date     |                    |
+| 範囲（終了日） |         | last         | Date     |                    |
+| 列             | columns |              | Array    | 取得したい列の列名 |
+| オプション     | options |              | Array    | 取得オプション     |
 
 現時点では `date` の西暦日のみ対応中です。
 
 ## オプション
 
-|項目名|キー名|データ型|データ|備考|
-|:----|:----|:----|:----|:----|
-|単位|unit|String|year|年単位|
-| | | |month|月単位|
-| | | |day|日単位（デフォルト）|
-|没日|lost_days|True| |没日あり|
-| | |False| |没日なし（デフォルト）|
-|四季|seasons|True| |四季あり|
-| | |False| |四季なし（デフォルト）|
+| 項目名 | キー名    | データ型 | データ | 備考                   |
+|--------|-----------|----------|--------|------------------------|
+| 単位   | unit      | String   | year   | 年単位                 |
+|        |           |          | month  | 月単位                 |
+|        |           |          | day    | 日単位（デフォルト）   |
+| 没日   | lost_days | TRUE     |        | 没日あり               |
+|        |           | FALSE    |        | 没日なし（デフォルト） |
+| 四季   | seasons   | TRUE     |        | 四季あり               |
+|        |           | FALSE    |        | 四季なし（デフォルト） |
 
 # 期待値
 暦算値は『日本暦日原典』、元号の切り替えは『日本史年表　第5版』を範とします。
 
-| 項目名                   | キー名    | -                | -            | -                | -            | 参考値                                                                       | 備考                            |
-|--------------------------|-----------|------------------|--------------|------------------|--------------|------------------------------------------------------------------------------|---------------------------------|
-| 年号                     | year      | first_gengou     | name         |                  |              | 貞観                                                                         |                                 |
-| 年号年                   |           |                  | number       |                  |              | 4                                                                            |                                 |
-| 年号（南北朝時代の北朝） |           | second_gengou    | name         |                  |              |                                                                              | 南北朝時代の北朝のみ            |
-| 年号年                   |           |                  | number       |                  |              | -                                                                            | 南北朝時代の北朝のみ            |
-| 年の干支                 |           | zodiac_name      |              |                  |              | 壬午                                                                         |                                 |
-| 年の日数                 |           | total_days       |              |                  |              | 354                                                                          |                                 |
-| 月                       | month     | number           |              |                  |              | 1                                                                            | x月                             |
-| 閏月判定                 |           | leaped           |              |                  |              | false                                                                        | 閏月（true）/平月（false）      |
-| 月の大小                 |           | days_name        |              |                  |              | 大                                                                           | 大（30日） / 小（29日）         |
-| 月初日                   |           | first_day        | number       |                  |              | 1                                                                            | x日（1日固定）                  |
-| 月初日の干支             |           |                  | zodiac_name  |                  |              | 庚午                                                                         |                                 |
-| 月初日の大余小余         |           |                  | remainder    |                  |              | 6-1282                                                                       |                                 |
-| 西暦日                   |           |                  | western_date |                  |              | 0862-02-03                                                                   |                                 |
-| 節気                     |           | odd_solar_terms  | index        |                  |              | 5                                                                            | 番号（冬至0始まり）             |
-| 節気の大余小余           |           |                  | remainder    |                  |              | 34-5368                                                                      | 大余小余                        |
-| 中気                     |           | even_solar_terms | index        |                  |              | 4                                                                            | 番号（冬至0始まり）             |
-| 中気の大余小余           |           |                  | remainder    |                  |              | 19-3532                                                                      | 大余小余                        |
-| 日                       | day       | number           |              |                  |              | 1                                                                            | x日                             |
-| 日の干支                 |           | zodiac_name      |              |                  |              | 庚午                                                                         | 日の干支                        |
-| 日の大余小余             |           | remainder        |              |                  |              | 6-1282                                                                       | 大余小余                        |
-| 西暦日                   |           | western_date     |              |                  |              | 0862-02-03                                                                   | 西暦日                          |
-| 運用状況                 | operation |                  |              |                  |              |                                                                              |                                 |
-|                          |           | operated         |              |                  |              | true                                                                         | 運用値（true）/ 計算値（false） |
-| 原文頁数                 |           | page             |              |                  |              | 272                                                                          |                                 |
-| 原文注釈番号             |           | number           |              |                  |              | 1                                                                            |                                 |
-| 運用注釈                 |           | annotation       |              |                  |              | []                                                                           | 関連する注釈                    |
-| 説明                     |           |                  | description  |                  |              | 計算では47辛亥, 朔旦冬至にするため庚戌朔, そのユリウス暦日は12月15日になる。 |                                 |
-| 原文外注記               |           |                  | note         |                  |              |                                                                              | 原文訂正あり                    |
-| 計算値                   |           | original         |              |                  |              |                                                                              | 運用値が適用された場合のみ有効  |
-|                          |           |                  | year         | first_gengou     | name         | 貞観                                                                         |                                 |
-|                          |           |                  |              |                  | number       | 4                                                                            |                                 |
-|                          |           |                  |              | second_gengou    | name         |                                                                              | 南北朝時代の北朝のみ            |
-|                          |           |                  |              |                  | number       | -                                                                            | 南北朝時代の北朝のみ            |
-|                          |           |                  |              | zodiac_name      |              | 壬午                                                                         |                                 |
-|                          |           |                  |              | total_days       |              | 354                                                                          |                                 |
-|                          |           |                  | month        | number           |              | 1                                                                            | x月                             |
-|                          |           |                  |              | leaped           |              | false                                                                        | 閏月（true）/平月（false）      |
-|                          |           |                  |              | days_name        |              | 大                                                                           | 大（30日） / 小（29日）         |
-|                          |           |                  |              | first_day        | number       | 1                                                                            | x日（1日固定）                  |
-|                          |           |                  |              |                  | zodiac_name  | 庚午                                                                         |                                 |
-|                          |           |                  |              |                  | remainder    | 6-1282                                                                       |                                 |
-|                          |           |                  |              |                  | western_date | -379082                                                                      |                                 |
-|                          |           |                  |              | odd_solar_terms  | index        | 5                                                                            |                                 |
-|                          |           |                  |              |                  | remainder    | 34-5368                                                                      |                                 |
-|                          |           |                  |              | even_solar_terms | index        | 4                                                                            |                                 |
-|                          |           |                  |              |                  | remainder    | 19-3532                                                                      |                                 |
-|                          |           |                  | day          | number           |              | 1                                                                            |                                 |
-|                          |           |                  |              | zodiac_name      |              | 庚午                                                                         |                                 |
-|                          |           |                  |              | remainder        |              | 6-1282                                                                       |                                 |
-|                          |           |                  |              | western_date     |              | 0862-02-03                                                                   |                                 |
+## 種類
+
+現状は一日検索のみ対応しております。
+
+| 項目名   | データ型               |
+|----------|------------------------|
+| 一日検索 | Zakuro::Result::Single |
+| 範囲検索 | Zakuro::Result::Range  |
+
+### Zakuro::Result::Single
+
+| 項目名   | キー名    | - | - | データ型                  | 参考値 | 備考 |
+|----------|-----------|---|---|---------------------------|--------|------|
+| 日付情報 | data      |   |   | Zakuro::Result::SingleDay | -      | -    |
+| 運用情報 | operation |   |   | Zakuro::Result::Operation | -      | -    |
+
+### Zakuro::Result::SingleDay
+
+| 項目名                   | キー名 | -                | -            | データ型                  | 参考値     | 備考                       |
+|--------------------------|--------|------------------|--------------|---------------------------|------------|----------------------------|
+| 年情報                   | year   |                  |              | Zakuro::Result::Year      |            |                            |
+| 年号                     |        | first_gengou     |              | Zakuro::Result::Gengou    |            |                            |
+| 元号                     |        |                  | name         | String                    | 貞観       |                            |
+| 元号年                   |        |                  | number       | Integer                   | 4          |                            |
+| 年号（南北朝時代の北朝） |        | second_gengou    |              | Zakuro::Result::Gengou    |            |                            |
+| 元号                     |        |                  | name         | String                    | -          | 南北朝時代の北朝のみ       |
+| 元号年                   |        |                  | number       | Integer                   | -          | 南北朝時代の北朝のみ       |
+| 年の干支                 |        | zodiac_name      |              | String                    | 壬午       |                            |
+| 年の日数                 |        | total_days       |              | Integer                   | 354        |                            |
+| 月                       | month  |                  |              | Zakuro::Result::Month     |            |                            |
+| 月番号                   |        | number           |              | Integer                   | 1          | x月                        |
+| 閏月判定                 |        | leaped           |              | True/False                | FALSE      | 閏月（true）/平月（false） |
+| 月の大小                 |        | days_name        |              | String                    | 大         | 大（30日） / 小（29日）    |
+| 月初日                   |        | first_day        | number       | Integer                   | 1          | x日（1日固定）             |
+| 月初日の干支             |        |                  | zodiac_name  | String                    | 庚午       |                            |
+| 月初日の大余小余         |        |                  | remainder    | String                    | 6-1282     |                            |
+| 西暦日                   |        |                  | western_date | String                    | 0862-02-03 |                            |
+| 節気                     |        | odd_solar_terms  |              | Zakuro::Result::SolarTerm |            |                            |
+| 二十四節気番号           |        |                  | index        | Integer                   | 5          | 番号（冬至0始まり）        |
+| 二十四節気の大余小余     |        |                  | remainder    | String                    | 34-5368    | 大余小余                   |
+| 中気                     |        | even_solar_terms |              | Zakuro::Result::SolarTerm |            |                            |
+| 二十四節気番号           |        |                  | index        | Integer                   | 4          | 番号（冬至0始まり）        |
+| 二十四節気の大余小余     |        |                  | remainder    | String                    | 19-3532    | 大余小余                   |
+| 日                       | day    |                  |              | Zakuro::Result::Day       |            |                            |
+| 日番号                   |        | number           |              | Integer                   | 1          | x日                        |
+| 日の干支                 |        | zodiac_name      |              | String                    | 庚午       | 日の干支                   |
+| 日の大余小余             |        | remainder        |              | String                    | 6-1282     | 大余小余                   |
+| 西暦日                   |        | western_date     |              | String                    | 0862-02-03 | 西暦日                     |
+
+### Zakuro::Result::Operation
+
+| 項目名       | キー名     | -           | - | データ型                          | 参考値                                                                        | 備考                 |
+|--------------|------------|-------------|---|-----------------------------------|-------------------------------------------------------------------------------|----------------------|
+| 運用有無     | operated   |             |   | True/False                        | TRUE                                                                          |                      |
+| 原文頁数     | page       |             |   | Integer                           | 354                                                                           |                      |
+| 原文注釈番号 | number     |             |   | Integer                           | 1                                                                             |                      |
+| 注釈         | annotation |             |   | Array<Zakuro::Result::Annotation> |                                                                               |                      |
+| 注釈内容     |            | description |   | String                            | 計算では47辛亥, 朔旦冬至にするため庚戌朔, そのユリウス暦日は12月15日になる。  |                      |
+| 注釈補記     |            | note        |   | String                            | -                                                                             | 原文訂正             |
+| 計算値       | original   |             |   | Zakuro::Result::SingleDay         |                                                                               | 運用値差替前の計算値 |
 
 # 元号
 
