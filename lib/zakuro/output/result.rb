@@ -87,14 +87,12 @@ module Zakuro
     # Month 月
     #
     class Month
-      # TODO: days_name -> zodiac_name
-
       # @return [Integer] 月順（1-12）
       attr_reader :number
       # @return [True] 閏月
       # @return [False] 平月
       attr_reader :leaped
-      # @return [String] 十干十二支
+      # @return [String] 月の大小
       attr_reader :days_name
       # @return [Day] 月初日データ
       attr_reader :first_day
@@ -111,7 +109,7 @@ module Zakuro
       #
       # @param [Integer] number 月順（1-12）
       # @param [True, False] leaped 閏月/平月
-      # @param [String] days_name 十干十二支
+      # @param [String] days_name 月の大小
       # @param [Day] first_day 月初日データ
       # @param [SolarTerm] odd_solar_terms 二十四節気（節気）
       # @param [SolarTerm] even_solar_terms 二十四節気（中気）
