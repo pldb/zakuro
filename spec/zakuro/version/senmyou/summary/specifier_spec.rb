@@ -11,33 +11,33 @@ describe 'Zakuro' do
       describe '.get' do
         context 'ancient month from western date 862-2-3' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 4),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬午',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '庚午', remainder: '6-1282',
                   western_date: '0862-02-03'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 5, remainder: '34-5368'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '19-3532'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '庚午', remainder: '6-1282',
                 western_date: '0862-02-03'
               )
@@ -57,8 +57,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '辛未',
-                                        remainder: '7-1282', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛未',
+                                              remainder: '7-1282', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -68,29 +68,29 @@ describe 'Zakuro' do
         end
         context 'ancient month from western date 862-3-5' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 4),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬午',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 2,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '庚子', remainder: '36-6432',
                   western_date: '0862-03-05'
                 ),
                 odd_solar_terms: [],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 6, remainder: '49-7203'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '庚子', remainder: '36-6432',
                 western_date: '0862-03-05'
               )
@@ -110,8 +110,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '辛丑',
-                                        remainder: '37-6432', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛丑',
+                                              remainder: '37-6432', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -123,8 +123,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '戊辰',
-                                        remainder: '4-6432', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '戊辰',
+                                              remainder: '4-6432', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -135,33 +135,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 862-11-25' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 4),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬午',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 11,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '乙丑', remainder: '1-5584',
                   western_date: '0862-11-25'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 23, remainder: '8-4809'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 0, remainder: '23-6645'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '乙丑', remainder: '1-5584',
                 western_date: '0862-11-25'
               )
@@ -181,8 +181,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '丙寅',
-                                        remainder: '2-5584', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '丙寅',
+                                              remainder: '2-5584', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -194,8 +194,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '甲午',
-                                        remainder: '30-5584', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '甲午',
+                                              remainder: '30-5584', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -206,33 +206,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 862-12-25' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 4),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬午',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 12,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '乙未', remainder: '31-941',
                   western_date: '0862-12-25'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 1, remainder: '39-80'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 2, remainder: '54-1916'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '乙未', remainder: '31-941',
                 western_date: '0862-12-25'
               )
@@ -252,8 +252,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '丙申',
-                                        remainder: '32-941', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '丙申',
+                                              remainder: '32-941', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -265,8 +265,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '癸亥',
-                                        remainder: '59-941', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '癸亥',
+                                              remainder: '59-941', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -277,33 +277,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 863-1-23' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 5),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 5),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '癸未',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '甲子', remainder: '0-4964',
                   western_date: '0863-01-23'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 3, remainder: '9-3751'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '24-5587'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '甲子', remainder: '0-4964',
                 western_date: '0863-01-23'
               )
@@ -323,8 +323,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '乙丑',
-                                        remainder: '1-4964', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '乙丑',
+                                              remainder: '1-4964', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -336,8 +336,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '癸巳',
-                                        remainder: '29-4964', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '癸巳',
+                                              remainder: '29-4964', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -348,29 +348,29 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 863-7-20' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 5),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 5),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '癸未',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 6,
                 leaped: true,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '壬戌', remainder: '58-8284',
                   western_date: '0863-07-20'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 15, remainder: '12-579'
                   )
                 ],
                 even_solar_terms: []
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '壬戌', remainder: '58-8284',
                 western_date: '0863-07-20'
               )
@@ -390,8 +390,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '癸亥',
-                                        remainder: '59-8284', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '癸亥',
+                                              remainder: '59-8284', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -403,8 +403,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '庚寅',
-                                        remainder: '26-8284', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '庚寅',
+                                              remainder: '26-8284', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -415,33 +415,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 876-1-30' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 18),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 18),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '丙申',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '己卯', remainder: '15-5502',
                   western_date: '0876-01-30'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 3, remainder: '17-5266'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '32-7102'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '己卯', remainder: '15-5502',
                 western_date: '0876-01-30'
               )
@@ -461,8 +461,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '庚辰',
-                                        remainder: '16-5502', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '庚辰',
+                                              remainder: '16-5502', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -474,8 +474,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '戊申',
-                                        remainder: '44-5502', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '戊申',
+                                              remainder: '44-5502', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -486,33 +486,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 876-12-20' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 18),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 18),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '丙申',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 12,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '甲辰', remainder: '40-7755',
                   western_date: '0876-12-20'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 1, remainder: '52-3650'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 2, remainder: '7-5486'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '甲辰', remainder: '40-7755',
                 western_date: '0876-12-20'
               )
@@ -532,8 +532,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '乙巳',
-                                        remainder: '41-7755', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '乙巳',
+                                              remainder: '41-7755', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -545,8 +545,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '壬申',
-                                        remainder: '8-7755', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '壬申',
+                                              remainder: '8-7755', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -557,33 +557,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 877-5-31' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 19),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 19),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '丁酉',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 4,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '壬申', remainder: '8-1019',
                   western_date: '0877-05-17'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 11, remainder: '24-5206'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 10, remainder: '9-3371'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 15, zodiac_name: '丙戌', remainder: '22-1019',
                 western_date: '0877-05-31'
               )
@@ -602,33 +602,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 877-6-1' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '元慶', number: 1),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '元慶', number: 1),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '丁酉',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 4,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '壬申', remainder: '8-1019',
                   western_date: '0877-05-17'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 11, remainder: '24-5206'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 10, remainder: '9-3371'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 16, zodiac_name: '丁亥', remainder: '23-1019',
                 western_date: '0877-06-01'
               )
@@ -648,33 +648,33 @@ describe 'Zakuro' do
         # 西暦937年の前年冬至が閏11月から始まる
         context 'ancient month from western date 937-2-14' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '承平', number: 7),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '承平', number: 7),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '丁酉',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '乙卯', remainder: '51-2479',
                   western_date: '0937-02-14'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 5, remainder: '7-8293'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '52-6457'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '乙卯', remainder: '51-2479',
                 western_date: '0937-02-14'
               )
@@ -694,33 +694,33 @@ describe 'Zakuro' do
         context 'ancient month from western date 1332-1-28' do
           # 文字化け回避コメント（solargraph が日本語文字列 '正慶' を自動変換するため）
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '元弘', number: 2),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '元弘', number: 2),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬申',
                 total_days: 355
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '辛未', remainder: '7-4787',
                   western_date: '1332-01-28'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 3, remainder: '9-1546'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '24-3382'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '辛未', remainder: '7-4787',
                 western_date: '1332-01-28'
               )
@@ -741,8 +741,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '壬申',
-                                        remainder: '8-4787', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '壬申',
+                                              remainder: '8-4787', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -754,8 +754,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '庚子',
-                                        remainder: '36-4787', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '庚子',
+                                              remainder: '36-4787', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -766,33 +766,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 1392-1-25' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '元中', number: 9),
-                second_gengou: Zakuro::Result::Gengou.new(name: '明徳', number: 3),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '元中', number: 9),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '明徳', number: 3),
                 zodiac_name: '壬申',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '癸未', remainder: '19-2126',
                   western_date: '1392-01-25'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 3, remainder: '23-7246'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '39-682'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '癸未', remainder: '19-2126',
                 western_date: '1392-01-25'
               )
@@ -812,8 +812,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '甲申',
-                                        remainder: '20-2126', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '甲申',
+                                              remainder: '20-2126', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -825,8 +825,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 30, zodiac_name: '壬子',
-                                        remainder: '48-2126', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '壬子',
+                                              remainder: '48-2126', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -837,34 +837,34 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 1392-11-19' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '明徳', number: 3),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '明徳', number: 3),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '壬申',
                 total_days: 384
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 # 朔旦冬至による補正前（補正後は閏10月の小の月）
                 number: 11,
                 leaped: false,
                 days_name: '大',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '戊寅', remainder: '14-3986',
                   western_date: '1392-11-15'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 23, remainder: '28-1959'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 0, remainder: '43-3795'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 5, zodiac_name: '壬午', remainder: '18-3986',
                 western_date: '1392-11-19'
               )
@@ -884,33 +884,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 1393-2-12' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '明徳', number: 4),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '明徳', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '癸酉',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '丁未', remainder: '43-1067',
                   western_date: '1393-02-12'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 5, remainder: '59-4573'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '44-2737'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '丁未', remainder: '43-1067',
                 western_date: '1393-02-12'
               )
@@ -930,8 +930,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '戊申',
-                                        remainder: '44-1067', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '戊申',
+                                              remainder: '44-1067', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -943,8 +943,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '乙亥',
-                                        remainder: '11-1067', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '乙亥',
+                                              remainder: '11-1067', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -955,33 +955,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 1394-2-1' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '応永', number: 1),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '応永', number: 1),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '甲戌',
                 total_days: 355
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 7,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '己亥', remainder: '35-7979',
                   western_date: '1394-07-29'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 15, remainder: '36-8184'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 16, remainder: '52-1620'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 5, zodiac_name: '癸卯', remainder: '39-7979',
                 western_date: '1394-08-02'
               )
@@ -1000,33 +1000,33 @@ describe 'Zakuro' do
 
         context 'ancient month from western date 1685-2-4' do
           let!(:first_day) do
-            Zakuro::Result::SingleDay.new(
-              year: Zakuro::Result::Year.new(
-                first_gengou: Zakuro::Result::Gengou.new(name: '貞享', number: 2),
-                second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞享', number: 2),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
                 zodiac_name: '乙丑',
                 total_days: 354
               ),
-              month: Zakuro::Result::Month.new(
+              month: Zakuro::Result::Data::Month.new(
                 number: 1,
                 leaped: false,
                 days_name: '小',
-                first_day: Zakuro::Result::Day.new(
+                first_day: Zakuro::Result::Data::Day.new(
                   number: 1, zodiac_name: '壬戌', remainder: '58-588',
                   western_date: '1685-02-04'
                 ),
                 odd_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 3, remainder: '0-4561'
                   )
                 ],
                 even_solar_terms: [
-                  Zakuro::Result::SolarTerm.new(
+                  Zakuro::Result::Data::SolarTerm.new(
                     index: 4, remainder: '15-6397'
                   )
                 ]
               ),
-              day: Zakuro::Result::Day.new(
+              day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '壬戌', remainder: '58-588',
                 western_date: '1685-02-04'
               )
@@ -1046,8 +1046,8 @@ describe 'Zakuro' do
               second_day = first_day
               second_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 2, zodiac_name: '癸亥',
-                                        remainder: '59-588', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '癸亥',
+                                              remainder: '59-588', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json
@@ -1059,8 +1059,8 @@ describe 'Zakuro' do
               last_day = first_day
               last_day.instance_variable_set(
                 :@day,
-                Zakuro::Result::Day.new(number: 29, zodiac_name: '庚寅',
-                                        remainder: '26-588', western_date: date.format)
+                Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '庚寅',
+                                              remainder: '26-588', western_date: date.format)
               )
               expect(
                 Zakuro::Senmyou::SingleDaySpecifier.get(date: date).to_pretty_json

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'result'
+require_relative '../result/result'
 
 # :nodoc:
 module Zakuro
@@ -53,7 +53,7 @@ module Zakuro
         month = param.month
         date = param.date
         days = param.days
-        Result::SingleDay.new(
+        Result::Data::SingleDay.new(
           year: save_year(year: year),
           month: save_month(month: month, date: date, days: days),
           day: save_day(month: month, date: date, days: days)
@@ -71,11 +71,11 @@ module Zakuro
         multi_gengou = year.multi_gengou
         first = multi_gengou.first_line
         second = multi_gengou.second_line
-        Result::Year.new(
+        Result::Data::Year.new(
           first_gengou:
-            Result::Gengou.new(name: first.name, number: first.year),
+            Result::Data::Gengou.new(name: first.name, number: first.year),
           second_gengou:
-            Result::Gengou.new(name: second.name, number: second.year),
+            Result::Data::Gengou.new(name: second.name, number: second.year),
           zodiac_name: year.zodiac_name, total_days: year.total_days
         )
       end
@@ -91,7 +91,7 @@ module Zakuro
       # @return [Result::Month] 月データ
       #
       def self.save_month(month:, date:, days:)
-        Result::Month.new(
+        Result::Data::Month.new(
           number: month.number, leaped: month.leaped, days_name: month.days_name,
           first_day: save_first_day(remainder: month.remainder,
                                     date: date, days: days),
@@ -112,7 +112,7 @@ module Zakuro
       #
       def self.save_first_day(remainder:, date:, days:)
         western_date = date.clone - days
-        Result::Day.new(
+        Result::Data::Day.new(
           number: 1,
           zodiac_name: remainder.zodiac_name,
           remainder: remainder.format,
@@ -134,7 +134,7 @@ module Zakuro
         return [] if term.invalid?
 
         [
-          Result::SolarTerm.new(
+          Result::Data::SolarTerm.new(
             index: term.index,
             remainder: term.remainder.format
           )
@@ -157,7 +157,7 @@ module Zakuro
           # 常に参照元のRemainderクラスで生成する
           remainder.class.new(day: days, minute: 0, second: 0)
         )
-        Result::Day.new(
+        Result::Data::Day.new(
           number: (days + 1),
           zodiac_name: remainder.zodiac_name,
           remainder: remainder.format,
