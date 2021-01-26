@@ -10,33 +10,33 @@ describe 'Zakuro' do
     describe 'commit' do
       context '862-2-3' do
         let!(:first_day) do
-          Zakuro::Result::SingleDay.new(
-            year: Zakuro::Result::Year.new(
-              first_gengou: Zakuro::Result::Gengou.new(name: '貞観', number: 4),
-              second_gengou: Zakuro::Result::Gengou.new(name: '', number: -1),
+          Zakuro::Result::Data::SingleDay.new(
+            year: Zakuro::Result::Data::Year.new(
+              first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+              second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
               zodiac_name: '壬午',
               total_days: 354
             ),
-            month: Zakuro::Result::Month.new(
+            month: Zakuro::Result::Data::Month.new(
               number: 1,
               leaped: false,
               days_name: '大',
-              first_day: Zakuro::Result::Day.new(
+              first_day: Zakuro::Result::Data::Day.new(
                 number: 1, zodiac_name: '庚午', remainder: '6-1282',
                 western_date: '0862-02-03'
               ),
               odd_solar_terms: [
-                Zakuro::Result::SolarTerm.new(
+                Zakuro::Result::Data::SolarTerm.new(
                   index: 5, remainder: '34-5368'
                 )
               ],
               even_solar_terms: [
-                Zakuro::Result::SolarTerm.new(
+                Zakuro::Result::Data::SolarTerm.new(
                   index: 4, remainder: '19-3532'
                 )
               ]
             ),
-            day: Zakuro::Result::Day.new(
+            day: Zakuro::Result::Data::Day.new(
               number: 1, zodiac_name: '庚午', remainder: '6-1282',
               western_date: '0862-02-03'
             )
