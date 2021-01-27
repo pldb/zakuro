@@ -61,10 +61,25 @@ module Zakuro
         end
       end
 
+      #
+      # Annotation 注釈
+      #
       class Annotation
-        # TODO:
-        # attr_reader description
-        # attr_reader note
+        # @return [String] 注釈内容
+        attr_reader :description
+        # @return [String] 注釈補記
+        attr_reader :note
+
+        #
+        # 初期化
+        #
+        # @param [String] description 注釈内容
+        # @param [<Type>] note 注釈補記
+        #
+        def initialize(description:, note:)
+          @description = description
+          @note = note
+        end
       end
     end
   end
