@@ -143,7 +143,7 @@ puts merchant.commit.to_json
 | 月別履歴情報 | month    | 　         | 　          | ArrayZakuro::Result::Operation::Month      | 　                                                                           | 　                   |
 | 原文頁数     |          | page       | 　          | Integer                                    | 354                                                                          | 　                   |
 | 原文注釈番号 |          | number     | 　          | Integer                                    | 1                                                                            | 　                   |
-| 注釈         |          | annotation | 　          | ArrayZakuro::Result::Operation::Annotation | 　                                                                           | 　                   |
+| 注釈         |          | annotations | 　          | Array<Zakuro::Result::Operation::Annotation> | 　                                                                           | 　                   |
 | 注釈内容     | 　       |            | description | String                                     | 計算では47辛亥, 朔旦冬至にするため庚戌朔, そのユリウス暦日は12月15日になる。 | 　                   |
 | 注釈補記     | 　       |            | note        | String                                     | -                                                                            | 原文訂正             |
 | 計算値       | original | 　         | 　          | Zakuro::Result::Data::SingleDay            | 　                                                                           | 運用値差替前の計算値 |
