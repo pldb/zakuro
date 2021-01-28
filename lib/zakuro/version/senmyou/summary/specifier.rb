@@ -23,7 +23,7 @@ module Zakuro
       #
       # @param [Western::Calendar] date 西暦日
       #
-      # @return [Response::SingleDay] 和暦日
+      # @return [Result::Data::SingleDay] 和暦日
       #
       def self.get(date:)
         years = FullRange.new(start_date: date).get
