@@ -11,7 +11,7 @@ module Zakuro
     #
     # 変更履歴（月）
     #
-    MONTHES = MonthParser.run(filepath: File.expand_path(
+    MONTHS = MonthParser.run(filepath: File.expand_path(
       './yaml/month.yaml',
       __dir__
     ))
@@ -21,8 +21,8 @@ module Zakuro
     #
     # @return [Array<History>] 変更履歴
     #
-    def self.month
-      MONTHES
+    def self.months
+      MONTHS
     end
   end
 end
