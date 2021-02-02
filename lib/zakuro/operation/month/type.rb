@@ -66,7 +66,7 @@ module Zakuro
     class Diffs
       attr_reader :month, :even_term, :day
 
-      def initialize(month:, even_term:, day:)
+      def initialize(month:, even_term:, day: INVALID_DAY_VALUE)
         @month = month
         @even_term = even_term
         @day = day
@@ -95,7 +95,7 @@ module Zakuro
     class EvenTerm
       attr_reader :index, :name, :to, :day
 
-      def initialize(to:, day:)
+      def initialize(to:, day: INVALID_DAY_VALUE)
         @to = to
         @day = day
       end

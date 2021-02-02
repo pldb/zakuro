@@ -46,20 +46,22 @@ module Zakuro
       end
 
       def rewrite_year(year:)
-        months = []
+        result = Year.new(multi_gengou: year.multi_gengou, new_year_date: year.new_year_date)
         year.months.each do |month|
           @operation_months.each do |operation|
             operated_month = rewrite_month(month: month, operation: operation)
-            months.push(operated_month)
+            result.push(month: operated_month)
           end
         end
 
-        # TODO: yearに設定する
-        months
+        result.commit
+
+        result
       end
 
       def rewrite_month(month:, operation:)
-        # TODO: 書き換える
+        # TODO: 同じ西暦日の場合は書き換える
+        # TODO: monthの側に月の初日（朔日）が存在しない
       end
     end
   end
