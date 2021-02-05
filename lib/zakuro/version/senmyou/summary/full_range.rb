@@ -70,6 +70,7 @@ module Zakuro
 
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
         update_gengou(years: years)
+        update_month(years: years)
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -138,6 +139,13 @@ module Zakuro
         end
 
         updated_years
+      end
+
+      def update_month(years:)
+        # TODO: 月初日の西暦日を更新する
+        # year.new_year_date を使って年の元旦を取る
+        # 元旦から西暦日を数え、月の大小を使いながら各月初日の西暦日を得る
+        # 月初日の西暦日を月（month）に設定する
       end
 
       #

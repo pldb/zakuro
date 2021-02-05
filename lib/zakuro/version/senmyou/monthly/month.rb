@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../era/western'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -28,9 +30,11 @@ module Zakuro
       attr_reader :remainder
       # @return [String] 月齢（朔月、上弦、望月、下弦）
       attr_reader :phase_index
+      # @return [Western::Calendar] 月初日の西暦日
+      attr_reader :western_date
 
       # rubocop:disable Metrics/ParameterLists
-      # :reek:BooleanParametere
+      # :reek:BooleanParameter
 
       #
       # 初期化
@@ -43,10 +47,12 @@ module Zakuro
       # @param [String] phase_index 月齢（朔月、上弦、望月、下弦）
       # @param [SolarTerm] even_term 二十四節気（中気）
       # @param [SolarTerm] odd_term 二十四節気（節気）
+      # @param [Western::Calendar] western_date 月初日の西暦日
       #
       def initialize(is_last_year: -1, number: -1, is_many_days: false,
                      leaped: false, remainder: Remainder.new, phase_index: -1,
-                     even_term: SolarTerm.new, odd_term: SolarTerm.new)
+                     even_term: SolarTerm.new, odd_term: SolarTerm.new,
+                     western_date: Western::Calendar.new)
         # 年
         @is_last_year = is_last_year
         # 月の大小
@@ -55,7 +61,7 @@ module Zakuro
         @number = number
         # 閏
         @leaped = leaped
-        # 日
+        # 月初日の大余小余
         @remainder = remainder
         # 月齢（朔月、上弦、望月、下弦）
         @phase_index = phase_index
@@ -63,6 +69,8 @@ module Zakuro
         @even_term = even_term
         # 節気（二十四節気）
         @odd_term = odd_term
+        # 月初日の西暦日
+        @western_date = western_date
       end
       # rubocop:enable Metrics/ParameterLists
 
@@ -115,7 +123,8 @@ module Zakuro
         "is_last_year: #{@is_last_year}, number: #{@number}, leaped: #{@leaped}, " \
           "remainder: #{@remainder.format}, phase_index: #{@phase_index}, " \
           "even_term: #{@even_term.remainder.format}: #{@even_term.index}, " \
-          "odd_term: #{@odd_term.remainder.format}: #{@odd_term.index}"
+          "odd_term: #{@odd_term.remainder.format}: #{@odd_term.index}, " \
+          "western_date: #{@western_date.format}"
       end
     end
   end
