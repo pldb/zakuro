@@ -70,7 +70,7 @@ module Zakuro
 
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
         update_gengou(years: years)
-        update_month(years: years)
+        update_first_day(years: years)
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -141,11 +141,44 @@ module Zakuro
         updated_years
       end
 
-      def update_month(years:)
-        # TODO: 月初日の西暦日を更新する
-        # year.new_year_date を使って年の元旦を取る
-        # 元旦から西暦日を数え、月の大小を使いながら各月初日の西暦日を得る
-        # 月初日の西暦日を月（month）に設定する
+      #
+      # 月初日の西暦日を更新する
+      #
+      # @param [Array<Year>] years 完全範囲（月初日なし）
+      #
+      # @return [Array<Year>] 完全範囲（月初日あり）
+      #
+      def update_first_day(years:)
+        # TODO: リファクタリング
+
+        result = []
+
+        years.each do |year|
+          first_day = year.new_year_date.clone
+
+          months = []
+          year.months.each do |month|
+            updated_month = Month.new(
+              is_last_year: month.is_last_year, number: month.number,
+              is_many_days: month.is_many_days, leaped: month.leaped,
+              remainder: month.remainder, phase_index: month.phase_index,
+              even_term: month.even_term.clone, odd_term: month.odd_term.clone,
+              western_date: first_day
+            )
+            months.push(updated_month)
+
+            first_day = first_day.clone + update_month.days
+          end
+
+          updated_year = Year.new(
+            multi_gengou: year.multi_gengou, new_year_date: year.new_year_date,
+            months: months, total_days: year.total_days
+          )
+
+          result.push(updated_year)
+        end
+
+        result
       end
 
       #
