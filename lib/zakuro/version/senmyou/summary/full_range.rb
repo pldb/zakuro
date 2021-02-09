@@ -69,7 +69,7 @@ module Zakuro
         return [] if invalid?
 
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
-        update_gengou(years: years)
+        years = update_gengou(years: years)
         update_first_day(years: years)
       end
 
@@ -167,7 +167,7 @@ module Zakuro
             )
             months.push(updated_month)
 
-            first_day = first_day.clone + update_month.days
+            first_day = first_day.clone + updated_month.days
           end
 
           updated_year = Year.new(
