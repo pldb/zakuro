@@ -82,33 +82,18 @@ module Zakuro
       # @param [Western::Calendar] date 西暦日
       #
       # @return [Month] 対象月
-      # @return [Western::Calendar] 月初日
       #
       def self.specify_month(year:, date:)
-        # FIXME: test case error
+        months = year.months
 
-        # ancient month from western date 862-12-25
-        # as 貞観4年12月
-        #   1日 (FAILED - 1)
-        #   2日 (FAILED - 2)
-        #   29日 (FAILED - 3)
-
-        # ancient month from western date 876-12-20
-        # as 貞観18年12月
-        #   1日 (FAILED - 4)
-        #   2日 (FAILED - 5)
-        #   29日 (FAILED - 6)
-
-        last_month = year.months[0]
-        year.months.each do |month|
+        last_month = months[0]
+        months.each do |month|
           return last_month if month.western_date > date
 
           last_month = month
         end
 
-        # return last_month if last_month.western_date > date
-
-        raise ArgumentError, "invalid month range. date: #{date.format}"
+        last_month
       end
     end
   end
