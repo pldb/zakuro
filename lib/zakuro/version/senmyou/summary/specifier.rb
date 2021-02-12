@@ -32,7 +32,8 @@ module Zakuro
 
         year = transfer(year: year, date: date)
 
-        month, first_date = specify_month(year: year, date: date)
+        month = specify_month(year: year, date: date)
+        first_date = month.western_date
 
         Response::SingleDay.save_single_day(
           param: Response::SingleDay::Param.new(
@@ -84,14 +85,28 @@ module Zakuro
       # @return [Western::Calendar] 月初日
       #
       def self.specify_month(year:, date:)
-        current_month_date = year.new_year_date.clone
-        next_month_date = current_month_date.clone
-        year.months.each do |month|
-          next_month_date += month.days
-          return month, current_month_date if next_month_date > date
+        # FIXME: test case error
 
-          current_month_date = next_month_date.clone
+        # ancient month from western date 862-12-25
+        # as 貞観4年12月
+        #   1日 (FAILED - 1)
+        #   2日 (FAILED - 2)
+        #   29日 (FAILED - 3)
+
+        # ancient month from western date 876-12-20
+        # as 貞観18年12月
+        #   1日 (FAILED - 4)
+        #   2日 (FAILED - 5)
+        #   29日 (FAILED - 6)
+
+        last_month = year.months[0]
+        year.months.each do |month|
+          return last_month if month.western_date > date
+
+          last_month = month
         end
+
+        # return last_month if last_month.western_date > date
 
         raise ArgumentError, "invalid month range. date: #{date.format}"
       end
