@@ -49,7 +49,7 @@ module Zakuro
       # @param [SolarTerm] odd_term 二十四節気（節気）
       # @param [Western::Calendar] western_date 月初日の西暦日
       #
-      def initialize(is_last_year: -1, number: -1, is_many_days: false,
+      def initialize(is_last_year: false, number: -1, is_many_days: false,
                      leaped: false, remainder: Remainder.new, phase_index: -1,
                      even_term: SolarTerm.new, odd_term: SolarTerm.new,
                      western_date: Western::Calendar.new)
