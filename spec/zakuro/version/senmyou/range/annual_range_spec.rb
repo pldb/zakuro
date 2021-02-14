@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/summary/annual_range',
+                         'lib/zakuro/version/senmyou/range/annual_range',
                          __dir__)
 
 expects_november_1st = {

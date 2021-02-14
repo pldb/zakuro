@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../era/western'
-require_relative './full_range'
+require_relative '../range/full_range'
 require_relative '../base/multi_gengou_roller'
 require_relative '../base/year'
 require_relative '../../../output/response'
@@ -86,14 +86,14 @@ module Zakuro
       def self.specify_month(year:, date:)
         months = year.months
 
-        last_month = months[0]
+        current_month = months[0]
         months.each do |month|
-          return last_month if month.western_date > date
+          return current_month if month.western_date > date
 
-          last_month = month
+          current_month = month
         end
 
-        last_month
+        current_month
       end
     end
   end
