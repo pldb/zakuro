@@ -22,7 +22,7 @@ module Zakuro
       #
       def initialize(full_range: FullRange.new)
         @full_range = full_range
-        @operation_months = Operation.months
+        @month_histroies = Operation.month_histories
       end
 
       #
@@ -48,8 +48,8 @@ module Zakuro
       def rewrite_year(year:)
         result = Year.new(multi_gengou: year.multi_gengou, new_year_date: year.new_year_date)
         year.months.each do |month|
-          @operation_months.each do |operation|
-            operated_month = rewrite_month(month: month, operation: operation)
+          @month_histroies.each do |history|
+            operated_month = rewrite_month(month: month, history: history)
             result.push(month: operated_month)
           end
         end
@@ -59,9 +59,9 @@ module Zakuro
         result
       end
 
-      def rewrite_month(month:, operation:)
-        # TODO: 同じ西暦日の場合は書き換える
-        # TODO: monthの側に月の初日（朔日）が存在しない
+      def rewrite_month(month:, history:)
+        return month unless month.western_date == history.western_date
+        # TODO: 書き換え処理
       end
     end
   end

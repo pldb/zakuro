@@ -9,7 +9,7 @@ describe 'Zakuro' do
     describe 'month' do
       context 'default month file' do
         it 'should be loaded' do
-          result = Zakuro::Operation.months
+          result = Zakuro::Operation.month_histories
           # 124(全行) - 9（無効行）
           expect(result.size).to eq 115
         end
