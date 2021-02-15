@@ -104,7 +104,7 @@ module Zakuro
       #
       # 実行する
       #
-      # @return [Array<History>] 変更履歴
+      # @return [Array<MonthHistory>] 変更履歴
       #
       def self.run(filepath:)
         hash = YAML.load_file(filepath)
@@ -121,7 +121,7 @@ module Zakuro
       #
       # @param [Hash] yaml_hash 設定ファイルテキスト
       #
-      # @return [Array<History>] 変更履歴
+      # @return [Array<MonthHistory>] 変更履歴
       #
       def self.load(yaml_hash: {})
         annotations = {}
@@ -139,7 +139,7 @@ module Zakuro
       # @param [Hash] annotations 注釈（空）
       # @param [Hash] relations 関連ID設定（空）
       #
-      # @return [Array<History>] 変更履歴
+      # @return [Array<MonthHistory>] 変更履歴
       #
       def self.create_histories(yaml_hash: {}, annotations: {}, relations: {})
         result = []
@@ -168,12 +168,12 @@ module Zakuro
         diffs = create_diffs(yaml_hash: yaml_hash['diffs'])
 
         western_date = Operation::TypeParser.western_date(str: yaml_hash['western_date'])
-        History.new(id: yaml_hash['id'],
-                    reference: Reference.new(page: yaml_hash['page'].to_i,
-                                             number: yaml_hash['number'].to_i,
-                                             japan_date: yaml_hash['japan_date']),
-                    western_date: western_date,
-                    diffs: diffs)
+        MonthHistory.new(id: yaml_hash['id'],
+                         reference: Reference.new(page: yaml_hash['page'].to_i,
+                                                  number: yaml_hash['number'].to_i,
+                                                  japan_date: yaml_hash['japan_date']),
+                         western_date: western_date,
+                         diffs: diffs)
       end
       private_class_method :create_history
 
@@ -213,9 +213,10 @@ module Zakuro
           end
 
           result.push(
-            History.new(id: history.id, reference: history.reference,
-                        western_date: history.western_date, annotations: history_annotations,
-                        diffs: history.diffs)
+            MonthHistory.new(
+              id: history.id, reference: history.reference, western_date: history.western_date,
+              annotations: history_annotations, diffs: history.diffs
+            )
           )
         end
 

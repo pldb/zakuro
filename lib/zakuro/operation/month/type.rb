@@ -16,9 +16,9 @@ module Zakuro
     INVALID_DAY_VALUE = -30
 
     #
-    # History 変更履歴
+    # MonthHistory 変更履歴
     #
-    class History
+    class MonthHistory
       attr_reader :id, :reference, :western_date, :annotations, :diffs
 
       def initialize(id:, reference:, western_date:, diffs:, annotations: [])

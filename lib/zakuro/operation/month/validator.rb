@@ -14,9 +14,9 @@ module Zakuro
     #
     module Validator
       #
-      # History 変更履歴
+      # MonthHistory 変更履歴
       #
-      class History
+      class MonthHistory
         attr_reader :index, :id, :western_date, :modified
 
         def initialize(index:, yaml_hash: {})
@@ -309,7 +309,7 @@ module Zakuro
       def self.run(yaml_hash: {})
         failed = []
         yaml_hash.each_with_index do |history, index|
-          failed += History.new(index: index, yaml_hash: history).validate
+          failed += MonthHistory.new(index: index, yaml_hash: history).validate
           failed += Annotation.new(index: index, yaml_hash: history).validate
           failed += Reference.new(index: index, yaml_hash: history).validate
           failed += Diffs.new(index: index, yaml_hash: history['diffs']).validate

@@ -19,7 +19,7 @@ module Zakuro
     #
     # 変更履歴（月）を返す
     #
-    # @return [Array<History>] 変更履歴
+    # @return [Array<MonthHistory>] 変更履歴
     #
     def self.months
       MONTHS
