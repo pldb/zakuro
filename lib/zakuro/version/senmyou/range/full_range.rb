@@ -5,6 +5,8 @@ require_relative '../base/multi_gengou_roller'
 require_relative '../../../era/western'
 require_relative './annual_range'
 
+require_relative '../base/year'
+
 # :nodoc:
 module Zakuro
   # :nodoc:

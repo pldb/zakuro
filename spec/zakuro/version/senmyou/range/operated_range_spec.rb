@@ -16,6 +16,10 @@ require File.expand_path('../../../../../' \
 describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
+      def to_pretty_json(obj: , class_prefix: )
+        JSON.pretty_generate(Stringifier.to_h(obj: obj, class_prefix: class_prefix))
+      end
+
       describe '.get' do
         context 'xxxx' do
           it 'should xxxx' do
@@ -42,7 +46,11 @@ describe 'Zakuro' do
             #     to: '1202-12-16'
             #     day: '1'
             #   day: "-"
+            date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
+            range = Zakuro::Senmyou::OperatedRange.new(full_range: Zakuro::Senmyou::FullRange.new(start_date: date).get).get
+
+            actual = range[1].months[10]
             expected = Zakuro::Senmyou::Month.new(
               is_last_year: false, number: 10, is_many_days: false, leaped: true,
               remainder: Zakuro::Senmyou::Remainder.new(day: 38, minute: 7186, second: 0),
@@ -54,6 +62,10 @@ describe 'Zakuro' do
               ),
               western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
             )
+
+            # TODO: compare
+            to_pretty_json(obj: expected, class_prefix: 'Zakuro::Senmyou')
+            to_pretty_json(obj: actual, class_prefix: 'Zakuro::Senmyou')
           end
         end
       end
