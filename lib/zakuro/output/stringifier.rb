@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/abstract_remainder'
-require_relative '../era/western'
+require_relative '../tools/typeof'
 
 # :nodoc:
 module Zakuro
@@ -45,6 +44,9 @@ module Zakuro
       def self.value_to_hash(obj:, class_prefix:, formatted:)
         return obj if obj.nil?
 
+        # 日付をフォーマットする
+        return obj.format if formatted && Tools::Typeof.time?(obj: obj)
+
         # 同じモジュール内のオブジェクトは再帰する
         if obj.class.name.start_with?(class_prefix)
           return to_h(obj: obj, class_prefix: class_prefix, formatted: formatted)
@@ -58,10 +60,6 @@ module Zakuro
           end
           return arr
         end
-
-        # TODO: 動作確認すること
-        # 日付をフォーマットする
-        return obj.format if obj.is_a?(Western::Calendar) || obj.is_a?(Cycle::AbstractRemainder)
 
         obj
       end

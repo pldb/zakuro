@@ -115,8 +115,8 @@ module Zakuro
         Result::Data::Day.new(
           number: 1,
           zodiac_name: remainder.zodiac_name,
-          remainder: remainder.format,
-          western_date: western_date.format
+          remainder: remainder,
+          western_date: western_date
         )
       end
       private_class_method :save_first_day
@@ -136,7 +136,7 @@ module Zakuro
         [
           Result::Data::SolarTerm.new(
             index: term.index,
-            remainder: term.remainder.format
+            remainder: term.remainder
           )
         ]
       end
@@ -160,8 +160,8 @@ module Zakuro
         Result::Data::Day.new(
           number: (days + 1),
           zodiac_name: remainder.zodiac_name,
-          remainder: remainder.format,
-          western_date: date.format
+          remainder: remainder,
+          western_date: date
         )
       end
       private_class_method :save_day
