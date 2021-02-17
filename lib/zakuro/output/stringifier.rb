@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative '../cycle/abstract_remainder'
+require_relative '../era/western'
+
 # :nodoc:
 module Zakuro
   #
@@ -18,11 +21,13 @@ module Zakuro
       #
       # @return [Hash<String, Objcet>] ハッシュ
       #
-      def self.to_h(obj:, class_prefix:)
+      def self.to_h(obj:, class_prefix:, formatted: true)
         hash = {}
         obj.instance_variables.each do |var|
           key = var.to_s.delete('@')
-          hash[key] = value_to_hash(obj: obj.instance_variable_get(var), class_prefix: class_prefix)
+          hash[key] = value_to_hash(
+            obj: obj.instance_variable_get(var), class_prefix: class_prefix, formatted: formatted
+          )
         end
         hash
       end
@@ -37,22 +42,26 @@ module Zakuro
       #
       # @return [Hash<String, Objcet>] ハッシュ
       #
-      def self.value_to_hash(obj:, class_prefix:)
+      def self.value_to_hash(obj:, class_prefix:, formatted:)
         return obj if obj.nil?
 
         # 同じモジュール内のオブジェクトは再帰する
         if obj.class.name.start_with?(class_prefix)
-          return to_h(obj: obj, class_prefix: class_prefix)
+          return to_h(obj: obj, class_prefix: class_prefix, formatted: formatted)
         end
 
         # 配列は要素一つずつで再帰する
         if obj.is_a?(Array)
           arr = []
           obj.each do |item|
-            arr.push(to_h(obj: item, class_prefix: class_prefix))
+            arr.push(to_h(obj: item, class_prefix: class_prefix, formatted: formatted))
           end
           return arr
         end
+
+        # TODO: 動作確認すること
+        # 日付をフォーマットする
+        return obj.format if obj.is_a?(Western::Calendar) || obj.is_a?(Cycle::AbstractRemainder)
 
         obj
       end

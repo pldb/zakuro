@@ -13,11 +13,16 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/range/operated_range',
                          __dir__)
 
+require File.expand_path('../../../../../' \
+                          'lib/zakuro/output/stringifier',
+                          __dir__)
+
+ # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
-      def to_pretty_json(obj: , class_prefix: )
-        JSON.pretty_generate(Stringifier.to_h(obj: obj, class_prefix: class_prefix))
+      def to_pretty_json(obj:, class_prefix:)
+        JSON.pretty_generate(Zakuro::Result::Stringifier.to_h(obj: obj, class_prefix: class_prefix))
       end
 
       describe '.get' do
@@ -48,7 +53,9 @@ describe 'Zakuro' do
             #   day: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
-            range = Zakuro::Senmyou::OperatedRange.new(full_range: Zakuro::Senmyou::FullRange.new(start_date: date).get).get
+            range = Zakuro::Senmyou::OperatedRange.new(
+              full_range: Zakuro::Senmyou::FullRange.new(start_date: date).get
+            ).get
 
             actual = range[1].months[10]
             expected = Zakuro::Senmyou::Month.new(
@@ -63,12 +70,13 @@ describe 'Zakuro' do
               western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
             )
 
-            # TODO: compare
-            to_pretty_json(obj: expected, class_prefix: 'Zakuro::Senmyou')
-            to_pretty_json(obj: actual, class_prefix: 'Zakuro::Senmyou')
+            expect(to_pretty_json(obj: actual, class_prefix: 'Zakuro::Senmyou')).to eql(
+              to_pretty_json(obj: expected, class_prefix: 'Zakuro::Senmyou')
+            )
           end
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
