@@ -61,6 +61,7 @@ module Zakuro
 
       def rewrite_month(month:, history:)
         return month unless month.western_date == history.western_date
+
         # TODO: 書き換え処理
         month
       end

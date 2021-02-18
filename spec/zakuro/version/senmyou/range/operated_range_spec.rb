@@ -61,7 +61,7 @@ describe 'Zakuro' do
             expected = Zakuro::Senmyou::Month.new(
               is_last_year: false, number: 10, is_many_days: false, leaped: true,
               remainder: Zakuro::Senmyou::Remainder.new(day: 38, minute: 7186, second: 0),
-              phase_index: 1,
+              phase_index: 0,
               even_term: Zakuro::Senmyou::SolarTerm.new,
               odd_term: Zakuro::Senmyou::SolarTerm.new(
                 index: 23,
