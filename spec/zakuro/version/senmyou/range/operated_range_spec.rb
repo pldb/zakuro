@@ -22,7 +22,7 @@ describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
       def to_pretty_json(obj:, class_prefix:)
-        JSON.pretty_generate(Zakuro::Result::Stringifier.to_h(obj: obj, class_prefix: class_prefix))
+        JSON.pretty_generate(Zakuro::Output::Stringifier.to_h(obj: obj, class_prefix: class_prefix))
       end
 
       describe '.get' do

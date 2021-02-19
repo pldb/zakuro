@@ -5,9 +5,9 @@ require_relative '../tools/typeof'
 # :nodoc:
 module Zakuro
   #
-  # Result 演算結果
+  # Output 出力
   #
-  module Result
+  module Output
     #
     # Stringifier 文字列処理
     #

@@ -2,6 +2,8 @@
 
 require_relative '../result/result'
 
+# TODO: outputモジュール内にする
+
 # :nodoc:
 module Zakuro
   #

@@ -5,7 +5,6 @@ require 'json'
 require_relative './core'
 require_relative './data'
 require_relative './operation'
-require_relative '../output/stringifier'
 
 # :nodoc:
 module Zakuro

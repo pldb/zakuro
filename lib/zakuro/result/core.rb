@@ -25,7 +25,7 @@ module Zakuro
       # @return [Hash<String, Object>] ハッシュ
       #
       def to_h
-        Stringifier.to_h(obj: self, class_prefix: 'Zakuro::Result')
+        Output::Stringifier.to_h(obj: self, class_prefix: 'Zakuro::Result')
       end
 
       #
