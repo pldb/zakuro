@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require 'json'
+
+require File.expand_path('../../../../testtools/eq',
+                         __dir__)
+
 require File.expand_path('../../../../../' \
                         'lib/zakuro/version/senmyou/monthly/month',
                          __dir__)
@@ -17,7 +21,8 @@ require File.expand_path('../../../../../' \
                           'lib/zakuro/output/stringifier',
                           __dir__)
 
- # rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockLength
+
 describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
@@ -70,9 +75,7 @@ describe 'Zakuro' do
               western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
             )
 
-            expect(to_pretty_json(obj: actual, class_prefix: 'Zakuro::Senmyou')).to eql(
-              to_pretty_json(obj: expected, class_prefix: 'Zakuro::Senmyou')
-            )
+            TestTools::Stringifier.eql?(expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou')
           end
         end
       end
