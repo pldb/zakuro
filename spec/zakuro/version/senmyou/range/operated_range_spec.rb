@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require 'json'
-
-require File.expand_path('../../../../testtools/eq',
-                         __dir__)
+require File.expand_path('../../../../testtools/stringifier', __dir__)
 
 require File.expand_path('../../../../../' \
                         'lib/zakuro/version/senmyou/monthly/month',
@@ -18,18 +15,14 @@ require File.expand_path('../../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../../' \
-                          'lib/zakuro/output/stringifier',
-                          __dir__)
+                         'lib/zakuro/output/stringifier',
+                         __dir__)
 
 # rubocop:disable Metrics/BlockLength
 
 describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
-      def to_pretty_json(obj:, class_prefix:)
-        JSON.pretty_generate(Zakuro::Output::Stringifier.to_h(obj: obj, class_prefix: class_prefix))
-      end
-
       describe '.get' do
         context 'xxxx' do
           it 'should xxxx' do
@@ -75,7 +68,9 @@ describe 'Zakuro' do
               western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
             )
 
-            TestTools::Stringifier.eql?(expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou')
+            TestTools::Stringifier.eql?(
+              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+            )
           end
         end
       end

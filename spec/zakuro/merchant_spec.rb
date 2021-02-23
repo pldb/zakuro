@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require File.expand_path('../testtools/stringifier', __dir__)
+
 require 'date'
 require File.expand_path('../../lib/zakuro/merchant',
                          __dir__)
@@ -45,7 +47,10 @@ describe 'Zakuro' do
         example '貞観4年1月1日' do
           date = Date.new(862, 2, 3)
           actual = Zakuro::Merchant.new(condition: { date: date }).commit
-          expect(actual.to_pretty_json).to eql(first_day.to_pretty_json)
+
+          TestTools::Stringifier.eql?(
+            expected: first_day, actual: actual, class_prefix: 'Zakuro::Result'
+          )
         end
       end
     end

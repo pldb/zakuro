@@ -2,14 +2,13 @@
 
 require 'json'
 require File.expand_path('../../lib/zakuro/output/stringifier', __dir__)
-
-# TODO: 共通処理として利用する
-# TODO: undefined method `expect' for TestTools::Stringifier:Module
+require File.expand_path('./expection', __dir__)
 
 #
 # TestTools テスト用メソッド群
 #
 module TestTools
+  EXPECTION = Expection.new
   #
   # Stringifier 文字列
   #
@@ -31,7 +30,7 @@ module TestTools
         obj: actual, class_prefix: class_prefix, formatted: formatted
       )
 
-      expect(actual_json).to eql(expected_json)
+      EXPECTION.eql?(actual: actual_json, expect: expected_json)
     end
 
     #
