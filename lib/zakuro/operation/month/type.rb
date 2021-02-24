@@ -115,6 +115,10 @@ module Zakuro
         @calc = calc
         @actual = actual
       end
+
+      def invalid?
+        @calc == -1 || @actual == -1
+      end
     end
 
     #
