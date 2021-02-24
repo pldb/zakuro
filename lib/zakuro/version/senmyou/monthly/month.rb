@@ -28,7 +28,7 @@ module Zakuro
       attr_accessor :odd_term
       # @return [Remainder] 月初日の大余小余
       attr_reader :remainder
-      # @return [String] 月齢（朔月、上弦、望月、下弦）
+      # @return [Integer] 月齢（朔月、上弦、望月、下弦）
       attr_reader :phase_index
       # @return [Western::Calendar] 月初日の西暦日
       attr_reader :western_date
@@ -44,7 +44,7 @@ module Zakuro
       # @param [True, False] is_many_days 大の月（30日）/小の月（29日）
       # @param [True, False] leaped 閏月/平月
       # @param [Remainder] remainder 月初日の大余小余
-      # @param [String] phase_index 月齢（朔月、上弦、望月、下弦）
+      # @param [Integer] phase_index 月齢（朔月、上弦、望月、下弦）
       # @param [SolarTerm] even_term 二十四節気（中気）
       # @param [SolarTerm] odd_term 二十四節気（節気）
       # @param [Western::Calendar] western_date 月初日の西暦日
