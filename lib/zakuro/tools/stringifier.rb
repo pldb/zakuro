@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../tools/typeof'
+require_relative './typeof'
 
 # :nodoc:
 module Zakuro
   #
-  # Output 出力
+  # Tools 汎用メソッド群
   #
-  module Output
+  module Tools
     #
     # Stringifier 文字列処理
     #
