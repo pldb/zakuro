@@ -2,6 +2,11 @@
 
 require_relative '../../../era/western'
 
+# TODO: 用途別にリファクタリング
+#  親クラスのMonth
+#  計算用のMonth（未定）
+#  運用情報向けのMonth（OperatedMonth）
+
 # :nodoc:
 module Zakuro
   # :nodoc:
