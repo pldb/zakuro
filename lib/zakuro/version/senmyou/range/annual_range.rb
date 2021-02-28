@@ -147,10 +147,7 @@ module Zakuro
         (0...size).each do |idx|
           current_month = annual_range[idx]
           next_month = annual_range[idx + 1]
-          current_month.is_many_days = \
-            current_month.remainder.same_remainder_divided_by_ten?(
-              other: next_month.remainder.day
-            )
+          current_month.eval_many_days(next_month_day: next_month.remainder.day)
         end
       end
       private_class_method :apply_big_and_small_of_the_month
@@ -167,20 +164,16 @@ module Zakuro
         # 閏による月の再調整を行う
         leaped = false
         annual_range.each_with_index do |month, index|
-          if month.even_term.invalid?
-            month.leaped = true
-            # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
-            leaped = true unless index.zero?
-          end
+          month.eval_leaped
+          # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
+          leaped = true if month.leaped && !index.zero?
+
           next unless leaped
 
           # NOTE: 常気法では閏月は2-3年に一度のため、1年に二度発生しない前提
-          number = month.number - 1
-          if number <= 0
-            month.is_last_year = true
-            number = 12
-          end
-          month.number = number
+
+          # 閏の分だけ1ヶ月ずらす
+          month.back_to_last_month
         end
       end
       private_class_method :adjust_leap_month

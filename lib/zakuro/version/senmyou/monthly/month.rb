@@ -18,19 +18,19 @@ module Zakuro
       # @return [True] 昨年の月
       # @return [False] 今年の月
       # @note 冬至基準で1年データを作成するため昨年の11月-12月である可能性がある
-      attr_accessor :is_last_year
+      attr_reader :is_last_year
       # @return [True] 大の月（30日）
       # @return [False] 小の月（29日）
-      attr_accessor :is_many_days
+      attr_reader :is_many_days
       # @return [Integer] 月（xx月のxx）
-      attr_accessor :number
+      attr_reader :number
       # @return [True] 閏月
       # @return [False] 平月
-      attr_accessor :leaped
+      attr_reader :leaped
       # @return [SolarTerm] 二十四節気（中気）
-      attr_accessor :even_term
+      attr_reader :even_term
       # @return [SolarTerm] 二十四節気（節気）
-      attr_accessor :odd_term
+      attr_reader :odd_term
       # @return [Remainder] 月初日の大余小余
       attr_reader :remainder
       # @return [Integer] 月齢（朔月、上弦、望月、下弦）
@@ -117,6 +117,56 @@ module Zakuro
       #
       def empty_solar_term?
         @even_term.invalid? && @odd_term.invalid?
+      end
+
+      #
+      # 一ヶ月戻す
+      #
+      def back_to_last_month
+        @number -= 1
+
+        return if @number.positive?
+
+        @is_last_year = true
+        @number = 12
+      end
+
+      #
+      # 中気なしは閏月とする
+      #
+      def eval_leaped
+        if @even_term.invalid?
+          @leaped = true
+          return
+        end
+
+        @leaped = false
+      end
+
+      #
+      # 次月の大余から月の日数を定める
+      #
+      # @param [Integer] next_month_day 次月の大余
+      #
+      def eval_many_days(next_month_day:)
+        @is_many_days = @remainder.same_remainder_divided_by_ten?(other: next_month_day)
+      end
+
+      #
+      # 番号で節気を配分する
+      #
+      # @param [SolarTerm] term 二十四節気
+      # @param [Integer] index 番号
+      #
+      def allocate_term(term:, index:)
+        if index.even?
+          # 中気
+          @even_term = term
+          return
+        end
+
+        # 節気
+        @odd_term = term
       end
 
       #
