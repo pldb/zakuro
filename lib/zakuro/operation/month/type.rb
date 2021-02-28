@@ -21,12 +21,17 @@ module Zakuro
     class MonthHistory
       attr_reader :id, :reference, :western_date, :annotations, :diffs
 
-      def initialize(id:, reference:, western_date:, diffs:, annotations: [])
+      def initialize(id: '', reference: Reference.new,
+                     western_date: Western::Calendar.new, diffs: Diffs.new, annotations: [])
         @id = id
         @reference = reference
         @western_date = western_date
         @annotations = annotations
         @diffs = diffs
+      end
+
+      def invalid?
+        id == ''
       end
     end
 
@@ -53,10 +58,14 @@ module Zakuro
     class Reference
       attr_reader :page, :number, :japan_date
 
-      def initialize(page:, number:, japan_date:)
+      def initialize(page: -1, number: -1, japan_date: '')
         @page = page
         @number = number
         @japan_date = japan_date
+      end
+
+      def invalid?
+        page == -1
       end
     end
 
@@ -66,7 +75,7 @@ module Zakuro
     class Diffs
       attr_reader :month, :even_term, :day
 
-      def initialize(month:, even_term:, day: INVALID_DAY_VALUE)
+      def initialize(month: Month.new, even_term: EvenTerm.new, day: INVALID_DAY_VALUE)
         @month = month
         @even_term = even_term
         @day = day
@@ -83,9 +92,13 @@ module Zakuro
     class Month
       attr_reader :number, :leaped
 
-      def initialize(number:, leaped:)
+      def initialize(number: -1, leaped: false)
         @number = number
         @leaped = leaped
+      end
+
+      def invalid?
+        number == -1
       end
     end
 
@@ -95,7 +108,7 @@ module Zakuro
     class EvenTerm
       attr_reader :index, :name, :to, :day
 
-      def initialize(to:, day: INVALID_DAY_VALUE)
+      def initialize(to: Western::Calendar.new, day: INVALID_DAY_VALUE)
         @to = to
         @day = day
       end
@@ -111,7 +124,7 @@ module Zakuro
     class Number
       attr_reader :calc, :actual
 
-      def initialize(calc:, actual:)
+      def initialize(calc: -1, actual: -1)
         @calc = calc
         @actual = actual
       end
@@ -127,9 +140,13 @@ module Zakuro
     class Leaped
       attr_reader :calc, :actual
 
-      def initialize(calc:, actual:)
+      def initialize(calc: false, actual: false)
         @calc = calc
         @actual = actual
+      end
+
+      def invalid?
+        !@calc && !@actual
       end
     end
   end

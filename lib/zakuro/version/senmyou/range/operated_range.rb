@@ -49,15 +49,23 @@ module Zakuro
       def rewrite_year(year:)
         result = Year.new(multi_gengou: year.multi_gengou, new_year_date: year.new_year_date)
         year.months.each do |month|
-          @month_histroies.each do |history|
-            operated_month = rewrite_month(month: month, history: history)
-            result.push(month: operated_month)
-          end
+          operated_month = month
+          history = specify_history(western_date: month.western_date)
+          operated_month = rewrite_month(month: month, history: history) unless history.invalid?
+          result.push(month: operated_month)
         end
 
         result.commit
 
         result
+      end
+
+      def specify_history(western_date:)
+        @month_histroies.each do |history|
+          return history if western_date == history.western_date
+        end
+
+        Operation::MonthHistory.new
       end
 
       def rewrite_month(month:, history:)
