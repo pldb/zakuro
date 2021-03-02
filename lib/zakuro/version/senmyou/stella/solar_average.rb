@@ -204,7 +204,7 @@ module Zakuro
         term = SolarTerm.new(remainder: solar_term, index: solar_term_index)
 
         # 設定する
-        month.allocate_term(term: term, index: solar_term_index)
+        month.add_term(term: term)
 
         nil
       end
