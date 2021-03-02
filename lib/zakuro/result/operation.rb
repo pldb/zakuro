@@ -11,7 +11,7 @@ module Zakuro
     #
     module Operation
       #
-      # 運用情報
+      # Bundle 運用情報
       #
       class Bundle
         # @return [True] 運用あり
