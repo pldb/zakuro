@@ -19,6 +19,15 @@ module Zakuro
       # @return [False] 平月
       attr_reader :leaped
 
+      # :reek:ControlParameter and :reek:BooleanParameter
+
+      #
+      # 初期化
+      #
+      # @param [Integer] number 月（xx月のxx）
+      # @param [True, False] is_many_days 月の大小
+      # @param [True, False] leaped 閏月/平月
+      #
       def initialize(number: -1, is_many_days: false, leaped: false)
         # 月の大小
         @is_many_days = is_many_days

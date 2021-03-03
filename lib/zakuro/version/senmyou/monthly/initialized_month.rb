@@ -19,6 +19,8 @@ module Zakuro
       # @return [Integer] 月齢（朔月、上弦、望月、下弦）
       attr_reader :phase_index
 
+      # :reek:ControlParameter and :reek:BooleanParameter
+
       #
       # 初期化
       #
@@ -39,7 +41,7 @@ module Zakuro
       # 一ヶ月戻す
       #
       def back_to_last_month
-        @is_last_year = true if @month_label.back_to_last_month
+        @is_last_year = true if month_label.back_to_last_month
       end
     end
   end
