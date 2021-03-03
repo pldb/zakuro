@@ -94,7 +94,7 @@ module Zakuro
       #
       def self.save_month(month:, date:, days:)
         Result::Data::Month.new(
-          number: month.number, leaped: month.leaped, days_name: month.days_name,
+          number: month.number, leaped: month.leaped?, days_name: month.days_name,
           first_day: save_first_day(remainder: month.remainder,
                                     date: date, days: days),
           odd_solar_terms: save_solar_term(term: month.odd_term),

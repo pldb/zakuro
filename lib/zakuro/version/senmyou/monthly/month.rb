@@ -71,6 +71,24 @@ module Zakuro
       end
 
       #
+      # 月の日数を返す
+      #
+      # @return [Integer] 日数
+      #
+      def days
+        @month_label.days
+      end
+
+      #
+      # 月の名前（大小）を返す
+      #
+      # @return [String] 月の名前（大小）
+      #
+      def days_name
+        @month_label.days_name
+      end
+
+      #
       # 月を返す
       #
       # @return [Integer] 月（xx月のxx）

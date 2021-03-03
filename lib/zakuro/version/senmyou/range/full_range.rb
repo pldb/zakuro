@@ -156,24 +156,25 @@ module Zakuro
         result = []
 
         years.each do |year|
-          first_day = year.new_year_date.clone
+          new_year_date = year.new_year_date.clone
+          date = new_year_date.clone
 
           months = []
           year.months.each do |month|
+            first_day = month.first_day
             updated_month = Month.new(
-              is_last_year: month.is_last_year, number: month.number,
-              is_many_days: month.is_many_days, leaped: month.leaped,
-              remainder: month.remainder, phase_index: month.phase_index,
-              even_term: month.even_term.clone, odd_term: month.odd_term.clone,
-              western_date: first_day
+              month_label: month.month_label,
+              first_day: FirstDay.new(remainder: first_day.remainder,
+                                      western_date: date),
+              solar_terms: month.solar_terms
             )
             months.push(updated_month)
 
-            first_day = first_day.clone + updated_month.days
+            date = date.clone + updated_month.days
           end
 
           updated_year = Year.new(
-            multi_gengou: year.multi_gengou, new_year_date: year.new_year_date,
+            multi_gengou: year.multi_gengou, new_year_date: new_year_date,
             months: months, total_days: year.total_days
           )
 
