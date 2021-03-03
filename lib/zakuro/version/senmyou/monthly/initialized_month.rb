@@ -39,7 +39,7 @@ module Zakuro
       # 一ヶ月戻す
       #
       def back_to_last_month
-        @is_last_year = @month_label.back_to_last_month
+        @is_last_year = true if @month_label.back_to_last_month
       end
     end
   end

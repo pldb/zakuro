@@ -53,7 +53,7 @@ module Zakuro
       # @return [False] 今年
       #
       def back_to_last_month
-        @month_label.number -= 1
+        @number -= 1
 
         return false if @number.positive?
 

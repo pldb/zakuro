@@ -2,7 +2,7 @@
 
 require_relative '../../../output/logger'
 require_relative '../base/remainder'
-require_relative '../monthly/month'
+require_relative '../monthly/initialized_month'
 require_relative '../base/solar_term'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar_orbit'
@@ -128,8 +128,9 @@ module Zakuro
           adjusted = lunar_phase.next_month
 
           result.push(
-            Month.new(is_last_year: is_last_year, number: month,
-                      remainder: adjusted, phase_index: 0)
+            InitializedMonth.new(month_label: MonthLabel.new(number: month),
+                                 first_day: FirstDay.new(remainder: adjusted),
+                                 is_last_year: is_last_year, phase_index: 0)
           )
           is_last_year = false if month == 12
         end
@@ -166,7 +167,7 @@ module Zakuro
         annual_range.each_with_index do |month, index|
           month.eval_leaped
           # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
-          leaped = true if month.leaped && !index.zero?
+          leaped = true if month.leaped? && !index.zero?
 
           next unless leaped
 
