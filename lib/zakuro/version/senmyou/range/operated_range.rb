@@ -2,7 +2,7 @@
 
 require_relative './full_range'
 require_relative '../../../operation/operation'
-require_relative '../monthly/month'
+require_relative '../monthly/operated_month'
 
 # :nodoc:
 module Zakuro
@@ -71,27 +71,17 @@ module Zakuro
       def rewrite_month(month:, history:)
         return month unless month.western_date == history.western_date
 
-        # TODO: リファクタリング
-        hash = {}
-        month.instance_variables.each do |var|
-          key = var.to_s.delete('@')
-          hash[key.intern] = month.instance_variable_get(var)
-        end
+        operated_month = OperatedMonth.new(
+          month_label: month.month_label, first_day: month.first_day,
+          solar_terms: month.solar_terms, history: history
+        )
 
-        # TODO: 書き換え処理
-        diffs_month(hash: hash, history: history)
-        Zakuro::Senmyou::Month.new(**hash)
-      end
+        operated_month.rewrite
 
-      def diffs_month(hash:, history:)
-        diff = history.diffs.month
-        number = diff.number
-        leaped = diff.leaped
-
-        return if number.invalid?
-
-        hash[:number] = number.actual
-        hash[:leaped] = leaped.actual
+        Month.new(
+          month_label: operated_month.month_label, first_day: operated_month.first_day,
+          solar_terms: operated_month.solar_terms
+        )
       end
     end
   end

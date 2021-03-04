@@ -57,17 +57,22 @@ describe 'Zakuro' do
 
             actual = range[1].months[10]
             expected = Zakuro::Senmyou::Month.new(
-              is_last_year: false, number: 10, is_many_days: false, leaped: true,
-              remainder: Zakuro::Senmyou::Remainder.new(day: 38, minute: 7186, second: 0),
-              phase_index: 0,
-              even_term: Zakuro::Senmyou::SolarTerm.new,
-              odd_term: Zakuro::Senmyou::SolarTerm.new(
+              month_label: Zakuro::Senmyou::MonthLabel.new(
+                number: 10, is_many_days: false, leaped: true
+              ),
+              first_day: Zakuro::Senmyou::FirstDay.new(
+                remainder: Zakuro::Senmyou::Remainder.new(
+                  day: 38, minute: 7186, second: 0
+                ),
+                western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
+              ),
+              solar_terms: [Zakuro::Senmyou::SolarTerm.new(
                 index: 23,
                 remainder: Zakuro::Senmyou::Remainder.new(day: 51, minute: 6309, second: 0)
-              ),
-              western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
+              )]
             )
 
+            # TODO: 中気の移動
             TestTools::Stringifier.eql?(
               expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
             )
