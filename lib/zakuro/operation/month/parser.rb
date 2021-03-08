@@ -90,8 +90,14 @@ module Zakuro
       #
       # @return [Integer] 日（差分）
       #
-      def self.day(str:)
+      def self.days(str:)
         return INVALID_DAY_VALUE if invalid?(str: str)
+
+        str.to_i
+      end
+
+      def self.solar_term_index(str:)
+        return -1 if invalid?(str: str)
 
         str.to_i
       end
@@ -178,17 +184,34 @@ module Zakuro
       private_class_method :create_history
 
       def self.create_diffs(yaml_hash: {})
-        month = yaml_hash['month']
-        even_term = yaml_hash['even_term']
-
         Diffs.new(
           month: create_month(yaml_hash: yaml_hash['month']),
-          even_term: EvenTerm.new(to: Operation::TypeParser.western_date(str: even_term['to']),
-                                  day: Operation::TypeParser.day(str: even_term['day'])),
-          day: Operation::TypeParser.day(str: month['day'])
+          solar_term: create_solar_term(yaml_hash: yaml_hash['solar_term']),
+          days: Operation::TypeParser.days(str: yaml_hash['days'])
         )
       end
       private_class_method :create_diffs
+
+      def self.create_solar_term(yaml_hash: {})
+        calc = yaml_hash['calc']
+        actual = yaml_hash['actual']
+
+        source = SolarTerm::Source.new(
+          index: Operation::TypeParser.solar_term_index(str: calc['index']),
+          to: Operation::TypeParser.western_date(str: calc['to']),
+          zodiac_name: Operation::TypeParser.text(str: calc['zodiac_name'])
+        )
+        destination = SolarTerm::Destination.new(
+          index: Operation::TypeParser.solar_term_index(str: actual['index']),
+          from: Operation::TypeParser.western_date(str: actual['from']),
+          zodiac_name: Operation::TypeParser.text(str: actual['zodiac_name'])
+        )
+
+        SolarTerm::Direction.new(
+          source: source, destination: destination,
+          days: Operation::TypeParser.days(str: yaml_hash['days'])
+        )
+      end
 
       def self.create_month(yaml_hash: {})
         number = yaml_hash['number']

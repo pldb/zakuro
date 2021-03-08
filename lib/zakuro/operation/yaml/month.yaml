@@ -16,10 +16,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 157-1-1
   relation_id: "-"
   page: '157'
@@ -37,10 +44,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 157-2-1
   relation_id: "-"
   page: '157'
@@ -58,10 +72,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 162-1-1
   relation_id: "-"
   page: '162'
@@ -79,10 +100,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 162-2-1
   relation_id: "-"
   page: '162'
@@ -100,10 +128,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 162-3-1
   relation_id: "-"
   page: '162'
@@ -121,10 +156,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 163-1-1
   relation_id: "-"
   page: '163'
@@ -142,10 +184,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 163-2-1
   relation_id: "-"
   page: '163'
@@ -163,10 +212,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 163-3-1
   relation_id: "-"
   page: '163'
@@ -184,10 +240,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 167-1-1
   relation_id: "-"
   page: '167'
@@ -206,10 +269,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 178-1-1
   relation_id: "-"
   page: '178'
@@ -227,10 +297,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 178-2-1
   relation_id: "-"
   page: '178'
@@ -248,10 +325,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 178-3-1
   relation_id: "-"
   page: '178'
@@ -269,10 +353,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 178-4-1
   relation_id: "-"
   page: '178'
@@ -290,10 +381,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 178-5-1
   relation_id: "-"
   page: '178'
@@ -311,10 +409,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 179-1-1
   relation_id: "-"
   page: '179'
@@ -332,10 +437,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 185-1-1
   relation_id: "-"
   page: '185'
@@ -353,10 +465,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 187-1-1
   relation_id: "-"
   page: '187'
@@ -374,10 +493,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 190-1-1
   relation_id: "-"
   page: '190'
@@ -395,10 +521,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 190-2-1
   relation_id: "-"
   page: '190'
@@ -416,10 +549,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 191-1-1
   relation_id: "-"
   page: '191'
@@ -437,10 +577,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 193-1-1
   relation_id: "-"
   page: '193'
@@ -458,10 +605,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 193-2-1
   relation_id: "-"
   page: '193'
@@ -479,10 +633,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 197-1-1
   relation_id: "-"
   page: '197'
@@ -500,10 +661,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 197-2-1
   relation_id: "-"
   page: '197'
@@ -521,10 +689,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 198-1-1
   relation_id: "-"
   page: '198'
@@ -542,10 +717,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 198-2-1
   relation_id: "-"
   page: '198'
@@ -563,10 +745,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 199-1-0
   relation_id: 199-1-1
   page: '199'
@@ -584,10 +773,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '2'
+        from: '1002-1-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 199-1-1
   relation_id: "-"
   page: '199'
@@ -605,10 +801,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1001-12-18'
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: '2'
+        to: '1001-12-18'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 199-2-1
   relation_id: "-"
   page: '199'
@@ -626,10 +829,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 203-1-1
   relation_id: "-"
   page: '203'
@@ -647,10 +857,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 205-1-1
   relation_id: "-"
   page: '205'
@@ -668,10 +885,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 207-1-1
   relation_id: "-"
   page: '207'
@@ -689,10 +913,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 209-1-1
   relation_id: "-"
   page: '209'
@@ -710,10 +941,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 210-1-1
   relation_id: "-"
   page: '210'
@@ -731,10 +969,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 211-1-1
   relation_id: "-"
   page: '211'
@@ -752,10 +997,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 215-1-0
   relation_id: 215-1-2
   page: '215'
@@ -773,10 +1025,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1050-12-17'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1050-12-17'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 215-1-1
   relation_id: 215-1-2
   page: '215'
@@ -794,10 +1053,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1050-12-17'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 215-1-2
   relation_id: "-"
   page: '215'
@@ -817,10 +1083,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 222-1-0
   relation_id: 222-1-1
   page: '222'
@@ -838,10 +1111,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1069-12-17'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1069-12-17'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 222-1-1
   relation_id: "-"
   page: '222'
@@ -859,10 +1139,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1069-11-17'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 228-1-1
   relation_id: "-"
   page: '228'
@@ -880,10 +1167,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 230-1-1
   relation_id: "-"
   page: '230'
@@ -901,10 +1195,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 242-1-1
   relation_id: "-"
   page: '242'
@@ -923,10 +1224,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 245-1-1
   relation_id: "-"
   page: '245'
@@ -944,10 +1252,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 251-1-1
   relation_id: "-"
   page: '251'
@@ -965,10 +1280,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 251-2-1
   relation_id: "-"
   page: '251'
@@ -986,10 +1308,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 253-1-1
   relation_id: 253-1-2
   page: '253'
@@ -1007,10 +1336,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1162-4-17'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '8'
+        to: '1162-4-17'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 253-1-2
   relation_id: "-"
   page: '253'
@@ -1028,10 +1364,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '8'
+        from: '1162-3-18'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 253-2-0
   relation_id: 253-2-1
   page: '253'
@@ -1049,10 +1392,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1164-12-16'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1164-12-16'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 253-2-1
   relation_id: "-"
   page: '253'
@@ -1070,10 +1420,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1164-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 260-1-1
   relation_id: 260-1-2
   page: '260'
@@ -1091,10 +1448,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1183-12-17'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1183-12-17'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 260-1-2
   relation_id: "-"
   page: '260'
@@ -1113,10 +1477,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1183-11-17'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 261-1-1
   relation_id: "-"
   page: '261'
@@ -1134,10 +1505,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 266-1-1
   relation_id: "-"
   page: '266'
@@ -1155,10 +1533,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1202-12-16'
-      day: '1'
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1202-12-16'
+        zodiac_name: 庚午
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: '1'
+    days: "-"
 - id: 266-1-0
   relation_id: 266-1-1
   page: '266'
@@ -1176,10 +1561,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1202-11-17'
+        zodiac_name: 辛未
+      days: "-"
+    days: "-"
 - id: 272-1-1
   relation_id: "-"
   page: '272'
@@ -1197,10 +1589,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 272-2-1
   relation_id: "-"
   page: '272'
@@ -1219,10 +1618,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 275-1-1
   relation_id: "-"
   page: '275'
@@ -1240,10 +1646,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 280-1-1
   relation_id: "-"
   page: '280'
@@ -1261,10 +1674,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 285-1-1
   relation_id: "-"
   page: '285'
@@ -1282,10 +1702,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 289-1-1
   relation_id: "-"
   page: '289'
@@ -1303,10 +1730,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 291-1-0
   relation_id: 291-1-1
   page: '291'
@@ -1324,10 +1758,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1278-12-16'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1278-12-16'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 291-1-1
   relation_id: "-"
   page: '291'
@@ -1345,10 +1786,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1278-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 292-1-1
   relation_id: "-"
   page: '292'
@@ -1366,10 +1814,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1281-9-15'
-      day: '1'
-    day: "-"
+    solar_term:
+      calc:
+        index: '18'
+        to: '1281-9-15'
+        zodiac_name: 癸巳
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: '1'
+    days: "-"
 - id: 292-1-0
   relation_id: 292-1-1
   page: '292'
@@ -1387,10 +1842,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '18'
+        from: '1281-8-16'
+        zodiac_name: 甲午
+      days: "-"
+    days: "-"
 - id: 298-1-1
   relation_id: "-"
   page: '298'
@@ -1408,10 +1870,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 301-1-1
   relation_id: "-"
   page: '301'
@@ -1429,10 +1898,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 301-2-1
   relation_id: "-"
   page: '301'
@@ -1450,10 +1926,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 304-1-1
   relation_id: 304-0-1
   page: '304'
@@ -1471,10 +1954,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: '0'
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 304-2-1
   relation_id: 304-0-1
   page: '304'
@@ -1492,10 +1982,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-2"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-2"
 - id: 304-3-1
   relation_id: 304-0-1
   page: '304'
@@ -1513,10 +2010,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 304-4-1
   relation_id: 304-0-1
   page: '304'
@@ -1534,10 +2038,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 304-5-1
   relation_id: 304-0-1
   page: '304'
@@ -1555,10 +2066,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 304-0-1
   relation_id: "-"
   page: '304'
@@ -1578,10 +2096,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 310-1-0
   relation_id: 310-0-1
   page: '310'
@@ -1599,10 +2124,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1335-12-16'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1335-12-16'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 310-1-1
   relation_id: 310-0-1
   page: '310'
@@ -1620,10 +2152,17 @@
       leaped:
         calc: 'false'
         actual: 'false'
-    even_term:
-      to: '1336-1-15'
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: '2'
+        to: '1336-1-15'
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1335-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 310-2-1
   relation_id: 310-0-1
   page: '310'
@@ -1641,10 +2180,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '2'
+        from: '1335-12-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 310-0-1
   relation_id: "-"
   page: '310'
@@ -1663,10 +2209,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 311-1-1
   relation_id: 311-0-1
   page: '311'
@@ -1684,10 +2237,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 311-2-1
   relation_id: 311-0-1
   page: '311'
@@ -1705,10 +2265,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 311-0-1
   relation_id: "-"
   page: '311'
@@ -1727,10 +2294,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 311-3-0
   relation_id: "-"
   page: '311'
@@ -1748,10 +2322,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1338-9-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '18'
+        to: '1338-9-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 311-3-1
   relation_id: "-"
   page: '311'
@@ -1770,10 +2351,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '18'
+        from: '1338-8-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 313-1-1
   relation_id: "-"
   page: '313'
@@ -1792,10 +2380,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 318-1-0
   relation_id: 318-1-1
   page: '318'
@@ -1813,10 +2408,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1357-9-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '18'
+        to: '1357-9-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 318-1-1
   relation_id: "-"
   page: '318'
@@ -1834,10 +2436,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '18'
+        from: '1357-8-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 323-1-0
   relation_id: 323-0-1
   page: '323'
@@ -1855,10 +2464,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1373-12-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1373-12-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 323-1-1
   relation_id: 323-0-1
   page: '323'
@@ -1876,10 +2492,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 323-2-1
   relation_id: 323-0-1
   page: '323'
@@ -1897,10 +2520,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 323-3-1
   relation_id: 323-0-1
   page: '323'
@@ -1918,10 +2548,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 323-0-1
   relation_id: "-"
   page: '323'
@@ -1940,10 +2577,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 324-1-0
   relation_id: 324-1-1
   page: '324'
@@ -1961,10 +2605,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1376-9-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '18'
+        to: '1376-9-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 324-1-1
   relation_id: "-"
   page: '324'
@@ -1982,10 +2633,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '18'
+        from: '1376-8-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 329-1-0
   relation_id: 329-1-1
   page: '329'
@@ -2003,10 +2661,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1392-12-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1392-12-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 329-1-1
   relation_id: "-"
   page: '329'
@@ -2024,10 +2689,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1392-11-15'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 330-1-0
   relation_id: 330-0-1
   page: '330'
@@ -2045,10 +2717,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1395-9-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '18'
+        to: '1395-9-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 330-1-1
   relation_id: 330-0-1
   page: '330'
@@ -2066,10 +2745,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '18'
+        from: '1395-8-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 330-2-1
   relation_id: 330-0-1
   page: '330'
@@ -2087,10 +2773,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 330-3-1
   relation_id: 330-0-1
   page: '330'
@@ -2108,10 +2801,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 330-0-1
   relation_id: "-"
   page: '330'
@@ -2130,10 +2830,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 331-1-1
   relation_id: "-"
   page: '331'
@@ -2151,10 +2858,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 336-1-0
   relation_id: 336-1-1
   page: '336'
@@ -2172,10 +2886,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1411-12-16'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1411-12-16'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 336-1-1
   relation_id: "-"
   page: '336'
@@ -2194,10 +2915,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1411-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 343-1-1
   relation_id: "-"
   page: '343'
@@ -2215,10 +2943,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 343-2-1
   relation_id: "-"
   page: '343'
@@ -2237,10 +2972,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 346-1-1
   relation_id: 346-0-1
   page: '346'
@@ -2258,10 +3000,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 346-2-1
   relation_id: 346-0-1
   page: '346'
@@ -2279,10 +3028,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 346-0-1
   relation_id: "-"
   page: '346'
@@ -2300,10 +3056,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 348-1-1
   relation_id: 348-0-1
   page: '348'
@@ -2321,10 +3084,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1449-12-15'
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1449-12-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 348-2-1
   relation_id: 348-0-1
   page: '348'
@@ -2342,10 +3112,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1449-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 348-3-1
   relation_id: 348-0-1
   page: '348'
@@ -2363,10 +3140,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 348-0-1
   relation_id: "-"
   page: '348'
@@ -2385,10 +3169,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 349-1-1
   relation_id: 348-0-1
   page: '349'
@@ -2406,10 +3197,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 355-1-0
   relation_id: 355-0-1
   page: '355'
@@ -2427,10 +3225,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: '1468-12-15'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1468-12-15'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 355-1-1
   relation_id: 355-0-1
   page: '355'
@@ -2448,10 +3253,17 @@
       leaped:
         calc: 'false'
         actual: 'false'
-    even_term:
-      to: '1469-1-14'
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: '2'
+        to: '1469-1-14'
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1468-11-15'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 355-2-1
   relation_id: 355-0-1
   page: '355'
@@ -2469,10 +3281,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '2'
+        from: '1468-12-15'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 355-0-1
   relation_id: "-"
   page: '355'
@@ -2490,10 +3309,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 356-1-1
   relation_id: "-"
   page: '356'
@@ -2511,10 +3337,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: '1'
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 358-1-1
   relation_id: "-"
   page: '358'
@@ -2533,10 +3366,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 384-1-0
   relation_id: 384-0-1
   page: '384'
@@ -2554,10 +3394,17 @@
       leaped:
         calc: 'true'
         actual: 'false'
-    even_term:
-      to: '1555-12-14'
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: '0'
+        to: '1555-12-14'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 384-1-1
   relation_id: 384-0-1
   page: '384'
@@ -2575,10 +3422,17 @@
       leaped:
         calc: 'false'
         actual: 'true'
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1555-11-14'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 384-2-1
   relation_id: 384-0-1
   page: '384'
@@ -2596,10 +3450,17 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-1"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
 - id: 384-0-1
   relation_id: "-"
   page: '384'
@@ -2618,7 +3479,14 @@
       leaped:
         calc: "-"
         actual: "-"
-    even_term:
-      to: "-"
-      day: "-"
-    day: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"

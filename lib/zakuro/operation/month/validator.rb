@@ -14,6 +14,49 @@ module Zakuro
     #
     module Validator
       #
+      # Types 型判定
+      #
+      module Types
+        EMPTY_STRING = '-'
+        BOOLEANS = %w[true false].freeze
+
+        def self.string?(str: '')
+          !str.nil? && !str.empty? && str.is_a?(String)
+        end
+
+        def self.empiable_string?(str: '')
+          !str.nil? && str.is_a?(String)
+        end
+
+        def self.positive?(str: '')
+          return true if str == EMPTY_STRING
+
+          !str.nil? && !str.empty? && str =~ /^[0-9]+$/
+        end
+
+        def self.num?(str: '')
+          return true if str == EMPTY_STRING
+
+          !str.nil? && !str.empty? && str =~ /^[-0-9]+$/
+        end
+
+        def self.bool?(str: '')
+          BOOLEANS.include?(str)
+        end
+
+        def self.empiable_bool?(str: '')
+          return true if str == EMPTY_STRING
+
+          bool?(str: str)
+        end
+
+        def self.western_date?(str: '')
+          return Western::Calendar.new if str == EMPTY_STRING
+
+          Western::Calendar.valid_date_string(str: str)
+        end
+      end
+      #
       # MonthHistory 変更履歴
       #
       class MonthHistory
@@ -41,15 +84,15 @@ module Zakuro
         end
 
         def id?
-          !@id.nil? && !@id.empty? && @id.is_a?(String)
+          Types.string?(str: @id)
         end
 
         def western_date?
-          Western::Calendar.valid_date_string(str: @western_date)
+          Types.western_date?(str: @western_date)
         end
 
         def modified?
-          @modified == 'true' || @modified == 'false'
+          Types.bool?(str: @modified)
         end
       end
 
@@ -81,15 +124,15 @@ module Zakuro
         end
 
         def id?
-          !@id.nil? && !@id.empty? && @id.is_a?(String)
+          Types.string?(str: @id)
         end
 
         def description?
-          !@description.nil? && @description.is_a?(String)
+          Types.empiable_string?(str: @description)
         end
 
         def note?
-          !@note.nil? && @note.is_a?(String)
+          Types.string?(str: @note)
         end
       end
 
@@ -121,19 +164,15 @@ module Zakuro
         end
 
         def page?
-          return true if @page == '-'
-
-          !@page.nil? && !@page.empty? && @page =~ /^[0-9]+$/
+          Types.positive?(str: @page)
         end
 
         def number?
-          return true if @number == '-'
-
-          !@number.nil? && !@number.empty? && @number =~ /^[0-9]+$/
+          Types.positive?(str: @number)
         end
 
         def japan_date?
-          !@japan_date.nil? && @japan_date.is_a?(String)
+          Types.string?(str: @japan_date)
         end
       end
 
@@ -141,13 +180,13 @@ module Zakuro
       # Diffs 総差分
       #
       class Diffs
-        attr_reader :index, :month, :even_term, :day
+        attr_reader :index, :month, :solar_term, :days
 
         def initialize(index:, yaml_hash: {})
           @index = index
           @month = Month.new(index: index, yaml_hash: yaml_hash['month'])
-          @even_term = EvenTerm.new(index: index, yaml_hash: yaml_hash['even_term'])
-          @day = yaml_hash['day']
+          @solar_term = SolarTerm::Direction.new(index: index, yaml_hash: yaml_hash['solar_term'])
+          @days = yaml_hash['days']
         end
 
         def validate
@@ -157,17 +196,15 @@ module Zakuro
 
           failed += @month.validate
 
-          failed += @even_term.validate
+          failed += @solar_term.validate
 
-          failed.push("#{prefix} 'day'. #{@day}") unless day?
+          failed.push("#{prefix} 'days'. #{@days}") unless days?
 
           failed
         end
 
-        def day?
-          return true if @day == '-'
-
-          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
+        def days?
+          Types.num?(str: @days)
         end
       end
 
@@ -194,39 +231,123 @@ module Zakuro
         end
       end
 
-      #
-      # EvenTerm 中気
-      #
-      class EvenTerm
-        attr_reader :index, :name, :to, :day
+      module SolarTerm
+        #
+        # Direction 二十四節気（移動）
+        #
+        class Direction
+          attr_reader :index, :source, :destination, :days
+          #
+          # 初期化
+          #
+          # @param [Source] source 二十四節気（移動元）
+          # @param [Destination] destination 二十四節気（移動先）
+          # @param [Integer] day 大余差分
+          #
+          def initialize(index:, yaml_hash: {})
+            @index = index
+            @source = Source.new(diff_index: index, yaml_hash: yaml_hash['calc'])
+            @destination = Destination.new(diff_index: index, yaml_hash: yaml_hash['actual'])
+            @days = yaml_hash['days']
+          end
 
-        def initialize(index:, yaml_hash: {})
-          @index = index
-          @name = 'even_term'
-          @to = yaml_hash['to']
-          @day = yaml_hash['day']
+          def days?
+            Types.positive?(str: @days)
+          end
+
+          def validate
+            failed = []
+
+            prefix = "[#{index}][solar_term] invalid"
+
+            failed += @source.validate
+
+            failed += @destination.validate
+
+            failed.push("#{prefix} 'days'. #{@days}") unless days?
+
+            failed
+          end
         end
 
-        def validate
-          failed = []
+        #
+        # Source 二十四節気（移動元）
+        #
+        class Source
+          attr_reader :diff_index, :index, :to, :zodiac_name
 
-          prefix = "[#{@index}][#{@name}] invalid"
+          def initialize(diff_index:, yaml_hash: {})
+            @diff_index = diff_index
+            @index = yaml_hash['index']
+            @to = yaml_hash['to']
+            @zodiac_name = yaml_hash['zodiac_name']
+          end
 
-          failed.push("#{prefix} 'to'. #{@to}") unless to?
+          def validate
+            failed = []
 
-          failed.push("#{prefix} 'day'. #{@day}") unless day?
+            prefix = "[#{@diff_index}][solar_term.calc] invalid"
 
-          failed
+            failed.push("#{prefix} 'index'. #{@index}") unless index?
+
+            failed.push("#{prefix} 'to'. #{@to}") unless to?
+
+            failed.push("#{prefix} 'zodiac_name'. #{@zodiac_name}") unless zodiac_name?
+
+            failed
+          end
+
+          def index?
+            Types.positive?(str: @index)
+          end
+
+          def to?
+            Types.western_date?(str: @to)
+          end
+
+          def zodiac_name?
+            Types.string?(str: @zodiac_name)
+          end
         end
 
-        def to?
-          Western::Calendar.valid_date_string(str: @to)
-        end
+        #
+        # Destination 二十四節気（移動先）
+        #
+        class Destination
+          attr_reader :diff_index, :index, :from, :zodiac_name
 
-        def day?
-          return true if @day == '-'
+          def initialize(diff_index:, yaml_hash: {})
+            @diff_index = diff_index
+            @index = yaml_hash['index']
+            @from = yaml_hash['from']
+            @zodiac_name = yaml_hash['zodiac_name']
+          end
 
-          !@day.nil? && !@day.empty? && @day =~ /^-?[0-9]+$/
+          def validate
+            failed = []
+
+            prefix = "[#{@diff_index}][solar_term.actual] invalid"
+
+            failed.push("#{prefix} 'index'. #{@index}") unless index?
+
+            failed.push("#{prefix} 'from'. #{@from}") unless from?
+
+            failed.push("#{prefix} 'zodiac_name'. #{@zodiac_name}") unless zodiac_name?
+
+            failed
+          end
+
+          def index?
+            Types.positive?(str: @index)
+          end
+
+          def from?
+            Types.western_date?(str: @from)
+          end
+
+          def zodiac_name?
+            Types.string?(str: @zodiac_name)
+          end
         end
       end
 
@@ -256,15 +377,11 @@ module Zakuro
         end
 
         def calc?
-          return true if @calc == '-'
-
-          !@calc.nil? && !@calc.empty? && @calc =~ /^-?[0-9]+$/
+          Types.positive?(str: @calc)
         end
 
         def actual?
-          return true if @calc == '-'
-
-          !@actual.nil? && !@actual.empty? && @actual =~ /^-?[0-9]+$/
+          Types.positive?(str: @actual)
         end
       end
 
@@ -294,15 +411,11 @@ module Zakuro
         end
 
         def calc?
-          return true if @calc == '-'
-
-          @calc == 'true' || @calc == 'false'
+          Types.empiable_bool?(str: @calc)
         end
 
         def actual?
-          return true if @actual == '-'
-
-          @actual == 'true' || @actual == 'false'
+          Types.empiable_bool?(str: @actual)
         end
       end
 

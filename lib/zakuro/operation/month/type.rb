@@ -73,16 +73,16 @@ module Zakuro
     # Diffs 総差分
     #
     class Diffs
-      attr_reader :month, :even_term, :day
+      attr_reader :month, :solar_term, :days
 
-      def initialize(month: Month.new, even_term: EvenTerm.new, day: INVALID_DAY_VALUE)
+      def initialize(month: Month.new, solar_term: SolarTerm::Direction.new, days: INVALID_DAY_VALUE)
         @month = month
-        @even_term = even_term
-        @day = day
+        @solar_term = solar_term
+        @days = days
       end
 
       def invalid?
-        @day == INVALID_DAY_VALUE
+        @days == INVALID_DAY_VALUE
       end
     end
 
@@ -103,18 +103,69 @@ module Zakuro
     end
 
     #
-    # EvenTerm 中気
+    # 二十四節気
     #
-    class EvenTerm
-      attr_reader :index, :name, :to, :day
+    module SolarTerm
+      #
+      # Direction 二十四節気（移動）
+      #
+      class Direction
+        attr_reader :source, :destination, :days
+        #
+        # 初期化
+        #
+        # @param [Source] source 二十四節気（移動元）
+        # @param [Destination] destination 二十四節気（移動先）
+        # @param [Integer] day 大余差分
+        #
+        def initialize(source: Source.new, destination: Destination.new,
+                       days: INVALID_DAY_VALUE)
+          @source = source
+          @destination = destination
+          @days = days
+        end
 
-      def initialize(to: Western::Calendar.new, day: INVALID_DAY_VALUE)
-        @to = to
-        @day = day
+        def invalid_day?
+          @days == INVALID_DAY_VALUE
+        end
+
+        def invalid?
+          @source.invalid? && @destination.invalid?
+        end
       end
 
-      def invalid?
-        @day == INVALID_DAY_VALUE
+      #
+      # Source 二十四節気（移動元）
+      #
+      class Source
+        attr_reader :index, :to, :zodiac_name
+
+        def initialize(index: -1, to: Western::Calendar.new, zodiac_name: '')
+          @index = index
+          @to = to
+          @zodiac_name = zodiac_name
+        end
+
+        def invalid?
+          @index == -1
+        end
+      end
+
+      #
+      # Destination 二十四節気（移動先）
+      #
+      class Destination
+        attr_reader :index, :from, :zodiac_name
+
+        def initialize(index: -1, from: Western::Calendar.new, zodiac_name: '')
+          @index = index
+          @from = from
+          @zodiac_name = zodiac_name
+        end
+
+        def invalid?
+          @index == -1
+        end
       end
     end
 
