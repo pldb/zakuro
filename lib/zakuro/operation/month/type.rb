@@ -21,6 +21,15 @@ module Zakuro
     class MonthHistory
       attr_reader :id, :reference, :western_date, :annotations, :diffs
 
+      #
+      # 初期化
+      #
+      # @param [String] id ID
+      # @param [Reference] reference 参照
+      # @param [Western::Calendar] western_date 西暦日
+      # @param [Diffs] diffs 総差分
+      # @param [Array<Annotation>] annotations 注釈
+      #
       def initialize(id: '', reference: Reference.new,
                      western_date: Western::Calendar.new, diffs: Diffs.new, annotations: [])
         @id = id
@@ -30,6 +39,12 @@ module Zakuro
         @diffs = diffs
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         id == ''
       end
@@ -41,12 +56,25 @@ module Zakuro
     class Annotation
       attr_reader :id, :description, :note
 
+      #
+      # 初期化
+      #
+      # @param [String] id ID
+      # @param [String] description 内容
+      # @param [String] note 正誤訂正（zakuro）
+      #
       def initialize(id: '', description: '', note: '')
         @id = id
         @description = description
         @note = note
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         @id == ''
       end
@@ -58,12 +86,25 @@ module Zakuro
     class Reference
       attr_reader :page, :number, :japan_date
 
+      #
+      # 初期化
+      #
+      # @param [Integer] page 頁数
+      # @param [Integer] number 注釈番号
+      # @param [Integer] japan_date 和暦日
+      #
       def initialize(page: -1, number: -1, japan_date: '')
         @page = page
         @number = number
         @japan_date = japan_date
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         page == -1
       end
@@ -75,12 +116,26 @@ module Zakuro
     class Diffs
       attr_reader :month, :solar_term, :days
 
-      def initialize(month: Month.new, solar_term: SolarTerm::Direction.new, days: INVALID_DAY_VALUE)
+      #
+      # 初期化
+      #
+      # @param [Month] month 月差分
+      # @param [SolarTerm::Direction] solar_term 二十四節気差分
+      # @param [Integer] days 日差分
+      #
+      def initialize(month: Month.new, solar_term: SolarTerm::Direction.new,
+                     days: INVALID_DAY_VALUE)
         @month = month
         @solar_term = solar_term
         @days = days
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         @days == INVALID_DAY_VALUE
       end
@@ -92,11 +147,25 @@ module Zakuro
     class Month
       attr_reader :number, :leaped
 
+      # :reek:BooleanParameter
+
+      #
+      # 初期化
+      #
+      # @param [Integer] number 月
+      # @param [True, False] leaped 閏有無
+      #
       def initialize(number: -1, leaped: false)
         @number = number
         @leaped = leaped
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         number == -1
       end
@@ -125,10 +194,22 @@ module Zakuro
           @days = days
         end
 
+        #
+        # 無効か（大余差分）
+        #
+        # @return [True] 無効
+        # @return [False] 有効
+        #
         def invalid_day?
           @days == INVALID_DAY_VALUE
         end
 
+        #
+        # 無効か
+        #
+        # @return [True] 無効
+        # @return [False] 有効
+        #
         def invalid?
           @source.invalid? && @destination.invalid?
         end
@@ -140,12 +221,25 @@ module Zakuro
       class Source
         attr_reader :index, :to, :zodiac_name
 
+        #
+        # 初期化
+        #
+        # @param [Integer] index 二十四節気番号
+        # @param [Western::Calendar] to 移動先の月初日
+        # @param [String] zodiac_name 十干十二支
+        #
         def initialize(index: -1, to: Western::Calendar.new, zodiac_name: '')
           @index = index
           @to = to
           @zodiac_name = zodiac_name
         end
 
+        #
+        # 無効か
+        #
+        # @return [True] 無効
+        # @return [False] 有効
+        #
         def invalid?
           @index == -1
         end
@@ -157,12 +251,25 @@ module Zakuro
       class Destination
         attr_reader :index, :from, :zodiac_name
 
+        #
+        # 初期化
+        #
+        # @param [Integer] index 二十四節気番号
+        # @param [Western::Calendar] from 移動元の月初日
+        # @param [String] zodiac_name 十干十二支
+        #
         def initialize(index: -1, from: Western::Calendar.new, zodiac_name: '')
           @index = index
           @from = from
           @zodiac_name = zodiac_name
         end
 
+        #
+        # 無効か
+        #
+        # @return [True] 無効
+        # @return [False] 有効
+        #
         def invalid?
           @index == -1
         end
@@ -175,11 +282,23 @@ module Zakuro
     class Number
       attr_reader :calc, :actual
 
+      #
+      # 初期化
+      #
+      # @param [Integer] calc 計算
+      # @param [Integer] actual 運用
+      #
       def initialize(calc: -1, actual: -1)
         @calc = calc
         @actual = actual
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
       def invalid?
         @calc == -1 || @actual == -1
       end
@@ -191,11 +310,25 @@ module Zakuro
     class Leaped
       attr_reader :calc, :actual
 
+      # :reek:BooleanParameter
+
+      #
+      # 初期化
+      #
+      # @param [True, False] calc 計算
+      # @param [True, False] actual 運用
+      #
       def initialize(calc: false, actual: false)
         @calc = calc
         @actual = actual
       end
 
+      #
+      # 無効か
+      #
+      # @return [True] 無効（設定値なし）
+      # @return [False] 有効
+      #
       def invalid?
         !@calc && !@actual
       end

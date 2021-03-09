@@ -171,47 +171,91 @@ module Zakuro
       private_class_method :create_histories
 
       def self.create_history(yaml_hash: {})
-        diffs = create_diffs(yaml_hash: yaml_hash['diffs'])
+        diffs = MonthDiffsParser.create(yaml_hash: yaml_hash['diffs'])
 
         western_date = Operation::TypeParser.western_date(str: yaml_hash['western_date'])
+        reference = Reference.new(page: yaml_hash['page'].to_i, number: yaml_hash['number'].to_i,
+                                  japan_date: yaml_hash['japan_date'])
         MonthHistory.new(id: yaml_hash['id'],
-                         reference: Reference.new(page: yaml_hash['page'].to_i,
-                                                  number: yaml_hash['number'].to_i,
-                                                  japan_date: yaml_hash['japan_date']),
+                         reference: reference,
                          western_date: western_date,
                          diffs: diffs)
       end
       private_class_method :create_history
 
-      def self.create_diffs(yaml_hash: {})
+      def self.add_annotations(histories: [], annotations: {}, relations: {})
+        result = []
+        histories.each do |history|
+          result.push(
+            MonthHistory.new(
+              id: history.id, reference: history.reference, western_date: history.western_date,
+              annotations: create_history_annnotations(history: history, annotations: annotations,
+                                                       relations: relations),
+              diffs: history.diffs
+            )
+          )
+        end
+
+        result
+      end
+      private_class_method :add_annotations
+
+      def self.create_history_annnotations(history:, annotations: {}, relations: {})
+        history_id = history.id
+        history_annotations = []
+        [history_id, relations.fetch(history_id, '')].each do |id|
+          add_annotation(history_annotations: history_annotations,
+                         annotations: annotations, id: id)
+        end
+
+        history_annotations
+      end
+
+      def self.add_annotation(history_annotations: [], annotations: {}, id: '')
+        annotation = annotations.fetch(id, Annotation.new)
+        history_annotations.push(annotation) unless annotation.invalid?
+      end
+      private_class_method :add_annotation
+    end
+
+    #
+    # MonthDiffsParser 月情報（差分）解析
+    #
+    module MonthDiffsParser
+      def self.create(yaml_hash: {})
         Diffs.new(
           month: create_month(yaml_hash: yaml_hash['month']),
           solar_term: create_solar_term(yaml_hash: yaml_hash['solar_term']),
           days: Operation::TypeParser.days(str: yaml_hash['days'])
         )
       end
-      private_class_method :create_diffs
 
       def self.create_solar_term(yaml_hash: {})
-        calc = yaml_hash['calc']
-        actual = yaml_hash['actual']
-
-        source = SolarTerm::Source.new(
-          index: Operation::TypeParser.solar_term_index(str: calc['index']),
-          to: Operation::TypeParser.western_date(str: calc['to']),
-          zodiac_name: Operation::TypeParser.text(str: calc['zodiac_name'])
-        )
-        destination = SolarTerm::Destination.new(
-          index: Operation::TypeParser.solar_term_index(str: actual['index']),
-          from: Operation::TypeParser.western_date(str: actual['from']),
-          zodiac_name: Operation::TypeParser.text(str: actual['zodiac_name'])
-        )
-
         SolarTerm::Direction.new(
-          source: source, destination: destination,
+          source: create_source_solar_term(yaml_hash: yaml_hash['calc']),
+          destination: create_destination_solar_term(yaml_hash: yaml_hash['actual']),
           days: Operation::TypeParser.days(str: yaml_hash['days'])
         )
       end
+      private_class_method :create_solar_term
+
+      def self.create_source_solar_term(yaml_hash: {})
+        SolarTerm::Source.new(
+          index: Operation::TypeParser.solar_term_index(str: yaml_hash['index']),
+          to: Operation::TypeParser.western_date(str: yaml_hash['to']),
+          zodiac_name: Operation::TypeParser.text(str: yaml_hash['zodiac_name'])
+        )
+      end
+      private_class_method :create_source_solar_term
+
+      def self.create_destination_solar_term(yaml_hash: {})
+        SolarTerm::Source.new(
+          index: Operation::TypeParser.solar_term_index(str: yaml_hash['index']),
+          to: Operation::TypeParser.western_date(str: yaml_hash['from']),
+          zodiac_name: Operation::TypeParser.text(str: yaml_hash['zodiac_name'])
+        )
+      end
+      private_class_method :create_destination_solar_term
 
       def self.create_month(yaml_hash: {})
         number = yaml_hash['number']
@@ -225,33 +269,6 @@ module Zakuro
         )
       end
       private_class_method :create_month
-
-      def self.add_annotations(histories: [], annotations: {}, relations: {})
-        result = []
-        histories.each do |history|
-          history_annotations = []
-          [history.id, relations.fetch(history.id, '')].each do |history_id|
-            add_annotation(history_annotations: history_annotations,
-                           annotations: annotations, id: history_id)
-          end
-
-          result.push(
-            MonthHistory.new(
-              id: history.id, reference: history.reference, western_date: history.western_date,
-              annotations: history_annotations, diffs: history.diffs
-            )
-          )
-        end
-
-        result
-      end
-      private_class_method :add_annotations
-
-      def self.add_annotation(history_annotations: [], annotations: {}, id: '')
-        annotation = annotations.fetch(id, Annotation.new)
-        history_annotations.push(annotation) unless annotation.invalid?
-      end
-      private_class_method :add_annotation
     end
   end
 end

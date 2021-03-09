@@ -109,7 +109,7 @@ module Zakuro
       end
     end
 
-    # :reek:TooManyMethods { max_methods: 17 }
+    # :reek:TooManyMethods { max_methods: 18 }
 
     #
     # Calendar 年月日情報（西暦）

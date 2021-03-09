@@ -20,19 +20,27 @@ module Zakuro
         EMPTY_STRING = '-'
         BOOLEANS = %w[true false].freeze
 
+        # :reek:NilCheck
+
         def self.string?(str: '')
           !str.nil? && !str.empty? && str.is_a?(String)
         end
 
+        # :reek:NilCheck
+
         def self.empiable_string?(str: '')
           !str.nil? && str.is_a?(String)
         end
+
+        # :reek:NilCheck
 
         def self.positive?(str: '')
           return true if str == EMPTY_STRING
 
           !str.nil? && !str.empty? && str =~ /^[0-9]+$/
         end
+
+        # :reek:NilCheck
 
         def self.num?(str: '')
           return true if str == EMPTY_STRING
