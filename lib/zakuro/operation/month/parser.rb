@@ -249,9 +249,9 @@ module Zakuro
       private_class_method :create_source_solar_term
 
       def self.create_destination_solar_term(yaml_hash: {})
-        SolarTerm::Source.new(
+        SolarTerm::Destination.new(
           index: Operation::TypeParser.solar_term_index(str: yaml_hash['index']),
-          to: Operation::TypeParser.western_date(str: yaml_hash['from']),
+          from: Operation::TypeParser.western_date(str: yaml_hash['from']),
           zodiac_name: Operation::TypeParser.text(str: yaml_hash['zodiac_name'])
         )
       end

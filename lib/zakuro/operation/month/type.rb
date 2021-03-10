@@ -152,10 +152,10 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Integer] number 月
-      # @param [True, False] leaped 閏有無
+      # @param [Number] number 月
+      # @param [Leaped] leaped 閏有無
       #
-      def initialize(number: -1, leaped: false)
+      def initialize(number: Number.new, leaped: Leaped.new)
         @number = number
         @leaped = leaped
       end

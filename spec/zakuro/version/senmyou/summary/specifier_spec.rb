@@ -11,6 +11,7 @@ require File.expand_path('../../../../../' \
 describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'SingleDaySpecifier' do
+      # :reek:UnityFunction
       def eql?(date:, result:)
         expected = Zakuro::Senmyou::SingleDaySpecifier.get(date: date)
 
