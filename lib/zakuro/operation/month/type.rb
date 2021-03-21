@@ -19,7 +19,16 @@ module Zakuro
     # MonthHistory 変更履歴
     #
     class MonthHistory
-      attr_reader :id, :reference, :western_date, :annotations, :diffs
+      # @return [String] ID
+      attr_reader :id
+      # @return [Reference] 参照
+      attr_reader :reference
+      # @return [Western::Calendar] 西暦日
+      attr_reader :western_date
+      # @return [Array<Annotation>] 注釈
+      attr_reader :annotations
+      # @return [Diffs] 総差分
+      attr_reader :diffs
 
       #
       # 初期化
@@ -27,11 +36,11 @@ module Zakuro
       # @param [String] id ID
       # @param [Reference] reference 参照
       # @param [Western::Calendar] western_date 西暦日
-      # @param [Diffs] diffs 総差分
       # @param [Array<Annotation>] annotations 注釈
+      # @param [Diffs] diffs 総差分
       #
       def initialize(id: '', reference: Reference.new,
-                     western_date: Western::Calendar.new, diffs: Diffs.new, annotations: [])
+                     western_date: Western::Calendar.new, annotations: [], diffs: Diffs.new)
         @id = id
         @reference = reference
         @western_date = western_date
@@ -54,7 +63,12 @@ module Zakuro
     # Annotation 注釈
     #
     class Annotation
-      attr_reader :id, :description, :note
+      # @return [String] ID
+      attr_reader :id
+      # @return [String] 内容
+      attr_reader :description
+      # @return [String] 正誤訂正（zakuro）
+      attr_reader :note
 
       #
       # 初期化
@@ -84,14 +98,19 @@ module Zakuro
     # Reference 参照
     #
     class Reference
-      attr_reader :page, :number, :japan_date
+      # @return [Integer] 頁数
+      attr_reader :page
+      # @return [Integer] 注釈番号
+      attr_reader :number
+      # @return [String] 和暦日
+      attr_reader :japan_date
 
       #
       # 初期化
       #
       # @param [Integer] page 頁数
       # @param [Integer] number 注釈番号
-      # @param [Integer] japan_date 和暦日
+      # @param [String] japan_date 和暦日
       #
       def initialize(page: -1, number: -1, japan_date: '')
         @page = page
@@ -114,7 +133,12 @@ module Zakuro
     # Diffs 総差分
     #
     class Diffs
-      attr_reader :month, :solar_term, :days
+      # @return [Month] 月差分
+      attr_reader :month
+      # @return [SolarTerm::Direction] 二十四節気差分
+      attr_reader :solar_term
+      # @return [Integer] 日差分
+      attr_reader :days
 
       #
       # 初期化
@@ -145,7 +169,10 @@ module Zakuro
     # Month 月差分
     #
     class Month
-      attr_reader :number, :leaped
+      # @return [Number] 月
+      attr_reader :number
+      # @return [Leaped] 閏有無
+      attr_reader :leaped
 
       # :reek:BooleanParameter
 
@@ -179,7 +206,13 @@ module Zakuro
       # Direction 二十四節気（移動）
       #
       class Direction
-        attr_reader :source, :destination, :days
+        # @return [Source] 二十四節気（移動元）
+        attr_reader :source
+        # @return [Destination] 二十四節気（移動先）
+        attr_reader :destination
+        # @return [Integer] 大余差分
+        attr_reader :days
+
         #
         # 初期化
         #
@@ -200,7 +233,7 @@ module Zakuro
         # @return [True] 無効
         # @return [False] 有効
         #
-        def invalid_day?
+        def invalid_days?
           @days == INVALID_DAY_VALUE
         end
 
@@ -219,7 +252,12 @@ module Zakuro
       # Source 二十四節気（移動元）
       #
       class Source
-        attr_reader :index, :to, :zodiac_name
+        # @return [Integer] 二十四節気番号
+        attr_reader :index
+        # @return [Western::Calendar] 移動先の月初日
+        attr_reader :to
+        # @return [String] 十干十二支
+        attr_reader :zodiac_name
 
         #
         # 初期化
@@ -249,7 +287,12 @@ module Zakuro
       # Destination 二十四節気（移動先）
       #
       class Destination
-        attr_reader :index, :from, :zodiac_name
+        # @return [Integer] 二十四節気番号
+        attr_reader :index
+        # @return [Western::Calendar] 移動元の月初日
+        attr_reader :from
+        # @return [String] 十干十二支
+        attr_reader :zodiac_name
 
         #
         # 初期化
@@ -280,7 +323,10 @@ module Zakuro
     # Number 月
     #
     class Number
-      attr_reader :calc, :actual
+      # @return [Integer] 計算
+      attr_reader :calc
+      # @return [Integer] 運用
+      attr_reader :actual
 
       #
       # 初期化
@@ -308,7 +354,10 @@ module Zakuro
     # Leaped 閏有無
     #
     class Leaped
-      attr_reader :calc, :actual
+      # @return [True, False] 計算
+      attr_reader :calc
+      # @return [True, False] 運用
+      attr_reader :actual
 
       # :reek:BooleanParameter
 

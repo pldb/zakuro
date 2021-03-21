@@ -18,10 +18,6 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/range/operated_range',
                          __dir__)
 
-require File.expand_path('../../../../../' \
-                          'lib/zakuro/version/senmyou/range/operated_range',
-                         __dir__)
-
 # rubocop:disable Metrics/BlockLength
 
 describe 'Zakuro' do

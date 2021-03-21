@@ -26,7 +26,7 @@ describe 'Zakuro' do
       describe '.get' do
         context 'the month with moved solar term' do
           it 'should be removed at 1202-11-17' do
-            # - id: 266-1-1
+            #- id: 266-1-1
             # relation_id: "-"
             # page: '266'
             # number: '1'
@@ -43,10 +43,17 @@ describe 'Zakuro' do
             #     leaped:
             #       calc: 'false'
             #       actual: 'true'
-            #   even_term:
-            #     to: '1202-12-16'
-            #     day: '1'
-            #   day: "-"
+            #   solar_term:
+            #     calc:
+            #       index: '0'
+            #       to: '1202-12-16'
+            #       zodiac_name: 庚午
+            #     actual:
+            #       index: "-"
+            #       from: "-"
+            #       zodiac_name: "-"
+            #     days: '1'
+            #   days: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
             range = Zakuro::Senmyou::OperatedRange.new(
@@ -123,14 +130,16 @@ describe 'Zakuro' do
                 western_date: date
               ),
               # 計算上は冬至(0)がない。冬至が1202-11-17から移動している
+              # 移動した冬至は大余を1増やす（=冬至を1日分、後日にする）
               solar_terms: [
                 Zakuro::Senmyou::SolarTerm.new(
                   index: 1,
                   remainder: Zakuro::Senmyou::Remainder.new(day: 22, minute: 1580, second: 0)
                 ),
+                # 6-8145 -> 7-8145
                 Zakuro::Senmyou::SolarTerm.new(
                   index: 0,
-                  remainder: Zakuro::Senmyou::Remainder.new(day: 6, minute: 8145, second: 0)
+                  remainder: Zakuro::Senmyou::Remainder.new(day: 7, minute: 8145, second: 0)
                 )
               ]
             )
