@@ -50,21 +50,18 @@ module Zakuro
       # 二十四節気を取得する
       #
       # @param [Western::Calendar] western_date 月初日の西暦日
-      # @param [Integer] index 二十四節気番号
       #
       # @return [True] 対象あり
       # @return [False] 対象なし
       # @return [SolarTerm] 二十四節気
       #
-      def get(western_date: Western::Calendar.new, index: -1)
+      def get(western_date: Western::Calendar.new)
         solar_term = @directions.fetch(western_date.format, SolarTerm.new)
 
         # 合致しない場合
-        return false, SolarTerm.new unless solar_term.index == index
+        return false, SolarTerm.new if solar_term.empty?
 
         # 合致した上で、二十四節気が移動元（削除対象）の場合
-        return true, SolarTerm.new if solar_term.invalid?
-
         # 合致した上で、二十四節気が移動先（追加対象）の場合
         [true, solar_term]
       end

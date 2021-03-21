@@ -24,10 +24,8 @@ describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
       describe '.get' do
-        context 'xxxx' do
-          it 'should xxxx' do
-            # TODO: test case
-
+        context 'the month with moved solar term' do
+          it 'should be removed at 1202-11-17' do
             # - id: 266-1-1
             # relation_id: "-"
             # page: '266'
@@ -64,15 +62,79 @@ describe 'Zakuro' do
                 remainder: Zakuro::Senmyou::Remainder.new(
                   day: 38, minute: 7186, second: 0
                 ),
-                western_date: Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
+                western_date: date
               ),
+              # 計算上は冬至(0)がある
               solar_terms: [Zakuro::Senmyou::SolarTerm.new(
                 index: 23,
                 remainder: Zakuro::Senmyou::Remainder.new(day: 51, minute: 6309, second: 0)
               )]
             )
 
-            # TODO: 中気の移動
+            TestTools::Stringifier.eql?(
+              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+            )
+          end
+
+          it 'should be add at 1202-12-16' do
+            # - id: 266-1-0
+            # relation_id: 266-1-1
+            # page: '266'
+            # number: "-"
+            # japan_date: 建仁 2年 11 大 辛未  7-5375
+            # western_date: '1202-12-16'
+            # description: "-"
+            # note: "-"
+            # modified: 'true'
+            # diffs:
+            #   month:
+            #     number:
+            #       calc: '11'
+            #       actual: '11'
+            #     leaped:
+            #       calc: 'true'
+            #       actual: 'false'
+            #   solar_term:
+            #     calc:
+            #       index: "-"
+            #       to: "-"
+            #       zodiac_name: "-"
+            #     actual:
+            #       index: '0'
+            #       from: '1202-11-17'
+            #       zodiac_name: 辛未
+            #     days: "-"
+            #   days: "-"
+            date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
+
+            range = Zakuro::Senmyou::OperatedRange.new(
+              full_range: Zakuro::Senmyou::FullRange.new(start_date: date).get
+            ).get
+
+            actual = range[1].months[11]
+            expected = Zakuro::Senmyou::Month.new(
+              month_label: Zakuro::Senmyou::MonthLabel.new(
+                number: 11, is_many_days: true, leaped: false
+              ),
+              first_day: Zakuro::Senmyou::FirstDay.new(
+                remainder: Zakuro::Senmyou::Remainder.new(
+                  day: 7, minute: 5375, second: 0
+                ),
+                western_date: date
+              ),
+              # 計算上は冬至(0)がない。冬至が1202-11-17から移動している
+              solar_terms: [
+                Zakuro::Senmyou::SolarTerm.new(
+                  index: 1,
+                  remainder: Zakuro::Senmyou::Remainder.new(day: 22, minute: 1580, second: 0)
+                ),
+                Zakuro::Senmyou::SolarTerm.new(
+                  index: 0,
+                  remainder: Zakuro::Senmyou::Remainder.new(day: 6, minute: 8145, second: 0)
+                )
+              ]
+            )
+
             TestTools::Stringifier.eql?(
               expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
             )

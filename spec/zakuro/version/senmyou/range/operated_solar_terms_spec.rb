@@ -36,29 +36,29 @@ describe 'Zakuro' do
           operated_solar_terms
         end
 
-        context 'xxxx' do
-          it 'should xxxx' do
-            # TODO: テストケース名、リファクタリング
+        context 'specified solar term' do
+          it 'should invalid at 1002-01-16' do
             western_date = Zakuro::Western::Calendar.new(year: 1002, month: 1, day: 16)
 
             operated_solar_terms = create_operated_solar_terms(western_date: western_date)
 
-            matched, solar_term = operated_solar_terms.get(western_date: western_date, index: 2)
+            matched, solar_term = operated_solar_terms.get(western_date: western_date)
 
             expect(matched).to eq true
 
             TestTools::Stringifier.eql?(
-              expected: Zakuro::Senmyou::SolarTerm.new, actual: solar_term, class_prefix: 'Zakuro::Senmyou'
+              expected: Zakuro::Senmyou::SolarTerm.new(index: 2),
+              actual: solar_term,
+              class_prefix: 'Zakuro::Senmyou'
             )
           end
 
-          it 'should xxxx' do
-            # TODO: テストケース名、リファクタリング
+          it 'should valid at 1001-12-18' do
             western_date = Zakuro::Western::Calendar.new(year: 1001, month: 12, day: 18)
 
             operated_solar_terms = create_operated_solar_terms(western_date: western_date)
 
-            matched, solar_term = operated_solar_terms.get(western_date: western_date, index: 2)
+            matched, solar_term = operated_solar_terms.get(western_date: western_date)
 
             expect(matched).to eq true
 
