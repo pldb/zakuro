@@ -24,6 +24,70 @@ describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
       describe '.get' do
+        context 'the month with changed first day' do
+          it 'should be in one days at 873-2-1' do
+            #- id: 156-1-1
+            # relation_id: "-"
+            # page: '156'
+            # number: '1'
+            # japan_date: 貞観15年 1  小 丁卯 2-5359
+            # western_date: 873-2-1
+            # description: 計算では2丙寅である, 三代実録に正月丁卯朔とある。従って正月朔のユリウス暦日は2月2日。
+            # note: "-"
+            # modified: 'true'
+            # diffs:
+            #   month:
+            #     number:
+            #       calc: "-"
+            #       actual: "-"
+            #     leaped:
+            #       calc: "-"
+            #       actual: "-"
+            #   solar_term:
+            #     calc:
+            #       index: "-"
+            #       to: "-"
+            #       zodiac_name: "-"
+            #     actual:
+            #       index: "-"
+            #       from: "-"
+            #       zodiac_name: "-"
+            #     days: "-"
+            #   days: '1'
+
+            date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
+
+            range = Zakuro::Senmyou::OperatedRange.new(
+              full_range: Zakuro::Senmyou::FullRange.new(start_date: date).get
+            ).get
+
+            actual = range[14].months[0]
+            # 貞観 15年 1 小 丁卯 2-5359 873 2  1 (4)17-937
+            expected = Zakuro::Senmyou::Month.new(
+              # 小 -> 大
+              month_label: Zakuro::Senmyou::MonthLabel.new(
+                number: 1, is_many_days: true, leaped: false
+              ),
+              first_day: Zakuro::Senmyou::FirstDay.new(
+                # 2-5359 -> 3-5359
+                remainder: Zakuro::Senmyou::Remainder.new(
+                  day: 3, minute: 5359, second: 0
+                ),
+                # 873-2-1 -> 873-2-2
+                western_date: Zakuro::Western::Calendar.new(year: 873, month: 2, day: 2)
+              ),
+              solar_terms: [Zakuro::Senmyou::SolarTerm.new(
+                index: 4,
+                remainder: Zakuro::Senmyou::Remainder.new(day: 17, minute: 937, second: 0)
+              )]
+            )
+
+            TestTools::Stringifier.eql?(
+              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+            )
+          end
+        end
+
         context 'the month with moved solar term' do
           it 'should be removed at 1202-11-17' do
             #- id: 266-1-1

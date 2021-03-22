@@ -37,7 +37,7 @@ module Zakuro
       def rewrite
         rewrite_month
         rewrite_solar_terms
-        # TODO: 月、二十四節気以外の書き換え
+        rewrite_first_day
       end
 
       #
@@ -82,6 +82,49 @@ module Zakuro
         operated_solar_terms.push(operated_solar_term) unless used
 
         @solar_terms = operated_solar_terms
+      end
+
+      #
+      # 月初日ごとの差分で書き換える
+      #
+      def rewrite_first_day
+        diffs = @history.diffs
+        return if diffs.invalid_days?
+
+        days = diffs.days
+
+        @first_day = FirstDay.new(
+          western_date: rewrite_western_date(days: days),
+          remainder: rewrite_remainder(days: days)
+        )
+      end
+
+      #
+      # 月初日の大余小余を日差分で書き換える
+      #
+      # @param [Integer] days 日差分
+      #
+      # @return [Remainder] 月初日の大余小余
+      #
+      def rewrite_remainder(days:)
+        remainder = @first_day.remainder.clone
+        remainder.add!(Remainder.new(day: days, minute: 0, second: 0))
+
+        remainder
+      end
+
+      #
+      # 月初日の西暦日を日差分で書き換える
+      #
+      # @param [Integer] days 日差分
+      #
+      # @return [Western::Calendar] 月初日の西暦日
+      #
+      def rewrite_western_date(days:)
+        western_date = @first_day.western_date.clone
+        western_date += days
+
+        western_date
       end
     end
   end

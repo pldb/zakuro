@@ -155,12 +155,12 @@ module Zakuro
       end
 
       #
-      # 無効か
+      # 日差分が無効か
       #
       # @return [True] 無効
       # @return [False] 有効
       #
-      def invalid?
+      def invalid_days?
         @days == INVALID_DAY_VALUE
       end
     end
