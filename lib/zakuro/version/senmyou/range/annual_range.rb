@@ -144,11 +144,12 @@ module Zakuro
       # @param [Array<Month>] annual_range 1年データ
       #
       def self.apply_big_and_small_of_the_month(annual_range:)
-        size = annual_range.size - 1
-        (0...size).each do |idx|
-          current_month = annual_range[idx]
-          next_month = annual_range[idx + 1]
-          current_month.eval_many_days(next_month_day: next_month.remainder.day)
+        annual_range.each_with_index do |range, index|
+          # 最後は比較対象がないためスキップする（=計算外の余分な月が最後に必要である）
+          next if index == annual_range.size - 1
+
+          next_month = annual_range[index + 1]
+          range.eval_many_days(next_month_day: next_month.remainder.day)
         end
       end
       private_class_method :apply_big_and_small_of_the_month
