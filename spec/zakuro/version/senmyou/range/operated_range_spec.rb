@@ -26,8 +26,9 @@ describe 'Zakuro' do
       describe '.get' do
         context 'the month with changed first day' do
           it 'should be in one days at 873-2-1' do
-            #- id: 156-1-1
+            # - id: 156-1-1
             # relation_id: "-"
+            # parent_id: "-"
             # page: '156'
             # number: '1'
             # japan_date: 貞観15年 1  小 丁卯 2-5359
@@ -43,6 +44,9 @@ describe 'Zakuro' do
             #     leaped:
             #       calc: "-"
             #       actual: "-"
+            #     days:
+            #       calc: 大
+            #       actual: 小
             #   solar_term:
             #     calc:
             #       index: "-"
@@ -54,7 +58,6 @@ describe 'Zakuro' do
             #       zodiac_name: "-"
             #     days: "-"
             #   days: '1'
-
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
             range = Zakuro::Senmyou::OperatedRange.new(
@@ -64,9 +67,8 @@ describe 'Zakuro' do
             actual = range[14].months[0]
             # 貞観 15年 1 小 丁卯 2-5359 873 2  1 (4)17-937
             expected = Zakuro::Senmyou::Month.new(
-              # 小 -> 大
               month_label: Zakuro::Senmyou::MonthLabel.new(
-                number: 1, is_many_days: true, leaped: false
+                number: 1, is_many_days: false, leaped: false
               ),
               first_day: Zakuro::Senmyou::FirstDay.new(
                 # 2-5359 -> 3-5359
@@ -90,14 +92,14 @@ describe 'Zakuro' do
 
         context 'the month with moved solar term' do
           it 'should be removed at 1202-11-17' do
-            #- id: 266-1-1
+            # - id: 266-1-1
             # relation_id: "-"
+            # parent_id: "-"
             # page: '266'
             # number: '1'
             # japan_date: 建仁 2年 閏10 小 壬寅 38-7186
             # western_date: '1202-11-17'
-            # description: 計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの,
-            #              普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）
+            # description: 計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）
             # note: "-"
             # modified: 'true'
             # diffs:
@@ -108,6 +110,9 @@ describe 'Zakuro' do
             #     leaped:
             #       calc: 'false'
             #       actual: 'true'
+            #     days:
+            #       calc: 小
+            #       actual: 小
             #   solar_term:
             #     calc:
             #       index: '0'
@@ -149,8 +154,9 @@ describe 'Zakuro' do
           end
 
           it 'should be add at 1202-12-16' do
-            # - id: 266-1-0
+            #           - id: 266-1-0
             # relation_id: 266-1-1
+            # parent_id: "-"
             # page: '266'
             # number: "-"
             # japan_date: 建仁 2年 11 大 辛未  7-5375
@@ -166,6 +172,9 @@ describe 'Zakuro' do
             #     leaped:
             #       calc: 'true'
             #       actual: 'false'
+            #     days:
+            #       calc: 大
+            #       actual: 大
             #   solar_term:
             #     calc:
             #       index: "-"

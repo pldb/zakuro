@@ -37,7 +37,7 @@ module Zakuro
         def self.positive?(str: '')
           return true if str == EMPTY_STRING
 
-          !str.nil? && !str.empty? && str =~ /^[0-9]+$/
+          !str.nil? && !str.empty? && /^[0-9]+$/.match?(str)
         end
 
         # :reek:NilCheck
@@ -45,7 +45,7 @@ module Zakuro
         def self.num?(str: '')
           return true if str == EMPTY_STRING
 
-          !str.nil? && !str.empty? && str =~ /^[-0-9]+$/
+          !str.nil? && !str.empty? && /^[-0-9]+$/.match?(str)
         end
 
         def self.bool?(str: '')

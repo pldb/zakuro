@@ -1,6 +1,39 @@
 ---
+- id: 156-1-a
+  relation_id: "-"
+  parent_id: "-"
+  page: '156'
+  number: "-"
+  japan_date: 貞観 14年 12 大 丁酉 33-1832
+  western_date: 873-1-3
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 156-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '156'
   number: '1'
   japan_date: 貞観15年 1  小 丁卯 2-5359
@@ -16,6 +49,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -27,8 +63,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 157-1-a
+  relation_id: "-"
+  parent_id: "-"
+  page: '157'
+  number: "-"
+  japan_date: 貞観 15年 12 大 壬辰 28-6459
+  western_date: 873-12-24
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 157-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '157'
   number: '1'
   japan_date: 貞観 16年 1 小 壬戌 57-2576
@@ -44,6 +113,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -57,6 +129,7 @@
     days: '1'
 - id: 157-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '157'
   number: '2'
   japan_date: 貞観 16年 2 小 辛卯 26-6249
@@ -72,6 +145,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -83,8 +159,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 162-1-a
+  relation_id: "-"
+  parent_id: 162-1-1
+  page: '162'
+  number: "-"
+  japan_date: 寛平 1年 4 小 壬戌 58-1299
+  western_date: 889-5-4
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 162-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '162'
   number: '1'
   japan_date: 寛平 1年 5 大 辛卯 28-6645
@@ -100,6 +209,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -111,8 +223,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 162-2-a
+  relation_id: "-"
+  parent_id: 162-2-1
+  page: '162'
+  number: "-"
+  japan_date: 寛平 2年 12 小 壬午 18-4981
+  western_date: 891-1-14
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 162-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '162'
   number: '2'
   japan_date: 寛平 3年 1 大 辛亥 48-9
@@ -128,6 +273,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -139,8 +287,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 162-3-a
+  relation_id: "-"
+  parent_id: 162-3-1
+  page: '162'
+  number: "-"
+  japan_date: 寛平 3年 6 小 己卯 15-1363
+  western_date: 891-7-10
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 162-3-1
   relation_id: "-"
+  parent_id: "-"
   page: '162'
   number: '3'
   japan_date: 寛平 3年 7 大 戊申 45-6385
@@ -156,6 +337,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -167,8 +351,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 163-1-a
+  relation_id: "-"
+  parent_id: 163-1-1
+  page: '163'
+  number: "-"
+  japan_date: 寛平 3年 12 大 丁丑 13-1140
+  western_date: 892-1-4
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 163-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '163'
   number: '1'
   japan_date: 寛平 4年 1 小 丁未 42-5602
@@ -184,6 +401,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -195,8 +415,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 163-2-a
+  relation_id: "-"
+  parent_id: 163-2-1
+  page: '163'
+  number: "-"
+  japan_date: 寛平 4年 3 小 乙巳 41-3663
+  western_date: 892-4-1
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 163-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '163'
   number: '2'
   japan_date: 寛平 4年 4 大 甲戌 11-6322
@@ -212,6 +465,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -223,8 +479,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 163-3-a
+  relation_id: "-"
+  parent_id: 163-3-1
+  page: '163'
+  number: "-"
+  japan_date: 寛平 6年 4 小 癸巳 29-4108
+  western_date: 894-5-9
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 163-3-1
   relation_id: "-"
+  parent_id: "-"
   page: '163'
   number: '3'
   japan_date: 寛平 6年 5 大 壬戌 59-6639
@@ -240,6 +529,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -251,14 +543,79 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 167-1-a
+  relation_id: "-"
+  parent_id: 167-1-1
+  page: '167'
+  number: "-"
+  japan_date: 延喜 4年 4 大 乙未 31-3042
+  western_date: 904-5-18
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 167-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '167'
   number: '1'
   japan_date: 延喜 4年 5 小 乙丑 1-6300
   western_date: 904-6-17
   description: 計算では小余6300。これは丁度進朔限6300と同じ値である。計算では進朔して大余1, 即ち乙丑となっているが, この場合進朔しないで甲子としたことも充分考えられる。甲子にしたがうとユリウス暦日は6月16日となる。日本長暦,
     皇和通暦は甲子, 本朝統暦は乙丑。
+  note: 計算値のみのため改変なし
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 178-1-a
+  relation_id: "-"
+  parent_id: 178-1-1
+  page: '178'
+  number: "-"
+  japan_date: 承平 6年 12 小 乙酉 21-6137
+  western_date: 937-1-15
+  description: "-"
   note: "-"
   modified: 'true'
   diffs:
@@ -269,6 +626,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -282,6 +642,7 @@
     days: "-"
 - id: 178-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '178'
   number: '1'
   japan_date: 承平 7年 1 大 甲寅 51-2479
@@ -297,6 +658,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -310,6 +674,7 @@
     days: "-1"
 - id: 178-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '178'
   number: '2'
   japan_date: 承平 7年 2 大 甲申 21-6337
@@ -325,6 +690,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -336,8 +704,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 178-3-a
+  relation_id: "-"
+  parent_id: 178-3-1
+  page: '178'
+  number: "-"
+  japan_date: 承平 7年 11 小 庚戌 46-1120
+  western_date: 937-12-6
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 178-3-1
   relation_id: "-"
+  parent_id: "-"
   page: '178'
   number: '3'
   japan_date: 承平 7年 12 小 己卯 16-7823
@@ -353,6 +754,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -366,6 +770,7 @@
     days: "-1"
 - id: 178-4-1
   relation_id: "-"
+  parent_id: "-"
   page: '178'
   number: '4'
   japan_date: 天慶 1年 1 大 戊申 45-5349
@@ -381,6 +786,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -394,6 +802,7 @@
     days: "-1"
 - id: 178-5-1
   relation_id: "-"
+  parent_id: "-"
   page: '178'
   number: '5'
   japan_date: 天慶 1年 2 大 戊寅 15-2013
@@ -409,6 +818,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -420,8 +832,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 179-1-a
+  relation_id: "-"
+  parent_id: 179-1-1
+  page: '179'
+  number: "-"
+  japan_date: 天慶 5年 10 小 辛亥 47-4722
+  western_date: 942-11-11
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 179-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '179'
   number: '1'
   japan_date: 天慶 5年 11 大 庚辰 17-130
@@ -437,6 +882,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -448,8 +896,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 185-1-a
+  relation_id: "-"
+  parent_id: 185-1-1
+  page: '185'
+  number: "-"
+  japan_date: 天徳 2年 4 小 壬子 48-1643
+  western_date: 958-4-22
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 185-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '185'
   number: '1'
   japan_date: 天徳 2年 5 大 辛巳 18-6391
@@ -465,6 +946,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -476,8 +960,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 187-1-a
+  relation_id: "-"
+  parent_id: 187-1-1
+  page: '187'
+  number: "-"
+  japan_date: 康保 1年 12 小 癸卯 39-459
+  western_date: 965-1-6
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 187-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '187'
   number: '1'
   japan_date: 康保 2年 1 大 壬申 9-6710
@@ -493,6 +1010,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -504,8 +1024,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 190-1-a
+  relation_id: "-"
+  parent_id: 190-1-1
+  page: '190'
+  number: "-"
+  japan_date: 天延 1年 3 小 乙卯 51-3499
+  western_date: 973-4-6
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 190-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '190'
   number: '1'
   japan_date: 天延 1年 4 大 甲申 21-6358
@@ -521,6 +1074,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -532,8 +1088,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 190-2-a
+  relation_id: "-"
+  parent_id: 190-2-1
+  page: '190'
+  number: "-"
+  japan_date: 天延 3年 8 小 庚子 36-5307
+  western_date: 975-9-8
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 190-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '190'
   number: '2'
   japan_date: 天延 3年 9 大 己巳  6-17
@@ -549,6 +1138,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -560,8 +1152,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 191-1-a
+  relation_id: "-"
+  parent_id: 191-1-1
+  page: '191'
+  number: "-"
+  japan_date: 貞元 2年 8 小 己未 55-2619
+  western_date: 977-9-16
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 191-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '191'
   number: '1'
   japan_date: 貞元 2年 9 大 戊子 25-6435
@@ -577,6 +1202,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -588,8 +1216,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 193-1-a
+  relation_id: "-"
+  parent_id: 193-1-1
+  page: '193'
+  number: "-"
+  japan_date: 天元 5年 3 小 癸巳 29-3112
+  western_date: 982-3-28
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 193-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '193'
   number: '1'
   japan_date: 天元 5年 4 大 壬戌 59-6368
@@ -605,6 +1266,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -616,8 +1280,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 193-2-a
+  relation_id: "-"
+  parent_id: 193-2-1
+  page: '193'
+  number: "-"
+  japan_date: 永観 1年 1 小 戊午 54-1068
+  western_date: 983-2-16
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 193-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '193'
   number: '2'
   japan_date: 永観 1年 2 大 丁亥 24-6398
@@ -633,6 +1330,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -644,8 +1344,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 197-1-a
+  relation_id: "-"
+  parent_id: 197-1-1
+  page: '197'
+  number: "-"
+  japan_date: 正暦 5年 3 小 癸丑 49-1012
+  western_date: 994-4-14
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 197-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '197'
   number: '1'
   japan_date: 正暦 5年 4 大 壬午 19-6430
@@ -661,6 +1394,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -672,8 +1408,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 197-2-a
+  relation_id: "-"
+  parent_id: 197-2-1
+  page: '197'
+  number: "-"
+  japan_date: 正暦 5年 5 小 壬子 48-2706
+  western_date: 994-6-12
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 197-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '197'
   number: '2'
   japan_date: 正暦 5年 6 大 辛巳 18-6768
@@ -689,6 +1458,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -700,8 +1472,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 198-1-a
+  relation_id: "-"
+  parent_id: 198-1-1
+  page: '198'
+  number: "-"
+  japan_date: 長徳 3年 3 小 乙丑  1-3104
+  western_date: 997-4-10
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 198-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '198'
   number: '1'
   japan_date: 長徳 3年 4 大 甲午 31-6786
@@ -717,6 +1522,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -728,8 +1536,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 198-2-a
+  relation_id: "-"
+  parent_id: 198-2-1
+  page: '198'
+  number: "-"
+  japan_date: 長徳 3年 5 小 甲子  0-2365
+  western_date: 997-6-8
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 198-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '198'
   number: '2'
   japan_date: 長徳 3年 6 大 癸巳 30-6758
@@ -745,6 +1586,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -756,8 +1600,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 199-1-a
+  relation_id: "-"
+  parent_id: 199-1-1
+  page: '199'
+  number: "-"
+  japan_date: 長保 3年  11 大 戊辰  4-2634
+  western_date: '1001-11-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 199-1-0
   relation_id: 199-1-1
+  parent_id: "-"
   page: '199'
   number: "-"
   japan_date: 長保 3年  12 大 戊戌 34-8271
@@ -773,6 +1650,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -786,6 +1666,7 @@
     days: "-"
 - id: 199-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '199'
   number: '1'
   japan_date: 長保 3年  閏12 小 戊辰 3-6021
@@ -801,6 +1682,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '2'
@@ -812,8 +1696,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 199-2-a
+  relation_id: "-"
+  parent_id: 199-2-1
+  page: '199'
+  number: "-"
+  japan_date: 長保 4年  9 小 癸巳 29-2740
+  western_date: '1002-10-9'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 199-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '199'
   number: '2'
   japan_date: 長保 4年 10 大 壬戌 59-6378
@@ -829,6 +1746,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -840,8 +1760,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 203-1-a
+  relation_id: "-"
+  parent_id: 203-1-1
+  page: '203'
+  number: "-"
+  japan_date: 長和 3年  2 小 丁巳 53-2429
+  western_date: '1014-3-4'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 203-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '203'
   number: '1'
   japan_date: 長和 3年 3 大 丙戌 23-6427
@@ -857,6 +1810,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -868,8 +1824,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 205-1-a
+  relation_id: "-"
+  parent_id: 205-1-1
+  page: '205'
+  number: "-"
+  japan_date: 寛仁 2年 9 大 庚申 56-1115
+  western_date: '1018-10-12'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 205-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '205'
   number: '1'
   japan_date: 寛仁 2年 10 小 庚寅 25-6281
@@ -885,6 +1874,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -896,8 +1888,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 207-1-a
+  relation_id: "-"
+  parent_id: 207-1-1
+  page: '207'
+  number: "-"
+  japan_date: 万寿 3年 8 大 甲戌 10-1045
+  western_date: '1026-9-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 207-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '207'
   number: '1'
   japan_date: 万寿 3年 9 小 甲辰 39-6082
@@ -913,6 +1938,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -924,8 +1952,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 209-1-a
+  relation_id: "-"
+  parent_id: 209-1-1
+  page: '209'
+  number: "-"
+  japan_date: 長元 2年 12 大 乙酉 21-1161
+  western_date: '1030-1-7'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 209-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '209'
   number: '1'
   japan_date: 長元 3年 1 小 乙卯 50-6232
@@ -941,6 +2002,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -952,8 +2016,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 210-1-a
+  relation_id: "-"
+  parent_id: 210-1-1
+  page: '210'
+  number: "-"
+  japan_date: 長元 7年 7 大 戊子 24-1337
+  western_date: '1034-8-17'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 210-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '210'
   number: '1'
   japan_date: 長元 7年 8 小 戊午 53-6270
@@ -969,6 +2066,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -980,8 +2080,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 211-1-a
+  relation_id: "-"
+  parent_id: 211-1-1
+  page: '211'
+  number: "-"
+  japan_date: 長暦 1年 3 大 甲戌 10-613
+  western_date: '1037-3-20'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 211-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '211'
   number: '1'
   japan_date: 長暦 1年 4 小 甲辰 39-5736
@@ -997,6 +2130,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -1008,8 +2144,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 215-1-a
+  relation_id: "-"
+  parent_id: 215-1-2
+  page: '215'
+  number: "-"
+  japan_date: 永承 5年 10 小 乙卯 51-7981
+  western_date: '1050-10-19'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 215-1-0
   relation_id: 215-1-2
+  parent_id: "-"
   page: '215'
   number: "-"
   japan_date: 永承 5年 閏10 小 甲申 20-5089
@@ -1025,6 +2194,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1038,6 +2210,7 @@
     days: "-"
 - id: 215-1-1
   relation_id: 215-1-2
+  parent_id: "-"
   page: '215'
   number: '1'
   japan_date: 永承 5年 11 大 癸丑 50-1948
@@ -1053,6 +2226,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1066,6 +2242,7 @@
     days: "-1"
 - id: 215-1-2
   relation_id: "-"
+  parent_id: "-"
   page: '215'
   number: '1'
   japan_date: 永承 5年 12 大 癸未 20-6665
@@ -1083,6 +2260,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1094,8 +2274,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 222-1-a
+  relation_id: "-"
+  parent_id: 222-1-2
+  page: '222'
+  number: "-"
+  japan_date: 延久 1年 10 大 甲午 30-2703
+  western_date: '1069-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 222-1-0
   relation_id: 222-1-1
+  parent_id: "-"
   page: '222'
   number: "-"
   japan_date: 延久 1年 閏10 小 甲子 0-822
@@ -1111,6 +2324,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1124,6 +2340,7 @@
     days: "-"
 - id: 222-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '222'
   number: '1'
   japan_date: 延久 1年 11 大 癸巳 30-7195
@@ -1139,6 +2356,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1150,8 +2370,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 228-1-a
+  relation_id: "-"
+  parent_id: 228-1-1
+  page: '228'
+  number: "-"
+  japan_date: 寛治 2年 12 小 癸卯 39-320
+  western_date: '1089-1-15'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 228-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '228'
   number: '1'
   japan_date: 寛治 3年 1 大 壬申 9-6402
@@ -1167,6 +2420,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1178,8 +2434,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 230-1-a
+  relation_id: "-"
+  parent_id: 230-1-1
+  page: '230'
+  number: "-"
+  japan_date: 嘉保 1年 12 小 戊辰  4-3361
+  western_date: '1095-1-9'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 230-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '230'
   number: '1'
   japan_date: 嘉保 2年 1 大 丁酉 34-7200
@@ -1195,6 +2484,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1206,8 +2498,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 242-1-a
+  relation_id: "-"
+  parent_id: 242-1-1
+  page: '242'
+  number: "-"
+  japan_date: 大治 4年 閏7 小 丁未 43-1179
+  western_date: '1129-8-17'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 242-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '242'
   number: '1'
   japan_date: 大治 4年 8 大 丙子 13-6547
@@ -1224,6 +2549,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1235,8 +2563,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 245-1-a
+  relation_id: "-"
+  parent_id: 245-1-1
+  page: '245'
+  number: "-"
+  japan_date: 保延 3年 12 小 戊午 54-2825
+  western_date: '1138-1-13'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 245-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '245'
   number: '1'
   japan_date: 保延 4年 1 大 丁亥 24-6432
@@ -1252,6 +2613,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1263,8 +2627,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 251-1-a
+  relation_id: "-"
+  parent_id: 251-1-1
+  page: '251'
+  number: "-"
+  japan_date: 保元 1年 10 小 己亥 35-1816
+  western_date: '1156-11-15'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 251-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '251'
   number: '1'
   japan_date: 保元 1年 11 大 戊辰  5-6930
@@ -1280,6 +2677,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1291,8 +2691,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 251-2-a
+  relation_id: "-"
+  parent_id: 251-2-1
+  page: '251'
+  number: "-"
+  japan_date: 保元 1年 12 小 戊戌 34-3130
+  western_date: '1157-1-13'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 251-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '251'
   number: '2'
   japan_date: 保元 2年 1 大 丁卯 4-6885
@@ -1308,6 +2741,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1319,8 +2755,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 253-1-a
+  relation_id: "-"
+  parent_id: 253-1-2
+  page: '253'
+  number: "-"
+  japan_date: 応保 2年 2 大 戊戌 34-2910
+  western_date: '1162-2-16'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 253-1-1
   relation_id: 253-1-2
+  parent_id: "-"
   page: '253'
   number: '1'
   japan_date: 応保 2年 閏2 小 戊辰  4-431
@@ -1336,6 +2805,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '8'
@@ -1349,6 +2821,7 @@
     days: "-"
 - id: 253-1-2
   relation_id: "-"
+  parent_id: "-"
   page: '253'
   number: '1'
   japan_date: 応保 2年 3 大 丁酉 34-6308
@@ -1364,6 +2837,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1375,8 +2851,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 253-2-a
+  relation_id: "-"
+  parent_id: 253-2-1
+  page: '253'
+  number: "-"
+  japan_date: 長寛 2年  10 小 癸丑 49-1316
+  western_date: '1164-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 253-2-0
   relation_id: 253-2-1
+  parent_id: "-"
   page: '253'
   number: "-"
   japan_date: 長寛 2年 閏10 小 壬午 18-5932
@@ -1392,6 +2901,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1405,6 +2917,7 @@
     days: "-"
 - id: 253-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '253'
   number: '2'
   japan_date: 長寛 2年 11 大 辛亥 48-1907
@@ -1420,6 +2933,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1431,8 +2947,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 260-1-a
+  relation_id: "-"
+  parent_id: 260-1-2
+  page: '260'
+  number: "-"
+  japan_date: 寿永 2年 10 大 壬辰 28-6156
+  western_date: '1183-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 260-1-1
   relation_id: 260-1-2
+  parent_id: "-"
   page: '260'
   number: '1'
   japan_date: 寿永 2年 閏10 小 壬戌 58-3492
@@ -1448,6 +2997,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1461,6 +3013,7 @@
     days: "-"
 - id: 260-1-2
   relation_id: "-"
+  parent_id: "-"
   page: '260'
   number: '1'
   japan_date: 寿永 2年 11 大 辛卯 28-592
@@ -1477,6 +3030,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1488,8 +3044,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 261-1-a
+  relation_id: "-"
+  parent_id: 261-1-1
+  page: '261'
+  number: "-"
+  japan_date: 文治 3年 7 小 庚子 36-3885
+  western_date: '1187-8-6'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 261-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '261'
   number: '1'
   japan_date: 文治 3年 8 大 己巳 6-6449
@@ -1505,6 +3094,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1516,8 +3108,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 266-1-a
+  relation_id: "-"
+  parent_id: 266-1-1
+  page: '266'
+  number: "-"
+  japan_date: 建仁 2年 10 大 壬申  8-585
+  western_date: '1202-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 266-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '266'
   number: '1'
   japan_date: 建仁 2年 閏10 小 壬寅 38-7186
@@ -1533,6 +3158,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1546,6 +3174,7 @@
     days: "-"
 - id: 266-1-0
   relation_id: 266-1-1
+  parent_id: "-"
   page: '266'
   number: "-"
   japan_date: 建仁 2年 11 大 辛未  7-5375
@@ -1561,6 +3190,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1572,8 +3204,41 @@
         zodiac_name: 辛未
       days: "-"
     days: "-"
+- id: 272-1-a
+  relation_id: "-"
+  parent_id: 272-1-1
+  page: '272'
+  number: "-"
+  japan_date: 承久 3年 閏10 小 辛巳 17-1577
+  western_date: '1221-11-16'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 272-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '272'
   number: '1'
   japan_date: 承久 3年 11 大 庚戌 47-8177
@@ -1589,6 +3254,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1602,6 +3270,7 @@
     days: "-1"
 - id: 272-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '272'
   number: '2'
   japan_date: 承久 3年 12 大 庚辰 17-6684
@@ -1618,6 +3287,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1629,8 +3301,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 275-1-a
+  relation_id: "-"
+  parent_id: 275-1-1
+  page: '275'
+  number: "-"
+  japan_date: 安貞 1年 12 小 丙午 42-2281
+  western_date: '1228-1-8'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 275-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '275'
   number: '1'
   japan_date: 安貞 2年 1 大 乙亥 12-6333
@@ -1646,6 +3351,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1657,8 +3365,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 280-1-a
+  relation_id: "-"
+  parent_id: 280-1-1
+  page: '280'
+  number: "-"
+  japan_date: 寛元 1年 閏7 小 乙巳 41-3888
+  western_date: '1243-8-17'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 280-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '280'
   number: '1'
   japan_date: 寛元 1年 8 大 甲戌 11-8386
@@ -1674,6 +3415,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1685,8 +3429,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 285-1-a
+  relation_id: "-"
+  parent_id: 285-1-1
+  page: '285'
+  number: "-"
+  japan_date: 正元 1年 閏10 小 庚子 36-4898
+  western_date: '1259-11-16'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 285-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '285'
   number: '1'
   japan_date: 正元 1年 11 大 己巳 6-928
@@ -1702,6 +3479,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1713,8 +3493,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 289-1-a
+  relation_id: "-"
+  parent_id: 289-1-1
+  page: '289'
+  number: "-"
+  japan_date: 文永 7年 10 小 丁酉 33-2456
+  western_date: '1270-11-15'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 289-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '289'
   number: '1'
   japan_date: 文永 7年 11 大 丙寅 3-6687
@@ -1730,6 +3543,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1741,8 +3557,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 291-1-a
+  relation_id: "-"
+  parent_id: 291-1-1
+  page: '291'
+  number: "-"
+  japan_date: 弘安 1年 10 小 辛亥 47-1607
+  western_date: '1278-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 291-1-0
   relation_id: 291-1-1
+  parent_id: "-"
   page: '291'
   number: "-"
   japan_date: 弘安 1年 閏10 小 庚辰 16-5346
@@ -1758,6 +3607,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1771,6 +3623,7 @@
     days: "-"
 - id: 291-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '291'
   number: '1'
   japan_date: 弘安 1年 11 大 己酉 46-647
@@ -1786,6 +3639,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1797,8 +3653,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 292-1-a
+  relation_id: "-"
+  parent_id: 292-1-1
+  page: '292'
+  number: "-"
+  japan_date: 弘安 4年 7 大 甲午 30-5596
+  western_date: '1281-7-17'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 292-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '292'
   number: '1'
   japan_date: 弘安 4年 閏7 大 甲子  0-1944
@@ -1814,6 +3703,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: '18'
@@ -1827,6 +3719,7 @@
     days: "-"
 - id: 292-1-0
   relation_id: 292-1-1
+  parent_id: "-"
   page: '292'
   number: "-"
   japan_date: 弘安 4年 8 小 甲午 30-7494
@@ -1842,6 +3735,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -1853,8 +3749,73 @@
         zodiac_name: 甲午
       days: "-"
     days: "-"
+- id: 298-1-a
+  relation_id: "-"
+  parent_id: 298-1-1
+  page: '298'
+  number: "-"
+  japan_date: 永仁 5年 10 小 辛卯 27-8281
+  western_date: '1297-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 298-1-0
+  relation_id: 298-1-1
+  parent_id: "-"
+  page: '298'
+  number: "-"
+  japan_date: 永仁 5年 閏10 小 庚申 56-4720
+  western_date: '1297-11-16'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: '0'
+        to: '1297-12-16'
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 298-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '298'
   number: '1'
   japan_date: 永仁 5年 11 大 己丑 26-932
@@ -1870,6 +3831,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: '0'
+        from: '1297-11-16'
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
+- id: 301-1-a
+  relation_id: "-"
+  parent_id: 301-1-1
+  page: '301'
+  number: "-"
+  japan_date: 延慶 1年 10 小 丙辰 52-4226
+  western_date: '1308-11-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -1880,9 +3876,10 @@
         from: "-"
         zodiac_name: "-"
       days: "-"
-    days: "-1"
+    days: "-"
 - id: 301-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '301'
   number: '1'
   japan_date: 延慶 1年 11 大 乙酉 22-2281
@@ -1898,6 +3895,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1911,6 +3911,7 @@
     days: "-1"
 - id: 301-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '301'
   number: '2'
   japan_date: 延慶 1年 12 大 乙卯  52-8236
@@ -1926,6 +3927,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1937,8 +3941,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 304-1-a
+  relation_id: "-"
+  parent_id: 304-1-1
+  page: '304'
+  number: "-"
+  japan_date: 正和 5年 10 小 庚午  6-4242
+  western_date: '1316-10-17'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 304-1-1
   relation_id: 304-0-1
+  parent_id: "-"
   page: '304'
   number: '1'
   japan_date: 正和 5年 閏10 小 己亥  36-1802
@@ -1954,6 +3991,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -1967,6 +4007,7 @@
     days: "-1"
 - id: 304-2-1
   relation_id: 304-0-1
+  parent_id: "-"
   page: '304'
   number: '2'
   japan_date: 正和 5年 11 大 戊辰 6-7548
@@ -1982,6 +4023,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -1995,6 +4039,7 @@
     days: "-2"
 - id: 304-3-1
   relation_id: 304-0-1
+  parent_id: "-"
   page: '304'
   number: '3'
   japan_date: 正和 5年 12 大 戊戌 35-4316
@@ -2010,6 +4055,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2023,6 +4071,7 @@
     days: "-1"
 - id: 304-4-1
   relation_id: 304-0-1
+  parent_id: "-"
   page: '304'
   number: '4'
   japan_date: 文保 1年 1 大 戊辰  5-230
@@ -2038,6 +4087,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2049,8 +4101,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 304-5-a
+  relation_id: "-"
+  parent_id: 304-5-1
+  page: '304'
+  number: "-"
+  japan_date: 文保 1年 2 小 戊戌 34-3664
+  western_date: '1317-3-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 304-5-1
   relation_id: 304-0-1
+  parent_id: "-"
   page: '304'
   number: '5'
   japan_date: 文保 1年 3 大 丁卯 4-6373
@@ -2066,6 +4151,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2079,6 +4167,7 @@
     days: "-1"
 - id: 304-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '304'
   number: "-"
   japan_date: "-"
@@ -2096,6 +4185,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 310-1-a
+  relation_id: "-"
+  parent_id: 310-1-1
+  page: '310'
+  number: "-"
+  japan_date: 建武 2年 10 小 庚戌  46-6934
+  western_date: '1335-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -2109,6 +4233,7 @@
     days: "-"
 - id: 310-1-0
   relation_id: 310-0-1
+  parent_id: "-"
   page: '310'
   number: "-"
   japan_date: 建武 2年 閏10 小 己卯  15-5074
@@ -2124,6 +4249,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -2137,6 +4265,7 @@
     days: "-"
 - id: 310-1-1
   relation_id: 310-0-1
+  parent_id: "-"
   page: '310'
   number: '1'
   japan_date: 建武 2年 11 大 戊申  45-3453
@@ -2152,6 +4281,9 @@
       leaped:
         calc: 'false'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: '2'
@@ -2165,6 +4297,7 @@
     days: "-1"
 - id: 310-2-1
   relation_id: 310-0-1
+  parent_id: "-"
   page: '310'
   number: '2'
   japan_date: 建武 2年 12 大 戊寅 15-1340
@@ -2180,6 +4313,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2193,6 +4329,7 @@
     days: "-1"
 - id: 310-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '310'
   number: "-"
   japan_date: "-"
@@ -2209,6 +4346,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
     solar_term:
       calc:
         index: "-"
@@ -2222,6 +4362,7 @@
     days: "-"
 - id: 311-1-1
   relation_id: 311-0-1
+  parent_id: "-"
   page: '311'
   number: '1'
   japan_date: 延元 1年 1 大 戊申 45-6786
@@ -2237,6 +4378,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2248,8 +4392,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 311-2-a
+  relation_id: "-"
+  parent_id: 311-2-1
+  page: '311'
+  number: "-"
+  japan_date: 延元 1年 2 小 戊寅 14-2928
+  western_date: '1336-3-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 311-2-1
   relation_id: 311-0-1
+  parent_id: "-"
   page: '311'
   number: '2'
   japan_date: 延元 1年 3 大 丁未 44-6590
@@ -2265,6 +4442,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2278,6 +4458,7 @@
     days: "-1"
 - id: 311-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '311'
   number: "-"
   japan_date: "-"
@@ -2294,6 +4475,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 311-3-a
+  relation_id: "-"
+  parent_id: 311-3-1
+  page: '311'
+  number: "-"
+  japan_date: 延元 3年 7 小 甲午 30-3079
+  western_date: '1338-7-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -2307,6 +4523,7 @@
     days: "-"
 - id: 311-3-0
   relation_id: "-"
+  parent_id: "-"
   page: '311'
   number: "-"
   japan_date: 延元 3年 閏7 小 癸亥 59-5822
@@ -2322,6 +4539,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '18'
@@ -2335,6 +4555,7 @@
     days: "-"
 - id: 311-3-1
   relation_id: "-"
+  parent_id: "-"
   page: '311'
   number: '3'
   japan_date: 延元 3年 8 大 壬辰 29-103
@@ -2351,6 +4572,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2362,8 +4586,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 313-1-a
+  relation_id: "-"
+  parent_id: 313-1-1
+  page: '313'
+  number: "-"
+  japan_date: 興国 4年 12 小 癸巳 29-814
+  western_date: '1343-12-18'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 313-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '313'
   number: '1'
   japan_date: 興国 5年 1 大 壬戌 59-6335
@@ -2380,6 +4637,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2391,8 +4651,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 318-1-a
+  relation_id: "-"
+  parent_id: 318-1-1
+  page: '318'
+  number: "-"
+  japan_date: 正平 12年 7 小 甲戌  10-1300
+  western_date: '1357-7-18'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 318-1-0
   relation_id: 318-1-1
+  parent_id: "-"
   page: '318'
   number: "-"
   japan_date: 正平 12年 閏7 小 癸卯 39-5146
@@ -2408,6 +4701,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: '18'
@@ -2421,6 +4717,7 @@
     days: "-"
 - id: 318-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '318'
   number: '1'
   japan_date: 正平 12年 8 大 壬申 9-357
@@ -2436,6 +4733,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2447,8 +4747,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 323-1-a
+  relation_id: "-"
+  parent_id: 323-1-1
+  page: '323'
+  number: "-"
+  japan_date: 文中 2年 10 小 己巳  5-473
+  western_date: '1373-10-17'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 323-1-0
   relation_id: 323-0-1
+  parent_id: "-"
   page: '323'
   number: "-"
   japan_date: 文中 2年 閏10 小 戊戌 34-4924
@@ -2464,6 +4797,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -2477,6 +4813,7 @@
     days: "-"
 - id: 323-1-1
   relation_id: 323-0-1
+  parent_id: "-"
   page: '323'
   number: '1'
   japan_date: 文中 2年 11 大 丁卯  4-1834
@@ -2492,6 +4829,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2505,6 +4845,7 @@
     days: "-1"
 - id: 323-2-1
   relation_id: 323-0-1
+  parent_id: "-"
   page: '323'
   number: '2'
   japan_date: 文中 2年 12 大 丁酉 34-7668
@@ -2520,6 +4861,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2531,8 +4875,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 323-3-a
+  relation_id: "-"
+  parent_id: 323-3-1
+  page: '323'
+  number: "-"
+  japan_date: 文中 3年 2 小 丁酉 33-3062
+  western_date: '1374-3-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 323-3-1
   relation_id: 323-0-1
+  parent_id: "-"
   page: '323'
   number: '3'
   japan_date: 文中 3年 3 大 丙寅 3-477
@@ -2548,6 +4925,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2561,6 +4941,7 @@
     days: "-1"
 - id: 323-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '323'
   number: "-"
   japan_date: "-"
@@ -2577,6 +4958,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 324-1-a
+  relation_id: "-"
+  parent_id: 324-1-1
+  page: '324'
+  number: "-"
+  japan_date: 天授 2年 7 大 癸丑 49-5610
+  western_date: '1376-7-17'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2590,6 +5006,7 @@
     days: "-"
 - id: 324-1-0
   relation_id: 324-1-1
+  parent_id: "-"
   page: '324'
   number: "-"
   japan_date: 天授 2年 閏7 小 癸未 19-217
@@ -2605,6 +5022,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '18'
@@ -2618,6 +5038,7 @@
     days: "-"
 - id: 324-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '324'
   number: '1'
   japan_date: 天授 2年 8 大 壬子 49-6920
@@ -2633,6 +5054,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2644,8 +5068,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 329-1-a
+  relation_id: "-"
+  parent_id: 329-1-1
+  page: '329'
+  number: "-"
+  japan_date: 元中 9年 10 小 己酉 45-552
+  western_date: '1392-10-17'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 329-1-0
   relation_id: 329-1-1
+  parent_id: "-"
   page: '329'
   number: "-"
   japan_date: 元中 9年 閏10 小 戊寅 14-3986
@@ -2661,6 +5118,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -2674,6 +5134,7 @@
     days: "-"
 - id: 329-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '329'
   number: '1'
   japan_date: 元中 9年 11 大 丁未 44-8198
@@ -2689,6 +5150,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2700,8 +5164,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 330-1-a
+  relation_id: "-"
+  parent_id: 330-1-1
+  page: '330'
+  number: "-"
+  japan_date: 応永 2年 7 小 癸巳 29-8293
+  western_date: '1395-7-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 330-1-0
   relation_id: 330-0-1
+  parent_id: "-"
   page: '330'
   number: "-"
   japan_date: 応永 2年 閏7 小 壬戌 58-5401
@@ -2717,6 +5214,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '18'
@@ -2730,6 +5230,7 @@
     days: "-"
 - id: 330-1-1
   relation_id: 330-0-1
+  parent_id: "-"
   page: '330'
   number: '1'
   japan_date: 応永 2年 8 大 辛卯 28-2774
@@ -2745,6 +5246,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2758,6 +5262,7 @@
     days: "-1"
 - id: 330-2-1
   relation_id: 330-0-1
+  parent_id: "-"
   page: '330'
   number: '2'
   japan_date: 応永 2年 9 大 辛酉 58-9
@@ -2773,6 +5278,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2784,8 +5292,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 330-3-a
+  relation_id: "-"
+  parent_id: 330-3-1
+  page: '330'
+  number: "-"
+  japan_date: 応永 2年 11 小 辛酉 57-2270
+  western_date: '1395-12-13'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 330-3-1
   relation_id: 330-0-1
+  parent_id: "-"
   page: '330'
   number: '3'
   japan_date: 応永 2年 12 大 庚寅 27-6982
@@ -2801,6 +5342,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2814,6 +5358,7 @@
     days: "-1"
 - id: 330-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '330'
   number: "-"
   japan_date: "-"
@@ -2830,6 +5375,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 331-1-a
+  relation_id: "-"
+  parent_id: 331-1-1
+  page: '331'
+  number: "-"
+  japan_date: 応永 3年 4 大 戊子 24-2970
+  western_date: '1396-5-8'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2843,6 +5423,7 @@
     days: "-"
 - id: 331-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '331'
   number: '1'
   japan_date: 応永 3年 5 小 戊午 53-6243
@@ -2858,6 +5439,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -2869,8 +5453,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 336-1-a
+  relation_id: "-"
+  parent_id: 336-1-1
+  page: '336'
+  number: "-"
+  japan_date: 応永 18年 10 小 己丑 25-545
+  western_date: '1411-10-18'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 336-1-0
   relation_id: 336-1-1
+  parent_id: "-"
   page: '336'
   number: "-"
   japan_date: 応永 18年 閏10 小 戊午 54-4501
@@ -2886,6 +5503,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -2899,6 +5519,7 @@
     days: "-"
 - id: 336-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '336'
   number: '1'
   japan_date: 応永 18年 11 大 丁亥 24-8316
@@ -2915,6 +5536,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2926,8 +5550,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 343-1-a
+  relation_id: "-"
+  parent_id: 343-1-1
+  page: '343'
+  number: "-"
+  japan_date: 永享 5年 8 小 辛亥 47-1189
+  western_date: '1433-9-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 343-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '343'
   number: '1'
   japan_date: 永享 5年 9 大 庚辰 17-6334
@@ -2943,6 +5600,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2954,8 +5614,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 343-2-a
+  relation_id: "-"
+  parent_id: 343-2-1
+  page: '343'
+  number: "-"
+  japan_date: 永享 5年 12 小 庚戌 46-763
+  western_date: '1434-1-11'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 343-2-1
   relation_id: "-"
+  parent_id: "-"
   page: '343'
   number: '2'
   japan_date: 永享 6年 1 大 己卯 16-6844
@@ -2972,6 +5665,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -2983,8 +5679,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 346-1-a
+  relation_id: "-"
+  parent_id: 346-1-1
+  page: '346'
+  number: "-"
+  japan_date: 嘉吉 1年 10 小 甲午 30-2163
+  western_date: '1441-11-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 346-1-1
   relation_id: 346-0-1
+  parent_id: "-"
   page: '346'
   number: '1'
   japan_date: 嘉吉 1年 11 大 癸亥 0-423
@@ -3000,6 +5729,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3013,6 +5745,7 @@
     days: "-1"
 - id: 346-2-1
   relation_id: 346-0-1
+  parent_id: "-"
   page: '346'
   number: '2'
   japan_date: 嘉吉 1年 12 大 癸巳 30-6596
@@ -3028,6 +5761,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3041,6 +5777,7 @@
     days: "-1"
 - id: 346-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '346'
   number: "-"
   japan_date: "-"
@@ -3056,6 +5793,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 348-1-a
+  relation_id: "-"
+  parent_id: 348-1-1
+  page: '348'
+  number: "-"
+  japan_date: 宝徳 1年 10 小 戊申 44-2244
+  western_date: '1449-10-17'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -3069,6 +5841,7 @@
     days: "-"
 - id: 348-1-1
   relation_id: 348-0-1
+  parent_id: "-"
   page: '348'
   number: '1'
   japan_date: 宝徳 1年 閏10 小 丁丑 14-22
@@ -3084,6 +5857,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 小
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -3097,6 +5873,7 @@
     days: "-1"
 - id: 348-2-1
   relation_id: 348-0-1
+  parent_id: "-"
   page: '348'
   number: '2'
   japan_date: 宝徳 1年 11 大 丙午 43-5895
@@ -3112,6 +5889,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3125,6 +5905,7 @@
     days: "-1"
 - id: 348-3-1
   relation_id: 348-0-1
+  parent_id: "-"
   page: '348'
   number: '3'
   japan_date: 宝徳 1年 12 大 丙子 13-2995
@@ -3140,6 +5921,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3153,6 +5937,7 @@
     days: "-1"
 - id: 348-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '348'
   number: "-"
   japan_date: "-"
@@ -3169,6 +5954,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
     solar_term:
       calc:
         index: "-"
@@ -3182,6 +5970,7 @@
     days: "-"
 - id: 349-1-1
   relation_id: 348-0-1
+  parent_id: "-"
   page: '349'
   number: '1'
   japan_date: 宝徳 2年 1 大 丙午 43-7539
@@ -3197,6 +5986,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3208,8 +6000,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 355-1-a
+  relation_id: "-"
+  parent_id: 355-1-1
+  page: '355'
+  number: "-"
+  japan_date: 応仁 2年 10 大 丁亥 23-4972
+  western_date: '1468-10-16'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 355-1-0
   relation_id: 355-0-1
+  parent_id: "-"
   page: '355'
   number: "-"
   japan_date: 応仁 2年 閏10 小 丁巳 53-2951
@@ -3225,6 +6050,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -3238,6 +6066,7 @@
     days: "-"
 - id: 355-1-1
   relation_id: 355-0-1
+  parent_id: "-"
   page: '355'
   number: '1'
   japan_date: 応仁 2年 11 大 丙戌 23-1449
@@ -3253,6 +6082,9 @@
       leaped:
         calc: 'false'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: '2'
@@ -3266,6 +6098,7 @@
     days: "-1"
 - id: 355-2-1
   relation_id: 355-0-1
+  parent_id: "-"
   page: '355'
   number: '2'
   japan_date: 応仁 2年 12 大 丙辰 53-7947
@@ -3281,6 +6114,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3294,6 +6130,7 @@
     days: "-1"
 - id: 355-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '355'
   number: "-"
   japan_date: "-"
@@ -3309,6 +6146,41 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 356-1-a
+  relation_id: "-"
+  parent_id: 356-1-1
+  page: '356'
+  number: "-"
+  japan_date: 文明 5年 6 大 辛酉 57-7408
+  western_date: '1473-6-26'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3322,6 +6194,7 @@
     days: "-"
 - id: 356-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '356'
   number: '1'
   japan_date: 文明 5年 7 小 辛卯 26-3892
@@ -3337,6 +6210,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: "-"
@@ -3348,8 +6224,41 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 358-1-a
+  relation_id: "-"
+  parent_id: 358-1-1
+  page: '358'
+  number: "-"
+  japan_date: 文明 11年 10 小 癸丑 49-1582
+  western_date: '1479-11-14'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 358-1-1
   relation_id: "-"
+  parent_id: "-"
   page: '358'
   number: '1'
   japan_date: 文明 11年 11 大 壬午 19-7009
@@ -3366,6 +6275,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3377,8 +6289,41 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 384-1-a
+  relation_id: "-"
+  parent_id: 384-1-1
+  page: '384'
+  number: "-"
+  japan_date: 弘治 1年 10 小 癸亥 59-7699
+  western_date: '1555-10-16'
+  description: "-"
+  note: 変更なし
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 384-1-0
   relation_id: 384-0-1
+  parent_id: "-"
   page: '384'
   number: "-"
   japan_date: 弘治 1年 11 小 壬辰 28-5341
@@ -3394,6 +6339,9 @@
       leaped:
         calc: 'true'
         actual: 'false'
+      days:
+        calc: 大
+        actual: 小
     solar_term:
       calc:
         index: '0'
@@ -3407,6 +6355,7 @@
     days: "-"
 - id: 384-1-1
   relation_id: 384-0-1
+  parent_id: "-"
   page: '384'
   number: '1'
   japan_date: 弘治 1年 閏11 大 辛酉 58-2774
@@ -3422,6 +6371,9 @@
       leaped:
         calc: 'false'
         actual: 'true'
+      days:
+        calc: 大
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3435,6 +6387,7 @@
     days: "-1"
 - id: 384-2-1
   relation_id: 384-0-1
+  parent_id: "-"
   page: '384'
   number: '2'
   japan_date: 弘治 1年 12 大 辛卯 28-8054
@@ -3450,6 +6403,9 @@
       leaped:
         calc: "-"
         actual: "-"
+      days:
+        calc: 小
+        actual: 大
     solar_term:
       calc:
         index: "-"
@@ -3463,6 +6419,7 @@
     days: "-1"
 - id: 384-0-1
   relation_id: "-"
+  parent_id: "-"
   page: '384'
   number: "-"
   japan_date: "-"
@@ -3477,6 +6434,9 @@
         calc: "-"
         actual: "-"
       leaped:
+        calc: "-"
+        actual: "-"
+      days:
         calc: "-"
         actual: "-"
     solar_term:
