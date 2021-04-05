@@ -21,6 +21,8 @@ module Zakuro
     class MonthHistory
       # @return [String] ID
       attr_reader :id
+      # @return [String] 親ID
+      attr_reader :parent_id
       # @return [Reference] 参照
       attr_reader :reference
       # @return [Western::Calendar] 西暦日
@@ -34,14 +36,16 @@ module Zakuro
       # 初期化
       #
       # @param [String] id ID
+      # @param [String] parent_id 親ID
       # @param [Reference] reference 参照
       # @param [Western::Calendar] western_date 西暦日
       # @param [Array<Annotation>] annotations 注釈
       # @param [Diffs] diffs 総差分
       #
-      def initialize(id: '', reference: Reference.new,
+      def initialize(id: '', parent_id: '', reference: Reference.new,
                      western_date: Western::Calendar.new, annotations: [], diffs: Diffs.new)
         @id = id
+        @parent_id = parent_id
         @reference = reference
         @western_date = western_date
         @annotations = annotations
@@ -173,6 +177,8 @@ module Zakuro
       attr_reader :number
       # @return [Leaped] 閏有無
       attr_reader :leaped
+      # @return [Days] 月の大小
+      attr_reader :days
 
       # :reek:BooleanParameter
 
@@ -181,10 +187,12 @@ module Zakuro
       #
       # @param [Number] number 月
       # @param [Leaped] leaped 閏有無
+      # @param [Days] days 月の大小
       #
-      def initialize(number: Number.new, leaped: Leaped.new)
+      def initialize(number: Number.new, leaped: Leaped.new, days: Days.new)
         @number = number
         @leaped = leaped
+        @days = days
       end
 
       #
@@ -380,6 +388,62 @@ module Zakuro
       #
       def invalid?
         !@calc && !@actual
+      end
+    end
+
+    #
+    # Days 月大小
+    #
+    class Days
+      # @return [String] 29日
+      SMALL = '小'
+      # @return [String] 30日
+      BIG = '大'
+
+      # @return [String] 計算
+      attr_reader :calc
+      # @return [String] 運用
+      attr_reader :actual
+
+      #
+      # 初期化
+      #
+      # @param [String] calc 計算
+      # @param [String] actual 運用
+      #
+      def initialize(calc: '小', actual: '小')
+        @calc = calc
+        @actual = actual
+      end
+
+      #
+      # 計算値が大か
+      #
+      # @return [True] 大
+      # @return [False] 小
+      #
+      def many_days_calc?
+        @calc == BIG
+      end
+
+      #
+      # 運用値が大か
+      #
+      # @return [True] 大
+      # @return [False] 小
+      #
+      def many_days_actual?
+        @actual == BIG
+      end
+
+      #
+      # 無効か
+      #
+      # @return [True] 無効（差分なし/設定値なし）
+      # @return [False] 有効
+      #
+      def invalid?
+        @calc == @actual
       end
     end
   end

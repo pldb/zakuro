@@ -45,16 +45,52 @@ module Zakuro
       #
       def rewrite_month
         diff = history.diffs.month
-        number = diff.number
-        leaped = diff.leaped
-
-        return if number.invalid?
 
         @month_label = MonthLabel.new(
-          number: number.actual,
-          is_many_days: month_label.is_many_days,
-          leaped: leaped.actual
+          number: rewrite_number(diff: diff.number),
+          is_many_days: rewrite_many_days(diff: diff.days),
+          leaped: rewrite_leaped(diff: diff.leaped)
         )
+      end
+
+      #
+      # 月ごとの差分（月）で書き換える
+      #
+      # @param [Operation::Number] diff 差分
+      #
+      # @return [Integer] 月
+      #
+      def rewrite_number(diff:)
+        return month_label.number if diff.invalid?
+
+        diff.actual
+      end
+
+      #
+      # 月ごとの差分（月の大小）で書き換える
+      #
+      # @param [Operation::Days] diff 差分
+      #
+      # @return [Integer] 月の大小
+      #
+      def rewrite_many_days(diff:)
+        return month_label.is_many_days if diff.invalid?
+
+        diff.many_days_actual?
+      end
+
+      #
+      # 月ごとの差分（閏有無）で書き換える
+      #
+      # @param [Operation::Days] diff 差分
+      #
+      # @return [True] 閏あり
+      # @return [False] 閏なし
+      #
+      def rewrite_leaped(diff:)
+        return month_label.leaped if diff.invalid?
+
+        diff.actual
       end
 
       #

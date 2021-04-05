@@ -177,6 +177,7 @@ module Zakuro
         reference = Reference.new(page: yaml_hash['page'].to_i, number: yaml_hash['number'].to_i,
                                   japan_date: yaml_hash['japan_date'])
         MonthHistory.new(id: yaml_hash['id'],
+                         parent_id: yaml_hash['parent_id'],
                          reference: reference,
                          western_date: western_date,
                          diffs: diffs)
@@ -260,12 +261,14 @@ module Zakuro
       def self.create_month(yaml_hash: {})
         number = yaml_hash['number']
         leaped = yaml_hash['leaped']
+        days = yaml_hash['days']
 
         Month.new(
           number: Number.new(calc: Operation::TypeParser.month_number(str: number['calc']),
                              actual: Operation::TypeParser.month_number(str: number['actual'])),
           leaped: Leaped.new(calc: Operation::TypeParser.month_leaped(str: leaped['calc']),
-                             actual: Operation::TypeParser.month_leaped(str: leaped['actual']))
+                             actual: Operation::TypeParser.month_leaped(str: leaped['actual'])),
+          days: Days.new(calc: days['calc'], actual: days['actual'])
         )
       end
       private_class_method :create_month

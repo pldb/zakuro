@@ -58,21 +58,29 @@ module Zakuro
           bool?(str: str)
         end
 
+        def self.month_days?(str: '')
+          return true if str == EMPTY_STRING
+
+          !str.nil? && !str.empty? && /^[大小]$/.match?(str)
+        end
+
         def self.western_date?(str: '')
           return Western::Calendar.new if str == EMPTY_STRING
 
           Western::Calendar.valid_date_string(str: str)
         end
       end
+
       #
       # MonthHistory 変更履歴
       #
       class MonthHistory
-        attr_reader :index, :id, :western_date, :modified
+        attr_reader :index, :id, :parend_id, :western_date, :modified
 
         def initialize(index:, yaml_hash: {})
           @index = index
           @id = yaml_hash['id']
+          @parent_id = yaml_hash['parent_id']
           @western_date = yaml_hash['western_date']
           @modified = yaml_hash['modified']
         end
@@ -84,6 +92,8 @@ module Zakuro
 
           failed.push("#{prefix} 'id'. #{@id}") unless id?
 
+          failed.push("#{prefix} 'parent_id'. #{@id}") unless parent_id?
+
           failed.push("#{prefix} 'western_date'. #{@western_date}") unless western_date?
 
           failed.push("#{prefix} 'modified'. #{@modified}") unless modified?
@@ -93,6 +103,10 @@ module Zakuro
 
         def id?
           Types.string?(str: @id)
+        end
+
+        def parent_id?
+          Types.string?(str: @parent_id)
         end
 
         def western_date?
@@ -220,12 +234,13 @@ module Zakuro
       # Month 月
       #
       class Month
-        attr_reader :index, :number, :leaped
+        attr_reader :index, :number, :leaped, :days
 
         def initialize(index:, yaml_hash: {})
           @index = index
           @number = Number.new(index: index, yaml_hash: yaml_hash['number'])
           @leaped = Leaped.new(index: index, yaml_hash: yaml_hash['leaped'])
+          @days = Days.new(index: index, yaml_hash: yaml_hash['days'])
         end
 
         def validate
@@ -234,6 +249,8 @@ module Zakuro
           failed += @number.validate
 
           failed += @leaped.validate
+
+          failed += @days.validate
 
           failed
         end
@@ -245,6 +262,7 @@ module Zakuro
         #
         class Direction
           attr_reader :index, :source, :destination, :days
+
           #
           # 初期化
           #
@@ -363,11 +381,12 @@ module Zakuro
       # Number 月
       #
       class Number
-        attr_reader :index, :name, :calc, :actual
+        NAME = 'number'
+
+        attr_reader :index, :calc, :actual
 
         def initialize(index:, yaml_hash: {})
           @index = index
-          @name = 'number'
           @calc = yaml_hash['calc']
           @actual = yaml_hash['actual']
         end
@@ -375,7 +394,7 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "[#{@index}][#{@name}] invalid"
+          prefix = "[#{@index}][#{NAME}] invalid"
 
           failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
 
@@ -397,11 +416,12 @@ module Zakuro
       # Leaped 閏有無
       #
       class Leaped
-        attr_reader :index, :name, :calc, :actual
+        NAME = 'leaped'
+
+        attr_reader :index, :calc, :actual
 
         def initialize(index:, yaml_hash: {})
           @index = index
-          @name = 'leaped'
           @calc = yaml_hash['calc']
           @actual = yaml_hash['actual']
         end
@@ -409,7 +429,7 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "[#{@index}][#{@name}] invalid"
+          prefix = "[#{@index}][#{NAME}] invalid"
 
           failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
 
@@ -424,6 +444,41 @@ module Zakuro
 
         def actual?
           Types.empiable_bool?(str: @actual)
+        end
+      end
+
+      #
+      # 月日数（大小）
+      #
+      class Days
+        NAME = 'days'
+
+        attr_reader :index, :calc, :actual
+
+        def initialize(index:, yaml_hash: {})
+          @index = index
+          @calc = yaml_hash['calc']
+          @actual = yaml_hash['actual']
+        end
+
+        def validate
+          failed = []
+
+          prefix = "[#{@index}][#{NAME}] invalid"
+
+          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+
+          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+
+          failed
+        end
+
+        def calc?
+          Types.month_days?(str: @calc)
+        end
+
+        def actual?
+          Types.month_days?(str: @actual)
         end
       end
 

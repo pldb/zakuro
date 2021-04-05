@@ -40,7 +40,8 @@ describe 'Zakuro' do
               diffs: Zakuro::Operation::Diffs.new(
                 month: Zakuro::Operation::Month.new(
                   number: Zakuro::Operation::Number.new,
-                  leaped: Zakuro::Operation::Leaped.new
+                  leaped: Zakuro::Operation::Leaped.new,
+                  days: Zakuro::Operation::Days.new(calc: '大', actual: '小')
                 ),
                 solar_term: Zakuro::Operation::SolarTerm::Direction.new,
                 days: 1
