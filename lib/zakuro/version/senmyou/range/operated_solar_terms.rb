@@ -73,7 +73,9 @@ module Zakuro
       #
       def create_directions
         directions = {}
-        @full_range.each do |year|
+        years = @full_range.get
+
+        years.each do |year|
           create_directions_with_months(directions: directions, months: year.months)
         end
 

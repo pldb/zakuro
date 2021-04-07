@@ -70,9 +70,15 @@ module Zakuro
       def get
         return [] if invalid?
 
+        new_year_date = @new_year_date.clone
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
-        update_first_day(years: years)
+        years = update_first_day(years: years)
+
+        # 再取得に備えて、カウントアップした日付を元に戻す
+        @new_year_date = new_year_date
+
+        years
       end
 
       # :reek:TooManyStatements { max_statements: 6 }

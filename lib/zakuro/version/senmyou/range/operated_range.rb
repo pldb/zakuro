@@ -44,13 +44,15 @@ module Zakuro
       # @return [Array<Year>] 運用結果範囲
       #
       def rewrite
-        years = []
-        @full_range.each do |year|
+        operated_years = []
+        years = @full_range.get
+
+        years.each do |year|
           operated_year = rewrite_year(year: year)
-          years.push(operated_year)
+          operated_years.push(operated_year)
         end
 
-        years
+        operated_years
       end
 
       #
