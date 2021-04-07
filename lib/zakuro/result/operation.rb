@@ -54,7 +54,7 @@ module Zakuro
         # @param [Integer] number 原文注釈番号
         # @param [Array<Zakuro::Result::Operation::Annotation>] annotations 注釈
         #
-        def initialize(page:, number:, annotations:)
+        def initialize(page: -1, number: -1, annotations: [])
           @page = page
           @number = number
           @annotations = annotations
