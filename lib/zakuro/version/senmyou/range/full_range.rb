@@ -70,15 +70,34 @@ module Zakuro
       def get
         return [] if invalid?
 
-        new_year_date = @new_year_date.clone
+        pre_get
+
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
         years = update_first_day(years: years)
 
-        # 再取得に備えて、カウントアップした日付を元に戻す
-        @new_year_date = new_year_date
+        post_get
 
         years
+      end
+
+      #
+      # 取得前処理
+      #
+      def pre_get
+        # FIXME: 別インスタンス変数を定義する方法は改善したい（ディープコピーにするか、get再取得を廃止するか）
+        @new_year_date_ = @new_year_date.clone
+        @multi_gengou_roller_ = @multi_gengou_roller.clone
+      end
+
+      #
+      # 取得前処理
+      #
+      # 再取得に備えて、カウントアップした日付を元に戻す
+      #
+      def post_get
+        @new_year_date = @new_year_date_
+        @multi_gengou_roller = @multi_gengou_roller_
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
