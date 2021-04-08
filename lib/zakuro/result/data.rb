@@ -53,7 +53,7 @@ module Zakuro
         # @param [String] name 元号名
         # @param [Integer] number 元号年
         #
-        def initialize(name:, number:)
+        def initialize(name: '', number: -1)
           @name = name
           @number = number
         end
