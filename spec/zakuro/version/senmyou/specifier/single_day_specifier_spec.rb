@@ -34,11 +34,12 @@ describe 'Zakuro' do
           hash = YAML.load_file(filepath)
 
           hash.each do |test|
+            western_date = test['western_date']
             expected = SingleDayFactory.create(hash: test['expected'])
 
-            it "#{test['western_date']}: #{test['test_case_name']}" do
+            it "#{western_date}: #{test['test_case_name']}" do
               eql?(
-                date: Zakuro::Western::Calendar.parse(str: test['western_date']),
+                date: Zakuro::Western::Calendar.parse(str: western_date),
                 expected: expected
               )
             end

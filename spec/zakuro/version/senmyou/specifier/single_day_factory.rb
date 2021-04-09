@@ -31,10 +31,15 @@ module SingleDayFactory
     end
 
     def solar_term(hash:)
-      Zakuro::Result::Data::SolarTerm.new(
-        index: hash['index'],
-        remainder: hash['remainder']
-      )
+      return [] unless hash
+
+      # TODO: 複数対応
+      [
+        Zakuro::Result::Data::SolarTerm.new(
+          index: hash['index'],
+          remainder: hash['remainder']
+        )
+      ]
     end
 
     def month(hash:)
@@ -43,9 +48,8 @@ module SingleDayFactory
         leaped: hash['leaped'],
         days_name: hash['days_name'],
         first_day: day(hash: hash['first_day']),
-        # TODO: 複数対応
-        odd_solar_terms: [solar_term(hash: hash['odd_solar_terms'])],
-        even_solar_terms: [solar_term(hash: hash['even_solar_terms'])]
+        odd_solar_terms: solar_term(hash: hash['odd_solar_terms']),
+        even_solar_terms: solar_term(hash: hash['even_solar_terms'])
       )
     end
 
