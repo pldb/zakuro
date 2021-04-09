@@ -1,5 +1,5 @@
 - western_date: "0862-02-03"
-  test_case_name: "xxx"
+  test_case_name: "貞観4年1月1日"
   expected:
     data:
       year:
