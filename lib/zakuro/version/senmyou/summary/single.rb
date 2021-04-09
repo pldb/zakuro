@@ -29,10 +29,11 @@ module Zakuro
       #
       def self.get(date: Western::Calendar.new)
         full_range = FullRange.new(start_date: date)
+        years = full_range.get
 
-        calc_date = SingleDaySpecifier.get(years: full_range.get, date: date)
+        calc_date = SingleDaySpecifier.get(years: years, date: date)
 
-        operated_range = OperatedRange.new(full_range: full_range)
+        operated_range = OperatedRange.new(years: years)
 
         actual_date = SingleDaySpecifier.get(years: operated_range.get, date: date)
 

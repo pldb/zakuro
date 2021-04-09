@@ -14,18 +14,19 @@ module Zakuro
     #
     # 何らかの理由により、計算された暦とは異なる運用結果である場合、その結果に合わせて計算結果を上書きする
     class OperatedRange
-      # @return [FullRange] 完全範囲
-      attr_reader :full_range
+      # @return [Array<Year>] 年データ（完全範囲）
+      attr_reader :years
       # @return [OperatedSolarTerms] 運用時二十四節気
       attr_reader :operated_solar_terms
+
       #
       # 初期化
       #
-      # @param [FullRange] full_range 完全範囲
+      # @param [Array<Year>] years 年データ（完全範囲）
       #
-      def initialize(full_range: FullRange.new)
-        @full_range = full_range
-        @operated_solar_terms = OperatedSolarTerms.new(full_range: @full_range)
+      def initialize(years: [])
+        @years = years
+        @operated_solar_terms = OperatedSolarTerms.new(years: @years)
         @operated_solar_terms.create
       end
 
@@ -45,7 +46,6 @@ module Zakuro
       #
       def rewrite
         operated_years = []
-        years = @full_range.get
 
         years.each do |year|
           operated_year = rewrite_year(year: year)

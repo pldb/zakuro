@@ -15,7 +15,7 @@ module Zakuro
     #
     class OperatedSolarTerms
       # @return [Array<Year>] 完全範囲（年データ）
-      attr_reader :full_range
+      attr_reader :years
       # @return [Array<MonthHistory>] 変更履歴
       attr_reader :month_histroies
       # @return [Hash<String, SolarTerm>] 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
@@ -28,11 +28,11 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Array<Year>] full_range 完全範囲（年データ）
+      # @param [Array<Year>] years 完全範囲（年データ）
       # @param [Array<MonthHistory>] 変更履歴
       #
-      def initialize(full_range: FullRange.new, month_histories: Operation.month_histories)
-        @full_range = full_range
+      def initialize(years: [], month_histories: Operation.month_histories)
+        @years = years
         @month_histroies = month_histories
         @directions = {}
       end
@@ -73,7 +73,6 @@ module Zakuro
       #
       def create_directions
         directions = {}
-        years = @full_range.get
 
         years.each do |year|
           create_directions_with_months(directions: directions, months: year.months)

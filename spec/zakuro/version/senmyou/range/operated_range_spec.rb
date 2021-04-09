@@ -61,7 +61,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
             range = Zakuro::Senmyou::OperatedRange.new(
-              full_range: Zakuro::Senmyou::FullRange.new(start_date: date)
+              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 
             actual = range[14].months[0]
@@ -127,7 +127,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
             range = Zakuro::Senmyou::OperatedRange.new(
-              full_range: Zakuro::Senmyou::FullRange.new(start_date: date)
+              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 
             actual = range[1].months[10]
@@ -189,7 +189,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
             range = Zakuro::Senmyou::OperatedRange.new(
-              full_range: Zakuro::Senmyou::FullRange.new(start_date: date)
+              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 
             actual = range[1].months[11]
