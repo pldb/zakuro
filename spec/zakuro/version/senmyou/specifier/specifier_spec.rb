@@ -1,276 +1,93 @@
-# # frozen_string_literal: true
+# frozen_string_literal: true
 
-# require File.expand_path('../../../../testtools/stringifier',
-#                          __dir__)
+require File.expand_path('../../../../testtools/stringifier',
+                         __dir__)
 
-# require File.expand_path('../../../../../' \
-#                          'lib/zakuro/version/senmyou/summary/specifier',
-#                          __dir__)
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/version/senmyou/range/full_range',
+                         __dir__)
 
-# # rubocop:disable Metrics/BlockLength
-# describe 'Zakuro' do
-#   describe 'Senmyou' do
-#     describe 'SingleDaySpecifier' do
-#       # :reek:UnityFunction
-#       def eql?(date:, result:)
-#         expected = Zakuro::Senmyou::SingleDaySpecifier.get(date: date)
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/version/senmyou/specifier/single_day_specifier',
+                         __dir__)
 
-#         TestTools::Stringifier.eql?(
-#           expected: result,
-#           actual: expected,
-#           class_prefix: 'Zakuro::Result'
-#         )
-#       end
+# rubocop:disable Metrics/BlockLength
+describe 'Zakuro' do
+  describe 'Senmyou' do
+    describe 'SingleDaySpecifier' do
+      # :reek:UnityFunction
+      def eql?(date:, result:)
+        full_range = Zakuro::Senmyou::FullRange.new(start_date: date)
+        expected = Zakuro::Senmyou::SingleDaySpecifier.get(years: full_range.get, date: date)
 
-#       describe '.get' do
-#         context 'ancient month from western date 862-2-3' do
-#           let!(:first_day) do
-#             Zakuro::Result::Data::SingleDay.new(
-#               year: Zakuro::Result::Data::Year.new(
-#                 first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
-#                 second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
-#                 zodiac_name: '壬午',
-#                 total_days: 354
-#               ),
-#               month: Zakuro::Result::Data::Month.new(
-#                 number: 1,
-#                 leaped: false,
-#                 days_name: '大',
-#                 first_day: Zakuro::Result::Data::Day.new(
-#                   number: 1, zodiac_name: '庚午', remainder: '6-1282',
-#                   western_date: '0862-02-03'
-#                 ),
-#                 odd_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 5, remainder: '34-5368'
-#                   )
-#                 ],
-#                 even_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 4, remainder: '19-3532'
-#                   )
-#                 ]
-#               ),
-#               day: Zakuro::Result::Data::Day.new(
-#                 number: 1, zodiac_name: '庚午', remainder: '6-1282',
-#                 western_date: '0862-02-03'
-#               )
-#             )
-#           end
-#           context 'as 貞観4年1月' do
-#             example '1日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 3)
+        TestTools::Stringifier.eql?(
+          expected: result,
+          actual: expected,
+          class_prefix: 'Zakuro::Result'
+        )
+      end
 
-#               eql?(date: date, result: first_day)
-#             end
-#             example '2日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 4)
+      describe '.get' do
+        context 'ancient month from western date 862-2-3' do
+          let!(:first_day) do
+            Zakuro::Result::Data::SingleDay.new(
+              year: Zakuro::Result::Data::Year.new(
+                first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
+                second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
+                zodiac_name: '壬午',
+                total_days: 354
+              ),
+              month: Zakuro::Result::Data::Month.new(
+                number: 1,
+                leaped: false,
+                days_name: '大',
+                first_day: Zakuro::Result::Data::Day.new(
+                  number: 1, zodiac_name: '庚午', remainder: '6-1282',
+                  western_date: '0862-02-03'
+                ),
+                odd_solar_terms: [
+                  Zakuro::Result::Data::SolarTerm.new(
+                    index: 5, remainder: '34-5368'
+                  )
+                ],
+                even_solar_terms: [
+                  Zakuro::Result::Data::SolarTerm.new(
+                    index: 4, remainder: '19-3532'
+                  )
+                ]
+              ),
+              day: Zakuro::Result::Data::Day.new(
+                number: 1, zodiac_name: '庚午', remainder: '6-1282',
+                western_date: '0862-02-03'
+              )
+            )
+          end
+          context 'as 貞観4年1月' do
+            example '1日' do
+              date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 3)
 
-#               second_day = first_day
-#               second_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛未',
-#                                               remainder: '7-1282', western_date: date.format)
-#               )
+              eql?(date: date, result: first_day)
+            end
+            example '2日' do
+              date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 4)
 
-#               eql?(date: date, result: second_day)
-#             end
-#           end
-#         end
-#         context 'ancient month from western date 862-3-5' do
-#           let!(:first_day) do
-#             Zakuro::Result::Data::SingleDay.new(
-#               year: Zakuro::Result::Data::Year.new(
-#                 first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
-#                 second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
-#                 zodiac_name: '壬午',
-#                 total_days: 354
-#               ),
-#               month: Zakuro::Result::Data::Month.new(
-#                 number: 2,
-#                 leaped: false,
-#                 days_name: '小',
-#                 first_day: Zakuro::Result::Data::Day.new(
-#                   number: 1, zodiac_name: '庚子', remainder: '36-6432',
-#                   western_date: '0862-03-05'
-#                 ),
-#                 odd_solar_terms: [],
-#                 even_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 6, remainder: '49-7203'
-#                   )
-#                 ]
-#               ),
-#               day: Zakuro::Result::Data::Day.new(
-#                 number: 1, zodiac_name: '庚子', remainder: '36-6432',
-#                 western_date: '0862-03-05'
-#               )
-#             )
-#           end
-#           context 'as 貞観4年2月' do
-#             example '1日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 3, day: 5)
+              second_day = first_day
+              second_day.instance_variable_set(
+                :@day,
+                Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛未',
+                                              remainder: '7-1282', western_date: date.format)
+              )
 
-#               eql?(date: date, result: first_day)
-#             end
-#             example '2日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 3, day: 6)
+              eql?(date: date, result: second_day)
+            end
+          end
+        end
+      end
+    end
+  end
+end
 
-#               second_day = first_day
-#               second_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛丑',
-#                                               remainder: '37-6432', western_date: date.format)
-#               )
-
-#               eql?(date: date, result: second_day)
-#             end
-#             example '29日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 4, day: 2)
-
-#               last_day = first_day
-#               last_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '戊辰',
-#                                               remainder: '4-6432', western_date: date.format)
-#               )
-
-#               eql?(date: date, result: last_day)
-#             end
-#           end
-#         end
-
-#         context 'ancient month from western date 862-11-25' do
-#           let!(:first_day) do
-#             Zakuro::Result::Data::SingleDay.new(
-#               year: Zakuro::Result::Data::Year.new(
-#                 first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
-#                 second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
-#                 zodiac_name: '壬午',
-#                 total_days: 354
-#               ),
-#               month: Zakuro::Result::Data::Month.new(
-#                 number: 11,
-#                 leaped: false,
-#                 days_name: '大',
-#                 first_day: Zakuro::Result::Data::Day.new(
-#                   number: 1, zodiac_name: '乙丑', remainder: '1-5584',
-#                   western_date: '0862-11-25'
-#                 ),
-#                 odd_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 23, remainder: '8-4809'
-#                   )
-#                 ],
-#                 even_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 0, remainder: '23-6645'
-#                   )
-#                 ]
-#               ),
-#               day: Zakuro::Result::Data::Day.new(
-#                 number: 1, zodiac_name: '乙丑', remainder: '1-5584',
-#                 western_date: '0862-11-25'
-#               )
-#             )
-#           end
-#           context 'as 貞観4年11月' do
-#             example '1日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 11, day: 25)
-
-#               eql?(date: date, result: first_day)
-#             end
-#             example '2日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 11, day: 26)
-
-#               second_day = first_day
-#               second_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '丙寅',
-#                                               remainder: '2-5584', western_date: date.format)
-#               )
-
-#               eql?(date: date, result: second_day)
-#             end
-#             example '30日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 12, day: 24)
-
-#               last_day = first_day
-#               last_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 30, zodiac_name: '甲午',
-#                                               remainder: '30-5584', western_date: date.format)
-#               )
-
-#               eql?(date: date, result: last_day)
-#             end
-#           end
-#         end
-
-#         context 'ancient month from western date 862-12-25' do
-#           let!(:first_day) do
-#             Zakuro::Result::Data::SingleDay.new(
-#               year: Zakuro::Result::Data::Year.new(
-#                 first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
-#                 second_gengou: Zakuro::Result::Data::Gengou.new(name: '', number: -1),
-#                 zodiac_name: '壬午',
-#                 total_days: 354
-#               ),
-#               month: Zakuro::Result::Data::Month.new(
-#                 number: 12,
-#                 leaped: false,
-#                 days_name: '小',
-#                 first_day: Zakuro::Result::Data::Day.new(
-#                   number: 1, zodiac_name: '乙未', remainder: '31-941',
-#                   western_date: '0862-12-25'
-#                 ),
-#                 odd_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 1, remainder: '39-80'
-#                   )
-#                 ],
-#                 even_solar_terms: [
-#                   Zakuro::Result::Data::SolarTerm.new(
-#                     index: 2, remainder: '54-1916'
-#                   )
-#                 ]
-#               ),
-#               day: Zakuro::Result::Data::Day.new(
-#                 number: 1, zodiac_name: '乙未', remainder: '31-941',
-#                 western_date: '0862-12-25'
-#               )
-#             )
-#           end
-#           context 'as 貞観4年12月' do
-#             example '1日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 12, day: 25)
-
-#               eql?(date: date, result: first_day)
-#             end
-#             example '2日' do
-#               date = Zakuro::Western::Calendar.new(year: 862, month: 12, day: 26)
-
-#               second_day = first_day
-#               second_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '丙申',
-#                                               remainder: '32-941', western_date: date.format)
-#               )
-#               eql?(date: date, result: second_day)
-#             end
-#             example '29日' do
-#               date = Zakuro::Western::Calendar.new(year: 863, month: 1, day: 22)
-
-#               last_day = first_day
-#               last_day.instance_variable_set(
-#                 :@day,
-#                 Zakuro::Result::Data::Day.new(number: 29, zodiac_name: '癸亥',
-#                                               remainder: '59-941', western_date: date.format)
-#               )
-#               eql?(date: date, result: last_day)
-#             end
-#           end
-#         end
+# rubocop:enable Metrics/BlockLength
 
 #         context 'ancient month from western date 863-1-23' do
 #           let!(:first_day) do
@@ -1024,4 +841,3 @@
 #     end
 #   end
 # end
-# # rubocop:enable Metrics/BlockLength
