@@ -54,7 +54,7 @@ module Zakuro
         operation_history.annotations.each do |annotation|
           annotations.push(
             Result::Operation::Annotation.new(
-              description: annotion.description,
+              description: annotation.description,
               note: annotation.note
             )
           )

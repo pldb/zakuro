@@ -17,11 +17,11 @@
           remainder: "6-1282"
           western_date: "0862-02-03"
         odd_solar_terms:
-            index: 5
-            remainder: "34-5368"
+          index: 5
+          remainder: "34-5368"
         even_solar_terms:
-            index: 4
-            remainder: "19-3532"
+          index: 4
+          remainder: "19-3532"
       day:
         number: 1
         zodiac_name: "庚午"
@@ -49,11 +49,11 @@
             remainder: "6-1282"
             western_date: "0862-02-03"
           odd_solar_terms:
-              index: 5
-              remainder: "34-5368"
+            index: 5
+            remainder: "34-5368"
           even_solar_terms:
-              index: 4
-              remainder: "19-3532"
+            index: 4
+            remainder: "19-3532"
         day:
           number: 1
           zodiac_name: "庚午"
@@ -78,11 +78,11 @@
           remainder: "6-1282"
           western_date: "0862-02-03"
         odd_solar_terms:
-            index: 5
-            remainder: "34-5368"
+          index: 5
+          remainder: "34-5368"
         even_solar_terms:
-            index: 4
-            remainder: "19-3532"
+          index: 4
+          remainder: "19-3532"
       day:
         number: 2
         zodiac_name: "辛未"
@@ -110,11 +110,11 @@
             remainder: "6-1282"
             western_date: "0862-02-03"
           odd_solar_terms:
-              index: 5
-              remainder: "34-5368"
+            index: 5
+            remainder: "34-5368"
           even_solar_terms:
-              index: 4
-              remainder: "19-3532"
+            index: 4
+            remainder: "19-3532"
         day:
           number: 2
           zodiac_name: "辛未"
@@ -140,8 +140,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+          index: 6
+          remainder: "49-7203"
       day:
         number: 1
         zodiac_name: "庚子"
@@ -170,8 +170,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-              index: 6
-              remainder: "49-7203"
+            index: 6
+            remainder: "49-7203"
         day:
           number: 1
           zodiac_name: "庚子"
@@ -197,8 +197,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+          index: 6
+          remainder: "49-7203"
       day:
         number: 2
         zodiac_name: "辛丑"
@@ -227,8 +227,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-              index: 6
-              remainder: "49-7203"
+            index: 6
+            remainder: "49-7203"
         day:
           number: 2
           zodiac_name: "辛丑"
@@ -254,8 +254,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+          index: 6
+          remainder: "49-7203"
       day:
         number: 29
         zodiac_name: "戊辰"
@@ -284,8 +284,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-              index: 6
-              remainder: "49-7203"
+            index: 6
+            remainder: "49-7203"
         day:
           number: 29
           zodiac_name: "戊辰"
@@ -310,11 +310,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+          index: 23
+          remainder: "8-4809"
         even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+          index: 0
+          remainder: "23-6645"
       day:
         number: 1
         zodiac_name: "乙丑"
@@ -342,11 +342,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-              index: 23
-              remainder: "8-4809"
+            index: 23
+            remainder: "8-4809"
           even_solar_terms:
-              index: 0
-              remainder: "23-6645"
+            index: 0
+            remainder: "23-6645"
         day:
           number: 1
           zodiac_name: "乙丑"
@@ -371,11 +371,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+          index: 23
+          remainder: "8-4809"
         even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+          index: 0
+          remainder: "23-6645"
       day:
         number: 2
         zodiac_name: "丙寅"
@@ -403,11 +403,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-              index: 23
-              remainder: "8-4809"
+            index: 23
+            remainder: "8-4809"
           even_solar_terms:
-              index: 0
-              remainder: "23-6645"
+            index: 0
+            remainder: "23-6645"
         day:
           number: 2
           zodiac_name: "丙寅"
@@ -432,11 +432,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+          index: 23
+          remainder: "8-4809"
         even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+          index: 0
+          remainder: "23-6645"
       day:
         number: 30
         zodiac_name: "甲午"
@@ -464,11 +464,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-              index: 23
-              remainder: "8-4809"
+            index: 23
+            remainder: "8-4809"
           even_solar_terms:
-              index: 0
-              remainder: "23-6645"
+            index: 0
+            remainder: "23-6645"
         day:
           number: 30
           zodiac_name: "甲午"
@@ -493,11 +493,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+          index: 1
+          remainder: "39-80"
         even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+          index: 2
+          remainder: "54-1916"
       day:
         number: 1
         zodiac_name: "乙未"
@@ -525,11 +525,11 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-              index: 1
-              remainder: "39-80"
+            index: 1
+            remainder: "39-80"
           even_solar_terms:
-              index: 2
-              remainder: "54-1916"
+            index: 2
+            remainder: "54-1916"
         day:
           number: 1
           zodiac_name: "乙未"
@@ -554,11 +554,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+          index: 1
+          remainder: "39-80"
         even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+          index: 2
+          remainder: "54-1916"
       day:
         number: 2
         zodiac_name: "丙申"
@@ -586,11 +586,11 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-              index: 1
-              remainder: "39-80"
+            index: 1
+            remainder: "39-80"
           even_solar_terms:
-              index: 2
-              remainder: "54-1916"
+            index: 2
+            remainder: "54-1916"
         day:
           number: 2
           zodiac_name: "丙申"
@@ -615,11 +615,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+          index: 1
+          remainder: "39-80"
         even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+          index: 2
+          remainder: "54-1916"
       day:
         number: 29
         zodiac_name: "癸亥"
@@ -647,13 +647,803 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-              index: 1
-              remainder: "39-80"
+            index: 1
+            remainder: "39-80"
           even_solar_terms:
-              index: 2
-              remainder: "54-1916"
+            index: 2
+            remainder: "54-1916"
         day:
           number: 29
           zodiac_name: "癸亥"
           remainder: "59-941"
           western_date: "0863-01-22"
+- western_date: "863-1-23"
+  test_case_name: "貞観5年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観5年"
+        second_gengou: ""
+        zodiac_name: "癸未"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "甲子"
+          remainder: "0-4964"
+          western_date: "0863-01-23"
+        odd_solar_terms:
+          index: 3
+          remainder: "9-3751"
+        even_solar_terms:
+          index: 4
+          remainder: "24-5587"
+      day:
+        number: 1
+        zodiac_name: "甲子"
+        remainder: "0-4964"
+        western_date: "0863-01-23"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞観5年"
+          second_gengou: ""
+          zodiac_name: "癸未"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "甲子"
+            remainder: "0-4964"
+            western_date: "0863-01-23"
+          odd_solar_terms:
+            index: 3
+            remainder: "9-3751"
+          even_solar_terms:
+            index: 4
+            remainder: "24-5587"
+        day:
+          number: 1
+          zodiac_name: "甲子"
+          remainder: "0-4964"
+          western_date: "0863-01-23"
+- western_date: "863-7-20"
+  test_case_name: "貞観5年閏6月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観5年"
+        second_gengou: ""
+        zodiac_name: "癸未"
+        total_days: 384
+      month:
+        number: 6
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-8284"
+          western_date: "0863-07-20"
+        odd_solar_terms:
+          index: 15
+          remainder: "12-579"
+        even_solar_terms:
+      day:
+        number: 1
+        zodiac_name: "壬戌"
+        remainder: "58-8284"
+        western_date: "0863-07-20"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞観5年"
+          second_gengou: ""
+          zodiac_name: "癸未"
+          total_days: 384
+        month:
+          number: 6
+          leaped: true
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬戌"
+            remainder: "58-8284"
+            western_date: "0863-07-20"
+          odd_solar_terms:
+            index: 15
+            remainder: "12-579"
+          even_solar_terms:
+        day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-8284"
+          western_date: "0863-07-20"
+- western_date: "876-1-30"
+  test_case_name: "貞観18年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観18年"
+        second_gengou: ""
+        zodiac_name: "丙申"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "己卯"
+          remainder: "15-5502"
+          western_date: "0876-01-30"
+        odd_solar_terms:
+          index: 3
+          remainder: "17-5266"
+        even_solar_terms:
+          index: 4
+          remainder: "32-7102"
+      day:
+        number: 1
+        zodiac_name: "己卯"
+        remainder: "15-5502"
+        western_date: "0876-01-30"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞観18年"
+          second_gengou: ""
+          zodiac_name: "丙申"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "己卯"
+            remainder: "15-5502"
+            western_date: "0876-01-30"
+          odd_solar_terms:
+            index: 3
+            remainder: "17-5266"
+          even_solar_terms:
+            index: 4
+            remainder: "32-7102"
+        day:
+          number: 1
+          zodiac_name: "己卯"
+          remainder: "15-5502"
+          western_date: "0876-01-30"
+- western_date: "876-12-20"
+  test_case_name: "貞観18年12月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観18年"
+        second_gengou: ""
+        zodiac_name: "丙申"
+        total_days: 354
+      month:
+        number: 12
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "甲辰"
+          remainder: "40-7755"
+          western_date: "0876-12-20"
+        odd_solar_terms:
+          index: 1
+          remainder: "52-3650"
+        even_solar_terms:
+          index: 2
+          remainder: "7-5486"
+      day:
+        number: 1
+        zodiac_name: "甲辰"
+        remainder: "40-7755"
+        western_date: "0876-12-20"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞観18年"
+          second_gengou: ""
+          zodiac_name: "丙申"
+          total_days: 354
+        month:
+          number: 12
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "甲辰"
+            remainder: "40-7755"
+            western_date: "0876-12-20"
+          odd_solar_terms:
+            index: 1
+            remainder: "52-3650"
+          even_solar_terms:
+            index: 2
+            remainder: "7-5486"
+        day:
+          number: 1
+          zodiac_name: "甲辰"
+          remainder: "40-7755"
+          western_date: "0876-12-20"
+- western_date: "877-5-31"
+  test_case_name: "貞観19年4月15日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観19年"
+        second_gengou: ""
+        zodiac_name: "丁酉"
+        total_days: 384
+      month:
+        number: 4
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬申"
+          remainder: "8-1019"
+          western_date: "0877-05-17"
+        odd_solar_terms:
+          index: 11
+          remainder: "24-5206"
+        even_solar_terms:
+          index: 10
+          remainder: "9-3371"
+      day:
+        number: 15
+        zodiac_name: "丙戌"
+        remainder: "22-1019"
+        western_date: "0877-05-31"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞観19年"
+          second_gengou: ""
+          zodiac_name: "丁酉"
+          total_days: 384
+        month:
+          number: 4
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬申"
+            remainder: "8-1019"
+            western_date: "0877-05-17"
+          odd_solar_terms:
+            index: 11
+            remainder: "24-5206"
+          even_solar_terms:
+            index: 10
+            remainder: "9-3371"
+        day:
+          number: 15
+          zodiac_name: "丙戌"
+          remainder: "22-1019"
+          western_date: "0877-05-31"
+- western_date: "877-6-1"
+  test_case_name: "元慶1年4月16日"
+  expected:
+    data:
+      year:
+        first_gengou: "元慶1年"
+        second_gengou: ""
+        zodiac_name: "丁酉"
+        total_days: 384
+      month:
+        number: 4
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬申"
+          remainder: "8-1019"
+          western_date: "0877-05-17"
+        odd_solar_terms:
+          index: 11
+          remainder: "24-5206"
+        even_solar_terms:
+          index: 10
+          remainder: "9-3371"
+      day:
+        number: 16
+        zodiac_name: "丁亥"
+        remainder: "23-1019"
+        western_date: "0877-06-01"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "元慶1年"
+          second_gengou: ""
+          zodiac_name: "丁酉"
+          total_days: 384
+        month:
+          number: 4
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬申"
+            remainder: "8-1019"
+            western_date: "0877-05-17"
+          odd_solar_terms:
+            index: 11
+            remainder: "24-5206"
+          even_solar_terms:
+            index: 10
+            remainder: "9-3371"
+        day:
+          number: 16
+          zodiac_name: "丁亥"
+          remainder: "23-1019"
+          western_date: "0877-06-01"
+- western_date: "937-2-14"
+  test_case_name: "承平7年1月2日（承平7年1月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "承平7年"
+        second_gengou: ""
+        zodiac_name: "丁酉"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "甲寅"
+          remainder: "50-2479"
+          western_date: "0937-02-13"
+        odd_solar_terms:
+          index: 5
+          remainder: "7-8293"
+        even_solar_terms:
+          index: 4
+          remainder: "52-6457"
+      day:
+        number: 2
+        zodiac_name: "乙卯"
+        remainder: "51-2479"
+        western_date: "0937-02-14"
+    operation:
+      operated: true
+      month:
+        page: 178
+        number: 1
+        annotations:
+          - description: "計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食をさけるための変更か）"
+            note: ""
+      original:
+        year:
+          first_gengou: "承平7年"
+          second_gengou: ""
+          zodiac_name: "丁酉"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "乙卯"
+            remainder: "51-2479"
+            western_date: "0937-02-14"
+          odd_solar_terms:
+            index: 5
+            remainder: "7-8293"
+          even_solar_terms:
+            index: 4
+            remainder: "52-6457"
+        day:
+          number: 1
+          zodiac_name: "乙卯"
+          remainder: "51-2479"
+          western_date: "0937-02-14"
+- western_date: "1332-1-28"
+  test_case_name: "元弘2年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "元弘2年"
+        second_gengou: ""
+        zodiac_name: "壬申"
+        total_days: 355
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-4787"
+          western_date: "1332-01-28"
+        odd_solar_terms:
+          index: 3
+          remainder: "9-1546"
+        even_solar_terms:
+          index: 4
+          remainder: "24-3382"
+      day:
+        number: 1
+        zodiac_name: "辛未"
+        remainder: "7-4787"
+        western_date: "1332-01-28"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "元弘2年"
+          second_gengou: ""
+          zodiac_name: "壬申"
+          total_days: 355
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "辛未"
+            remainder: "7-4787"
+            western_date: "1332-01-28"
+          odd_solar_terms:
+            index: 3
+            remainder: "9-1546"
+          even_solar_terms:
+            index: 4
+            remainder: "24-3382"
+        day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-4787"
+          western_date: "1332-01-28"
+- western_date: "1392-1-25"
+  test_case_name: "元中9年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "元中9年"
+        second_gengou: "明徳3年"
+        zodiac_name: "壬申"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "癸未"
+          remainder: "19-2126"
+          western_date: "1392-01-25"
+        odd_solar_terms:
+          index: 3
+          remainder: "23-7246"
+        even_solar_terms:
+          index: 4
+          remainder: "39-682"
+      day:
+        number: 1
+        zodiac_name: "癸未"
+        remainder: "19-2126"
+        western_date: "1392-01-25"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "元中9年"
+          second_gengou: "明徳3年"
+          zodiac_name: "壬申"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "癸未"
+            remainder: "19-2126"
+            western_date: "1392-01-25"
+          odd_solar_terms:
+            index: 3
+            remainder: "23-7246"
+          even_solar_terms:
+            index: 4
+            remainder: "39-682"
+        day:
+          number: 1
+          zodiac_name: "癸未"
+          remainder: "19-2126"
+          western_date: "1392-01-25"
+- western_date: "1392-11-19"
+  test_case_name: "明徳3年閏10月1日（明徳3年11月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "明徳3年"
+        second_gengou: ""
+        zodiac_name: "壬申"
+        total_days: 384
+      month:
+        number: 10
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "戊寅"
+          remainder: "14-3986"
+          western_date: "1392-11-15"
+        odd_solar_terms:
+          index: 23
+          remainder: "28-1959"
+        even_solar_terms:
+      day:
+        number: 5
+        zodiac_name: "壬午"
+        remainder: "18-3986"
+        western_date: "1392-11-19"
+    # TODO: operated が false
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "明徳3年"
+          second_gengou: ""
+          zodiac_name: "壬申"
+          total_days: 384
+        month:
+          number: 11
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "戊寅"
+            remainder: "14-3986"
+            western_date: "1392-11-15"
+          odd_solar_terms:
+            index: 23
+            remainder: "28-1959"
+          even_solar_terms:
+            index: 0
+            remainder: "43-3795"
+        day:
+          number: 5
+          zodiac_name: "壬午"
+          remainder: "18-3986"
+          western_date: "1392-11-19"
+- western_date: "1393-2-12"
+  test_case_name: "明徳4年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "明徳4年"
+        second_gengou: ""
+        zodiac_name: "癸酉"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "丁未"
+          remainder: "43-1067"
+          western_date: "1393-02-12"
+        odd_solar_terms:
+          index: 5
+          remainder: "59-4573"
+        even_solar_terms:
+          index: 4
+          remainder: "44-2737"
+      day:
+        number: 1
+        zodiac_name: "丁未"
+        remainder: "43-1067"
+        western_date: "1393-02-12"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "明徳4年"
+          second_gengou: ""
+          zodiac_name: "癸酉"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "丁未"
+            remainder: "43-1067"
+            western_date: "1393-02-12"
+          odd_solar_terms:
+            index: 5
+            remainder: "59-4573"
+          even_solar_terms:
+            index: 4
+            remainder: "44-2737"
+        day:
+          number: 1
+          zodiac_name: "丁未"
+          remainder: "43-1067"
+          western_date: "1393-02-12"
+- western_date: "1394-8-2"
+  test_case_name: "応永1年7月5日"
+  expected:
+    data:
+      year:
+        first_gengou: "応永1年"
+        second_gengou: ""
+        zodiac_name: "甲戌"
+        total_days: 355
+      month:
+        number: 7
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "己亥"
+          remainder: "35-7979"
+          western_date: "1394-07-29"
+        odd_solar_terms:
+          index: 15
+          remainder: "36-8184"
+        even_solar_terms:
+          index: 16
+          remainder: "52-1620"
+      day:
+        number: 5
+        zodiac_name: "癸卯"
+        remainder: "39-7979"
+        western_date: "1394-08-02"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "応永1年"
+          second_gengou: ""
+          zodiac_name: "甲戌"
+          total_days: 355
+        month:
+          number: 7
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "己亥"
+            remainder: "35-7979"
+            western_date: "1394-07-29"
+          odd_solar_terms:
+            index: 15
+            remainder: "36-8184"
+          even_solar_terms:
+            index: 16
+            remainder: "52-1620"
+        day:
+          number: 5
+          zodiac_name: "癸卯"
+          remainder: "39-7979"
+          western_date: "1394-08-02"
+- western_date: "1685-2-4"
+  test_case_name: "貞享2年1月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "貞享2年"
+        second_gengou: ""
+        zodiac_name: "乙丑"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-588"
+          western_date: "1685-02-04"
+        odd_solar_terms:
+          index: 3
+          remainder: "0-4561"
+        even_solar_terms:
+          index: 4
+          remainder: "15-6397"
+      day:
+        number: 1
+        zodiac_name: "壬戌"
+        remainder: "58-588"
+        western_date: "1685-02-04"
+    operation:
+      operated: false
+      month:
+        page: -1
+        number: -1
+        annotations:
+      original:
+        year:
+          first_gengou: "貞享2年"
+          second_gengou: ""
+          zodiac_name: "乙丑"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬戌"
+            remainder: "58-588"
+            western_date: "1685-02-04"
+          odd_solar_terms:
+            index: 3
+            remainder: "0-4561"
+          even_solar_terms:
+            index: 4
+            remainder: "15-6397"
+        day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-588"
+          western_date: "1685-02-04"

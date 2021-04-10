@@ -16,7 +16,7 @@ module SingleDataFactory
     def gengou(str:)
       return Zakuro::Result::Data::Gengou.new if str == ''
 
-      _, name, number = * /(.+)([0-9]{1,2})年/.match(str)
+      _, name, number = * /([一-龥]+)([0-9]{1,2})年/.match(str)
 
       Zakuro::Result::Data::Gengou.new(name: name, number: number.to_i)
     end
@@ -70,11 +70,27 @@ module SingleDataFactory
       )
     end
 
+    def annocations(hash:)
+      return [] unless hash
+
+      annotations = []
+      hash.each do |annocation|
+        annotations.push(
+          Zakuro::Result::Operation::Annotation.new(
+            description: annocation['description'],
+            note: annocation['note']
+          )
+        )
+      end
+
+      annotations
+    end
+
     def operation_month(hash:)
       Zakuro::Result::Operation::Month.new(
         page: hash['page'],
         number: hash['number'],
-        annotations: hash['annotations'] || []
+        annotations: annocations(hash: hash['annotations'])
       )
     end
 
