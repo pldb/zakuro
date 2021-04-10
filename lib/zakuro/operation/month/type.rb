@@ -94,7 +94,9 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        @id == ''
+        return true if @id == ''
+
+        @description == '' && @note == ''
       end
     end
 

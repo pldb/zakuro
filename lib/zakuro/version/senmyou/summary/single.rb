@@ -37,7 +37,8 @@ module Zakuro
 
         actual_date = SingleDaySpecifier.get(years: operated_range.get, date: date)
 
-        operation_history = Operation.specify_history(western_date: date)
+        first_day = calc_date.month.first_day.western_date
+        operation_history = Operation.specify_history(western_date: first_day)
 
         operation_month = Single.create_operation_month(operation_history: operation_history)
 

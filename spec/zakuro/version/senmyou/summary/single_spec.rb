@@ -38,6 +38,10 @@ describe 'Zakuro' do
             expected = SingleDataFactory.create(hash: test['expected'])
 
             it "#{western_date}: #{test['test_case_name']}" do
+              # if test['test_case_name'] == '明徳3年閏10月1日（明徳3年11月1日）'
+              #   p western_date
+              #   p "use on debug mode"
+              # end
               eql?(
                 date: Zakuro::Western::Calendar.parse(str: western_date),
                 expected: expected

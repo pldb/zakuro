@@ -1955,13 +1955,14 @@
         zodiac_name: "壬午"
         remainder: "18-3986"
         western_date: "1392-11-19"
-    # TODO: operated が false
     operation:
-      operated: false
+      operated: true
       month:
-        page: -1
-        number: -1
+        page: 329
+        number: 0
         annotations:
+          - description: "計算では44戊申であるが, 実施暦は丁未, 11月丁未朔のユリウス暦日は12月14日。計算では冬至が11月晦日になるのを, 11月朔日にして朔旦冬至としたもの。大日本史料第7編の１；統史愚抄・春日祭歴名部類などによる。"
+            note: ""
       original:
         year:
           first_gengou: "明徳3年"
