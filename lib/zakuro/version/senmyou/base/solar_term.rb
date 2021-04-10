@@ -61,6 +61,16 @@ module Zakuro
       def invalid?
         (@index == -1 || @remainder.invalid?)
       end
+
+      #
+      # データなしかを検証する
+      #
+      # @return [True] データなし
+      # @return [False] データあり
+      #
+      def empty?
+        (@index == -1 && @remainder.invalid?)
+      end
     end
   end
 end

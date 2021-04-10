@@ -5,6 +5,8 @@ require_relative '../base/multi_gengou_roller'
 require_relative '../../../era/western'
 require_relative './annual_range'
 
+require_relative '../base/year'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -20,15 +22,44 @@ module Zakuro
     #   * 引き当てたい日付が元旦ではない場合、その月日に従い元号を再度求める
     #   * この再計算が必要になるのは、元号が切り替わる年のみである
     class FullRange
-      attr_reader :multi_gengou_roller, :new_year_date, :western_year
+      # @return [Western::Calendar] 開始日
+      attr_reader :start_date
+      # @return [Western::Calendar] 終了日
+      attr_reader :end_date
+      # @return [MultiGengouRoller] 改元処理
+      attr_reader :multi_gengou_roller
+      # @return [Western::Calendar] 最過去の元旦
+      attr_reader :new_year_date
+      # @return [Integer] 西暦年
+      attr_reader :western_year
 
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'full_range')
 
+      #
+      # 初期化
+      #
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] end_date 終了日
+      #
       def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+        @start_date = start_date
+        @end_date = end_date
+        return if invalid?
+
         @multi_gengou_roller = MultiGengouRoller.new(start_date: start_date, end_date: end_date)
         @new_year_date = @multi_gengou_roller.oldest_date.clone
         @western_year = @new_year_date.year
+      end
+
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
+      def invalid?
+        @start_date.invalid?
       end
 
       #
@@ -37,8 +68,36 @@ module Zakuro
       # @return [Array<Year>] 完全範囲
       #
       def get
+        return [] if invalid?
+
+        pre_get
+
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
-        update_gengou(years: years)
+        years = update_gengou(years: years)
+        years = update_first_day(years: years)
+
+        post_get
+
+        years
+      end
+
+      #
+      # 取得前処理
+      #
+      def pre_get
+        # FIXME: 別インスタンス変数を定義する方法は改善したい（ディープコピーにするか、get再取得を廃止するか）
+        @new_year_date_ = @new_year_date.clone
+        @multi_gengou_roller_ = @multi_gengou_roller.clone
+      end
+
+      #
+      # 取得前処理
+      #
+      # 再取得に備えて、カウントアップした日付を元に戻す
+      #
+      def post_get
+        @new_year_date = @new_year_date_
+        @multi_gengou_roller = @multi_gengou_roller_
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -107,6 +166,47 @@ module Zakuro
         end
 
         updated_years
+      end
+
+      #
+      # 月初日の西暦日を更新する
+      #
+      # @param [Array<Year>] years 完全範囲（月初日なし）
+      #
+      # @return [Array<Year>] 完全範囲（月初日あり）
+      #
+      def update_first_day(years:)
+        # TODO: リファクタリング
+
+        result = []
+
+        years.each do |year|
+          new_year_date = year.new_year_date.clone
+          date = new_year_date.clone
+
+          months = []
+          year.months.each do |month|
+            first_day = month.first_day
+            updated_month = Month.new(
+              month_label: month.month_label,
+              first_day: FirstDay.new(remainder: first_day.remainder,
+                                      western_date: date),
+              solar_terms: month.solar_terms
+            )
+            months.push(updated_month)
+
+            date = date.clone + updated_month.days
+          end
+
+          updated_year = Year.new(
+            multi_gengou: year.multi_gengou, new_year_date: new_year_date,
+            months: months, total_days: year.total_days
+          )
+
+          result.push(updated_year)
+        end
+
+        result
       end
 
       #

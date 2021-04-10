@@ -2,7 +2,7 @@
 
 require_relative '../../../output/logger'
 require_relative '../base/remainder'
-require_relative '../monthly/month'
+require_relative '../monthly/initialized_month'
 require_relative '../base/solar_term'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar_orbit'
@@ -13,7 +13,9 @@ require_relative '../stella/lunar_orbit'
 module Zakuro
   # :nodoc:
   module Senmyou
-    # AnnualRange 年間データ
+    #
+    # AnnualRange 年間範囲
+    #
     module AnnualRange
       # @return [Logger] ロガー
       LOGGER = Logger.new(location: 'annual_range')
@@ -126,8 +128,9 @@ module Zakuro
           adjusted = lunar_phase.next_month
 
           result.push(
-            Month.new(is_last_year: is_last_year, number: month,
-                      remainder: adjusted, phase_index: 0)
+            InitializedMonth.new(month_label: MonthLabel.new(number: month),
+                                 first_day: FirstDay.new(remainder: adjusted),
+                                 is_last_year: is_last_year, phase_index: 0)
           )
           is_last_year = false if month == 12
         end
@@ -141,14 +144,12 @@ module Zakuro
       # @param [Array<Month>] annual_range 1年データ
       #
       def self.apply_big_and_small_of_the_month(annual_range:)
-        size = annual_range.size - 1
-        (0...size).each do |idx|
-          current_month = annual_range[idx]
-          next_month = annual_range[idx + 1]
-          current_month.is_many_days = \
-            current_month.remainder.same_remainder_divided_by_ten?(
-              other: next_month.remainder.day
-            )
+        annual_range.each_with_index do |range, index|
+          # 最後は比較対象がないためスキップする（=計算外の余分な月が最後に必要である）
+          next if index == annual_range.size - 1
+
+          next_month = annual_range[index + 1]
+          range.eval_many_days(next_month_day: next_month.remainder.day)
         end
       end
       private_class_method :apply_big_and_small_of_the_month
@@ -165,20 +166,16 @@ module Zakuro
         # 閏による月の再調整を行う
         leaped = false
         annual_range.each_with_index do |month, index|
-          if month.even_term.invalid?
-            month.leaped = true
-            # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
-            leaped = true unless index.zero?
-          end
+          month.eval_leaped
+          # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
+          leaped = true if month.leaped? && !index.zero?
+
           next unless leaped
 
           # NOTE: 常気法では閏月は2-3年に一度のため、1年に二度発生しない前提
-          number = month.number - 1
-          if number <= 0
-            month.is_last_year = true
-            number = 12
-          end
-          month.number = number
+
+          # 閏の分だけ1ヶ月ずらす
+          month.back_to_last_month
         end
       end
       private_class_method :adjust_leap_month

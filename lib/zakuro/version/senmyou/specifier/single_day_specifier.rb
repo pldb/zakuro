@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../era/western'
-require_relative './full_range'
+require_relative '../range/full_range'
 require_relative '../base/multi_gengou_roller'
 require_relative '../base/year'
 require_relative '../../../output/response'
@@ -21,18 +21,18 @@ module Zakuro
       #
       # 取得する
       #
+      # @param [Array<Year>] yeas 範囲
       # @param [Western::Calendar] date 西暦日
       #
-      # @return [Response::SingleDay] 和暦日
+      # @return [Result::Data::SingleDay] 和暦日
       #
-      def self.get(date:)
-        years = FullRange.new(start_date: date).get
-
+      def self.get(years: [], date: Western::Calendar.new)
         year = specify_year(years: years, date: date)
 
         year = transfer(year: year, date: date)
 
-        month, first_date = specify_month(year: year, date: date)
+        month = specify_month(year: year, date: date)
+        first_date = month.western_date
 
         Response::SingleDay.save_single_day(
           param: Response::SingleDay::Param.new(
@@ -81,19 +81,18 @@ module Zakuro
       # @param [Western::Calendar] date 西暦日
       #
       # @return [Month] 対象月
-      # @return [Western::Calendar] 月初日
       #
       def self.specify_month(year:, date:)
-        current_month_date = year.new_year_date.clone
-        next_month_date = current_month_date.clone
-        year.months.each do |month|
-          next_month_date += month.days
-          return month, current_month_date if next_month_date > date
+        months = year.months
 
-          current_month_date = next_month_date.clone
+        current_month = months[0]
+        months.each do |month|
+          return current_month if month.western_date > date
+
+          current_month = month
         end
 
-        raise ArgumentError, "invalid month range. date: #{date.format}"
+        current_month
       end
     end
   end

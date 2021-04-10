@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './era/japan'
+require_relative './era/japan/reki'
 require_relative './era/western'
 require_relative './version/genka/genka'
 require_relative './version/gihou/gihou'

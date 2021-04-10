@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/summary/annual_range',
+                         'lib/zakuro/version/senmyou/range/annual_range',
                          __dir__)
 
 expects_november_1st = {
@@ -1064,9 +1064,9 @@ describe 'Zakuro' do
             odd_term = month.odd_term
             {
               is_last_year: month.is_last_year,
-              is_many_days: month.is_many_days,
+              is_many_days: month.many_days?,
               month: month.number,
-              leaped: month.leaped,
+              leaped: month.leaped?,
               remainder: month.remainder.format,
               phase_index: month.phase_index,
               even_term: even_term.remainder.format,

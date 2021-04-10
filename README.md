@@ -45,7 +45,7 @@ western_date = Date.new(862, 2, 3)
 # 初期化時の設定
 merchant = Zakuro::Merchant.new(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}
+# => {"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}},"operation":{"operated":false,"month":{"page":-1,"number":-1,"annotations":[]},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}}}
 
 western_date = Date.new(1685, 2, 3)
 
@@ -53,66 +53,108 @@ western_date = Date.new(1685, 2, 3)
 # merchant = Zakuro::Merchant.new
 merchant.offer(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}}
+# => {"data":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}},"operation":{"operated":false,"month":{"page":-1,"number":-1,"annotations":[]},"original":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}}}}
 ```
 
 # 条件
 
 条件（condition）のバリエーションを示します。
 
-|項目名|キー名|hash内キー名|データ型|備考|
-|:----|:----|:----|:----|:----|
-|基準日|date| |Date| 西暦日 |
-| | | |String| 和暦日 |
-|範囲（開始日）|range|start|Date| |
-|範囲（終了日）| |last|Date| |
-|列|columns| |Array<String>|取得したい列の列名|
-|オプション|options| |Array<String>|取得オプション|
+| 項目名         | キー名  | hash内キー名 | データ型 | 備考               |
+|----------------|---------|--------------|----------|--------------------|
+| 基準日         | date    |              | Date     | 西暦日             |
+|                |         |              | String   | 和暦日             |
+| 範囲（開始日） | range   | start        | Date     |                    |
+| 範囲（終了日） |         | last         | Date     |                    |
+| 列             | columns |              | Array    | 取得したい列の列名 |
+| オプション     | options |              | Array    | 取得オプション     |
 
 現時点では `date` の西暦日のみ対応中です。
 
 ## オプション
 
-|項目名|キー名|データ型|データ|備考|
-|:----|:----|:----|:----|:----|
-|単位|unit|String|year|年単位|
-| | | |month|月単位|
-| | | |day|日単位（デフォルト）|
-|没日|lost_days|True| |没日あり|
-| | |False| |没日なし（デフォルト）|
-|四季|seasons|True| |四季あり|
-| | |False| |四季なし（デフォルト）|
+| 項目名 | キー名    | データ型 | データ | 備考                   |
+|--------|-----------|----------|--------|------------------------|
+| 単位   | unit      | String   | year   | 年単位                 |
+|        |           |          | month  | 月単位                 |
+|        |           |          | day    | 日単位（デフォルト）   |
+| 没日   | lost_days | TRUE     |        | 没日あり               |
+|        |           | FALSE    |        | 没日なし（デフォルト） |
+| 四季   | seasons   | TRUE     |        | 四季あり               |
+|        |           | FALSE    |        | 四季なし（デフォルト） |
 
 # 期待値
 暦算値は『日本暦日原典』、元号の切り替えは『日本史年表　第5版』を範とします。
 
-|項目名|キー名|-|-|参考値|備考|
-|:----|:----|:----|:----|:----|:----|
-|年号|year|first_gengou|name|貞観| |
-|年号年| | |number|4| |
-|年号（南北朝時代の北朝）| |second_gengou|name| |南北朝時代の北朝のみ|
-|年号年| | |number|-|南北朝時代の北朝のみ|
-|年の干支| |zodiac_name| |壬午| |
-|年の日数| |total_days| |354| |
-|月|month|number| |1|x月|
-|閏月判定| |leaped| |false|閏月（true）/平月（false）|
-|月の大小| |days_name| |大|大（30日） / 小（29日）|
-|月初日| |first_day|number|1|x日（1日固定）|
-|月初日の干支| | |zodiac_name|庚午| |
-|月初日の大余小余| | |remainder|6-1282| |
-|西暦日| | |western_date|0862-02-03| |
-|節気| |odd_solar_terms|index|5|番号（冬至0始まり）|
-|節気の大余小余| | |remainder|34-5368|大余小余|
-|中気| |even_solar_terms|index|4|番号（冬至0始まり）|
-|中気の大余小余| | |remainder|19-3532|大余小余|
-|日|day|number| |1|x日|
-|日の干支| |zodiac_name| |庚午|日の干支|
-|日の大余小余| |remainder| |6-1282|大余小余|
-|西暦日| |western_date| |0862-02-03|西暦日|
+## 種類
 
+現状は一日検索のみ対応しております。
+
+| 項目名   | データ型               |
+|----------|------------------------|
+| 一日検索 | Zakuro::Result::Single |
+| 範囲検索 | Zakuro::Result::Range  |
+
+### Zakuro::Result::Single
+
+| 項目名   | キー名    | - | - | データ型                          | 参考値 | 備考                                　 |
+|----------|-----------|---|---|-----------------------------------|--------|---------------------------------------|
+| 日付情報 | data      |   |   | Zakuro::Result::Data::SingleDay   | -      | 運用値（計算値は運用情報内を参照のこと）|
+| 運用情報 | operation |   |   | Zakuro::Result::Operation::Bundle | -      | -                                     |
+
+### Zakuro::Result::SingleDay
+
+| 項目名                   | キー名 | -                | -            | データ型                        | 参考値     | 備考                       |
+|--------------------------|--------|------------------|--------------|---------------------------------|------------|----------------------------|
+| 年情報                   | year   |                  |              | Zakuro::Result::Data::Year      |            |                            |
+| 年号                     |        | first_gengou     |              | Zakuro::Result::Data::Gengou    |            |                            |
+| 元号                     |        |                  | name         | String                          | 承平       |                            |
+| 元号年                   |        |                  | number       | Integer                         | 7          |                            |
+| 年号（南北朝時代の北朝） |        | second_gengou    |              | Zakuro::Result::Data::Gengou    |            |                            |
+| 元号                     |        |                  | name         | String                          | -          | 南北朝時代の北朝のみ       |
+| 元号年                   |        |                  | number       | Integer                         | -          | 南北朝時代の北朝のみ       |
+| 年の干支                 |        | zodiac_name      |              | String                          | 丁酉       |                            |
+| 年の日数                 |        | total_days       |              | Integer                         | 354        |                            |
+| 月                       | month  |                  |              | Zakuro::Result::Data::Month     |            |                            |
+| 月番号                   |        | number           |              | Integer                         | 1          | x月                        |
+| 閏月判定                 |        | leaped           |              | True/False                      | false      | 閏月（true）/平月（false） |
+| 月の大小                 |        | days_name        |              | String                          | 大         | 大（30日） / 小（29日）    |
+| 月初日                   |        | first_day        | number       | Integer                         | 1          | x日（1日固定）             |
+| 月初日の干支             |        |                  | zodiac_name  | String                          | 甲寅       |                            |
+| 月初日の大余小余         |        |                  | remainder    | String                          | 50-2479     |                            |
+| 西暦日                   |        |                  | western_date | String                          | 0937-02-13 |                            |
+| 節気                     |        | odd_solar_terms  |              | Zakuro::Result::Data::SolarTerm |            |                            |
+| 二十四節気番号           |        |                  | index        | Integer                         | 5          | 番号（冬至0始まり）        |
+| 二十四節気の大余小余     |        |                  | remainder    | String                          | 7-8293     | 大余小余                   |
+| 中気                     |        | even_solar_terms |              | Zakuro::Result::Data::SolarTerm |            |                            |
+| 二十四節気番号           |        |                  | index        | Integer                         | 4          | 番号（冬至0始まり）        |
+| 二十四節気の大余小余     |        |                  | remainder    | String                          | 52-6457    | 大余小余                   |
+| 日                       | day    |                  |              | Zakuro::Result::Data::Day       |            |                            |
+| 日番号                   |        | number           |              | Integer                         | 2          | x日                        |
+| 日の干支                 |        | zodiac_name      |              | String                          | 乙卯       | 日の干支                   |
+| 日の大余小余             |        | remainder        |              | String                          | 51-2479    | 大余小余                   |
+| 西暦日                   |        | western_date     |              | String                          | 0937-02-14 | 西暦日                     |
+
+### Zakuro::Result::Operation
+
+| 項目名       | キー名   | -          | -           | データ型                                   | 参考値                                                                                                              | 備考                 |
+|--------------|----------|------------|-------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------|
+| 運用有無     | operated | 　         | 　          | True/False                                 | true                                                                                                                | 　                   |
+| 月別履歴情報 | month    | 　         | 　          | ArrayZakuro::Result::Operation::Month      | 　                                                                                                                  | 　                   |
+| 原文頁数     |          | page       | 　          | Integer                                    | 178                                                                                                                 | 　                   |
+| 原文注釈番号 |          | number     | 　          | Integer                                    | 1                                                                                                                   | 　                   |
+| 注釈         |          | annotations | 　          | Array<Zakuro::Result::Operation::Annotation> | 　                                                                                                               | 　                   |
+| 注釈内容     | 　       |            | description | String                                     | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
+| 注釈補記     | 　       |            | note        | String                                     | -                                                                                                                   | 原文訂正             |
+| 計算値       | original | 　         | 　          | Zakuro::Result::Data::SingleDay            | 　                                                                                                                  | 運用値差替前の計算値 |
 # 元号
 
 [一覧](./doc/gengou.md) を参照してください。
+
+# 運用値
+
+一部の月では計算値から運用値への書き換えが発生します。
+経緯は [実運用](./doc/operation.md) を参照してください。
 
 # 暦算
 

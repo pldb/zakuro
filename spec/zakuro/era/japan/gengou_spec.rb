@@ -1,90 +1,50 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../zakuro/lib/zakuro/era/japan',
+require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/gengou',
                          __dir__)
 require 'yaml'
+
+ACTUAL_YAML_PATH = File.expand_path(
+  '../../../../lib/zakuro/era/japan/yaml/set-001-until-south.yaml',
+  __dir__
+)
+TEST_YAML_PATH = File.expand_path(
+  './yaml/set-test-001.yaml',
+  __dir__
+)
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Japan' do
-    describe 'Reki' do
-      describe '.get_class_name' do
-        context 'out of range' do
-          it 'should be raised ArgumentError' do
-            expect do
-              Zakuro::Japan::Reki.class_name(
-                date: Zakuro::Western::Calendar.new(year: 445, month: 1, day: 23)
-              )
-            end.to raise_error(ArgumentError)
-          end
-        end
-        context 'date in first reki' do
-          example '元嘉' do
-            expect(
-              Zakuro::Japan::Reki.class_name(
-                date: Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
-              )
-            ).to eq('Zakuro::Genka::Gateway')
-          end
-        end
-        context 'date in second reki' do
-          example '儀鳳' do
-            expect(
-              Zakuro::Japan::Reki.class_name(
-                date: Zakuro::Western::Calendar.new(year: 698, month: 2, day: 16)
-              )
-            ).to eq('Zakuro::Gihou::Gateway')
-          end
-        end
-        context 'date in last reki' do
-          example 'グレゴリオ' do
-            expect(
-              Zakuro::Japan::Reki.class_name(
-                date: Zakuro::Western::Calendar.new(year: 1872, month: 12, day: 9)
-              )
-            ).to eq('Zakuro::Gregorio::Gateway')
-          end
-        end
-      end
-    end
-
-    ACTUAL_YAML_PATH = File.expand_path(
-      '../../../lib/zakuro/era/gengou/set-001-until-south.yaml',
-      __dir__
-    )
-    TEST_YAML_PATH = File.expand_path(
-      './yaml/set-test-001.yaml',
-      __dir__
-    )
     describe 'Parser' do
       describe '.validate' do
         context 'actual yaml path' do
           it 'should be no error' do
             yaml = YAML.load_file(ACTUAL_YAML_PATH)
-            fails = Zakuro::Japan::Parser.validate(yaml)
+            fails = Zakuro::Japan::Validator.run(yaml_hash: yaml)
             expect(fails).to be_empty
           end
         end
       end
-      describe '.parse' do
+      describe '.run' do
         context 'actual file' do
           it 'should be no error' do
-            expect { Zakuro::Japan::Parser.parse(filepath: ACTUAL_YAML_PATH) }
+            expect { Zakuro::Japan::Parser.run(filepath: ACTUAL_YAML_PATH) }
               .to_not raise_error
           end
         end
         context 'test file' do
           it 'should be no error' do
-            expect { Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH) }
+            expect { Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH) }
               .to_not raise_error
           end
           it 'is created Set class' do
-            actual = Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH)
+            actual = Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH)
             expect(actual).to be_a(Zakuro::Japan::Set)
           end
         end
         context 'internal data' do
-          let(:actual) { Zakuro::Japan::Parser.parse(filepath: TEST_YAML_PATH) }
+          let(:actual) { Zakuro::Japan::Parser.run(filepath: TEST_YAML_PATH) }
           context 'id' do
             it 'is the same data in file' do
               expect(actual.id).to eq(1)

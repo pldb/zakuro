@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: outputモジュール内にする
+
 # :nodoc:
 module Zakuro
   #

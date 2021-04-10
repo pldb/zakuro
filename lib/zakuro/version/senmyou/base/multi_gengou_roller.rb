@@ -3,7 +3,7 @@
 require_relative './era'
 require_relative './multi_gengou'
 
-require_relative '../../../era/japan'
+require_relative '../../../era/japan/gengou'
 
 # :nodoc:
 module Zakuro
@@ -199,6 +199,18 @@ module Zakuro
         return first_date if second_line.invalid?
 
         condition.call(first_date, second_date)
+      end
+
+      #
+      # ディープコピー
+      #
+      # @param [MultiGengou] obj 自身
+      #
+      def initialize_copy(obj)
+        @oldest_date = obj.oldest_date.clone
+        @current_date = obj.current_date.clone
+        @newest_date = obj.newest_date.clone
+        @multi_gengou = obj.multi_gengou.clone
       end
     end
   end

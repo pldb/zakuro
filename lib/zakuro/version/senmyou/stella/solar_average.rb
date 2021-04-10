@@ -202,13 +202,9 @@ module Zakuro
       #
       def self.set_solar_term(month:, solar_term:, solar_term_index:)
         term = SolarTerm.new(remainder: solar_term, index: solar_term_index)
-        if solar_term_index.even?
-          # 中気
-          month.even_term = term
-        else
-          # 節気
-          month.odd_term = term
-        end
+
+        # 設定する
+        month.add_term(term: term)
 
         nil
       end
