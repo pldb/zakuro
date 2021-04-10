@@ -7,7 +7,7 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/summary/single',
                          __dir__)
 
-require File.expand_path('./single_day_factory',
+require File.expand_path('./single_data_factory',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength
@@ -35,7 +35,7 @@ describe 'Zakuro' do
 
           hash.each do |test|
             western_date = test['western_date']
-            expected = SingleDayFactory.create(hash: test['expected'])
+            expected = SingleDataFactory.create(hash: test['expected'])
 
             it "#{western_date}: #{test['test_case_name']}" do
               eql?(

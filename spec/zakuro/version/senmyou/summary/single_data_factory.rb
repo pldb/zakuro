@@ -5,9 +5,9 @@ require File.expand_path('../../../../../' \
                          __dir__)
 
 #
-# SingleDayFactory テストデータ（一日データ）生成
+# SingleDataFactory テストデータ（一日データ）生成
 #
-module SingleDayFactory
+module SingleDataFactory
   class << self
     def create(hash:)
       single(hash: hash)
