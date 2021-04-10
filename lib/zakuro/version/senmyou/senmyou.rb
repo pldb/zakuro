@@ -3,7 +3,7 @@
 require 'date'
 require_relative '../abstract_version'
 require_relative '../../era/western'
-require_relative 'summary/specifier'
+require_relative 'summary/single'
 
 # :nodoc:
 module Zakuro
@@ -27,7 +27,7 @@ module Zakuro
       #
       def self.to_japan_date(western_date:)
         date = Western::Calendar.create(date: western_date)
-        SingleDaySpecifier.get(date: date)
+        Single.get(date: date)
       end
     end
   end
