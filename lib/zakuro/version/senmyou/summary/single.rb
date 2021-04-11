@@ -48,23 +48,31 @@ module Zakuro
       end
 
       def self.create_operation_month(operation_history: Operation::MonthHistory.new)
-        # TODO: MonthHistory が持つ親IDとの紐付け
         return Result::Operation::Month.new if operation_history.invalid?
 
+        annotations = create_annnotations(operation_history: operation_history)
+
+        reference = operation_history.reference
+        Result::Operation::Month.new(
+          page: reference.page, number: reference.number, annotations: annotations
+        )
+      end
+
+      def self.create_annnotations(operation_history: Operation::MonthHistory.new)
         annotations = []
         operation_history.annotations.each do |annotation|
           annotations.push(
             Result::Operation::Annotation.new(
+              id: annotation.id,
+              # TODO: MonthHistory が持つ親IDとの紐付け
+              parent: Result::Operation::Parent.new,
               description: annotation.description,
               note: annotation.note
             )
           )
         end
 
-        reference = operation_history.reference
-        Result::Operation::Month.new(
-          page: reference.page, number: reference.number, annotations: annotations
-        )
+        annotations
       end
     end
   end

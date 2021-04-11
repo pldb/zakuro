@@ -40,6 +40,10 @@ module Zakuro
       # Month 月別履歴情報
       #
       class Month
+        # @return [String] ID
+        attr_reader :id
+        # @return [String] 親注釈
+        attr_reader :parent
         # @return [Integer] 原文頁数
         attr_reader :page
         # @return [Integer] 原文注釈番号
@@ -50,14 +54,39 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [String] id ID
+        # @param [Parent] parent 親注釈
         # @param [Integer] page 原文頁数
         # @param [Integer] number 原文注釈番号
         # @param [Array<Zakuro::Result::Operation::Annotation>] annotations 注釈
         #
-        def initialize(page: -1, number: -1, annotations: [])
+        def initialize(id: '', parent: Parent.new, page: -1, number: -1, annotations: [])
+          @id = id
+          @parent = parent
           @page = page
           @number = number
           @annotations = annotations
+        end
+      end
+
+      #
+      # Parent 親注釈
+      #
+      class Parent
+        # @return [String] ID
+        attr_reader :id
+        # @return [String] 月初日の西暦日（計算値）
+        attr_reader :western_date
+
+        #
+        # 初期化
+        #
+        # @param [String] id ID
+        # @param [String] western_date 月初日の西暦日（計算値）
+        #
+        def initialize(id: '', western_date: '')
+          @id = id
+          @western_date = western_date
         end
       end
 
