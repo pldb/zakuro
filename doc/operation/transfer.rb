@@ -23,8 +23,8 @@ result = []
 table.each do |row|
   hash = {
     'id' => row['ID'],
-    'relation_id' => row['関連内容ID'],
-    'parent_id' => row['親ID'],
+    'relation_id' => row['関連注釈ID'],
+    'parent_id' => row['親注釈ID'],
     'page' => row['頁数'],
     'number' => row['注番'],
     'japan_date' => row['和暦'],
