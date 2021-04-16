@@ -130,42 +130,29 @@ module Zakuro
       # @return [Array<MonthHistory>] 変更履歴
       #
       def self.load(yaml_hash: {})
-        annotations = {}
-        relations = {}
-        histories = create_histories(yaml_hash: yaml_hash, annotations: annotations,
-                                     relations: relations)
+        histories = create_histories(yaml_hash: yaml_hash)
 
-        add_annotations(histories: histories, annotations: annotations, relations: relations)
+        annotation_parser = AnnotationParser.new(yaml_hash: yaml_hash)
+        annotation_parser.create
+
+        add_annotations(histories: histories, annotation_parser: annotation_parser)
       end
 
       #
       # 変更履歴を読み込む
       #
       # @param [Hash] yaml_hash 設定ファイルテキスト
-      # @param [Hash] annotations 注釈（空）
-      # @param [Hash] relations 関連ID設定（空）
       #
       # @return [Array<MonthHistory>] 変更履歴
       #
-      def self.create_histories(yaml_hash: {}, annotations: {}, relations: {})
+      def self.create_histories(yaml_hash: {})
         result = []
         yaml_hash.each do |month|
-          id = month['id']
-          annotations[id] = Annotation.new(
-            id: id,
-            description: Operation::TypeParser.text(str: month['description']),
-            note: Operation::TypeParser.text(str: month['note'])
-          )
-          relation_id = month['relation_id']
-
-          relations[id] = relation_id unless Operation::TypeParser.invalid?(str: relation_id)
-
           next unless Operation::TypeParser.modified?(str: month['modified'])
 
           history = create_history(yaml_hash: month)
           result.push(history)
         end
-
         result
       end
       private_class_method :create_histories
@@ -184,14 +171,13 @@ module Zakuro
       end
       private_class_method :create_history
 
-      def self.add_annotations(histories: [], annotations: {}, relations: {})
+      def self.add_annotations(histories: [], annotation_parser:)
         result = []
         histories.each do |history|
           result.push(
             MonthHistory.new(
               id: history.id, reference: history.reference, western_date: history.western_date,
-              annotations: create_history_annnotations(history: history, annotations: annotations,
-                                                       relations: relations),
+              annotations: annotation_parser.specify(id: history.id),
               diffs: history.diffs
             )
           )
@@ -202,6 +188,8 @@ module Zakuro
       private_class_method :add_annotations
 
       def self.create_history_annnotations(history:, annotations: {}, relations: {})
+        # TODO: MonthHistory が持つ親IDとの紐付け
+
         history_id = history.id
         history_annotations = []
         [history_id, relations.fetch(history_id, '')].each do |id|
@@ -214,9 +202,55 @@ module Zakuro
 
       def self.add_annotation(history_annotations: [], annotations: {}, id: '')
         annotation = annotations.fetch(id, Annotation.new)
-        history_annotations.push(annotation) unless annotation.invalid?
+        return if annotation.invalid?
+
+        history_annotations.push(annotation)
       end
       private_class_method :add_annotation
+
+      def self.add_parent_annotation(annotation: {}); end
+    end
+
+    class AnnotationParser
+      attr_reader :annotations
+      attr_reader :relations
+
+      def initialize(yaml_hash: {})
+        @annotations = {}
+        @relations = {}
+        @yaml_hash = yaml_hash
+      end
+
+      def create
+        result = []
+        @yaml_hash.each do |month|
+          id = month['id']
+          @annotations[id] = Annotation.new(
+            id: id,
+            description: Operation::TypeParser.text(str: month['description']),
+            note: Operation::TypeParser.text(str: month['note'])
+          )
+          relation_id = month['relation_id']
+
+          next if Operation::TypeParser.invalid?(str: relation_id)
+
+          @relations[id] = relation_id
+        end
+
+        result
+      end
+
+      def specify(id: '')
+        history_annotations = []
+        [id, relations.fetch(id, '')].each do |history_id|
+          annotation = @annotations.fetch(history_id, Annotation.new)
+          next if annotation.invalid?
+
+          history_annotations.push(annotation)
+        end
+
+        history_annotations
+      end
     end
 
     #

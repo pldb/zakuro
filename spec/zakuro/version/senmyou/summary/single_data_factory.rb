@@ -76,7 +76,7 @@ module SingleDataFactory
       annotations = []
       hash.each do |annocation|
         annotations.push(
-          Zakuro::Result::Operation::Annotation.new(
+          Zakuro::Result::Operation::Month::Annotation.new(
             description: annocation['description'],
             note: annocation['note']
           )
@@ -87,10 +87,15 @@ module SingleDataFactory
     end
 
     def operation_month(hash:)
-      Zakuro::Result::Operation::Month.new(
-        page: hash['page'],
-        number: hash['number'],
-        annotations: annocations(hash: hash['annotations'])
+      Zakuro::Result::Operation::Month::Bundle.new(
+        current: Zakuro::Result::Operation::Month::History.new(
+          id: hash['id'] || '',
+          western_date: hash['western_date'] || '',
+          page: hash['page'],
+          number: hash['number'],
+          annotations: annocations(hash: hash['annotations'])
+        )
+        # TODO: parent を足せるようにする
       )
     end
 

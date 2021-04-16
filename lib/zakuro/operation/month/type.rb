@@ -81,7 +81,7 @@ module Zakuro
       # @param [String] description 内容
       # @param [String] note 正誤訂正（zakuro）
       #
-      def initialize(id: '', description: '', note: '')
+      def initialize(id: '', parent_id: '', description: '', note: '')
         @id = id
         @description = description
         @note = note

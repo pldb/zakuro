@@ -48,13 +48,17 @@ module Zakuro
       end
 
       def self.create_operation_month(operation_history: Operation::MonthHistory.new)
-        return Result::Operation::Month.new if operation_history.invalid?
+        return Result::Operation::Month::Bundle.new if operation_history.invalid?
 
         annotations = create_annnotations(operation_history: operation_history)
 
         reference = operation_history.reference
-        Result::Operation::Month.new(
-          page: reference.page, number: reference.number, annotations: annotations
+        Result::Operation::Month::Bundle.new(
+          current: Result::Operation::Month::History.new(
+            id: operation_history.id, western_date: operation_history.western_date.format,
+            page: reference.page, number: reference.number, annotations: annotations
+          )
+          # TODO: parent を足せるようにする
         )
       end
 
@@ -62,10 +66,7 @@ module Zakuro
         annotations = []
         operation_history.annotations.each do |annotation|
           annotations.push(
-            Result::Operation::Annotation.new(
-              id: annotation.id,
-              # TODO: MonthHistory が持つ親IDとの紐付け
-              parent: Result::Operation::Parent.new,
+            Result::Operation::Month::Annotation.new(
               description: annotation.description,
               note: annotation.note
             )
