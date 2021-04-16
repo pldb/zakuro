@@ -1531,7 +1531,6 @@
     operation:
       operated: true
       month:
-        # TODO: 当たっているか
         id: "178-1-1"
         western_date: "0937-02-14"
         page: 178
@@ -1961,7 +1960,6 @@
     operation:
       operated: true
       month:
-        # TODO: 当たっているか
         id: "329-1-0"
         western_date: "1392-11-15"
         page: 329
