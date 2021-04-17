@@ -15,6 +15,8 @@ module Zakuro
     #
     INVALID_DAY_VALUE = -30
 
+    # :reek:TooManyInstanceVariables { max_instance_variables: 6 }
+
     #
     # MonthHistory 変更履歴
     #
@@ -31,6 +33,9 @@ module Zakuro
       attr_reader :annotations
       # @return [Diffs] 総差分
       attr_reader :diffs
+
+      # rubocop:disable Metrics/ParameterLists
+      # :reek:LongParameterList { max_params: 6 }
 
       #
       # 初期化
@@ -51,6 +56,7 @@ module Zakuro
         @annotations = annotations
         @diffs = diffs
       end
+      # rubocop:enable Metrics/ParameterLists
 
       #
       # 無効か
@@ -81,7 +87,7 @@ module Zakuro
       # @param [String] description 内容
       # @param [String] note 正誤訂正（zakuro）
       #
-      def initialize(id: '', parent_id: '', description: '', note: '')
+      def initialize(id: '', description: '', note: '')
         @id = id
         @description = description
         @note = note

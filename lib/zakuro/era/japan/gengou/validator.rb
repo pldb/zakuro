@@ -60,8 +60,6 @@ module Zakuro
           failed
         end
 
-        # :reek:NilCheck
-
         #
         # IDを検証する
         #
@@ -69,7 +67,9 @@ module Zakuro
         # @return [False] 正しくない
         #
         def id?
-          !(@id.nil? || !@id.is_a?(Integer))
+          return false unless @id
+
+          @id.is_a?(Integer)
         end
 
         #
@@ -79,7 +79,9 @@ module Zakuro
         # @return [False] 正しくない
         #
         def name?
-          !(@name.nil? || !@name.is_a?(String))
+          return false unless @name
+
+          @name.is_a?(String)
         end
 
         #
@@ -120,6 +122,8 @@ module Zakuro
           failed
         end
       end
+
+      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
 
       #
       # Gengou 元号情報
@@ -172,8 +176,6 @@ module Zakuro
           failed
         end
 
-        # :reek:NilCheck
-
         #
         # 元号名を検証する
         #
@@ -181,7 +183,9 @@ module Zakuro
         # @return [False] 正しくない
         #
         def name?
-          (!@name.nil? || @name.is_a?(String))
+          return false unless @name
+
+          @name.is_a?(String)
         end
 
         #
@@ -204,8 +208,6 @@ module Zakuro
           Western::Calendar.valid_date_string(str: @new_year_date)
         end
 
-        # :reek:NilCheck
-
         #
         # 元号年を検証する
         #
@@ -213,7 +215,7 @@ module Zakuro
         # @return [False] 正しくない
         #
         def year?
-          return true if @start_year.nil?
+          return true unless @start_year
 
           @start_year.is_a?(Integer)
         end

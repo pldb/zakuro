@@ -5,11 +5,15 @@ require 'yaml'
 
 table = CSV.read('csv/month.csv', headers: true)
 
+# :reek:UtilityFunction
+
 def month_str_to_number(str)
   return str if str == '-'
 
   str.match('([0-9]{1,2})')[0]
 end
+
+# :reek:UtilityFunction
 
 def month_str_to_leaped(str)
   return str if str == '-'

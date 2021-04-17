@@ -150,8 +150,9 @@ module Zakuro
         yaml_hash.each do |month|
           next unless Operation::TypeParser.modified?(str: month['modified'])
 
-          history = create_history(yaml_hash: month)
-          result.push(history)
+          result.push(
+            create_history(yaml_hash: month)
+          )
         end
         result
       end
@@ -174,11 +175,12 @@ module Zakuro
       def self.add_annotations(annotation_parser:, histories: [])
         result = []
         histories.each do |history|
+          id = history.id
           result.push(
             MonthHistory.new(
-              id: history.id, parent_id: history.parent_id, reference: history.reference,
+              id: id, parent_id: history.parent_id, reference: history.reference,
               western_date: history.western_date,
-              annotations: annotation_parser.specify(id: history.id),
+              annotations: annotation_parser.specify(id: id),
               diffs: history.diffs
             )
           )
@@ -189,8 +191,6 @@ module Zakuro
       private_class_method :add_annotations
 
       def self.create_history_annnotations(history:, annotations: {}, relations: {})
-        # TODO: MonthHistory が持つ親IDとの紐付け
-
         history_id = history.id
         history_annotations = []
         [history_id, relations.fetch(history_id, '')].each do |id|
@@ -208,48 +208,92 @@ module Zakuro
         history_annotations.push(annotation)
       end
       private_class_method :add_annotation
-
-      def self.add_parent_annotation(annotation: {}); end
     end
 
+    #
+    # AnnotationParser 注釈解析
+    #
     class AnnotationParser
-      attr_reader :annotations, :relations
+      # @return [Hash<String, Annotation>] 注釈
+      attr_reader :annotations
+      # @return [Hash<String, String>] 関連注釈の対応関係
+      attr_reader :relations
 
+      #
+      # 初期化
+      #
+      # @param [Hash] yaml_hash 設定ファイルテキスト
+      #
       def initialize(yaml_hash: {})
         @annotations = {}
         @relations = {}
         @yaml_hash = yaml_hash
       end
 
+      #
+      # 注釈を生成する
+      #
       def create
-        result = []
         @yaml_hash.each do |month|
-          id = month['id']
-          @annotations[id] = Annotation.new(
-            id: id,
-            description: Operation::TypeParser.text(str: month['description']),
-            note: Operation::TypeParser.text(str: month['note'])
+          AnnotationParser.resolve_history(
+            hash: month, annotations: @annotations, relations: @relations
           )
-          relation_id = month['relation_id']
-
-          next if Operation::TypeParser.invalid?(str: relation_id)
-
-          @relations[id] = relation_id
         end
-
-        result
       end
 
-      def specify(id: '')
-        history_annotations = []
-        [id, relations.fetch(id, '')].each do |history_id|
-          annotation = @annotations.fetch(history_id, Annotation.new)
-          next if annotation.invalid?
+      #
+      # 月別履歴情報から注釈情報を取り出す
+      #
+      # @param [<Type>] hash 月別履歴情報yaml
+      # @param [Hash<String, Annotation>] annotations 注釈
+      # @param [Hash<String, String>] relations 関連注釈の対応関係
+      #
+      def self.resolve_history(hash: {}, annotations: {}, relations: {})
+        id = hash['id']
+        annotations[id] = Annotation.new(
+          id: id,
+          description: Operation::TypeParser.text(str: hash['description']),
+          note: Operation::TypeParser.text(str: hash['note'])
+        )
+        relation_id = hash['relation_id']
 
-          history_annotations.push(annotation)
+        return if Operation::TypeParser.invalid?(str: relation_id)
+
+        relations[id] = relation_id
+      end
+
+      #
+      # 注釈を特定する
+      #
+      # @param [String] id ID
+      #
+      # @return [Array<Annotation>] 注釈
+      #
+      def specify(id: '')
+        ids = [id, relations.fetch(id, '')]
+        specify_by_ids(ids: ids)
+      end
+
+      private
+
+      def specify_by_ids(ids: [])
+        annotations = []
+        ids.each do |id|
+          add_annotation(id: id, annotations: annotations)
         end
 
-        history_annotations
+        annotations
+      end
+
+      def add_annotation(id: '', annotations: [])
+        annotation = annotation(id: id)
+        return if annotation.invalid?
+
+        annotations.push(annotation)
+      end
+
+      def annotation(id: '')
+        @annotations.fetch(id, Annotation.new)
       end
     end
 
@@ -293,19 +337,37 @@ module Zakuro
       private_class_method :create_destination_solar_term
 
       def self.create_month(yaml_hash: {})
-        number = yaml_hash['number']
-        leaped = yaml_hash['leaped']
-        days = yaml_hash['days']
-
         Month.new(
-          number: Number.new(calc: Operation::TypeParser.month_number(str: number['calc']),
-                             actual: Operation::TypeParser.month_number(str: number['actual'])),
-          leaped: Leaped.new(calc: Operation::TypeParser.month_leaped(str: leaped['calc']),
-                             actual: Operation::TypeParser.month_leaped(str: leaped['actual'])),
-          days: Days.new(calc: days['calc'], actual: days['actual'])
+          number: create_month_number(yaml_hash: yaml_hash['number']),
+          leaped: create_month_leaped(yaml_hash: yaml_hash['leaped']),
+          days: create_month_day(yaml_hash: yaml_hash['days'])
         )
       end
       private_class_method :create_month
+
+      def self.create_month_number(yaml_hash: {})
+        Number.new(
+          calc: Operation::TypeParser.month_number(str: yaml_hash['calc']),
+          actual: Operation::TypeParser.month_number(str: yaml_hash['actual'])
+        )
+      end
+      private_class_method :create_month_number
+
+      def self.create_month_leaped(yaml_hash: {})
+        Leaped.new(
+          calc: Operation::TypeParser.month_leaped(str: yaml_hash['calc']),
+          actual: Operation::TypeParser.month_leaped(str: yaml_hash['actual'])
+        )
+      end
+      private_class_method :create_month_leaped
+
+      def self.create_month_day(yaml_hash: {})
+        Days.new(
+          calc: yaml_hash['calc'],
+          actual: yaml_hash['actual']
+        )
+      end
+      private_class_method :create_month_day
     end
   end
 end
