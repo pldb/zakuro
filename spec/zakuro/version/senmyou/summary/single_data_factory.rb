@@ -88,14 +88,18 @@ module SingleDataFactory
 
     def operation_month(hash:)
       Zakuro::Result::Operation::Month::Bundle.new(
-        current: Zakuro::Result::Operation::Month::History.new(
-          id: hash['id'] || '',
-          western_date: hash['western_date'] || '',
-          page: hash['page'],
-          number: hash['number'],
-          annotations: annocations(hash: hash['annotations'])
-        )
-        # TODO: parent を足せるようにする
+        current: operation_month_history(hash: hash['current']),
+        parent: operation_month_history(hash: hash['parent'])
+      )
+    end
+
+    def operation_month_history(hash:)
+      Zakuro::Result::Operation::Month::History.new(
+        id: hash['id'],
+        western_date: hash['western_date'],
+        page: hash['page'],
+        number: hash['number'],
+        annotations: annocations(hash: hash['annotations'])
       )
     end
 
