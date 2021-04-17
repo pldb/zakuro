@@ -45,7 +45,8 @@ western_date = Date.new(862, 2, 3)
 # 初期化時の設定
 merchant = Zakuro::Merchant.new(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}},"operation":{"operated":false,"month":{"page":-1,"number":-1,"annotations":[]},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}}}
+# => {"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"
+大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}}}
 
 western_date = Date.new(1685, 2, 3)
 
@@ -53,7 +54,7 @@ western_date = Date.new(1685, 2, 3)
 # merchant = Zakuro::Merchant.new
 merchant.offer(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"data":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}},"operation":{"operated":false,"month":{"page":-1,"number":-1,"annotations":[]},"original":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}}}}
+# => {"data":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}}}}
 ```
 
 # 条件
@@ -137,16 +138,33 @@ puts merchant.commit.to_json
 
 ### Zakuro::Result::Operation
 
-| 項目名       | キー名   | -          | -           | データ型                                   | 参考値                                                                                                              | 備考                 |
-|--------------|----------|------------|-------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------|
-| 運用有無     | operated | 　         | 　          | True/False                                 | true                                                                                                                | 　                   |
-| 月別履歴情報 | month    | 　         | 　          | ArrayZakuro::Result::Operation::Month      | 　                                                                                                                  | 　                   |
-| 原文頁数     |          | page       | 　          | Integer                                    | 178                                                                                                                 | 　                   |
-| 原文注釈番号 |          | number     | 　          | Integer                                    | 1                                                                                                                   | 　                   |
-| 注釈         |          | annotations | 　          | Array<Zakuro::Result::Operation::Annotation> | 　                                                                                                               | 　                   |
-| 注釈内容     | 　       |            | description | String                                     | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
-| 注釈補記     | 　       |            | note        | String                                     | -                                                                                                                   | 原文訂正             |
-| 計算値       | original | 　         | 　          | Zakuro::Result::Data::SingleDay            | 　                                                                                                                  | 運用値差替前の計算値 |
+| 項目名       | キー名   | -          | -           | データ型                                   | 参考値   | 備考                 |
+|--------------|----------|------------|-------------|--------------------------------------------|---------|----------------------|
+| 運用有無     | operated | 　         | 　          | True/False                                 | true     | 　                   |
+| 月別履歴情報 | month    | 　         | 　          | Zakuro::Result::Operation::Month::Bundle   | 　       | 　                   |
+| 計算値       | original | 　         | 　          | Zakuro::Result::Data::SingleDay            | 　       | 運用値差替前の計算値 |
+
+### Zakuro::Result::Operation::Month::Bundle
+
+| 項目名                   | キー名   | -          | -        | データ型                                   | 参考値        | 備考                                         |
+|--------------------------|----------|------------|----------|--------------------------------------------|--------------|---------------------------------------------|
+| 月別履歴情報（当月）     | current  | 　         | 　          | Zakuro::Result::Operation::Month::History |              |該当月の履歴情報                              |
+| 月別履歴情報（親）       | parent   | 　         | 　          | Zakuro::Result::Operation::Month::History | 　            |前後の月により副次的に影響を受けた時の履歴情報|
+
+
+### Zakuro::Result::Operation::Month::History
+
+| 項目名            | キー名   | -              | -           | データ型                                          | 参考値                                                                                                              | 備考                 |
+|-------------------|----------|--------------|-------------|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------|
+| ID                |          | id           | 　            | String                                          | 178-1-1                                                                                                              | zakuro内の一意なID  |
+| 月初日の西暦日     |          | western_date | 　          | String                                            | 0937-02-13                                                                                                          | 計算値               |
+| 原文頁数          |          | page         | 　          | Integer                                           | 178                                                                                                                 | 　                   |
+| 原文注釈番号      |          | number       | 　          | Integer                                            | 1                                                                                                                   | 　                   |
+| 注釈              |          | annotations | 　          | Array<Zakuro::Result::Operation::::MonthAnnotation> | 　                                                                                                                  | 　                   |
+| 注釈内容          | 　       |              | description | String                                             | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
+| 注釈補記          | 　       |              | note        | String                                             | -                                                                                                                   | 原文訂正             |
+
+
 # 元号
 
 [一覧](./doc/gengou.md) を参照してください。
