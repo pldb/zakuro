@@ -164,19 +164,20 @@ module Zakuro
         reference = Reference.new(page: yaml_hash['page'].to_i, number: yaml_hash['number'].to_i,
                                   japan_date: yaml_hash['japan_date'])
         MonthHistory.new(id: yaml_hash['id'],
-                         parent_id: yaml_hash['parent_id'],
+                         parent_id: Operation::TypeParser.text(str: yaml_hash['parent_id']),
                          reference: reference,
                          western_date: western_date,
                          diffs: diffs)
       end
       private_class_method :create_history
 
-      def self.add_annotations(histories: [], annotation_parser:)
+      def self.add_annotations(annotation_parser:, histories: [])
         result = []
         histories.each do |history|
           result.push(
             MonthHistory.new(
-              id: history.id, reference: history.reference, western_date: history.western_date,
+              id: history.id, parent_id: history.parent_id, reference: history.reference,
+              western_date: history.western_date,
               annotations: annotation_parser.specify(id: history.id),
               diffs: history.diffs
             )
@@ -212,8 +213,7 @@ module Zakuro
     end
 
     class AnnotationParser
-      attr_reader :annotations
-      attr_reader :relations
+      attr_reader :annotations, :relations
 
       def initialize(yaml_hash: {})
         @annotations = {}

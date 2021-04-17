@@ -1,7 +1,7 @@
 ---
 - id: 156-1-a
   relation_id: "-"
-  parent_id: "-"
+  parent_id: 156-1-1
   page: '156'
   number: "-"
   japan_date: 貞観 14年 12 大 丁酉 33-1832

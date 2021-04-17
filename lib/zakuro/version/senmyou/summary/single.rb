@@ -50,15 +50,23 @@ module Zakuro
       def self.create_operation_month(operation_history: Operation::MonthHistory.new)
         return Result::Operation::Month::Bundle.new if operation_history.invalid?
 
+        parent_operation_history = Operation.specify_history_by_id(id: operation_history.parent_id)
+
+        Result::Operation::Month::Bundle.new(
+          current: create_operation_month_history(operation_history: operation_history),
+          parent: create_operation_month_history(operation_history: parent_operation_history)
+        )
+      end
+
+      def self.create_operation_month_history(operation_history: Operation::MonthHistory.new)
+        return Result::Operation::Month::History.new if operation_history.invalid?
+
         annotations = create_annnotations(operation_history: operation_history)
 
         reference = operation_history.reference
-        Result::Operation::Month::Bundle.new(
-          current: Result::Operation::Month::History.new(
-            id: operation_history.id, western_date: operation_history.western_date.format,
-            page: reference.page, number: reference.number, annotations: annotations
-          )
-          # TODO: parent を足せるようにする
+        Result::Operation::Month::History.new(
+          id: operation_history.id, western_date: operation_history.western_date.format,
+          page: reference.page, number: reference.number, annotations: annotations
         )
       end
 

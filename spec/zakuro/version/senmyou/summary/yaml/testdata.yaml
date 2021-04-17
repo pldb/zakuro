@@ -1164,6 +1164,78 @@
           zodiac_name: "庚寅"
           remainder: "26-8284"
           western_date: "0863-08-17"
+- western_date: "873-1-3"
+  test_case_name: "貞観14年12月1日（小 -> 大）"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観14年"
+        second_gengou: ""
+        zodiac_name: "壬辰"
+        total_days: 355
+      month:
+        number: 12
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "丁酉"
+          remainder: "33-1832"
+          western_date: "0873-01-03"
+        odd_solar_terms:
+          index: 3
+          remainder: "1-7501"
+        even_solar_terms:
+          index: 2
+          remainder: "46-5666"
+      day:
+        number: 1
+        zodiac_name: "丁酉"
+        remainder: "33-1832"
+        western_date: "0873-01-03"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "156-1-a"
+          western_date: "0873-01-03"
+          page: 156
+          number: 0
+          annotations:
+        parent:
+          id: "156-1-1"
+          western_date: "0873-02-01"
+          page: 156
+          number: 1
+          annotations:
+            - description: "計算では2丙寅である, 三代実録に正月丁卯朔とある。従って正月朔のユリウス暦日は2月2日。"
+              note: ""
+      original:
+        year:
+          first_gengou: "貞観14年"
+          second_gengou: ""
+          zodiac_name: "壬辰"
+          total_days: 354
+        month:
+          number: 12
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "丁酉"
+            remainder: "33-1832"
+            western_date: "0873-01-03"
+          odd_solar_terms:
+            index: 3
+            remainder: "1-7501"
+          even_solar_terms:
+            index: 2
+            remainder: "46-5666"
+        day:
+          number: 1
+          zodiac_name: "丁酉"
+          remainder: "33-1832"
+          western_date: "0873-01-03"
 - western_date: "876-1-30"
   test_case_name: "貞観18年1月1日"
   expected:

@@ -41,5 +41,22 @@ module Zakuro
 
       Operation::MonthHistory.new
     end
+
+    #
+    # 変更履歴を特定する
+    #
+    # @param [Western::Calendar] id 変更履歴ID
+    #
+    # @return [Operation::MonthHistory] 変更履歴
+    #
+    def self.specify_history_by_id(id:)
+      month_histroies = Operation.month_histories
+
+      month_histroies.each do |history|
+        return history if id == history.id
+      end
+
+      Operation::MonthHistory.new
+    end
   end
 end
