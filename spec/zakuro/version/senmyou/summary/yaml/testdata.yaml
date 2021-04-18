@@ -1868,6 +1868,146 @@
           zodiac_name: "乙卯"
           remainder: "51-2479"
           western_date: "0937-02-14"
+- western_date: "1202-11-17"
+  test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "建仁2年"
+        second_gengou: ""
+        zodiac_name: "壬戌"
+        total_days: 384
+      month:
+        number: 10
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬寅"
+          remainder: "38-7186"
+          western_date: "1202-11-17"
+        odd_solar_terms:
+          index: 23
+          remainder: "51-6309"
+        even_solar_terms:
+      day:
+        number: 1
+        zodiac_name: "壬寅"
+        remainder: "38-7186"
+        western_date: "1202-11-17"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "266-1-1"
+          western_date: "1202-11-17"
+          page: 266
+          number: 1
+          annotations:
+            - description: "計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "建仁2年"
+          second_gengou: ""
+          zodiac_name: "壬戌"
+          total_days: 384
+        month:
+          number: 11
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬寅"
+            remainder: "38-7186"
+            western_date: "1202-11-17"
+          odd_solar_terms:
+            index: 23
+            remainder: "51-6309"
+          even_solar_terms:
+            index: 0
+            remainder: "6-8145"
+        day:
+          number: 1
+          zodiac_name: "壬寅"
+          remainder: "38-7186"
+          western_date: "1202-11-17"
+- western_date: "1202-12-16"
+  test_case_name: "建仁2年11月1日（建仁2年閏11月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "建仁2年"
+        second_gengou: ""
+        zodiac_name: "壬戌"
+        total_days: 384
+      month:
+        number: 11
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-5375"
+          western_date: "1202-12-16"
+        odd_solar_terms:
+          index: 1
+          remainder: "22-1580"
+        even_solar_terms:
+          index: 0
+          remainder: "7-8145"
+      day:
+        number: 1
+        zodiac_name: "辛未"
+        remainder: "7-5375"
+        western_date: "1202-12-16"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "266-1-0"
+          western_date: "1202-12-16"
+          page: 266
+          number: 0
+          annotations:
+            - description: "計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "建仁2年"
+          second_gengou: ""
+          zodiac_name: "壬戌"
+          total_days: 384
+        month:
+          number: 11
+          leaped: true
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "辛未"
+            remainder: "7-5375"
+            western_date: "1202-12-16"
+          odd_solar_terms:
+            index: 1
+            remainder: "22-1580"
+          even_solar_terms:
+        day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-5375"
+          western_date: "1202-12-16"
 - western_date: "1332-1-28"
   test_case_name: "元弘2年1月1日"
   expected:

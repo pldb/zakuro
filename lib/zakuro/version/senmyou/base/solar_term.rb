@@ -71,6 +71,16 @@ module Zakuro
       def empty?
         (@index == -1 && @remainder.invalid?)
       end
+
+      #
+      # ディープコピー
+      #
+      # @param [SolarTerm] obj 自身
+      #
+      def initialize_copy(obj)
+        @index = obj.index.clone
+        @remainder = obj.remainder.clone
+      end
     end
   end
 end

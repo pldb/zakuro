@@ -114,7 +114,6 @@ module Zakuro
                                             direction: Operation::SolarTerm::Diretion.new,
                                             month: Month.new)
 
-        # TDOO: 移動だけではなく大余差分を反映する場合
         month.solar_terms.each do |solar_term|
           OperatedSolarTerms.push_source(directions: directions, direction: direction,
                                          solar_term: solar_term)
@@ -138,13 +137,14 @@ module Zakuro
 
         return unless source.index == solar_term.index
 
+        operated_solar_term = solar_term.clone
         unless direction.invalid_days?
           # 二十四節気の大余をずらす
-          solar_term.remainder.add!(Remainder.new(day: direction.days, minute: 0, second: 0))
+          operated_solar_term.remainder.add!(Remainder.new(day: direction.days, minute: 0, second: 0))
         end
 
         # 移動先に移動元の二十四節気を指定する
-        directions[source.to.format] = solar_term
+        directions[source.to.format] = operated_solar_term
       end
 
       #
