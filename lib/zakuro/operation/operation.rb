@@ -25,6 +25,8 @@ module Zakuro
       MONTH_HISTORIES
     end
 
+    # :reek:ControlParameter
+
     #
     # 変更履歴を特定する
     #
@@ -41,6 +43,8 @@ module Zakuro
 
       Operation::MonthHistory.new
     end
+
+    # :reek:ControlParameter
 
     #
     # 変更履歴を特定する

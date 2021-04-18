@@ -48,7 +48,9 @@ module Zakuro
         operated_years = []
 
         years.each do |year|
-          operated_year = rewrite_year(year: year)
+          operated_year = OperatedRange.rewrite_year(
+            year: year, operated_solar_terms: @operated_solar_terms
+          )
           operated_years.push(operated_year)
         end
 
@@ -59,16 +61,16 @@ module Zakuro
       # 年を書き換える
       #
       # @param [Year] year 年
+      # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
       #
       # @return [Year] 年
       #
-      def rewrite_year(year:)
+      def self.rewrite_year(year:, operated_solar_terms:)
         result = Year.new(multi_gengou: year.multi_gengou, new_year_date: year.new_year_date)
         year.months.each do |month|
-          operated_month = month
-          history = Operation.specify_history(western_date: month.western_date)
-          operated_month = rewrite_month(month: month, history: history) unless history.invalid?
-          result.push(month: operated_month)
+          result.push(month: resolve_month(
+            month: month, operated_solar_terms: operated_solar_terms
+          ))
         end
 
         result.commit
@@ -77,20 +79,39 @@ module Zakuro
       end
 
       #
+      # 履歴情報の有無に応じた月にする
+      #
+      # @param [Month] month 月
+      # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+      #
+      # @return [Month] 月
+      #
+      def self.resolve_month(month:, operated_solar_terms:)
+        history = Operation.specify_history(western_date: month.western_date)
+
+        return month if history.invalid?
+
+        OperatedRange.rewrite_month(
+          month: month, history: history, operated_solar_terms: operated_solar_terms
+        )
+      end
+
+      #
       # 月を運用結果に書き換える
       #
       # @param [Month] month 月
       # @param [Operation::MonthHistory] history 変更履歴
+      # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
       #
       # @return [Month] 月（運用結果）
       #
-      def rewrite_month(month:, history:)
+      def self.rewrite_month(month:, history:, operated_solar_terms:)
         return month unless month.western_date == history.western_date
 
         operated_month = OperatedMonth.new(
           month_label: month.month_label, first_day: month.first_day,
           solar_terms: month.solar_terms, history: history,
-          operated_solar_terms: @operated_solar_terms
+          operated_solar_terms: operated_solar_terms
         )
 
         operated_month.rewrite
