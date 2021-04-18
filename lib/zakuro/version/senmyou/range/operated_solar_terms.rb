@@ -16,8 +16,6 @@ module Zakuro
     class OperatedSolarTerms
       # @return [Array<Year>] 完全範囲（年データ）
       attr_reader :years
-      # @return [Array<MonthHistory>] 変更履歴
-      attr_reader :month_histroies
       # @return [Hash<String, SolarTerm>] 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
       #
       # * 移動元の二十四節気：無効な大余小余あり（削除対象）
@@ -29,11 +27,9 @@ module Zakuro
       # 初期化
       #
       # @param [Array<Year>] years 完全範囲（年データ）
-      # @param [Array<MonthHistory>] 変更履歴
       #
-      def initialize(years: [], month_histories: Operation.month_histories)
+      def initialize(years: [])
         @years = years
-        @month_histroies = month_histories
         @directions = {}
       end
 
@@ -75,11 +71,15 @@ module Zakuro
         directions = {}
 
         years.each do |year|
-          create_directions_with_months(directions: directions, months: year.months)
+          OperatedSolarTerms.create_directions_with_months(
+            directions: directions, months: year.months
+          )
         end
 
         directions
       end
+
+      # :reek:TooManyStatements { max_statements: 6 }
 
       #
       # 年内の全ての月の移動方向を作成する
@@ -87,19 +87,19 @@ module Zakuro
       # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
       # @param [Array<Month>] months 年内の全ての月
       #
-      def create_directions_with_months(directions: {}, months: [])
+      def self.create_directions_with_months(directions: {}, months: [])
         months.each do |month|
-          @month_histroies.each do |history|
-            next unless month.western_date == history.western_date
+          history = Operation.specify_history(western_date: month.western_date)
 
-            direction = history.diffs.solar_term
+          next if history.invalid?
 
-            next if direction.invalid?
+          direction = history.diffs.solar_term
 
-            OperatedSolarTerms.create_directions_each_month(
-              directions: directions, direction: direction, month: month
-            )
-          end
+          next if direction.invalid?
+
+          OperatedSolarTerms.create_directions_each_month(
+            directions: directions, direction: direction, month: month
+          )
         end
       end
 
@@ -114,7 +114,6 @@ module Zakuro
                                             direction: Operation::SolarTerm::Diretion.new,
                                             month: Month.new)
 
-        # TDOO: 移動だけではなく大余差分を反映する場合
         month.solar_terms.each do |solar_term|
           OperatedSolarTerms.push_source(directions: directions, direction: direction,
                                          solar_term: solar_term)
@@ -138,13 +137,32 @@ module Zakuro
 
         return unless source.index == solar_term.index
 
+        # 移動先に移動元の二十四節気を指定する
+        directions[source.to.format] = OperatedSolarTerms.created_source(
+          direction: direction, solar_term: solar_term
+        )
+      end
+
+      #
+      # 移動先に有効な二十四節気（差し替える二十四節気）を生成する
+      #
+      # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
+      # @param [SolarTerm] solar_term 二十四節気（計算値）
+      #
+      # @return [SolarTerm] 二十四節気（運用値）
+      #
+      def self.created_source(direction: Operation::SolarTerm::Direction.new,
+                              solar_term: SolarTerm.new)
+        operated_solar_term = solar_term.clone
+
         unless direction.invalid_days?
           # 二十四節気の大余をずらす
-          solar_term.remainder.add!(Remainder.new(day: direction.days, minute: 0, second: 0))
+          operated_solar_term.remainder.add!(
+            Remainder.new(day: direction.days, minute: 0, second: 0)
+          )
         end
 
-        # 移動先に移動元の二十四節気を指定する
-        directions[source.to.format] = solar_term
+        operated_solar_term
       end
 
       #

@@ -57,6 +57,7 @@ module Zakuro
 
         raise ArgumentError, "invalid year range. date: #{date.format}"
       end
+      private_class_method :specify_year
 
       #
       # 改元する
@@ -71,6 +72,7 @@ module Zakuro
         Year.new(multi_gengou: multi_gengou, new_year_date: year.new_year_date,
                  months: year.months, total_days: year.total_days)
       end
+      private_class_method :transfer
 
       # :reek:TooManyStatements { max_statements: 7 }
 
@@ -94,6 +96,7 @@ module Zakuro
 
         current_month
       end
+      private_class_method :specify_month
     end
   end
 end

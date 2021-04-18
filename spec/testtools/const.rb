@@ -44,7 +44,7 @@ module Const
     ),
     operation: Zakuro::Result::Operation::Bundle.new(
       operated: false,
-      month: Zakuro::Result::Operation::Month.new,
+      month: Zakuro::Result::Operation::Month::Bundle.new,
       original: Zakuro::Result::Data::SingleDay.new(
         year: Zakuro::Result::Data::Year.new(
           first_gengou: Zakuro::Result::Data::Gengou.new(

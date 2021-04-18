@@ -30,9 +30,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -91,9 +100,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -150,9 +168,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -207,9 +234,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -264,9 +300,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -323,9 +368,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -384,9 +438,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -445,9 +508,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -506,9 +578,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -567,9 +648,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -628,9 +718,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観4年"
@@ -689,9 +788,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -750,9 +858,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -811,9 +928,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -870,9 +996,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -927,9 +1062,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -984,9 +1128,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観5年"
@@ -1011,6 +1164,78 @@
           zodiac_name: "庚寅"
           remainder: "26-8284"
           western_date: "0863-08-17"
+- western_date: "873-1-3"
+  test_case_name: "貞観14年12月1日（小 -> 大）"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観14年"
+        second_gengou: ""
+        zodiac_name: "壬辰"
+        total_days: 355
+      month:
+        number: 12
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "丁酉"
+          remainder: "33-1832"
+          western_date: "0873-01-03"
+        odd_solar_terms:
+          index: 3
+          remainder: "1-7501"
+        even_solar_terms:
+          index: 2
+          remainder: "46-5666"
+      day:
+        number: 1
+        zodiac_name: "丁酉"
+        remainder: "33-1832"
+        western_date: "0873-01-03"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "156-1-a"
+          western_date: "0873-01-03"
+          page: 156
+          number: 0
+          annotations:
+        parent:
+          id: "156-1-1"
+          western_date: "0873-02-01"
+          page: 156
+          number: 1
+          annotations:
+            - description: "計算では2丙寅である, 三代実録に正月丁卯朔とある。従って正月朔のユリウス暦日は2月2日。"
+              note: ""
+      original:
+        year:
+          first_gengou: "貞観14年"
+          second_gengou: ""
+          zodiac_name: "壬辰"
+          total_days: 354
+        month:
+          number: 12
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "丁酉"
+            remainder: "33-1832"
+            western_date: "0873-01-03"
+          odd_solar_terms:
+            index: 3
+            remainder: "1-7501"
+          even_solar_terms:
+            index: 2
+            remainder: "46-5666"
+        day:
+          number: 1
+          zodiac_name: "丁酉"
+          remainder: "33-1832"
+          western_date: "0873-01-03"
 - western_date: "876-1-30"
   test_case_name: "貞観18年1月1日"
   expected:
@@ -1043,9 +1268,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1104,9 +1338,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1165,9 +1408,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1226,9 +1478,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1287,9 +1548,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1348,9 +1618,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観18年"
@@ -1409,9 +1688,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞観19年"
@@ -1470,9 +1758,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元慶1年"
@@ -1531,11 +1828,20 @@
     operation:
       operated: true
       month:
-        page: 178
-        number: 1
-        annotations:
-          - description: "計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食をさけるための変更か）"
-            note: ""
+        current:
+          id: "178-1-1"
+          western_date: "0937-02-14"
+          page: 178
+          number: 1
+          annotations:
+            - description: "計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食をさけるための変更か）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "承平7年"
@@ -1562,6 +1868,146 @@
           zodiac_name: "乙卯"
           remainder: "51-2479"
           western_date: "0937-02-14"
+- western_date: "1202-11-17"
+  test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "建仁2年"
+        second_gengou: ""
+        zodiac_name: "壬戌"
+        total_days: 384
+      month:
+        number: 10
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "壬寅"
+          remainder: "38-7186"
+          western_date: "1202-11-17"
+        odd_solar_terms:
+          index: 23
+          remainder: "51-6309"
+        even_solar_terms:
+      day:
+        number: 1
+        zodiac_name: "壬寅"
+        remainder: "38-7186"
+        western_date: "1202-11-17"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "266-1-1"
+          western_date: "1202-11-17"
+          page: 266
+          number: 1
+          annotations:
+            - description: "計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "建仁2年"
+          second_gengou: ""
+          zodiac_name: "壬戌"
+          total_days: 384
+        month:
+          number: 11
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "壬寅"
+            remainder: "38-7186"
+            western_date: "1202-11-17"
+          odd_solar_terms:
+            index: 23
+            remainder: "51-6309"
+          even_solar_terms:
+            index: 0
+            remainder: "6-8145"
+        day:
+          number: 1
+          zodiac_name: "壬寅"
+          remainder: "38-7186"
+          western_date: "1202-11-17"
+- western_date: "1202-12-16"
+  test_case_name: "建仁2年11月1日（建仁2年閏11月1日）"
+  expected:
+    data:
+      year:
+        first_gengou: "建仁2年"
+        second_gengou: ""
+        zodiac_name: "壬戌"
+        total_days: 384
+      month:
+        number: 11
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-5375"
+          western_date: "1202-12-16"
+        odd_solar_terms:
+          index: 1
+          remainder: "22-1580"
+        even_solar_terms:
+          index: 0
+          remainder: "7-8145"
+      day:
+        number: 1
+        zodiac_name: "辛未"
+        remainder: "7-5375"
+        western_date: "1202-12-16"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "266-1-0"
+          western_date: "1202-12-16"
+          page: 266
+          number: 0
+          annotations:
+            - description: "計算では冬至が11月晦日であるが, これを朔旦冬至にするため計算の11月を閏10月に, 閏11月を11月にしたもの, 普通は干支を変更するが建仁2年の場合は冬至を6庚午から辛未に移した。（猪隈関白記・吾妻鏡）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "建仁2年"
+          second_gengou: ""
+          zodiac_name: "壬戌"
+          total_days: 384
+        month:
+          number: 11
+          leaped: true
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "辛未"
+            remainder: "7-5375"
+            western_date: "1202-12-16"
+          odd_solar_terms:
+            index: 1
+            remainder: "22-1580"
+          even_solar_terms:
+        day:
+          number: 1
+          zodiac_name: "辛未"
+          remainder: "7-5375"
+          western_date: "1202-12-16"
 - western_date: "1332-1-28"
   test_case_name: "元弘2年1月1日"
   expected:
@@ -1594,9 +2040,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元弘2年"
@@ -1655,9 +2110,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元弘2年"
@@ -1716,9 +2180,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元弘2年"
@@ -1777,9 +2250,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元中9年"
@@ -1838,9 +2320,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元中9年"
@@ -1899,9 +2390,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "元中9年"
@@ -1958,11 +2458,20 @@
     operation:
       operated: true
       month:
-        page: 329
-        number: 0
-        annotations:
-          - description: "計算では44戊申であるが, 実施暦は丁未, 11月丁未朔のユリウス暦日は12月14日。計算では冬至が11月晦日になるのを, 11月朔日にして朔旦冬至としたもの。大日本史料第7編の１；統史愚抄・春日祭歴名部類などによる。"
-            note: ""
+        current:
+          id: "329-1-0"
+          western_date: "1392-11-15"
+          page: 329
+          number: 0
+          annotations:
+            - description: "計算では44戊申であるが, 実施暦は丁未, 11月丁未朔のユリウス暦日は12月14日。計算では冬至が11月晦日になるのを, 11月朔日にして朔旦冬至としたもの。大日本史料第7編の１；統史愚抄・春日祭歴名部類などによる。"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "明徳3年"
@@ -2021,9 +2530,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "明徳4年"
@@ -2082,9 +2600,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "明徳4年"
@@ -2143,9 +2670,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "明徳4年"
@@ -2204,9 +2740,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "応永1年"
@@ -2265,9 +2810,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞享2年"
@@ -2326,9 +2880,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞享2年"
@@ -2387,9 +2950,18 @@
     operation:
       operated: false
       month:
-        page: -1
-        number: -1
-        annotations:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
       original:
         year:
           first_gengou: "貞享2年"

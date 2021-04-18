@@ -35,37 +35,91 @@ module Zakuro
 
         operated_range = OperatedRange.new(years: years)
 
-        actual_date = SingleDaySpecifier.get(years: operated_range.get, date: date)
+        Result::Single.new(
+          data: SingleDaySpecifier.get(years: operated_range.get, date: date),
+          operation: create_operation(calc_date: calc_date)
+        )
+      end
 
+      #
+      # 運用情報を生成する
+      #
+      # @param [Result::Data::SingleDay] calc_date 和暦日（計算値）
+      #
+      # @return [Result::Operation::Bundle] 運用情報
+      #
+      def self.create_operation(calc_date: Result::Data::SingleDay.new)
         first_day = calc_date.month.first_day.western_date
         operation_history = Operation.specify_history(western_date: first_day)
 
-        operation_month = Single.create_operation_month(operation_history: operation_history)
+        operation_month = create_operation_month(operation_history: operation_history)
 
-        Result::Single.new(data: actual_date, operation: Result::Operation::Bundle.new(
+        Result::Operation::Bundle.new(
           operated: !operation_history.invalid?, month: operation_month, original: calc_date
-        ))
+        )
       end
+      private_class_method :create_operation
 
+      #
+      # 月履歴集約情報を生成する
+      #
+      # @param [Operation::MonthHistory] operation_history 変更履歴（月）
+      #
+      # @return [Result::Operation::Month::Bundle] 月履歴集約情報
+      #
       def self.create_operation_month(operation_history: Operation::MonthHistory.new)
-        # TODO: MonthHistory が持つ親IDとの紐付け
-        return Result::Operation::Month.new if operation_history.invalid?
+        return Result::Operation::Month::Bundle.new if operation_history.invalid?
 
+        parent_operation_history = Operation.specify_history_by_id(id: operation_history.parent_id)
+
+        Result::Operation::Month::Bundle.new(
+          current: create_operation_month_history(operation_history: operation_history),
+          parent: create_operation_month_history(operation_history: parent_operation_history)
+        )
+      end
+      private_class_method :create_operation_month
+
+      #
+      # 月別履歴情報を生成する
+      #
+      # @param [Operation::MonthHistory] operation_history 変更履歴（月）
+      #
+      # @return [Result::Operation::Month::History] 月別履歴情報
+      #
+      def self.create_operation_month_history(operation_history: Operation::MonthHistory.new)
+        return Result::Operation::Month::History.new if operation_history.invalid?
+
+        annotations = create_annnotations(operation_history: operation_history)
+
+        reference = operation_history.reference
+        Result::Operation::Month::History.new(
+          id: operation_history.id, western_date: operation_history.western_date.format,
+          page: reference.page, number: reference.number, annotations: annotations
+        )
+      end
+      private_class_method :create_operation_month_history
+
+      #
+      # 注釈情報を生成する
+      #
+      # @param [Operation::MonthHistory] operation_history 変更履歴（月）
+      #
+      # @return [Array<Result::Operation::Month::Annotation>] 注釈
+      #
+      def self.create_annnotations(operation_history: Operation::MonthHistory.new)
         annotations = []
         operation_history.annotations.each do |annotation|
           annotations.push(
-            Result::Operation::Annotation.new(
+            Result::Operation::Month::Annotation.new(
               description: annotation.description,
               note: annotation.note
             )
           )
         end
 
-        reference = operation_history.reference
-        Result::Operation::Month.new(
-          page: reference.page, number: reference.number, annotations: annotations
-        )
+        annotations
       end
+      private_class_method :create_annnotations
     end
   end
 end
