@@ -31,7 +31,7 @@ module Zakuro
         hash
       end
 
-      # :reek:TooManyStatements { max_statements: 7 } and :reek:NilCheck
+      # :reek:TooManyStatements { max_statements: 7 }
 
       #
       # 対象インスタンスをハッシュ化する（再帰処理）
@@ -42,7 +42,7 @@ module Zakuro
       # @return [Hash<String, Objcet>] ハッシュ
       #
       def self.value_to_hash(obj:, class_prefix:, formatted:)
-        return obj if obj.nil?
+        return obj unless obj
 
         # 日付をフォーマットする
         return obj.format if formatted && Tools::Typeof.time?(obj: obj)

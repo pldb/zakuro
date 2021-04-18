@@ -25,8 +25,6 @@ module Zakuro
         @date = date
       end
 
-      # :reek:NilCheck
-
       #
       # 検証する
       #
@@ -36,7 +34,9 @@ module Zakuro
       #
       def self.validate(date:)
         failed = []
-        return failed if date.nil? || date.is_a?(Date) || date.is_a?(String)
+        return failed unless date
+
+        return failed if date.is_a?(Date) || date.is_a?(String)
 
         failed.push("invalid date: #{date}")
         failed
@@ -64,7 +64,7 @@ module Zakuro
         @last = hash[:last]
       end
 
-      # :reek:TooManyStatements { max_statements: 7 } and :reek:NilCheck
+      # :reek:TooManyStatements { max_statements: 7 }
 
       #
       # 検証する
@@ -75,7 +75,7 @@ module Zakuro
       #
       def self.validate(hash:)
         failed = []
-        return failed if hash.nil?
+        return failed unless hash
 
         unless hash.is_a?(Hash)
           failed.push("invalid range type. #{hash}. should be hash")
@@ -106,8 +106,6 @@ module Zakuro
         @columns = columns
       end
 
-      # :reek:NilCheck
-
       #
       # 検証する
       #
@@ -118,7 +116,10 @@ module Zakuro
       def self.validate(columns:)
         # TODO: 列内容のバリデーション
         failed = []
-        return failed if columns.nil? || columns.is_a?(Array)
+
+        return failed unless columns
+
+        return failed if columns.is_a?(Array)
 
         failed.push("invalid columns type. #{columns}. should be array")
 
@@ -148,7 +149,6 @@ module Zakuro
       end
 
       # TODO: オプションキーのバリデーション
-      # :reek:NilCheck
 
       #
       # 検証する
@@ -159,7 +159,9 @@ module Zakuro
       #
       def self.validate(options:)
         failed = []
-        return failed if options.nil? || options.is_a?(Hash)
+        return failed unless options
+
+        return failed if options.is_a?(Hash)
 
         failed.push("invalid options type. #{options}. should be hash")
 
@@ -222,8 +224,6 @@ module Zakuro
       failed
     end
 
-    # :reek:NilCheck
-
     #
     # 上書きする
     #
@@ -233,7 +233,10 @@ module Zakuro
       instance_variables.each do |var|
         key = var.to_s.delete('@')
         val = hash[key.intern]
-        instance_variable_set(var, val) unless val.nil?
+
+        next unless val
+
+        instance_variable_set(var, val)
       end
     end
   end

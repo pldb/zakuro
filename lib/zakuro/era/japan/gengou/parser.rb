@@ -48,8 +48,6 @@ module Zakuro
           @start_year = hash['start_year']
         end
 
-        # :reek:NilCheck
-
         #
         # 元号情報を生成する
         #
@@ -58,7 +56,7 @@ module Zakuro
         def create
           start_date = Western::Calendar.parse(str: @start_date)
           new_year_date = Western::Calendar.parse(str: @new_year_date)
-          start_year = @start_year.nil? ? 1 : @start_year
+          start_year = @start_year || 1
 
           Gengou.new(name: @name, start_date: start_date, new_year_date: new_year_date,
                      year: start_year)

@@ -94,8 +94,6 @@ module Zakuro
           Western::Calendar.valid_date_string(str: @end_date)
         end
 
-        # :reek:NilCheck
-
         #
         # 元号情報を検証する
         #
@@ -103,7 +101,9 @@ module Zakuro
         # @return [False] 正しくない
         #
         def list?
-          (!@list.nil? || @list.is_a?(Array))
+          return false unless @list
+
+          @list.is_a?(Array)
         end
 
         #

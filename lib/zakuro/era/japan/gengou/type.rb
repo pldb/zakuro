@@ -58,8 +58,6 @@ module Zakuro
         nil
       end
 
-      # :reek:NilCheck
-
       #
       # 日付が有効かどうかを確認する
       #
@@ -69,7 +67,9 @@ module Zakuro
       # @return [False] 無効
       #
       def self.valid_date(date:)
-        !date.nil? && date.is_a?(Western::Calendar)
+        return false unless date
+
+        date.is_a?(Western::Calendar)
       end
 
       #
