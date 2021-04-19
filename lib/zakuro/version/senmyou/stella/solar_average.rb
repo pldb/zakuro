@@ -123,20 +123,24 @@ module Zakuro
       #
       # @param [Array<SolarTerm>] solar_terms 1年データ内の全二十四節気
       #
-      # @return [Hash<Integer, Hash<Symbol, Integer>>, Hash<Integer, Hash<Symbol, Remainder>>] 前後
+      # @return [Array<Hash<Symbol => Integer, SolarTerm>>] 前後
       #
       def self.collect_solar_terms_before_and_after(solar_terms:)
         raise ArgumentError, 'parameter must be 24 solar terms' unless solar_terms.size == 24
 
-        touji = solar_terms[-1].remainder.add(SOLAR_TERM_AVERAGE)
-        {
+        taisetsu = SolarTerm.new(remainder: solar_terms[0].remainder.sub(SOLAR_TERM_AVERAGE),
+                                 index: 23)
+        touji = SolarTerm.new(remainder: solar_terms[-1].remainder.add(SOLAR_TERM_AVERAGE),
+                              index: 0)
+        shoukan = SolarTerm.new(remainder: touji.remainder.add(SOLAR_TERM_AVERAGE), index: 1)
+        [
           # 前年大雪
-          23 => { index: 0, solar_term: solar_terms[0].remainder.sub(SOLAR_TERM_AVERAGE) },
+          { month_index: 0, solar_term: taisetsu },
           # 当年冬至
-          0 => { index: -2, solar_term: touji },
+          { month_index: -2, solar_term: touji },
           # 当年小寒
-          1 => { index: -2, solar_term: touji.add(SOLAR_TERM_AVERAGE) }
-        }
+          { month_index: -2, solar_term: shoukan }
+        ]
       end
       private_class_method :collect_solar_terms_before_and_after
 
@@ -150,16 +154,16 @@ module Zakuro
       #   rest_solar_terms 前後
       #
       def self.apply_solar_terms_before_and_after(annual_range:, rest_solar_terms:)
-        rest_solar_terms.each do |key, value|
-          index = value[:index]
-          solar_term = value[:solar_term]
-          data = annual_range[index]
+        rest_solar_terms.each do |rest_solar_term|
+          index = rest_solar_term[:month_index]
+          solar_term = rest_solar_term[:solar_term]
+          month = annual_range[index]
           next unless in_range_solar_term?(
-            target: solar_term,
-            min: data.remainder, max: annual_range[index + 1].remainder
+            target: solar_term.remainder,
+            min: month.remainder, max: annual_range[index + 1].remainder
           )
 
-          data.add_term(term: SolarTerm.new(remainder: solar_term, index: key))
+          month.add_term(term: solar_term)
         end
       end
       private_class_method :apply_solar_terms_before_and_after
