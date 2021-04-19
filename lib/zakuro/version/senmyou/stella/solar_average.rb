@@ -50,13 +50,13 @@ module Zakuro
       #
       # @param [Remainder] winter_solstice 冬至
       #
-      # @return [Array<Remainder>] 二十四節気
+      # @return [Array<SolarTerm>] 二十四節気
       #
       def self.collect_solar_terms_from_last_winter_solstice(winter_solstice:)
         result = []
         term = winter_solstice
-        (0...24).each do |_i|
-          result.push(term)
+        (0...24).each do |index|
+          result.push(SolarTerm.new(remainder: term, index: index))
           term = term.add(SOLAR_TERM_AVERAGE)
         end
 
@@ -82,8 +82,7 @@ module Zakuro
 
           if set_solar_term_on_current_month(current_month: annual_range[month_index],
                                              next_month: annual_range[month_index + 1],
-                                             solar_term: solar_terms[solar_term_index],
-                                             solar_term_index: solar_term_index)
+                                             solar_term: solar_terms[solar_term_index])
             solar_term_index += 1
             next
           end
@@ -105,11 +104,11 @@ module Zakuro
       # @return [False] 未設定
       #
       def self.set_solar_term_on_current_month(current_month:,
-                                               next_month:, solar_term:, solar_term_index:)
-        if in_range_solar_term?(target: solar_term, min: current_month.remainder,
+                                               next_month:, solar_term:)
+        if in_range_solar_term?(target: solar_term.remainder, min: current_month.remainder,
                                 max: next_month.remainder)
-          set_solar_term(month: current_month,
-                         solar_term: solar_term, solar_term_index: solar_term_index)
+
+          current_month.add_term(term: solar_term)
           return true
         end
 
@@ -122,17 +121,17 @@ module Zakuro
       #
       # 1年データ内の二十四節気の前後を収集する
       #
-      # @param [Array<Remainder>] solar_terms 1年データ内の全二十四節気
+      # @param [Array<SolarTerm>] solar_terms 1年データ内の全二十四節気
       #
       # @return [Hash<Integer, Hash<Symbol, Integer>>, Hash<Integer, Hash<Symbol, Remainder>>] 前後
       #
       def self.collect_solar_terms_before_and_after(solar_terms:)
         raise ArgumentError, 'parameter must be 24 solar terms' unless solar_terms.size == 24
 
-        touji = solar_terms[-1].add(SOLAR_TERM_AVERAGE)
+        touji = solar_terms[-1].remainder.add(SOLAR_TERM_AVERAGE)
         {
           # 前年大雪
-          23 => { index: 0, solar_term: solar_terms[0].sub(SOLAR_TERM_AVERAGE) },
+          23 => { index: 0, solar_term: solar_terms[0].remainder.sub(SOLAR_TERM_AVERAGE) },
           # 当年冬至
           0 => { index: -2, solar_term: touji },
           # 当年小寒
@@ -160,8 +159,7 @@ module Zakuro
             min: data.remainder, max: annual_range[index + 1].remainder
           )
 
-          set_solar_term(month: data,
-                         solar_term: solar_term, solar_term_index: key)
+          data.add_term(term: SolarTerm.new(remainder: solar_term, index: key))
         end
       end
       private_class_method :apply_solar_terms_before_and_after
@@ -194,23 +192,6 @@ module Zakuro
         min_over || max_under
       end
       private_class_method :in_range_solar_term?
-
-      #
-      # 二十四節気を設定する
-      #
-      # @param [Month] month 月
-      # @param [Remainder] solar_term 二十四節気
-      # @param [Integer] solar_term_index 連番（二十四節気）
-      #
-      def self.set_solar_term(month:, solar_term:, solar_term_index:)
-        term = SolarTerm.new(remainder: solar_term, index: solar_term_index)
-
-        # 設定する
-        month.add_term(term: term)
-
-        nil
-      end
-      private_class_method :set_solar_term
     end
   end
 end
