@@ -189,7 +189,9 @@ module Zakuro
         min_over = (target_time >= min_time)
         max_under = (target_time < max_time)
 
-        (min_time <= max_time ? min_over && max_under : min_over || max_under)
+        return min_over && max_under if min_time <= max_time
+
+        min_over || max_under
       end
       private_class_method :in_range_solar_term?
 
