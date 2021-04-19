@@ -70,7 +70,7 @@ module Zakuro
       # 各月の二十四節気を設定する
       #
       # @param [Array<Month>] annual_range 1年データ
-      # @param [Array<Remainder>] solar_terms 1年データ内の全二十四節気
+      # @param [Array<SolarTerm>] solar_terms 1年データ内の全二十四節気
       #
       def self.apply_solar_terms_from_last_winter_solstice(annual_range:, solar_terms:)
         month_index = 0
@@ -97,8 +97,7 @@ module Zakuro
       #
       # @param [Remainder] current_month 当月
       # @param [Month] next_month 次月
-      # @param [Month] solar_term 二十四節気
-      # @param [Integer] solar_term_index 二十四節気位置
+      # @param [SolarTerm] solar_term 二十四節気
       #
       # @return [True] 設定済
       # @return [False] 未設定
@@ -150,8 +149,7 @@ module Zakuro
       # 1年データ前後の二十四節気を適用する
       #
       # @param [Array<Month>] annual_range 1年データ
-      # @param [Hash<Integer, Hash<Symbol, Integer>>, Hash<Integer, Hash<Symbol, Remainder>>]
-      #   rest_solar_terms 前後
+      # @param [Array<Hash<Symbol => Integer, SolarTerm>>] rest_solar_terms 前後
       #
       def self.apply_solar_terms_before_and_after(annual_range:, rest_solar_terms:)
         rest_solar_terms.each do |rest_solar_term|
