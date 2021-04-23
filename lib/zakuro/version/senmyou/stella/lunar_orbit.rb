@@ -255,7 +255,7 @@ module Zakuro
       #
       # 天正冬至（入暦前回未計算）を求める
       #
-      # @param [Remainder] winter_solstice_age 昨年冬至
+      # @param [Remainder] winter_solstice_age 天正閏余
       # @param [Integer] western_year 西暦年
       #
       # @return [LunarRemainder] 入暦

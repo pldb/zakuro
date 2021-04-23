@@ -59,7 +59,7 @@ module Zakuro
         @average_remainder = WinterSolstice.calc_averaged_last_november_1st(
           western_year: @western_year
         )
-        # 天正冬至
+        # 天正閏余
         winter_solstice_age = \
           WinterSolstice.calc_moon_age(western_year: @western_year)
         # 入定気
