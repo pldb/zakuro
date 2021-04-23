@@ -234,7 +234,7 @@ module Zakuro
           if diff > Interval::INDEXES[shousetsu]
             rittou = 21
 
-            diff = Interval::INDEXES[shousetsu].sub(diff)
+            diff = diff.sub(Interval::INDEXES[shousetsu])
 
             return SolarTerm.new(remainder: Interval::INDEXES[rittou].sub(diff),
                                  index: rittou)
