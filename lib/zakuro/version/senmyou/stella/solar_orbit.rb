@@ -230,6 +230,16 @@ module Zakuro
           shousetsu = 22
           diff = winter_solstice_age.sub(taisetsu_interval)
 
+          # TODO: リファクタリング
+          if diff > Interval::INDEXES[shousetsu]
+            rittou = 21
+
+            diff = Interval::INDEXES[shousetsu].sub(diff)
+
+            return SolarTerm.new(remainder: Interval::INDEXES[rittou].sub(diff),
+                                 index: rittou)
+          end
+
           return SolarTerm.new(remainder: Interval::INDEXES[shousetsu].sub(diff),
                                index: shousetsu)
         end
