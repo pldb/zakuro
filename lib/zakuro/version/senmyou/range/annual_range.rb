@@ -74,9 +74,7 @@ module Zakuro
         # 月間隔を取得するためだけの末尾要素を削除
         annual_range.pop
 
-        adjust_leap_month(annual_range: annual_range)
-
-        annual_range
+        initialize_month_label(annual_range: annual_range)
       end
 
       #
@@ -118,22 +116,17 @@ module Zakuro
         result = []
         lunar_phase = LunarPhase.new(western_year: western_year)
 
-        is_last_year = true
-
-        monthes = [11, 12] + [*1..12]
-
-        monthes.each do |month|
-          LOGGER.debug('---', "month: #{month}", "is_last_year: #{is_last_year}")
-
+        # 14ヶ月分を生成する（閏年で最大13ヶ月 + 末月の大小を求めるためだけに必要な月）
+        (0..13).each do |_index|
           adjusted = lunar_phase.next_month
 
           result.push(
-            InitializedMonth.new(month_label: MonthLabel.new(number: month),
+            InitializedMonth.new(month_label: MonthLabel.new,
                                  first_day: FirstDay.new(remainder: adjusted),
-                                 is_last_year: is_last_year, phase_index: 0)
+                                 phase_index: 0)
           )
-          is_last_year = false if month == 12
         end
+
         result
       end
       private_class_method :initialized_annual_range
@@ -157,28 +150,33 @@ module Zakuro
       # :reek:TooManyStatements { max_statements: 10 }
 
       #
-      # 閏月が存在した場合に以降の月を1つずつ減らす
-      # @example 7,8,9 と続く月の8月が閏の場合、7, 閏7, 8 となる
+      # 月表示情報を更新する
       #
       # @param [Array<Month>] annual_range 1年データ
       #
-      def self.adjust_leap_month(annual_range:)
-        # 閏による月の再調整を行う
-        leaped = false
-        annual_range.each_with_index do |month, index|
-          month.eval_leaped
-          # NOTE: 初回閏月（閏11月）は前回月が存在しないため調整外
-          leaped = true if month.leaped? && !index.zero?
+      def self.initialize_month_label(annual_range:)
+        result = []
 
-          next unless leaped
+        is_last_year = true
+        annual_range.each do |month|
+          month.rename_month_label_by_solar_term
 
-          # NOTE: 常気法では閏月は2-3年に一度のため、1年に二度発生しない前提
+          is_last_year = false if month.number == 1
 
-          # 閏の分だけ1ヶ月ずらす
-          month.back_to_last_month
+          result.push(
+            InitializedMonth.new(
+              month_label: month.month_label,
+              first_day: month.first_day,
+              solar_terms: month.solar_terms,
+              phase_index: month.phase_index,
+              is_last_year: is_last_year
+            )
+          )
         end
+
+        result
       end
-      private_class_method :adjust_leap_month
+      private_class_method :initialize_month_label
     end
   end
 end
