@@ -222,30 +222,43 @@ module Zakuro
         #  (b) 小雪〜大雪にある場合
         #   *「大雪定数 < 天正閏余」の場合を指す
         #   * この場合は、小雪〜経朔の間隔を求める
+
+        # TODO: リファクタリング
+
         taisetsu = 23
-        taisetsu_interval = Interval::INDEXES[taisetsu]
-
-        if winter_solstice_age > taisetsu_interval
-          # (b)
-          shousetsu = 22
-          diff = winter_solstice_age.sub(taisetsu_interval)
-
-          # TODO: リファクタリング
-          if diff > Interval::INDEXES[shousetsu]
-            rittou = 21
-
-            diff = diff.sub(Interval::INDEXES[shousetsu])
-
-            return SolarTerm.new(remainder: Interval::INDEXES[rittou].sub(diff),
-                                 index: rittou)
-          end
-
-          return SolarTerm.new(remainder: Interval::INDEXES[shousetsu].sub(diff),
-                               index: shousetsu)
+        unless over_interval?(winter_solstice_age: winter_solstice_age, index: taisetsu)
+          # (a)
+          return first_solar_term(winter_solstice_age: winter_solstice_age, index: taisetsu)
         end
-        # (a)
-        SolarTerm.new(remainder: taisetsu_interval.sub(winter_solstice_age),
-                      index: taisetsu)
+
+        rest = prev_over_interval(winter_solstice_age: winter_solstice_age, index: taisetsu)
+
+        shousetsu = 22
+
+        unless over_interval?(winter_solstice_age: rest, index: shousetsu)
+          # (b)
+          return first_solar_term(winter_solstice_age: rest, index: shousetsu)
+        end
+
+        rest = prev_over_interval(winter_solstice_age: rest, index: shousetsu)
+
+        rittou = 21
+        first_solar_term(winter_solstice_age: rest, index: rittou)
+      end
+
+      def self.first_solar_term(winter_solstice_age:, index:)
+        SolarTerm.new(
+          remainder: Interval::INDEXES[index].sub(winter_solstice_age),
+          index: index
+        )
+      end
+
+      def self.prev_over_interval(winter_solstice_age:, index:)
+        winter_solstice_age.sub(Interval::INDEXES[index])
+      end
+
+      def self.over_interval?(winter_solstice_age:, index:)
+        winter_solstice_age > Interval::INDEXES[index]
       end
 
       # :reek:TooManyStatements { max_statements: 8 }
