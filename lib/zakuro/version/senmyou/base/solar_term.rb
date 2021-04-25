@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+
+require_relative './remainder'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -12,6 +15,9 @@ module Zakuro
       attr_reader :index
       # @return [Remainder] 時刻情報（大余小余）
       attr_reader :remainder
+
+      # @return [Remainder] 気策（24分の1年）
+      SOLAR_TERM_AVERAGE = Remainder.new(day: 15, minute: 1835, second: 5)
 
       # @return [Hash<Integer, Symbol>] 順序
       ORDER = {
@@ -70,6 +76,62 @@ module Zakuro
       #
       def empty?
         (@index == -1 && @remainder.invalid?)
+      end
+
+      def index?(index)
+        result = ORDER.fetch(index, -1)
+
+        result != -1
+      end
+
+      #
+      # 次の二十四節気に進める
+      #
+      def next!
+        @index += 1
+        @index = 0 if @index >= ORDER.size
+
+        @remainder.add!(SOLAR_TERM_AVERAGE)
+      end
+
+      #
+      # 指定した連番の二十四節気まで進める
+      #
+      # @param [Integer] index 連番
+      #
+      def next_by_index(index)
+        return ArgumentError.new, 'invalid index' unless index?(index)
+
+        loop do
+          return if @index == index
+
+          next!
+        end
+      end
+
+      #
+      # 指定した連番の二十四節気まで戻す
+      #
+      # @param [Integer] index 連番
+      #
+      def prev_by_index(index)
+        return ArgumentError.new, 'invalid index' unless index?(index)
+
+        loop do
+          return if @index == index
+
+          prev!
+        end
+      end
+
+      #
+      # 前の二十四節気に戻る
+      #
+      def prev!
+        @index -= 1
+        @index = 23 if @index.negative?
+
+        @remainder.sub!(SOLAR_TERM_AVERAGE)
       end
 
       #

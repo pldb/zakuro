@@ -68,8 +68,8 @@ module Zakuro
 
         apply_big_and_small_of_the_month(annual_range: annual_range)
 
-        SolarAverage.set_solar_terms_into_annual_range(western_year: western_year,
-                                                       annual_range: annual_range)
+        solar_average = SolarAverage.new(western_year: western_year)
+        solar_average.set(annual_range: annual_range)
 
         # 月間隔を取得するためだけの末尾要素を削除
         annual_range.pop
