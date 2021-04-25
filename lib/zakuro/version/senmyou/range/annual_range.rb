@@ -147,8 +147,6 @@ module Zakuro
       end
       private_class_method :apply_big_and_small_of_the_month
 
-      # :reek:TooManyStatements { max_statements: 10 }
-
       #
       # 月表示情報を更新する
       #
@@ -165,10 +163,8 @@ module Zakuro
 
           result.push(
             InitializedMonth.new(
-              month_label: month.month_label,
-              first_day: month.first_day,
-              solar_terms: month.solar_terms,
-              phase_index: month.phase_index,
+              month_label: month.month_label, first_day: month.first_day,
+              solar_terms: month.solar_terms, phase_index: month.phase_index,
               is_last_year: is_last_year
             )
           )

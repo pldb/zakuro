@@ -166,67 +166,6 @@ module Zakuro
       end
 
       #
-      # 現在の二十四節気に合わせて月表示情報を書き換える
-      #
-      def rename_month_label_by_solar_term
-        return ArgumentError.new, 'solar term must not be empty.' if empty_solar_term?
-
-        even = even_term
-
-        if even.invalid?
-          odd = odd_term
-
-          @month_label = MonthLabel.new(
-            number: month_number_by_odd_term_index(odd.index),
-            leaped: true, is_many_days: @month_label.is_many_days
-          )
-          return
-        end
-
-        @month_label = MonthLabel.new(
-          number: month_number_by_even_term_index(even.index),
-          leaped: false, is_many_days: @month_label.is_many_days
-        )
-      end
-
-      #
-      # 中気の連番に合わせて月を返す
-      #
-      # @example
-      #   20: 9月
-      #   22: 10月
-      #   0: 11月
-      #   2: 12月
-      #   4: 1月
-      #
-      # @param [Integer] index 中気番号
-      #
-      # @return [Integer] 月
-      #
-      def month_number_by_even_term_index(index)
-        half_index = index / 2
-
-        # 11月、12月
-        return half_index + 11 if half_index < 2
-
-        # 1月～10月
-        half_index - 1
-      end
-
-      #
-      # 節気の連番に合わせて月を返す
-      #
-      # @param [Integer] index 節気番号
-      #
-      # @return [Integer] 月
-      #
-      def month_number_by_odd_term_index(index)
-        even_index = index - 1
-
-        month_number_by_even_term_index(even_index)
-      end
-
-      #
       # 同一の月情報かを検証する
       #
       # @param [Month] other 他の月情報
