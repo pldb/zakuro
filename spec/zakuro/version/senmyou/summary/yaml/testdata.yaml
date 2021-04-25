@@ -1951,7 +1951,7 @@
           number: 1
           zodiac_name: "己巳"
           remainder: "5-5236"
-          western_date: "1032-10-7"
+          western_date: "1032-10-07"
         odd_solar_terms:
           index: 21
           remainder: "29-6088"
@@ -1962,7 +1962,7 @@
         number: 1
         zodiac_name: "己巳"
         remainder: "5-5236"
-        western_date: "1032-10-7"
+        western_date: "1032-10-07"
     operation:
       operated: false
       month:
@@ -1992,7 +1992,7 @@
             number: 1
             zodiac_name: "己巳"
             remainder: "5-5236"
-            western_date: "1032-10-7"
+            western_date: "1032-10-07"
           odd_solar_terms:
             index: 21
             remainder: "29-6088"
@@ -2003,77 +2003,7 @@
           number: 1
           zodiac_name: "己巳"
           remainder: "5-5236"
-          western_date: "1032-10-7"
-- western_date: "1032-11-6"
-  test_case_name: "長元5年10月1日"
-  expected:
-    data:
-      year:
-        first_gengou: "長元5年"
-        second_gengou: ""
-        zodiac_name: "壬申"
-        total_days: 355
-      month:
-        number: 10
-        leaped: false
-        days_name: "大"
-        first_day:
-          number: 1
-          zodiac_name: "己亥"
-          remainder: "35-2165"
-          western_date: "1032-11-6"
-        odd_solar_terms:
-          index: 23
-          remainder: "0-1359"
-        even_solar_terms:
-          index: 22
-          remainder: "44-7923"
-      day:
-        number: 1
-        zodiac_name: "己亥"
-        remainder: "35-2165"
-        western_date: "1032-11-6"
-    operation:
-      operated: false
-      month:
-        current:
-          id: ""
-          western_date: ""
-          page: -1
-          number: -1
-          annotations:
-        parent:
-          id: ""
-          western_date: ""
-          page: -1
-          number: -1
-          annotations:
-      original:
-        year:
-          first_gengou: "長元5年"
-          second_gengou: ""
-          zodiac_name: "壬申"
-          total_days: 355
-        month:
-          number: 10
-          leaped: false
-          days_name: "大"
-          first_day:
-            number: 1
-            zodiac_name: "己亥"
-            remainder: "35-2165"
-            western_date: "1032-11-6"
-          odd_solar_terms:
-            index: 23
-            remainder: "0-1359"
-          even_solar_terms:
-            index: 22
-            remainder: "44-7923"
-        day:
-          number: 1
-          zodiac_name: "己亥"
-          remainder: "35-2165"
-          western_date: "1032-11-6"
+          western_date: "1032-10-07"
 - western_date: "1202-11-17"
   test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
   expected:

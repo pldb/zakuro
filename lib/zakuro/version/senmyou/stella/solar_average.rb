@@ -15,15 +15,19 @@ module Zakuro
         # 天正冬至
         winter_solstice = WinterSolstice.calc(western_year: western_year)
 
+        # 二十四節気（冬至）
+        @solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
+
+        # 天正閏余
+        winter_solstice_age = \
+          WinterSolstice.calc_moon_age(western_year: western_year)
+
         # TODO: リファクタリング
 
         # 入定気を求める
         first_solar_term = SolarOrbit.calc_solar_term_by_remainder(
-          solar_term: SolarTerm.new(remainder: winter_solstice)
+          solar_term: SolarTerm.new(remainder: winter_solstice_age)
         )
-
-        # 二十四節気（冬至）
-        @solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
 
         solar_term_index = first_solar_term.index
 
@@ -54,7 +58,6 @@ module Zakuro
       private
 
       def set_solar_term(current_month:, next_month:)
-
         # 安全策として無限ループは回避する
         # * 最大試行回数：4回（設定なし => 設定あり => 設定あり => 設定なし）
         # * 閏月は1回しか設定しない
