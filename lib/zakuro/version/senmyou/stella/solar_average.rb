@@ -15,13 +15,21 @@ module Zakuro
         # 天正冬至
         winter_solstice = WinterSolstice.calc(western_year: western_year)
 
+        # TODO: リファクタリング
+
         # 入定気を求める
-        first_solar_term = SolarOrbit.calc_solar_term_by_remainder(solar_term: SolarTerm.new(remainder: winter_solstice))
+        first_solar_term = SolarOrbit.calc_solar_term_by_remainder(
+          solar_term: SolarTerm.new(remainder: winter_solstice)
+        )
 
         # 二十四節気（冬至）
         @solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
-        # 入定気の二十四節気まで戻す
-        @solar_term.prev_by_index(first_solar_term.index)
+
+        solar_term_index = first_solar_term.index
+
+        # 入定気の一つ後の二十四節気まで戻す（ただし11月経朔が二十四節気上にある場合は戻さない）
+        solar_term_index += 1 unless first_solar_term.remainder == Remainder.new(total: 0)
+        @solar_term.prev_by_index(solar_term_index)
       end
 
       #
