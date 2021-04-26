@@ -223,42 +223,51 @@ module Zakuro
         #   *「大雪定数 < 天正閏余」の場合を指す
         #   * この場合は、小雪〜経朔の間隔を求める
 
-        # TODO: リファクタリング
+        # NOTE: 上記パターンとは別に、稀だが立冬のパターンも存在する
+        # この場合は比較方法はそのままに立冬〜経朔の間隔を求める
 
-        taisetsu = 23
-        unless over_interval?(winter_solstice_age: winter_solstice_age, index: taisetsu)
-          # (a)
-          return first_solar_term(winter_solstice_age: winter_solstice_age, index: taisetsu)
+        rest = winter_solstice_age.clone
+        # 大雪（23）/小雪（22）/立冬（21）
+        [23, 22, 21].each do |index|
+          solar_term = prev_solar_term(winter_solstice_age: rest, index: index)
+
+          if solar_term.invalid?
+            rest = solar_term.remainder
+            next
+          end
+
+          return solar_term
         end
 
-        rest = prev_over_interval(winter_solstice_age: winter_solstice_age, index: taisetsu)
-
-        shousetsu = 22
-
-        unless over_interval?(winter_solstice_age: rest, index: shousetsu)
-          # (b)
-          return first_solar_term(winter_solstice_age: rest, index: shousetsu)
-        end
-
-        rest = prev_over_interval(winter_solstice_age: rest, index: shousetsu)
-
-        rittou = 21
-        first_solar_term(winter_solstice_age: rest, index: rittou)
+        # 立冬（21）を超える天正閏余は成立し得ない（1朔望月をはるかに超えることになる）
+        raise ArgumentError.new, 'invalid winster solstice age'
       end
 
-      def self.first_solar_term(winter_solstice_age:, index:)
+      #
+      # 入気定日加減数で入定気を遡る
+      #
+      # @param [Remainder] winter_solstice_age 天正冬至
+      # @param [Integer] index 二十四節気の連番
+      #
+      # @return [SolarTerm] 二十四節気
+      #   SolarTerm.remainder : 入定気（定気の開始点からの日時）
+      #   SolarTerm.index : 定気（範囲外であれば-1とする）
+      #
+      def self.prev_solar_term(winter_solstice_age:, index:)
+        interval = Interval::INDEXES[index]
+        if winter_solstice_age > interval
+          # 入定気が確定しない（さらに前の定気まで遡れる）
+          return SolarTerm.new(
+            remainder: winter_solstice_age.sub(interval),
+            index: -1
+          )
+        end
+
+        # 入定気が確定する
         SolarTerm.new(
-          remainder: Interval::INDEXES[index].sub(winter_solstice_age),
+          remainder: interval.sub(winter_solstice_age),
           index: index
         )
-      end
-
-      def self.prev_over_interval(winter_solstice_age:, index:)
-        winter_solstice_age.sub(Interval::INDEXES[index])
-      end
-
-      def self.over_interval?(winter_solstice_age:, index:)
-        winter_solstice_age > Interval::INDEXES[index]
       end
 
       # :reek:TooManyStatements { max_statements: 8 }
