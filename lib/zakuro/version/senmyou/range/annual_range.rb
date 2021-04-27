@@ -7,6 +7,7 @@ require_relative '../base/solar_term'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar_orbit'
 require_relative '../stella/solar_average'
+require_relative '../stella/solar_location'
 require_relative '../stella/lunar_orbit'
 
 # :nodoc:
@@ -91,7 +92,7 @@ module Zakuro
           remainder: winter_solstice_age
         )
         solar_term = \
-          SolarOrbit.calc_solar_term_by_remainder(
+          SolarLocation.calc_solar_term_by_remainder(
             solar_term: solar_term
           )
 

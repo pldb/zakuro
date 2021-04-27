@@ -13,7 +13,10 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/base/solar_term',
                          __dir__)
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar_orbit',
+                         'lib/zakuro/version/senmyou/stella/solar_location',
+                         __dir__)
+require File.expand_path('../../../../../' \
+                        'lib/zakuro/version/senmyou/stella/solar_orbit',
                          __dir__)
 
 require 'json'
@@ -96,8 +99,10 @@ describe 'Zakuro' do
 
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term, value = \
-                Zakuro::Senmyou::SolarOrbit.calc_term_and_orbit_value(solar_term: solar_term)
+              solar_term = Zakuro::Senmyou::SolarLocation.calc_solar_term_by_remainder(
+                solar_term: solar_term
+              )
+              value = Zakuro::Senmyou::SolarOrbit.calc_sun_orbit_value(solar_term: solar_term)
 
               # judgement
               actual = { solar_term_index: solar_term.index,

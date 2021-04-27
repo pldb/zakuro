@@ -25,7 +25,7 @@ module Zakuro
         # TODO: リファクタリング
 
         # 入定気を求める
-        first_solar_term = SolarOrbit.calc_solar_term_by_remainder(
+        first_solar_term = SolarLocation.calc_solar_term_by_remainder(
           solar_term: SolarTerm.new(remainder: winter_solstice_age)
         )
 

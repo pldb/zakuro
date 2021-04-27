@@ -180,7 +180,7 @@ module Zakuro
       # @return [Integer] 太陽運動の補正値
       #
       def correction_solar_value
-        @solar_term = SolarOrbit.calc_solar_term_by_remainder(
+        @solar_term = SolarLocation.calc_solar_term_by_remainder(
           solar_term: @solar_term
         )
         debug("@solar_term.remainder: #{@solar_term.remainder.format(form: '%d-%d.%d')}")
