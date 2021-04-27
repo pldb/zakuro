@@ -83,7 +83,7 @@ module Zakuro
       #
       # 太陽の運行による補正値を算出する
       #
-      # @param [SolarTerm] solar_term 二十四節気
+      # @param [SolarTerm] solar_term 入定気
       #
       # @return [Integer] 補正値
       #

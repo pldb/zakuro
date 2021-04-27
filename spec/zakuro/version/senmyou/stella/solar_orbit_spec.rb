@@ -99,7 +99,7 @@ describe 'Zakuro' do
 
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term = Zakuro::Senmyou::SolarLocation.calc_solar_term_by_remainder(
+              solar_term = Zakuro::Senmyou::SolarLocation.get(
                 solar_term: solar_term
               )
               value = Zakuro::Senmyou::SolarOrbit.calc_sun_orbit_value(solar_term: solar_term)

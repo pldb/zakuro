@@ -5,7 +5,9 @@ module Zakuro
   # :nodoc:
   module Senmyou
     #
-    # SolarLocation 入定気
+    # SolarLocation 入定気演算
+    #
+    # 入定気とは、太陽がどの二十四節気に属するか、またその二十四節気の開始点からどれだけ離れているかを示す
     #
     module SolarLocation
       #
@@ -82,13 +84,16 @@ module Zakuro
       end
 
       #
-      # 二十四節気を計算する
+      # 入定気を計算する
       #
-      # @param [SolarTerm] solar_term 二十四節気
+      # * 定気（index）の指定がない場合は、11月の入定気を求める
+      # * 定気（index）の指定がある場合は、大余小余から適切な入定気を再計算する
       #
-      # @return [SolarTerm] 二十四節気
+      # @param [SolarTerm] solar_term 入定気
       #
-      def self.calc_solar_term_by_remainder(solar_term:)
+      # @return [SolarTerm] 入定気
+      #
+      def self.get(solar_term:)
         if solar_term.invalid?
           return calc_first_solar_term(
             winter_solstice_age: solar_term.remainder
@@ -100,7 +105,7 @@ module Zakuro
         )
       end
 
-      # :reek:TooManyStatements { max_statements: 8 }
+      # :reek:TooManyStatements { max_statements: 7 }
 
       #
       # 入定気（定気の開始点からの日時）と属する定気を計算する
@@ -150,6 +155,7 @@ module Zakuro
         # 立冬（21）を超える天正閏余は成立し得ない（1朔望月をはるかに超えることになる）
         raise ArgumentError.new, 'invalid winster solstice age'
       end
+      private_class_method :calc_first_solar_term
 
       #
       # 入気定日加減数で入定気を遡る
@@ -177,6 +183,7 @@ module Zakuro
           index: index
         )
       end
+      private_class_method :prev_solar_term
 
       # :reek:TooManyStatements { max_statements: 8 }
 
@@ -200,6 +207,7 @@ module Zakuro
           solar_term: SolarTerm.new(remainder: remainder, index: index)
         )
       end
+      private_class_method :calc_next_solar_term_recursively
     end
   end
 end

@@ -92,7 +92,7 @@ module Zakuro
           remainder: winter_solstice_age
         )
         solar_term = \
-          SolarLocation.calc_solar_term_by_remainder(
+          SolarLocation.get(
             solar_term: solar_term
           )
 
