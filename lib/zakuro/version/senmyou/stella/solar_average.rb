@@ -12,17 +12,27 @@ module Zakuro
       SOLAR_TERM_AVERAGE = Remainder.new(day: 15, minute: 1835, second: 5)
 
       def initialize(western_year:)
+        @solar_term = SolarAverage.first_solar_term(western_year: western_year)
+      end
+
+      def self.first_solar_term(western_year:)
         # 天正冬至
         winter_solstice = WinterSolstice.calc(western_year: western_year)
 
         # 二十四節気（冬至）
-        @solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
+        solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
 
+        solar_location_index = SolarAverage.calc_solar_location_index(western_year: western_year)
+
+        solar_term.prev_by_index(solar_location_index)
+
+        solar_term
+      end
+
+      def self.calc_solar_location_index(western_year:)
         # 天正閏余
         winter_solstice_age = \
           WinterSolstice.calc_moon_age(western_year: western_year)
-
-        # TODO: リファクタリング
 
         # 入定気を求める
         first_solar_term = SolarLocation.get(
@@ -33,7 +43,8 @@ module Zakuro
 
         # 入定気の一つ後の二十四節気まで戻す（ただし11月経朔が二十四節気上にある場合は戻さない）
         solar_term_index += 1 unless first_solar_term.remainder == Remainder.new(total: 0)
-        @solar_term.prev_by_index(solar_term_index)
+
+        solar_term_index
       end
 
       #
@@ -49,10 +60,39 @@ module Zakuro
           current_month = annual_range[index]
           next_month = annual_range[index + 1]
 
-          set_solar_term(current_month: current_month, next_month: next_month)
+          set_solar_term(
+            current_month: current_month,
+            next_month: next_month
+          )
         end
 
         annual_range
+      end
+
+      #
+      # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
+      # @note 大余60で一巡するため 以下2パターンがある
+      #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
+      #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
+      #
+      # @param [Remainder] solar_term 二十四節気
+      # @param [Remainder] current_month 月初
+      # @param [Remainder] next_month 月末
+      #
+      # @return [True] 対象の二十四節気がある
+      # @return [False] 対象の二十四節気がない
+      #
+      def self.in_range_solar_term?(solar_term:, current_month:, next_month:)
+        # 大余で比較する
+        target_time = solar_term.day
+        current_month_time = current_month.day
+        next_month_time = next_month.day
+        current_month_over = (target_time >= current_month_time)
+        next_month_under = (target_time < next_month_time)
+
+        return current_month_over && next_month_under if current_month_time <= next_month_time
+
+        current_month_over || next_month_under
       end
 
       private
@@ -63,11 +103,15 @@ module Zakuro
         # * 閏月は1回しか設定しない
         # * 最大2回設定する（中気・節気）
         (0..3).each do |_index|
-          in_range = in_range_solar_term?(current_month: current_month, next_month: next_month)
+          in_range = SolarAverage.in_range_solar_term?(
+            solar_term: @solar_term.remainder,
+            current_month: current_month.remainder,
+            next_month: next_month.remainder
+          )
 
           if in_range
             current_month.add_term(term: @solar_term.clone)
-            @solar_term.next!
+            next_solar_term
           end
 
           # 宣明暦は最大2つまで
@@ -79,7 +123,7 @@ module Zakuro
           # 1つ以上設定されていれば切り上げる（一つ飛ばしで二十四節気を設定することはない）
           # break unless current_month.solar_terms.size.zero?
           if current_month.solar_terms.size.zero?
-            @solar_term.next!
+            next_solar_term
             next
           end
 
@@ -87,29 +131,8 @@ module Zakuro
         end
       end
 
-      #
-      # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
-      # @note 大余60で一巡するため 以下2パターンがある
-      #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
-      #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
-      #
-      # @param [Remainder] current_month 月初
-      # @param [Remainder] next_month 月末
-      #
-      # @return [True] 対象の二十四節気がある
-      # @return [False] 対象の二十四節気がない
-      #
-      def in_range_solar_term?(current_month:, next_month:)
-        # 大余で比較する
-        target_time = @solar_term.remainder.day
-        current_month_time = current_month.first_day.remainder.day
-        next_month_time = next_month.first_day.remainder.day
-        current_month_over = (target_time >= current_month_time)
-        next_month_under = (target_time < next_month_time)
-
-        return current_month_over && next_month_under if current_month_time <= next_month_time
-
-        current_month_over || next_month_under
+      def next_solar_term
+        @solar_term.next!
       end
     end
   end
