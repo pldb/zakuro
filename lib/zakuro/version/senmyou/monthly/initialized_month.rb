@@ -105,6 +105,15 @@ module Zakuro
       def back_to_last_month
         @is_last_year = true if month_label.back_to_last_month
       end
+
+      #
+      # 二十四節気の数を返す
+      #
+      # @return [Integer] 二十四節気の数
+      #
+      def solar_term_size
+        solar_terms.size
+      end
     end
   end
 end

@@ -102,31 +102,25 @@ module Zakuro
         # * 最大2回設定する（中気・節気）
         (0..3).each do |_index|
           in_range = SolarAverage.in_range_solar_term?(
-            solar_term: @solar_term.remainder,
-            current_month: current_month.remainder,
+            solar_term: @solar_term.remainder, current_month: current_month.remainder,
             next_month: next_month.remainder
           )
 
           if in_range
             current_month.add_term(term: @solar_term.clone)
             next_solar_term
-          end
 
-          current_month_size = current_month.solar_terms.size
-          # 宣明暦は最大2つまで
-          break if current_month_size == 2
+            # 宣明暦は最大2つまで
+            break if current_month.solar_term_size == 2
 
-          # 範囲内であれば続行する
-          next if in_range
-
-          # 1つ以上設定されていれば切り上げる（一つ飛ばしで二十四節気を設定することはない）
-          # break unless current_month.solar_terms.size.zero?
-          if current_month_size.zero?
-            next_solar_term
+            # 範囲内であれば続行する
             next
           end
 
-          break
+          # 1つ以上設定されていれば切り上げる（一つ飛ばしで二十四節気を設定することはない）
+          break unless current_month.empty_solar_term?
+
+          next_solar_term
         end
       end
 
