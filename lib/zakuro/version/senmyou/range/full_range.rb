@@ -5,6 +5,7 @@ require_relative '../base/multi_gengou_roller'
 require_relative '../../../era/western'
 require_relative './annual_range'
 require_relative './year_boundary'
+require_relative './western_date_allocation'
 
 require_relative '../base/year'
 
@@ -12,6 +13,9 @@ require_relative '../base/year'
 module Zakuro
   # :nodoc:
   module Senmyou
+    # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+
+    #
     # FullRange 完全範囲
     #   ある日からある日の範囲を計算可能な年月範囲
     #   * 前提として元号年はその元号の開始年から数える
@@ -22,6 +26,7 @@ module Zakuro
     #   * 元旦を基準にした時の正しい元号を設定している
     #   * 引き当てたい日付が元旦ではない場合、その月日に従い元号を再度求める
     #   * この再計算が必要になるのは、元号が切り替わる年のみである
+    #
     class FullRange
       # @return [Western::Calendar] 開始日
       attr_reader :start_date
@@ -73,7 +78,8 @@ module Zakuro
 
         years = YearBoundary.get(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
-        years = FullRange.update_first_day(years: years)
+
+        WesternDateAllocation.update_first_day(years: years)
 
         years
       end
@@ -126,51 +132,6 @@ module Zakuro
         end
 
         updated_years
-      end
-
-      #
-      # 月初日の西暦日を更新する
-      #
-      # @param [Array<Year>] years 完全範囲（月初日なし）
-      #
-      # @return [Array<Year>] 完全範囲（月初日あり）
-      #
-      def self.update_first_day(years:)
-        result = []
-
-        years.each do |year|
-          new_year_date = year.new_year_date.clone
-
-          months = FullRange.update_first_day_within_all_months(
-            date: new_year_date.clone, months: year.months
-          )
-
-          updated_year = Year.new(
-            multi_gengou: year.multi_gengou, new_year_date: new_year_date,
-            months: months, total_days: year.total_days
-          )
-
-          result.push(updated_year)
-        end
-
-        result
-      end
-
-      def self.update_first_day_within_all_months(date:, months:)
-        result = []
-        months.each do |month|
-          updated_month = Month.new(
-            month_label: month.month_label,
-            first_day: FirstDay.new(remainder: month.first_day.remainder,
-                                    western_date: date),
-            solar_terms: month.solar_terms
-          )
-          result.push(updated_month)
-
-          date = date.clone + updated_month.days
-        end
-
-        result
       end
 
       private

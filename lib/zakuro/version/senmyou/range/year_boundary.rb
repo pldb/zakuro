@@ -44,6 +44,7 @@ module Zakuro
 
         years
       end
+      private_class_method :rearranged_years
 
       #
       # 年間範囲を昨年/今年で分類する
@@ -55,6 +56,7 @@ module Zakuro
           categorize_year(annual_range: annual_range)
         end
       end
+      private_class_method :categorize
 
       #
       # 各月を昨年/今年で分類する
@@ -73,6 +75,7 @@ module Zakuro
           )
         end
       end
+      private_class_method :categorize_year
 
       #
       # 年データの開始月を変更する
@@ -110,6 +113,7 @@ module Zakuro
 
         year
       end
+      private_class_method :push_current_year
 
       #
       # 昨年データを生成する
@@ -128,6 +132,7 @@ module Zakuro
 
         year
       end
+      private_class_method :push_last_year
     end
   end
 end
