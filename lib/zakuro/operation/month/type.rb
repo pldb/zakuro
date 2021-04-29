@@ -186,7 +186,7 @@ module Zakuro
       # @return [Leaped] 閏有無
       attr_reader :leaped
       # @return [Days] 月の大小
-      attr_reader :days
+      attr_reader :is_many_days
 
       # :reek:BooleanParameter
 
@@ -197,10 +197,10 @@ module Zakuro
       # @param [Leaped] leaped 閏有無
       # @param [Days] days 月の大小
       #
-      def initialize(number: Number.new, leaped: Leaped.new, days: Days.new)
+      def initialize(number: Number.new, leaped: Leaped.new, is_many_days: Days.new)
         @number = number
         @leaped = leaped
-        @days = days
+        @is_many_days = is_many_days
       end
 
       #
@@ -408,11 +408,6 @@ module Zakuro
       # @return [String] 30日
       BIG = '大'
 
-      # @return [String] 計算
-      attr_reader :calc
-      # @return [String] 運用
-      attr_reader :actual
-
       #
       # 初期化
       #
@@ -430,7 +425,7 @@ module Zakuro
       # @return [True] 大
       # @return [False] 小
       #
-      def many_days_calc?
+      def calc
         @calc == BIG
       end
 
@@ -440,7 +435,7 @@ module Zakuro
       # @return [True] 大
       # @return [False] 小
       #
-      def many_days_actual?
+      def actual
         @actual == BIG
       end
 
