@@ -151,24 +151,7 @@ module Zakuro
       # @param [Array<Month>] annual_range 1年データ
       #
       def self.initialize_month_label(annual_range:)
-        result = []
-
-        is_last_year = true
-        annual_range.each do |month|
-          month.rename_month_label_by_solar_term
-
-          is_last_year = false if month.number == 1
-
-          result.push(
-            InitializedMonth.new(
-              month_label: month.month_label, first_day: month.first_day,
-              solar_terms: month.solar_terms, phase_index: month.phase_index,
-              is_last_year: is_last_year
-            )
-          )
-        end
-
-        result
+        annual_range.each(&:rename_month_label_by_solar_term)
       end
       private_class_method :initialize_month_label
     end

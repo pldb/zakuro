@@ -71,7 +71,7 @@ module Zakuro
       def get
         return [] if invalid?
 
-        years = YearBoundary.rearranged_years(annual_ranges: annual_ranges)
+        years = YearBoundary.get(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
         years = FullRange.update_first_day(years: years)
 
