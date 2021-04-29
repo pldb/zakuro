@@ -7,6 +7,8 @@ require_relative '../../../operation/operation'
 module Zakuro
   # :nodoc:
   module Senmyou
+    # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+
     #
     # OperatedMonth 月情報（運用）
     #
@@ -19,13 +21,14 @@ module Zakuro
       #
       # 初期化
       #
+      # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
       # @param [MonthLabel] month_label 月表示名
       # @param [FirstDay] first_day 月初日（朔日）
       # @param [Array<SolarTerm>] solar_terms 二十四節気
       # @param [Operation::MonthHistory] history 変更履歴（月）
       #
-      def initialize(operated_solar_terms:, month_label: MonthLabel.new, first_day: FirstDay.new, solar_terms: [],
-                     history: Operation::MonthHistory.new)
+      def initialize(operated_solar_terms:, month_label: MonthLabel.new, first_day: FirstDay.new,
+                     solar_terms: [], history: Operation::MonthHistory.new)
         super(month_label: month_label, first_day: first_day, solar_terms: solar_terms)
         @history = history
         @operated_solar_terms = operated_solar_terms
@@ -47,48 +50,24 @@ module Zakuro
         diff = history.diffs.month
 
         @month_label = MonthLabel.new(
-          number: rewrite_number(diff: diff.number),
-          is_many_days: rewrite_many_days(diff: diff.days),
-          leaped: rewrite_leaped(diff: diff.leaped)
+          number: OperatedMonth.rewrite_month_fields(
+            month_diff: diff, month_label: month_label, name: 'number'
+          ),
+          is_many_days: OperatedMonth.rewrite_month_fields(
+            month_diff: diff, month_label: month_label, name: 'is_many_days'
+          ),
+          leaped: OperatedMonth.rewrite_month_fields(
+            month_diff: diff, month_label: month_label, name: 'leaped'
+          )
         )
       end
 
-      #
-      # 月ごとの差分（月）で書き換える
-      #
-      # @param [Operation::Number] diff 差分
-      #
-      # @return [Integer] 月
-      #
-      def rewrite_number(diff:)
-        return month_label.number if diff.invalid?
+      def self.rewrite_month_fields(month_diff:, month_label:, name:)
+        method_name = name.intern
 
-        diff.actual
-      end
-
-      #
-      # 月ごとの差分（月の大小）で書き換える
-      #
-      # @param [Operation::Days] diff 差分
-      #
-      # @return [Integer] 月の大小
-      #
-      def rewrite_many_days(diff:)
-        return month_label.is_many_days if diff.invalid?
-
-        diff.many_days_actual?
-      end
-
-      #
-      # 月ごとの差分（閏有無）で書き換える
-      #
-      # @param [Operation::Days] diff 差分
-      #
-      # @return [True] 閏あり
-      # @return [False] 閏なし
-      #
-      def rewrite_leaped(diff:)
-        return month_label.leaped if diff.invalid?
+        diff = month_diff.send(method_name)
+        default = month_label.send(method_name)
+        return default if diff.invalid?
 
         diff.actual
       end
@@ -97,27 +76,77 @@ module Zakuro
       # 二十四節気ごとの差分で書き換える
       #
       def rewrite_solar_terms
-        # TODO: リファクタリング
-        operated_solar_terms = []
         matched, operated_solar_term = @operated_solar_terms.get(
-          western_date: @first_day.western_date
+          western_date: first_day.western_date
         )
 
         return unless matched
 
-        used = false
-        @solar_terms.each do |solar_term|
-          if operated_solar_term.index == solar_term.index
-            used = true
-            next
-          end
+        @solar_terms = OperatedMonth.create_operated_solar_terms(
+          operated_solar_term: operated_solar_term,
+          solar_terms: solar_terms
+        )
+      end
 
-          operated_solar_terms.push(solar_term)
+      #
+      # <Description>
+      #
+      # @param [<Type>] operated_solar_term <description>
+      # @param [Array<SolarTerm>] solar_terms 二十四節気
+      #
+      # @return [Array<SolarTerm>] 二十四節気
+      #
+      def self.create_operated_solar_terms(operated_solar_term:, solar_terms:)
+        index = operated_solar_term.index
+
+        # 別の月に移動する二十四節気。割り当てない。
+        result = remove_solar_term(index: index, solar_terms: solar_terms)
+
+        return result if used_solar_term?(index: index, solar_terms: solar_terms)
+
+        result.push(operated_solar_term)
+
+        result
+      end
+
+      # :reek:ControlParameter
+
+      #
+      # 二十四節気が使用されているか
+      #
+      # @param [Integer] index 二十四節気番号
+      # @param [Array<SolarTerm>] solar_terms 二十四節気
+      #
+      # @return [True] 使用
+      # @return [False] 未使用
+      #
+      def self.used_solar_term?(index:, solar_terms:)
+        solar_terms.each do |solar_term|
+          return true if index == solar_term.index
         end
 
-        operated_solar_terms.push(operated_solar_term) unless used
+        false
+      end
 
-        @solar_terms = operated_solar_terms
+      # :reek:ControlParameter
+
+      #
+      # 対象の二十四節気を除外する
+      #
+      # @param [Integer] index 二十四節気番号
+      # @param [Array<SolarTerm>] solar_terms 二十四節気
+      #
+      # @return [Array<SolarTerm>] 二十四節気（対象除外済）
+      #
+      def self.remove_solar_term(index:, solar_terms:)
+        result = []
+        solar_terms.each do |solar_term|
+          next if index == solar_term.index
+
+          result.push(solar_term)
+        end
+
+        result
       end
 
       #
@@ -143,7 +172,7 @@ module Zakuro
       # @return [Remainder] 月初日の大余小余
       #
       def rewrite_remainder(days:)
-        remainder = @first_day.remainder.clone
+        remainder = first_day.remainder.clone
         remainder.add!(Remainder.new(day: days, minute: 0, second: 0))
 
         remainder
@@ -157,7 +186,7 @@ module Zakuro
       # @return [Western::Calendar] 月初日の西暦日
       #
       def rewrite_western_date(days:)
-        western_date = @first_day.western_date.clone
+        western_date = first_day.western_date.clone
         western_date += days
 
         western_date

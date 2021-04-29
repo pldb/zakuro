@@ -4,6 +4,8 @@ require_relative '../base/multi_gengou_roller'
 
 require_relative '../../../era/western'
 require_relative './annual_range'
+require_relative './year_boundary'
+require_relative './western_date_allocation'
 
 require_relative '../base/year'
 
@@ -11,6 +13,9 @@ require_relative '../base/year'
 module Zakuro
   # :nodoc:
   module Senmyou
+    # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+
+    #
     # FullRange 完全範囲
     #   ある日からある日の範囲を計算可能な年月範囲
     #   * 前提として元号年はその元号の開始年から数える
@@ -21,6 +26,7 @@ module Zakuro
     #   * 元旦を基準にした時の正しい元号を設定している
     #   * 引き当てたい日付が元旦ではない場合、その月日に従い元号を再度求める
     #   * この再計算が必要になるのは、元号が切り替わる年のみである
+    #
     class FullRange
       # @return [Western::Calendar] 開始日
       attr_reader :start_date
@@ -70,34 +76,12 @@ module Zakuro
       def get
         return [] if invalid?
 
-        pre_get
-
-        years = FullRange.rearranged_years(annual_ranges: annual_ranges)
+        years = YearBoundary.get(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
-        years = update_first_day(years: years)
 
-        post_get
+        WesternDateAllocation.update_first_day(years: years)
 
         years
-      end
-
-      #
-      # 取得前処理
-      #
-      def pre_get
-        # FIXME: 別インスタンス変数を定義する方法は改善したい（ディープコピーにするか、get再取得を廃止するか）
-        @new_year_date_ = @new_year_date.clone
-        @multi_gengou_roller_ = @multi_gengou_roller.clone
-      end
-
-      #
-      # 取得前処理
-      #
-      # 再取得に備えて、カウントアップした日付を元に戻す
-      #
-      def post_get
-        @new_year_date = @new_year_date_
-        @multi_gengou_roller = @multi_gengou_roller_
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -118,24 +102,6 @@ module Zakuro
               western_year: year
             )
           )
-        end
-
-        years
-      end
-
-      #
-      # 完全範囲内の年データの開始月を変更する
-      #
-      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
-      #
-      # @return [Array<Year>] 年データ（元旦基準）
-      #
-      def self.rearranged_years(annual_ranges:)
-        years = []
-
-        (0..(annual_ranges.size - 2)).each do |index|
-          year = rearranged_year(annual_ranges: annual_ranges, index: index)
-          years.push(year)
         end
 
         years
@@ -167,102 +133,6 @@ module Zakuro
 
         updated_years
       end
-
-      #
-      # 月初日の西暦日を更新する
-      #
-      # @param [Array<Year>] years 完全範囲（月初日なし）
-      #
-      # @return [Array<Year>] 完全範囲（月初日あり）
-      #
-      def update_first_day(years:)
-        # TODO: リファクタリング
-
-        result = []
-
-        years.each do |year|
-          new_year_date = year.new_year_date.clone
-          date = new_year_date.clone
-
-          months = []
-          year.months.each do |month|
-            first_day = month.first_day
-            updated_month = Month.new(
-              month_label: month.month_label,
-              first_day: FirstDay.new(remainder: first_day.remainder,
-                                      western_date: date),
-              solar_terms: month.solar_terms
-            )
-            months.push(updated_month)
-
-            date = date.clone + updated_month.days
-          end
-
-          updated_year = Year.new(
-            multi_gengou: year.multi_gengou, new_year_date: new_year_date,
-            months: months, total_days: year.total_days
-          )
-
-          result.push(updated_year)
-        end
-
-        result
-      end
-
-      #
-      # 当年データを生成する
-      #
-      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
-      # @param [Year] year 対象年
-      #
-      # @return [Year] 当年月ありの対象年
-      #
-      def self.push_current_year(annual_range:, year: Year.new)
-        annual_range.each do |month|
-          next if month.is_last_year
-
-          year.push(month: month)
-        end
-
-        year
-      end
-
-      #
-      # 昨年データを生成する
-      #
-      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
-      # @param [Year] year 対象年
-      #
-      # @return [Year] 昨年月ありの対象年
-      #
-      def self.push_last_year(annual_range:, year: Year.new)
-        annual_range.each do |month|
-          next unless month.is_last_year
-
-          year.push(month: month)
-        end
-
-        year
-      end
-
-      #
-      # 年データの開始月を変更する
-      #
-      # @param [Array<Year>] annual_ranges 年データ（冬至基準）
-      # @param [Integer] index 対象年の要素番号
-      #
-      # @return [Year] 年データ（元旦基準）
-      #
-      def self.rearranged_year(annual_ranges:, index:)
-        current_annual_range = annual_ranges[index]
-        next_annual_range = annual_ranges[index + 1]
-
-        year = push_current_year(annual_range: current_annual_range)
-        push_last_year(annual_range: next_annual_range, year: year)
-
-        year
-      end
-      private_class_method :rearranged_year
 
       private
 

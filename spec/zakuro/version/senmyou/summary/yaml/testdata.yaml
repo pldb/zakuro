@@ -1868,6 +1868,142 @@
           zodiac_name: "乙卯"
           remainder: "51-2479"
           western_date: "0937-02-14"
+- western_date: "1031-11-18"
+  test_case_name: "長元4年閏10月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "長元4年"
+        second_gengou: ""
+        zodiac_name: "辛未"
+        total_days: 384
+      month:
+        number: 10
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "乙巳"
+          remainder: "41-7048"
+          western_date: "1031-11-18"
+        odd_solar_terms:
+          index: 23
+          remainder: "54-7704"
+        even_solar_terms:
+      day:
+        number: 1
+        zodiac_name: "乙巳"
+        remainder: "41-7048"
+        western_date: "1031-11-18"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "長元4年"
+          second_gengou: ""
+          zodiac_name: "辛未"
+          total_days: 384
+        month:
+          number: 10
+          leaped: true
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "乙巳"
+            remainder: "41-7048"
+            western_date: "1031-11-18"
+          odd_solar_terms:
+            index: 23
+            remainder: "54-7704"
+          even_solar_terms:
+        day:
+          number: 1
+          zodiac_name: "乙巳"
+          remainder: "41-7048"
+          western_date: "1031-11-18"
+- western_date: "1032-10-7"
+  test_case_name: "長元5年9月1日"
+  expected:
+    data:
+      year:
+        first_gengou: "長元5年"
+        second_gengou: ""
+        zodiac_name: "壬申"
+        total_days: 355
+      month:
+        number: 9
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "己巳"
+          remainder: "5-5236"
+          western_date: "1032-10-07"
+        odd_solar_terms:
+          index: 21
+          remainder: "29-6088"
+        even_solar_terms:
+          index: 20
+          remainder: "14-4252"
+      day:
+        number: 1
+        zodiac_name: "己巳"
+        remainder: "5-5236"
+        western_date: "1032-10-07"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "長元5年"
+          second_gengou: ""
+          zodiac_name: "壬申"
+          total_days: 355
+        month:
+          number: 9
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "己巳"
+            remainder: "5-5236"
+            western_date: "1032-10-07"
+          odd_solar_terms:
+            index: 21
+            remainder: "29-6088"
+          even_solar_terms:
+            index: 20
+            remainder: "14-4252"
+        day:
+          number: 1
+          zodiac_name: "己巳"
+          remainder: "5-5236"
+          western_date: "1032-10-07"
 - western_date: "1202-11-17"
   test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
   expected:

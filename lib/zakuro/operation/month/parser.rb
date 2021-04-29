@@ -340,7 +340,7 @@ module Zakuro
         Month.new(
           number: create_month_number(yaml_hash: yaml_hash['number']),
           leaped: create_month_leaped(yaml_hash: yaml_hash['leaped']),
-          days: create_month_day(yaml_hash: yaml_hash['days'])
+          is_many_days: create_month_day(yaml_hash: yaml_hash['days'])
         )
       end
       private_class_method :create_month
