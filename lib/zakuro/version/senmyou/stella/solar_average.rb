@@ -55,11 +55,9 @@ module Zakuro
       # @return [Array<Month>] 1年データ
       #
       def set(annual_range:)
-        # 最後の月は処理できない
-        (0..(annual_range.size - 2)).each do |index|
-          current_month = annual_range[index]
-          next_month = annual_range[index + 1]
-
+        # 次月と比較しながら当月の二十四節気を決める
+        # NOTE: 最後の月は処理できない
+        annual_range.each_cons(2) do |(current_month, next_month)|
           set_solar_term(
             current_month: current_month,
             next_month: next_month
@@ -114,15 +112,16 @@ module Zakuro
             next_solar_term
           end
 
+          current_month_size = current_month.solar_terms.size
           # 宣明暦は最大2つまで
-          break if current_month.solar_terms.size == 2
+          break if current_month_size == 2
 
           # 範囲内であれば続行する
           next if in_range
 
           # 1つ以上設定されていれば切り上げる（一つ飛ばしで二十四節気を設定することはない）
           # break unless current_month.solar_terms.size.zero?
-          if current_month.solar_terms.size.zero?
+          if current_month_size.zero?
             next_solar_term
             next
           end
