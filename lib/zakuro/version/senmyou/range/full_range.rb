@@ -70,34 +70,11 @@ module Zakuro
       def get
         return [] if invalid?
 
-        pre_get
-
         years = FullRange.rearranged_years(annual_ranges: annual_ranges)
         years = update_gengou(years: years)
-        years = update_first_day(years: years)
-
-        post_get
+        years = FullRange.update_first_day(years: years)
 
         years
-      end
-
-      #
-      # 取得前処理
-      #
-      def pre_get
-        # FIXME: 別インスタンス変数を定義する方法は改善したい（ディープコピーにするか、get再取得を廃止するか）
-        @new_year_date_ = @new_year_date.clone
-        @multi_gengou_roller_ = @multi_gengou_roller.clone
-      end
-
-      #
-      # 取得前処理
-      #
-      # 再取得に備えて、カウントアップした日付を元に戻す
-      #
-      def post_get
-        @new_year_date = @new_year_date_
-        @multi_gengou_roller = @multi_gengou_roller_
       end
 
       # :reek:TooManyStatements { max_statements: 6 }
@@ -175,28 +152,15 @@ module Zakuro
       #
       # @return [Array<Year>] 完全範囲（月初日あり）
       #
-      def update_first_day(years:)
-        # TODO: リファクタリング
-
+      def self.update_first_day(years:)
         result = []
 
         years.each do |year|
           new_year_date = year.new_year_date.clone
-          date = new_year_date.clone
 
-          months = []
-          year.months.each do |month|
-            first_day = month.first_day
-            updated_month = Month.new(
-              month_label: month.month_label,
-              first_day: FirstDay.new(remainder: first_day.remainder,
-                                      western_date: date),
-              solar_terms: month.solar_terms
-            )
-            months.push(updated_month)
-
-            date = date.clone + updated_month.days
-          end
+          months = FullRange.update_first_day_within_all_months(
+            date: new_year_date.clone, months: year.months
+          )
 
           updated_year = Year.new(
             multi_gengou: year.multi_gengou, new_year_date: new_year_date,
@@ -204,6 +168,23 @@ module Zakuro
           )
 
           result.push(updated_year)
+        end
+
+        result
+      end
+
+      def self.update_first_day_within_all_months(date:, months:)
+        result = []
+        months.each do |month|
+          updated_month = Month.new(
+            month_label: month.month_label,
+            first_day: FirstDay.new(remainder: month.first_day.remainder,
+                                    western_date: date),
+            solar_terms: month.solar_terms
+          )
+          result.push(updated_month)
+
+          date = date.clone + updated_month.days
         end
 
         result

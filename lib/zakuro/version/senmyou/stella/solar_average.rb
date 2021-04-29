@@ -29,7 +29,7 @@ module Zakuro
       #
       def set(annual_range:)
         # 次月と比較しながら当月の二十四節気を決める
-        # NOTE: 最後の月は処理できない
+        # NOTE: 最後の月は処理できない（=計算外の余分な月が最後に必要である）
         annual_range.each_cons(2) do |(current_month, next_month)|
           set_solar_term(
             current_month: current_month,
