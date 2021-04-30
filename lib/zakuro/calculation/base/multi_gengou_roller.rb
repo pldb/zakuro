@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../era/version_limitter'
 require_relative './multi_gengou'
 
 require_relative '../../era/japan/gengou'
@@ -24,17 +23,17 @@ module Zakuro
       # @return [Western::Calendar] 現在日
       attr_reader :current_date
 
-      def initialize(start_date: Era::VersionLimitter::START_DATE, end_date: Western::Calendar.new)
+      def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
         end_date = start_date if end_date.invalid?
 
         @oldest_date = MultiGengouRoller.choise_oldest_gengou_date(
-          first_line: Era::VersionLimitter.first(start_date: start_date),
-          second_line: Era::VersionLimitter.second(start_date: start_date)
+          first_line: MultiGengouRoller.first_line(date: start_date),
+          second_line: MultiGengouRoller.second_line(date: start_date)
         )
         @current_date = @oldest_date.clone
         @newest_date = MultiGengouRoller.choise_newest_gengou_date(
-          first_line: Era::VersionLimitter.first(start_date: end_date),
-          second_line: Era::VersionLimitter.second(start_date: end_date)
+          first_line: MultiGengouRoller.first_line(date: end_date),
+          second_line: MultiGengouRoller.second_line(date: end_date)
         )
 
         @multi_gengou = MultiGengou.new(
@@ -97,7 +96,7 @@ module Zakuro
       # @return [Japan::Gengou] 元号（1行目）
       #
       def self.first_line(date: Western::Calender.new)
-        Era::VersionLimitter.first(start_date: date)
+        Japan::GengouResource.first_line(date: date)
       end
 
       #
@@ -106,7 +105,7 @@ module Zakuro
       # @return [Japan::Gengou] 元号（2行目）
       #
       def self.second_line(date: Western::Calender.new)
-        Era::VersionLimitter.second(start_date: date)
+        Japan::GengouResource.second_line(date: date)
       end
 
       #
