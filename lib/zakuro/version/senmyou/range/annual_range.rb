@@ -3,7 +3,7 @@
 require_relative '../../../output/logger'
 require_relative '../cycle/remainder'
 require_relative '../cycle/solar_term'
-require_relative '../monthly/initialized_month'
+require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar_orbit'
 require_relative '../stella/solar_average'

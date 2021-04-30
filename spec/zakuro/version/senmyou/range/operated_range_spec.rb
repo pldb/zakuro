@@ -3,7 +3,7 @@
 require File.expand_path('../../../../testtools/stringifier', __dir__)
 
 require File.expand_path('../../../../../' \
-                        'lib/zakuro/version/senmyou/monthly/month',
+                        'lib/zakuro/calculation/monthly/month',
                          __dir__)
 
 require File.expand_path('../../../../../' \

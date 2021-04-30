@@ -2,7 +2,7 @@
 
 require_relative './full_range'
 require_relative '../../../operation/operation'
-require_relative '../monthly/month'
+require_relative '../../../calculation/monthly/month'
 
 # TODO: solar_termの中はsrc/destだが、yamlはcalc/actual。統一したい。
 

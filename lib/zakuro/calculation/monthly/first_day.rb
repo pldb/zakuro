@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../era/western'
+require_relative '../../era/western'
 
 # TODO: moduleでMonthly とする（全暦むけに共通化したあと）
 

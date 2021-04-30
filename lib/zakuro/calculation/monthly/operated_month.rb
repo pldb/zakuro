@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './month'
-require_relative '../../../operation/operation'
+require_relative '../../operation/operation'
 
 # :nodoc:
 module Zakuro
