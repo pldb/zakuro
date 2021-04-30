@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: moduleでMonthly とする（全暦むけに共通化したあと）
-
 # :nodoc:
 module Zakuro
   # :nodoc:

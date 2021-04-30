@@ -2,8 +2,6 @@
 
 require_relative '../../era/western'
 
-# TODO: moduleでMonthly とする（全暦むけに共通化したあと）
-
 # :nodoc:
 module Zakuro
   # :nodoc:

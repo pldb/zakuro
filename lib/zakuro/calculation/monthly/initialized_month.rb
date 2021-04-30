@@ -2,8 +2,6 @@
 
 require_relative './month'
 
-# TODO: moduleでMonthly とする（全暦むけに共通化したあと）
-
 # :nodoc:
 module Zakuro
   # :nodoc:

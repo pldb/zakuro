@@ -5,8 +5,6 @@ require_relative '../../cycle/abstract_solar_term'
 require_relative './first_day'
 require_relative './month_label'
 
-# TODO: moduleでMonthly とする（全暦むけに共通化したあと）
-
 # :nodoc:
 module Zakuro
   # :nodoc:

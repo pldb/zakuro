@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                        'lib/zakuro/version/senmyou/specifier/single_day_specifier',
+                        'lib/zakuro/calculation/specifier/single_day',
                          __dir__)
 
 require File.expand_path('../../../../../' \
@@ -31,12 +31,16 @@ module Zakuro
         full_range = FullRange.new(start_date: date)
         years = full_range.get
 
-        calc_date = SingleDaySpecifier.get(years: years, date: date)
+        calc_date = Calculation::Specifier::SingleDay.get(
+          years: years, date: date
+        )
 
         operated_range = OperatedRange.new(years: years)
 
         Result::Single.new(
-          data: SingleDaySpecifier.get(years: operated_range.get, date: date),
+          data: Calculation::Specifier::SingleDay.get(
+            years: operated_range.get, date: date
+          ),
           operation: create_operation(calc_date: calc_date)
         )
       end
