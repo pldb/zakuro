@@ -42,7 +42,7 @@ module Zakuro
       # @param [Integer] second 秒
       # @param [Integer] total 繰り上げなしの小余
       #
-      def initialize(base_day:, base_mitune:, day: -1, minute: -1, second: -1, total: -1)
+      def initialize(base_day: -1, base_mitune: -1, day: -1, minute: -1, second: -1, total: -1)
         @base_limit = LIMIT
         @base_day = base_day
         @base_minute = base_mitune

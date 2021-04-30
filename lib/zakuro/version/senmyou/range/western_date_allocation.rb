@@ -35,7 +35,7 @@ module Zakuro
             new_year_date: new_year_date, months: months
           )
 
-          years[index] = Year.new(
+          years[index] = Calculation::Base::Year.new(
             multi_gengou: year.multi_gengou, new_year_date: new_year_date,
             months: months, total_days: year.total_days
           )
@@ -51,10 +51,12 @@ module Zakuro
       def self.update_first_day_within_all_months(new_year_date:, months:)
         date = new_year_date.clone
         months.each_with_index do |month, index|
-          updated_month = Month.new(
+          updated_month = Calculation::Monthly::Month.new(
             month_label: month.month_label,
-            first_day: FirstDay.new(remainder: month.first_day.remainder,
-                                    western_date: date),
+            first_day: Calculation::Monthly::FirstDay.new(
+              remainder: month.first_day.remainder,
+              western_date: date
+            ),
             solar_terms: month.solar_terms
           )
           months[index] = updated_month

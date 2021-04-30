@@ -52,7 +52,9 @@ module Zakuro
         @end_date = end_date
         return if invalid?
 
-        @multi_gengou_roller = MultiGengouRoller.new(start_date: start_date, end_date: end_date)
+        @multi_gengou_roller = Calculation::Base::MultiGengouRoller.new(
+          start_date: start_date, end_date: end_date
+        )
         @new_year_date = @multi_gengou_roller.oldest_date.clone
         @western_year = @new_year_date.year
       end
@@ -161,8 +163,10 @@ module Zakuro
       def update_year(year:)
         multi_gengou = @multi_gengou_roller.multi_gengou.clone
 
-        updated_year = Year.new(multi_gengou: multi_gengou, new_year_date: @new_year_date.clone,
-                                months: year.months)
+        updated_year = Calculation::Base::Year.new(
+          multi_gengou: multi_gengou, new_year_date: @new_year_date.clone,
+          months: year.months
+        )
         updated_year.commit
 
         updated_year

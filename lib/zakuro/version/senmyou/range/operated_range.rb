@@ -66,7 +66,9 @@ module Zakuro
       # @return [Year] 年
       #
       def self.rewrite_year(year:, operated_solar_terms:)
-        result = Year.new(multi_gengou: year.multi_gengou, new_year_date: year.new_year_date)
+        result = Calculation::Base::Year.new(
+          multi_gengou: year.multi_gengou, new_year_date: year.new_year_date
+        )
         year.months.each do |month|
           result.push(month: resolve_month(
             month: month, operated_solar_terms: operated_solar_terms
@@ -108,7 +110,7 @@ module Zakuro
       def self.rewrite_month(month:, history:, operated_solar_terms:)
         return month unless month.western_date == history.western_date
 
-        operated_month = OperatedMonth.new(
+        operated_month = Calculation::Monthly::OperatedMonth.new(
           month_label: month.month_label, first_day: month.first_day,
           solar_terms: month.solar_terms, history: history,
           operated_solar_terms: operated_solar_terms
@@ -116,7 +118,7 @@ module Zakuro
 
         operated_month.rewrite
 
-        Month.new(
+        Calculation::Monthly::Month.new(
           month_label: operated_month.month_label, first_day: operated_month.first_day,
           solar_terms: operated_month.solar_terms
         )

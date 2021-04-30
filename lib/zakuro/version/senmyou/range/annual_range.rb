@@ -122,9 +122,11 @@ module Zakuro
           adjusted = lunar_phase.next_month
 
           result.push(
-            InitializedMonth.new(month_label: MonthLabel.new,
-                                 first_day: FirstDay.new(remainder: adjusted),
-                                 phase_index: 0)
+            Calculation::Monthly::InitializedMonth.new(
+              month_label: Calculation::Monthly::MonthLabel.new,
+              first_day: Calculation::Monthly::FirstDay.new(remainder: adjusted),
+              phase_index: 0
+            )
           )
         end
 

@@ -66,11 +66,11 @@ describe 'Zakuro' do
 
             actual = range[14].months[0]
             # 貞観 15年 1 小 丁卯 2-5359 873 2  1 (4)17-937
-            expected = Zakuro::Senmyou::Month.new(
-              month_label: Zakuro::Senmyou::MonthLabel.new(
+            expected = Zakuro::Calculation::Monthly::Month.new(
+              month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 1, is_many_days: false, leaped: false
               ),
-              first_day: Zakuro::Senmyou::FirstDay.new(
+              first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                 # 2-5359 -> 3-5359
                 remainder: Zakuro::Senmyou::Remainder.new(
                   day: 3, minute: 5359, second: 0
@@ -85,7 +85,7 @@ describe 'Zakuro' do
             )
 
             TestTools::Stringifier.eql?(
-              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+              expected: expected, actual: actual, class_prefix: 'Zakuro'
             )
           end
         end
@@ -131,11 +131,11 @@ describe 'Zakuro' do
             ).get
 
             actual = range[1].months[10]
-            expected = Zakuro::Senmyou::Month.new(
-              month_label: Zakuro::Senmyou::MonthLabel.new(
+            expected = Zakuro::Calculation::Monthly::Month.new(
+              month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 10, is_many_days: false, leaped: true
               ),
-              first_day: Zakuro::Senmyou::FirstDay.new(
+              first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                 remainder: Zakuro::Senmyou::Remainder.new(
                   day: 38, minute: 7186, second: 0
                 ),
@@ -149,7 +149,7 @@ describe 'Zakuro' do
             )
 
             TestTools::Stringifier.eql?(
-              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+              expected: expected, actual: actual, class_prefix: 'Zakuro'
             )
           end
 
@@ -193,11 +193,11 @@ describe 'Zakuro' do
             ).get
 
             actual = range[1].months[11]
-            expected = Zakuro::Senmyou::Month.new(
-              month_label: Zakuro::Senmyou::MonthLabel.new(
+            expected = Zakuro::Calculation::Monthly::Month.new(
+              month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 11, is_many_days: true, leaped: false
               ),
-              first_day: Zakuro::Senmyou::FirstDay.new(
+              first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                 remainder: Zakuro::Senmyou::Remainder.new(
                   day: 7, minute: 5375, second: 0
                 ),
@@ -219,7 +219,7 @@ describe 'Zakuro' do
             )
 
             TestTools::Stringifier.eql?(
-              expected: expected, actual: actual, class_prefix: 'Zakuro::Senmyou'
+              expected: expected, actual: actual, class_prefix: 'Zakuro'
             )
           end
         end

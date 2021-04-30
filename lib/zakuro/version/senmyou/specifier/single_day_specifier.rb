@@ -69,9 +69,13 @@ module Zakuro
       # @return [Year] 改元後の年
       #
       def self.transfer(year:, date:)
-        multi_gengou = MultiGengouRoller.transfer(multi_gengou: year.multi_gengou, date: date)
-        Year.new(multi_gengou: multi_gengou, new_year_date: year.new_year_date,
-                 months: year.months, total_days: year.total_days)
+        multi_gengou = Calculation::Base::MultiGengouRoller.transfer(
+          multi_gengou: year.multi_gengou, date: date
+        )
+        Calculation::Base::Year.new(
+          multi_gengou: multi_gengou, new_year_date: year.new_year_date,
+          months: year.months, total_days: year.total_days
+        )
       end
       private_class_method :transfer
 

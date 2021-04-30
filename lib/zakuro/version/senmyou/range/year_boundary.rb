@@ -67,7 +67,7 @@ module Zakuro
         annual_range.each_with_index do |month, index|
           is_last_year = false if month.number == 1
 
-          annual_range[index] = InitializedMonth.new(
+          annual_range[index] = Calculation::Monthly::InitializedMonth.new(
             month_label: month.month_label, first_day: month.first_day,
             solar_terms: month.solar_terms, phase_index: month.phase_index,
             is_last_year: is_last_year
@@ -103,7 +103,7 @@ module Zakuro
       #
       # @return [Year] 当年月ありの対象年
       #
-      def self.push_current_year(annual_range:, year: Year.new)
+      def self.push_current_year(annual_range:, year: Calculation::Base::Year.new)
         annual_range.each do |month|
           next if month.is_last_year
 
