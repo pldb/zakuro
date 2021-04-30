@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './full_range'
 require_relative './operated_solar_terms'
-require_relative '../../../operation/operation'
-require_relative '../../../calculation/monthly/operated_month'
+require_relative '../../operation/operation'
+require_relative '../../calculation/monthly/operated_month'
 
 # :nodoc:
 module Zakuro

@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../testtools/stringifier', __dir__)
+require File.expand_path('../../../testtools/stringifier', __dir__)
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../' \
                         'lib/zakuro/calculation/monthly/month',
                          __dir__)
 
-require File.expand_path('../../../../../' \
-                        'lib/zakuro/version/senmyou/range/full_range',
+require File.expand_path('../../../../' \
+                         'lib/zakuro/calculation/range/operated_range',
                          __dir__)
 
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/range/operated_range',
+require File.expand_path('../../../../' \
+                       'lib/zakuro/version/senmyou/range/full_range',
                          __dir__)
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../' \
                          'lib/zakuro/tools/stringifier',
                          __dir__)
 

@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../' \
-                        'lib/zakuro/calculation/specifier/single_day',
-                         __dir__)
+require_relative '../../../calculation/specifier/single_day'
 
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/range/full_range',
-                         __dir__)
+require_relative '../../../calculation/range/operated_range'
 
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/range/operated_range',
-                         __dir__)
+require_relative '../range/full_range'
 
 # :nodoc:
 module Zakuro
