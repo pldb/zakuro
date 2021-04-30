@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require_relative '../base/multi_gengou_roller'
+require_relative '../../../calculation/base/multi_gengou_roller'
+require_relative '../../../calculation/base/year'
 
 require_relative '../../../era/western'
 require_relative './annual_range'
 require_relative './year_boundary'
 require_relative './western_date_allocation'
-
-require_relative '../base/year'
 
 # :nodoc:
 module Zakuro

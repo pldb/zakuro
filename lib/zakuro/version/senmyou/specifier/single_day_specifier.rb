@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../../../calculation/base/multi_gengou_roller'
+require_relative '../../../calculation/base/year'
+
 require_relative '../../../era/western'
 require_relative '../range/full_range'
-require_relative '../base/multi_gengou_roller'
-require_relative '../base/year'
 require_relative '../../../output/response'
 require_relative '../../../output/logger'
 

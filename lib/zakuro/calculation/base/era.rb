@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../../../era/japan/gengou'
-require_relative '../../../era/western'
-require_relative '../../../cycle/zodiac'
+require_relative '../../era/japan/gengou'
+require_relative '../../era/western'
+require_relative '../../cycle/zodiac'
+
+# TODO: 宣明暦以外にも対応させる
 
 # :nodoc:
 module Zakuro
