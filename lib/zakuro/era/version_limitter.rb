@@ -1,23 +1,21 @@
 # frozen_string_literal: true
 
-require_relative '../../era/japan/gengou'
-require_relative '../../era/western'
-require_relative '../../cycle/zodiac'
+require_relative './japan/gengou'
+require_relative './western'
 
 # TODO: 宣明暦以外にも対応させる
 
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Era
     #
-    # Era 宣明暦時代
+    # VersionLimitter 暦境界
     #
-    module Era
-      # FIXME: JOUGAN_START_DATE は不要。'貞観' かどうかだけで良い
-
+    module VersionLimitter
       # @return [Western::Calendar] 貞観1年1月1日
       JOUGAN_START_DATE = Western::Calendar.new(year: 859, month: 2, day: 7)
+
       # @return [Western::Calendar] 貞観4年1月1日
       START_DATE = Western::Calendar.new(year: 862, month: 2, day: 3)
       # @return [Integer] （貞観）4年
@@ -47,6 +45,12 @@ module Zakuro
         first_gengou
       end
 
+      def self.start_gengou_name
+        first_gengou = Japan::GengouResource.first_line(date: START_DATE)
+
+        first_gengou.name
+      end
+
       #
       # 元号（2行目）を取得する
       #
@@ -68,17 +72,6 @@ module Zakuro
       #
       def self.include?(date:)
         (START_DATE <= date && date <= END_DATE)
-      end
-
-      #
-      # 十干十二支を引き当てる
-      #
-      # @param [String] western_year 西暦年
-      #
-      # @return [String] 十干十二支
-      #
-      def self.zodiac_name(western_year: 0)
-        Cycle::Zodiac.year_name(western_year: western_year)
       end
     end
   end

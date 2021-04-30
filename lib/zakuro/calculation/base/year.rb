@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './era'
+require_relative '../../cycle/zodiac'
 
 # :nodoc:
 module Zakuro
@@ -67,7 +67,7 @@ module Zakuro
       # @return [String] 十干十二支
       #
       def zodiac_name
-        Era.zodiac_name(western_year: @new_year_date.year)
+        Cycle::Zodiac.year_name(western_year: @new_year_date.year)
       end
 
       #
