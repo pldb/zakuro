@@ -3,10 +3,11 @@
 require_relative '../../../calculation/base/multi_gengou_roller'
 require_relative '../../../calculation/base/year'
 
+require_relative '../../../calculation/range/transfer/year_boundary'
+require_relative '../../../calculation/range/transfer/western_date_allocation'
+
 require_relative '../../../era/western'
 require_relative './annual_range'
-require_relative './year_boundary'
-require_relative './western_date_allocation'
 
 # :nodoc:
 module Zakuro
@@ -77,10 +78,14 @@ module Zakuro
       def get
         return [] if invalid?
 
-        years = YearBoundary.get(annual_ranges: annual_ranges)
+        years = Calculation::Range::Transfer::YearBoundary.get(
+          annual_ranges: annual_ranges
+        )
         years = update_gengou(years: years)
 
-        WesternDateAllocation.update_first_day(years: years)
+        Calculation::Range::Transfer::WesternDateAllocation.update_first_day(
+          years: years
+        )
 
         years
       end
