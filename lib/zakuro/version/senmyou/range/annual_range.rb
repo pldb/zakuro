@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative '../../../output/logger'
-require_relative '../base/remainder'
+require_relative '../cycle/remainder'
+require_relative '../cycle/solar_term'
 require_relative '../monthly/initialized_month'
-require_relative '../base/solar_term'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar_orbit'
 require_relative '../stella/solar_average'

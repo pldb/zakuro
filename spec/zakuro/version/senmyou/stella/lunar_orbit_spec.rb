@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/base/remainder',
+                         'lib/zakuro/version/senmyou/cycle/remainder',
                          __dir__)
 require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/stella/lunar_orbit',
