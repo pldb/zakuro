@@ -28,7 +28,7 @@ module Zakuro
       BEGIN_YEAR = 822
 
       # @return [Logger] ロガー
-      LOGGER = Logger.new(location: 'winter_solstice')
+      LOGGER = Output::Logger.new(location: 'winter_solstice')
 
       # :reek:TooManyStatements { max_statements: 6 }
 

@@ -26,7 +26,7 @@ module Zakuro
       end
 
       # @return [Logger] ロガー
-      LOGGER = Logger.new(location: 'lunar_phase')
+      LOGGER = Output::Logger.new(location: 'lunar_phase')
 
       # @return [Array<String>] 月内の弦
       PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze

@@ -18,7 +18,7 @@ module Zakuro
       #
       module SingleDay
         # @return [Logger] ロガー
-        LOGGER = Logger.new(location: 'specifier')
+        LOGGER = Output::Logger.new(location: 'specifier')
 
         #
         # 取得する
@@ -36,8 +36,8 @@ module Zakuro
           month = specify_month(year: year, date: date)
           first_date = month.western_date
 
-          Response::SingleDay.save_single_day(
-            param: Response::SingleDay::Param.new(
+          Output::Response::SingleDay.save_single_day(
+            param: Output::Response::SingleDay::Param.new(
               year: year, month: month,
               date: date, days: date - first_date
             )

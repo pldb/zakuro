@@ -40,7 +40,7 @@ module Zakuro
       attr_reader :western_year
 
       # @return [Logger] ロガー
-      LOGGER = Logger.new(location: 'full_range')
+      LOGGER = Output::Logger.new(location: 'full_range')
 
       #
       # 初期化

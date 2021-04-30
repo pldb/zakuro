@@ -22,7 +22,7 @@ module Zakuro
     #
     def initialize(condition: {})
       failed = Condition.validate(hash: condition)
-      raise ZakuroError, failed.join('\n') unless failed.empty?
+      raise Output::ZakuroError, failed.join('\n') unless failed.empty?
 
       @condition = Condition.new(hash: condition)
     end
@@ -36,7 +36,7 @@ module Zakuro
     #
     def offer(condition: {})
       failed = Condition.validate(hash: condition)
-      raise ZakuroError, failed.join('\n') unless failed.empty?
+      raise Output::ZakuroError, failed.join('\n') unless failed.empty?
 
       @condition.rewrite(hash: condition)
 
