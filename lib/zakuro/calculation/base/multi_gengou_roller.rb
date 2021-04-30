@@ -8,8 +8,6 @@ require_relative '../../era/japan/gengou'
 module Zakuro
   # :nodoc:
   module Senmyou
-    # FIXME: 宣明暦に依存しない共通処理にする
-
     #
     # MultiGengouRoller 改元処理
     #
