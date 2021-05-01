@@ -60,7 +60,7 @@ describe 'Zakuro' do
             #   days: '1'
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
-            range = Zakuro::Senmyou::OperatedRange.new(
+            range = Zakuro::Calculation::Range::OperatedRange.new(
               years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 
@@ -126,7 +126,7 @@ describe 'Zakuro' do
             #   days: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
-            range = Zakuro::Senmyou::OperatedRange.new(
+            range = Zakuro::Calculation::Range::OperatedRange.new(
               years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 
@@ -188,7 +188,7 @@ describe 'Zakuro' do
             #   days: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
-            range = Zakuro::Senmyou::OperatedRange.new(
+            range = Zakuro::Calculation::Range::OperatedRange.new(
               years: Zakuro::Senmyou::FullRange.new(start_date: date).get
             ).get
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../cycle/abstract_solar_term'
+# TODO: 汎用化
+require_relative '../../version/senmyou/cycle/solar_term'
 
 require_relative './first_day'
 require_relative './month_label'
@@ -142,7 +143,7 @@ module Zakuro
             return term if term.index.even?
           end
 
-          Cycle::AbstractSolarTerm.new
+          Senmyou::SolarTerm.new
         end
 
         #
@@ -155,7 +156,7 @@ module Zakuro
             return term if term.index.odd?
           end
 
-          Cycle::AbstractSolarTerm.new
+          Senmyou::SolarTerm.new
         end
 
         #

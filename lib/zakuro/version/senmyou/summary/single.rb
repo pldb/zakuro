@@ -29,7 +29,7 @@ module Zakuro
           years: years, date: date
         )
 
-        operated_range = OperatedRange.new(years: years)
+        operated_range = Calculation::Range::OperatedRange.new(years: years)
 
         Result::Single.new(
           data: Calculation::Specifier::SingleDay.get(
