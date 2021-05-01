@@ -17,7 +17,7 @@ module Zakuro
     #
     # @param [Date] western_date 西暦日
     #
-    # @return [Result::SingleDay] 和暦日
+    # @return [Result::Single] 和暦日
     #
     # @raise [NotImplementedError] オーバーライドなし
     #

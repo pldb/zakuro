@@ -43,7 +43,7 @@ module Zakuro
         # @return [Integer] 西暦年
         attr_reader :western_year
 
-        # @return [Logger] ロガー
+        # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'full_range')
 
         #

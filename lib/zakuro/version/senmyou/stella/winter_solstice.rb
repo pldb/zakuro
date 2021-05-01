@@ -27,7 +27,7 @@ module Zakuro
       # @return [Integer] 暦の開始年（長慶2年）
       BEGIN_YEAR = 822
 
-      # @return [Logger] ロガー
+      # @return [Output::Logger] ロガー
       LOGGER = Output::Logger.new(location: 'winter_solstice')
 
       # :reek:TooManyStatements { max_statements: 6 }

@@ -17,7 +17,7 @@ module Zakuro
       # SingleDay 一日検索
       #
       module SingleDay
-        # @return [Logger] ロガー
+        # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'specifier')
 
         #

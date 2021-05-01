@@ -47,7 +47,7 @@ module Zakuro
     #
     # @param [Date] western_date 西暦日
     #
-    # @return [Result::SingleDay] 和暦日
+    # @return [Result::Single] 和暦日
     #
     def self.to_japan_date(western_date:)
       runnable = VersionFactory.get_runnable_constant(date: western_date)

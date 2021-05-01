@@ -25,7 +25,7 @@ module Zakuro
         BASE_HUNDRED = LunarRemainder.new(day: 7, minute: 3214, second: 25)
       end
 
-      # @return [Logger] ロガー
+      # @return [Output::Logger] ロガー
       LOGGER = Output::Logger.new(location: 'lunar_phase')
 
       # @return [Array<String>] 月内の弦
