@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../cycle/abstract_solar_term'
+require_relative '../../../calculation/cycle/abstract_solar_term'
 require_relative './remainder'
 
 # :nodoc:

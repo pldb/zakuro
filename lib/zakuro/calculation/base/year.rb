@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../cycle/zodiac'
+require_relative '../cycle/zodiac'
 
 # :nodoc:
 module Zakuro

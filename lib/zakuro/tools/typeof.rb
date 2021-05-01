@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/abstract_remainder'
+require_relative '../calculation/cycle/abstract_remainder'
 require_relative '../era/western'
 
 # :nodoc:
