@@ -51,7 +51,7 @@ module Zakuro
 
         LOGGER.debug("[a02]:#{winter_solstice_minute}")
 
-        Remainder.new(total: winter_solstice_minute)
+        Cycle::Remainder.new(total: winter_solstice_minute)
       end
 
       # :reek:TooManyStatements { max_statements: 7 }
@@ -82,7 +82,7 @@ module Zakuro
         LOGGER.debug("[b02]: #{winter_solstice_age}")
 
         # 大余・小余に変換する
-        Remainder.new(total: winter_solstice_age)
+        Cycle::Remainder.new(total: winter_solstice_age)
       end
 
       #

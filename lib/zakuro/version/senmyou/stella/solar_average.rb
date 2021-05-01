@@ -9,7 +9,7 @@ module Zakuro
     #
     class SolarAverage
       # @return [Remainder] 気策（24分の1年）
-      SOLAR_TERM_AVERAGE = Remainder.new(day: 15, minute: 1835, second: 5)
+      SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 1835, second: 5)
 
       #
       # 初期化
@@ -52,7 +52,7 @@ module Zakuro
         winter_solstice = WinterSolstice.calc(western_year: western_year)
 
         # 二十四節気（冬至）
-        solar_term = SolarTerm.new(index: 0, remainder: winter_solstice)
+        solar_term = Cycle::SolarTerm.new(index: 0, remainder: winter_solstice)
 
         first_solar_term_index = SolarAverage.calc_fist_solar_term_index(western_year: western_year)
 
@@ -81,13 +81,13 @@ module Zakuro
 
         # 入定気を求める
         solar_location = SolarLocation.get(
-          solar_term: SolarTerm.new(remainder: winter_solstice_age)
+          solar_term: Cycle::SolarTerm.new(remainder: winter_solstice_age)
         )
 
         solar_term_index = solar_location.index
 
         # 入定気の一つ後の二十四節気まで戻す（ただし11月経朔が二十四節気上にある場合は戻さない）
-        solar_term_index += 1 unless solar_location.remainder == Remainder.new(total: 0)
+        solar_term_index += 1 unless solar_location.remainder == Cycle::Remainder.new(total: 0)
 
         solar_term_index
       end

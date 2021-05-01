@@ -1046,7 +1046,7 @@ describe 'Zakuro' do
           it 'should be expected values' do
             (1400...1661).each do |y|
               # 11月定朔
-              actual = Zakuro::Senmyou::AnnualRange.calc_last_november_1st(
+              actual = Zakuro::Senmyou::Range::AnnualRange.calc_last_november_1st(
                 western_year: y
               )
 
@@ -1090,7 +1090,7 @@ describe 'Zakuro' do
             fails = []
             expect_monthes.each do |year, expects|
               actuals = \
-                Zakuro::Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
+                Zakuro::Senmyou::Range::AnnualRange.collect_annual_range_after_last_november_1st(
                   western_year: year
                 )
               actuals.each_with_index do |month, index|

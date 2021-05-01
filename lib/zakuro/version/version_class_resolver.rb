@@ -13,9 +13,9 @@ module Zakuro
     attr_reader :version_name
 
     CLASSES = {
-      'remainder' => 'Zakuro::$VERSION::Remainder',
-      'solar_term' => 'Zakuro::$VERSION::SolarTerm',
-      'annual_range' => 'Zakuro::$VERSION::AnnualRange'
+      'remainder' => 'Zakuro::$VERSION::Cycle::Remainder',
+      'solar_term' => 'Zakuro::$VERSION::Cycle::SolarTerm',
+      'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange'
     }.freeze
 
     def initialize(version_name:)

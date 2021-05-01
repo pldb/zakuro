@@ -13,7 +13,7 @@ module Zakuro
       # @return [Integer] 暦中日
       # @note ANOMALISTIC_MONTH の半分に相当する
       HALF_ANOMALISTIC_MONTH = \
-        LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
+        Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
 
       #
       # Adjustment 補正値情報
@@ -122,7 +122,7 @@ module Zakuro
       # @return [True] 正しくない
       #
       def self.valid?(remainder:)
-        return if remainder.is_a?(LunarRemainder)
+        return if remainder.is_a?(Cycle::LunarRemainder)
 
         raise ArgumentError, "unmatch parameter type: #{remainder.class}"
       end
@@ -272,14 +272,14 @@ module Zakuro
           total_year * WinterSolstice::YEAR - winter_solstice_age.to_minute
 
         remainder_month = \
-          LunarRemainder.new(total: (total_day % ANOMALISTIC_MONTH))
+          Cycle::LunarRemainder.new(total: (total_day % ANOMALISTIC_MONTH))
 
         remainder_month, is_forward = decrease_moon_point(
           remainder_month: remainder_month,
           remainder_limit: HALF_ANOMALISTIC_MONTH, is_forward: true
         )
 
-        remainder_month.add!(Remainder.new(day: 1, minute: 0, second: 0))
+        remainder_month.add!(Cycle::Remainder.new(day: 1, minute: 0, second: 0))
 
         [remainder_month, is_forward]
       end
@@ -302,7 +302,7 @@ module Zakuro
         remainder_month, is_forward = \
           decrease_moon_point(
             remainder_month: remainder,
-            remainder_limit: Remainder.new(day: 14, minute: 6529, second: 0),
+            remainder_limit: Cycle::Remainder.new(day: 14, minute: 6529, second: 0),
             is_forward: is_forward
           )
 

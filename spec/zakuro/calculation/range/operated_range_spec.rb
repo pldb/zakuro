@@ -80,15 +80,15 @@ describe 'Zakuro' do
               ),
               first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                 # 2-5359 -> 3-5359
-                remainder: Zakuro::Senmyou::Remainder.new(
+                remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                   day: 3, minute: 5359, second: 0
                 ),
                 # 873-2-1 -> 873-2-2
                 western_date: Zakuro::Western::Calendar.new(year: 873, month: 2, day: 2)
               ),
-              solar_terms: [Zakuro::Senmyou::SolarTerm.new(
+              solar_terms: [Zakuro::Senmyou::Cycle::SolarTerm.new(
                 index: 4,
-                remainder: Zakuro::Senmyou::Remainder.new(day: 17, minute: 937, second: 0)
+                remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 17, minute: 937, second: 0)
               )]
             )
 
@@ -152,15 +152,15 @@ describe 'Zakuro' do
                 number: 10, is_many_days: false, leaped: true
               ),
               first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                remainder: Zakuro::Senmyou::Remainder.new(
+                remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                   day: 38, minute: 7186, second: 0
                 ),
                 western_date: date
               ),
               # 計算上は冬至(0)がある
-              solar_terms: [Zakuro::Senmyou::SolarTerm.new(
+              solar_terms: [Zakuro::Senmyou::Cycle::SolarTerm.new(
                 index: 23,
-                remainder: Zakuro::Senmyou::Remainder.new(day: 51, minute: 6309, second: 0)
+                remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 51, minute: 6309, second: 0)
               )]
             )
 
@@ -218,7 +218,7 @@ describe 'Zakuro' do
                 number: 11, is_many_days: true, leaped: false
               ),
               first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                remainder: Zakuro::Senmyou::Remainder.new(
+                remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                   day: 7, minute: 5375, second: 0
                 ),
                 western_date: date
@@ -226,14 +226,14 @@ describe 'Zakuro' do
               # 計算上は冬至(0)がない。冬至が1202-11-17から移動している
               # 移動した冬至は大余を1増やす（=冬至を1日分、後日にする）
               solar_terms: [
-                Zakuro::Senmyou::SolarTerm.new(
+                Zakuro::Senmyou::Cycle::SolarTerm.new(
                   index: 1,
-                  remainder: Zakuro::Senmyou::Remainder.new(day: 22, minute: 1580, second: 0)
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 22, minute: 1580, second: 0)
                 ),
                 # 6-8145 -> 7-8145
-                Zakuro::Senmyou::SolarTerm.new(
+                Zakuro::Senmyou::Cycle::SolarTerm.new(
                   index: 0,
-                  remainder: Zakuro::Senmyou::Remainder.new(day: 7, minute: 8145, second: 0)
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 7, minute: 8145, second: 0)
                 )
               ]
             )
