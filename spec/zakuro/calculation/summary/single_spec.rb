@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../testtools/stringifier',
+require File.expand_path('../../../testtools/stringifier',
                          __dir__)
 
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/summary/single',
+require File.expand_path('../../../../' \
+                         'lib/zakuro/calculation/summary/single',
                          __dir__)
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../' \
                          'lib/zakuro/version/context',
                          __dir__)
 
@@ -22,7 +22,7 @@ describe 'Zakuro' do
       describe '.get' do
         # :reek:UnityFunction
         def eql?(date:, expected:)
-          actual = Zakuro::Senmyou::Single.get(
+          actual = Zakuro::Calculation::Summary::Single.get(
             context: Zakuro::Context.new(version_name: 'Senmyou'),
             date: date
           )

@@ -4,7 +4,7 @@ require 'date'
 require_relative '../../era/western'
 require_relative '../abstract_version'
 require_relative '../context'
-require_relative 'summary/single'
+require_relative '../../calculation/summary/single'
 
 # :nodoc:
 module Zakuro
@@ -33,7 +33,7 @@ module Zakuro
         date = Western::Calendar.create(date: western_date)
 
         context = Context.new(version_name: VERSION_NAME)
-        Single.get(context: context, date: date)
+        Calculation::Summary::Single.get(context: context, date: date)
       end
     end
   end
