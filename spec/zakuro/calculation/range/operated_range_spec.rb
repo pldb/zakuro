@@ -11,7 +11,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                       'lib/zakuro/version/senmyou/range/full_range',
+                       'lib/zakuro/calculation/range/full_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -61,7 +61,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
+              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
             ).get
 
             actual = range[14].months[0]
@@ -127,7 +127,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
+              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
             ).get
 
             actual = range[1].months[10]
@@ -189,7 +189,7 @@ describe 'Zakuro' do
             date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Senmyou::FullRange.new(start_date: date).get
+              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
             ).get
 
             actual = range[1].months[11]

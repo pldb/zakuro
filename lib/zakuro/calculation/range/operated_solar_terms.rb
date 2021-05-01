@@ -60,7 +60,7 @@ module Zakuro
           solar_term = @directions.fetch(western_date.format, Cycle::AbstractSolarTerm.new)
 
           # 合致しない場合
-          return false, Cycle::AbstractSolarTerm.new if solar_term.empty?
+          return false, Senmyou::SolarTerm.new if solar_term.empty?
 
           # 合致した上で、二十四節気が移動元（削除対象）の場合
           # 合致した上で、二十四節気が移動先（追加対象）の場合

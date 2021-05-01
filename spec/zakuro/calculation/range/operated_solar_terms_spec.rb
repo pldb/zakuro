@@ -15,7 +15,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                        'lib/zakuro/version/senmyou/range/full_range',
+                        'lib/zakuro/calculation/range/full_range',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength
@@ -26,7 +26,9 @@ describe 'Zakuro' do
       describe '.get' do
         # :reek:UtilityFunction
         def create_operated_solar_terms(western_date: Zakuro::Western::Calendar.new)
-          full_range = Zakuro::Senmyou::FullRange.new(start_date: western_date)
+          full_range = Zakuro::Calculation::Range::FullRange.new(
+            start_date: western_date
+          )
           operated_solar_terms = Zakuro::Calculation::Range::OperatedSolarTerms.new(
             years: full_range.get
           )

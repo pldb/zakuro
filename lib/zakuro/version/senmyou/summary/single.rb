@@ -4,7 +4,7 @@ require_relative '../../../calculation/specifier/single_day'
 
 require_relative '../../../calculation/range/operated_range'
 
-require_relative '../range/full_range'
+require_relative '../../../calculation/range/full_range'
 
 # :nodoc:
 module Zakuro
@@ -22,7 +22,7 @@ module Zakuro
       # @return [Result::Single] 一日検索結果（和暦日）
       #
       def self.get(date: Western::Calendar.new)
-        full_range = FullRange.new(start_date: date)
+        full_range = Calculation::Range::FullRange.new(start_date: date)
         years = full_range.get
 
         calc_date = Calculation::Specifier::SingleDay.get(
