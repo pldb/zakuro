@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/abstract_remainder'
+require_relative '../calculation/cycle/abstract_remainder'
 require_relative '../era/western'
 
 # :nodoc:
@@ -24,7 +24,7 @@ module Zakuro
       def self.time?(obj:)
         return true if obj.is_a?(Western::Calendar)
 
-        return true if obj.is_a?(Cycle::AbstractRemainder)
+        return true if obj.is_a?(Calculation::Cycle::AbstractRemainder)
 
         false
       end

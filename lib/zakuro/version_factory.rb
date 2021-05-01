@@ -47,13 +47,13 @@ module Zakuro
     #
     # @param [Date] western_date 西暦日
     #
-    # @return [Result::SingleDay] 和暦日
+    # @return [Result::Single] 和暦日
     #
     def self.to_japan_date(western_date:)
       runnable = VersionFactory.get_runnable_constant(date: western_date)
       runnable.to_japan_date(western_date: western_date)
     rescue StandardError => e
-      raise ZakuroError, e.message
+      raise Output::ZakuroError, e.message
     end
   end
 end

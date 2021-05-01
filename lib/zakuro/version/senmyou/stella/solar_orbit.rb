@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../base/solar_term'
+require_relative '../cycle/solar_term'
 
 # :nodoc:
 module Zakuro
@@ -134,7 +134,7 @@ module Zakuro
       # @return [Adjustment::Item] 24気損益眺朒（ちょうじく）数
       #
       def self.specify_solar_term_adjustment(index:)
-        key = SolarTerm::ORDER[index]
+        key = Cycle::SolarTerm::ORDER[index]
         Adjustment::LIST[key].clone
       end
       private_class_method :specify_solar_term_adjustment

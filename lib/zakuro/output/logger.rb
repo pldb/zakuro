@@ -1,65 +1,66 @@
 # frozen_string_literal: true
 
-# TODO: outputモジュール内にする
-
 # :nodoc:
 module Zakuro
-  #
-  # 軽量なロガー
-  # @note 本番では使用しない
-  #
-  class Logger
-    LEVELS = {
-      none: -1,
-      debug: 0,
-      info: 1
-      # warn : 2,
-      # error : 3,
-    }.freeze
-
-    LEVEL = LEVELS[:none]
-
-    # @return [String] 呼び出し位置
-    attr_reader :location
-
-    def initialize(location:)
-      @location = location
-    end
-
+  # :nodoc:
+  module Output
     #
-    # DEBUGレベルの標準出力を行う
+    # 軽量なロガー
+    # @note 本番では使用しない
     #
-    # @param [String] messages メッセージ
-    #
-    def debug(*messages)
-      return if LEVEL < LEVELS[:debug]
+    class Logger
+      LEVELS = {
+        none: -1,
+        debug: 0,
+        info: 1
+        # warn : 2,
+        # error : 3,
+      }.freeze
 
-      output('DEBUG', *messages)
-    end
+      LEVEL = LEVELS[:none]
 
-    #
-    # INFOレベルの標準出力を行う
-    #
-    # @param [String] messages メッセージ
-    #
-    def info(*messages)
-      return if LEVEL < LEVELS[:info]
+      # @return [String] 呼び出し位置
+      attr_reader :location
 
-      output('INFO', *messages)
-    end
+      def initialize(location:)
+        @location = location
+      end
 
-    private
+      #
+      # DEBUGレベルの標準出力を行う
+      #
+      # @param [String] messages メッセージ
+      #
+      def debug(*messages)
+        return if LEVEL < LEVELS[:debug]
 
-    #
-    # 標準出力を行う
-    #
-    # @param [String] level ログレベル
-    # @param [String] messages メッセージ
-    #
-    def output(level, *messages)
-      messages.each do |message|
-        # :#{Thread.current.backtrace[5]}
-        p "[#{level}] #{@location}: #{message}"
+        output('DEBUG', *messages)
+      end
+
+      #
+      # INFOレベルの標準出力を行う
+      #
+      # @param [String] messages メッセージ
+      #
+      def info(*messages)
+        return if LEVEL < LEVELS[:info]
+
+        output('INFO', *messages)
+      end
+
+      private
+
+      #
+      # 標準出力を行う
+      #
+      # @param [String] level ログレベル
+      # @param [String] messages メッセージ
+      #
+      def output(level, *messages)
+        messages.each do |message|
+          # :#{Thread.current.backtrace[5]}
+          p "[#{level}] #{@location}: #{message}"
+        end
       end
     end
   end

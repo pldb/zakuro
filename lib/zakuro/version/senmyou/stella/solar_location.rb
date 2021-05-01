@@ -17,41 +17,41 @@ module Zakuro
         # @return [Hash<Symbol, Remainder>] 一覧
         LIST = {
           # 冬至（とうじ）・大雪（たいせつ）
-          touji: Remainder.new(day: 14, minute: 4235, second: 5),
-          taisetsu: Remainder.new(day: 14, minute: 4235, second: 5),
+          touji: Cycle::Remainder.new(day: 14, minute: 4235, second: 5),
+          taisetsu: Cycle::Remainder.new(day: 14, minute: 4235, second: 5),
           # 小寒（しょうかん）・小雪（しょうせつ）
-          shoukan: Remainder.new(day: 14, minute: 5235, second: 5),
-          shousetsu: Remainder.new(day: 14, minute: 5235, second: 5),
+          shoukan: Cycle::Remainder.new(day: 14, minute: 5235, second: 5),
+          shousetsu: Cycle::Remainder.new(day: 14, minute: 5235, second: 5),
           # 大寒（だいかん）・立冬（りっとう）
-          daikan: Remainder.new(day: 14, minute: 6235, second: 5),
-          rittou: Remainder.new(day: 14, minute: 6235, second: 5),
+          daikan: Cycle::Remainder.new(day: 14, minute: 6235, second: 5),
+          rittou: Cycle::Remainder.new(day: 14, minute: 6235, second: 5),
           # 立春（りっしゅん）・霜降（そうこう）
-          risshun: Remainder.new(day: 14, minute: 7235, second: 5),
-          soukou: Remainder.new(day: 14, minute: 7235, second: 5),
+          risshun: Cycle::Remainder.new(day: 14, minute: 7235, second: 5),
+          soukou: Cycle::Remainder.new(day: 14, minute: 7235, second: 5),
           # 雨水（うすい）・寒露（かんろ）
-          usui: Remainder.new(day: 15, minute: 35, second: 5),
-          kanro: Remainder.new(day: 15, minute: 35, second: 5),
+          usui: Cycle::Remainder.new(day: 15, minute: 35, second: 5),
+          kanro: Cycle::Remainder.new(day: 15, minute: 35, second: 5),
           # 啓蟄（けいちつ）・秋分（しゅうぶん）
-          keichitsu: Remainder.new(day: 15, minute: 1235, second: 5),
-          shuubun: Remainder.new(day: 15, minute: 1235, second: 5),
+          keichitsu: Cycle::Remainder.new(day: 15, minute: 1235, second: 5),
+          shuubun: Cycle::Remainder.new(day: 15, minute: 1235, second: 5),
           # 春分（しゅんぶん）・白露（はくろ）
-          shunbun: Remainder.new(day: 15, minute: 2435, second: 5),
-          hakuro: Remainder.new(day: 15, minute: 2435, second: 5),
+          shunbun: Cycle::Remainder.new(day: 15, minute: 2435, second: 5),
+          hakuro: Cycle::Remainder.new(day: 15, minute: 2435, second: 5),
           # 清明（せいめい）・処暑（しょしょ）
-          seimei: Remainder.new(day: 15, minute: 3635, second: 5),
-          shosho: Remainder.new(day: 15, minute: 3635, second: 5),
+          seimei: Cycle::Remainder.new(day: 15, minute: 3635, second: 5),
+          shosho: Cycle::Remainder.new(day: 15, minute: 3635, second: 5),
           # 穀雨（こくう）・立秋（りっしゅう）
-          kokuu: Remainder.new(day: 15, minute: 4835, second: 5),
-          risshuu: Remainder.new(day: 15, minute: 4835, second: 5),
+          kokuu: Cycle::Remainder.new(day: 15, minute: 4835, second: 5),
+          risshuu: Cycle::Remainder.new(day: 15, minute: 4835, second: 5),
           # 立夏（りっか）・大暑（たいしょ）
-          rikka: Remainder.new(day: 15, minute: 5835, second: 5),
-          taisho: Remainder.new(day: 15, minute: 5835, second: 5),
+          rikka: Cycle::Remainder.new(day: 15, minute: 5835, second: 5),
+          taisho: Cycle::Remainder.new(day: 15, minute: 5835, second: 5),
           # 小満（しょうまん）・小暑（しょうしょ）
-          shouman: Remainder.new(day: 15, minute: 6835, second: 5),
-          shousho: Remainder.new(day: 15, minute: 6835, second: 5),
+          shouman: Cycle::Remainder.new(day: 15, minute: 6835, second: 5),
+          shousho: Cycle::Remainder.new(day: 15, minute: 6835, second: 5),
           # 芒種（ぼうしゅ）・夏至（げし）
-          boushu: Remainder.new(day: 15, minute: 7835, second: 5),
-          geshi: Remainder.new(day: 15, minute: 7835, second: 5)
+          boushu: Cycle::Remainder.new(day: 15, minute: 7835, second: 5),
+          geshi: Cycle::Remainder.new(day: 15, minute: 7835, second: 5)
         }.freeze
 
         # @return [Array<Remainder>] 索引
@@ -171,14 +171,14 @@ module Zakuro
         interval = Interval::INDEXES[index]
         if winter_solstice_age > interval
           # 入定気が確定しない（さらに前の定気まで遡れる）
-          return SolarTerm.new(
+          return Cycle::SolarTerm.new(
             remainder: winter_solstice_age.sub(interval),
             index: -1
           )
         end
 
         # 入定気が確定する
-        SolarTerm.new(
+        Cycle::SolarTerm.new(
           remainder: interval.sub(winter_solstice_age),
           index: index
         )
@@ -204,7 +204,7 @@ module Zakuro
         index += 1
         index = 0 if index >= Interval::INDEXES.size
         calc_next_solar_term_recursively(
-          solar_term: SolarTerm.new(remainder: remainder, index: index)
+          solar_term: Cycle::SolarTerm.new(remainder: remainder, index: index)
         )
       end
       private_class_method :calc_next_solar_term_recursively
