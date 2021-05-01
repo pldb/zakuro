@@ -7,6 +7,10 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
+                         'lib/zakuro/version/context',
+                         __dir__)
+
+require File.expand_path('../../../../' \
                         'lib/zakuro/calculation/monthly/month',
                          __dir__)
 
@@ -27,9 +31,11 @@ describe 'Zakuro' do
         # :reek:UtilityFunction
         def create_operated_solar_terms(western_date: Zakuro::Western::Calendar.new)
           full_range = Zakuro::Calculation::Range::FullRange.new(
+            context: Zakuro::Context.new(version_name: 'Senmyou'),
             start_date: western_date
           )
           operated_solar_terms = Zakuro::Calculation::Range::OperatedSolarTerms.new(
+            context: Zakuro::Context.new(version_name: 'Senmyou'),
             years: full_range.get
           )
           operated_solar_terms.create

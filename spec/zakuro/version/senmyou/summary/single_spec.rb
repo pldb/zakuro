@@ -7,6 +7,10 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/summary/single',
                          __dir__)
 
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/version/context',
+                         __dir__)
+
 require File.expand_path('./single_data_factory',
                          __dir__)
 
@@ -18,7 +22,10 @@ describe 'Zakuro' do
       describe '.get' do
         # :reek:UnityFunction
         def eql?(date:, expected:)
-          actual = Zakuro::Senmyou::Single.get(date: date)
+          actual = Zakuro::Senmyou::Single.get(
+            context: Zakuro::Context.new(version_name: 'Senmyou'),
+            date: date
+          )
 
           TestTools::Stringifier.eql?(
             expected: expected,

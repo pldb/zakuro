@@ -17,19 +17,20 @@ module Zakuro
       #
       # 生成する
       #
+      # @param [Context] context 暦コンテキスト
       # @param [Western::Calendar] date 西暦日
       #
       # @return [Result::Single] 一日検索結果（和暦日）
       #
-      def self.get(date: Western::Calendar.new)
-        full_range = Calculation::Range::FullRange.new(start_date: date)
+      def self.get(context:, date: Western::Calendar.new)
+        full_range = Calculation::Range::FullRange.new(context: context, start_date: date)
         years = full_range.get
 
         calc_date = Calculation::Specifier::SingleDay.get(
           years: years, date: date
         )
 
-        operated_range = Calculation::Range::OperatedRange.new(years: years)
+        operated_range = Calculation::Range::OperatedRange.new(context: context, years: years)
 
         Result::Single.new(
           data: Calculation::Specifier::SingleDay.get(

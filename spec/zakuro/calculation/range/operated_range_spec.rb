@@ -11,6 +11,10 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
+                         'lib/zakuro/version/context',
+                         __dir__)
+
+require File.expand_path('../../../../' \
                        'lib/zakuro/calculation/range/full_range',
                          __dir__)
 
@@ -60,8 +64,12 @@ describe 'Zakuro' do
             #   days: '1'
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
+            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
+              context: senmyou_context,
+              years: Zakuro::Calculation::Range::FullRange.new(
+                context: senmyou_context, start_date: date
+              ).get
             ).get
 
             actual = range[14].months[0]
@@ -92,6 +100,8 @@ describe 'Zakuro' do
 
         context 'the month with moved solar term' do
           it 'should be removed at 1202-11-17' do
+            # rubocop:disable Layout/LineLength
+            #
             # - id: 266-1-1
             # relation_id: "-"
             # parent_id: "-"
@@ -124,10 +134,16 @@ describe 'Zakuro' do
             #       zodiac_name: "-"
             #     days: '1'
             #   days: "-"
+            #
+            # rubocop:enable Layout/LineLength
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
+            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
+              context: senmyou_context,
+              years: Zakuro::Calculation::Range::FullRange.new(
+                context: senmyou_context, start_date: date
+              ).get
             ).get
 
             actual = range[1].months[10]
@@ -188,8 +204,12 @@ describe 'Zakuro' do
             #   days: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
+            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              years: Zakuro::Calculation::Range::FullRange.new(start_date: date).get
+              context: senmyou_context,
+              years: Zakuro::Calculation::Range::FullRange.new(
+                context: senmyou_context, start_date: date
+              ).get
             ).get
 
             actual = range[1].months[11]

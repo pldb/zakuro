@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: 汎用化
-require_relative '../../version/senmyou/cycle/remainder'
-require_relative '../../version/senmyou/cycle/solar_term'
-
 require_relative '../../operation/operation'
 require_relative '../monthly/month'
 
@@ -27,13 +23,17 @@ module Zakuro
         # * 移動先の二十四節気：移動元からの二十四節気（追加対象）
         #
         attr_reader :directions
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
 
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Array<Year>] years 完全範囲（年データ）
         #
-        def initialize(years: [])
+        def initialize(context:, years: [])
+          @context = context
           @years = years
           @directions = {}
         end
@@ -57,10 +57,11 @@ module Zakuro
         # @return [SolarTerm] 二十四節気
         #
         def get(western_date: Western::Calendar.new)
-          solar_term = @directions.fetch(western_date.format, Cycle::AbstractSolarTerm.new)
+          solar_term_class = context.resolver.solar_term
+          solar_term = @directions.fetch(western_date.format, solar_term_class.new)
 
           # 合致しない場合
-          return false, Senmyou::SolarTerm.new if solar_term.empty?
+          return false, solar_term_class.new if solar_term.empty?
 
           # 合致した上で、二十四節気が移動元（削除対象）の場合
           # 合致した上で、二十四節気が移動先（追加対象）の場合
@@ -77,7 +78,7 @@ module Zakuro
 
           years.each do |year|
             OperatedSolarTerms.create_directions_with_months(
-              directions: directions, months: year.months
+              context: context, directions: directions, months: year.months
             )
           end
 
@@ -89,10 +90,11 @@ module Zakuro
         #
         # 年内の全ての月の移動方向を作成する
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Array<Month>] months 年内の全ての月
         #
-        def self.create_directions_with_months(directions: {}, months: [])
+        def self.create_directions_with_months(context:, directions: {}, months: [])
           months.each do |month|
             history = Operation.specify_history(western_date: month.western_date)
 
@@ -103,39 +105,44 @@ module Zakuro
             next if direction.invalid?
 
             OperatedSolarTerms.create_directions_each_month(
-              directions: directions, direction: direction, month: month
+              context: context, directions: directions, direction: direction, month: month
             )
           end
         end
 
+        # :reek:LongParameterList {max_params: 4}
+
         #
         # 月毎の移動方向を作成する
         #
+        # @param [Context] context 暦コンテキスト
+        # @param [Month] 月
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Diretion] 二十四節気（移動）
-        # @param [Month] 月
         #
-        def self.create_directions_each_month(directions: {},
-                                              direction: Operation::SolarTerm::Diretion.new,
-                                              month: Month.new)
+        def self.create_directions_each_month(context:, month:, directions: {},
+                                              direction: Operation::SolarTerm::Diretion.new)
 
           month.solar_terms.each do |solar_term|
-            OperatedSolarTerms.push_source(directions: directions, direction: direction,
-                                           solar_term: solar_term)
+            OperatedSolarTerms.push_source(context: context, directions: directions,
+                                           direction: direction, solar_term: solar_term)
           end
-          OperatedSolarTerms.push_destination(directions: directions,
+          OperatedSolarTerms.push_destination(context: context, directions: directions,
                                               destination: direction.destination)
         end
+
+        # :reek:LongParameterList {max_params: 4}
 
         #
         # 移動先に有効な二十四節気（差し替える二十四節気）を指定する
         #
+        # @param [Context] context 暦コンテキスト
+        # @param [SolarTerm] solar_term 二十四節気（計算値）
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
-        # @param [SolarTerm] solar_term 二十四節気（計算値）
         #
-        def self.push_source(directions: {}, direction: Operation::SolarTerm::Direction.new,
-                             solar_term: SolarTerm.new)
+        def self.push_source(context:, solar_term:, directions: {},
+                             direction: Operation::SolarTerm::Direction.new)
           source = direction.source
 
           return if source.invalid?
@@ -144,26 +151,28 @@ module Zakuro
 
           # 移動先に移動元の二十四節気を指定する
           directions[source.to.format] = OperatedSolarTerms.created_source(
-            direction: direction, solar_term: solar_term
+            context: context, direction: direction, solar_term: solar_term
           )
         end
 
         #
         # 移動先に有効な二十四節気（差し替える二十四節気）を生成する
         #
-        # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
+        # @param [Context] context 暦コンテキスト
         # @param [SolarTerm] solar_term 二十四節気（計算値）
+        # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
         #
         # @return [SolarTerm] 二十四節気（運用値）
         #
-        def self.created_source(direction: Operation::SolarTerm::Direction.new,
-                                solar_term: SolarTerm.new)
+        def self.created_source(context:, solar_term:,
+                                direction: Operation::SolarTerm::Direction.new)
           operated_solar_term = solar_term.clone
+          remainder_class_name = context.resolver.remainder
 
           unless direction.invalid_days?
             # 二十四節気の大余をずらす
             operated_solar_term.remainder.add!(
-              Senmyou::Remainder.new(day: direction.days, minute: 0, second: 0)
+              remainder_class_name.new(day: direction.days, minute: 0, second: 0)
             )
           end
 
@@ -173,14 +182,16 @@ module Zakuro
         #
         # 移動元に無効な二十四節気（連番のみ指定）を指定する
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Destination] destination 二十四節気（移動先）
         #
-        def self.push_destination(directions: {},
+        def self.push_destination(context:, directions: {},
                                   destination: Operation::SolarTerm::Destination.new)
           return if destination.invalid?
 
-          directions[destination.from.format] = Senmyou::SolarTerm.new(
+          solar_term_class = context.resolver.solar_term
+          directions[destination.from.format] = solar_term_class.new(
             index: destination.index
           )
         end

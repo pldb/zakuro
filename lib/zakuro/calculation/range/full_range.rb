@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
+require_relative '../../era/western'
+require_relative '../../output/logger'
+
 require_relative '../base/multi_gengou_roller'
 require_relative '../base/year'
 
 require_relative './transfer/year_boundary'
 require_relative './transfer/western_date_allocation'
-
-require_relative '../../era/western'
-
-# TODO: 汎用化
-require_relative '../../version/senmyou/range/annual_range'
 
 # :nodoc:
 module Zakuro
@@ -17,7 +15,7 @@ module Zakuro
   module Calculation
     # :nodoc:
     module Range
-      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+      # :reek:TooManyInstanceVariables { max_instance_variables: 6 }
 
       #
       # FullRange 完全範囲
@@ -42,6 +40,8 @@ module Zakuro
         attr_reader :new_year_date
         # @return [Integer] 西暦年
         attr_reader :western_year
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'full_range')
@@ -49,14 +49,16 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] end_date 終了日
         #
-        def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+        def initialize(context:, start_date: Western::Calendar.new, end_date: Western::Calendar.new)
           @start_date = start_date
           @end_date = end_date
           return if invalid?
 
+          @context = context
           @multi_gengou_roller = Base::MultiGengouRoller.new(
             start_date: start_date, end_date: end_date
           )
@@ -94,7 +96,7 @@ module Zakuro
           years
         end
 
-        # :reek:TooManyStatements { max_statements: 6 }
+        # :reek:TooManyStatements { max_statements: 7 }
 
         #
         # 完全範囲内の年データを取得する
@@ -104,11 +106,12 @@ module Zakuro
         def annual_ranges
           oldest_date = @new_year_date
           newest_date = @multi_gengou_roller.newest_date
+          annual_range = context.resolver.annual_range
 
           years = []
           ((oldest_date.year)..(newest_date.year + 2)).each do |year|
             years.push(
-              Senmyou::AnnualRange.collect_annual_range_after_last_november_1st(
+              annual_range.collect_annual_range_after_last_november_1st(
                 western_year: year
               )
             )

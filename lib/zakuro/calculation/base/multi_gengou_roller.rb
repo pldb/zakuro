@@ -178,7 +178,8 @@ module Zakuro
             first_date > second_date ? first_date : second_date
           end
           choise_date(condition: condition, second_line: second_line,
-                      first_date: first_line.end_date.clone, second_date: second_line.end_date.clone)
+                      first_date: first_line.end_date.clone,
+                      second_date: second_line.end_date.clone)
         end
 
         # :reek:LongParameterList {max_params: 4}

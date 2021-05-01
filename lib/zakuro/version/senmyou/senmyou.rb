@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative '../abstract_version'
 require_relative '../../era/western'
+require_relative '../abstract_version'
+require_relative '../context'
 require_relative 'summary/single'
 
 # :nodoc:
@@ -18,6 +19,9 @@ module Zakuro
       # @return [True] リリースあり
       RELEASE = true
 
+      # @return [String] 暦クラス名
+      VERSION_NAME = 'Senmyou'
+
       #
       # 西暦日から和暦日に変換する
       #
@@ -27,7 +31,9 @@ module Zakuro
       #
       def self.to_japan_date(western_date:)
         date = Western::Calendar.create(date: western_date)
-        Single.get(date: date)
+
+        context = Context.new(version_name: VERSION_NAME)
+        Single.get(context: context, date: date)
       end
     end
   end
