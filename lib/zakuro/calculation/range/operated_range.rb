@@ -54,7 +54,8 @@ module Zakuro
 
           years.each do |year|
             operated_year = OperatedRange.rewrite_year(
-              year: year, operated_solar_terms: @operated_solar_terms
+              context: context, year: year,
+              operated_solar_terms: @operated_solar_terms
             )
             operated_years.push(operated_year)
           end
@@ -65,18 +66,20 @@ module Zakuro
         #
         # 年を書き換える
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Year] year 年
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
         # @return [Year] 年
         #
-        def self.rewrite_year(year:, operated_solar_terms:)
+        def self.rewrite_year(context:, year:, operated_solar_terms:)
           result = Base::Year.new(
             multi_gengou: year.multi_gengou, new_year_date: year.new_year_date
           )
           year.months.each do |month|
             result.push(month: resolve_month(
-              month: month, operated_solar_terms: operated_solar_terms
+              context: context, month: month,
+              operated_solar_terms: operated_solar_terms
             ))
           end
 
@@ -88,34 +91,40 @@ module Zakuro
         #
         # 履歴情報の有無に応じた月にする
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Month] month 月
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
         # @return [Month] 月
         #
-        def self.resolve_month(month:, operated_solar_terms:)
+        def self.resolve_month(context:, month:, operated_solar_terms:)
           history = Operation.specify_history(western_date: month.western_date)
 
           return month if history.invalid?
 
           OperatedRange.rewrite_month(
-            month: month, history: history, operated_solar_terms: operated_solar_terms
+            context: context, month: month, history: history,
+            operated_solar_terms: operated_solar_terms
           )
         end
+
+        # :reek:LongParameterList {max_params: 4}
 
         #
         # 月を運用結果に書き換える
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Month] month 月
         # @param [Operation::MonthHistory] history 変更履歴
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
         # @return [Month] 月（運用結果）
         #
-        def self.rewrite_month(month:, history:, operated_solar_terms:)
+        def self.rewrite_month(context:, month:, history:, operated_solar_terms:)
           return month unless month.western_date == history.western_date
 
           operated_month = Monthly::OperatedMonth.new(
+            context: context,
             month_label: month.month_label, first_day: month.first_day,
             solar_terms: month.solar_terms, history: history,
             operated_solar_terms: operated_solar_terms
@@ -124,6 +133,7 @@ module Zakuro
           operated_month.rewrite
 
           Monthly::Month.new(
+            context: context,
             month_label: operated_month.month_label, first_day: operated_month.first_day,
             solar_terms: operated_month.solar_terms
           )

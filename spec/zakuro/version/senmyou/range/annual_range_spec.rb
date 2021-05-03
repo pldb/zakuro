@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
+                         'lib/zakuro/version/context',
+                         __dir__)
+
+require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/range/annual_range',
                          __dir__)
 
@@ -1091,6 +1095,7 @@ describe 'Zakuro' do
             expect_monthes.each do |year, expects|
               actuals = \
                 Zakuro::Senmyou::Range::AnnualRange.collect_annual_range_after_last_november_1st(
+                  context: Zakuro::Context.new(version_name: 'Senmyou'),
                   western_year: year
                 )
               actuals.each_with_index do |month, index|

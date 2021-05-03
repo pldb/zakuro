@@ -28,6 +28,8 @@ describe 'Zakuro' do
   describe 'Senmyou' do
     describe 'OperatedRange' do
       describe '.get' do
+        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+
         context 'the month with changed first day' do
           it 'should be in one days at 873-2-1' do
             # - id: 156-1-1
@@ -64,17 +66,17 @@ describe 'Zakuro' do
             #   days: '1'
             date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
-            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              context: senmyou_context,
+              context: context,
               years: Zakuro::Calculation::Range::FullRange.new(
-                context: senmyou_context, start_date: date
+                context: context, start_date: date
               ).get
             ).get
 
             actual = range[14].months[0]
             # 貞観 15年 1 小 丁卯 2-5359 873 2  1 (4)17-937
             expected = Zakuro::Calculation::Monthly::Month.new(
+              context: context,
               month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 1, is_many_days: false, leaped: false
               ),
@@ -138,16 +140,16 @@ describe 'Zakuro' do
             # rubocop:enable Layout/LineLength
             date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
-            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              context: senmyou_context,
+              context: context,
               years: Zakuro::Calculation::Range::FullRange.new(
-                context: senmyou_context, start_date: date
+                context: context, start_date: date
               ).get
             ).get
 
             actual = range[1].months[10]
             expected = Zakuro::Calculation::Monthly::Month.new(
+              context: context,
               month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 10, is_many_days: false, leaped: true
               ),
@@ -204,16 +206,16 @@ describe 'Zakuro' do
             #   days: "-"
             date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
-            senmyou_context = Zakuro::Context.new(version_name: 'Senmyou')
             range = Zakuro::Calculation::Range::OperatedRange.new(
-              context: senmyou_context,
+              context: context,
               years: Zakuro::Calculation::Range::FullRange.new(
-                context: senmyou_context, start_date: date
+                context: context, start_date: date
               ).get
             ).get
 
             actual = range[1].months[11]
             expected = Zakuro::Calculation::Monthly::Month.new(
+              context: context,
               month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
                 number: 11, is_many_days: true, leaped: false
               ),

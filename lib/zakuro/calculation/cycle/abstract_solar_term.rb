@@ -80,7 +80,15 @@ module Zakuro
           (@index == -1 && @remainder.invalid?)
         end
 
-        def index?(index)
+        #
+        # 有効な二十四節気番号か
+        #
+        # @param [Integer] index 連番
+        #
+        # @return [True] 有効
+        # @return [False] 無効
+        #
+        def self.index?(index)
           result = ORDER.fetch(index, -1)
 
           result != -1
@@ -89,11 +97,18 @@ module Zakuro
         #
         # 次の二十四節気に進める
         #
-        def next!
+        def next_term!
+          @remainder = next_term
+        end
+
+        #
+        # 次の二十四節気に進める
+        #
+        def next_term
           @index += 1
           @index = 0 if @index >= ORDER.size
 
-          @remainder.add!(@average)
+          @remainder.add(@average)
         end
 
         #
@@ -102,7 +117,7 @@ module Zakuro
         # @param [Integer] index 連番
         #
         def next_by_index(index)
-          return ArgumentError.new, 'invalid index' unless index?(index)
+          return ArgumentError.new, 'invalid index' unless AbstractSolarTerm.index?(index)
 
           loop do
             return if @index == index
@@ -117,23 +132,30 @@ module Zakuro
         # @param [Integer] index 連番
         #
         def prev_by_index(index)
-          return ArgumentError.new, 'invalid index' unless index?(index)
+          return ArgumentError.new, 'invalid index' unless AbstractSolarTerm.index?(index)
 
           loop do
             return if @index == index
 
-            prev!
+            prev_term!
           end
         end
 
         #
         # 前の二十四節気に戻る
         #
-        def prev!
+        def prev_term!
+          @remainder = prev_term
+        end
+
+        #
+        # 前の二十四節気に戻る
+        #
+        def prev_term
           @index -= 1
           @index = 23 if @index.negative?
 
-          @remainder.sub!(@average)
+          @remainder.sub(@average)
         end
 
         #

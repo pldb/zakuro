@@ -162,7 +162,7 @@ module Zakuro
       # 次の二十四節気に移る
       #
       def next_solar_term
-        @solar_term.next!
+        @solar_term.next_term!
       end
     end
   end
