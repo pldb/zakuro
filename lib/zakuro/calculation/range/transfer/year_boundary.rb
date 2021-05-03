@@ -20,12 +20,13 @@ module Zakuro
           #
           # 年間範囲内の年データの開始月を変更する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Array<Year>] annual_ranges 年データ（冬至基準）
           #
           # @return [Array<Year>] 年データ（元旦基準）
           #
-          def self.get(annual_ranges:)
-            categorize(annual_ranges: annual_ranges)
+          def self.get(context:, annual_ranges:)
+            categorize(context: context, annual_ranges: annual_ranges)
             rearranged_years(annual_ranges: annual_ranges)
           end
 
@@ -51,11 +52,12 @@ module Zakuro
           #
           # 年間範囲を昨年/今年で分類する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Array<Year>] annual_range 1年データ
           #
-          def self.categorize(annual_ranges:)
+          def self.categorize(context:, annual_ranges:)
             annual_ranges.each do |annual_range|
-              categorize_year(annual_range: annual_range)
+              categorize_year(context: context, annual_range: annual_range)
             end
           end
           private_class_method :categorize
@@ -63,14 +65,16 @@ module Zakuro
           #
           # 各月を昨年/今年で分類する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Array<Month>] annual_range 1年データ
           #
-          def self.categorize_year(annual_range:)
+          def self.categorize_year(context:, annual_range:)
             is_last_year = true
             annual_range.each_with_index do |month, index|
               is_last_year = false if month.number == 1
 
               annual_range[index] = Monthly::InitializedMonth.new(
+                context: context,
                 month_label: month.month_label, first_day: month.first_day,
                 solar_terms: month.solar_terms, phase_index: month.phase_index,
                 is_last_year: is_last_year

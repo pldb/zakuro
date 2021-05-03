@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/abstract_solar_term'
-
 require_relative './first_day'
 require_relative './month_label'
 
@@ -15,6 +13,8 @@ module Zakuro
       # Month 月情報
       #
       class Month
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
         # @return [MonthLabel] 月表示名
         attr_reader :month_label
         # @return [FirstDay] 月初日（朔日）
@@ -25,11 +25,14 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         #
-        def initialize(month_label: MonthLabel.new, first_day: FirstDay.new, solar_terms: [])
+        def initialize(context:, month_label: MonthLabel.new, first_day: FirstDay.new,
+                       solar_terms: [])
+          @context = context
           @month_label = month_label
           @first_day = first_day
           @solar_terms = solar_terms
@@ -142,7 +145,7 @@ module Zakuro
             return term if term.index.even?
           end
 
-          Cycle::AbstractSolarTerm.new
+          context.resolver.solar_term.new
         end
 
         #
@@ -155,7 +158,7 @@ module Zakuro
             return term if term.index.odd?
           end
 
-          Cycle::AbstractSolarTerm.new
+          context.resolver.solar_term.new
         end
 
         #

@@ -19,23 +19,28 @@ module Zakuro
         # @return [Integer] 月齢（朔月、上弦、望月、下弦）
         attr_reader :phase_index
 
-        # :reek:ControlParameter and :reek:BooleanParameter
+        # :reek:BooleanParameter And :reek:LongParameterList {max_params: 6}
+        # rubocop:disable Metrics/ParameterLists
 
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [True, False] is_last_year 昨年の月/今年の月
         # @param [Integer] phase_index 月齢（朔月、上弦、望月、下弦）
         #
-        def initialize(month_label: MonthLabel.new, solar_terms: [], first_day: FirstDay.new,
-                       is_last_year: false, phase_index: -1)
-          super(month_label: month_label, solar_terms: solar_terms, first_day: first_day)
+        def initialize(context:, month_label: MonthLabel.new, solar_terms: [],
+                       first_day: FirstDay.new, is_last_year: false, phase_index: -1)
+          super(context: context, month_label: month_label, solar_terms: solar_terms,
+                first_day: first_day)
           @is_last_year = is_last_year
           @phase_index = phase_index
         end
+
+        # rubocop:enable Metrics/ParameterLists
 
         # :reek:TooManyStatements { max_statements: 6 }
 

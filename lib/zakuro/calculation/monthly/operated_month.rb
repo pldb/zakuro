@@ -20,21 +20,29 @@ module Zakuro
         # @return [OperatedSolarTerms] 運用時二十四節気
         attr_reader :operated_solar_terms
 
+        # :reek:LongParameterList {max_params: 6}
+        # rubocop:disable Metrics/ParameterLists
+
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [Operation::MonthHistory] history 変更履歴（月）
         #
-        def initialize(operated_solar_terms:, month_label: MonthLabel.new, first_day: FirstDay.new,
-                       solar_terms: [], history: Operation::MonthHistory.new)
-          super(month_label: month_label, first_day: first_day, solar_terms: solar_terms)
+        def initialize(context:, operated_solar_terms:, month_label: MonthLabel.new,
+                       first_day: FirstDay.new, solar_terms: [],
+                       history: Operation::MonthHistory.new)
+          super(context: context, month_label: month_label, first_day: first_day,
+                solar_terms: solar_terms)
           @history = history
           @operated_solar_terms = operated_solar_terms
         end
+
+        # rubocop:enable Metrics/ParameterLists
 
         #
         # 書き換える
@@ -176,7 +184,7 @@ module Zakuro
         def rewrite_remainder(days:)
           remainder = first_day.remainder.clone
           remainder.add!(
-            Cycle::AbstractRemainder.new(day: days, minute: 0, second: 0)
+            context.resolver.remainder.new(day: days, minute: 0, second: 0)
           )
 
           remainder

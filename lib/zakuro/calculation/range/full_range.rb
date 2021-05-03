@@ -30,6 +30,8 @@ module Zakuro
       #   * この再計算が必要になるのは、元号が切り替わる年のみである
       #
       class FullRange
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
         # @return [Western::Calendar] 開始日
         attr_reader :start_date
         # @return [Western::Calendar] 終了日
@@ -40,8 +42,6 @@ module Zakuro
         attr_reader :new_year_date
         # @return [Integer] 西暦年
         attr_reader :western_year
-        # @return [Context] 暦コンテキスト
-        attr_reader :context
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'full_range')
@@ -85,12 +85,12 @@ module Zakuro
           return [] if invalid?
 
           years = Transfer::YearBoundary.get(
-            annual_ranges: annual_ranges
+            context: @context, annual_ranges: annual_ranges
           )
           years = update_gengou(years: years)
 
           Transfer::WesternDateAllocation.update_first_day(
-            years: years
+            context: @context, years: years
           )
 
           years
@@ -112,7 +112,7 @@ module Zakuro
           ((oldest_date.year)..(newest_date.year + 2)).each do |year|
             years.push(
               annual_range.collect_annual_range_after_last_november_1st(
-                western_year: year
+                context: @context, western_year: year
               )
             )
           end

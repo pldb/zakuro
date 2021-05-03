@@ -62,12 +62,13 @@ module Zakuro
         #   * 対象年に対して、前年11月-当年11月までを出力する
         #   * 対象年（西暦）と計算年（元号x年）の紐付けは行わない
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Integer] western_year 西暦年
         #
         # @return [Array<Month>] 1年データ
         #
-        def self.collect_annual_range_after_last_november_1st(western_year:)
-          annual_range = initialized_annual_range(western_year: western_year)
+        def self.collect_annual_range_after_last_november_1st(context:, western_year:)
+          annual_range = initialized_annual_range(context: context, western_year: western_year)
 
           apply_big_and_small_of_the_month(annual_range: annual_range)
 
@@ -111,11 +112,12 @@ module Zakuro
         #
         # 1年データを取得する
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Integer] western_year 西暦年
         #
         # @return [Array<Month>] 1年データ
         #
-        def self.initialized_annual_range(western_year:)
+        def self.initialized_annual_range(context:, western_year:)
           result = []
           lunar_phase = Monthly::LunarPhase.new(western_year: western_year)
 
@@ -125,6 +127,7 @@ module Zakuro
 
             result.push(
               Calculation::Monthly::InitializedMonth.new(
+                context: context,
                 month_label: Calculation::Monthly::MonthLabel.new,
                 first_day: Calculation::Monthly::FirstDay.new(remainder: adjusted),
                 phase_index: 0

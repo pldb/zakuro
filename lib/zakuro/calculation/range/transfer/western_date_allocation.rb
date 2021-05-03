@@ -15,12 +15,13 @@ module Zakuro
           #
           # 月初日の西暦日を更新する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Array<Year>] years 完全範囲（月初日なし）
           #
           # @return [Array<Year>] 完全範囲（月初日あり）
           #
-          def self.get(years:)
-            update_first_day(years: years)
+          def self.get(context:, years:)
+            update_first_day(context: context, years: years)
 
             years
           end
@@ -28,14 +29,16 @@ module Zakuro
           #
           # 月初日の西暦日を更新する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Array<Year>] years 完全範囲（月初日なし）
           #
-          def self.update_first_day(years:)
+          def self.update_first_day(context:, years:)
             years.each_with_index do |year, index|
               new_year_date = year.new_year_date.clone
 
               months = year.months
               update_first_day_within_all_months(
+                context: context,
                 new_year_date: new_year_date, months: months
               )
 
@@ -49,13 +52,16 @@ module Zakuro
           #
           # 全ての月で月初日の西暦日を更新する
           #
+          # @param [Context] context 暦コンテキスト
           # @param [Western::Calendar] new_year_date 元旦
           # @param [Array<Month>] months 月データ
           #
-          def self.update_first_day_within_all_months(new_year_date:, months:)
+          def self.update_first_day_within_all_months(context:,
+                                                      new_year_date:, months:)
             date = new_year_date.clone
             months.each_with_index do |month, index|
               updated_month = Monthly::Month.new(
+                context: context,
                 month_label: month.month_label,
                 first_day: Monthly::FirstDay.new(
                   remainder: month.first_day.remainder,
