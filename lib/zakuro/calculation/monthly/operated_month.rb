@@ -184,7 +184,7 @@ module Zakuro
         def rewrite_remainder(days:)
           remainder = first_day.remainder.clone
           remainder.add!(
-            Cycle::AbstractRemainder.new(day: days, minute: 0, second: 0)
+            context.resolver.remainder.new(day: days, minute: 0, second: 0)
           )
 
           remainder
