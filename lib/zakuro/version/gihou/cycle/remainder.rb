@@ -42,8 +42,8 @@ module Zakuro
       class LunarRemainder < Calculation::Cycle::AbstractRemainder
         # @return [Integer] 総法（1日=1340分）
         DAY = 1340
-        # @return [Integer] 分（1分=100秒）
-        MINUTE = 100
+        # @return [Integer] 分（1分=12秒）
+        MINUTE = 12
 
         #
         # 初期化
