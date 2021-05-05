@@ -195,17 +195,38 @@ module Zakuro
           { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
 
         targets.each do |key, value|
-          # NOTE: 境界値は上から順に引き当てた方を返す（7日の境界値7465は上のキーで返す）
+          # NOTE: 境界値は上から順に引き当てた方を返す
           matched, diff = \
             extract_data_from_moon_adjustment_key(key, minute)
+
+          next unless matched
+
           # 小余の下げ幅
-          calc_minute = (day == 7 && minute > 7465 ? minute - 7465 : minute)
-          return value, diff, calc_minute if matched
+          calc_minute = get_adjustment_minute(day: day, minute: minute)
+          return value, diff, calc_minute
         end
 
-        [nil, nil, nil]
+        raise ArgumentError.new, "invalid parameter: #{is_forward}/#{day}/#{minute}"
       end
       private_class_method :specify_moon_adjustment
+
+      # :reek:ControlParameter
+
+      #
+      # 小余の下げ幅を求める
+      #
+      # @param [Integer] day 大余
+      # @param [Integer] minute 小余
+      #
+      # @return [Integer] 小余の下げ幅
+      #
+      def self.get_adjustment_minute(day:, minute:)
+        return minute unless day == 7
+
+        return minute unless minute > 7465
+
+        minute - 7465
+      end
 
       #
       # 補正値を引き当てる
