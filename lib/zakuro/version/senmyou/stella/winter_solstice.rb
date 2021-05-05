@@ -2,6 +2,8 @@
 
 require_relative '../../../output/logger'
 
+require_relative '../const/const'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -12,20 +14,20 @@ module Zakuro
     # WinterSolstice 冬至
     #
     module WinterSolstice
-      # @return [Integer] 統法（1日=8400分）
-      DAY = 8400
+      # @return [Integer] 1日
+      DAY = Const::Cycle::DAY
       # @return [Integer] 朔望月
-      SYNODIC_MONTH = 248_057
+      SYNODIC_MONTH = Const::Cycle::SYNODIC_MONTH
       # @return [Integer] 一年
-      YEAR = 3_068_055
-      # @return [Integer] 通余:  (YEAR - DAY * 12 * 30)  = 44055
-      REMAINDER_ALL_YEAR = 44_055
-      # @return [Integer] 旬周（60日） 8400 * 60
-      SIXTY_DAYS = 504_000
-      # @return [Integer] 積年（甲子夜半朔旦冬至〜暦の開始前）
-      TOTAL_YEAR = 7_070_138
-      # @return [Integer] 暦の開始年（長慶2年）
-      BEGIN_YEAR = 822
+      YEAR = Const::Cycle::YEAR
+      # @return [Integer] 通余
+      REMAINDER_ALL_YEAR = Const::Derivation::REMAINDER_ALL_YEAR
+      # @return [Integer] 60日
+      SIXTY_DAYS = Const::Derivation::SIXTY_DAYS
+      # @return [Integer] 積年
+      TOTAL_YEAR = Const::Stack::TOTAL_YEAR
+      # @return [Integer] 暦の開始年
+      BEGIN_YEAR = Const::Stack::BEGIN_YEAR
 
       # @return [Output::Logger] ロガー
       LOGGER = Output::Logger.new(location: 'winter_solstice')

@@ -2,6 +2,8 @@
 
 require_relative '../cycle/solar_term'
 
+require_relative '../const/const'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -10,8 +12,8 @@ module Zakuro
     # SolarOrbit 太陽軌道
     #
     module SolarOrbit
-      # @return [Integer] 統法（1日=8400分）
-      DAY = 8400
+      # @return [Integer] 1日
+      DAY = Const::Cycle::DAY
 
       #
       # 24気損益眺朒（ちょうじく）数

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../const/const'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -8,8 +10,8 @@ module Zakuro
     # LunarOrbit 月軌道
     #
     module LunarOrbit
-      # @return [Integer] 暦周（1近日点）
-      ANOMALISTIC_MONTH = 231_458.19
+      # @return [Integer] 1近日点
+      ANOMALISTIC_MONTH = Const::Cycle::ANOMALISTIC_MONTH
       # @return [Integer] 暦中日
       # @note ANOMALISTIC_MONTH の半分に相当する
       HALF_ANOMALISTIC_MONTH = \
