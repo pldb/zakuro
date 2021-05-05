@@ -49,10 +49,12 @@ module Zakuro
         # @note キーは複合キーであり、以下のパターンに対応する
         #  * 変日（1-28）
         #  * 小余（0-1340）
-        # TODO: 7日、21日の小余の境界が分からない。『日本暦日原典』に記載がない
+        # TODO: 7、14、21日の小余の境界が分からない。『日本暦日原典』に記載がない
         #       仮置きとして 1190 を置いた
         #       宣明暦[7465（初益）/ 8400（統法）] * 1340（総法） = 1190.84523..
-        # TODO: 28日の小余は不明。要調査
+        # TODO: 28日は変日の範囲内743とした。
+        #       宣明暦では 進退 14-6529（1始まりなので実質13） * 2 = 27-4658 で、
+        #       これは 暦周 27-4658.19 に一致する。変日27-743.1と同等とみなした
         LIST = {
           key_01_0000_1340: Item.new(per: -134, stack: 0),
           key_02_0000_1340: Item.new(per: -117, stack: -134),
@@ -84,7 +86,7 @@ module Zakuro
           key_25_0000_1340: Item.new(per: -89, stack: +393),
           key_26_0000_1340: Item.new(per: -108, stack: +304),
           key_27_0000_1340: Item.new(per: -125, stack: +196),
-          key_28_0000_1340: Item.new(per: -71, stack: +71)
+          key_28_0000_0743: Item.new(per: -71, stack: +71)
         }.freeze
       end
 
@@ -109,22 +111,36 @@ module Zakuro
           { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
 
         targets.each do |key, value|
-          # NOTE: 境界値は上から順に引き当てた方を返す（7日の境界値7465は上のキーで返す）
+          # NOTE: 境界値は上から順に引き当てた方を返す
           matched, diff = \
             extract_data_from_moon_adjustment_key(key, minute)
 
           next unless matched
 
-          return value, diff, minute unless [7, 14, 21].include?(day)
-
           # 小余の下げ幅
-          calc_minute = minute > 1190 ? minute - 1190 : minute
+          calc_minute = get_adjustment_minute(day: day, minute: minute)
           return value, diff, calc_minute
         end
 
-        [nil, nil, nil]
+        raise ArgumentError.new, "invalid parameter: #{day}/#{minute}"
       end
       private_class_method :specify_moon_adjustment
+
+      #
+      # 小余の下げ幅を求める
+      #
+      # @param [Integer] day 大余
+      # @param [Integer] minute 小余
+      #
+      # @return [Integer] 小余の下げ幅
+      #
+      def self.get_adjustment_minute(day:, minute:)
+        return minute unless [7, 14, 21].include?(day)
+
+        return minute unless minute > 1190
+
+        minute - 1190
+      end
 
       #
       # 補正値を引き当てる
