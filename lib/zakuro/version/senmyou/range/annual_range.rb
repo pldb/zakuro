@@ -5,10 +5,10 @@ require_relative '../cycle/remainder'
 require_relative '../cycle/solar_term'
 require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
-require_relative '../stella/lunar/location'
+require_relative '../stella/lunar/localization'
 require_relative '../stella/lunar/orbit'
 require_relative '../stella/solar/average'
-require_relative '../stella/solar/location'
+require_relative '../stella/solar/localization'
 require_relative '../stella/solar/orbit'
 
 # :nodoc:
@@ -96,11 +96,11 @@ module Zakuro
             remainder: winter_solstice_age
           )
           solar_term = \
-            Solar::Location.get(
+            Solar::Localization.get(
               solar_term: solar_term
             )
 
-          moon_remainder, is_forward = Lunar::Location.calc_moon_point(
+          moon_remainder, is_forward = Lunar::Localization.calc_moon_point(
             remainder: winter_solstice_age, western_year: western_year
           )
 

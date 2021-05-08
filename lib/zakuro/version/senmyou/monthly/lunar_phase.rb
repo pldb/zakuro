@@ -183,7 +183,7 @@ module Zakuro
         # @return [Integer] 太陽運動の補正値
         #
         def correction_solar_value
-          @solar_term = Solar::Location.get(
+          @solar_term = Solar::Localization.get(
             solar_term: @solar_term
           )
           debug("@solar_term.remainder: #{@solar_term.remainder.format(form: '%d-%d.%d')}")
@@ -199,10 +199,10 @@ module Zakuro
         #
         def correction_moon_value
           @moon_remainder, @is_forward = \
-            Lunar::Location.calc_moon_point(remainder: @moon_remainder,
-                                            western_year: @western_year,
-                                            is_forward: @is_forward,
-                                            first: @first)
+            Lunar::Localization.calc_moon_point(remainder: @moon_remainder,
+                                                western_year: @western_year,
+                                                is_forward: @is_forward,
+                                                first: @first)
 
           debug("@moon_remainder.format: #{@moon_remainder.format}")
           debug("@is_forward: #{@is_forward}")

@@ -7,11 +7,11 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # Location 入定気演算
+      # Localization 入定気特定
       #
       # 入定気とは、太陽がどの二十四節気に属するか、またその二十四節気の開始点からどれだけ離れているかを示す
       #
-      module Location
+      module Localization
         #
         # Interval 入気定日加減数（二十四節気の間隔）
         #

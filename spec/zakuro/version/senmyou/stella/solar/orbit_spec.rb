@@ -13,7 +13,7 @@ require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
                          __dir__)
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar/location',
+                         'lib/zakuro/version/senmyou/stella/solar/localization',
                          __dir__)
 require File.expand_path('../../../../../../' \
                         'lib/zakuro/version/senmyou/stella/solar/orbit',
@@ -99,7 +99,7 @@ describe 'Zakuro' do
 
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term = Zakuro::Senmyou::Solar::Location.get(
+              solar_term = Zakuro::Senmyou::Solar::Localization.get(
                 solar_term: solar_term
               )
               value = Zakuro::Senmyou::Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)

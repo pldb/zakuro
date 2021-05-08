@@ -9,9 +9,9 @@ module Zakuro
     # :nodoc:
     module Lunar
       #
-      # Location 入暦
+      # Localization 入暦特定
       #
-      module Location
+      module Localization
         # @return [Integer] 1近日点
         ANOMALISTIC_MONTH = Const::Cycle::ANOMALISTIC_MONTH
         # @return [Integer] 暦中日
