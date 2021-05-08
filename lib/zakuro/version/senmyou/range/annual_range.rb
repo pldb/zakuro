@@ -5,11 +5,11 @@ require_relative '../cycle/remainder'
 require_relative '../cycle/solar_term'
 require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
-require_relative '../stella/lunar_location'
-require_relative '../stella/lunar_orbit'
-require_relative '../stella/solar_average'
-require_relative '../stella/solar_location'
-require_relative '../stella/solar_orbit'
+require_relative '../stella/lunar/location'
+require_relative '../stella/lunar/orbit'
+require_relative '../stella/solar/average'
+require_relative '../stella/solar/location'
+require_relative '../stella/solar/orbit'
 
 # :nodoc:
 module Zakuro

@@ -2,7 +2,7 @@
 
 require_relative '../../../output/logger'
 
-require_relative '../stella/winter_solstice'
+require_relative '../stella/solar/winter_solstice'
 
 # :nodoc:
 module Zakuro

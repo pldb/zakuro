@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/remainder',
                          __dir__)
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/solar_term',
                          __dir__)
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/winter_solstice',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/version/senmyou/stella/solar/winter_solstice',
                          __dir__)
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
                          __dir__)
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar_location',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/version/senmyou/stella/solar/location',
                          __dir__)
-require File.expand_path('../../../../../' \
-                        'lib/zakuro/version/senmyou/stella/solar_orbit',
+require File.expand_path('../../../../../../' \
+                        'lib/zakuro/version/senmyou/stella/solar/orbit',
                          __dir__)
 
 require 'json'

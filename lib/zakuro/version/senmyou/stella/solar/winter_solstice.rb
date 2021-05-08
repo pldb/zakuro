@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../output/logger'
+require_relative '../../../../output/logger'
 
-require_relative '../const/const'
+require_relative '../../const/const'
 
 # :nodoc:
 module Zakuro

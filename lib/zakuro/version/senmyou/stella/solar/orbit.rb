@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/solar_term'
+require_relative '../../cycle/solar_term'
 
-require_relative '../const/const'
+require_relative '../../const/const'
 
 # :nodoc:
 module Zakuro

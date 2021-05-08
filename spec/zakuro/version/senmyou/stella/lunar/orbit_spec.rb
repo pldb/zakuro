@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/remainder',
                          __dir__)
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/lunar_orbit',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/version/senmyou/stella/lunar/orbit',
                          __dir__)
 
 # データ元: 長慶宣明暦算法
