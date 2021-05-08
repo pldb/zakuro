@@ -2,6 +2,9 @@
 
 require_relative '../../../output/logger'
 
+require_relative '../stella/lunar/localization'
+require_relative '../stella/lunar/location'
+
 require_relative '../stella/solar/winter_solstice'
 
 # :nodoc:
@@ -22,8 +25,6 @@ module Zakuro
         module QuarterMoon
           # @return [Remainder] 弦（1分=8秒）
           DEFAULT = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
-          # @return [Remainder] 弦（1分=100秒）
-          BASE_HUNDRED = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
         end
 
         # @return [Output::Logger] ロガー
@@ -36,16 +37,8 @@ module Zakuro
         attr_reader :western_year
         # @return [Remainder]] 経
         attr_reader :average_remainder
-        # @return [True] 初回計算
-        # @return [False] 次回以降計算
-        attr_reader :first
         # @return [SolarTerm] 二十四節気（入定気）
         attr_reader :solar_term
-        # @return [Remainder] 入暦
-        attr_reader :moon_remainder
-        # @return [True] 進（遠地点より数える）
-        # @return [False] 退（近地点より数える）
-        attr_reader :is_forward
         # @return [Integer] 弦
         attr_reader :phase_index
 
@@ -66,10 +59,10 @@ module Zakuro
           # 入定気
           @solar_term = Cycle::SolarTerm.new(remainder: winter_solstice_age)
           # 入暦
-          @moon_remainder = Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
-
-          @is_forward = false
-          @first = true
+          @lunar_location = Lunar::Location.new(
+            remainder: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age),
+            forward: false
+          )
 
           # 弦
           @phase_index = 0
@@ -82,8 +75,6 @@ module Zakuro
         #
         def next_phase
           adjusted = current_remainder
-
-          @first = false if @first
 
           add_quarter_moon_size
 
@@ -198,23 +189,24 @@ module Zakuro
         # @return [Integer] 月運動の補正値
         #
         def correction_moon_value
-          @moon_remainder, @is_forward = \
-            Lunar::Localization.calc_moon_point(remainder: @moon_remainder,
-                                                western_year: @western_year,
-                                                is_forward: @is_forward,
-                                                first: @first)
+          @lunar_location = \
+            Lunar::Localization.calc_moon_point(location: @lunar_location,
+                                                western_year: @western_year)
 
-          debug("@moon_remainder.format: #{@moon_remainder.format}")
-          debug("@is_forward: #{@is_forward}")
+          remainder = @lunar_location.remainder
+          forward = @lunar_location.forward
 
-          Lunar::Orbit.calc_moon_orbit_value(remainder_month: @moon_remainder,
-                                             is_forward: @is_forward)
+          debug("[lunar]remainder.format: #{remainder.format}")
+          debug("[lunar]forward: #{forward}")
+
+          Lunar::Orbit.calc_moon_orbit_value(remainder_month: remainder,
+                                             is_forward: forward)
         end
 
         def add_quarter_moon_size
           @average_remainder.add!(QuarterMoon::DEFAULT)
           @solar_term.remainder.add!(QuarterMoon::DEFAULT)
-          @moon_remainder.add!(QuarterMoon::BASE_HUNDRED)
+          @lunar_location.add_quarter
 
           next_phase_index
         end

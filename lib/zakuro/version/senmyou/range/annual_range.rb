@@ -100,13 +100,14 @@ module Zakuro
               solar_term: solar_term
             )
 
-          moon_remainder, is_forward = Lunar::Localization.calc_moon_point(
-            remainder: winter_solstice_age, western_year: western_year
+          location = Lunar::Location.new(remainder: winter_solstice_age)
+          location = Lunar::Localization.calc_moon_point(
+            location: location, western_year: western_year
           )
 
           Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
-            Lunar::Orbit.calc_moon_orbit_value(remainder_month: moon_remainder,
-                                               is_forward: is_forward)
+            Lunar::Orbit.calc_moon_orbit_value(remainder_month: location.remainder,
+                                               is_forward: location.forward)
         end
         private_class_method :correction_value_on_last_november_1st
 
