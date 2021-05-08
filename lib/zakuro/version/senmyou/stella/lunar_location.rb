@@ -7,7 +7,7 @@ module Zakuro
   # :nodoc:
   module Senmyou
     #
-    # LunarOrbit 月軌道
+    # LunarLocation 入暦
     #
     module LunarLocation
       # @return [Integer] 1近日点
@@ -16,6 +16,14 @@ module Zakuro
       # @note ANOMALISTIC_MONTH の半分に相当する
       HALF_ANOMALISTIC_MONTH = \
         Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
+      # @return [Integer] 積年
+      TOTAL_YEAR = Const::Stack::TOTAL_YEAR
+      # @return [Integer] 開始年
+      BEGIN_YEAR = Const::Stack::BEGIN_YEAR
+      # @return [Integer] 年
+      YEAR = Const::Cycle::YEAR
+      # @return [Integer] 入暦上限
+      LIMIT = Cycle::Remainder.new(day: 14, minute: 6529, second: 0)
 
       #
       # 月地点を計算する
@@ -54,12 +62,11 @@ module Zakuro
       #
       def self.calc_first_moon_point(winter_solstice_age:, western_year:)
         # 積年の開始から対象年までの年数
-        total_year = \
-          WinterSolstice::TOTAL_YEAR + western_year - WinterSolstice::BEGIN_YEAR
+        total_year = TOTAL_YEAR + western_year - BEGIN_YEAR
 
         # 通積分 - 天正閏余
         total_day = \
-          total_year * WinterSolstice::YEAR - winter_solstice_age.to_minute
+          total_year * YEAR - winter_solstice_age.to_minute
 
         remainder_month = \
           Cycle::LunarRemainder.new(total: (total_day % ANOMALISTIC_MONTH))
@@ -92,7 +99,7 @@ module Zakuro
         remainder_month, is_forward = \
           decrease_moon_point(
             remainder_month: remainder,
-            remainder_limit: Cycle::Remainder.new(day: 14, minute: 6529, second: 0),
+            remainder_limit: LIMIT,
             is_forward: is_forward
           )
 
