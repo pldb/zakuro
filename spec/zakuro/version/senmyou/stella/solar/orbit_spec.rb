@@ -94,15 +94,15 @@ describe 'Zakuro' do
           end
           it 'should be expected value' do
             solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-              remainder: Zakuro::Senmyou::WinterSolstice.calc_moon_age(western_year: year)
+              remainder: Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
             )
 
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term = Zakuro::Senmyou::SolarLocation.get(
+              solar_term = Zakuro::Senmyou::Solar::Location.get(
                 solar_term: solar_term
               )
-              value = Zakuro::Senmyou::SolarOrbit.calc_sun_orbit_value(solar_term: solar_term)
+              value = Zakuro::Senmyou::Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)
 
               # judgement
               actual = { solar_term_index: solar_term.index,

@@ -57,12 +57,12 @@ module Zakuro
         def initialize(western_year:)
           @western_year = western_year
           # 経
-          @average_remainder = WinterSolstice.calc_averaged_last_november_1st(
+          @average_remainder = Solar::WinterSolstice.calc_averaged_last_november_1st(
             western_year: @western_year
           )
           # 天正閏余
           winter_solstice_age = \
-            WinterSolstice.calc_moon_age(western_year: @western_year)
+            Solar::WinterSolstice.calc_moon_age(western_year: @western_year)
           # 入定気
           @solar_term = Cycle::SolarTerm.new(remainder: winter_solstice_age)
           # 入暦
@@ -183,13 +183,13 @@ module Zakuro
         # @return [Integer] 太陽運動の補正値
         #
         def correction_solar_value
-          @solar_term = SolarLocation.get(
+          @solar_term = Solar::Location.get(
             solar_term: @solar_term
           )
           debug("@solar_term.remainder: #{@solar_term.remainder.format(form: '%d-%d.%d')}")
           debug("@solar_term.index: #{@solar_term.index}")
 
-          SolarOrbit.calc_sun_orbit_value(solar_term: @solar_term)
+          Solar::Orbit.calc_sun_orbit_value(solar_term: @solar_term)
         end
 
         #
@@ -199,16 +199,16 @@ module Zakuro
         #
         def correction_moon_value
           @moon_remainder, @is_forward = \
-            LunarLocation.calc_moon_point(remainder: @moon_remainder,
-                                          western_year: @western_year,
-                                          is_forward: @is_forward,
-                                          first: @first)
+            Lunar::Location.calc_moon_point(remainder: @moon_remainder,
+                                            western_year: @western_year,
+                                            is_forward: @is_forward,
+                                            first: @first)
 
           debug("@moon_remainder.format: #{@moon_remainder.format}")
           debug("@is_forward: #{@is_forward}")
 
-          LunarOrbit.calc_moon_orbit_value(remainder_month: @moon_remainder,
-                                           is_forward: @is_forward)
+          Lunar::Orbit.calc_moon_orbit_value(remainder_month: @moon_remainder,
+                                             is_forward: @is_forward)
         end
 
         def add_quarter_moon_size

@@ -36,10 +36,10 @@ module Zakuro
         def self.calc_last_november_1st(western_year:)
           # 天正閏余
           winter_solstice_age = \
-            WinterSolstice.calc_moon_age(western_year: western_year)
+            Solar::WinterSolstice.calc_moon_age(western_year: western_year)
           # 11月経朔
           november_1st = \
-            WinterSolstice.calc_averaged_last_november_1st(western_year: western_year)
+            Solar::WinterSolstice.calc_averaged_last_november_1st(western_year: western_year)
           # 11月定朔
 
           # 補正
@@ -73,7 +73,7 @@ module Zakuro
 
           apply_big_and_small_of_the_month(annual_range: annual_range)
 
-          solar_average = SolarAverage.new(western_year: western_year)
+          solar_average = Solar::Average.new(western_year: western_year)
           solar_average.set(annual_range: annual_range)
 
           # 月間隔を取得するためだけの末尾要素を削除
@@ -96,17 +96,17 @@ module Zakuro
             remainder: winter_solstice_age
           )
           solar_term = \
-            SolarLocation.get(
+            Solar::Location.get(
               solar_term: solar_term
             )
 
-          moon_remainder, is_forward = LunarLocation.calc_moon_point(
+          moon_remainder, is_forward = Lunar::Location.calc_moon_point(
             remainder: winter_solstice_age, western_year: western_year
           )
 
-          SolarOrbit.calc_sun_orbit_value(solar_term: solar_term) +
-            LunarOrbit.calc_moon_orbit_value(remainder_month: moon_remainder,
-                                             is_forward: is_forward)
+          Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
+            Lunar::Orbit.calc_moon_orbit_value(remainder_month: moon_remainder,
+                                               is_forward: is_forward)
         end
         private_class_method :correction_value_on_last_november_1st
 

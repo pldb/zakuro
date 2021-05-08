@@ -68,7 +68,7 @@ describe 'Zakuro' do
           it 'should be expected values' do
             fails = []
             moon_orbit_values.each do |moon_orbit_value|
-              actual = Zakuro::Senmyou::LunarOrbit.calc_moon_orbit_value(
+              actual = Zakuro::Senmyou::Lunar::Orbit.calc_moon_orbit_value(
                 remainder_month: moon_orbit_value[:remainder],
                 is_forward: moon_orbit_value[:is_forward]
               )
