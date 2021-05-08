@@ -199,10 +199,10 @@ module Zakuro
         #
         def correction_moon_value
           @moon_remainder, @is_forward = \
-            LunarOrbit.calc_moon_point(remainder: @moon_remainder,
-                                       western_year: @western_year,
-                                       is_forward: @is_forward,
-                                       first: @first)
+            LunarLocation.calc_moon_point(remainder: @moon_remainder,
+                                          western_year: @western_year,
+                                          is_forward: @is_forward,
+                                          first: @first)
 
           debug("@moon_remainder.format: #{@moon_remainder.format}")
           debug("@is_forward: #{@is_forward}")
