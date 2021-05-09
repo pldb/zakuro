@@ -13,8 +13,6 @@ module Zakuro
   module Senmyou
     # :nodoc:
     module Monthly
-      # :reek:TooManyInstanceVariables { max_instance_variables: 7 }
-
       #
       # LunarPhase 月の位相
       #
