@@ -100,10 +100,8 @@ module Zakuro
               solar_term: solar_term
             )
 
-          location = Lunar::Location.new(remainder: winter_solstice_age)
-          location = Lunar::Localization.calc_moon_point(
-            location: location, western_year: western_year
-          )
+          location = Lunar::Location.new(remainder: winter_solstice_age, western_year: western_year)
+          location.run
 
           Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
             Lunar::Orbit.calc_moon_orbit_value(remainder_month: location.remainder,

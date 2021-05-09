@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../const/const'
+require_relative './localization'
 
 # :nodoc:
 module Zakuro
@@ -30,10 +31,20 @@ module Zakuro
         # @return [Cycle::LunarRemainder] 大余小余（初回：昨年冬至）
         attr_reader :remainder
 
-        def initialize(remainder:, calculated: false, forward: false)
+        def initialize(remainder:, western_year:, calculated: false, forward: true)
           @calculated = calculated
+          @western_year = western_year
           @forward = forward
           @remainder = remainder
+        end
+
+        def run
+          if calculated
+            decrease
+            return
+          end
+
+          first
         end
 
         def limit
@@ -43,6 +54,9 @@ module Zakuro
         end
 
         def first
+          @remainder = Localization.first_remainder(
+            winter_solstice_age: @remainder, western_year: @western_year
+          )
           decrease
           one_based
 

@@ -60,8 +60,8 @@ module Zakuro
           @solar_term = Cycle::SolarTerm.new(remainder: winter_solstice_age)
           # 入暦
           @lunar_location = Lunar::Location.new(
-            remainder: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age),
-            forward: false
+            western_year: western_year,
+            remainder: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
           )
 
           # 弦
@@ -189,9 +189,7 @@ module Zakuro
         # @return [Integer] 月運動の補正値
         #
         def correction_moon_value
-          @lunar_location = \
-            Lunar::Localization.calc_moon_point(location: @lunar_location,
-                                                western_year: @western_year)
+          @lunar_location.run
 
           remainder = @lunar_location.remainder
           forward = @lunar_location.forward
