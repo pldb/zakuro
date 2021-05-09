@@ -12,13 +12,6 @@ module Zakuro
       # Orbit 月軌道
       #
       module Orbit
-        # @return [Integer] 1近日点
-        ANOMALISTIC_MONTH = Const::Cycle::ANOMALISTIC_MONTH
-        # @return [Integer] 暦中日
-        # @note ANOMALISTIC_MONTH の半分に相当する
-        HALF_ANOMALISTIC_MONTH = \
-          Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
-
         #
         # Adjustment 補正値情報
         #
@@ -60,7 +53,7 @@ module Zakuro
           #     * back: 退（近地点より数える）
           #  * 入暦（1-14）
           #  * 小余（0-8400）
-          LIST = {
+          MAP = {
             forward_01_0000_8400: Item.new(per: +830, stack: 0),
             forward_02_0000_8400: Item.new(per: +726, stack: +830),
             forward_03_0000_8400: Item.new(per: +606, stack: +1556),
@@ -97,22 +90,22 @@ module Zakuro
         #
         # 月の運行による補正値を算出する
         #
-        # @param [Remainder] remainder_month 月の大余小余
-        # @param [True, False] is_forward 進（遠地点より数える）/退（近地点より数える）
+        # @param [Cycle::LunarRemainder] remainder 月の大余小余
+        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         #
         # @return [Integer] 補正値
         #
-        def self.calc_moon_orbit_value(remainder_month:, is_forward:)
-          valid?(remainder: remainder_month)
+        def self.run(remainder:, forward:)
+          valid?(remainder: remainder)
 
-          day, minute = make_calculable_remainder_value(remainder: remainder_month)
+          day, minute = calculable_remainder_value(remainder: remainder)
 
           # 引き当て
-          adjustment, diff, minute = specify_moon_adjustment(
-            is_forward: is_forward, day: day, minute: minute
+          adjustment, diff, minute = specify_adjustment(
+            forward: forward, day: day, minute: minute
           )
-          day = make_cumulative_value_for_days(per: adjustment.per,
-                                               denominator: diff, minute: minute)
+          day = cumulative_value_for_days(per: adjustment.per,
+                                          denominator: diff, minute: minute)
 
           adjustment.stack + day
         end
@@ -120,7 +113,7 @@ module Zakuro
         #
         # 大余小余を検証する
         #
-        # @param [Remainder] remainder 大余小余
+        # @param [Cycle::LunarRemainder] remainder 大余小余
         #
         # @return [True] 正しい（月の位相計算に使う大余小余）
         # @return [True] 正しくない
@@ -136,19 +129,19 @@ module Zakuro
         # 大余小余を計算可能な値にする
         # @note 大余の秒（second）は使わない
         #
-        # @param [LunarRemainder] remainder 大余小余
+        # @param [Cycle::LunarRemainder] remainder 大余小余
         #
         # @return [Integer] 大余
         # @return [Integer] 小余
         #
-        def self.make_calculable_remainder_value(remainder:)
+        def self.calculable_remainder_value(remainder:)
           day = remainder.day
           minute = remainder.minute + (remainder.second / 100)
           minute = minute.floor
 
           [day, minute]
         end
-        private_class_method :make_calculable_remainder_value
+        private_class_method :calculable_remainder_value
 
         # :reek:TooManyStatements { max_statements: 9 }
 
@@ -161,7 +154,7 @@ module Zakuro
         #
         # @return [Integer] 累計値（大余）
         #
-        def self.make_cumulative_value_for_days(per:, denominator:, minute:)
+        def self.cumulative_value_for_days(per:, denominator:, minute:)
           remainder_minute = (per * minute).to_f
           day = remainder_minute / denominator
           # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
@@ -173,16 +166,16 @@ module Zakuro
 
           day
         end
-        private_class_method :make_cumulative_value_for_days
+        private_class_method :cumulative_value_for_days
 
         # :reek:TooManyStatements { max_statements: 9 }
 
         #
         # 月軌道の補正に必要な基本値を引き当てる
         #
-        # @note 戻り値は calc_moon_orbit_value で使用する
+        # @note 戻り値は run で使用する
         #
-        # @param [True, False] is_forward 進（遠地点より数える）/退（近地点より数える）
+        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         # @param [Integer] day 大余
         # @param [Integer] minute 小余
         #
@@ -190,10 +183,10 @@ module Zakuro
         # @return [Integer] （小余を処理する時の）分母
         # @return [Integer] 小余の下げ幅
         #
-        def self.specify_moon_adjustment(is_forward:, day:, minute:)
-          prefix = { true => 'forward', false => 'back' }[is_forward]
+        def self.specify_adjustment(forward:, day:, minute:)
+          prefix = { true => 'forward', false => 'back' }[forward]
 
-          targets = Adjustment::LIST.select \
+          targets = Adjustment::MAP.select \
             { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
 
           targets.each do |key, value|
@@ -208,9 +201,9 @@ module Zakuro
             return value, diff, calc_minute
           end
 
-          raise ArgumentError.new, "invalid parameter: #{is_forward}/#{day}/#{minute}"
+          raise ArgumentError.new, "invalid parameter: #{forward}/#{day}/#{minute}"
         end
-        private_class_method :specify_moon_adjustment
+        private_class_method :specify_adjustment
 
         # :reek:ControlParameter
 

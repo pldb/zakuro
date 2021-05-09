@@ -195,8 +195,7 @@ module Zakuro
           debug("[lunar]remainder.format: #{remainder.format}")
           debug("[lunar]forward: #{forward}")
 
-          Lunar::Orbit.calc_moon_orbit_value(remainder_month: remainder,
-                                             is_forward: forward)
+          Lunar::Orbit.run(remainder: remainder, forward: forward)
         end
 
         def add_quarter_moon_size

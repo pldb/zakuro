@@ -104,8 +104,7 @@ module Zakuro
           location.run
 
           Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
-            Lunar::Orbit.calc_moon_orbit_value(remainder_month: location.remainder,
-                                               is_forward: location.forward)
+            Lunar::Orbit.run(remainder: location.remainder, forward: location.forward)
         end
         private_class_method :correction_value_on_last_november_1st
 
