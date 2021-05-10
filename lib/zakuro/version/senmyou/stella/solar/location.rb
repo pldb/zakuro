@@ -24,16 +24,103 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Integer] index 連番
-        # @param [Cycle::Remainder] remainder 大余小余
+        # @param [Cycle::Remainder] winter_solstice_age 天正閏余（大余小余）
         #
-        def initialize(index: -1, remainder: Cycle::Remainder.new)
+        def initialize(winter_solstice_age: Cycle::Remainder.new)
           @calculated = false
-          @index = index
-          @remainder = remainder
+          @index = -1
+          @remainder = winter_solstice_age.clone
         end
 
-        # TODO: localization に組み込む
+        # TODO: 動作確認
+
+        def run
+          return current if calculated
+
+          first
+        end
+
+        def invalid?
+          @index == -1
+        end
+
+        private
+
+        #
+        # 2回目以降の計算をする
+        #
+        def current
+          decrease_recursively
+        end
+
+        #
+        # 初回計算する
+        #
+        def first
+          # 入定気の起算方法
+          # 概要:
+          #  * 太陽の運行による補正値は、二十四節気の気ごとに定められる
+          #  * 11月経朔の前にある気を求め、それから11月経朔との間隔を求める
+          #  * 気ごとの補正値と、気から11月経朔までにかかる補正値を求める
+          # 前提:
+          #  * 11月経朔に関わる二十四節気は、時系列から順に、小雪・大雪・冬至である
+          #  * 小雪〜大雪の間隔は小雪定数で、大雪〜冬至の間隔は大雪定数で決められている（24気損益眺朒（ちょうじく）数のこと）
+          #  * 11月経朔は、この小雪〜冬至の間のいずれかにある
+          # 計算:
+          # 2パターンある
+          #  (a) 大雪〜冬至にある場合
+          #   *「大雪定数 >= 天正閏余」の場合を指す
+          #   * * NOTE 資料では「より大きい（>）」とされるが、大雪そのものの場合は大雪から起算すべき
+          #   * この場合は、大雪〜経朔の間隔を求める
+          #  (b) 小雪〜大雪にある場合
+          #   *「大雪定数 < 天正閏余」の場合を指す
+          #   * この場合は、小雪〜経朔の間隔を求める
+
+          # NOTE: 上記パターンとは別に、稀だが立冬のパターンも存在する
+          # この場合は比較方法はそのままに立冬〜経朔の間隔を求める
+
+          # 大雪（23）/小雪（22）/立冬（21）
+          [23, 22, 21].each do |index|
+            prev(index: index)
+
+            break unless invalid?
+          end
+
+          # 立冬（21）を超える天正閏余は成立し得ない（1朔望月をはるかに超えることになる）
+          raise ArgumentError.new, 'invalid winster solstice age' if invalid?
+        end
+
+        def prev(index:)
+          # TODO: Interval
+          interval = Interval.index_of(index)
+          if remainder > interval
+            @remainder.sub(interval)
+            return
+          end
+
+          # 入定気が確定する
+          @remainder = interval.sub(winter_solstice_age)
+          @index = index
+        end
+
+        def next_index
+          @index += 1
+          @index = 0 if @index >= Interval.size
+        end
+
+        def next_recursively
+          # TODO: Interval
+          interval = Interval.index_of(@index)
+          # 現在の二十四節気に留まる
+          return if remainder < interval
+
+          @remainder.sub!(interval)
+
+          next_index
+
+          # 再帰
+          next_recursively
+        end
       end
     end
   end
