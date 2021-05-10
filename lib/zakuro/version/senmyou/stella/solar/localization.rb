@@ -16,8 +16,8 @@ module Zakuro
         # Interval 入気定日加減数（二十四節気の間隔）
         #
         module Interval
-          # @return [Hash<Symbol, Remainder>] 一覧
-          LIST = {
+          # @return [Hash<Symbol, Cycle::Remainder>] 一覧
+          MAP = {
             # 冬至（とうじ）・大雪（たいせつ）
             touji: Cycle::Remainder.new(day: 14, minute: 4235, second: 5),
             taisetsu: Cycle::Remainder.new(day: 14, minute: 4235, second: 5),
@@ -57,32 +57,40 @@ module Zakuro
           }.freeze
 
           # @return [Array<Remainder>] 索引
-          INDEXES = [
-            LIST[:touji],      #  0
-            LIST[:shoukan],    #  1
-            LIST[:daikan],     #  2
-            LIST[:risshun],    #  3
-            LIST[:usui],       #  4
-            LIST[:keichitsu],  #  5
-            LIST[:shunbun],    #  6
-            LIST[:seimei],     #  7
-            LIST[:kokuu],      #  8
-            LIST[:rikka],      #  9
-            LIST[:shouman],    # 10
-            LIST[:boushu],     # 11
-            LIST[:geshi],      # 12
-            LIST[:shousho],    # 13
-            LIST[:taisho],     # 14
-            LIST[:risshuu],    # 15
-            LIST[:shosho],     # 16
-            LIST[:hakuro],     # 17
-            LIST[:shuubun],    # 18
-            LIST[:kanro],      # 19
-            LIST[:soukou],     # 20
-            LIST[:rittou],     # 21
-            LIST[:shousetsu],  # 22
-            LIST[:taisetsu]    # 23
+          LIST = [
+            MAP[:touji],      #  0
+            MAP[:shoukan],    #  1
+            MAP[:daikan],     #  2
+            MAP[:risshun],    #  3
+            MAP[:usui],       #  4
+            MAP[:keichitsu],  #  5
+            MAP[:shunbun],    #  6
+            MAP[:seimei],     #  7
+            MAP[:kokuu],      #  8
+            MAP[:rikka],      #  9
+            MAP[:shouman],    # 10
+            MAP[:boushu],     # 11
+            MAP[:geshi],      # 12
+            MAP[:shousho],    # 13
+            MAP[:taisho],     # 14
+            MAP[:risshuu],    # 15
+            MAP[:shosho],     # 16
+            MAP[:hakuro],     # 17
+            MAP[:shuubun],    # 18
+            MAP[:kanro],      # 19
+            MAP[:soukou],     # 20
+            MAP[:rittou],     # 21
+            MAP[:shousetsu],  # 22
+            MAP[:taisetsu]    # 23
           ].freeze
+
+          def self.index_of(index)
+            LIST[index]
+          end
+
+          def self.size
+            LIST.size
+          end
         end
 
         #
@@ -170,7 +178,7 @@ module Zakuro
         #   SolarTerm.index : 定気（範囲外であれば-1とする）
         #
         def self.prev_solar_term(winter_solstice_age:, index:)
-          interval = Interval::INDEXES[index]
+          interval = Interval.index_of(index)
           if winter_solstice_age > interval
             # 入定気が確定しない（さらに前の定気まで遡れる）
             return Cycle::SolarTerm.new(
@@ -199,12 +207,12 @@ module Zakuro
         def self.calc_next_solar_term_recursively(solar_term:)
           remainder = solar_term.remainder
           index = solar_term.index
-          interval = Interval::INDEXES[index]
+          interval = Interval.index_of(index)
           return solar_term if remainder < interval
 
           remainder.sub!(interval)
           index += 1
-          index = 0 if index >= Interval::INDEXES.size
+          index = 0 if index >= Interval.size
           calc_next_solar_term_recursively(
             solar_term: Cycle::SolarTerm.new(remainder: remainder, index: index)
           )
