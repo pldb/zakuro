@@ -87,14 +87,14 @@ module Zakuro
         #
         # 太陽の運行による補正値を算出する
         #
-        # @param [SolarTerm] solar_term 入定気
+        # @param [SolarTerm] solar_location 入定気
         #
         # @return [Integer] 補正値
         #
-        def self.calc_sun_orbit_value(solar_term:)
-          remainder = solar_term.remainder
+        def self.calc(solar_location:)
+          remainder = solar_location.remainder
 
-          adjustment = specify_solar_term_adjustment(index: solar_term.index)
+          adjustment = specify_solar_term_adjustment(index: solar_location.index)
           # 損益率/眺朒（ちょうじく）数
           # パラメータ:
           #  a: 眺朒（ちょうじく）数の初日の値

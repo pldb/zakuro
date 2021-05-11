@@ -176,13 +176,7 @@ module Zakuro
           debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
           debug("@solar_term.index: #{@solar_location.index}")
 
-          # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
-          solar_term = Cycle::SolarTerm.new(
-            index: @solar_location.index,
-            remainder: @solar_location.remainder
-          )
-
-          Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)
+          Solar::Orbit.calc(solar_location: @solar_location)
         end
 
         #

@@ -104,16 +104,11 @@ describe 'Zakuro' do
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
               solar_location.run
-              # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
-              solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-                index: solar_location.index,
-                remainder: solar_location.remainder
-              )
-              value = Zakuro::Senmyou::Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)
+              value = Zakuro::Senmyou::Solar::Orbit.calc(solar_location: solar_location)
 
               # judgement
-              actual = { solar_term_index: solar_term.index,
-                         remainder: solar_term.remainder, value: value }
+              actual = { solar_term_index: solar_location.index,
+                         remainder: solar_location.remainder, value: value }
 
               unless actual == sun_orbit_value
                 fails.push(

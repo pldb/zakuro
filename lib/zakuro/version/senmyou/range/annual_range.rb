@@ -95,15 +95,11 @@ module Zakuro
           solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
           solar_location.run
 
-          # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
-          solar_term = Cycle::SolarTerm.new(index: solar_location.index,
-                                            remainder: solar_location.remainder)
-
           lunar_location = Lunar::Location.new(remainder: winter_solstice_age,
                                                western_year: western_year)
           lunar_location.run
 
-          Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
+          Solar::Orbit.calc(solar_location: solar_location) +
             Lunar::Orbit.run(remainder: lunar_location.remainder, forward: lunar_location.forward)
         end
         private_class_method :correction_value_on_last_november_1st
