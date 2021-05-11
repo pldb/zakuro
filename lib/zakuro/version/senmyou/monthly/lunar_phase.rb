@@ -176,7 +176,7 @@ module Zakuro
           debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
           debug("@solar_term.index: #{@solar_location.index}")
 
-          Solar::Orbit.calc(solar_location: @solar_location)
+          Solar::Orbit.run(solar_location: @solar_location)
         end
 
         #

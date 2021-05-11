@@ -99,7 +99,7 @@ module Zakuro
                                                western_year: western_year)
           lunar_location.run
 
-          Solar::Orbit.calc(solar_location: solar_location) +
+          Solar::Orbit.run(solar_location: solar_location) +
             Lunar::Orbit.run(remainder: lunar_location.remainder, forward: lunar_location.forward)
         end
         private_class_method :correction_value_on_last_november_1st

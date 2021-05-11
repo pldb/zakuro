@@ -91,7 +91,7 @@ module Zakuro
         #
         # @return [Integer] 補正値
         #
-        def self.calc(solar_location:)
+        def self.run(solar_location:)
           remainder = solar_location.remainder
 
           adjustment = specify_solar_term_adjustment(index: solar_location.index)
