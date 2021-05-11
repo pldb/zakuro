@@ -2,7 +2,7 @@
 
 require_relative '../../../output/logger'
 
-require_relative '../stella/lunar/localization'
+require_relative '../stella/solar/location'
 require_relative '../stella/lunar/location'
 
 require_relative '../stella/solar/winter_solstice'
@@ -55,7 +55,7 @@ module Zakuro
           winter_solstice_age = \
             Solar::WinterSolstice.calc_moon_age(western_year: @western_year)
           # 入定気
-          @solar_term = Cycle::SolarTerm.new(remainder: winter_solstice_age)
+          @solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
           # 入暦
           @lunar_location = Lunar::Location.new(
             western_year: western_year,
@@ -172,13 +172,17 @@ module Zakuro
         # @return [Integer] 太陽運動の補正値
         #
         def correction_solar_value
-          @solar_term = Solar::Localization.get(
-            solar_term: @solar_term
-          )
-          debug("@solar_term.remainder: #{@solar_term.remainder.format(form: '%d-%d.%d')}")
-          debug("@solar_term.index: #{@solar_term.index}")
+          @solar_location.run
+          debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
+          debug("@solar_term.index: #{@solar_location.index}")
 
-          Solar::Orbit.calc_sun_orbit_value(solar_term: @solar_term)
+          # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
+          solar_term = Cycle::SolarTerm.new(
+            index: @solar_location.index,
+            remainder: @solar_location.remainder
+          )
+
+          Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)
         end
 
         #
@@ -200,7 +204,7 @@ module Zakuro
 
         def add_quarter_moon_size
           @average_remainder.add!(QuarterMoon::DEFAULT)
-          @solar_term.remainder.add!(QuarterMoon::DEFAULT)
+          @solar_location.add_quarter
           @lunar_location.add_quarter
 
           next_phase_index

@@ -13,13 +13,13 @@ module Zakuro
       # Location 入暦
       #
       class Location
-        # @return [Integer] 暦中日
+        # @return [Cycle::LunarRemainder] 暦中日
         # @note ANOMALISTIC_MONTH の半分に相当する
         HALF_ANOMALISTIC_MONTH = \
           Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
-        # @return [Integer] 入暦上限
+        # @return [Cycle::LunarRemainder] 入暦上限
         LIMIT = Cycle::LunarRemainder.new(day: 14, minute: 6529, second: 0)
-        # @return [Remainder] 弦
+        # @return [Cycle::LunarRemainder] 弦
         QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
 
         # @return [True] 計算済み（前回計算あり）

@@ -5,10 +5,10 @@ require_relative '../cycle/remainder'
 require_relative '../cycle/solar_term'
 require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
-require_relative '../stella/lunar/localization'
+require_relative '../stella/lunar/location'
 require_relative '../stella/lunar/orbit'
 require_relative '../stella/solar/average'
-require_relative '../stella/solar/localization'
+require_relative '../stella/solar/location'
 require_relative '../stella/solar/orbit'
 
 # :nodoc:
@@ -92,19 +92,19 @@ module Zakuro
         #
         def self.correction_value_on_last_november_1st(winter_solstice_age:, western_year:)
           # 補正
-          solar_term = Cycle::SolarTerm.new(
-            remainder: winter_solstice_age
-          )
-          solar_term = \
-            Solar::Localization.get(
-              solar_term: solar_term
-            )
+          solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
+          solar_location.run
 
-          location = Lunar::Location.new(remainder: winter_solstice_age, western_year: western_year)
-          location.run
+          # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
+          solar_term = Cycle::SolarTerm.new(index: solar_location.index,
+                                            remainder: solar_location.remainder)
+
+          lunar_location = Lunar::Location.new(remainder: winter_solstice_age,
+                                               western_year: western_year)
+          lunar_location.run
 
           Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term) +
-            Lunar::Orbit.run(remainder: location.remainder, forward: location.forward)
+            Lunar::Orbit.run(remainder: lunar_location.remainder, forward: lunar_location.forward)
         end
         private_class_method :correction_value_on_last_november_1st
 

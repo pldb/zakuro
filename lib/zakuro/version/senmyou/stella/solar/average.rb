@@ -81,10 +81,8 @@ module Zakuro
           winter_solstice_age = \
             Solar::WinterSolstice.calc_moon_age(western_year: western_year)
 
-          # 入定気を求める
-          solar_location = Solar::Localization.get(
-            solar_term: Cycle::SolarTerm.new(remainder: winter_solstice_age)
-          )
+          solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
+          solar_location.run
 
           solar_term_index = solar_location.index
 

@@ -13,6 +13,9 @@ module Zakuro
       # Location 入定気
       #
       class Location
+        # @return [Cycle::Remainder] 弦（1分=8秒）
+        QUARTER = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
+
         # @return [True] 計算済み（前回計算あり）
         # @return [False] 未計算（初回計算）
         attr_reader :calculated
@@ -32,8 +35,6 @@ module Zakuro
           @remainder = winter_solstice_age.clone
         end
 
-        # TODO: 動作確認
-
         def run
           return current if calculated
 
@@ -42,6 +43,13 @@ module Zakuro
 
         def invalid?
           @index == -1
+        end
+
+        #
+        # 弦の分だけ太陽地点を進める
+        #
+        def add_quarter
+          @remainder.add!(QUARTER)
         end
 
         private
@@ -57,6 +65,14 @@ module Zakuro
         # 初回計算する
         #
         def first
+          define_first
+          @calculated = true
+        end
+
+        #
+        # 初回の入定気を定める
+        #
+        def define_first
           # 入定気の起算方法
           # 概要:
           #  * 太陽の運行による補正値は、二十四節気の気ごとに定められる
@@ -87,30 +103,32 @@ module Zakuro
           end
 
           # 立冬（21）を超える天正閏余は成立し得ない（1朔望月をはるかに超えることになる）
-          raise ArgumentError.new, 'invalid winster solstice age' if invalid?
+          if invalid?
+            # TODO: エラー
+            p 'pass'
+            raise ArgumentError.new, 'invalid winster solstice age'
+          end
         end
 
         def prev(index:)
-          # TODO: Interval
-          interval = Interval.index_of(index)
+          interval = Localization.index_of(index)
           if remainder > interval
             @remainder.sub(interval)
             return
           end
 
           # 入定気が確定する
-          @remainder = interval.sub(winter_solstice_age)
+          @remainder = interval.sub(@remainder)
           @index = index
         end
 
         def next_index
           @index += 1
-          @index = 0 if @index >= Interval.size
+          @index = 0 if @index >= Localization.size
         end
 
-        def next_recursively
-          # TODO: Interval
-          interval = Interval.index_of(@index)
+        def decrease_recursively
+          interval = Localization.index_of(@index)
           # 現在の二十四節気に留まる
           return if remainder < interval
 
@@ -119,7 +137,7 @@ module Zakuro
           next_index
 
           # 再帰
-          next_recursively
+          decrease_recursively
         end
       end
     end
