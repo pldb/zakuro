@@ -93,14 +93,21 @@ describe 'Zakuro' do
             message
           end
           it 'should be expected value' do
-            solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-              remainder: Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
+            winter_solstice_age = \
+              Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
+            solar_location = Zakuro::Senmyou::Solar::Location.new(
+              winter_solstice_age: winter_solstice_age
             )
+
+            solar_location.run
 
             fails = []
             sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term = Zakuro::Senmyou::Solar::Localization.get(
-                solar_term: solar_term
+              solar_location.run
+              # TODO: 補正値側も SolarTerm ではなく SolarLocationを見るようにする
+              solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
+                index: solar_location.index,
+                remainder: solar_location.remainder
               )
               value = Zakuro::Senmyou::Solar::Orbit.calc_sun_orbit_value(solar_term: solar_term)
 
@@ -119,12 +126,7 @@ describe 'Zakuro' do
               end
 
               # next
-              solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-                remainder: solar_term.remainder.add(
-                  Zakuro::Senmyou::Monthly::LunarPhase::QuarterMoon::DEFAULT
-                ),
-                index: solar_term.index
-              )
+              solar_location.add_quarter
             end
 
             expect(fails).to be_empty, error_message(fails: fails)

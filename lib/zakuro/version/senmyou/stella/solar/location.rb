@@ -35,12 +35,21 @@ module Zakuro
           @remainder = winter_solstice_age.clone
         end
 
+        #
+        # 入定気を計算する
+        #
         def run
           return current if calculated
 
           first
         end
 
+        #
+        # 無効かどうか
+        #
+        # @return [True] 無効
+        # @return [False] 有効
+        #
         def invalid?
           @index == -1
         end
@@ -103,17 +112,20 @@ module Zakuro
           end
 
           # 立冬（21）を超える天正閏余は成立し得ない（1朔望月をはるかに超えることになる）
-          if invalid?
-            # TODO: エラー
-            p 'pass'
-            raise ArgumentError.new, 'invalid winster solstice age'
-          end
+          return unless invalid?
+
+          raise ArgumentError.new, 'invalid winster solstice age'
         end
 
+        #
+        # 大余小余の分だけ二十四節気を遡る
+        #
+        # @param [Integer] index 二十四節気番号
+        #
         def prev(index:)
           interval = Localization.index_of(index)
           if remainder > interval
-            @remainder.sub(interval)
+            @remainder.sub!(interval)
             return
           end
 
@@ -122,11 +134,17 @@ module Zakuro
           @index = index
         end
 
+        #
+        # 二十四節気番号を次に進める
+        #
         def next_index
           @index += 1
           @index = 0 if @index >= Localization.size
         end
 
+        #
+        # 二十四節気を減算する
+        #
         def decrease_recursively
           interval = Localization.index_of(@index)
           # 現在の二十四節気に留まる
