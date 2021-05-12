@@ -64,6 +64,8 @@ module Zakuro
           solar_term
         end
 
+        # :reek:TooManyStatements { max_statements: 6 }
+
         #
         # 計算開始する二十四節気番号を求める
         #

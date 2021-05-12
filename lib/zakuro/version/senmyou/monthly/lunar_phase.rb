@@ -31,8 +31,6 @@ module Zakuro
         # @return [Array<String>] 月内の弦
         PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
 
-        # @return [Integer] 西暦年
-        attr_reader :western_year
         # @return [Remainder]] 経
         attr_reader :average_remainder
         # @return [SolarTerm] 二十四節気（入定気）
@@ -46,14 +44,13 @@ module Zakuro
         # @param [Integer] western_year 西暦年
         #
         def initialize(western_year:)
-          @western_year = western_year
           # 経
           @average_remainder = Solar::WinterSolstice.calc_averaged_last_november_1st(
-            western_year: @western_year
+            western_year: western_year
           )
           # 天正閏余
           winter_solstice_age = \
-            Solar::WinterSolstice.calc_moon_age(western_year: @western_year)
+            Solar::WinterSolstice.calc_moon_age(western_year: western_year)
           # 入定気
           @solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
           # 入暦
@@ -178,6 +175,8 @@ module Zakuro
 
           Solar::Orbit.run(solar_location: @solar_location)
         end
+
+        # :reek:TooManyStatements { max_statements: 6 }
 
         #
         # 月運動の補正値を得る
