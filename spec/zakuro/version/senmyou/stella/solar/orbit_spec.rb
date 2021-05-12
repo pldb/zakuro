@@ -13,7 +13,7 @@ require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
                          __dir__)
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar/localization',
+                         'lib/zakuro/version/senmyou/stella/solar/interval',
                          __dir__)
 require File.expand_path('../../../../../../' \
                         'lib/zakuro/version/senmyou/stella/solar/orbit',

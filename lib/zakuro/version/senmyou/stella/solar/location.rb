@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../const/const'
-require_relative './localization'
+require_relative './interval'
 
 # :nodoc:
 module Zakuro
@@ -123,7 +123,7 @@ module Zakuro
         # @param [Integer] index 二十四節気番号
         #
         def prev(index:)
-          interval = Localization.index_of(index)
+          interval = Interval.index_of(index)
           if remainder > interval
             @remainder.sub!(interval)
             return
@@ -139,14 +139,14 @@ module Zakuro
         #
         def next_index
           @index += 1
-          @index = 0 if @index >= Localization.size
+          @index = 0 if @index >= Interval.size
         end
 
         #
         # 二十四節気を減算する
         #
         def decrease_recursively
-          interval = Localization.index_of(@index)
+          interval = Interval.index_of(@index)
           # 現在の二十四節気に留まる
           return if remainder < interval
 
