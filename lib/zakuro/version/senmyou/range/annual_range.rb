@@ -95,7 +95,7 @@ module Zakuro
           solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
           solar_location.run
 
-          lunar_location = Lunar::Location.new(remainder: winter_solstice_age,
+          lunar_location = Lunar::Location.new(winter_solstice_age: winter_solstice_age,
                                                western_year: western_year)
           lunar_location.run
 

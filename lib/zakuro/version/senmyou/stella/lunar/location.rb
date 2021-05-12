@@ -36,15 +36,16 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Cycle::LunarRemainder] remainder 大余小余（初回：昨年天正閏余）
+        # @param [Cycle::LunarRemainder] winter_solstice_age 天正閏余（大余小余）
         # @param [Integer] western_year 西暦年
         # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         #
-        def initialize(remainder:, western_year:, forward: true)
+        def initialize(winter_solstice_age:, western_year:)
           @calculated = false
           @western_year = western_year
-          @forward = forward
-          @remainder = remainder
+          # 進
+          @forward = true
+          @remainder = winter_solstice_age
         end
 
         #

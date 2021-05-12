@@ -59,7 +59,7 @@ module Zakuro
           # 入暦
           @lunar_location = Lunar::Location.new(
             western_year: western_year,
-            remainder: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
+            winter_solstice_age: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
           )
 
           # 弦
