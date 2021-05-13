@@ -2,7 +2,7 @@
 
 require_relative '../../../calculation/cycle/abstract_remainder'
 
-require_relative '../const/const'
+require_relative '../const/number'
 
 # :nodoc:
 module Zakuro
@@ -31,7 +31,7 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          super(base_day: Const::Cycle::DAY, base_mitune: MINUTE,
+          super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
       end
@@ -52,7 +52,7 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          super(base_day: Const::Cycle::DAY, base_mitune: MINUTE,
+          super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
       end

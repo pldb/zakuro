@@ -2,7 +2,7 @@
 
 require_relative '../../../../output/logger'
 
-require_relative '../../const/const'
+require_relative '../../const/number'
 
 # :nodoc:
 module Zakuro
@@ -17,19 +17,19 @@ module Zakuro
       #
       module WinterSolstice
         # @return [Integer] 1日
-        DAY = Const::Cycle::DAY
+        DAY = Const::Number::Cycle::DAY
         # @return [Integer] 朔望月
-        SYNODIC_MONTH = Const::Cycle::SYNODIC_MONTH
+        SYNODIC_MONTH = Const::Number::Cycle::SYNODIC_MONTH
         # @return [Integer] 一年
-        YEAR = Const::Cycle::YEAR
+        YEAR = Const::Number::Cycle::YEAR
         # @return [Integer] 通余
-        REMAINDER_ALL_YEAR = Const::Derivation::REMAINDER_ALL_YEAR
+        REMAINDER_ALL_YEAR = Const::Number::Derivation::REMAINDER_ALL_YEAR
         # @return [Integer] 60日
-        SIXTY_DAYS = Const::Derivation::SIXTY_DAYS
+        SIXTY_DAYS = Const::Number::Derivation::SIXTY_DAYS
         # @return [Integer] 積年
-        TOTAL_YEAR = Const::Stack::TOTAL_YEAR
+        TOTAL_YEAR = Const::Number::Stack::TOTAL_YEAR
         # @return [Integer] 暦の開始年
-        BEGIN_YEAR = Const::Stack::BEGIN_YEAR
+        BEGIN_YEAR = Const::Number::Stack::BEGIN_YEAR
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'winter_solstice')

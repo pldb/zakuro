@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../const/const'
 require_relative './localization'
 
 # :nodoc:

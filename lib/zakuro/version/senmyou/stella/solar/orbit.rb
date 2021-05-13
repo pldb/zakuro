@@ -2,7 +2,7 @@
 
 require_relative '../../cycle/solar_term'
 
-require_relative '../../const/const'
+require_relative '../../const/number'
 
 # :nodoc:
 module Zakuro
@@ -15,7 +15,7 @@ module Zakuro
       #
       module Orbit
         # @return [Integer] 1日
-        DAY = Const::Cycle::DAY
+        DAY = Const::Number::Cycle::DAY
 
         #
         # 24気損益眺朒（ちょうじく）数

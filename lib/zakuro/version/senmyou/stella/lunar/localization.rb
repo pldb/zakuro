@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../const/const'
+require_relative '../../const/number'
 
 # :nodoc:
 module Zakuro
@@ -13,13 +13,13 @@ module Zakuro
       #
       module Localization
         # @return [Integer] 1近日点
-        ANOMALISTIC_MONTH = Const::Cycle::ANOMALISTIC_MONTH
+        ANOMALISTIC_MONTH = Const::Number::Cycle::ANOMALISTIC_MONTH
         # @return [Integer] 積年
-        TOTAL_YEAR = Const::Stack::TOTAL_YEAR
+        TOTAL_YEAR = Const::Number::Stack::TOTAL_YEAR
         # @return [Integer] 開始年
-        BEGIN_YEAR = Const::Stack::BEGIN_YEAR
+        BEGIN_YEAR = Const::Number::Stack::BEGIN_YEAR
         # @return [Integer] 年
-        YEAR = Const::Cycle::YEAR
+        YEAR = Const::Number::Cycle::YEAR
 
         #
         # 対象年の最初の入暦を求める
