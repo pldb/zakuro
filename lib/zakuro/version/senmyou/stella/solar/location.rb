@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../const/remainder'
+
 require_relative './interval'
 
 # :nodoc:
@@ -12,8 +14,8 @@ module Zakuro
       # Location 入定気
       #
       class Location
-        # @return [Cycle::Remainder] 弦（1分=8秒）
-        QUARTER = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
+        # @return [Cycle::Remainder] 弦
+        QUARTER = Const::Remainder::Solar::QUARTER
 
         # @return [True] 計算済み（前回計算あり）
         # @return [False] 未計算（初回計算）

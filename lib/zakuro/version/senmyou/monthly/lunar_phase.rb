@@ -2,6 +2,8 @@
 
 require_relative '../../../output/logger'
 
+require_relative '../const/remainder'
+
 require_relative '../stella/solar/location'
 require_relative '../stella/lunar/location'
 
@@ -17,13 +19,8 @@ module Zakuro
       # LunarPhase 月の位相
       #
       class LunarPhase
-        #
-        # QuarterMoon 弦
-        #
-        module QuarterMoon
-          # @return [Remainder] 弦（1分=8秒）
-          DEFAULT = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
-        end
+        # @return [Cycle::Remainder] 弦
+        QUARTER = Const::Remainder::Solar::QUARTER
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'lunar_phase')
@@ -106,7 +103,7 @@ module Zakuro
         end
 
         #
-        # 朔月（月初）かを確認する
+        # 朔月（月初）であるか
         #
         # @return [True] 朔月である
         # @return [False] 朔月ではない
@@ -196,7 +193,7 @@ module Zakuro
         end
 
         def add_quarter_moon_size
-          @average_remainder.add!(QuarterMoon::DEFAULT)
+          @average_remainder.add!(QUARTER)
           @solar_location.add_quarter
           @lunar_location.add_quarter
 

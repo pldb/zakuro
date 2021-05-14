@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../const/remainder'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -10,8 +12,8 @@ module Zakuro
       # Average 常気（太陽軌道平均）
       #
       class Average
-        # @return [Remainder] 気策（24分の1年）
-        SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 1835, second: 5)
+        # @return [Remainder] 気策
+        SOLAR_TERM_AVERAGE = Const::Remainder::Solar::SOLAR_TERM_AVERAGE
 
         #
         # 初期化

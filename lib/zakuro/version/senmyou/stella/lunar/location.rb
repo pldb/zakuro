@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../const/remainder'
+
 require_relative './localization'
 
 # :nodoc:
@@ -13,13 +15,11 @@ module Zakuro
       #
       class Location
         # @return [Cycle::LunarRemainder] 暦中日
-        # @note ANOMALISTIC_MONTH の半分に相当する
-        HALF_ANOMALISTIC_MONTH = \
-          Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
+        HALF_ANOMALISTIC_MONTH = Const::Remainder::Lunar::HALF_ANOMALISTIC_MONTH
         # @return [Cycle::LunarRemainder] 入暦上限
-        LIMIT = Cycle::LunarRemainder.new(day: 14, minute: 6529, second: 0)
+        LIMIT = Const::Remainder::Lunar::LIMIT
         # @return [Cycle::LunarRemainder] 弦
-        QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
+        QUARTER = Const::Remainder::Lunar::QUARTER
 
         # @return [True] 計算済み（前回計算あり）
         # @return [False] 未計算（初回計算）

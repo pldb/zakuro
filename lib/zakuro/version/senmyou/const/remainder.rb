@@ -14,8 +14,6 @@ module Zakuro
       # Remainder 大余小余
       #
       module Remainder
-        # TODO: 使用する
-
         #
         # Solar 太陽
         #
