@@ -111,7 +111,7 @@ module Zakuro
           years = []
           ((oldest_date.year)..(newest_date.year + 2)).each do |year|
             years.push(
-              annual_range.collect_annual_range_after_last_november_1st(
+              annual_range.get(
                 context: @context, western_year: year
               )
             )

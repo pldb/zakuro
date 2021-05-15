@@ -29,35 +29,6 @@ module Zakuro
         # :reek:TooManyStatements { max_statements: 6 }
 
         #
-        # 11月定朔（冬至が含まれる月の1日：補正済）を求める
-        #
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Remainder] 11月定朔
-        #
-        def self.calc_last_november_1st(western_year:)
-          # 経
-          average_november = Origin::AverageNovember.get(western_year: western_year)
-          # 天正閏余
-          lunar_age = Origin::LunarAge.get(western_year: western_year)
-
-          # 補正
-          correction_value = correction_value_on_last_november_1st(
-            lunar_age: lunar_age, western_year: western_year
-          )
-
-          result = average_november.add(
-            Cycle::Remainder.new(day: 0, minute: correction_value,
-                                 second: 0)
-          )
-          # 進朔
-          result.up_on_new_moon!
-          result
-        end
-
-        # :reek:TooManyStatements { max_statements: 6 }
-
-        #
         # 一覧取得する
         #
         #   * 対象年に対して、前年11月-当年11月までを出力する
@@ -68,7 +39,7 @@ module Zakuro
         #
         # @return [Array<Month>] 1年データ
         #
-        def self.collect_annual_range_after_last_november_1st(context:, western_year:)
+        def self.get(context:, western_year:)
           annual_range = initialized_annual_range(context: context, western_year: western_year)
 
           apply_big_and_small_of_the_month(annual_range: annual_range)
@@ -81,28 +52,6 @@ module Zakuro
 
           initialize_month_label(annual_range: annual_range)
         end
-
-        #
-        # 11月定朔の補正値を求める
-        #
-        # @param [Remainder] lunar_age 天正閏余
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Integer] 補正値
-        #
-        def self.correction_value_on_last_november_1st(lunar_age:, western_year:)
-          # 補正
-          solar_location = Solar::Location.new(lunar_age: lunar_age)
-          solar_location.run
-
-          lunar_location = Lunar::Location.new(lunar_age: lunar_age,
-                                               western_year: western_year)
-          lunar_location.run
-
-          Solar::Value.get(solar_location: solar_location) +
-            Lunar::Value.get(remainder: lunar_location.remainder, forward: lunar_location.forward)
-        end
-        private_class_method :correction_value_on_last_november_1st
 
         #
         # 1年データを取得する
