@@ -9,7 +9,8 @@ require_relative '../stella/solar/value'
 require_relative '../stella/lunar/location'
 require_relative '../stella/lunar/value'
 
-require_relative '../stella/solar/winter_solstice'
+require_relative '../stella/origin/lunar_age'
+require_relative '../stella/origin/average_november'
 
 # :nodoc:
 module Zakuro
@@ -44,18 +45,15 @@ module Zakuro
         #
         def initialize(western_year:)
           # 経
-          @average_remainder = Solar::WinterSolstice.calc_averaged_last_november_1st(
-            western_year: western_year
-          )
+          @average_remainder = Origin::AverageNovember.get(western_year: western_year)
           # 天正閏余
-          winter_solstice_age = \
-            Solar::WinterSolstice.calc_moon_age(western_year: western_year)
+          lunar_age = Origin::LunarAge.get(western_year: western_year)
           # 入定気
-          @solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
+          @solar_location = Solar::Location.new(lunar_age: lunar_age)
           # 入暦
           @lunar_location = Lunar::Location.new(
             western_year: western_year,
-            winter_solstice_age: Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
+            lunar_age: Cycle::LunarRemainder.new(total: 0).add!(lunar_age)
           )
 
           # 弦

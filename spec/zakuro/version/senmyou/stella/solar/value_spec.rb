@@ -7,7 +7,7 @@ require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/solar_term',
                          __dir__)
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar/winter_solstice',
+                         'lib/zakuro/version/senmyou/stella/origin/lunar_age',
                          __dir__)
 require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
@@ -94,10 +94,9 @@ describe 'Zakuro' do
               message
             end
             it 'should be expected value' do
-              winter_solstice_age = \
-                Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
+              lunar_age = Zakuro::Senmyou::Origin::LunarAge.get(western_year: year)
               solar_location = Zakuro::Senmyou::Solar::Location.new(
-                winter_solstice_age: winter_solstice_age
+                lunar_age: lunar_age
               )
 
               solar_location.run

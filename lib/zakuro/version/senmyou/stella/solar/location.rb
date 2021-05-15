@@ -28,12 +28,12 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Cycle::Remainder] winter_solstice_age 天正閏余（大余小余）
+        # @param [Cycle::Remainder] lunar_age 天正閏余（大余小余）
         #
-        def initialize(winter_solstice_age: Cycle::Remainder.new)
+        def initialize(lunar_age: Cycle::Remainder.new)
           @calculated = false
           @index = -1
-          @remainder = winter_solstice_age.clone
+          @remainder = lunar_age.clone
         end
 
         #

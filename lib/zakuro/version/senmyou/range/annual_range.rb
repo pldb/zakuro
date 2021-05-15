@@ -10,6 +10,8 @@ require_relative '../stella/lunar/value'
 require_relative '../stella/solar/average'
 require_relative '../stella/solar/location'
 require_relative '../stella/solar/value'
+require_relative '../stella/origin/lunar_age'
+require_relative '../stella/origin/average_november'
 
 # :nodoc:
 module Zakuro
@@ -34,22 +36,20 @@ module Zakuro
         # @return [Remainder] 11月定朔
         #
         def self.calc_last_november_1st(western_year:)
+          # 経
+          average_november = Origin::AverageNovember.get(western_year: western_year)
           # 天正閏余
-          winter_solstice_age = \
-            Solar::WinterSolstice.calc_moon_age(western_year: western_year)
-          # 11月経朔
-          november_1st = \
-            Solar::WinterSolstice.calc_averaged_last_november_1st(western_year: western_year)
-          # 11月定朔
+          lunar_age = Origin::LunarAge.get(western_year: western_year)
 
           # 補正
           correction_value = correction_value_on_last_november_1st(
-            winter_solstice_age: winter_solstice_age,
-            western_year: western_year
+            lunar_age: lunar_age, western_year: western_year
           )
 
-          result = november_1st.add(Cycle::Remainder.new(day: 0, minute: correction_value,
-                                                         second: 0))
+          result = average_november.add(
+            Cycle::Remainder.new(day: 0, minute: correction_value,
+                                 second: 0)
+          )
           # 進朔
           result.up_on_new_moon!
           result
@@ -85,17 +85,17 @@ module Zakuro
         #
         # 11月定朔の補正値を求める
         #
-        # @param [Remainder] winter_solstice_age 天正閏余
+        # @param [Remainder] lunar_age 天正閏余
         # @param [Integer] western_year 西暦年
         #
         # @return [Integer] 補正値
         #
-        def self.correction_value_on_last_november_1st(winter_solstice_age:, western_year:)
+        def self.correction_value_on_last_november_1st(lunar_age:, western_year:)
           # 補正
-          solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
+          solar_location = Solar::Location.new(lunar_age: lunar_age)
           solar_location.run
 
-          lunar_location = Lunar::Location.new(winter_solstice_age: winter_solstice_age,
+          lunar_location = Lunar::Location.new(lunar_age: lunar_age,
                                                western_year: western_year)
           lunar_location.run
 

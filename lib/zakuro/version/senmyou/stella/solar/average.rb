@@ -2,6 +2,8 @@
 
 require_relative '../../const/remainder'
 
+require_relative '../origin/winter_solstice'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -53,7 +55,7 @@ module Zakuro
         #
         def self.first_solar_term(western_year:)
           # 天正冬至
-          winter_solstice = Solar::WinterSolstice.calc(western_year: western_year)
+          winter_solstice = Origin::WinterSolstice.get(western_year: western_year)
 
           # 二十四節気（冬至）
           solar_term = Cycle::SolarTerm.new(index: 0, remainder: winter_solstice)
@@ -82,10 +84,9 @@ module Zakuro
         #
         def self.calc_fist_solar_term_index(western_year:)
           # 天正閏余
-          winter_solstice_age = \
-            Solar::WinterSolstice.calc_moon_age(western_year: western_year)
+          lunar_age = Origin::LunarAge.get(western_year: western_year)
 
-          solar_location = Solar::Location.new(winter_solstice_age: winter_solstice_age)
+          solar_location = Solar::Location.new(lunar_age: lunar_age)
           solar_location.run
 
           solar_term_index = solar_location.index
