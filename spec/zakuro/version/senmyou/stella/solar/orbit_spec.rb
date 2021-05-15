@@ -16,7 +16,7 @@ require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/stella/solar/interval',
                          __dir__)
 require File.expand_path('../../../../../../' \
-                        'lib/zakuro/version/senmyou/stella/solar/orbit',
+                        'lib/zakuro/version/senmyou/stella/solar/value',
                          __dir__)
 
 require 'json'
@@ -79,52 +79,54 @@ sun_orbit_values = [
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
-    describe 'SolarOrbit' do
-      describe '.calc_moon_age' do
-        context 'western year 1650' do
-          let(:year) { 1650 }
+    describe 'Solar' do
+      describe 'Value' do
+        describe '.get' do
+          context 'western year 1650' do
+            let(:year) { 1650 }
 
-          # :reek:UtilityFunction
-          def error_message(fails:)
-            message = ''
-            fails.each do |fail|
-              message += "#{JSON.generate(fail)}\n"
+            # :reek:UtilityFunction
+            def error_message(fails:)
+              message = ''
+              fails.each do |fail|
+                message += "#{JSON.generate(fail)}\n"
+              end
+              message
             end
-            message
-          end
-          it 'should be expected value' do
-            winter_solstice_age = \
-              Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
-            solar_location = Zakuro::Senmyou::Solar::Location.new(
-              winter_solstice_age: winter_solstice_age
-            )
+            it 'should be expected value' do
+              winter_solstice_age = \
+                Zakuro::Senmyou::Solar::WinterSolstice.calc_moon_age(western_year: year)
+              solar_location = Zakuro::Senmyou::Solar::Location.new(
+                winter_solstice_age: winter_solstice_age
+              )
 
-            solar_location.run
-
-            fails = []
-            sun_orbit_values.each_with_index do |sun_orbit_value, index|
               solar_location.run
-              value = Zakuro::Senmyou::Solar::Orbit.run(solar_location: solar_location)
 
-              # judgement
-              actual = { solar_term_index: solar_location.index,
-                         remainder: solar_location.remainder, value: value }
+              fails = []
+              sun_orbit_values.each_with_index do |sun_orbit_value, index|
+                solar_location.run
+                value = Zakuro::Senmyou::Solar::Value.get(solar_location: solar_location)
 
-              unless actual == sun_orbit_value
-                fails.push(
-                  {
-                    index: index,
-                    actual: actual,
-                    expect: sun_orbit_value
-                  }
-                )
+                # judgement
+                actual = { solar_term_index: solar_location.index,
+                           remainder: solar_location.remainder, value: value }
+
+                unless actual == sun_orbit_value
+                  fails.push(
+                    {
+                      index: index,
+                      actual: actual,
+                      expect: sun_orbit_value
+                    }
+                  )
+                end
+
+                # next
+                solar_location.add_quarter
               end
 
-              # next
-              solar_location.add_quarter
+              expect(fails).to be_empty, error_message(fails: fails)
             end
-
-            expect(fails).to be_empty, error_message(fails: fails)
           end
         end
       end

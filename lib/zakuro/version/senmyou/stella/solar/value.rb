@@ -11,9 +11,9 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # Orbit 太陽軌道
+      # Value 太陽補正値
       #
-      module Orbit
+      module Value
         # @return [Integer] 1日
         DAY = Const::Number::Cycle::DAY
 
@@ -24,7 +24,7 @@ module Zakuro
         #
         # @return [Integer] 補正値
         #
-        def self.run(solar_location:)
+        def self.get(solar_location:)
           remainder = solar_location.remainder
 
           adjustment = Adjustment.specify(index: solar_location.index)

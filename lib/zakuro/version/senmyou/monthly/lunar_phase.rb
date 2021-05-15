@@ -5,6 +5,7 @@ require_relative '../../../output/logger'
 require_relative '../const/remainder'
 
 require_relative '../stella/solar/location'
+require_relative '../stella/solar/value'
 require_relative '../stella/lunar/location'
 require_relative '../stella/lunar/value'
 
@@ -171,7 +172,7 @@ module Zakuro
           debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
           debug("@solar_term.index: #{@solar_location.index}")
 
-          Solar::Orbit.run(solar_location: @solar_location)
+          Solar::Value.get(solar_location: @solar_location)
         end
 
         # :reek:TooManyStatements { max_statements: 6 }
