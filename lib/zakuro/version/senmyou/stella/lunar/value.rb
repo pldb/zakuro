@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../cycle/remainder'
+
 require_relative './adjustment'
 
 # :nodoc:
@@ -92,8 +94,6 @@ module Zakuro
           day
         end
         private_class_method :cumulative_value_for_days
-
-        # :reek:TooManyStatements { max_statements: 9 }
       end
     end
   end

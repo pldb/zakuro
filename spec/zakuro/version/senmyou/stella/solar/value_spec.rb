@@ -32,7 +32,7 @@ require 'json'
 # 実際に長慶宣明暦算法では -133 であることを確認した
 #
 # rubocop:disable Layout/LineLength
-sun_orbit_values = [
+SOLAR_TEST_CASES = [
   # 各頁を文字起こししている。2行目/3行目がテストデータに対応している
   #
   # 十一月大
@@ -73,7 +73,7 @@ sun_orbit_values = [
   { solar_term_index: 3,  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 11, minute: 1168, second: 5), value: +1298 },
   # |余六千零一十九 下一十三 秒六| 余五千五百四十七 雨水三 秒二| 余一千三百八十七 朒| 余五千一百五十七 同一十四 秒九十四| 余一百三十六　朒| 余七千五百四十二 一十三 丁丑|
   { solar_term_index: 4,  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 3, minute: 5547, second: 2),  value: +1387 }
-]
+].freeze
 # rubocop:enable Layout/LineLength
 
 # rubocop:disable Metrics/BlockLength
@@ -102,26 +102,26 @@ describe 'Zakuro' do
               solar_location.run
 
               fails = []
-              sun_orbit_values.each_with_index do |sun_orbit_value, index|
+              SOLAR_TEST_CASES.each_with_index do |sun_orbit_value, index|
                 solar_location.run
                 value = Zakuro::Senmyou::Solar::Value.get(solar_location: solar_location)
 
                 # judgement
                 actual = { solar_term_index: solar_location.index,
-                           remainder: solar_location.remainder, value: value }
-
-                unless actual == sun_orbit_value
-                  fails.push(
-                    {
-                      index: index,
-                      actual: actual,
-                      expect: sun_orbit_value
-                    }
-                  )
-                end
+                           remainder: solar_location.remainder.clone, value: value }
 
                 # next
                 solar_location.add_quarter
+
+                next if actual == sun_orbit_value
+
+                fails.push(
+                  {
+                    index: index,
+                    actual: actual,
+                    expect: sun_orbit_value
+                  }
+                )
               end
 
               expect(fails).to be_empty, error_message(fails: fails)

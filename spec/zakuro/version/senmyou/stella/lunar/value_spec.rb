@@ -15,7 +15,7 @@ require File.expand_path('../../../../../../' \
 # p.101
 #
 # rubocop:disable Layout/LineLength
-moon_orbit_values = [
+LUNAR_TEST_CASES = [
   # 各頁を文字起こししている。4行目/5行目がテストデータに対応している
   #
   # 十一月大
@@ -56,7 +56,7 @@ moon_orbit_values = [
   { remainder: Zakuro::Senmyou::Cycle::LunarRemainder.new(day: 7, minute: 1943, second: 69),    forward: true, value: +3186 },
   # |余六千零一十九 下一十三 秒六| 余五千五百四十七 雨水三 秒二| 余一千三百八十七 朒| 余五千一百五十七 同一十四 秒九十四| 余一百三十六　朒| 余七千五百四十二 一十三 丁丑|
   { remainder: Zakuro::Senmyou::Cycle::LunarRemainder.new(day: 14, minute: 5157, second: 94),   forward: true, value: +136 }
-]
+].freeze
 # rubocop:enable Layout/LineLength
 
 # rubocop:disable Metrics/BlockLength
@@ -66,18 +66,19 @@ describe 'Zakuro' do
       describe 'Value' do
         # http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1444-9.pdf
         describe '.get' do
-          context 'moon_orbit_value' do
-            it 'should be expected values' do
+          context 'each lunar location' do
+            it 'should be got correction values' do
               fails = []
-              moon_orbit_values.each do |moon_orbit_value|
+              LUNAR_TEST_CASES.each do |test_case|
                 actual = Zakuro::Senmyou::Lunar::Value.get(
-                  remainder: moon_orbit_value[:remainder],
-                  forward: moon_orbit_value[:forward]
+                  remainder: test_case[:remainder],
+                  forward: test_case[:forward]
                 )
-                if actual != moon_orbit_value[:value]
-                  fails.push(parameter: moon_orbit_value, actual: actual)
-                end
+                next if actual == test_case[:value]
+
+                fails.push(parameter: test_case, actual: actual)
               end
+
               message = ''
               fails.each do |f|
                 message += "[parameter: #{f[:parameter]}, \nactual: #{f[:actual]}]\n"
