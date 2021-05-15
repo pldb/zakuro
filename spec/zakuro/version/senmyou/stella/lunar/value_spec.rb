@@ -4,7 +4,7 @@ require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/remainder',
                          __dir__)
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/lunar/orbit',
+                         'lib/zakuro/version/senmyou/stella/lunar/value',
                          __dir__)
 
 # データ元: 長慶宣明暦算法
@@ -59,31 +59,35 @@ moon_orbit_values = [
 ]
 # rubocop:enable Layout/LineLength
 
+# rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
-    describe 'LunarOrbit' do
-      # http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1444-9.pdf
-      describe '.run' do
-        context 'moon_orbit_value' do
-          it 'should be expected values' do
-            fails = []
-            moon_orbit_values.each do |moon_orbit_value|
-              actual = Zakuro::Senmyou::Lunar::Orbit.run(
-                remainder: moon_orbit_value[:remainder],
-                forward: moon_orbit_value[:forward]
-              )
-              if actual != moon_orbit_value[:value]
-                fails.push(parameter: moon_orbit_value, actual: actual)
+    describe 'Lunar' do
+      describe 'Value' do
+        # http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1444-9.pdf
+        describe '.get' do
+          context 'moon_orbit_value' do
+            it 'should be expected values' do
+              fails = []
+              moon_orbit_values.each do |moon_orbit_value|
+                actual = Zakuro::Senmyou::Lunar::Value.get(
+                  remainder: moon_orbit_value[:remainder],
+                  forward: moon_orbit_value[:forward]
+                )
+                if actual != moon_orbit_value[:value]
+                  fails.push(parameter: moon_orbit_value, actual: actual)
+                end
               end
+              message = ''
+              fails.each do |f|
+                message += "[parameter: #{f[:parameter]}, \nactual: #{f[:actual]}]\n"
+              end
+              expect(fails).to be_empty, message
             end
-            message = ''
-            fails.each do |f|
-              message += "[parameter: #{f[:parameter]}, \nactual: #{f[:actual]}]\n"
-            end
-            expect(fails).to be_empty, message
           end
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

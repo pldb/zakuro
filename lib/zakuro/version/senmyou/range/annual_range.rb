@@ -6,7 +6,7 @@ require_relative '../cycle/solar_term'
 require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/lunar/location'
-require_relative '../stella/lunar/orbit'
+require_relative '../stella/lunar/value'
 require_relative '../stella/solar/average'
 require_relative '../stella/solar/location'
 require_relative '../stella/solar/orbit'
@@ -100,7 +100,7 @@ module Zakuro
           lunar_location.run
 
           Solar::Orbit.run(solar_location: solar_location) +
-            Lunar::Orbit.run(remainder: lunar_location.remainder, forward: lunar_location.forward)
+            Lunar::Value.get(remainder: lunar_location.remainder, forward: lunar_location.forward)
         end
         private_class_method :correction_value_on_last_november_1st
 

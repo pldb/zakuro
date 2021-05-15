@@ -10,6 +10,8 @@ module Zakuro
       # Adjustment 補正値情報
       #
       module Adjustment
+        # TODO: 要リファクタリング。キー値からの演算が難解。
+
         #
         # Item 補正値
         #
@@ -79,83 +81,78 @@ module Zakuro
           back_13_0000_8400: Item.new(per: +740, stack: -1386),
           back_14_0000_6529: Item.new(per: +646, stack: -646) # 14日の小余は常に6529以下
         }.freeze
+
+        # :reek:TooManyStatements { max_statements: 9 }
+
+        #
+        # 月軌道の補正に必要な基本値を引き当てる
+        #
+        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
+        # @param [Integer] day 大余
+        # @param [Integer] minute 小余
+        #
+        # @return [Adjustment::Item] 補正値
+        # @return [Integer] （小余を処理する時の）分母
+        # @return [Integer] 小余の下げ幅
+        #
+        def self.specify(forward:, day:, minute:)
+          prefix = { true => 'forward', false => 'back' }[forward]
+
+          targets = MAP.select \
+            { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
+
+          targets.each do |key, value|
+            # NOTE: 境界値は上から順に引き当てた方を返す
+            matched, diff = extract(key, minute)
+
+            next unless matched
+
+            # 小余の下げ幅
+            calc_minute = get_minus_minute(day: day, minute: minute)
+            return value, diff, calc_minute
+          end
+
+          raise ArgumentError.new, "invalid parameter: #{forward}/#{day}/#{minute}"
+        end
+
+        # :reek:ControlParameter
+
+        #
+        # 小余の下げ幅を求める
+        #
+        # @param [Integer] day 大余
+        # @param [Integer] minute 小余
+        #
+        # @return [Integer] 小余の下げ幅
+        #
+        def self.get_minus_minute(day:, minute:)
+          return minute unless day == 7
+
+          return minute unless minute > 7465
+
+          minute - 7465
+        end
+        private_class_method :get_minus_minute
+
+        #
+        # 補正値を引き当てる
+        #
+        # @param [String] key 補正値のキー
+        # @param [Integer] minute 小余
+        #
+        # @return [Adjustment::Item] 補正値
+        # @return [Integer] （小余を処理する時の）分母
+        #
+        def self.extract(key, minute)
+          matched = key.match(/([0-9]{4})_([0-9]{4})$/)
+          start = matched[1].to_i
+          finish = matched[2].to_i
+
+          matched = minute >= start && minute <= finish
+          [matched, (finish - start)]
+        end
+        private_class_method :extract
       end
-
-      # TODO: orbit 側の下記の処理をこのモジュールに移行させること
-
-      # # :reek:TooManyStatements { max_statements: 9 }
-
-      # #
-      # # 月軌道の補正に必要な基本値を引き当てる
-      # #
-      # # @note 戻り値は run で使用する
-      # #
-      # # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
-      # # @param [Integer] day 大余
-      # # @param [Integer] minute 小余
-      # #
-      # # @return [Adjustment::Item] 補正値
-      # # @return [Integer] （小余を処理する時の）分母
-      # # @return [Integer] 小余の下げ幅
-      # #
-      # def self.specify_adjustment(forward:, day:, minute:)
-      #   prefix = { true => 'forward', false => 'back' }[forward]
-
-      #   targets = Adjustment::MAP.select \
-      #     { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
-
-      #   targets.each do |key, value|
-      #     # NOTE: 境界値は上から順に引き当てた方を返す
-      #     matched, diff = \
-      #       extract_data_from_moon_adjustment_key(key, minute)
-
-      #     next unless matched
-
-      #     # 小余の下げ幅
-      #     calc_minute = get_adjustment_minute(day: day, minute: minute)
-      #     return value, diff, calc_minute
-      #   end
-
-      #   raise ArgumentError.new, "invalid parameter: #{forward}/#{day}/#{minute}"
-      # end
-      # private_class_method :specify_adjustment
-
-      # # :reek:ControlParameter
-
-      # #
-      # # 小余の下げ幅を求める
-      # #
-      # # @param [Integer] day 大余
-      # # @param [Integer] minute 小余
-      # #
-      # # @return [Integer] 小余の下げ幅
-      # #
-      # def self.get_adjustment_minute(day:, minute:)
-      #   return minute unless day == 7
-
-      #   return minute unless minute > 7465
-
-      #   minute - 7465
-      # end
-
-      # #
-      # # 補正値を引き当てる
-      # #
-      # # @param [String] key 補正値のキー
-      # # @param [Integer] minute 小余
-      # #
-      # # @return [Adjustment::Item] 補正値
-      # # @return [Integer] （小余を処理する時の）分母
-      # #
-      # def self.extract_data_from_moon_adjustment_key(key, minute)
-      #   matched = key.match(/([0-9]{4})_([0-9]{4})$/)
-      #   start = matched[1].to_i
-      #   finish = matched[2].to_i
-
-      #   matched = minute >= start && minute <= finish
-      #   [matched, (finish - start)]
-      # end
-      # private_class_method :extract_data_from_moon_adjustment_key
     end
   end
 end

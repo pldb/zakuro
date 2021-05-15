@@ -6,6 +6,7 @@ require_relative '../const/remainder'
 
 require_relative '../stella/solar/location'
 require_relative '../stella/lunar/location'
+require_relative '../stella/lunar/value'
 
 require_relative '../stella/solar/winter_solstice'
 
@@ -189,7 +190,7 @@ module Zakuro
           debug("[lunar]remainder.format: #{remainder.format}")
           debug("[lunar]forward: #{forward}")
 
-          Lunar::Orbit.run(remainder: remainder, forward: forward)
+          Lunar::Value.get(remainder: remainder, forward: forward)
         end
 
         def add_quarter_moon_size
