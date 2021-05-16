@@ -25,7 +25,8 @@ module Zakuro
         def self.get(remainder:, forward:)
           valid?(remainder: remainder)
 
-          day, minute = floor_remainder(remainder: remainder)
+          day = remainder.day
+          minute = remainder.floor_minute
 
           # 引き当て
           row = Adjustment.specify(forward: forward, day: day, minute: minute)
@@ -55,24 +56,6 @@ module Zakuro
           raise ArgumentError, "unmatch parameter type: #{remainder.class}"
         end
         private_class_method :valid?
-
-        #
-        # 大余小余を計算可能な値にする
-        # @note 大余の秒（second）は使わない
-        #
-        # @param [Cycle::LunarRemainder] remainder 大余小余
-        #
-        # @return [Integer] 大余
-        # @return [Integer] 小余
-        #
-        def self.floor_remainder(remainder:)
-          day = remainder.day
-          minute = remainder.minute + (remainder.second / 100)
-          minute = minute.floor
-
-          [day, minute]
-        end
-        private_class_method :floor_remainder
 
         # :reek:TooManyStatements { max_statements: 9 }
 
