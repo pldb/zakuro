@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require_relative '../../../calculation/cycle/abstract_solar_term'
+
+require_relative '../const/remainder'
+
 require_relative './remainder'
 
 # :nodoc:
@@ -14,7 +17,7 @@ module Zakuro
       #
       class SolarTerm < Calculation::Cycle::AbstractSolarTerm
         # @return [Remainder] 気策（24分の1年）
-        SOLAR_TERM_AVERAGE = Remainder.new(day: 15, minute: 1835, second: 5)
+        SOLAR_TERM_AVERAGE = Const::Remainder::Solar::SOLAR_TERM_AVERAGE
 
         #
         # 初期化
