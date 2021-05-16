@@ -2,7 +2,15 @@
 
 require_relative '../../../output/logger'
 
-require_relative '../stella/winter_solstice'
+require_relative '../const/remainder'
+
+require_relative '../stella/solar/location'
+require_relative '../stella/solar/value'
+require_relative '../stella/lunar/location'
+require_relative '../stella/lunar/value'
+
+require_relative '../stella/origin/lunar_age'
+require_relative '../stella/origin/average_november'
 
 # :nodoc:
 module Zakuro
@@ -10,21 +18,12 @@ module Zakuro
   module Senmyou
     # :nodoc:
     module Monthly
-      # :reek:TooManyInstanceVariables { max_instance_variables: 7 }
-
       #
       # LunarPhase 月の位相
       #
       class LunarPhase
-        #
-        # QuarterMoon 弦
-        #
-        module QuarterMoon
-          # @return [Remainder] 弦（1分=8秒）
-          DEFAULT = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
-          # @return [Remainder] 弦（1分=100秒）
-          BASE_HUNDRED = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
-        end
+        # @return [Cycle::Remainder] 弦
+        QUARTER = Const::Remainder::Solar::QUARTER
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'lunar_phase')
@@ -32,20 +31,10 @@ module Zakuro
         # @return [Array<String>] 月内の弦
         PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
 
-        # @return [Integer] 西暦年
-        attr_reader :western_year
         # @return [Remainder]] 経
         attr_reader :average_remainder
-        # @return [True] 初回計算
-        # @return [False] 次回以降計算
-        attr_reader :first
         # @return [SolarTerm] 二十四節気（入定気）
         attr_reader :solar_term
-        # @return [Remainder] 入暦
-        attr_reader :moon_remainder
-        # @return [True] 進（遠地点より数える）
-        # @return [False] 退（近地点より数える）
-        attr_reader :is_forward
         # @return [Integer] 弦
         attr_reader :phase_index
 
@@ -55,21 +44,17 @@ module Zakuro
         # @param [Integer] western_year 西暦年
         #
         def initialize(western_year:)
-          @western_year = western_year
           # 経
-          @average_remainder = WinterSolstice.calc_averaged_last_november_1st(
-            western_year: @western_year
-          )
+          @average_remainder = Origin::AverageNovember.get(western_year: western_year)
           # 天正閏余
-          winter_solstice_age = \
-            WinterSolstice.calc_moon_age(western_year: @western_year)
+          lunar_age = Origin::LunarAge.get(western_year: western_year)
           # 入定気
-          @solar_term = Cycle::SolarTerm.new(remainder: winter_solstice_age)
+          @solar_location = Solar::Location.new(lunar_age: lunar_age)
           # 入暦
-          @moon_remainder = Cycle::LunarRemainder.new(total: 0).add!(winter_solstice_age)
-
-          @is_forward = false
-          @first = true
+          @lunar_location = Lunar::Location.new(
+            western_year: western_year,
+            lunar_age: Cycle::LunarRemainder.new(total: 0).add!(lunar_age)
+          )
 
           # 弦
           @phase_index = 0
@@ -82,8 +67,6 @@ module Zakuro
         #
         def next_phase
           adjusted = current_remainder
-
-          @first = false if @first
 
           add_quarter_moon_size
 
@@ -120,7 +103,7 @@ module Zakuro
         end
 
         #
-        # 朔月（月初）かを確認する
+        # 朔月（月初）であるか
         #
         # @return [True] 朔月である
         # @return [False] 朔月ではない
@@ -183,14 +166,14 @@ module Zakuro
         # @return [Integer] 太陽運動の補正値
         #
         def correction_solar_value
-          @solar_term = SolarLocation.get(
-            solar_term: @solar_term
-          )
-          debug("@solar_term.remainder: #{@solar_term.remainder.format(form: '%d-%d.%d')}")
-          debug("@solar_term.index: #{@solar_term.index}")
+          @solar_location.run
+          debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
+          debug("@solar_term.index: #{@solar_location.index}")
 
-          SolarOrbit.calc_sun_orbit_value(solar_term: @solar_term)
+          Solar::Value.get(solar_location: @solar_location)
         end
+
+        # :reek:TooManyStatements { max_statements: 6 }
 
         #
         # 月運動の補正値を得る
@@ -198,23 +181,21 @@ module Zakuro
         # @return [Integer] 月運動の補正値
         #
         def correction_moon_value
-          @moon_remainder, @is_forward = \
-            LunarOrbit.calc_moon_point(remainder: @moon_remainder,
-                                       western_year: @western_year,
-                                       is_forward: @is_forward,
-                                       first: @first)
+          @lunar_location.run
 
-          debug("@moon_remainder.format: #{@moon_remainder.format}")
-          debug("@is_forward: #{@is_forward}")
+          remainder = @lunar_location.remainder
+          forward = @lunar_location.forward
 
-          LunarOrbit.calc_moon_orbit_value(remainder_month: @moon_remainder,
-                                           is_forward: @is_forward)
+          debug("[lunar]remainder.format: #{remainder.format}")
+          debug("[lunar]forward: #{forward}")
+
+          Lunar::Value.get(remainder: remainder, forward: forward)
         end
 
         def add_quarter_moon_size
-          @average_remainder.add!(QuarterMoon::DEFAULT)
-          @solar_term.remainder.add!(QuarterMoon::DEFAULT)
-          @moon_remainder.add!(QuarterMoon::BASE_HUNDRED)
+          @average_remainder.add!(QUARTER)
+          @solar_location.add_quarter
+          @lunar_location.add_quarter
 
           next_phase_index
         end

@@ -332,6 +332,18 @@ module Zakuro
         end
 
         #
+        # 小余（秒切り捨て）を返す
+        #
+        # @note 切り捨て前に繰り上げる
+        #
+        # @return [Integer] 小余（秒切り捨て）
+        #
+        def floor_minute
+          result = @minute + @second / @base_minute
+          result.floor
+        end
+
+        #
         # 大余に四捨五入した結果を返す（秒は除外する）
         #
         # @return [AbstractRemainder] 大余

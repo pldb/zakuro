@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/remainder',
                          __dir__)
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/cycle/solar_term',
                          __dir__)
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/winter_solstice',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/version/senmyou/stella/origin/lunar_age',
                          __dir__)
-require File.expand_path('../../../../../' \
+require File.expand_path('../../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
                          __dir__)
-require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/senmyou/stella/solar_location',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/version/senmyou/stella/solar/interval',
                          __dir__)
-require File.expand_path('../../../../../' \
-                        'lib/zakuro/version/senmyou/stella/solar_orbit',
+require File.expand_path('../../../../../../' \
+                        'lib/zakuro/version/senmyou/stella/solar/value',
                          __dir__)
 
 require 'json'
@@ -32,7 +32,7 @@ require 'json'
 # 実際に長慶宣明暦算法では -133 であることを確認した
 #
 # rubocop:disable Layout/LineLength
-sun_orbit_values = [
+SOLAR_TEST_CASES = [
   # 各頁を文字起こししている。2行目/3行目がテストデータに対応している
   #
   # 十一月大
@@ -73,42 +73,48 @@ sun_orbit_values = [
   { solar_term_index: 3,  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 11, minute: 1168, second: 5), value: +1298 },
   # |余六千零一十九 下一十三 秒六| 余五千五百四十七 雨水三 秒二| 余一千三百八十七 朒| 余五千一百五十七 同一十四 秒九十四| 余一百三十六　朒| 余七千五百四十二 一十三 丁丑|
   { solar_term_index: 4,  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 3, minute: 5547, second: 2),  value: +1387 }
-]
+].freeze
 # rubocop:enable Layout/LineLength
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Senmyou' do
-    describe 'SolarOrbit' do
-      describe '.calc_moon_age' do
-        context 'western year 1650' do
-          let(:year) { 1650 }
+    describe 'Solar' do
+      describe 'Value' do
+        describe '.get' do
+          context 'western year 1650' do
+            let(:year) { 1650 }
 
-          # :reek:UtilityFunction
-          def error_message(fails:)
-            message = ''
-            fails.each do |fail|
-              message += "#{JSON.generate(fail)}\n"
+            # :reek:UtilityFunction
+            def error_message(fails:)
+              message = ''
+              fails.each do |fail|
+                message += "#{JSON.generate(fail)}\n"
+              end
+              message
             end
-            message
-          end
-          it 'should be expected value' do
-            solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-              remainder: Zakuro::Senmyou::WinterSolstice.calc_moon_age(western_year: year)
-            )
-
-            fails = []
-            sun_orbit_values.each_with_index do |sun_orbit_value, index|
-              solar_term = Zakuro::Senmyou::SolarLocation.get(
-                solar_term: solar_term
+            it 'should be expected value' do
+              lunar_age = Zakuro::Senmyou::Origin::LunarAge.get(western_year: year)
+              solar_location = Zakuro::Senmyou::Solar::Location.new(
+                lunar_age: lunar_age
               )
-              value = Zakuro::Senmyou::SolarOrbit.calc_sun_orbit_value(solar_term: solar_term)
 
-              # judgement
-              actual = { solar_term_index: solar_term.index,
-                         remainder: solar_term.remainder, value: value }
+              solar_location.run
 
-              unless actual == sun_orbit_value
+              fails = []
+              SOLAR_TEST_CASES.each_with_index do |sun_orbit_value, index|
+                solar_location.run
+                value = Zakuro::Senmyou::Solar::Value.get(solar_location: solar_location)
+
+                # judgement
+                actual = { solar_term_index: solar_location.index,
+                           remainder: solar_location.remainder.clone, value: value }
+
+                # next
+                solar_location.add_quarter
+
+                next if actual == sun_orbit_value
+
                 fails.push(
                   {
                     index: index,
@@ -118,16 +124,8 @@ describe 'Zakuro' do
                 )
               end
 
-              # next
-              solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
-                remainder: solar_term.remainder.add(
-                  Zakuro::Senmyou::Monthly::LunarPhase::QuarterMoon::DEFAULT
-                ),
-                index: solar_term.index
-              )
+              expect(fails).to be_empty, error_message(fails: fails)
             end
-
-            expect(fails).to be_empty, error_message(fails: fails)
           end
         end
       end

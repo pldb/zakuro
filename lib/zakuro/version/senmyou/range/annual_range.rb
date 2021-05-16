@@ -5,10 +5,13 @@ require_relative '../cycle/remainder'
 require_relative '../cycle/solar_term'
 require_relative '../../../calculation/monthly/initialized_month'
 require_relative '../monthly/lunar_phase'
-require_relative '../stella/solar_orbit'
-require_relative '../stella/solar_average'
-require_relative '../stella/solar_location'
-require_relative '../stella/lunar_orbit'
+require_relative '../stella/lunar/location'
+require_relative '../stella/lunar/value'
+require_relative '../stella/solar/average'
+require_relative '../stella/solar/location'
+require_relative '../stella/solar/value'
+require_relative '../stella/origin/lunar_age'
+require_relative '../stella/origin/average_november'
 
 # :nodoc:
 module Zakuro
@@ -26,37 +29,6 @@ module Zakuro
         # :reek:TooManyStatements { max_statements: 6 }
 
         #
-        # 11月定朔（冬至が含まれる月の1日：補正済）を求める
-        #
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Remainder] 11月定朔
-        #
-        def self.calc_last_november_1st(western_year:)
-          # 天正閏余
-          winter_solstice_age = \
-            WinterSolstice.calc_moon_age(western_year: western_year)
-          # 11月経朔
-          november_1st = \
-            WinterSolstice.calc_averaged_last_november_1st(western_year: western_year)
-          # 11月定朔
-
-          # 補正
-          correction_value = correction_value_on_last_november_1st(
-            winter_solstice_age: winter_solstice_age,
-            western_year: western_year
-          )
-
-          result = november_1st.add(Cycle::Remainder.new(day: 0, minute: correction_value,
-                                                         second: 0))
-          # 進朔
-          result.up_on_new_moon!
-          result
-        end
-
-        # :reek:TooManyStatements { max_statements: 6 }
-
-        #
         # 一覧取得する
         #
         #   * 対象年に対して、前年11月-当年11月までを出力する
@@ -67,12 +39,12 @@ module Zakuro
         #
         # @return [Array<Month>] 1年データ
         #
-        def self.collect_annual_range_after_last_november_1st(context:, western_year:)
+        def self.get(context:, western_year:)
           annual_range = initialized_annual_range(context: context, western_year: western_year)
 
           apply_big_and_small_of_the_month(annual_range: annual_range)
 
-          solar_average = SolarAverage.new(western_year: western_year)
+          solar_average = Solar::Average.new(western_year: western_year)
           solar_average.set(annual_range: annual_range)
 
           # 月間隔を取得するためだけの末尾要素を削除
@@ -80,34 +52,6 @@ module Zakuro
 
           initialize_month_label(annual_range: annual_range)
         end
-
-        #
-        # 11月定朔の補正値を求める
-        #
-        # @param [Remainder] winter_solstice_age 天正閏余
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Integer] 補正値
-        #
-        def self.correction_value_on_last_november_1st(winter_solstice_age:, western_year:)
-          # 補正
-          solar_term = Cycle::SolarTerm.new(
-            remainder: winter_solstice_age
-          )
-          solar_term = \
-            SolarLocation.get(
-              solar_term: solar_term
-            )
-
-          moon_remainder, is_forward = LunarOrbit.calc_moon_point(
-            remainder: winter_solstice_age, western_year: western_year
-          )
-
-          SolarOrbit.calc_sun_orbit_value(solar_term: solar_term) +
-            LunarOrbit.calc_moon_orbit_value(remainder_month: moon_remainder,
-                                             is_forward: is_forward)
-        end
-        private_class_method :correction_value_on_last_november_1st
 
         #
         # 1年データを取得する
