@@ -25,16 +25,20 @@ module Zakuro
         def self.get(remainder:, forward:)
           valid?(remainder: remainder)
 
-          day, minute = calculable_remainder_value(remainder: remainder)
+          day, minute = floor_remainder(remainder: remainder)
 
           # 引き当て
-          adjustment, diff, minute = Adjustment.specify(
-            forward: forward, day: day, minute: minute
-          )
-          day = cumulative_value_for_days(per: adjustment.per,
-                                          denominator: diff, minute: minute)
+          row = Adjustment.specify(forward: forward, day: day, minute: minute)
 
-          adjustment.stack + day
+          value = row.value
+          denominator = row.denominator
+
+          minus_minute = Adjustment.minus_minute(day: day, minute: minute)
+
+          day = calc_day(per: value.per, denominator: denominator,
+                         minute: minus_minute)
+
+          value.stack + day
         end
 
         #
@@ -61,14 +65,14 @@ module Zakuro
         # @return [Integer] 大余
         # @return [Integer] 小余
         #
-        def self.calculable_remainder_value(remainder:)
+        def self.floor_remainder(remainder:)
           day = remainder.day
           minute = remainder.minute + (remainder.second / 100)
           minute = minute.floor
 
           [day, minute]
         end
-        private_class_method :calculable_remainder_value
+        private_class_method :floor_remainder
 
         # :reek:TooManyStatements { max_statements: 9 }
 
@@ -81,7 +85,7 @@ module Zakuro
         #
         # @return [Integer] 累計値（大余）
         #
-        def self.cumulative_value_for_days(per:, denominator:, minute:)
+        def self.calc_day(per:, denominator:, minute:)
           remainder_minute = (per * minute).to_f
           day = remainder_minute / denominator
           # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
@@ -93,7 +97,7 @@ module Zakuro
 
           day
         end
-        private_class_method :cumulative_value_for_days
+        private_class_method :calc_day
       end
     end
   end
