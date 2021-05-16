@@ -14,6 +14,8 @@ module Zakuro
       # Value 月補正値
       #
       module Value
+        # :reek:TooManyStatements { max_statements: 9 }
+
         #
         # 月の運行による補正値を算出する
         #
