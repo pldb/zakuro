@@ -44,6 +44,8 @@ module Zakuro
             @value = value
           end
 
+          # :reek:ControlParameter
+
           #
           # 一致するか
           #

@@ -11,7 +11,7 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # 24気損益眺朒（ちょうじく）数
+      # Adjustment 24気損益眺朒（ちょうじく）数
       #
       module Adjustment
         #
