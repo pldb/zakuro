@@ -10,12 +10,75 @@ module Zakuro
       # Adjustment 補正値情報
       #
       module Adjustment
-        # TODO: 要リファクタリング。キー値からの演算が難解。
+        #
+        # Row 1行情報
+        #
+        class Row
+          # @return [True] 進（遠地点より数える）
+          # @return [False] 退（近地点より数える）
+          attr_reader :forward
+          # @return [Integer] 入暦（1-14）
+          attr_reader :day
+          # @return [Range] 小余範囲
+          attr_reader :range
+          # @return [Value] 補正値
+          attr_reader :value
+
+          def initialize(forward:, day:, range:, value:)
+            @forward = forward
+            @day = day
+            @range = range
+            @value = value
+          end
+
+          def match?(forward:, day:, minute:)
+            return false unless @forward == forward
+
+            return false unless @day == day
+
+            return false unless @range.include?(minute: minute)
+
+            true
+          end
+
+          def denominator
+            @range.denominator
+          end
+        end
 
         #
-        # Item 補正値
+        # Range 小余範囲
         #
-        class Item
+        class Range
+          # @return [Integer] 下限
+          attr_reader :min
+          # @return [Integer] 上限
+          attr_reader :max
+
+          #
+          # 初期化
+          #
+          # @param [Integer] min 下限
+          # @param [Integer] max 上限
+          #
+          def initialize(min:, max:)
+            @min = min
+            @max = max
+          end
+
+          def include?(minute:)
+            minute >= @min && minute <= @max
+          end
+
+          def denominator
+            @max - @min
+          end
+        end
+
+        #
+        # Value 補正値
+        #
+        class Value
           # @return [Integer] 損益率
           attr_reader :per
           # @return [Integer] 眺朒（ちょうじく）積
@@ -42,47 +105,44 @@ module Zakuro
           end
         end
 
-        # @return [Array<Item>] 月の補正値
-        # @note キーは複合キーであり、以下のパターンに対応する
-        #   * 進退
-        #     * forward: 進（遠地点より数える）
-        #     * back: 退（近地点より数える）
-        #  * 入暦（1-14）
-        #  * 小余（0-8400）
-        MAP = {
-          forward_01_0000_8400: Item.new(per: +830, stack: 0),
-          forward_02_0000_8400: Item.new(per: +726, stack: +830),
-          forward_03_0000_8400: Item.new(per: +606, stack: +1556),
-          forward_04_0000_8400: Item.new(per: +471, stack: +2162),
-          forward_05_0000_8400: Item.new(per: +337, stack: +2633),
-          forward_06_0000_8400: Item.new(per: +202, stack: +2970),
-          forward_07_0000_7465: Item.new(per: +53, stack: +3172),
-          forward_07_7465_8400: Item.new(per: -7, stack: +3225),  # +3172 + 53（初益）
-          forward_08_0000_8400: Item.new(per: -82, stack: +3218),
-          forward_09_0000_8400: Item.new(per: -224, stack: +3136),
-          forward_10_0000_8400: Item.new(per: -366, stack: +2912),
-          forward_11_0000_8400: Item.new(per: -509, stack: +2546),
-          forward_12_0000_8400: Item.new(per: -643, stack: +2037),
-          forward_13_0000_8400: Item.new(per: -748, stack: +1394),
-          forward_14_0000_6529: Item.new(per: -646, stack: +646), # 14日の小余は常に6529以下
-          back_01_0000_8400: Item.new(per: -830, stack: 0),
-          back_02_0000_8400: Item.new(per: -726, stack: -830),
-          back_03_0000_8400: Item.new(per: -598, stack: -1556),
-          back_04_0000_8400: Item.new(per: -464, stack: -2154),
-          back_05_0000_8400: Item.new(per: -329, stack: -2618),
-          back_06_0000_8400: Item.new(per: -195, stack: -2947),
-          back_07_0000_7465: Item.new(per: -53, stack: -3142),
-          back_07_7465_8400: Item.new(per: +7, stack: -3195), # -3142 - 53（初益）
-          back_08_0000_8400: Item.new(per: +82, stack: -3188),
-          back_09_0000_8400: Item.new(per: +225, stack: -3106),
-          back_10_0000_8400: Item.new(per: +366, stack: -2881),
-          back_11_0000_8400: Item.new(per: +501, stack: -2515),
-          back_12_0000_8400: Item.new(per: +628, stack: -2014),
-          back_13_0000_8400: Item.new(per: +740, stack: -1386),
-          back_14_0000_6529: Item.new(per: +646, stack: -646) # 14日の小余は常に6529以下
-        }.freeze
+        # rubocop:disable Layout/LineLength
 
-        # :reek:TooManyStatements { max_statements: 9 }
+        #
+        # @return [Array<Row>] 月の補正値情報
+        #
+        LIST = [
+          Row.new(forward: true, day: 1, range: Range.new(min: 0, max: 8400), value: Value.new(per: +830, stack: 0)),
+          Row.new(forward: true, day: 2, range: Range.new(min: 0, max: 8400), value: Value.new(per: +726, stack: +830)),
+          Row.new(forward: true, day: 3, range: Range.new(min: 0, max: 8400), value: Value.new(per: +606, stack: +1556)),
+          Row.new(forward: true, day: 4, range: Range.new(min: 0, max: 8400), value: Value.new(per: +471, stack: +2162)),
+          Row.new(forward: true, day: 5, range: Range.new(min: 0, max: 8400), value: Value.new(per: +337, stack: +2633)),
+          Row.new(forward: true, day: 6, range: Range.new(min: 0, max: 8400), value: Value.new(per: +202, stack: +2970)),
+          Row.new(forward: true, day: 7, range: Range.new(min: 0, max: 7465), value: Value.new(per: +53, stack: +3172)),
+          Row.new(forward: true, day: 7, range: Range.new(min: 7465, max: 8400), value: Value.new(per: -7, stack: +3225)), # +3172 + 53（初益）
+          Row.new(forward: true, day: 8, range: Range.new(min: 0, max: 8400), value: Value.new(per: -82, stack: +3218)),
+          Row.new(forward: true, day: 9, range: Range.new(min: 0, max: 8400), value: Value.new(per: -224, stack: +3136)),
+          Row.new(forward: true, day: 10, range: Range.new(min: 0, max: 8400), value: Value.new(per: -366, stack: +2912)),
+          Row.new(forward: true, day: 11, range: Range.new(min: 0, max: 8400), value: Value.new(per: -509, stack: +2546)),
+          Row.new(forward: true, day: 12, range: Range.new(min: 0, max: 8400), value: Value.new(per: -643, stack: +2037)),
+          Row.new(forward: true, day: 13, range: Range.new(min: 0, max: 8400), value: Value.new(per: -748, stack: +1394)),
+          Row.new(forward: true, day: 14, range: Range.new(min: 0, max: 6529), value: Value.new(per: -646, stack: +646)), # 14日の小余は常に6529以下
+          Row.new(forward: false, day: 1, range: Range.new(min: 0, max: 8400), value: Value.new(per: -830, stack: 0)),
+          Row.new(forward: false, day: 2, range: Range.new(min: 0, max: 8400), value: Value.new(per: -726, stack: -830)),
+          Row.new(forward: false, day: 3, range: Range.new(min: 0, max: 8400), value: Value.new(per: -598, stack: -1556)),
+          Row.new(forward: false, day: 4, range: Range.new(min: 0, max: 8400), value: Value.new(per: -464, stack: -2154)),
+          Row.new(forward: false, day: 5, range: Range.new(min: 0, max: 8400), value: Value.new(per: -329, stack: -2618)),
+          Row.new(forward: false, day: 6, range: Range.new(min: 0, max: 8400), value: Value.new(per: -195, stack: -2947)),
+          Row.new(forward: false, day: 7, range: Range.new(min: 0, max: 7465), value: Value.new(per: -53, stack: -3142)),
+          Row.new(forward: false, day: 7, range: Range.new(min: 7465, max: 8400), value: Value.new(per: +7, stack: -3195)), # -3142 - 53（初益）
+          Row.new(forward: false, day: 8, range: Range.new(min: 0, max: 8400), value: Value.new(per: +82, stack: -3188)),
+          Row.new(forward: false, day: 9, range: Range.new(min: 0, max: 8400), value: Value.new(per: +225, stack: -3106)),
+          Row.new(forward: false, day: 10, range: Range.new(min: 0, max: 8400), value: Value.new(per: +366, stack: -2881)),
+          Row.new(forward: false, day: 11, range: Range.new(min: 0, max: 8400), value: Value.new(per: +501, stack: -2515)),
+          Row.new(forward: false, day: 12, range: Range.new(min: 0, max: 8400), value: Value.new(per: +628, stack: -2014)),
+          Row.new(forward: false, day: 13, range: Range.new(min: 0, max: 8400), value: Value.new(per: +740, stack: -1386)),
+          Row.new(forward: false, day: 14, range: Range.new(min: 0, max: 6529), value: Value.new(per: +646, stack: -646)) # 14日の小余は常に6529以下
+        ].freeze
+        # rubocop:enable Layout/LineLength
 
         #
         # 月軌道の補正に必要な基本値を引き当てる
@@ -91,25 +151,15 @@ module Zakuro
         # @param [Integer] day 大余
         # @param [Integer] minute 小余
         #
-        # @return [Adjustment::Item] 補正値
+        # @return [Value] 補正値
         # @return [Integer] （小余を処理する時の）分母
         # @return [Integer] 小余の下げ幅
         #
         def self.specify(forward:, day:, minute:)
-          prefix = { true => 'forward', false => 'back' }[forward]
+          LIST.each do |row|
+            next unless row.match?(forward: forward, day: day, minute: minute)
 
-          targets = MAP.select \
-            { |key, _| key.match(/^#{prefix}_#{format('%<day>02d', day: day)}_.*/) }
-
-          targets.each do |key, value|
-            # NOTE: 境界値は上から順に引き当てた方を返す
-            matched, diff = extract(key, minute)
-
-            next unless matched
-
-            # 小余の下げ幅
-            calc_minute = get_minus_minute(day: day, minute: minute)
-            return value, diff, calc_minute
+            return row.value, row.denominator, minus_minute(day: day, minute: minute)
           end
 
           raise ArgumentError.new, "invalid parameter: #{forward}/#{day}/#{minute}"
@@ -125,33 +175,13 @@ module Zakuro
         #
         # @return [Integer] 小余の下げ幅
         #
-        def self.get_minus_minute(day:, minute:)
+        def self.minus_minute(day:, minute:)
           return minute unless day == 7
 
           return minute unless minute > 7465
 
           minute - 7465
         end
-        private_class_method :get_minus_minute
-
-        #
-        # 補正値を引き当てる
-        #
-        # @param [String] key 補正値のキー
-        # @param [Integer] minute 小余
-        #
-        # @return [Adjustment::Item] 補正値
-        # @return [Integer] （小余を処理する時の）分母
-        #
-        def self.extract(key, minute)
-          matched = key.match(/([0-9]{4})_([0-9]{4})$/)
-          start = matched[1].to_i
-          finish = matched[2].to_i
-
-          matched = minute >= start && minute <= finish
-          [matched, (finish - start)]
-        end
-        private_class_method :extract
       end
     end
   end
