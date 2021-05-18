@@ -158,7 +158,7 @@ module Zakuro
             current_month.add_term(term: @solar_term.clone)
             next_solar_term
 
-            # 宣明暦は最大2つまで
+            # 定気は最大2つまで
             break if current_month.solar_term_size == 2
           end
         end

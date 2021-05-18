@@ -14,8 +14,6 @@ module Zakuro
       # Average 常気（太陽軌道平均）
       #
       class Average
-        # TODO: 儀鳳暦にする
-
         # @return [Remainder] 気策
         SOLAR_TERM_AVERAGE = Const::Remainder::Solar::SOLAR_TERM_AVERAGE
 
@@ -160,7 +158,7 @@ module Zakuro
             current_month.add_term(term: @solar_term.clone)
             next_solar_term
 
-            # 宣明暦は最大2つまで
+            # 定気は最大2つまで
             break if current_month.solar_term_size == 2
           end
         end
