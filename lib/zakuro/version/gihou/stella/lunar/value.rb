@@ -22,18 +22,17 @@ module Zakuro
         # 月の運行による補正値を算出する
         #
         # @param [Cycle::LunarRemainder] remainder 月の大余小余
-        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         #
         # @return [Integer] 補正値
         #
-        def self.get(remainder:, forward:)
+        def self.get(remainder:)
           valid?(remainder: remainder)
 
           day = remainder.day
           minute = remainder.floor_minute
 
           # 引き当て
-          row = Adjustment.specify(forward: forward, day: day, minute: minute)
+          row = Adjustment.specify(day: day, minute: minute)
 
           value = row.value
           denominator = row.denominator

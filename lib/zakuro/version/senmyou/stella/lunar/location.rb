@@ -37,7 +37,6 @@ module Zakuro
         #
         # @param [Cycle::LunarRemainder] lunar_age 天正閏余（大余小余）
         # @param [Integer] western_year 西暦年
-        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         #
         def initialize(lunar_age:, western_year:)
           @calculated = false

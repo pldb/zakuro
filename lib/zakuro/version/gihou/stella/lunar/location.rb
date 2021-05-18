@@ -28,9 +28,6 @@ module Zakuro
         attr_reader :calculated
         # @return [Integer] 西暦年
         attr_reader :western_year
-        # @return [True] 進（遠地点より数える）
-        # @return [False] 退（近地点より数える）
-        attr_reader :forward
         # @return [Cycle::LunarRemainder] 大余小余（初回：昨年天正閏余）
         attr_reader :remainder
 
@@ -39,13 +36,10 @@ module Zakuro
         #
         # @param [Cycle::LunarRemainder] lunar_age 天正閏余（大余小余）
         # @param [Integer] western_year 西暦年
-        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
         #
         def initialize(lunar_age:, western_year:)
           @calculated = false
           @western_year = western_year
-          # 進
-          @forward = true
           @remainder = lunar_age
         end
 
@@ -95,7 +89,6 @@ module Zakuro
           return if @remainder < limit
 
           @remainder.sub!(HALF_ANOMALISTIC_MONTH)
-          @forward = !@forward
         end
 
         #
