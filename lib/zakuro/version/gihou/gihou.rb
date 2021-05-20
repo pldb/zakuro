@@ -9,7 +9,7 @@ require_relative '../../calculation/summary/single'
 # :nodoc:
 module Zakuro
   #
-  # Senmyou 儀鳳暦
+  # Gihou 儀鳳暦
   #
   module Gihou
     #
