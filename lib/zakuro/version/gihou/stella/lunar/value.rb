@@ -78,7 +78,7 @@ module Zakuro
           day = day.negative? ? day.ceil : day.floor
           sign = remainder_minute.negative? ? -1 : 1
           remainder_day = (sign * remainder_minute) % denominator
-          # 四捨五入（8400ならその半分の4200以上を繰り上げる）
+          # 四捨五入（1/2日 以上なら繰り上げる）
           day += sign if remainder_day >= (denominator / 2)
 
           day

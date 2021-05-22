@@ -10,22 +10,21 @@ require File.expand_path('../../../../../' \
 
 # rubocop:disable Layout/LineLength
 expect_monthes = {
-  # TODO: 儀鳳暦のテストケースを作成する
-  # 1600 => [
-  #   { is_many_days: false, month: 11, leaped: false, remainder: '43-8015', phase_index: 0, even_term: '49-780', even_term_index: 0, odd_term: '4-2615', odd_term_index: 1 },
-  #   { is_many_days: true,  month: 12, leaped: false, remainder: '12-4851', phase_index: 0, even_term: '19-4451', even_term_index: 2, odd_term: '34-6286', odd_term_index: 3 },
-  #   { is_many_days: false, month: 1, leaped: false, remainder: '42-847', phase_index: 0, even_term: '49-8122', even_term_index: 4, odd_term: '5-1558', odd_term_index: 5 },
-  #   { is_many_days: true,  month: 2, leaped: false, remainder: '11-4371', phase_index: 0, even_term: '20-3393', even_term_index: 6, odd_term: '35-5229', odd_term_index: 7 },
-  #   { is_many_days: false, month: 3, leaped: false, remainder: '41-7161', phase_index: 0, even_term: '50-7065', even_term_index: 8, odd_term: '6-500', odd_term_index: 9 },
-  #   { is_many_days: false, month: 4, leaped: false, remainder: '10-1359', phase_index: 0, even_term: '21-2336', even_term_index: 10, odd_term: '36-4171', odd_term_index: 11 },
-  #   { is_many_days: true,  month: 5, leaped: false, remainder: '39-4189', phase_index: 0, even_term: '51-6007', even_term_index: 12, odd_term: '6-7843', odd_term_index: 13 },
-  #   { is_many_days: false, month: 6, leaped: false, remainder: '9-7384', phase_index: 0, even_term: '22-1278', even_term_index: 14, odd_term: '37-3114', odd_term_index: 15 },
-  #   { is_many_days: true,  month: 7, leaped: false, remainder: '38-2939', phase_index: 0, even_term: '52-4950', even_term_index: 16, odd_term: '7-6785', odd_term_index: 17 },
-  #   { is_many_days: false, month: 8, leaped: false, remainder: '8-7705', phase_index: 0, even_term: '23-221', even_term_index: 18, odd_term: '', odd_term_index: -1 },
-  #   { is_many_days: true,  month: 9, leaped: false, remainder: '37-4914', phase_index: 0, even_term: '53-3892', even_term_index: 20, odd_term: '38-2056', odd_term_index: 19 },
-  #   { is_many_days: true,  month: 10, leaped: false, remainder: '7-2865', phase_index: 0, even_term: '23-7563', even_term_index: 22, odd_term: '8-5728', odd_term_index: 21 },
-  #   { is_many_days: true,  month: 11, leaped: false, remainder: '37-1008', phase_index: 0, even_term: '54-2835', even_term_index: 0, odd_term: '39-999', odd_term_index: 23 }
-  # ]
+  700 => [
+    { is_many_days: true, month: 11, leaped: false, remainder: '47-1041', phase_index: 0, even_term: '8-1328', even_term_index: 0, odd_term: '53-1035', odd_term_index: 23 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '17-756', phase_index: 0, even_term: '39-573', even_term_index: 2, odd_term: '24-280', odd_term_index: 1 },
+    { is_many_days: true, month: 1, leaped: false, remainder: '47-465', phase_index: 0, even_term: '9-1159', even_term_index: 4, odd_term: '54-866', odd_term_index: 3 },
+    { is_many_days: false, month: 2, leaped: false, remainder: '17-102', phase_index: 0, even_term: '40-405', even_term_index: 6, odd_term: '25-112', odd_term_index: 5 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '46-960', phase_index: 0, even_term: '10-990', even_term_index: 8, odd_term: '55-697', odd_term_index: 7 },
+    { is_many_days: false, month: 4, leaped: false, remainder: '16-255', phase_index: 0, even_term: '41-236', even_term_index: 10, odd_term: '25-1283', odd_term_index: 9 },
+    { is_many_days: false, month: 5, leaped: false, remainder: '45-810', phase_index: 0, even_term: '11-822', even_term_index: 12, odd_term: '56-529', odd_term_index: 11 },
+    { is_many_days: true, month: 6, leaped: false, remainder: '14-1253', phase_index: 0, even_term: '42-67', even_term_index: 14, odd_term: '26-1114', odd_term_index: 13 },
+    { is_many_days: false,  month: 7, leaped: false, remainder: '44-295', phase_index: 0, even_term: '12-653', even_term_index: 16, odd_term: '57-360', odd_term_index: 15 },
+    { is_many_days: false,  month: 7, leaped: true, remainder: '13-684', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '27-946', odd_term_index: 17 },
+    { is_many_days: true, month: 8, leaped: false, remainder: '42-1118', phase_index: 0, even_term: '42-1239', even_term_index: 18, odd_term: '58-191', odd_term_index: 19 },
+    { is_many_days: false, month: 9, leaped: false, remainder: '12-475', phase_index: 0, even_term: '13-484', even_term_index: 20, odd_term: '28-777', odd_term_index: 21 },
+    { is_many_days: true, month: 10, leaped: false, remainder: '41-1255', phase_index: 0, even_term: '43-1070', even_term_index: 22, odd_term: '59-23', odd_term_index: 23 }
+  ]
 }
 # rubocop:enable Layout/LineLength
 

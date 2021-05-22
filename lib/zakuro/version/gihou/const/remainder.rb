@@ -5,7 +5,7 @@ require_relative '../cycle/remainder'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     #
     # Const 定数
     #
@@ -19,7 +19,7 @@ module Zakuro
         #
         module Solar
           # @return [Remainder] 気策（24分の1年）
-          SOLAR_TERM_AVERAGE = Remainder.new(day: 15, minute: 292, second: 5)
+          SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 292, second: 5)
           # TODO: 仮置きする
           #   3214.25 / 8400 * 1340 = 512.7494047...
           # @return [Cycle::Remainder] 弦（1分=6秒）
@@ -30,6 +30,9 @@ module Zakuro
         # Lunar 月
         #
         module Lunar
+          # @return [Cycle::LunarRemainder] 変日
+          ANOMALISTIC_MONTH = \
+            Cycle::LunarRemainder.new(day: 27, minute: 743, second: 1)
           # TODO: Lunar::Adjustment のコメント参照。誤っていた場合は訂正すること
           # @return [Cycle::LunarRemainder] 入暦上限
           LIMIT = Cycle::LunarRemainder.new(day: 28, minute: 743, second: 0)

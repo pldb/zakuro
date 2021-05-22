@@ -184,12 +184,10 @@ module Zakuro
           @lunar_location.run
 
           remainder = @lunar_location.remainder
-          forward = @lunar_location.forward
 
           debug("[lunar]remainder.format: #{remainder.format}")
-          debug("[lunar]forward: #{forward}")
 
-          Lunar::Value.get(remainder: remainder, forward: forward)
+          Lunar::Value.get(remainder: remainder)
         end
 
         def add_quarter_moon_size

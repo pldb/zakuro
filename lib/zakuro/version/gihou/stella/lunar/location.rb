@@ -14,10 +14,8 @@ module Zakuro
       # Location 入暦
       #
       class Location
-        # TODO: 儀鳳暦にする
-
-        # @return [Cycle::LunarRemainder] 暦中日
-        HALF_ANOMALISTIC_MONTH = Const::Remainder::Lunar::HALF_ANOMALISTIC_MONTH
+        # @return [Cycle::LunarRemainder] 一朔望月
+        ANOMALISTIC_MONTH = Const::Remainder::Lunar::ANOMALISTIC_MONTH
         # @return [Cycle::LunarRemainder] 入暦上限
         LIMIT = Const::Remainder::Lunar::LIMIT
         # @return [Cycle::LunarRemainder] 弦
@@ -73,7 +71,7 @@ module Zakuro
             lunar_age: @remainder, western_year: @western_year
           )
           # 初回は0始まりで計算しているので、暦中日を用いる
-          decrease(limit: HALF_ANOMALISTIC_MONTH)
+          decrease(limit: ANOMALISTIC_MONTH)
           # 1始まりに改める
           one_based
 
@@ -88,7 +86,7 @@ module Zakuro
         def decrease(limit:)
           return if @remainder < limit
 
-          @remainder.sub!(HALF_ANOMALISTIC_MONTH)
+          @remainder.sub!(ANOMALISTIC_MONTH)
         end
 
         #

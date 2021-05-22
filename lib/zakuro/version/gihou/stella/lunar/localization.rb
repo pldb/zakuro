@@ -12,8 +12,6 @@ module Zakuro
       # Localization 入暦特定
       #
       module Localization
-        # TODO: 儀鳳暦にする
-
         # @return [Integer] 1近日点
         ANOMALISTIC_MONTH = Const::Number::Cycle::ANOMALISTIC_MONTH
         # @return [Integer] 積年
@@ -36,8 +34,7 @@ module Zakuro
           total_year = TOTAL_YEAR + western_year - BEGIN_YEAR
 
           # 通積分 - 天正閏余
-          total_day = \
-            total_year * YEAR - lunar_age.to_minute
+          total_day = total_year * YEAR - lunar_age.to_minute
 
           Cycle::LunarRemainder.new(total: (total_day % ANOMALISTIC_MONTH))
         end
