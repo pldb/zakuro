@@ -18,7 +18,7 @@ module Zakuro
         module Cycle
           # @return [Integer] 統法（1日=8400分）
           DAY = 8400
-          # @return [Integer] 暦周（1近点月）
+          # @return [Float] 暦周（1近点月）
           ANOMALISTIC_MONTH = 231_458.19
           # @return [Integer] 朔望月
           SYNODIC_MONTH = 248_057

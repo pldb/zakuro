@@ -18,9 +18,12 @@ module Zakuro
         module Cycle
           # @return [Integer] 総法（1日=1340分）
           DAY = 1340
-          # @return [Integer] 変日（1近点月 = 27日743分1秒（1分=12秒））
-          # TODO: 小数点以下の値によって大幅に結果が変わる。適切な値を特定すること。
-          ANOMALISTIC_MONTH = 36_923.083333333333
+          #
+          # @return [Float] 変日（1近点月 = 27日743分1秒（1分=12秒））
+          # @note 小数点以下の値によって大幅に結果が変わる。除算結果を設定した
+          #
+          # ANOMALISTIC_MONTH = 36_923.083333333333
+          ANOMALISTIC_MONTH = 36_923 + (1.0 / 12)
           # @return [Integer] 朔望月
           SYNODIC_MONTH = 39_571
           # @return [Integer] 一年
