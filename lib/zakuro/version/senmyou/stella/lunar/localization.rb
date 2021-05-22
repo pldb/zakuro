@@ -12,7 +12,7 @@ module Zakuro
       # Localization 入暦特定
       #
       module Localization
-        # @return [Integer] 1近日点
+        # @return [Integer] 1近点月
         ANOMALISTIC_MONTH = Const::Number::Cycle::ANOMALISTIC_MONTH
         # @return [Integer] 積年
         TOTAL_YEAR = Const::Number::Stack::TOTAL_YEAR
