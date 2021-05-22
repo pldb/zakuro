@@ -123,16 +123,16 @@ module Zakuro
         # Value 補正値
         #
         class Value
-          # @return [Integer] 損益率
+          # @return [Integer] 増減率
           attr_reader :per
-          # @return [Integer] 眺朒（ちょうじく）積
+          # @return [Integer] 遅速積
           attr_reader :stack
 
           #
           # 初期化
           #
-          # @param [Integer] per 損益率
-          # @param [Integer] stack 眺朒（ちょうじく）積
+          # @param [Integer] per 増減率
+          # @param [Integer] stack 遅速積
           #
           def initialize(per:, stack:)
             @per = per

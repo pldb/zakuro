@@ -64,7 +64,7 @@ module Zakuro
         #
         # 累計値（大余）を作成する
         #
-        # @param [Integer] per 入暦（1-14）
+        # @param [Integer] per 損益率
         # @param [Integer] denominator 小余の分母
         # @param [Integer] minute 小余
         #
