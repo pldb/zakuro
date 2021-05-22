@@ -775,7 +775,7 @@ SENMYOU_EXPECTED_MONTHS = {
     { is_many_days: true,  month: 10, leaped: false, remainder: '17-4359', phase_index: 0, even_term: '46-1113', even_term_index: 22, odd_term: '30-7678', odd_term_index: 21 },
     { is_many_days: false, month: 10, leaped: true,  remainder: '47-3', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '1-2949', odd_term_index: 23 }
   ]
-}
+}.freeze
 # rubocop:enable Layout/LineLength
 
 # rubocop:disable Metrics/BlockLength
