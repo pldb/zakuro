@@ -137,7 +137,8 @@ module Zakuro
           adjusted = @average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          adjusted.up_on_new_moon!
+          # TODO: しないものと仮定する
+          # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")
 
