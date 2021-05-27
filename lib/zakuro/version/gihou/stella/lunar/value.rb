@@ -18,6 +18,9 @@ module Zakuro
 
         # :reek:TooManyStatements { max_statements: 9 }
 
+        # @return [Output::Logger] ロガー
+        LOGGER = Output::Logger.new(location: 'lunar_value')
+
         #
         # 月の運行による補正値を算出する
         #
