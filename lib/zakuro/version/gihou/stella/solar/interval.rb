@@ -15,41 +15,41 @@ module Zakuro
         # @return [Hash<Symbol, Cycle::Remainder>] 一覧
         MAP = {
           # 冬至（とうじ）・大雪（たいせつ）
-          touji: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
-          taisetsu: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
+          touji: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
+          taisetsu: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
           # 小寒（しょうかん）・小雪（しょうせつ）
-          shoukan: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
-          shousetsu: Cycle::Remainder.new(day: 15, minute: 910, second: 5),
+          shoukan: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
+          shousetsu: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
           # 大寒（だいかん）・立冬（りっとう）
-          daikan: Cycle::Remainder.new(day: 15, minute: 806, second: 5), # +514
-          rittou: Cycle::Remainder.new(day: 15, minute: 806, second: 5),
+          daikan: Cycle::Remainder.new(day: 14, minute: 1118, second: 5), # -514
+          rittou: Cycle::Remainder.new(day: 14, minute: 1118, second: 5),
           # 立春（りっしゅん）・霜降（そうこう）
-          risshun: Cycle::Remainder.new(day: 15, minute: 806, second: 5), # +514
-          soukou: Cycle::Remainder.new(day: 15, minute: 806, second: 5),
+          risshun: Cycle::Remainder.new(day: 14, minute: 1118, second: 5), # -514
+          soukou: Cycle::Remainder.new(day: 14, minute: 1118, second: 5),
           # 雨水（うすい）・寒露（かんろ）
-          usui: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
-          kanro: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
+          usui: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
+          kanro: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
           # 啓蟄（けいちつ）・秋分（しゅうぶん）
-          keichitsu: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
-          shuubun: Cycle::Remainder.new(day: 15, minute: 910, second: 5),
+          keichitsu: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
+          shuubun: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
           # 春分（しゅんぶん）・白露（はくろ）
-          shunbun: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
+          shunbun: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
           hakuro: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
           # 清明（せいめい）・処暑（しょしょ）
-          seimei: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
-          shosho: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
+          seimei: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
+          shosho: Cycle::Remainder.new(day: 15, minute: 910, second: 5),
           # 穀雨（こくう）・立秋（りっしゅう）
-          kokuu: Cycle::Remainder.new(day: 14, minute: 1118, second: 5), # -514
-          risshuu: Cycle::Remainder.new(day: 14, minute: 1118, second: 5),
+          kokuu: Cycle::Remainder.new(day: 15, minute: 806, second: 5), # +514
+          risshuu: Cycle::Remainder.new(day: 15, minute: 806, second: 5),
           # 立夏（りっか）・大暑（たいしょ）
-          rikka: Cycle::Remainder.new(day: 14, minute: 1118, second: 5), # -514
-          taisho: Cycle::Remainder.new(day: 14, minute: 1118, second: 5),
+          rikka: Cycle::Remainder.new(day: 15, minute: 806, second: 5), # +514
+          taisho: Cycle::Remainder.new(day: 15, minute: 806, second: 5),
           # 小満（しょうまん）・小暑（しょうしょ）
-          shouman: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
-          shousho: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
+          shouman: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
+          shousho: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
           # 芒種（ぼうしゅ）・夏至（げし）
-          boushu: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
-          geshi: Cycle::Remainder.new(day: 14, minute: 1014, second: 5)
+          boushu: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
+          geshi: Cycle::Remainder.new(day: 15, minute: 910, second: 5)
         }.freeze
 
         # @return [Array<Remainder>] 索引
