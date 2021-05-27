@@ -12,8 +12,24 @@ module Zakuro
       # Adjustment 補正値情報
       #
       module Adjustment
-        # @return [Integer] 遠/近の地点での中間
-        HALF_DAYS = [7, 14, 21].freeze
+        #
+        # 遠/近の地点での中間
+        #
+        # 7、14、21日の小余の境界は下記のようにして求めた
+        #   * 宣明暦の7日の小余は7465である。入暦は1始まりなので、0始まりで表現すると 6-7465 となる
+        #   * 6 * 8400（統法） + 7465（初益） = 57865
+        #   * これを儀鳳暦に変えると、 57865 / 1340（総法） = 6 余り 1190.845238..
+        #   * これを入暦の1始まりに置き換え、少数部を消すと 7-1190、これが7日目となる
+        #   * 同様の方法で14日と21日も求める
+        #   * 57865 * 2 = 115730 / 1340（総法） = 13 余り 1041.690476 = 14-1041
+        #   * 57865 * 3 = 173595 / 1340（総法） = 20 余り 892.5357143 = 21-892
+        #
+        # @return [Hash<Integer>] 遠/近の地点での中間
+        HALF_DAYS = {
+          7 => 1190,
+          14 => 1041,
+          21 => 892
+        }.freeze
 
         #
         # Row 行情報
@@ -76,8 +92,6 @@ module Zakuro
           MIN = 0
           # @return [Integer] 上限
           MAX = Const::Number::Cycle::DAY
-          # @return [Integer] 遠/近の地点での中間
-          HALF = 1190
           # @return [Integer] 最後
           LAST = 743
 
@@ -151,12 +165,10 @@ module Zakuro
 
         # rubocop:disable Layout/LineLength
 
-        # TODO: 7、14、21日の小余の境界が分からない。『日本暦日原典』に記載がない
-        #       仮置きとして 1190 を置いた
-        #       宣明暦[7465（初益）/ 8400（統法）] * 1340（総法） = 1190.84523..
-        # TODO: 28日は変日の範囲内743とした。
-        #       宣明暦では 進退 14-6529（1始まりなので実質13） * 2 = 27-4658 で、
-        #       これは 暦周 27-4658.19 に一致する。変日27-743.1と同等とみなした
+        # * 7日、14日、21日の小余は HALF_DAYS を参照のこと
+        # * 28日は変日の範囲内743とした。
+        #   宣明暦では 進退 14-6529（1始まりなので実質13） * 2 = 27-4658 で、
+        #   これは 暦周 27-4658.19 に一致する。変日27-743.1と同等とみなした
 
         #
         # @return [Array<Row>] 月の補正値情報
@@ -168,24 +180,24 @@ module Zakuro
           Row.new(day: 4, range: Range.new, value: Value.new(per: -78, stack: -350)),
           Row.new(day: 5, range: Range.new, value: Value.new(per: -56, stack: -428)),
           Row.new(day: 6, range: Range.new, value: Value.new(per: -33, stack: -484)),
-          Row.new(day: 7, range: Range.new(max: Range::HALF), value: Value.new(per: -9, stack: -517)),
-          Row.new(day: 7, range: Range.new(min: Range::HALF), value: Value.new(per: 0, stack: -526)),
+          Row.new(day: 7, range: Range.new(max: HALF_DAYS[7]), value: Value.new(per: -9, stack: -517)),
+          Row.new(day: 7, range: Range.new(min: HALF_DAYS[7]), value: Value.new(per: 0, stack: -526)),
           Row.new(day: 8, range: Range.new, value: Value.new(per: +14, stack: -526)),
           Row.new(day: 9, range: Range.new, value: Value.new(per: +38, stack: -512)),
           Row.new(day: 10, range: Range.new, value: Value.new(per: +62, stack: -474)),
           Row.new(day: 11, range: Range.new, value: Value.new(per: +85, stack: -412)),
           Row.new(day: 12, range: Range.new, value: Value.new(per: +104, stack: -327)),
           Row.new(day: 13, range: Range.new, value: Value.new(per: +121, stack: -223)),
-          Row.new(day: 14, range: Range.new(max: Range::HALF), value: Value.new(per: +102, stack: -102)),
-          Row.new(day: 14, range: Range.new(min: Range::HALF), value: Value.new(per: +29, stack: 0)),
+          Row.new(day: 14, range: Range.new(max: HALF_DAYS[14]), value: Value.new(per: +102, stack: -102)),
+          Row.new(day: 14, range: Range.new(min: HALF_DAYS[14]), value: Value.new(per: +29, stack: 0)),
           Row.new(day: 15, range: Range.new, value: Value.new(per: +128, stack: +29)),
           Row.new(day: 16, range: Range.new, value: Value.new(per: +115, stack: +157)),
           Row.new(day: 17, range: Range.new, value: Value.new(per: +95, stack: +272)),
           Row.new(day: 18, range: Range.new, value: Value.new(per: +74, stack: +367)),
           Row.new(day: 19, range: Range.new, value: Value.new(per: +52, stack: +441)),
           Row.new(day: 20, range: Range.new, value: Value.new(per: +28, stack: +493)),
-          Row.new(day: 21, range: Range.new(max: Range::HALF), value: Value.new(per: +4, stack: +521)),
-          Row.new(day: 21, range: Range.new(min: Range::HALF), value: Value.new(per: 0, stack: +525)),
+          Row.new(day: 21, range: Range.new(max: HALF_DAYS[21]), value: Value.new(per: +4, stack: +521)),
+          Row.new(day: 21, range: Range.new(min: HALF_DAYS[21]), value: Value.new(per: 0, stack: +525)),
           Row.new(day: 22, range: Range.new, value: Value.new(per: -20, stack: +525)),
           Row.new(day: 23, range: Range.new, value: Value.new(per: -44, stack: +505)),
           Row.new(day: 24, range: Range.new, value: Value.new(per: -68, stack: +461)),
@@ -225,11 +237,13 @@ module Zakuro
         # @return [Integer] 小余の下げ幅
         #
         def self.minus_minute(day:, minute:)
-          return minute unless HALF_DAYS.include?(day)
+          limit = HALF_DAYS.fetch(day, -1)
+          # 該当なし
+          return minute if limit == -1
 
-          return minute unless minute > Range::HALF
+          return minute unless minute > limit
 
-          minute - Range::HALF
+          minute - limit
         end
       end
     end

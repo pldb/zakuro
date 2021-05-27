@@ -87,7 +87,6 @@ describe 'Zakuro' do
                 )
                 actual = lunar_phase.next_phase
 
-                # TODO: pass test case
                 expect(actual.format).to eq value
               end
             end

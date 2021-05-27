@@ -137,7 +137,7 @@ module Zakuro
           adjusted = @average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          # TODO: しないものと仮定する
+          # NOTE: 儀鳳暦では進朔しない
           # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")
@@ -187,6 +187,8 @@ module Zakuro
           remainder = @lunar_location.remainder
 
           debug("[lunar]remainder.format: #{remainder.format}")
+          # debug("[lunar]remainder.day: #{remainder.day}")
+          # debug("[lunar]remainder.minute: #{remainder.minute}")
 
           Lunar::Value.get(remainder: remainder)
         end

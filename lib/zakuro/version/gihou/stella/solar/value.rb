@@ -14,8 +14,6 @@ module Zakuro
       # Value 太陽補正値
       #
       module Value
-        # TODO: 儀鳳暦にする
-
         # @return [Integer] 1日
         DAY = Const::Number::Cycle::DAY
 
@@ -40,11 +38,18 @@ module Zakuro
           #  c: 損益率の毎日の差
           #  n: 定気の日から数えた日数
 
+          # LOGGER.debug("adjustment.per_day: #{adjustment.per_day}")
+          # LOGGER.debug("adjustment.stack: #{adjustment.stack}")
+
           day_stack = calc_day_stack(remainder: remainder, adjustment: adjustment)
+
+          # LOGGER.debug("day_stack: #{day_stack}")
 
           month_stack = calc_month_stack(stack: adjustment.stack, day: remainder.day,
                                          per_term: adjustment.per_term, per_day:
                                          adjustment.per_day)
+
+          # LOGGER.debug("month_stack: #{month_stack}")
 
           # 冬至であれば眺朒数がプラスになり続けて損益率が「益」で、小雪であればマイナスの眺朒数がプラスされ続けて「損」
           month_stack + day_stack
@@ -54,7 +59,7 @@ module Zakuro
         # 損益率を求める
         #
         # @param [Remainder] remainder 入定気
-        # @param [Adjustment::Item] adjustment 24気損益眺朒（ちょうじく）数
+        # @param [Adjustment::Row] adjustment 24気損益眺朒（ちょうじく）数
         #
         # @return [Integer] 損益率
         #
@@ -62,6 +67,9 @@ module Zakuro
           per_term = adjustment.per_term
           per_day = adjustment.per_day
           sign, ratio = calc_ratio(day: remainder.day, per_term: per_term, per_day: per_day)
+
+          # LOGGER.debug("calc_ratio: sign: #{sign}")
+          # LOGGER.debug("calc_ratio: ratio: #{ratio}")
 
           calc_day_stack_from_ratio(sign: sign, ratio: ratio,
                                     minute: remainder.minute)
