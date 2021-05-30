@@ -34,7 +34,7 @@ module Zakuro
           shuubun: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
           # 春分（しゅんぶん）・白露（はくろ）
           shunbun: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
-          hakuro: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
+          hakuro: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
           # 清明（せいめい）・処暑（しょしょ）
           seimei: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
           shosho: Cycle::Remainder.new(day: 15, minute: 910, second: 5),
