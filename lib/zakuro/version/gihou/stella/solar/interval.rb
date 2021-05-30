@@ -10,8 +10,11 @@ module Zakuro
       # Interval 入気定日加減数（二十四節気の間隔）
       #
       module Interval
-        # TODO: 『日本暦日原典』は正しい？雨水と啓蟄の順序が逆に見える
-
+        #
+        # 気策の 15-292.5 を加減する
+        #
+        # @note 『日本暦日原典』は雨水と啓蟄が逆になっていたのでこれを改めた
+        #
         # @return [Hash<Symbol, Cycle::Remainder>] 一覧
         MAP = {
           # 冬至（とうじ）・大雪（たいせつ）
@@ -27,11 +30,11 @@ module Zakuro
           risshun: Cycle::Remainder.new(day: 14, minute: 1118, second: 5), # -514
           soukou: Cycle::Remainder.new(day: 14, minute: 1118, second: 5),
           # 雨水（うすい）・寒露（かんろ）
-          usui: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
-          kanro: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
+          usui: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
+          kanro: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
           # 啓蟄（けいちつ）・秋分（しゅうぶん）
-          keichitsu: Cycle::Remainder.new(day: 14, minute: 1014, second: 5), # -618
-          shuubun: Cycle::Remainder.new(day: 14, minute: 1014, second: 5),
+          keichitsu: Cycle::Remainder.new(day: 14, minute: 910, second: 5), # -722
+          shuubun: Cycle::Remainder.new(day: 14, minute: 910, second: 5),
           # 春分（しゅんぶん）・白露（はくろ）
           shunbun: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
           hakuro: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
@@ -45,11 +48,11 @@ module Zakuro
           rikka: Cycle::Remainder.new(day: 15, minute: 806, second: 5), # +514
           taisho: Cycle::Remainder.new(day: 15, minute: 806, second: 5),
           # 小満（しょうまん）・小暑（しょうしょ）
-          shouman: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
-          shousho: Cycle::Remainder.new(day: 15, minute: 1014, second: 5),
+          shouman: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
+          shousho: Cycle::Remainder.new(day: 15, minute: 910, second: 5),
           # 芒種（ぼうしゅ）・夏至（げし）
-          boushu: Cycle::Remainder.new(day: 15, minute: 910, second: 5), # +618
-          geshi: Cycle::Remainder.new(day: 15, minute: 910, second: 5)
+          boushu: Cycle::Remainder.new(day: 15, minute: 1014, second: 5), # +722
+          geshi: Cycle::Remainder.new(day: 15, minute: 1014, second: 5)
         }.freeze
 
         # @return [Array<Remainder>] 索引
