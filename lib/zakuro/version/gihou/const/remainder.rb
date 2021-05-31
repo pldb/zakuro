@@ -28,11 +28,7 @@ module Zakuro
           #   * 四捨五入して 大余7の512分4.5秒
           #
           # @return [Cycle::Remainder] 弦（1分=6秒）
-          # TODO: 後で消す
-          # QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.49)  # なし
-          QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.5) # 8月まで
-          # QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.6)  # 8月まで
-          # QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.65)  # 7月まで
+          QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.5)
         end
 
         #
@@ -53,13 +49,8 @@ module Zakuro
           #   * 四捨五入して 大余7の512分9秒
           #
           # @return [Cycle::LunarRemainder] 弦（1分=12秒）
-          # TODO: 後で消す
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 8.9928)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 7) # 7月まで
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 8) # 8月まで
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9) # 8月まで
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 10) # 5月まで
+          # TODO: 全て通った。9秒だと53回で2秒のズレがあったので、2/53 = 0.037735849056604.. に近しい数を足した
+          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.00378)
         end
       end
     end
