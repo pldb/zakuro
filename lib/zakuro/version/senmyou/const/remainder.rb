@@ -20,6 +20,9 @@ module Zakuro
         module Solar
           # @return [Cycle::Remainder] 気策（24分の1年）
           SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 1835, second: 5)
+          #
+          # @note 章月 248057 = 29-4457
+          #
           # @return [Cycle::Remainder] 弦（1分=8秒）
           QUARTER = Cycle::Remainder.new(day: 7, minute: 3214, second: 2)
         end
@@ -34,6 +37,9 @@ module Zakuro
             Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
           # @return [Cycle::LunarRemainder] 入暦上限
           LIMIT = Cycle::LunarRemainder.new(day: 14, minute: 6529, second: 0)
+          #
+          # @note 章月 248057 = 29-4457
+          #
           # @return [Cycle::LunarRemainder] 弦（1分=100秒）
           QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
         end
