@@ -26,8 +26,8 @@ module Zakuro
         #
         # @return [Hash<Integer>] 遠/近の地点での中間
         HALF_DAYS = {
-          7 => 1190,
-          14 => 1041,
+          7 => 1191,  # 天平勝宝2年（750年）5月 により 1190 ではないことを確認した
+          14 => 1042, # 養老6年（722年） 6月 により 1041 ではないことを確認した
           21 => 892
         }.freeze
 
@@ -93,7 +93,7 @@ module Zakuro
           # @return [Integer] 上限
           MAX = Const::Number::Cycle::DAY
           # @return [Integer] 最後
-          LAST = 743
+          LAST = 743.06 # 天平13年（741年） 2月 により 743 ではないことを確認した
 
           # @return [Integer] 下限
           attr_reader :min
