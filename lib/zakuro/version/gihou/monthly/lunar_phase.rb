@@ -118,7 +118,8 @@ module Zakuro
         # @param [String] messages メッセージ（可変長）
         #
         def debug(*messages)
-          return unless first_phase?
+          # 全ての弦を対象にするためコメントアウトする
+          # return unless first_phase?
 
           LOGGER.debug(*messages)
         end
@@ -131,7 +132,7 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def current_remainder
-          debug("@average_remainder.format: #{@average_remainder.format}")
+          # debug("@average_remainder.format: #{@average_remainder.format(form: '%d-%d-%.5f')}")
 
           sum = correction_value
           adjusted = @average_remainder.add(
@@ -168,8 +169,8 @@ module Zakuro
         #
         def correction_solar_value
           @solar_location.run
-          debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
-          debug("@solar_term.index: #{@solar_location.index}")
+          # debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d-%.5f')}")
+          # debug("@solar_term.index: #{@solar_location.index}")
 
           Solar::Value.get(solar_location: @solar_location)
         end
@@ -186,7 +187,7 @@ module Zakuro
 
           remainder = @lunar_location.remainder
 
-          debug("[lunar]remainder.format: #{remainder.format}")
+          # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
           # debug("[lunar]remainder.day: #{remainder.day}")
           # debug("[lunar]remainder.minute: #{remainder.minute}")
 
