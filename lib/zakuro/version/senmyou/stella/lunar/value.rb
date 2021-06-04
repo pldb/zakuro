@@ -40,7 +40,7 @@ module Zakuro
 
           minus_minute = Adjustment.minus_minute(day: day, minute: minute)
 
-          day = Calculation::Lunar::Choukei.calc_day(
+          day = Calculation::Lunar::Choukei.rounded_day(
             per: value.per, denominator: denominator, minute: minus_minute
           )
 

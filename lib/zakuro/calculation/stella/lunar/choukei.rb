@@ -12,10 +12,8 @@ module Zakuro
       # Choukei 再考長慶宣明暦算法
       #
       module Choukei
-        # :reek:TooManyStatements { max_statements: 6 }
-
         #
-        # 累計値（大余）を作成する
+        # 四捨五入した大余を返す
         #
         # @param [Integer] per 増減率
         # @param [Integer] denominator 小余の分母
@@ -23,17 +21,22 @@ module Zakuro
         #
         # @return [Integer] 累計値（大余）
         #
-        def self.calc_day(per:, denominator:, minute:)
+        def self.rounded_day(per:, denominator:, minute:)
           remainder_minute = Type::OldFloat.new((per * minute).to_f)
-          float_day = Type::OldFloat.new(remainder_minute.get / denominator)
-          # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
-          float_day.floor!
-          day = float_day.get
+          day = day_only(remainder_minute: remainder_minute.get, denominator: denominator)
           # 繰り上げ結果を足す
           day += carried_minute(remainder_minute: remainder_minute, denominator: denominator)
 
           day
         end
+
+        def self.day_only(remainder_minute:, denominator:)
+          float_day = Type::OldFloat.new(remainder_minute / denominator)
+          # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
+          float_day.floor!
+          float_day.get
+        end
+        private_class_method :day_only
 
         def self.carried_minute(remainder_minute:, denominator:)
           remainder_day = remainder_minute.abs % denominator
