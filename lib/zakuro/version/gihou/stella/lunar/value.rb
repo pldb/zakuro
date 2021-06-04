@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../../calculation/type/old_float'
+
 require_relative '../../cycle/remainder'
 
 require_relative './adjustment'
@@ -67,7 +69,7 @@ module Zakuro
         end
         private_class_method :valid?
 
-        # :reek:TooManyStatements { max_statements: 9 }
+        # :reek:TooManyStatements { max_statements: 6 }
 
         #
         # 累計値（大余）を作成する
@@ -79,18 +81,26 @@ module Zakuro
         # @return [Integer] 累計値（大余）
         #
         def self.calc_day(per:, denominator:, minute:)
-          remainder_minute = (per * minute).to_f
-          day = remainder_minute / denominator
+          remainder_minute = Calculation::Type::OldFloat.new((per * minute).to_f)
+          float_day = Calculation::Type::OldFloat.new(remainder_minute.get / denominator)
           # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
-          day = day.negative? ? day.ceil : day.floor
-          sign = remainder_minute.negative? ? -1 : 1
-          remainder_day = (sign * remainder_minute) % denominator
-          # 四捨五入（1/2日 以上なら繰り上げる）
-          day += sign if remainder_day >= (denominator / 2)
+          float_day.floor!
+          day = float_day.get
+          # 繰り上げ結果を足す
+          day += carried_minute(remainder_minute: remainder_minute, denominator: denominator)
 
           day
         end
         private_class_method :calc_day
+
+        def self.carried_minute(remainder_minute:, denominator:)
+          remainder_day = remainder_minute.abs % denominator
+          # 四捨五入（1/2日 以上なら繰り上げる）
+          return remainder_minute.sign if remainder_day >= (denominator / 2)
+
+          0
+        end
+        private_class_method :carried_minute
       end
     end
   end
