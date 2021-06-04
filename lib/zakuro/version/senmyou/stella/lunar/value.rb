@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../../calculation/stella/lunar/choukei'
+
 require_relative '../../cycle/remainder'
 
 require_relative './adjustment'
@@ -38,8 +40,9 @@ module Zakuro
 
           minus_minute = Adjustment.minus_minute(day: day, minute: minute)
 
-          day = calc_day(per: value.per, denominator: denominator,
-                         minute: minus_minute)
+          day = Calculation::Lunar::Choukei.calc_day(
+            per: value.per, denominator: denominator, minute: minus_minute
+          )
 
           value.stack + day
         end
@@ -58,31 +61,6 @@ module Zakuro
           raise ArgumentError, "unmatch parameter type: #{remainder.class}"
         end
         private_class_method :valid?
-
-        # :reek:TooManyStatements { max_statements: 9 }
-
-        #
-        # 累計値（大余）を作成する
-        #
-        # @param [Integer] per 損益率
-        # @param [Integer] denominator 小余の分母
-        # @param [Integer] minute 小余
-        #
-        # @return [Integer] 累計値（大余）
-        #
-        def self.calc_day(per:, denominator:, minute:)
-          remainder_minute = (per * minute).to_f
-          day = remainder_minute / denominator
-          # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
-          day = day.negative? ? day.ceil : day.floor
-          sign = remainder_minute.negative? ? -1 : 1
-          remainder_day = (sign * remainder_minute) % denominator
-          # 四捨五入（8400ならその半分の4200以上を繰り上げる）
-          day += sign if remainder_day >= (denominator / 2)
-
-          day
-        end
-        private_class_method :calc_day
       end
     end
   end
