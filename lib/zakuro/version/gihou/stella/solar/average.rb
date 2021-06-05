@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
+require_relative '../../../../calculation/stella/solar/abstract_average'
+
 require_relative '../../const/remainder'
 
+require_relative '../../cycle/solar_term'
+
 require_relative '../origin/winter_solstice'
+
+require_relative './location'
 
 # :nodoc:
 module Zakuro
@@ -11,19 +17,17 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # Average 常気（太陽軌道平均）
+      # Average 定気（太陽軌道平均）
       #
-      class Average
-        # @return [Remainder] 気策
-        SOLAR_TERM_AVERAGE = Const::Remainder::Solar::SOLAR_TERM_AVERAGE
-
+      class Average < Calculation::Solar::AbstractAverage
         #
         # 初期化
         #
         # @param [Integer] western_year 西暦年
         #
         def initialize(western_year:)
-          @solar_term = Average.first_solar_term(western_year: western_year)
+          solar_term = Average.first_solar_term(western_year: western_year)
+          super(solar_term: solar_term)
         end
 
         #
@@ -34,16 +38,7 @@ module Zakuro
         # @return [Array<Month>] 1年データ
         #
         def set(annual_range:)
-          # 次月と比較しながら当月の二十四節気を決める
-          # NOTE: 最後の月は処理できない（=計算外の余分な月が最後に必要である）
-          annual_range.each_cons(2) do |(current_month, next_month)|
-            set_solar_term(
-              current_month: current_month,
-              next_month: next_month
-            )
-          end
-
-          annual_range
+          super(annual_range: annual_range)
         end
 
         #
@@ -95,79 +90,6 @@ module Zakuro
           solar_term_index += 1 unless solar_location.remainder == Cycle::Remainder.new(total: 0)
 
           solar_term_index
-        end
-
-        # :reek:TooManyStatements { max_statements: 7 }
-
-        #
-        # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
-        # @note 大余60で一巡するため 以下2パターンがある
-        #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
-        #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
-        #
-        # @param [Remainder] solar_term 二十四節気
-        # @param [Remainder] current_month 月初
-        # @param [Remainder] next_month 月末
-        #
-        # @return [True] 対象の二十四節気がある
-        # @return [False] 対象の二十四節気がない
-        #
-        def self.in_solar_term?(solar_term:, current_month:, next_month:)
-          # 大余で比較する
-          target_time = solar_term.day
-          current_month_time = current_month.day
-          next_month_time = next_month.day
-          current_month_over = (target_time >= current_month_time)
-          next_month_under = (target_time < next_month_time)
-
-          return current_month_over && next_month_under if current_month_time <= next_month_time
-
-          current_month_over || next_month_under
-        end
-
-        private
-
-        # :reek:TooManyStatements { max_statements: 8 }
-
-        #
-        # 二十四節気を設定する
-        #
-        # @param [Month] current_month 当月
-        # @param [Month] next_month 次月
-        #
-        def set_solar_term(current_month:, next_month:)
-          # 安全策として無限ループは回避する
-          # * 最大試行回数：4回（設定なし => 設定あり => 設定あり => 設定なし）
-          # * 閏月は1回しか設定しない
-          # * 最大2回設定する（中気・節気）
-          (0..3).each do |_index|
-            in_range = Average.in_solar_term?(
-              solar_term: @solar_term.remainder, current_month: current_month.remainder,
-              next_month: next_month.remainder
-            )
-
-            # 範囲外
-            unless in_range
-              # 1つ以上設定されていれば切り上げる（一つ飛ばしで二十四節気を設定することはない）
-              break unless current_month.empty_solar_term?
-
-              next_solar_term
-              next
-            end
-
-            current_month.add_term(term: @solar_term.clone)
-            next_solar_term
-
-            # 定気は最大2つまで
-            break if current_month.solar_term_size == 2
-          end
-        end
-
-        #
-        # 次の二十四節気に移る
-        #
-        def next_solar_term
-          @solar_term.next_term!
         end
       end
     end
