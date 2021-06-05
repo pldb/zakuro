@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../calculation/stella/lunar/choukei'
+require_relative '../../../../calculation/stella/lunar/choukei_value'
 
 require_relative '../../cycle/remainder'
 
@@ -38,16 +38,15 @@ module Zakuro
           row = Adjustment.specify(day: day, minute: minute)
 
           value = row.value
-          denominator = row.denominator
 
           # LOGGER.debug("value.per: #{value.per}")
-          # LOGGER.debug("denominator: #{denominator}")
+          # LOGGER.debug("row.denominator: #{row.denominator}")
           # LOGGER.debug("value.stack: #{value.stack}")
 
           minus_minute = Adjustment.minus_minute(day: day, minute: minute)
 
-          day = Calculation::Lunar::Choukei.rounded_day(
-            per: value.per, denominator: denominator, minute: minus_minute
+          day = Calculation::Lunar::ChoukeiValue.rounded_day(
+            per: value.per, denominator: row.denominator, minute: minus_minute
           )
 
           # LOGGER.debug("day: #{day}")

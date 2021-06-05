@@ -9,9 +9,9 @@ module Zakuro
     # :nodoc:
     module Lunar
       #
-      # Choukei 再考長慶宣明暦算法
+      # ChoukeiValue 再考長慶宣明暦算法
       #
-      module Choukei
+      module ChoukeiValue
         #
         # 四捨五入した大余を返す
         #

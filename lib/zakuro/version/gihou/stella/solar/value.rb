@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../calculation/stella/solar/choukei'
+require_relative '../../../../calculation/stella/solar/choukei_value'
 
 require_relative '../../const/number'
 
@@ -28,7 +28,7 @@ module Zakuro
 
           row = Adjustment.specify(index: solar_location.index)
 
-          Calculation::Solar::Choukei.value(remainder: remainder, row: row)
+          Calculation::Solar::ChoukeiValue.get(remainder: remainder, row: row)
         end
       end
     end

@@ -9,9 +9,9 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # Choukei 再考長慶宣明暦算法
+      # ChoukeiValue 再考長慶宣明暦算法
       #
-      module Choukei
+      module ChoukeiValue
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'solar_choukei')
 
@@ -23,7 +23,7 @@ module Zakuro
         #
         # @return [Integer] 補正値
         #
-        def self.value(remainder:, row:)
+        def self.get(remainder:, row:)
           # 損益率/眺朒（ちょうじく）数
           # パラメータ:
           #  a: 眺朒（ちょうじく）数の初日の値
