@@ -16,12 +16,6 @@ module Zakuro
       # Value 太陽補正値
       #
       module Value
-        # @return [Integer] 1日
-        DAY = Const::Number::Cycle::DAY
-
-        # @return [Output::Logger] ロガー
-        LOGGER = Output::Logger.new(location: 'solar_value')
-
         #
         # 太陽の運行による補正値を算出する
         #
