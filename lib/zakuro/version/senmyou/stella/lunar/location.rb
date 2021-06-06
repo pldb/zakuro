@@ -14,7 +14,7 @@ module Zakuro
       # Location 入暦
       #
       class Location
-        # @return [Cycle::LunarRemainder] 暦中日
+        # @return [Cycle::LunarRemainder] 暦中日（1近点月の半分）
         HALF_ANOMALISTIC_MONTH = Const::Remainder::Lunar::HALF_ANOMALISTIC_MONTH
         # @return [Cycle::LunarRemainder] 入暦上限
         LIMIT = Const::Remainder::Lunar::LIMIT
@@ -75,7 +75,7 @@ module Zakuro
           @remainder = Localization.first_remainder(
             lunar_age: @remainder, western_year: @western_year
           )
-          # 初回は0始まりで計算しているので、暦中日を用いる
+          # 初回は0始まりで計算しているので、入暦上限ではなく暦中日を用いる
           decrease(limit: HALF_ANOMALISTIC_MONTH)
           # 1始まりに改める
           one_based

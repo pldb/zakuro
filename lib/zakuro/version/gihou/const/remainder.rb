@@ -33,7 +33,7 @@ module Zakuro
         # Lunar 月
         #
         module Lunar
-          # @return [Cycle::LunarRemainder] 変日
+          # @return [Cycle::LunarRemainder] 変日（1近点月）
           ANOMALISTIC_MONTH = \
             Cycle::LunarRemainder.new(day: 27, minute: 743, second: 1)
           # @return [Cycle::LunarRemainder] 入暦上限
@@ -47,9 +47,6 @@ module Zakuro
           # TODO: 9秒だと通らない。 0.00378 〜 0.0208 の範囲内で通る
           # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9)
           # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.00378)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.01)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.015)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.02)
           # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.0208)
           QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.00378)
         end
