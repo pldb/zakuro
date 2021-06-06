@@ -7,7 +7,7 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # AbstractAverage 定気（太陽軌道平均）
+      # AbstractAverage 平気（太陽軌道平均）
       #
       class AbstractAverage
         #

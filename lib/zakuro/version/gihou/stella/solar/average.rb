@@ -17,7 +17,7 @@ module Zakuro
     # :nodoc:
     module Solar
       #
-      # Average 定気（太陽軌道平均）
+      # Average 平気（太陽軌道平均）
       #
       class Average < Calculation::Solar::AbstractAverage
         #
