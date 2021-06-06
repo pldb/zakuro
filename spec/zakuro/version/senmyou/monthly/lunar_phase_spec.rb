@@ -8,7 +8,7 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/senmyou/monthly/lunar_phase',
                          __dir__)
 
-NOVEMBER_1ST = {
+SENMYOU_NOVEMBER_1ST = {
   1400 => '3-4118',
   1401 => '58-7106',
   1402 => '22-7569',
@@ -270,7 +270,7 @@ NOVEMBER_1ST = {
   1658 => '35-5550',
   1659 => '30-2428',
   1660 => '54-3544'
-}
+}.freeze
 
 describe 'Zakuro' do
   describe 'Senmyou' do
@@ -279,7 +279,7 @@ describe 'Zakuro' do
         describe '.next_phase' do
           context 'november 1st every year' do
             it 'should be expected values' do
-              NOVEMBER_1ST.each do |year, value|
+              SENMYOU_NOVEMBER_1ST.each do |year, value|
                 # 11月定朔
                 lunar_phase = Zakuro::Senmyou::Monthly::LunarPhase.new(
                   western_year: year

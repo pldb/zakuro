@@ -9,7 +9,7 @@ require_relative './interval'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     # :nodoc:
     module Solar
       #

@@ -15,7 +15,7 @@ require_relative '../stella/origin/average_november'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     # :nodoc:
     module Monthly
       #
@@ -55,13 +55,14 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def current_remainder
-          debug("@average_remainder.format: #{@average_remainder.format}")
+          # debug("@average_remainder.format: #{@average_remainder.format(form: '%d-%d-%.5f')}")
 
           sum = correction_value
           adjusted = @average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          adjusted.up_on_new_moon!
+          # NOTE: 儀鳳暦では進朔しない
+          # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")
 
@@ -75,8 +76,8 @@ module Zakuro
         #
         def correction_solar_value
           @solar_location.run
-          debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d.%d')}")
-          debug("@solar_term.index: #{@solar_location.index}")
+          # debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d-%.5f')}")
+          # debug("@solar_term.index: #{@solar_location.index}")
 
           Solar::Value.get(solar_location: @solar_location)
         end
@@ -92,12 +93,12 @@ module Zakuro
           @lunar_location.run
 
           remainder = @lunar_location.remainder
-          forward = @lunar_location.forward
 
-          debug("[lunar]remainder.format: #{remainder.format}")
-          debug("[lunar]forward: #{forward}")
+          # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
+          # debug("[lunar]remainder.day: #{remainder.day}")
+          # debug("[lunar]remainder.minute: #{remainder.minute}")
 
-          Lunar::Value.get(remainder: remainder, forward: forward)
+          Lunar::Value.get(remainder: remainder)
         end
       end
     end

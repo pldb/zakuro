@@ -36,9 +36,8 @@ describe 'Zakuro' do
       context 'gihou' do
         it 'should be raised ArgumentError' do
           date = Date.new(698, 2, 16)
-          expect do
-            Zakuro::VersionFactory.get_runnable_constant(date: date)
-          end.to raise_error(ArgumentError)
+          actual = Zakuro::VersionFactory.get_runnable_constant(date: date)
+          expect(actual).to eq(Zakuro::Gihou::Gateway)
         end
       end
       context 'taien' do

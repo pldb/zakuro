@@ -9,16 +9,13 @@ require_relative './adjustment'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     # :nodoc:
     module Solar
       #
       # Value 太陽補正値
       #
       module Value
-        # @return [Integer] 1日
-        DAY = Const::Number::Cycle::DAY
-
         #
         # 太陽の運行による補正値を算出する
         #

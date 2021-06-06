@@ -9,7 +9,7 @@ require File.expand_path('../../../../../' \
                          __dir__)
 
 # rubocop:disable Layout/LineLength
-expect_monthes = {
+SENMYOU_EXPECTED_MONTHS = {
   1600 => [
     { is_many_days: false, month: 11, leaped: false, remainder: '43-8015', phase_index: 0, even_term: '49-780', even_term_index: 0, odd_term: '4-2615', odd_term_index: 1 },
     { is_many_days: true,  month: 12, leaped: false, remainder: '12-4851', phase_index: 0, even_term: '19-4451', even_term_index: 2, odd_term: '34-6286', odd_term_index: 3 },
@@ -775,7 +775,7 @@ expect_monthes = {
     { is_many_days: true,  month: 10, leaped: false, remainder: '17-4359', phase_index: 0, even_term: '46-1113', even_term_index: 22, odd_term: '30-7678', odd_term_index: 21 },
     { is_many_days: false, month: 10, leaped: true,  remainder: '47-3', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '1-2949', odd_term_index: 23 }
   ]
-}
+}.freeze
 # rubocop:enable Layout/LineLength
 
 # rubocop:disable Metrics/BlockLength
@@ -815,7 +815,7 @@ describe 'Zakuro' do
 
             it 'should be expected values' do
               fails = []
-              expect_monthes.each do |year, expects|
+              SENMYOU_EXPECTED_MONTHS.each do |year, expects|
                 actuals = \
                   Zakuro::Senmyou::Range::AnnualRange.get(
                     context: Zakuro::Context.new(version_name: 'Senmyou'),
@@ -833,7 +833,8 @@ describe 'Zakuro' do
               expect(fails).to be_empty, error_message(fails)
             end
             # it 'call example' do
-            #   Zakuro::Senmyou::AnnualRange.get(
+            #   Zakuro::Senmyou::Range::AnnualRange.get(
+            #     context: Zakuro::Context.new(version_name: 'Senmyou'),
             #     western_year: 1333
             #   )
             # end

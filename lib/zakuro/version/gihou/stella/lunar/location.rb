@@ -9,23 +9,19 @@ require_relative './localization'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     # :nodoc:
     module Lunar
       #
       # Location 入暦
       #
       class Location < Calculation::Lunar::AbstractLocation
-        # @return [Cycle::LunarRemainder] 暦中日（1近点月の半分）
-        HALF_ANOMALISTIC_MONTH = Const::Remainder::Lunar::HALF_ANOMALISTIC_MONTH
+        # @return [Cycle::LunarRemainder] 1近点月
+        ANOMALISTIC_MONTH = Const::Remainder::Lunar::ANOMALISTIC_MONTH
         # @return [Cycle::LunarRemainder] 入暦上限
         LIMIT = Const::Remainder::Lunar::LIMIT
         # @return [Cycle::LunarRemainder] 弦
         QUARTER = Const::Remainder::Lunar::QUARTER
-
-        # @return [True] 進
-        # @return [False] 退
-        attr_reader :forward
 
         #
         # 初期化
@@ -35,8 +31,6 @@ module Zakuro
         #
         def initialize(lunar_age:, western_year:)
           super(lunar_age: lunar_age, western_year: western_year)
-          # 進
-          @forward = true
         end
 
         #
@@ -68,8 +62,8 @@ module Zakuro
           @remainder = Localization.first_remainder(
             lunar_age: remainder, western_year: western_year
           )
-          # 初回は0始まりで計算しているので、入暦上限ではなく暦中日を用いる
-          decrease(limit: HALF_ANOMALISTIC_MONTH)
+          # 初回は0始まりで計算しているので、入暦上限ではなく1近点月を用いる
+          decrease(limit: ANOMALISTIC_MONTH)
           # 1始まりに改める
           one_based
 
@@ -84,8 +78,7 @@ module Zakuro
         def decrease(limit:)
           return if remainder < limit
 
-          remainder.sub!(HALF_ANOMALISTIC_MONTH)
-          @forward = !forward
+          remainder.sub!(ANOMALISTIC_MONTH)
         end
       end
     end

@@ -5,7 +5,7 @@ require_relative '../../const/number'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Gihou
     # :nodoc:
     module Lunar
       #
