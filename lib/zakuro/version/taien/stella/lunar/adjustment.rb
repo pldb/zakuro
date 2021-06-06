@@ -12,6 +12,8 @@ module Zakuro
       # Adjustment 補正値情報
       #
       module Adjustment
+        # TODO: 大衍暦に合わせる
+
         #
         # 遠/近の地点での中間
         #

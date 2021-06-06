@@ -16,6 +16,8 @@ module Zakuro
         # Cycle 周期
         #
         module Cycle
+          # TODO: 大衍暦に合わせる
+
           # @return [Integer] 総法（1日=1340分）
           DAY = 1340
           #

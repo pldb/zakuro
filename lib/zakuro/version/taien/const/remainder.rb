@@ -14,6 +14,8 @@ module Zakuro
       # Remainder 大余小余
       #
       module Remainder
+        # TODO: 大衍暦に合わせる
+
         #
         # Solar 太陽
         #

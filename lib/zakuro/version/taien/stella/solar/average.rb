@@ -16,6 +16,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Solar
+      # TODO: 大衍暦に合わせる
+
       #
       # Average 平気（太陽軌道平均）
       #

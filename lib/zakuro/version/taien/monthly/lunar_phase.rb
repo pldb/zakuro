@@ -18,6 +18,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Monthly
+      # TODO: 大衍暦に合わせる
+
       #
       # LunarPhase 月の位相
       #

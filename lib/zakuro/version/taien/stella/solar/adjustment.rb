@@ -10,6 +10,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Solar
+      # TODO: 大衍暦に合わせる
+
       #
       # Adjustment 24気損益眺朒（ちょうじく）数
       #

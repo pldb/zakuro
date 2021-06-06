@@ -12,6 +12,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Lunar
+      # TODO: 大衍暦に合わせる
+
       #
       # Value 月補正値
       #

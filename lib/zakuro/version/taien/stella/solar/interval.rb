@@ -6,6 +6,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Solar
+      # TODO: 大衍暦に合わせる
+
       #
       # Interval 入気定日加減数（二十四節気の間隔）
       #

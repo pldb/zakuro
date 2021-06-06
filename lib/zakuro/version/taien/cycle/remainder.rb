@@ -10,6 +10,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Cycle
+      # TODO: 大衍暦に合わせる
+
       #
       # Remainder 宣明暦の時刻情報（大余小余）
       #

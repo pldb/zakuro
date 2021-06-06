@@ -12,6 +12,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Cycle
+      # TODO: 大衍暦に合わせる
+
       #
       # SolarTerm 二十四節気
       #

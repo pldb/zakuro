@@ -12,6 +12,8 @@ module Zakuro
   module Taien
     # :nodoc:
     module Solar
+      # TODO: 大衍暦に合わせる
+
       #
       # Location 入定気
       #
