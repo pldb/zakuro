@@ -14,43 +14,39 @@ module Zakuro
       # Remainder 大余小余
       #
       module Remainder
-        # TODO: 大衍暦に合わせる
-
         #
         # Solar 太陽
         #
         module Solar
           # @return [Remainder] 気策（24分の1年）
-          SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 292, second: 5)
+          # 1年（1_110_343） / 24 / 1日（3040）= 15 余り 664.2916666666642
+          # TODO: 1分=何秒？
+          SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 664, second: 0)
           #
-          # @note 常朔実 39571 = 29-711
-          #   * 39571 / 4 = 9892.75 / 1340 = 7 余り 512.75
-          #   * 0.75 * 6（1分=6秒） = 4.5
+          # @note 揲法 89773 = 29-1613
+          #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
+          # TODO: 1分=何秒？
           #
-          # @return [Cycle::Remainder] 弦（1分=6秒）
-          QUARTER = Cycle::Remainder.new(day: 7, minute: 512, second: 4.5)
+          # @return [Cycle::Remainder] 弦（1分=80秒）
+          QUARTER = Cycle::Remainder.new(day: 7, minute: 1163, second: 0)
         end
 
         #
         # Lunar 月
         #
         module Lunar
-          # @return [Cycle::LunarRemainder] 変日（1近点月）
+          # @return [Cycle::LunarRemainder] 転日（1近点月）
           ANOMALISTIC_MONTH = \
-            Cycle::LunarRemainder.new(day: 27, minute: 743, second: 1)
+            Cycle::LunarRemainder.new(day: 27, minute: 1685, second: 79)
           # @return [Cycle::LunarRemainder] 入暦上限
-          LIMIT = Cycle::LunarRemainder.new(day: 28, minute: 743, second: 0)
+          LIMIT = Cycle::LunarRemainder.new(day: 28, minute: 1685, second: 0)
           #
-          # @note 常朔実 39571 = 29-711
-          #   * 39571 / 4 = 9892.75 / 1340 = 7 余り 512.75
-          #   * 0.75 * 12（1分=12秒） = 9
+          # @note 揲法 89773 = 29-1613
+          #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
+          #   * 0.25 * 80（1分=80秒） = 20
           #
-          # @return [Cycle::LunarRemainder] 弦（1分=12秒）
-          # TODO: 9秒だと通らない。 0.00378 〜 0.0208 の範囲内で通る
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.00378)
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.0208)
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 512, second: 9.00378)
+          # @return [Cycle::LunarRemainder] 弦（1分=80秒）
+          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20)
         end
       end
     end
