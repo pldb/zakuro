@@ -21,6 +21,7 @@ module Zakuro
       class Remainder < Calculation::Cycle::AbstractRemainder
         # 『歴代天文律暦等志彙編　七』中華書房 p.2056
         # 「象統;二十四」「其秒盈象統,従小餘」
+        # 上記は舊唐志の記述だが、新唐志（p.2218）でも同様であることを確認した
         # @return [Integer] 分（1分=24秒）
         MINUTE = 24
 
