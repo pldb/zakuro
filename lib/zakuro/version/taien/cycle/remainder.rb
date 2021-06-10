@@ -10,8 +10,6 @@ module Zakuro
   module Taien
     # :nodoc:
     module Cycle
-      # TODO: 大衍暦に合わせる
-
       #
       # Remainder 宣明暦の時刻情報（大余小余）
       #
@@ -21,8 +19,10 @@ module Zakuro
       # * 十干十二支（60日）を上限とした「日時分秒」の情報で、日付（date）/時刻（time）と部分的に重なる概念
       #
       class Remainder < Calculation::Cycle::AbstractRemainder
-        # @return [Integer] 分（1分=6秒）
-        MINUTE = 6
+        # 『歴代天文律暦等志彙編　七』中華書房 p.2056
+        # 「象統;二十四」「其秒盈象統,従小餘」
+        # @return [Integer] 分（1分=24秒）
+        MINUTE = 24
 
         #
         # 初期化
@@ -42,8 +42,8 @@ module Zakuro
       # LunarRemainder 月の位相計算向け時刻情報（大余小余）
       #
       class LunarRemainder < Calculation::Cycle::AbstractRemainder
-        # @return [Integer] 分（1分=12秒）
-        MINUTE = 12
+        # @return [Integer] 分（1分=80秒）
+        MINUTE = 80
 
         #
         # 初期化
