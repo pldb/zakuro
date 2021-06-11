@@ -12,8 +12,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Lunar
-      # TODO: 大衍暦に合わせる
-
       #
       # Location 入暦
       #

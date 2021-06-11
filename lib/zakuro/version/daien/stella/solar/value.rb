@@ -12,8 +12,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Solar
-      # TODO: 大衍暦に合わせる
-
       #
       # Value 太陽補正値
       #
