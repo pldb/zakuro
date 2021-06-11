@@ -3,7 +3,7 @@
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     #
     # Const 定数
     #

@@ -9,7 +9,7 @@ require_relative './adjustment'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Lunar
       # TODO: 大衍暦に合わせる

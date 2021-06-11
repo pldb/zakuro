@@ -44,7 +44,7 @@ describe 'Zakuro' do
         it 'should be got gateway module' do
           date = Date.new(764, 2, 7)
           actual = Zakuro::VersionFactory.get_runnable_constant(date: date)
-          expect(actual).to eq(Zakuro::Taien::Gateway)
+          expect(actual).to eq(Zakuro::Daien::Gateway)
         end
       end
       context 'senmyou' do

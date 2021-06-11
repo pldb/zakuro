@@ -9,7 +9,7 @@ require_relative './remainder'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Cycle
       #

@@ -6,7 +6,7 @@ require_relative './winter_solstice'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Origin
       #

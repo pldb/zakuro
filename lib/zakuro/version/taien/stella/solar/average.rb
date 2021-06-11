@@ -13,7 +13,7 @@ require_relative './location'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Solar
       # TODO: 大衍暦に合わせる

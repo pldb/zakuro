@@ -5,9 +5,9 @@ require_relative '../abstract_version'
 # :nodoc:
 module Zakuro
   #
-  # Taien 大衍暦
+  # Daien 大衍暦
   #
-  module Taien
+  module Daien
     #
     # Gateway アクセサメソッド群
     #
@@ -16,7 +16,7 @@ module Zakuro
       RELEASE = true
 
       # @return [String] 暦クラス名
-      VERSION_NAME = 'Taien'
+      VERSION_NAME = 'Daien'
 
       #
       # 西暦日から和暦日に変換する

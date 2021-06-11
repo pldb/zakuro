@@ -7,7 +7,7 @@ require_relative '../../const/number'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Solar
       # TODO: 大衍暦に合わせる

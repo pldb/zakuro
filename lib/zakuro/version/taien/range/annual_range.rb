@@ -7,7 +7,7 @@ require_relative '../stella/solar/average'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Range
       #

@@ -15,7 +15,7 @@ require_relative '../stella/origin/average_november'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Taien
+  module Daien
     # :nodoc:
     module Monthly
       # TODO: 大衍暦に合わせる
