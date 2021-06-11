@@ -40,7 +40,7 @@ describe 'Zakuro' do
           expect(actual).to eq(Zakuro::Gihou::Gateway)
         end
       end
-      context 'taien' do
+      context 'daien' do
         it 'should be got gateway module' do
           date = Date.new(764, 2, 7)
           actual = Zakuro::VersionFactory.get_runnable_constant(date: date)
