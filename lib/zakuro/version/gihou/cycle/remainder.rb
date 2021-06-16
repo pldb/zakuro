@@ -11,12 +11,7 @@ module Zakuro
     # :nodoc:
     module Cycle
       #
-      # Remainder 宣明暦の時刻情報（大余小余）
-      #
-      # * 「15日1012分5秒」のような形式で表される
-      # * 分は1340で一日に繰り上げる
-      # * 秒は基本的に1/6分で、6秒で1分に繰り上げる。ただし、月補正値は1分に100秒とするなど基数の変更がありえる
-      # * 十干十二支（60日）を上限とした「日時分秒」の情報で、日付（date）/時刻（time）と部分的に重なる概念
+      # Remainder 時刻情報（大余小余）
       #
       class Remainder < Calculation::Cycle::AbstractRemainder
         # @return [Integer] 分（1分=6秒）

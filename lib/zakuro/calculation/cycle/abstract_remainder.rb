@@ -10,6 +10,11 @@ module Zakuro
       # 大余小余（時刻情報）
       # @abstract 大余小余計算に必要な処理を行う、暦に依存しない汎用的なクラス
       #
+      # * 十干十二支（60日）を上限とした「日時分秒」の情報で、日付（date）/時刻（time）と部分的に重なる概念
+      # * 「15日1012分5秒」のような形式で表される
+      # * 分の上限で大余に繰り上げる
+      # * 秒の上限で1分に繰り上げる
+      #
       class AbstractRemainder # rubocop:disable Metrics/ClassLength
         # @return [Integer] 大余上限
         LIMIT = 60
