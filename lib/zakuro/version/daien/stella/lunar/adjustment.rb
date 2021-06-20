@@ -163,7 +163,7 @@ module Zakuro
         # @return [Array<Row>] 月の補正値情報
         #
         LIST = [
-          Row.new(day: 1, range: Range.new, value: Value.new(per: +296, stack: 0)),
+          Row.new(day: 1, range: Range.new, value: Value.new(per: +297, stack: 0)),
           Row.new(day: 2, range: Range.new, value: Value.new(per: +259, stack: +297)),
           Row.new(day: 3, range: Range.new, value: Value.new(per: +220, stack: +556)),
           Row.new(day: 4, range: Range.new, value: Value.new(per: +180, stack: +776)),
