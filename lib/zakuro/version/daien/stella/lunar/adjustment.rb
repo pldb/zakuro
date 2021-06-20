@@ -18,7 +18,7 @@ module Zakuro
         #
         # @return [Hash<Integer>] 遠/近の地点での中間
         DAY_LIMIT = {
-          7 => 2071,
+          7 => 2701,
           14 => 2363,
           21 => 2024,
           28 => 1686
