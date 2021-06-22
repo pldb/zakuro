@@ -61,7 +61,7 @@ module Zakuro
           kokuu: Row.new(stack: +491.0, per_term: -3.7956, per_day: -0.1240),      # 穀雨（こくう）
           rikka: Row.new(stack: +418.0, per_term: -5.6626, per_day: -0.1324),      # 立夏（りっか）
           shouman: Row.new(stack: +314.0, per_term: -7.6555, per_day: -0.1436),    # 小満（しょうまん）
-          boushu: Row.new(stack: +174.0, per_term: -9.9405, per_day: -0.1436),     # 芒種（ぼうしゅ）
+          boushu: Row.new(stack: +176.0, per_term: -9.9405, per_day: -0.1436),     # 芒種（ぼうしゅ）
           geshi: Row.new(stack: 0.0, per_term: -12.0819, per_day: +0.1436),        # 夏至（げし）
           shousho: Row.new(stack: -176.0, per_term: -9.7018, per_day: +0.1324),    # 小暑（しょうしょ）
           taisho: Row.new(stack: -314.0, per_term: -7.5450, per_day: +0.1240),     # 大暑（たいしょ）
