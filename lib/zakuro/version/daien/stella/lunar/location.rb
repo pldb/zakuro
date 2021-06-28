@@ -18,8 +18,6 @@ module Zakuro
       class Location < Calculation::Lunar::AbstractLocation
         # @return [Cycle::LunarRemainder] 1近点月
         ANOMALISTIC_MONTH = Const::Remainder::Lunar::ANOMALISTIC_MONTH
-        # @return [Cycle::LunarRemainder] 入暦上限
-        LIMIT = Const::Remainder::Lunar::LIMIT
         # @return [Cycle::LunarRemainder] 弦
         QUARTER = Const::Remainder::Lunar::QUARTER
 
@@ -38,8 +36,7 @@ module Zakuro
         #
         def run
           if calculated
-            # 1始まりで計算しているので、入暦上限を用いる
-            decrease(limit: LIMIT)
+            decrease(limit: ANOMALISTIC_MONTH)
             return
           end
 
@@ -62,10 +59,7 @@ module Zakuro
           @remainder = Localization.first_remainder(
             lunar_age: remainder, western_year: western_year
           )
-          # 初回は0始まりで計算しているので、入暦上限ではなく1近点月を用いる
           decrease(limit: ANOMALISTIC_MONTH)
-          # 1始まりに改める
-          one_based
 
           @calculated = true
         end
@@ -78,7 +72,7 @@ module Zakuro
         def decrease(limit:)
           return if remainder < limit
 
-          remainder.sub!(ANOMALISTIC_MONTH)
+          remainder.sub!(limit)
         end
       end
     end

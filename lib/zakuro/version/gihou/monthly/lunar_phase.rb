@@ -92,7 +92,7 @@ module Zakuro
         def correction_moon_value
           @lunar_location.run
 
-          remainder = @lunar_location.remainder
+          remainder = @lunar_location.adjusted_remainder
 
           # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
           # debug("[lunar]remainder.day: #{remainder.day}")

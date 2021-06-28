@@ -46,6 +46,15 @@ module Zakuro
           # abstract
         end
 
+        #
+        # 1始まりの大余小余を取得する
+        #
+        # @return [Cycle::AbstractRemainder] 1始まりの大余小余
+        #
+        def adjusted_remainder
+          @remainder.add(Cycle::AbstractRemainder.new(day: 1, minute: 0, second: 0))
+        end
+
         private
 
         #
@@ -62,13 +71,6 @@ module Zakuro
         #
         def decrease(limit:)
           # abstract
-        end
-
-        #
-        # 1始まりにする
-        #
-        def one_based
-          @remainder.add!(Cycle::AbstractRemainder.new(day: 1, minute: 0, second: 0))
         end
       end
     end
