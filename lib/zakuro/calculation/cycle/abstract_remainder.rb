@@ -229,8 +229,7 @@ module Zakuro
         # @return [False] より小さい
         #
         def >=(other)
-          up?(other) || \
-            (@day == other.day && @minute == other.minute && @second == other.second)
+          up?(other) || eql?(other)
         end
 
         #
@@ -254,8 +253,7 @@ module Zakuro
         # @return [False] より大きい
         #
         def <=(other)
-          down?(other) || \
-            (@day == other.day && @minute == other.minute && @second == other.second)
+          down?(other) || eql?(other)
         end
 
         #
@@ -344,8 +342,17 @@ module Zakuro
         # @return [Integer] 小余（秒切り捨て）
         #
         def floor_minute
-          result = @minute + @second.to_f / @base_minute
+          result = float_minute
           result.floor
+        end
+
+        #
+        # 秒を含めた小余を返す
+        #
+        # @return [Float] 小余
+        #
+        def float_minute
+          @minute + @second.to_f / @base_minute
         end
 
         #
@@ -447,33 +454,29 @@ module Zakuro
         def up?(other)
           invalid?(param: other)
           day = other.day
-          minute = other.minute
+          minute = other.float_minute
+
           return true if @day > day
           return false if @day < day
 
-          return true if @minute > minute
-          return false if @minute < minute
-
-          @second > other.second
+          float_minute > minute
         end
 
         def eql?(other)
           invalid?(param: other)
 
-          (@day == other.day && @minute == other.minute && @second == other.second)
+          (@day == other.day && float_minute == other.float_minute)
         end
 
         def down?(other)
           invalid?(param: other)
           day = other.day
-          minute = other.minute
+          minute = other.float_minute
+
           return true if @day < day
           return false if @day > day
 
-          return true if @minute < minute
-          return false if @minute > minute
-
-          @second < other.second
+          float_minute < minute
         end
       end
     end
