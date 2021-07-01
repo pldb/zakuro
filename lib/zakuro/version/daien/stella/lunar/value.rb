@@ -31,8 +31,12 @@ module Zakuro
         def self.get(remainder:)
           valid?(remainder: remainder)
 
-          day = remainder.day
-          minute = remainder.floor_minute
+          adjusted = remainder.class.new(
+            day: remainder.day, minute: remainder.floor_minute, second: 0
+          )
+          adjusted.carry!
+          day = adjusted.day
+          minute = adjusted.minute
 
           # 引き当て
           row = Adjustment.specify(day: day, minute: minute)

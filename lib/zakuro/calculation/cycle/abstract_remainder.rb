@@ -344,7 +344,7 @@ module Zakuro
         # @return [Integer] 小余（秒切り捨て）
         #
         def floor_minute
-          result = @minute + @second / @base_minute
+          result = @minute + @second.to_f / @base_minute
           result.floor
         end
 
@@ -382,13 +382,18 @@ module Zakuro
           super(form, @day, @minute, @second)
         end
 
-        private
-
-        def carry!(day, minute, second)
-          @day, @minute, @second = carry(day, minute, second)
+        #
+        # 繰り上げる
+        #
+        # @return [AbstractRemainder] 繰り上げ結果
+        #
+        def carry!
+          @day, @minute, @second = carry(@day, @minute, @second)
 
           self
         end
+
+        private
 
         # 繰り上げ、繰り下げ
         def carry(param_day, param_minute, param_second)
