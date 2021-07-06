@@ -385,7 +385,7 @@ GIHOU_EXPECTED_MONTHS = {
     { is_many_days: true, month: 12, leaped: false, remainder: '10-1789', phase_index: 0, even_term: '26-203', even_term_index: 2, odd_term: '10-2579', odd_term_index: 1 },
     { is_many_days: true, month: 1, leaped: false, remainder: '40-1136', phase_index: 0, even_term: '56-1532', even_term_index: 4, odd_term: '41-867', odd_term_index: 3 },
     { is_many_days: false, month: 2, leaped: false, remainder: '10-376', phase_index: 0, even_term: '26-2860', even_term_index: 6, odd_term: '11-2196', odd_term_index: 5 },
-    { is_many_days: true, month: 3, leaped: false, remainder: '39-2395', phase_index: 0, even_term: '57-1149', even_term_index: 8, odd_term: '42-485', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '39-2398', phase_index: 0, even_term: '57-1149', even_term_index: 8, odd_term: '42-485', odd_term_index: 7 },
     { is_many_days: false, month: 4, leaped: false, remainder: '9-1111', phase_index: 0, even_term: '27-2477', even_term_index: 10, odd_term: '12-1813', odd_term_index: 9 },
     { is_many_days: true, month: 5, leaped: false, remainder: '38-2520', phase_index: 0, even_term: '58-766', even_term_index: 12, odd_term: '43-102', odd_term_index: 11 },
     { is_many_days: false, month: 6, leaped: false, remainder: '8-539', phase_index: 0, even_term: '28-2095', even_term_index: 14, odd_term: '13-1430', odd_term_index: 13 },
@@ -756,7 +756,7 @@ GIHOU_EXPECTED_MONTHS = {
   ],
   813 => [
     { is_many_days: false, month: 11, leaped: false, remainder: '52-159', phase_index: 0, even_term: '1-1507', even_term_index: 0, odd_term: '16-2171', odd_term_index: 1 },
-    { is_many_days: true, month: 12, leaped: false, remainder: '21-2345', phase_index: 0, even_term: '31-2835', even_term_index: 2, odd_term: '47-459', odd_term_index: 3 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '21-2348', phase_index: 0, even_term: '31-2835', even_term_index: 2, odd_term: '47-459', odd_term_index: 3 },
     { is_many_days: false, month: 1, leaped: false, remainder: '51-1100', phase_index: 0, even_term: '2-1124', even_term_index: 4, odd_term: '17-1788', odd_term_index: 5 },
     { is_many_days: true, month: 2, leaped: false, remainder: '20-2550', phase_index: 0, even_term: '32-2452', even_term_index: 6, odd_term: '48-77', odd_term_index: 7 },
     { is_many_days: false, month: 3, leaped: false, remainder: '50-689', phase_index: 0, even_term: '3-741', even_term_index: 8, odd_term: '18-1405', odd_term_index: 9 },
@@ -855,7 +855,7 @@ GIHOU_EXPECTED_MONTHS = {
     { is_many_days: true, month: 1, leaped: false, remainder: '15-3026', phase_index: 0, even_term: '33-2542', even_term_index: 4, odd_term: '18-1877', odd_term_index: 3 },
     # 計算上では2が小の月、3が大の月
     { is_many_days: false, month: 2, leaped: false, remainder: '45-1384', phase_index: 0, even_term: '4-830', even_term_index: 6, odd_term: '49-166', odd_term_index: 5 },
-    { is_many_days: true, month: 3, leaped: false, remainder: '14-2829', phase_index: 0, even_term: '34-2159', even_term_index: 8, odd_term: '19-1495', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '14-2828', phase_index: 0, even_term: '34-2159', even_term_index: 8, odd_term: '19-1495', odd_term_index: 7 },
     { is_many_days: true, month: 4, leaped: false, remainder: '44-1435', phase_index: 0, even_term: '5-447', even_term_index: 10, odd_term: '49-2823', odd_term_index: 9 },
     { is_many_days: false, month: 5, leaped: false, remainder: '14-105', phase_index: 0, even_term: '35-1776', even_term_index: 12, odd_term: '20-1112', odd_term_index: 11 },
     { is_many_days: true, month: 6, leaped: false, remainder: '43-1862', phase_index: 0, even_term: '6-65', even_term_index: 14, odd_term: '50-2440', odd_term_index: 13 },
