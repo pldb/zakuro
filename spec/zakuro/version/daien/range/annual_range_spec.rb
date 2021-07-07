@@ -9,7 +9,7 @@ require File.expand_path('../../../../../' \
                          __dir__)
 
 # rubocop:disable Layout/LineLength
-GIHOU_EXPECTED_MONTHS = {
+DAIEN_EXPECTED_MONTHS = {
   # TODO: テストケースを通す
   766 => [
     { is_many_days: false, month: 11, leaped: false, remainder: '54-1622', phase_index: 0, even_term: '55-26', even_term_index: 0, odd_term: '10-690', odd_term_index: 1 },
@@ -1231,7 +1231,7 @@ GIHOU_EXPECTED_MONTHS = {
     { is_many_days: false, month: 11, leaped: false, remainder: '27-518', phase_index: 0, even_term: '38-2517', even_term_index: 0, odd_term: '54-141', odd_term_index: 1 },
     { is_many_days: true, month: 12, leaped: false, remainder: '56-2661', phase_index: 0, even_term: '9-805', even_term_index: 2, odd_term: '24-1469', odd_term_index: 3 },
     { is_many_days: true, month: 1, leaped: false, remainder: '26-1792', phase_index: 0, even_term: '39-2134', even_term_index: 4, odd_term: '54-2798', odd_term_index: 5 },
-    { is_many_days: true, month: 2, leaped: false, remainder: '56-954', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '25-1087', odd_term_index: 7 },
+    { is_many_days: true, month: 2, leaped: false, remainder: '56-954', phase_index: 0, even_term: '10-422', even_term_index: 6, odd_term: '25-1087', odd_term_index: 7 },
     { is_many_days: false, month: 3, leaped: false, remainder: '26-90', phase_index: 0, even_term: '40-1751', even_term_index: 8, odd_term: '', odd_term_index: -1 },
     { is_many_days: true, month: 4, leaped: false, remainder: '55-2046', phase_index: 0, even_term: '11-39', even_term_index: 10, odd_term: '55-2415', odd_term_index: 9 },
     { is_many_days: false, month: 5, leaped: false, remainder: '25-696', phase_index: 0, even_term: '41-1368', even_term_index: 12, odd_term: '26-704', odd_term_index: 11 },
@@ -1382,7 +1382,7 @@ GIHOU_EXPECTED_MONTHS = {
     { is_many_days: true, month: 12, leaped: false, remainder: '34-2128', phase_index: 0, even_term: '56-1412', even_term_index: 2, odd_term: '41-748', odd_term_index: 1 },
     { is_many_days: true, month: 1, leaped: false, remainder: '4-1214', phase_index: 0, even_term: '26-2741', even_term_index: 4, odd_term: '11-2076', odd_term_index: 3 },
     { is_many_days: false, month: 2, leaped: false, remainder: '34-327', phase_index: 0, even_term: '57-1029', even_term_index: 6, odd_term: '42-365', odd_term_index: 5 },
-    { is_many_days: true, month: 3, leaped: false, remainder: '3-2509', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '12-1694', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '3-2509', phase_index: 0, even_term: '27-2358', even_term_index: 8, odd_term: '12-1694', odd_term_index: 7 },
     { is_many_days: true, month: 4, leaped: false, remainder: '33-1541', phase_index: 0, even_term: '58-646', even_term_index: 10, odd_term: '42-3022', odd_term_index: 9 },
     { is_many_days: false, month: 5, leaped: false, remainder: '3-315', phase_index: 0, even_term: '28-1975', even_term_index: 12, odd_term: '13-1311', odd_term_index: 11 },
     { is_many_days: true, month: 6, leaped: false, remainder: '32-1853', phase_index: 0, even_term: '59-264', even_term_index: 14, odd_term: '43-2639', odd_term_index: 13 },
@@ -1563,7 +1563,7 @@ describe 'Zakuro' do
 
             it 'should be expected values' do
               fails = []
-              GIHOU_EXPECTED_MONTHS.each do |year, expects|
+              DAIEN_EXPECTED_MONTHS.each do |year, expects|
                 actuals = \
                   Zakuro::Daien::Range::AnnualRange.get(
                     context: Zakuro::Context.new(version_name: 'Daien'),
@@ -1583,7 +1583,7 @@ describe 'Zakuro' do
             # it 'call example' do
             #   Zakuro::Daien::Range::AnnualRange.get(
             #     context: Zakuro::Context.new(version_name: 'Daien'),
-            #     western_year: 815
+            #     western_year: 789
             #   )
             # end
           end
