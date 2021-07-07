@@ -31,6 +31,7 @@ module Zakuro
         def self.get(remainder:)
           valid?(remainder: remainder)
 
+          # NOTE: 815年で大余繰り上げあり
           adjusted = remainder.class.new(
             day: remainder.day, minute: remainder.floor_minute, second: 0
           )

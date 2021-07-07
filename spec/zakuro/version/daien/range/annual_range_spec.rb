@@ -10,7 +10,6 @@ require File.expand_path('../../../../../' \
 
 # rubocop:disable Layout/LineLength
 DAIEN_EXPECTED_MONTHS = {
-  # TODO: テストケースを通す
   766 => [
     { is_many_days: false, month: 11, leaped: false, remainder: '54-1622', phase_index: 0, even_term: '55-26', even_term_index: 0, odd_term: '10-690', odd_term_index: 1 },
     { is_many_days: true, month: 12, leaped: false, remainder: '23-2993', phase_index: 0, even_term: '25-1354', even_term_index: 2, odd_term: '40-2018', odd_term_index: 3 },

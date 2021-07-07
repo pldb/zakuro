@@ -112,16 +112,14 @@ describe 'Zakuro' do
       describe 'LunarPhase' do
         describe '.next_phase' do
           context 'november 1st every year' do
-            DAIEN_NOVEMBER_1ST.each do |year, value|
-              # 11月定朔
-              lunar_phase = Zakuro::Daien::Monthly::LunarPhase.new(
-                western_year: year
-              )
-              actual = lunar_phase.next_phase
+            it 'should be expected values' do
+              DAIEN_NOVEMBER_1ST.each do |year, value|
+                # 11月定朔
+                lunar_phase = Zakuro::Daien::Monthly::LunarPhase.new(
+                  western_year: year
+                )
+                actual = lunar_phase.next_phase
 
-              # TODO: it を DAIEN_NOVEMBER_1ST の前にする
-              it 'should be expected values' do
-                # TODO: テストケースを通す
                 expect(actual.format).to eq value
               end
             end
