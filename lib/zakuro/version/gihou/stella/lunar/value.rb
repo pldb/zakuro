@@ -31,8 +31,9 @@ module Zakuro
         def self.get(remainder:)
           valid?(remainder: remainder)
 
-          day = remainder.day
-          minute = remainder.floor_minute
+          day, minute = Calculation::Lunar::ChoukeiValue.remainder_with_no_second(
+            remainder: remainder
+          )
 
           # 引き当て
           row = Adjustment.specify(day: day, minute: minute)

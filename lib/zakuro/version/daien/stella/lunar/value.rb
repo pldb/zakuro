@@ -31,13 +31,9 @@ module Zakuro
         def self.get(remainder:)
           valid?(remainder: remainder)
 
-          # NOTE: 815年で大余繰り上げあり
-          adjusted = remainder.class.new(
-            day: remainder.day, minute: remainder.floor_minute, second: 0
+          day, minute = Calculation::Lunar::ChoukeiValue.remainder_with_no_second(
+            remainder: remainder
           )
-          adjusted.carry!
-          day = adjusted.day
-          minute = adjusted.minute
 
           # 引き当て
           row = Adjustment.specify(day: day, minute: minute)
