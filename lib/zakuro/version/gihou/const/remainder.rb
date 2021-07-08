@@ -36,8 +36,6 @@ module Zakuro
           # @return [Cycle::LunarRemainder] 変日（1近点月）
           ANOMALISTIC_MONTH = \
             Cycle::LunarRemainder.new(day: 27, minute: 743, second: 1)
-          # @return [Cycle::LunarRemainder] 入暦上限
-          LIMIT = Cycle::LunarRemainder.new(day: 28, minute: 743, second: 0)
           #
           # @note 常朔実 39571 = 29-711
           #   * 39571 / 4 = 9892.75 / 1340 = 7 余り 512.75

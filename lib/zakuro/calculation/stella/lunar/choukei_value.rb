@@ -30,6 +30,25 @@ module Zakuro
           day
         end
 
+        #
+        # 秒がない大余小余にする
+        #
+        # @param [Cycle::LunarRemainder] remainder 大余小余
+        #
+        # @note 815年で大余繰り上げあり
+        #
+        # @return [Integer] 大余
+        # @return [Float] 小余
+        #
+        def self.remainder_without_second(remainder:)
+          adjusted = remainder.class.new(
+            day: remainder.day, minute: remainder.floor_minute, second: 0
+          )
+          adjusted.carry!
+
+          [adjusted.day, adjusted.minute]
+        end
+
         def self.day_only(remainder_minute:, denominator:)
           float_day = Type::OldFloat.new(remainder_minute / denominator)
           # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）

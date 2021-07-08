@@ -10,8 +10,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Solar
-      # TODO: 大衍暦に合わせる
-
       #
       # Adjustment 24気損益眺朒（ちょうじく）数
       #
@@ -52,30 +50,30 @@ module Zakuro
 
         # @return [Array<Row>] 24気損益眺朒（ちょうじく）数
         MAP = {
-          touji: Row.new(stack: 0.0, per_term: +3.9546, per_day: -0.0372),         # 冬至（とうじ）
-          shoukan: Row.new(stack: +54.0, per_term: +3.4091, per_day: -0.0372),     # 小寒（しょうかん）
-          daikan: Row.new(stack: +100.0, per_term: +2.8636, per_day: -0.0372),     # 大寒（だいかん）
-          risshun: Row.new(stack: +138.0, per_term: +2.3181, per_day: +0.0372),    # 立春（りっしゅん）
-          usui: Row.new(stack: +176.0, per_term: +2.8636, per_day: +0.0372),       # 雨水（うすい）
-          keichitsu: Row.new(stack: +222.0, per_term: +3.4091, per_day: +0.0372),  # 啓蟄（けいちつ）
-          shunbun: Row.new(stack: +276.0, per_term: -3.7220, per_day: +0.0329),    # 春分（しゅんぶん）
-          seimei: Row.new(stack: +222.0, per_term: -3.2086, per_day: +0.0329),     # 清明（せいめい）
-          kokuu: Row.new(stack: +176.0, per_term: -2.6952, per_day: +0.0329),      # 穀雨（こくう）
-          rikka: Row.new(stack: +138.0, per_term: -2.1818, per_day: -0.0329),      # 立夏（りっか）
-          shouman: Row.new(stack: +100.0, per_term: -2.6952, per_day: -0.0329),    # 小満（しょうまん）
-          boushu: Row.new(stack: +54.0, per_term: -3.2086, per_day: -0.0329),      # 芒種（ぼうしゅ）
-          geshi: Row.new(stack: 0.0, per_term: -3.7220, per_day: +0.0329),         # 夏至（げし）
-          shousho: Row.new(stack: -54.0, per_term: -3.2086, per_day: +0.0329),     # 小暑（しょうしょ）
-          taisho: Row.new(stack: -100.0, per_term: -2.6952, per_day: +0.0329),     # 大暑（たいしょ）
-          risshuu: Row.new(stack: -138.0, per_term: -2.1818, per_day: -0.0329),    # 立秋（りっしゅう）
-          shosho: Row.new(stack: -176.0, per_term: -2.6952, per_day: -0.0329),     # 処暑（しょしょ）
-          hakuro: Row.new(stack: -222.0, per_term: -3.2086, per_day: -0.0329),     # 白露（はくろ）
-          shuubun: Row.new(stack: -276.0, per_term: +3.9546, per_day: -0.0372),    # 秋分（しゅうぶん）
-          kanro: Row.new(stack: -222.0, per_term: +3.4091, per_day: -0.0372),      # 寒露（かんろ）
-          soukou: Row.new(stack: -176.0, per_term: +2.8636, per_day: -0.0372),     # 霜降（そうこう）
-          rittou: Row.new(stack: -138.0, per_term: +2.3181, per_day: +0.0372),     # 立冬（りっとう）
-          shousetsu: Row.new(stack: -100.0, per_term: +2.8636, per_day: +0.0372),  # 小雪（しょうせつ）
-          taisetsu: Row.new(stack: -54.0, per_term: +3.4091, per_day: +0.0372)     # 大雪（たいせつ）
+          touji: Row.new(stack: 0.0, per_term: +13.4524, per_day: -0.1886),        # 冬至（とうじ）
+          shoukan: Row.new(stack: +176.0, per_term: +10.5564, per_day: -0.1634),   # 小寒（しょうかん）
+          daikan: Row.new(stack: +314.0, per_term: +8.0408, per_day: -0.1446),     # 大寒（だいかん）
+          risshun: Row.new(stack: +418.0, per_term: +5.8160, per_day: -0.1318),    # 立春（りっしゅん）
+          usui: Row.new(stack: +491.0, per_term: +3.7987, per_day: -0.1240),       # 雨水（うすい）
+          keichitsu: Row.new(stack: +535.0, per_term: +1.9265, per_day: -0.1240),  # 啓蟄（けいちつ）
+          shunbun: Row.new(stack: +551.0, per_term: -0.2048, per_day: -0.1178),    # 春分（しゅんぶん）
+          seimei: Row.new(stack: +535.0, per_term: -1.9968, per_day: -0.1190),     # 清明（せいめい）
+          kokuu: Row.new(stack: +491.0, per_term: -3.7956, per_day: -0.1240),      # 穀雨（こくう）
+          rikka: Row.new(stack: +418.0, per_term: -5.6626, per_day: -0.1324),      # 立夏（りっか）
+          shouman: Row.new(stack: +314.0, per_term: -7.6555, per_day: -0.1436),    # 小満（しょうまん）
+          boushu: Row.new(stack: +176.0, per_term: -9.9405, per_day: -0.1436),     # 芒種（ぼうしゅ）
+          geshi: Row.new(stack: 0.0, per_term: -12.0819, per_day: +0.1436),        # 夏至（げし）
+          shousho: Row.new(stack: -176.0, per_term: -9.7018, per_day: +0.1324),    # 小暑（しょうしょ）
+          taisho: Row.new(stack: -314.0, per_term: -7.5450, per_day: +0.1240),     # 大暑（たいしょ）
+          risshuu: Row.new(stack: -418.0, per_term: -5.5634, per_day: +0.1190),    # 立秋（りっしゅう）
+          shosho: Row.new(stack: -491.0, per_term: -3.7038, per_day: +0.1178),     # 処暑（しょしょ）
+          hakuro: Row.new(stack: -535.0, per_term: -1.8954, per_day: +0.1178),     # 白露（はくろ）
+          shuubun: Row.new(stack: -551.0, per_term: +0.1783, per_day: +0.1240),    # 秋分（しゅうぶん）
+          kanro: Row.new(stack: -535.0, per_term: +2.0042, per_day: +0.1318),      # 寒露（かんろ）
+          soukou: Row.new(stack: -491.0, per_term: +3.8950, per_day: +0.1446),     # 霜降（そうこう）
+          rittou: Row.new(stack: -418.0, per_term: +5.9214, per_day: +0.1634),     # 立冬（りっとう）
+          shousetsu: Row.new(stack: -314.0, per_term: +8.1610, per_day: +0.1886),  # 小雪（しょうせつ）
+          taisetsu: Row.new(stack: -176.0, per_term: +10.9010, per_day: +0.1886)   # 大雪（たいせつ）
         }.freeze
 
         #

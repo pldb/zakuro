@@ -10,6 +10,11 @@ module Zakuro
       # 大余小余（時刻情報）
       # @abstract 大余小余計算に必要な処理を行う、暦に依存しない汎用的なクラス
       #
+      # * 十干十二支（60日）を上限とした「日時分秒」の情報で、日付（date）/時刻（time）と部分的に重なる概念
+      # * 「15日1012分5秒」のような形式で表される
+      # * 分の上限で大余に繰り上げる
+      # * 秒の上限で1分に繰り上げる
+      #
       class AbstractRemainder # rubocop:disable Metrics/ClassLength
         # @return [Integer] 大余上限
         LIMIT = 60
@@ -224,8 +229,7 @@ module Zakuro
         # @return [False] より小さい
         #
         def >=(other)
-          up?(other) || \
-            (@day == other.day && @minute == other.minute && @second == other.second)
+          up?(other) || eql?(other)
         end
 
         #
@@ -249,8 +253,7 @@ module Zakuro
         # @return [False] より大きい
         #
         def <=(other)
-          down?(other) || \
-            (@day == other.day && @minute == other.minute && @second == other.second)
+          down?(other) || eql?(other)
         end
 
         #
@@ -339,8 +342,17 @@ module Zakuro
         # @return [Integer] 小余（秒切り捨て）
         #
         def floor_minute
-          result = @minute + @second / @base_minute
+          result = float_minute
           result.floor
+        end
+
+        #
+        # 秒を含めた小余を返す
+        #
+        # @return [Float] 小余
+        #
+        def float_minute
+          @minute + @second.to_f / @base_minute
         end
 
         #
@@ -377,13 +389,18 @@ module Zakuro
           super(form, @day, @minute, @second)
         end
 
-        private
-
-        def carry!(day, minute, second)
-          @day, @minute, @second = carry(day, minute, second)
+        #
+        # 繰り上げる
+        #
+        # @return [AbstractRemainder] 繰り上げ結果
+        #
+        def carry!
+          @day, @minute, @second = carry(@day, @minute, @second)
 
           self
         end
+
+        private
 
         # 繰り上げ、繰り下げ
         def carry(param_day, param_minute, param_second)
@@ -437,33 +454,29 @@ module Zakuro
         def up?(other)
           invalid?(param: other)
           day = other.day
-          minute = other.minute
+          minute = other.float_minute
+
           return true if @day > day
           return false if @day < day
 
-          return true if @minute > minute
-          return false if @minute < minute
-
-          @second > other.second
+          float_minute > minute
         end
 
         def eql?(other)
           invalid?(param: other)
 
-          (@day == other.day && @minute == other.minute && @second == other.second)
+          (@day == other.day && float_minute == other.float_minute)
         end
 
         def down?(other)
           invalid?(param: other)
           day = other.day
-          minute = other.minute
+          minute = other.float_minute
+
           return true if @day < day
           return false if @day > day
 
-          return true if @minute < minute
-          return false if @minute > minute
-
-          @second < other.second
+          float_minute < minute
         end
       end
     end

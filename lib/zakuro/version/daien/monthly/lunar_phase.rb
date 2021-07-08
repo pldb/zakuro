@@ -18,8 +18,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Monthly
-      # TODO: 大衍暦に合わせる
-
       #
       # LunarPhase 月の位相
       #
@@ -63,7 +61,7 @@ module Zakuro
           adjusted = @average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          # NOTE: 儀鳳暦では進朔しない
+          # TODO: 大衍暦では進朔するか
           # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")
@@ -94,7 +92,7 @@ module Zakuro
         def correction_moon_value
           @lunar_location.run
 
-          remainder = @lunar_location.remainder
+          remainder = @lunar_location.adjusted_remainder
 
           # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
           # debug("[lunar]remainder.day: #{remainder.day}")

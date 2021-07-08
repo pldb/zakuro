@@ -4,6 +4,10 @@ require_relative './gihou/cycle/remainder'
 require_relative './gihou/cycle/solar_term'
 require_relative './gihou/range/annual_range'
 
+require_relative './daien/cycle/remainder'
+require_relative './daien/cycle/solar_term'
+require_relative './daien/range/annual_range'
+
 require_relative './senmyou/cycle/remainder'
 require_relative './senmyou/cycle/solar_term'
 require_relative './senmyou/range/annual_range'

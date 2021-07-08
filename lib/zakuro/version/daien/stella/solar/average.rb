@@ -16,8 +16,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Solar
-      # TODO: 大衍暦に合わせる
-
       #
       # Average 平気（太陽軌道平均）
       #
@@ -89,7 +87,8 @@ module Zakuro
           solar_term_index = solar_location.index
 
           # 入定気の一つ後の二十四節気まで戻す（ただし11月経朔が二十四節気上にある場合は戻さない）
-          solar_term_index += 1 unless solar_location.remainder == Cycle::Remainder.new(total: 0)
+          # NOTE: 789年で大余0のパターンあり
+          solar_term_index += 1 unless solar_location.remainder.day.zero?
 
           solar_term_index
         end

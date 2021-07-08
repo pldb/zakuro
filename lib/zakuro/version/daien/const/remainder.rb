@@ -38,15 +38,14 @@ module Zakuro
           # @return [Cycle::LunarRemainder] 転日（1近点月）
           ANOMALISTIC_MONTH = \
             Cycle::LunarRemainder.new(day: 27, minute: 1685, second: 79)
-          # @return [Cycle::LunarRemainder] 入暦上限
-          LIMIT = Cycle::LunarRemainder.new(day: 28, minute: 1685, second: 0)
           #
           # @note 揲法 89773 = 29-1613
           #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
           #   * 0.25 * 80（1分=80秒） = 20
           #
           # @return [Cycle::LunarRemainder] 弦（1分=80秒）
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20)
+          # TODO: 秒が20では通らない。少なくとも0.01247は必要になる
+          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20.01247)
         end
       end
     end

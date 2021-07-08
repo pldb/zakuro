@@ -12,8 +12,6 @@ module Zakuro
   module Daien
     # :nodoc:
     module Lunar
-      # TODO: 大衍暦に合わせる
-
       #
       # Value 月補正値
       #
@@ -33,8 +31,9 @@ module Zakuro
         def self.get(remainder:)
           valid?(remainder: remainder)
 
-          day = remainder.day
-          minute = remainder.floor_minute
+          day, minute = Calculation::Lunar::ChoukeiValue.remainder_without_second(
+            remainder: remainder
+          )
 
           # 引き当て
           row = Adjustment.specify(day: day, minute: minute)

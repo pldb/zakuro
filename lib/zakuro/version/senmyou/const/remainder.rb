@@ -35,8 +35,6 @@ module Zakuro
           # @note ANOMALISTIC_MONTH （1近点月）の半分に相当する
           HALF_ANOMALISTIC_MONTH = \
             Cycle::LunarRemainder.new(day: 13, minute: 6529, second: 9.5)
-          # @return [Cycle::LunarRemainder] 入暦上限
-          LIMIT = Cycle::LunarRemainder.new(day: 14, minute: 6529, second: 0)
           #
           # @note 章月 248057 = 29-4457
           #

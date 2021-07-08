@@ -18,7 +18,7 @@ module Zakuro
         #
         # @return [Hash<Integer>] 遠/近の地点での中間
         DAY_LIMIT = {
-          7 => 2071,
+          7 => 2701,
           14 => 2363,
           21 => 2024,
           28 => 1686
@@ -163,22 +163,22 @@ module Zakuro
         # @return [Array<Row>] 月の補正値情報
         #
         LIST = [
-          Row.new(day: 1, range: Range.new, value: Value.new(per: -296, stack: 0)),
-          Row.new(day: 2, range: Range.new, value: Value.new(per: -259, stack: +297)),
-          Row.new(day: 3, range: Range.new, value: Value.new(per: -220, stack: +556)),
-          Row.new(day: 4, range: Range.new, value: Value.new(per: -180, stack: +776)),
-          Row.new(day: 5, range: Range.new, value: Value.new(per: -139, stack: +956)),
-          Row.new(day: 6, range: Range.new, value: Value.new(per: -97, stack: +1095)),
-          Row.new(day: 7, range: Range.new(max: DAY_LIMIT[7]), value: Value.new(per: -48, stack: +1192)),
-          Row.new(day: 7, range: Range.new(min: DAY_LIMIT[7]), value: Value.new(per: 6, stack: +1192)),
-          Row.new(day: 8, range: Range.new, value: Value.new(per: +64, stack: +1234)),
-          Row.new(day: 9, range: Range.new, value: Value.new(per: +106, stack: +1170)),
-          Row.new(day: 10, range: Range.new, value: Value.new(per: +148, stack: +1064)),
-          Row.new(day: 11, range: Range.new, value: Value.new(per: +189, stack: +916)),
-          Row.new(day: 12, range: Range.new, value: Value.new(per: +229, stack: +727)),
-          Row.new(day: 13, range: Range.new, value: Value.new(per: +267, stack: +498)),
-          Row.new(day: 14, range: Range.new(max: DAY_LIMIT[14]), value: Value.new(per: +231, stack: +231)),
-          Row.new(day: 14, range: Range.new(min: DAY_LIMIT[14]), value: Value.new(per: -66, stack: +231)),
+          Row.new(day: 1, range: Range.new, value: Value.new(per: +297, stack: 0)),
+          Row.new(day: 2, range: Range.new, value: Value.new(per: +259, stack: +297)),
+          Row.new(day: 3, range: Range.new, value: Value.new(per: +220, stack: +556)),
+          Row.new(day: 4, range: Range.new, value: Value.new(per: +180, stack: +776)),
+          Row.new(day: 5, range: Range.new, value: Value.new(per: +139, stack: +956)),
+          Row.new(day: 6, range: Range.new, value: Value.new(per: +97, stack: +1095)),
+          Row.new(day: 7, range: Range.new(max: DAY_LIMIT[7]), value: Value.new(per: +48, stack: +1192)),
+          Row.new(day: 7, range: Range.new(min: DAY_LIMIT[7]), value: Value.new(per: -6, stack: +1240)), # stack: +1192 + 48
+          Row.new(day: 8, range: Range.new, value: Value.new(per: -64, stack: +1234)),
+          Row.new(day: 9, range: Range.new, value: Value.new(per: -106, stack: +1170)),
+          Row.new(day: 10, range: Range.new, value: Value.new(per: -148, stack: +1064)),
+          Row.new(day: 11, range: Range.new, value: Value.new(per: -189, stack: +916)),
+          Row.new(day: 12, range: Range.new, value: Value.new(per: -229, stack: +727)),
+          Row.new(day: 13, range: Range.new, value: Value.new(per: -267, stack: +498)),
+          Row.new(day: 14, range: Range.new(max: DAY_LIMIT[14]), value: Value.new(per: -231, stack: +231)),
+          Row.new(day: 14, range: Range.new(min: DAY_LIMIT[14]), value: Value.new(per: -66, stack: 0)), # stack: +232 - 231
           Row.new(day: 15, range: Range.new, value: Value.new(per: -289, stack: -66)),
           Row.new(day: 16, range: Range.new, value: Value.new(per: -250, stack: -355)),
           Row.new(day: 17, range: Range.new, value: Value.new(per: -211, stack: -605)),
@@ -186,7 +186,7 @@ module Zakuro
           Row.new(day: 19, range: Range.new, value: Value.new(per: -130, stack: -987)),
           Row.new(day: 20, range: Range.new, value: Value.new(per: -87, stack: -1117)),
           Row.new(day: 21, range: Range.new(max: DAY_LIMIT[21]), value: Value.new(per: -36, stack: -1204)),
-          Row.new(day: 21, range: Range.new(min: DAY_LIMIT[21]), value: Value.new(per: +18, stack: -1204)),
+          Row.new(day: 21, range: Range.new(min: DAY_LIMIT[21]), value: Value.new(per: +18, stack: -1240)), # stack: -1204 - 36
           Row.new(day: 22, range: Range.new, value: Value.new(per: +73, stack: -1222)),
           Row.new(day: 23, range: Range.new, value: Value.new(per: +116, stack: -1149)),
           Row.new(day: 24, range: Range.new, value: Value.new(per: +157, stack: -1033)),
