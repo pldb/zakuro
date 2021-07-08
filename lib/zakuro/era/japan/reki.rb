@@ -44,7 +44,7 @@ module Zakuro
           start_date: Western::Calendar.new(year: 698, month: 2, day: 16)
         ),
         Range.new(
-          class_name: 'Zakuro::Taien::Gateway',
+          class_name: 'Zakuro::Daien::Gateway',
           start_date: Western::Calendar.new(year: 764, month: 2, day: 7)
         ),
         Range.new(

@@ -11,7 +11,7 @@ module Zakuro
     attr_reader :version_name
     attr_reader :resolver
 
-    VERSION_NAMES = %w[Genka Gihou Taien Senmyou Joukyou Kansei Tenpou Gregorio].freeze
+    VERSION_NAMES = %w[Genka Gihou Daien Senmyou Joukyou Kansei Tenpou Gregorio].freeze
 
     def initialize(version_name:)
       raise ArgumentError.new, 'invalid version' unless VERSION_NAMES.include?(version_name)
