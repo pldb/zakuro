@@ -29,7 +29,7 @@ module Zakuro
         def self.get(remainder:, forward:)
           valid?(remainder: remainder)
 
-          day, minute = Calculation::Lunar::ChoukeiValue.remainder_with_no_second(
+          day, minute = Calculation::Lunar::ChoukeiValue.remainder_without_second(
             remainder: remainder
           )
 

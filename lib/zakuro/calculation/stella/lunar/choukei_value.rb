@@ -40,7 +40,7 @@ module Zakuro
         # @return [Integer] 大余
         # @return [Float] 小余
         #
-        def self.remainder_with_no_second(remainder:)
+        def self.remainder_without_second(remainder:)
           adjusted = remainder.class.new(
             day: remainder.day, minute: remainder.floor_minute, second: 0
           )
