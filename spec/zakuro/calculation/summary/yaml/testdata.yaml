@@ -1,6 +1,7 @@
 - western_date: "0862-02-03"
   version: "Senmyou"
-  test_case_name: "貞観4年1月1日"
+  japan_date: "貞観4年1月1日"
+  description: "月初日（朔日）が計算できること"
   expected:
     data:
       year:
@@ -71,7 +72,8 @@
           western_date: "0862-02-03"
 - western_date: "0862-02-04"
   version: "Senmyou"
-  test_case_name: "貞観4年1月2日"
+  japan_date: "貞観4年1月2日"
+  description: "月の2日目が計算できること"
   expected:
     data:
       year:
@@ -142,7 +144,8 @@
           western_date: "0862-02-04"
 - western_date: "0862-03-05"
   version: "Senmyou"
-  test_case_name: "貞観4年2月1日"
+  japan_date: "貞観4年2月1日"
+  description: "年正月の次月のうち初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -209,7 +212,8 @@
           western_date: "0862-03-05"
 - western_date: "0862-03-06"
   version: "Senmyou"
-  test_case_name: "貞観4年2月2日"
+  japan_date: "貞観4年2月2日"
+  description: "年正月の次月のうち2日目を計算できること"
   expected:
     data:
       year:
@@ -276,7 +280,8 @@
           western_date: "0862-03-06"
 - western_date: "0862-04-02"
   version: "Senmyou"
-  test_case_name: "貞観4年2月29日"
+  japan_date: "貞観4年2月29日"
+  description: "年正月の次月のうち末日を計算できること"
   expected:
     data:
       year:
@@ -343,7 +348,8 @@
           western_date: "0862-04-02"
 - western_date: "862-11-25"
   version: "Senmyou"
-  test_case_name: "貞観4年11月1日"
+  japan_date: "貞観4年11月1日"
+  description: "11月（冬至）の初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -414,7 +420,8 @@
           western_date: "0862-11-25"
 - western_date: "862-11-26"
   version: "Senmyou"
-  test_case_name: "貞観4年11月2日"
+  japan_date: "貞観4年11月2日"
+  description: "11月（冬至）の2日目を計算できること"
   expected:
     data:
       year:
@@ -485,7 +492,8 @@
           western_date: "0862-11-26"
 - western_date: "862-12-24"
   version: "Senmyou"
-  test_case_name: "貞観4年11月30日"
+  japan_date: "貞観4年11月30日"
+  description: "11月（冬至）の末日を計算できること"
   expected:
     data:
       year:
@@ -556,7 +564,8 @@
           western_date: "0862-12-24"
 - western_date: "862-12-25"
   version: "Senmyou"
-  test_case_name: "貞観4年12月1日"
+  japan_date: "貞観4年12月1日"
+  description: "年末月の初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -627,7 +636,8 @@
           western_date: "0862-12-25"
 - western_date: "862-12-26"
   version: "Senmyou"
-  test_case_name: "貞観4年12月2日"
+  japan_date: "貞観4年12月2日"
+  description: "年末月の2日目を計算できること"
   expected:
     data:
       year:
@@ -698,7 +708,8 @@
           western_date: "0862-12-26"
 - western_date: "863-01-22"
   version: "Senmyou"
-  test_case_name: "貞観4年12月29日"
+  japan_date: "貞観4年12月29日"
+  description: "年末月の末日を計算できること"
   expected:
     data:
       year:
@@ -769,7 +780,8 @@
           western_date: "0863-01-22"
 - western_date: "863-1-23"
   version: "Senmyou"
-  test_case_name: "貞観5年1月1日"
+  japan_date: "貞観5年1月1日"
+  description: "宣明暦2年目の正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -840,7 +852,8 @@
           western_date: "0863-01-23"
 - western_date: "863-1-24"
   version: "Senmyou"
-  test_case_name: "貞観5年1月2日"
+  japan_date: "貞観5年1月2日"
+  description: "宣明暦2年目の正月2日目を計算できること"
   expected:
     data:
       year:
@@ -911,7 +924,8 @@
           western_date: "0863-01-24"
 - western_date: "863-2-21"
   version: "Senmyou"
-  test_case_name: "貞観5年1月30日"
+  japan_date: "貞観5年1月30日"
+  description: "宣明暦2年目の正月末日を計算できること"
   expected:
     data:
       year:
@@ -982,7 +996,8 @@
           western_date: "0863-02-21"
 - western_date: "863-7-20"
   version: "Senmyou"
-  test_case_name: "貞観5年閏6月1日"
+  japan_date: "貞観5年閏6月1日"
+  description: "閏月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1049,7 +1064,8 @@
           western_date: "0863-07-20"
 - western_date: "863-7-21"
   version: "Senmyou"
-  test_case_name: "貞観5年閏6月2日"
+  japan_date: "貞観5年閏6月2日"
+  description: "閏月の2日目を計算できること"
   expected:
     data:
       year:
@@ -1116,7 +1132,8 @@
           western_date: "0863-07-21"
 - western_date: "863-8-17"
   version: "Senmyou"
-  test_case_name: "貞観5年閏6月29日"
+  japan_date: "貞観5年閏6月29日"
+  description: "閏月の末日を計算できること"
   expected:
     data:
       year:
@@ -1183,7 +1200,8 @@
           western_date: "0863-08-17"
 - western_date: "873-1-3"
   version: "Senmyou"
-  test_case_name: "貞観14年12月1日（小 -> 大）"
+  japan_date: "貞観14年12月1日（小 -> 大）"
+  description: "運用情報で月の大小を置換できること"
   expected:
     data:
       year:
@@ -1256,7 +1274,8 @@
           western_date: "0873-01-03"
 - western_date: "876-1-30"
   version: "Senmyou"
-  test_case_name: "貞観18年1月1日"
+  japan_date: "貞観18年1月1日"
+  description: "元号最後の通年で正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1327,7 +1346,8 @@
           western_date: "0876-01-30"
 - western_date: "876-1-31"
   version: "Senmyou"
-  test_case_name: "貞観18年1月2日"
+  japan_date: "貞観18年1月2日"
+  description: "元号最後の通年で正月2日目を計算できること"
   expected:
     data:
       year:
@@ -1398,7 +1418,8 @@
           western_date: "0876-01-31"
 - western_date: "876-2-28"
   version: "Senmyou"
-  test_case_name: "貞観18年1月30日"
+  japan_date: "貞観18年1月30日"
+  description: "元号最後の通年で正月末日を計算できること"
   expected:
     data:
       year:
@@ -1469,7 +1490,8 @@
           western_date: "0876-02-28"
 - western_date: "876-12-20"
   version: "Senmyou"
-  test_case_name: "貞観18年12月1日"
+  japan_date: "貞観18年12月1日"
+  description: "元号最後の通年で末月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1540,7 +1562,8 @@
           western_date: "0876-12-20"
 - western_date: "876-12-21"
   version: "Senmyou"
-  test_case_name: "貞観18年12月2日"
+  japan_date: "貞観18年12月2日"
+  description: "元号最後の通年で末月2日目を計算できること"
   expected:
     data:
       year:
@@ -1611,7 +1634,8 @@
           western_date: "0876-12-21"
 - western_date: "877-1-17"
   version: "Senmyou"
-  test_case_name: "貞観18年12月29日"
+  japan_date: "貞観18年12月29日"
+  description: "元号最後の通年で末月末日を計算できること"
   expected:
     data:
       year:
@@ -1682,7 +1706,8 @@
           western_date: "0877-01-17"
 - western_date: "877-5-31"
   version: "Senmyou"
-  test_case_name: "貞観19年4月15日"
+  japan_date: "貞観19年4月15日"
+  description: "元号最後の日を計算できること"
   expected:
     data:
       year:
@@ -1753,7 +1778,8 @@
           western_date: "0877-05-31"
 - western_date: "877-6-1"
   version: "Senmyou"
-  test_case_name: "元慶1年4月16日"
+  japan_date: "元慶1年4月16日"
+  description: "元号最初の日を計算できること"
   expected:
     data:
       year:
@@ -1824,7 +1850,8 @@
           western_date: "0877-06-01"
 - western_date: "937-2-14"
   version: "Senmyou"
-  test_case_name: "承平7年1月2日（承平7年1月1日）"
+  japan_date: "承平7年1月2日（承平7年1月1日）"
+  description: "宣明暦の2つ目の元号のうち、正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1897,7 +1924,8 @@
           western_date: "0937-02-14"
 - western_date: "1031-11-18"
   version: "Senmyou"
-  test_case_name: "長元4年閏10月1日"
+  japan_date: "長元4年閏10月1日"
+  description: "入定気が立冬（21）の年でも計算できること"
   expected:
     data:
       year:
@@ -1964,7 +1992,8 @@
           western_date: "1031-11-18"
 - western_date: "1032-10-7"
   version: "Senmyou"
-  test_case_name: "長元5年9月1日"
+  japan_date: "長元5年9月1日"
+  description: "入定気が立冬（21）の年が前年にあっても計算できること"
   expected:
     data:
       year:
@@ -2035,7 +2064,8 @@
           western_date: "1032-10-07"
 - western_date: "1202-11-17"
   version: "Senmyou"
-  test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
+  japan_date: "建仁2年閏10月1日（建仁2年11月1日）"
+  description: "運用情報で月を置換できること"
   expected:
     data:
       year:
@@ -2106,7 +2136,8 @@
           western_date: "1202-11-17"
 - western_date: "1202-12-16"
   version: "Senmyou"
-  test_case_name: "建仁2年11月1日（建仁2年閏11月1日）"
+  japan_date: "建仁2年11月1日（建仁2年閏11月1日）"
+  description: "運用情報で月を置換できること"
   expected:
     data:
       year:
@@ -2177,7 +2208,8 @@
           western_date: "1202-12-16"
 - western_date: "1332-1-28"
   version: "Senmyou"
-  test_case_name: "元弘2年1月1日"
+  japan_date: "元弘2年1月1日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2248,7 +2280,8 @@
           western_date: "1332-01-28"
 - western_date: "1332-1-29"
   version: "Senmyou"
-  test_case_name: "元弘2年1月2日"
+  japan_date: "元弘2年1月2日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2319,7 +2352,8 @@
           western_date: "1332-01-29"
 - western_date: "1332-2-26"
   version: "Senmyou"
-  test_case_name: "元弘2年1月29日"
+  japan_date: "元弘2年1月29日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2390,7 +2424,8 @@
           western_date: "1332-02-26"
 - western_date: "1392-1-25"
   version: "Senmyou"
-  test_case_name: "元中9年1月1日"
+  japan_date: "元中9年1月1日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2461,7 +2496,8 @@
           western_date: "1392-01-25"
 - western_date: "1392-1-26"
   version: "Senmyou"
-  test_case_name: "元中9年1月2日"
+  japan_date: "元中9年1月2日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2532,7 +2568,8 @@
           western_date: "1392-01-26"
 - western_date: "1392-2-23"
   version: "Senmyou"
-  test_case_name: "元中9年1月30日"
+  japan_date: "元中9年1月30日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2603,7 +2640,8 @@
           western_date: "1392-02-23"
 - western_date: "1392-11-19"
   version: "Senmyou"
-  test_case_name: "明徳3年閏10月1日（明徳3年11月1日）"
+  japan_date: "明徳3年閏10月1日（明徳3年11月1日）"
+  description: "南北朝終焉の翌日を計算できること"
   expected:
     data:
       year:
@@ -2674,7 +2712,8 @@
           western_date: "1392-11-19"
 - western_date: "1393-2-12"
   version: "Senmyou"
-  test_case_name: "明徳4年1月1日"
+  japan_date: "明徳4年1月1日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2745,7 +2784,8 @@
           western_date: "1393-02-12"
 - western_date: "1393-2-13"
   version: "Senmyou"
-  test_case_name: "明徳4年1月2日"
+  japan_date: "明徳4年1月2日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2816,7 +2856,8 @@
           western_date: "1393-02-13"
 - western_date: "1393-3-12"
   version: "Senmyou"
-  test_case_name: "明徳4年1月29日"
+  japan_date: "明徳4年1月29日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2887,7 +2928,8 @@
           western_date: "1393-03-12"
 - western_date: "1394-8-2"
   version: "Senmyou"
-  test_case_name: "応永1年7月5日"
+  japan_date: "応永1年7月5日"
+  description: "南北朝終焉以降、最初の改元を計算できること"
   expected:
     data:
       year:
@@ -2958,7 +3000,8 @@
           western_date: "1394-08-02"
 - western_date: "1685-2-4"
   version: "Senmyou"
-  test_case_name: "貞享2年1月1日"
+  japan_date: "貞享2年1月1日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:
@@ -3029,7 +3072,8 @@
           western_date: "1685-02-04"
 - western_date: "1685-2-5"
   version: "Senmyou"
-  test_case_name: "貞享2年1月2日"
+  japan_date: "貞享2年1月2日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:
@@ -3100,7 +3144,8 @@
           western_date: "1685-02-05"
 - western_date: "1685-3-4"
   version: "Senmyou"
-  test_case_name: "貞享2年1月29日"
+  japan_date: "貞享2年1月29日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:

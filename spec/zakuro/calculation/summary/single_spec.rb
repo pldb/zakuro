@@ -45,8 +45,8 @@ describe 'Zakuro' do
             version = test['version']
             expected = SingleDataFactory.create(hash: test['expected'])
 
-            it "#{western_date}: #{test['test_case_name']}" do
-              # if test['test_case_name'] == '明徳3年閏10月1日（明徳3年11月1日）'
+            it "#{western_date}: #{test['japan_date']}: #{test['description']}" do
+              # if test['japan_date'] == '明徳3年閏10月1日（明徳3年11月1日）'
               #   p western_date
               #   p "use on debug mode"
               # end
