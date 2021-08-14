@@ -3,103 +3,103 @@ name: "南北朝前+南朝"
 # 元中9年閏10月4日
 end_date: "1392-11-18"
 list:
-  - name: "允恭"
+  - name: "允恭天皇"
     # 34年1月1日
     start_year: 34
     start_date: "445-1-24"
     new_year_date: "445-1-24"
     note: ""
-  - name: "安康"
+  - name: "安康天皇"
     # 1年1月1日
     start_year: 1
     start_date: "454-2-14"
     new_year_date: "454-2-14"
     note: ""
-  - name: "雄略"
+  - name: "雄略天皇"
     # 1年1月1日
     start_year: 1
     start_date: "457-2-10"
     new_year_date: "457-2-10"
     note: ""
-  - name: "清寧"
+  - name: "清寧天皇"
     # 1年1月1日
     start_year: 1
     start_date: "480-1-28"
     new_year_date: "480-1-28"
     note: ""
-  - name: "顕宗"
+  - name: "顕宗天皇"
     # 1年1月1日
     start_year: 1
     start_date: "485-2-1"
     new_year_date: "485-2-1"
     note: ""
-  - name: "仁賢"
+  - name: "仁賢天皇"
     # 1年1月1日
     start_year: 1
     start_date: "488-1-29"
     new_year_date: "488-1-29"
     note: ""
-  - name: "武烈"
+  - name: "武烈天皇"
     # 1年1月1日
     start_year: 1
     start_date: "499-1-28"
     new_year_date: "499-1-28"
     note: ""
-  - name: "継体"
+  - name: "継体天皇"
     # 1年1月1日
     start_year: 1
     start_date: "507-1-29"
     new_year_date: "507-1-29"
     note: ""
-  - name: "安閑"
+  - name: "安閑天皇"
     # 1年1月1日
     start_year: 1
     start_date: "534-1-30"
     new_year_date: "534-1-30"
     note: ""
-  - name: "宣化"
+  - name: "宣化天皇"
     # 1年1月1日
     start_year: 1
     start_date: "536-2-8"
     new_year_date: "536-2-8"
     note: ""
-  - name: "欽明"
+  - name: "欽明天皇"
     # 1年1月1日
     start_year: 1
     start_date: "540-1-25"
     new_year_date: "540-1-25"
     note: ""
-  - name: "敏達"
+  - name: "敏達天皇"
     # 1年1月1日
     start_year: 1
     start_date: "572-1-31"
     new_year_date: "572-1-31"
     note: ""
-  - name: "用明"
+  - name: "用明天皇"
     # 1年1月1日
     start_year: 1
     start_date: "586-1-25"
     new_year_date: "586-1-25"
     note: ""
-  - name: "崇峻"
+  - name: "崇峻天皇"
     # 1年1月1日
     start_year: 1
     start_date: "588-2-3"
     new_year_date: "588-2-3"
     note: ""
-  - name: "推古"
+  - name: "推古天皇"
     # 1年1月1日
     start_year: 1
     start_date: "593-2-7"
     new_year_date: "593-2-7"
     note: ""
-  - name: "舒明"
+  - name: "舒明天皇"
     # 1年1月1日
     start_year: 1
     start_date: "629-1-30"
     new_year_date: "629-1-30"
     note: ""
-  - name: "皇極"
+  - name: "皇極天皇"
     # 1年1月1日
     start_year: 1
     start_date: "642-2-5"
@@ -117,19 +117,19 @@ list:
     start_date: "650-3-22"
     new_year_date: "650-2-7"
     note: ""
-  - name: "斉明"
+  - name: "斉明天皇"
     # 1年1月1日
     start_year: 1
     start_date: "655-2-12"
     new_year_date: "655-2-12"
     note: ""
-  - name: "天智"
+  - name: "天智天皇"
     # 1年1月1日
     start_year: 1
     start_date: "662-1-25"
     new_year_date: "662-1-25"
     note: ""
-  - name: "天武"
+  - name: "天武天皇"
     # 1年1月1日
     start_year: 1
     start_date: "672-2-4"
@@ -141,13 +141,13 @@ list:
     start_date: "686-8-14"
     new_year_date: "686-1-30"
     note: ""
-  - name: "持統"
+  - name: "持統天皇"
     # 1年1月1日
     start_year: 1
     start_date: "687-2-18"
     new_year_date: "687-2-18"
     note: ""
-  - name: "文武"
+  - name: "文武天皇"
     # 1年1月1日
     start_year: 1
     start_date: "697-1-28"
