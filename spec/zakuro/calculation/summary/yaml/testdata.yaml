@@ -1,3 +1,220 @@
+- western_date: "0698-02-16"
+  version: "Gihou"
+  japan_date: "文武天皇2年1月1日"
+  description: "儀鳳暦の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "文武天皇2年"
+        second_gengou: ""
+        zodiac_name: "戊戌"
+        total_days: 355
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-1109"
+          western_date: "0698-02-16"
+        odd_solar_terms:
+          index: 5
+          remainder: "14-796"
+        even_solar_terms:
+          index: 4
+          remainder: "59-503"
+      day:
+        number: 1
+        zodiac_name: "壬戌"
+        remainder: "58-1109"
+        western_date: "0698-02-16"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "文武天皇2年"
+          second_gengou: ""
+          zodiac_name: "戊戌"
+          total_days: 355
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "壬戌"
+            remainder: "58-1109"
+            western_date: "0698-02-16"
+          odd_solar_terms:
+            index: 5
+            remainder: "14-796"
+          even_solar_terms:
+            index: 4
+            remainder: "59-503"
+        day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-1109"
+          western_date: "0698-02-16"
+# FIXME: 計算上の年日数が355日にならない。運用情報で前年閏12月を今年1月にしているが、それが計算上の年日数計算を狂わせているか
+# - western_date: "0764-02-06"
+#   version: "Gihou"
+#   japan_date: "天平宝字7年12月30日"
+#   description: "儀鳳暦の末日が計算できること"
+#   expected:
+#     data:
+#       year:
+#         first_gengou: "天平宝字7年"
+#         second_gengou: ""
+#         zodiac_name: "癸卯"
+#         total_days: 384
+#       month:
+#         number: 12
+#         leaped: false
+#         days_name: "大"
+#         first_day:
+#           number: 1
+#           zodiac_name: "己巳"
+#           remainder: "5-630"
+#           western_date: "0764-01-08"
+#         odd_solar_terms:
+#           index: 3
+#           remainder: "30-418"
+#         even_solar_terms:
+#           index: 2
+#           remainder: "15-125"
+#       day:
+#         number: 30
+#         zodiac_name: "戊戌"
+#         remainder: "34-630"
+#         western_date: "0764-02-06"
+#     operation:
+#       operated: false
+#       month:
+#         current:
+#           id: ""
+#           western_date: ""
+#           page: -1
+#           number: -1
+#           annotations:
+#         parent:
+#           id: ""
+#           western_date: ""
+#           page: -1
+#           number: -1
+#           annotations:
+#       original:
+#         year:
+#           first_gengou: "天平宝字7年"
+#           second_gengou: ""
+#           zodiac_name: "癸卯"
+#           total_days: 355
+#         month:
+#           number: 12
+#           leaped: false
+#           days_name: "大"
+#           first_day:
+#             number: 1
+#             zodiac_name: "己巳"
+#             remainder: "5-630"
+#             western_date: "0764-01-08"
+#           odd_solar_terms:
+#             index: 3
+#             remainder: "30-418"
+#           even_solar_terms:
+#             index: 2
+#             remainder: "15-125"
+#         day:
+#           number: 30
+#           zodiac_name: "戊戌"
+#           remainder: "34-630"
+#           western_date: "0764-02-06"
+- western_date: "0764-02-07"
+  version: "Daien"
+  japan_date: "天平宝字8年1月1日"
+  description: "大衍暦の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平宝字8年"
+        second_gengou: ""
+        zodiac_name: "甲辰"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "己亥"
+          remainder: "35-324"
+          western_date: "0764-02-07"
+        odd_solar_terms:
+          index: 5
+          remainder: "0-1861"
+        even_solar_terms:
+          index: 4
+          remainder: "45-1197"
+      day:
+        number: 1
+        zodiac_name: "己亥"
+        remainder: "35-324"
+        western_date: "0764-02-07"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平宝字8年"
+          second_gengou: ""
+          zodiac_name: "甲辰"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "己亥"
+            remainder: "35-324"
+            western_date: "0764-02-07"
+          odd_solar_terms:
+            index: 5
+            remainder: "0-1861"
+          even_solar_terms:
+            index: 4
+            remainder: "45-1197"
+        day:
+          number: 1
+          zodiac_name: "己亥"
+          remainder: "35-324"
+          western_date: "0764-02-07"
 - western_date: "0862-02-03"
   version: "Senmyou"
   japan_date: "貞観4年1月1日"
