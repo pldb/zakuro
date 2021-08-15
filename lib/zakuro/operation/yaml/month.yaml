@@ -1185,7 +1185,7 @@
     days: "-"
 - id: 120-1-a
   relation_id: "-"
-  parent_id: "-"
+  parent_id: 120-1-1
   page: '120'
   number: "-"
   japan_date: 天平神護 2年 3 大 丙辰 52-1182
