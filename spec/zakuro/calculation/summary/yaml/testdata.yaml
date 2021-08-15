@@ -1,5 +1,737 @@
+- western_date: "0698-02-16"
+  version: "Gihou"
+  japan_date: "文武天皇2年1月1日"
+  description: "儀鳳暦の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "文武天皇2年"
+        second_gengou: ""
+        zodiac_name: "戊戌"
+        total_days: 355
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-1109"
+          western_date: "0698-02-16"
+        odd_solar_terms:
+          index: 5
+          remainder: "14-796"
+        even_solar_terms:
+          index: 4
+          remainder: "59-503"
+      day:
+        number: 1
+        zodiac_name: "壬戌"
+        remainder: "58-1109"
+        western_date: "0698-02-16"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "文武天皇2年"
+          second_gengou: ""
+          zodiac_name: "戊戌"
+          total_days: 355
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "壬戌"
+            remainder: "58-1109"
+            western_date: "0698-02-16"
+          odd_solar_terms:
+            index: 5
+            remainder: "14-796"
+          even_solar_terms:
+            index: 4
+            remainder: "59-503"
+        day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-1109"
+          western_date: "0698-02-16"
+- western_date: "0701-05-03"
+  version: "Gihou"
+  japan_date: "大宝1年3月21日"
+  description: "儀鳳暦での最初の改元を計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "大宝1年"
+        second_gengou: ""
+        zodiac_name: "辛丑"
+        total_days: 354
+      month:
+        number: 3
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "甲戌"
+          remainder: "10-670"
+          western_date: "0701-04-13"
+        odd_solar_terms:
+          index: 9
+          remainder: "31-271"
+        even_solar_terms:
+          index: 8
+          remainder: "15-1318"
+      day:
+        number: 21
+        zodiac_name: "甲午"
+        remainder: "30-670"
+        western_date: "0701-05-03"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "大宝1年"
+          second_gengou: ""
+          zodiac_name: "辛丑"
+          total_days: 354
+        month:
+          number: 3
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "甲戌"
+            remainder: "10-670"
+            western_date: "0701-04-13"
+          odd_solar_terms:
+            index: 9
+            remainder: "31-271"
+          even_solar_terms:
+            index: 8
+            remainder: "15-1318"
+        day:
+          number: 21
+          zodiac_name: "甲午"
+          remainder: "30-670"
+          western_date: "0701-05-03"
+- western_date: "0711-10-16"
+  version: "Gihou"
+  japan_date: "和銅4年9月1日 -> 和銅4年8月30日"
+  description: "儀鳳暦で運用情報による月の大小を変更できること"
+  expected:
+    data:
+      year:
+        first_gengou: "和銅4年"
+        second_gengou: ""
+        zodiac_name: "辛亥"
+        total_days: 384
+      month:
+        number: 8
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "癸卯"
+          remainder: "39-756"
+          western_date: "0711-09-17"
+        odd_solar_terms:
+          index: 19
+          remainder: "55-1119"
+        even_solar_terms:
+          index: 18
+          remainder: "40-827"
+      day:
+        number: 30
+        zodiac_name: "壬申"
+        remainder: "8-756"
+        western_date: "0711-10-16"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "102-1-1"
+          western_date: "0711-10-16"
+          page: 102
+          number: 1
+          annotations:
+            - description: "計算では8（壬申）であるが，続紀に9月癸酉朔とある。計算B）では9（癸酉）−10となる。したがって9月朔のユリウス暦は10月17日である。"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "和銅4年"
+          second_gengou: ""
+          zodiac_name: "辛亥"
+          total_days: 384
+        month:
+          number: 9
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "壬申"
+            remainder: "8-1330"
+            western_date: "0711-10-16"
+          odd_solar_terms:
+            index: 21
+            remainder: "26-365"
+          even_solar_terms:
+            index: 20
+            remainder: "11-72"
+        day:
+          number: 1
+          zodiac_name: "壬申"
+          remainder: "8-1330"
+          western_date: "0711-10-16"
+# FIXME: 運用情報で年の変更ができていない。天平宝字7年のままになっている
+# - western_date: "0763-01-19"
+#   version: "Gihou"
+#   japan_date: "天平宝字7年1月1日 -> 天平宝字6年閏12月1日"
+#   description: "儀鳳暦で運用情報による月を変更できること"
+#   expected:
+#     data:
+#       year:
+#         first_gengou: "天平宝字6年"
+#         second_gengou: ""
+#         zodiac_name: "壬寅"
+#         total_days: 384
+#       month:
+#         number: 12
+#         leaped: true
+#         days_name: "小"
+#         first_day:
+#           number: 1
+#           zodiac_name: "乙亥"
+#           remainder: "11-439"
+#           western_date: "0763-01-19"
+#         odd_solar_terms:
+#           index: 3
+#           remainder: "25-90"
+#         even_solar_terms:
+#       day:
+#         number: 1
+#         zodiac_name: "乙亥"
+#         remainder: "11-439"
+#         western_date: "0763-01-19"
+#     operation:
+#       operated: true
+#       month:
+#         current:
+#           id: "119-3-1"
+#           western_date: "0763-01-19"
+#           page: 119
+#           number: 3
+#           annotations:
+#             - description: "計算では閏正月となる。続日本紀によれば，閏は前年，天平宝字6年12月におかれている。したがって計算の1月は天平宝字6年閏12月である。"
+#               note: ""
+#             - description: "計算では41乙巳であるが，中気のない月を閏月とするという規則と矛盾しないように，40甲辰になった。こうすると正月中雨水と同じ干支となる。即ち雨水が元旦になり，その前月に中気がなくなる。元旦のユリウス暦日は2月17日となる。"
+#               note: "変更なし"
+#         parent:
+#           id: ""
+#           western_date: ""
+#           page: -1
+#           number: -1
+#           annotations:
+#       original:
+#         year:
+#           first_gengou: "天平宝字7年"
+#           second_gengou: ""
+#           zodiac_name: "癸卯"
+#           total_days: 384
+#         month:
+#           number: 1
+#           leaped: false
+#           days_name: "大"
+#           first_day:
+#             number: 1
+#             zodiac_name: "乙亥"
+#             remainder: "11-439"
+#             western_date: "0763-01-19"
+#           odd_solar_terms:
+#             index: 3
+#             remainder: "25-90"
+#           even_solar_terms:
+#             index: 4
+#             remainder: "40-383"
+#         day:
+#           number: 1
+#           zodiac_name: "乙亥"
+#           remainder: "11-439"
+#           western_date: "0763-01-19"
+# FIXME: 計算上の年日数が355日にならない。運用情報で前年閏12月を今年1月にしているが、それが計算上の年日数計算を狂わせているか
+# - western_date: "0764-02-06"
+#   version: "Gihou"
+#   japan_date: "天平宝字7年12月30日"
+#   description: "儀鳳暦の末日が計算できること"
+#   expected:
+#     data:
+#       year:
+#         first_gengou: "天平宝字7年"
+#         second_gengou: ""
+#         zodiac_name: "癸卯"
+#         total_days: 384
+#       month:
+#         number: 12
+#         leaped: false
+#         days_name: "大"
+#         first_day:
+#           number: 1
+#           zodiac_name: "己巳"
+#           remainder: "5-630"
+#           western_date: "0764-01-08"
+#         odd_solar_terms:
+#           index: 3
+#           remainder: "30-418"
+#         even_solar_terms:
+#           index: 2
+#           remainder: "15-125"
+#       day:
+#         number: 30
+#         zodiac_name: "戊戌"
+#         remainder: "34-630"
+#         western_date: "0764-02-06"
+#     operation:
+#       operated: false
+#       month:
+#         current:
+#           id: ""
+#           western_date: ""
+#           page: -1
+#           number: -1
+#           annotations:
+#         parent:
+#           id: ""
+#           western_date: ""
+#           page: -1
+#           number: -1
+#           annotations:
+#       original:
+#         year:
+#           first_gengou: "天平宝字7年"
+#           second_gengou: ""
+#           zodiac_name: "癸卯"
+#           total_days: 355
+#         month:
+#           number: 12
+#           leaped: false
+#           days_name: "大"
+#           first_day:
+#             number: 1
+#             zodiac_name: "己巳"
+#             remainder: "5-630"
+#             western_date: "0764-01-08"
+#           odd_solar_terms:
+#             index: 3
+#             remainder: "30-418"
+#           even_solar_terms:
+#             index: 2
+#             remainder: "15-125"
+#         day:
+#           number: 30
+#           zodiac_name: "戊戌"
+#           remainder: "34-630"
+#           western_date: "0764-02-06"
+- western_date: "0764-02-07"
+  version: "Daien"
+  japan_date: "天平宝字8年1月1日"
+  description: "大衍暦の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平宝字8年"
+        second_gengou: ""
+        zodiac_name: "甲辰"
+        total_days: 354
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "己亥"
+          remainder: "35-324"
+          western_date: "0764-02-07"
+        odd_solar_terms:
+          index: 5
+          remainder: "0-1861"
+        even_solar_terms:
+          index: 4
+          remainder: "45-1197"
+      day:
+        number: 1
+        zodiac_name: "己亥"
+        remainder: "35-324"
+        western_date: "0764-02-07"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平宝字8年"
+          second_gengou: ""
+          zodiac_name: "甲辰"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "己亥"
+            remainder: "35-324"
+            western_date: "0764-02-07"
+          odd_solar_terms:
+            index: 5
+            remainder: "0-1861"
+          even_solar_terms:
+            index: 4
+            remainder: "45-1197"
+        day:
+          number: 1
+          zodiac_name: "己亥"
+          remainder: "35-324"
+          western_date: "0764-02-07"
+- western_date: "0765-02-01"
+  version: "Daien"
+  japan_date: "天平神護1年1月7日"
+  description: "大衍暦の最初の改元が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平神護1年"
+        second_gengou: ""
+        zodiac_name: "乙巳"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "癸巳"
+          remainder: "29-1267"
+          western_date: "0765-01-26"
+        odd_solar_terms:
+          index: 3
+          remainder: "35-1275"
+        even_solar_terms:
+          index: 4
+          remainder: "50-1940"
+      day:
+        number: 7
+        zodiac_name: "己亥"
+        remainder: "35-1267"
+        western_date: "0765-02-01"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平神護1年"
+          second_gengou: ""
+          zodiac_name: "乙巳"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "癸巳"
+            remainder: "29-1267"
+            western_date: "0765-01-26"
+          odd_solar_terms:
+            index: 3
+            remainder: "35-1275"
+          even_solar_terms:
+            index: 4
+            remainder: "50-1940"
+        day:
+          number: 7
+          zodiac_name: "己亥"
+          remainder: "35-1267"
+          western_date: "0765-02-01"
+- western_date: "0766-05-13"
+  version: "Daien"
+  japan_date: "天平神護2年4月1日 -> 天平神護2年3月30日"
+  description: "大衍暦で運用情報による月の大小を変更できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平神護2年"
+        second_gengou: ""
+        zodiac_name: "丙午"
+        total_days: 355
+      month:
+        number: 3
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "丙辰"
+          remainder: "52-1182"
+          western_date: "0766-04-14"
+        odd_solar_terms:
+          index: 9
+          remainder: "11-2964"
+        even_solar_terms:
+          index: 8
+          remainder: "56-2300"
+      day:
+        number: 30
+        zodiac_name: "乙酉"
+        remainder: "21-1182"
+        western_date: "0766-05-13"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "120-1-1"
+          western_date: "0766-05-13"
+          page: 120
+          number: 1
+          annotations:
+            - description: "続日本紀に4月朔の干支はないが，3月に乙酉の記事があるから，進朔したと考えられる。丙戌朔とすればユリウス暦日は5月14日となる。"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平神護2年"
+          second_gengou: ""
+          zodiac_name: "丙午"
+          total_days: 355
+        month:
+          number: 4
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "乙酉"
+            remainder: "21-2848"
+            western_date: "0766-05-13"
+          odd_solar_terms:
+            index: 11
+            remainder: "42-1253"
+          even_solar_terms:
+            index: 10
+            remainder: "27-588"
+        day:
+          number: 1
+          zodiac_name: "乙酉"
+          remainder: "21-2848"
+          western_date: "0766-05-13"
+- western_date: "0768-07-18"
+  version: "Daien"
+  japan_date: "神護景雲2年6月1日 -> 神護景雲2年6月30日"
+  description: "大衍暦で運用情報による月を変更できること"
+  expected:
+    data:
+      year:
+        first_gengou: "神護景雲2年"
+        second_gengou: ""
+        zodiac_name: "戊申"
+        total_days: 384
+      month:
+        number: 6
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "癸酉"
+          remainder: "9-1691"
+          western_date: "0768-06-19"
+        odd_solar_terms:
+          index: 13
+          remainder: "23-1027"
+        even_solar_terms:
+          index: 14
+          remainder: "38-1692"
+      day:
+        number: 30
+        zodiac_name: "壬寅"
+        remainder: "38-1691"
+        western_date: "0768-07-18"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "121-2-1"
+          western_date: "0768-07-18"
+          page: 121
+          number: 2
+          annotations:
+            - description: "閏6月ならば中気のない月を閏にするという規則から，計算の壬寅は進朔して癸卯になるはずである。したがって閏6月朔のユリウス暦日は7月19日となる。"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "神護景雲2年"
+          second_gengou: ""
+          zodiac_name: "戊申"
+          total_days: 384
+        month:
+          number: 6
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "壬寅"
+            remainder: "38-2994"
+            western_date: "0768-07-18"
+          odd_solar_terms:
+            index: 15
+            remainder: "53-2356"
+          even_solar_terms:
+            index: 14
+            remainder: "38-1692"
+        day:
+          number: 1
+          zodiac_name: "壬寅"
+          remainder: "38-2994"
+          western_date: "0768-07-18"
+- western_date: "0862-02-02"
+  version: "Daien"
+  japan_date: "貞観3年12月30日"
+  description: "大衍暦の末日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "貞観3年"
+        second_gengou: ""
+        zodiac_name: "辛巳"
+        total_days: 354
+      month:
+        number: 12
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "庚子"
+          remainder: "36-1692"
+          western_date: "0862-01-04"
+        odd_solar_terms:
+          index: 3
+          remainder: "4-386"
+        even_solar_terms:
+          index: 2
+          remainder: "48-2762"
+      day:
+        number: 30
+        zodiac_name: "己巳"
+        remainder: "5-1692"
+        western_date: "0862-02-02"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "貞観3年"
+          second_gengou: ""
+          zodiac_name: "辛巳"
+          total_days: 355
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚子"
+            remainder: "36-1692"
+            western_date: "0862-01-04"
+          odd_solar_terms:
+            index: 3
+            remainder: "4-386"
+          even_solar_terms:
+            index: 2
+            remainder: "48-2762"
+        day:
+          number: 30
+          zodiac_name: "己巳"
+          remainder: "5-1692"
+          western_date: "0862-02-02"
 - western_date: "0862-02-03"
-  test_case_name: "貞観4年1月1日"
+  version: "Senmyou"
+  japan_date: "貞観4年1月1日"
+  description: "月初日（朔日）が計算できること"
   expected:
     data:
       year:
@@ -69,7 +801,9 @@
           remainder: "6-1282"
           western_date: "0862-02-03"
 - western_date: "0862-02-04"
-  test_case_name: "貞観4年1月2日"
+  version: "Senmyou"
+  japan_date: "貞観4年1月2日"
+  description: "月の2日目が計算できること"
   expected:
     data:
       year:
@@ -139,7 +873,9 @@
           remainder: "7-1282"
           western_date: "0862-02-04"
 - western_date: "0862-03-05"
-  test_case_name: "貞観4年2月1日"
+  version: "Senmyou"
+  japan_date: "貞観4年2月1日"
+  description: "年正月の次月のうち初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -205,7 +941,9 @@
           remainder: "36-6432"
           western_date: "0862-03-05"
 - western_date: "0862-03-06"
-  test_case_name: "貞観4年2月2日"
+  version: "Senmyou"
+  japan_date: "貞観4年2月2日"
+  description: "年正月の次月のうち2日目を計算できること"
   expected:
     data:
       year:
@@ -271,7 +1009,9 @@
           remainder: "37-6432"
           western_date: "0862-03-06"
 - western_date: "0862-04-02"
-  test_case_name: "貞観4年2月29日"
+  version: "Senmyou"
+  japan_date: "貞観4年2月29日"
+  description: "年正月の次月のうち末日を計算できること"
   expected:
     data:
       year:
@@ -337,7 +1077,9 @@
           remainder: "4-6432"
           western_date: "0862-04-02"
 - western_date: "862-11-25"
-  test_case_name: "貞観4年11月1日"
+  version: "Senmyou"
+  japan_date: "貞観4年11月1日"
+  description: "11月（冬至）の初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -407,7 +1149,9 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
 - western_date: "862-11-26"
-  test_case_name: "貞観4年11月2日"
+  version: "Senmyou"
+  japan_date: "貞観4年11月2日"
+  description: "11月（冬至）の2日目を計算できること"
   expected:
     data:
       year:
@@ -477,7 +1221,9 @@
           remainder: "2-5584"
           western_date: "0862-11-26"
 - western_date: "862-12-24"
-  test_case_name: "貞観4年11月30日"
+  version: "Senmyou"
+  japan_date: "貞観4年11月30日"
+  description: "11月（冬至）の末日を計算できること"
   expected:
     data:
       year:
@@ -547,7 +1293,9 @@
           remainder: "30-5584"
           western_date: "0862-12-24"
 - western_date: "862-12-25"
-  test_case_name: "貞観4年12月1日"
+  version: "Senmyou"
+  japan_date: "貞観4年12月1日"
+  description: "年末月の初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -617,7 +1365,9 @@
           remainder: "31-941"
           western_date: "0862-12-25"
 - western_date: "862-12-26"
-  test_case_name: "貞観4年12月2日"
+  version: "Senmyou"
+  japan_date: "貞観4年12月2日"
+  description: "年末月の2日目を計算できること"
   expected:
     data:
       year:
@@ -687,7 +1437,9 @@
           remainder: "32-941"
           western_date: "0862-12-26"
 - western_date: "863-01-22"
-  test_case_name: "貞観4年12月29日"
+  version: "Senmyou"
+  japan_date: "貞観4年12月29日"
+  description: "年末月の末日を計算できること"
   expected:
     data:
       year:
@@ -757,7 +1509,9 @@
           remainder: "59-941"
           western_date: "0863-01-22"
 - western_date: "863-1-23"
-  test_case_name: "貞観5年1月1日"
+  version: "Senmyou"
+  japan_date: "貞観5年1月1日"
+  description: "宣明暦2年目の正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -827,7 +1581,9 @@
           remainder: "0-4964"
           western_date: "0863-01-23"
 - western_date: "863-1-24"
-  test_case_name: "貞観5年1月2日"
+  version: "Senmyou"
+  japan_date: "貞観5年1月2日"
+  description: "宣明暦2年目の正月2日目を計算できること"
   expected:
     data:
       year:
@@ -897,7 +1653,9 @@
           remainder: "1-4964"
           western_date: "0863-01-24"
 - western_date: "863-2-21"
-  test_case_name: "貞観5年1月30日"
+  version: "Senmyou"
+  japan_date: "貞観5年1月30日"
+  description: "宣明暦2年目の正月末日を計算できること"
   expected:
     data:
       year:
@@ -967,7 +1725,9 @@
           remainder: "29-4964"
           western_date: "0863-02-21"
 - western_date: "863-7-20"
-  test_case_name: "貞観5年閏6月1日"
+  version: "Senmyou"
+  japan_date: "貞観5年閏6月1日"
+  description: "閏月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1033,7 +1793,9 @@
           remainder: "58-8284"
           western_date: "0863-07-20"
 - western_date: "863-7-21"
-  test_case_name: "貞観5年閏6月2日"
+  version: "Senmyou"
+  japan_date: "貞観5年閏6月2日"
+  description: "閏月の2日目を計算できること"
   expected:
     data:
       year:
@@ -1099,7 +1861,9 @@
           remainder: "59-8284"
           western_date: "0863-07-21"
 - western_date: "863-8-17"
-  test_case_name: "貞観5年閏6月29日"
+  version: "Senmyou"
+  japan_date: "貞観5年閏6月29日"
+  description: "閏月の末日を計算できること"
   expected:
     data:
       year:
@@ -1165,7 +1929,9 @@
           remainder: "26-8284"
           western_date: "0863-08-17"
 - western_date: "873-1-3"
-  test_case_name: "貞観14年12月1日（小 -> 大）"
+  version: "Senmyou"
+  japan_date: "貞観14年12月1日（小 -> 大）"
+  description: "運用情報で月の大小を置換できること"
   expected:
     data:
       year:
@@ -1237,7 +2003,9 @@
           remainder: "33-1832"
           western_date: "0873-01-03"
 - western_date: "876-1-30"
-  test_case_name: "貞観18年1月1日"
+  version: "Senmyou"
+  japan_date: "貞観18年1月1日"
+  description: "元号最後の通年で正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1307,7 +2075,9 @@
           remainder: "15-5502"
           western_date: "0876-01-30"
 - western_date: "876-1-31"
-  test_case_name: "貞観18年1月2日"
+  version: "Senmyou"
+  japan_date: "貞観18年1月2日"
+  description: "元号最後の通年で正月2日目を計算できること"
   expected:
     data:
       year:
@@ -1377,7 +2147,9 @@
           remainder: "16-5502"
           western_date: "0876-01-31"
 - western_date: "876-2-28"
-  test_case_name: "貞観18年1月30日"
+  version: "Senmyou"
+  japan_date: "貞観18年1月30日"
+  description: "元号最後の通年で正月末日を計算できること"
   expected:
     data:
       year:
@@ -1447,7 +2219,9 @@
           remainder: "44-5502"
           western_date: "0876-02-28"
 - western_date: "876-12-20"
-  test_case_name: "貞観18年12月1日"
+  version: "Senmyou"
+  japan_date: "貞観18年12月1日"
+  description: "元号最後の通年で末月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1517,7 +2291,9 @@
           remainder: "40-7755"
           western_date: "0876-12-20"
 - western_date: "876-12-21"
-  test_case_name: "貞観18年12月2日"
+  version: "Senmyou"
+  japan_date: "貞観18年12月2日"
+  description: "元号最後の通年で末月2日目を計算できること"
   expected:
     data:
       year:
@@ -1587,7 +2363,9 @@
           remainder: "41-7755"
           western_date: "0876-12-21"
 - western_date: "877-1-17"
-  test_case_name: "貞観18年12月29日"
+  version: "Senmyou"
+  japan_date: "貞観18年12月29日"
+  description: "元号最後の通年で末月末日を計算できること"
   expected:
     data:
       year:
@@ -1657,7 +2435,9 @@
           remainder: "8-7755"
           western_date: "0877-01-17"
 - western_date: "877-5-31"
-  test_case_name: "貞観19年4月15日"
+  version: "Senmyou"
+  japan_date: "貞観19年4月15日"
+  description: "元号最後の日を計算できること"
   expected:
     data:
       year:
@@ -1727,7 +2507,9 @@
           remainder: "22-1019"
           western_date: "0877-05-31"
 - western_date: "877-6-1"
-  test_case_name: "元慶1年4月16日"
+  version: "Senmyou"
+  japan_date: "元慶1年4月16日"
+  description: "元号最初の日を計算できること"
   expected:
     data:
       year:
@@ -1797,7 +2579,9 @@
           remainder: "23-1019"
           western_date: "0877-06-01"
 - western_date: "937-2-14"
-  test_case_name: "承平7年1月2日（承平7年1月1日）"
+  version: "Senmyou"
+  japan_date: "承平7年1月2日（承平7年1月1日）"
+  description: "宣明暦の2つ目の元号のうち、正月初日（朔日）を計算できること"
   expected:
     data:
       year:
@@ -1869,7 +2653,9 @@
           remainder: "51-2479"
           western_date: "0937-02-14"
 - western_date: "1031-11-18"
-  test_case_name: "長元4年閏10月1日"
+  version: "Senmyou"
+  japan_date: "長元4年閏10月1日"
+  description: "入定気が立冬（21）の年でも計算できること"
   expected:
     data:
       year:
@@ -1935,7 +2721,9 @@
           remainder: "41-7048"
           western_date: "1031-11-18"
 - western_date: "1032-10-7"
-  test_case_name: "長元5年9月1日"
+  version: "Senmyou"
+  japan_date: "長元5年9月1日"
+  description: "入定気が立冬（21）の年が前年にあっても計算できること"
   expected:
     data:
       year:
@@ -2005,7 +2793,9 @@
           remainder: "5-5236"
           western_date: "1032-10-07"
 - western_date: "1202-11-17"
-  test_case_name: "建仁2年閏10月1日（建仁2年11月1日）"
+  version: "Senmyou"
+  japan_date: "建仁2年閏10月1日（建仁2年11月1日）"
+  description: "運用情報で月を置換できること"
   expected:
     data:
       year:
@@ -2075,7 +2865,9 @@
           remainder: "38-7186"
           western_date: "1202-11-17"
 - western_date: "1202-12-16"
-  test_case_name: "建仁2年11月1日（建仁2年閏11月1日）"
+  version: "Senmyou"
+  japan_date: "建仁2年11月1日（建仁2年閏11月1日）"
+  description: "運用情報で月を置換できること"
   expected:
     data:
       year:
@@ -2145,7 +2937,9 @@
           remainder: "7-5375"
           western_date: "1202-12-16"
 - western_date: "1332-1-28"
-  test_case_name: "元弘2年1月1日"
+  version: "Senmyou"
+  japan_date: "元弘2年1月1日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2215,7 +3009,9 @@
           remainder: "7-4787"
           western_date: "1332-01-28"
 - western_date: "1332-1-29"
-  test_case_name: "元弘2年1月2日"
+  version: "Senmyou"
+  japan_date: "元弘2年1月2日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2285,7 +3081,9 @@
           remainder: "8-4787"
           western_date: "1332-01-29"
 - western_date: "1332-2-26"
-  test_case_name: "元弘2年1月29日"
+  version: "Senmyou"
+  japan_date: "元弘2年1月29日"
+  description: "南北朝前の元号年を計算できること"
   expected:
     data:
       year:
@@ -2355,7 +3153,9 @@
           remainder: "36-4787"
           western_date: "1332-02-26"
 - western_date: "1392-1-25"
-  test_case_name: "元中9年1月1日"
+  version: "Senmyou"
+  japan_date: "元中9年1月1日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2425,7 +3225,9 @@
           remainder: "19-2126"
           western_date: "1392-01-25"
 - western_date: "1392-1-26"
-  test_case_name: "元中9年1月2日"
+  version: "Senmyou"
+  japan_date: "元中9年1月2日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2495,7 +3297,9 @@
           remainder: "20-2126"
           western_date: "1392-01-26"
 - western_date: "1392-2-23"
-  test_case_name: "元中9年1月30日"
+  version: "Senmyou"
+  japan_date: "元中9年1月30日"
+  description: "南北朝最後の元号年を計算できること"
   expected:
     data:
       year:
@@ -2565,7 +3369,9 @@
           remainder: "48-2126"
           western_date: "1392-02-23"
 - western_date: "1392-11-19"
-  test_case_name: "明徳3年閏10月1日（明徳3年11月1日）"
+  version: "Senmyou"
+  japan_date: "明徳3年閏10月1日（明徳3年11月1日）"
+  description: "南北朝終焉の翌日を計算できること"
   expected:
     data:
       year:
@@ -2635,7 +3441,9 @@
           remainder: "18-3986"
           western_date: "1392-11-19"
 - western_date: "1393-2-12"
-  test_case_name: "明徳4年1月1日"
+  version: "Senmyou"
+  japan_date: "明徳4年1月1日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2705,7 +3513,9 @@
           remainder: "43-1067"
           western_date: "1393-02-12"
 - western_date: "1393-2-13"
-  test_case_name: "明徳4年1月2日"
+  version: "Senmyou"
+  japan_date: "明徳4年1月2日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2775,7 +3585,9 @@
           remainder: "44-1067"
           western_date: "1393-02-13"
 - western_date: "1393-3-12"
-  test_case_name: "明徳4年1月29日"
+  version: "Senmyou"
+  japan_date: "明徳4年1月29日"
+  description: "南北朝終焉以降、最初の通年を計算できること"
   expected:
     data:
       year:
@@ -2845,7 +3657,9 @@
           remainder: "11-1067"
           western_date: "1393-03-12"
 - western_date: "1394-8-2"
-  test_case_name: "応永1年7月5日"
+  version: "Senmyou"
+  japan_date: "応永1年7月5日"
+  description: "南北朝終焉以降、最初の改元を計算できること"
   expected:
     data:
       year:
@@ -2915,7 +3729,9 @@
           remainder: "39-7979"
           western_date: "1394-08-02"
 - western_date: "1685-2-4"
-  test_case_name: "貞享2年1月1日"
+  version: "Senmyou"
+  japan_date: "貞享2年1月1日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:
@@ -2985,7 +3801,9 @@
           remainder: "58-588"
           western_date: "1685-02-04"
 - western_date: "1685-2-5"
-  test_case_name: "貞享2年1月2日"
+  version: "Senmyou"
+  japan_date: "貞享2年1月2日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:
@@ -3055,7 +3873,9 @@
           remainder: "59-588"
           western_date: "1685-02-05"
 - western_date: "1685-3-4"
-  test_case_name: "貞享2年1月29日"
+  version: "Senmyou"
+  japan_date: "貞享2年1月29日"
+  description: "宣明暦最後の年を計算できること"
   expected:
     data:
       year:

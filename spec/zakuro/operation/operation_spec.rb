@@ -18,8 +18,8 @@ describe 'Zakuro' do
       context 'default month file' do
         it 'should be loaded' do
           result = Zakuro::Operation.month_histories
-          # 201(全行) - 29（無効行）
-          expect(result.size).to eq 172
+          # 446(全行) - 79（無効行）
+          expect(result.size).to eq 367
         end
         it 'should be loaded any elements' do
           result = Zakuro::Operation.month_histories
@@ -47,7 +47,7 @@ describe 'Zakuro' do
                 days: 1
               )
             ),
-            actual: result[1],
+            actual: result[196],
             class_prefix: 'Zakuro::Operation'
           )
         end

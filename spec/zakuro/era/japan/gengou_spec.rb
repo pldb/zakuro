@@ -136,7 +136,7 @@ describe 'Zakuro' do
           it 'should be got a element' do
             date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
             item = Zakuro::Japan::GengouResource.first_line(date: date)
-            expect(item.name).to eq('允恭')
+            expect(item.name).to eq('允恭天皇')
           end
         end
         context 'set-001 and set-002' do
