@@ -25,6 +25,9 @@ module Zakuro
         # 初期化
         #
         # @param [Gengou] multi_gengou 元号
+        # @param [Array<Month>] months 年内の全ての月
+        # @param [Integer] total_days 年の日数
+        # @param [Western::Calendar] new_year_date 元旦
         #
         def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
                        months: [], total_days: 0)

@@ -43,6 +43,7 @@ module Zakuro
         def unshift_months(first_months)
           # 逆順で加える
           first_months.reverse_each do |month|
+            month.moved
             months.unshift(month)
           end
         end
@@ -54,6 +55,7 @@ module Zakuro
         #
         def push_months(last_months)
           last_months.each do |month|
+            month.moved
             months.push(month)
           end
         end
@@ -80,7 +82,7 @@ module Zakuro
           result
         end
 
-        # :reek:TooManyStatements { max_statements: 7 }
+        # :reek:TooManyStatements { max_statements: 8 }
 
         #
         # メソッドで配列を分離する
@@ -96,7 +98,7 @@ module Zakuro
           unmatch = []
 
           arr.each do |item|
-            if item.send(method)
+            if !item.moved? && item.send(method)
               match.push(item)
               next
             end

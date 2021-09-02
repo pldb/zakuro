@@ -95,8 +95,10 @@ describe 'Zakuro' do
             it 'should be removed months on last year' do
               jan = double('Jan')
               allow(jan).to receive(:last_year?).and_return(true)
+              allow(jan).to receive(:moved?).and_return(false)
               feb = double('Feb')
               allow(feb).to receive(:last_year?).and_return(false)
+              allow(feb).to receive(:moved?).and_return(false)
               months = [jan, feb]
               year = Zakuro::Calculation::Base::OperatedYear.new(months: months)
               year.shift_last_year_months
@@ -110,8 +112,10 @@ describe 'Zakuro' do
             it 'should be removed months on next year' do
               nov = double('Nov')
               allow(nov).to receive(:next_year?).and_return(false)
+              allow(nov).to receive(:moved?).and_return(false)
               dec = double('Dec')
               allow(dec).to receive(:next_year?).and_return(true)
+              allow(dec).to receive(:moved?).and_return(false)
               months = [nov, dec]
               year = Zakuro::Calculation::Base::OperatedYear.new(months: months)
               year.pop_next_year_months

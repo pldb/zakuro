@@ -2,6 +2,7 @@
 
 require_relative './operated_solar_terms'
 require_relative '../../operation/operation'
+require_relative '../base/operated_year'
 require_relative '../../calculation/monthly/operated_month'
 
 # :nodoc:
@@ -41,13 +42,19 @@ module Zakuro
         # @return [Array<Year>] 運用結果範囲
         #
         def get
-          rewrite
+          operated_years = rewrite
+
+          OperatedRange.move(operated_years: operated_years)
+
+          OperatedRange.commit(operated_years: operated_years)
+
+          operated_years
         end
 
         #
         # 運用結果に書き換える
         #
-        # @return [Array<Year>] 運用結果範囲
+        # @return [Array<OperatedYear>] 運用結果範囲
         #
         def rewrite
           operated_years = []
@@ -64,16 +71,64 @@ module Zakuro
         end
 
         #
+        # 運用情報で年を跨ぐ月をその年に寄せる
+        #
+        # @param [Array<OperatedYear>] operated_years 運用結果範囲
+        #
+        def self.move(operated_years:)
+          # FIXME: この方式は完全ではない。範囲の1年前/1年後が必要
+          move_into_next_year(operated_years: operated_years)
+          move_into_last_year(operated_years: operated_years)
+        end
+
+        #
+        # 運用情報では来年に属する月を来年に寄せる
+        #
+        # @param [Array<OperatedYear>] operated_years 運用結果範囲
+        #
+        def self.move_into_next_year(operated_years:)
+          operated_years.each_cons(2) do |current_year, next_year|
+            months = current_year.pop_next_year_months
+
+            next_year.unshift_months(months)
+          end
+        end
+
+        #
+        # 運用情報では昨年に属する月を昨年に寄せる
+        #
+        # @param [Array<OperatedYear>] operated_years 運用結果範囲
+        #
+        def self.move_into_last_year(operated_years:)
+          rerversed_year = operated_years.reverse!
+          rerversed_year.each_cons(2) do |current_year, last_year|
+            months = current_year.shift_last_year_months
+            last_year.push_months(months)
+          end
+
+          rerversed_year.reverse!
+        end
+
+        #
+        # 年を確定させる
+        #
+        # @param [Array<OperatedYear>] operated_years 運用結果範囲
+        #
+        def self.commit(operated_years:)
+          operated_years.each(&:commit)
+        end
+
+        #
         # 年を書き換える
         #
         # @param [Context] context 暦コンテキスト
         # @param [Year] year 年
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
-        # @return [Year] 年
+        # @return [OperatedYear] 年
         #
         def self.rewrite_year(context:, year:, operated_solar_terms:)
-          result = Base::Year.new(
+          result = Base::OperatedYear.new(
             multi_gengou: year.multi_gengou, new_year_date: year.new_year_date
           )
           year.months.each do |month|
@@ -82,8 +137,6 @@ module Zakuro
               operated_solar_terms: operated_solar_terms
             ))
           end
-
-          result.commit
 
           result
         end
@@ -99,8 +152,6 @@ module Zakuro
         #
         def self.resolve_month(context:, month:, operated_solar_terms:)
           history = Operation.specify_history(western_date: month.western_date)
-
-          return month if history.invalid?
 
           OperatedRange.rewrite_month(
             context: context, month: month, history: history,
@@ -121,8 +172,6 @@ module Zakuro
         # @return [Month] 月（運用結果）
         #
         def self.rewrite_month(context:, month:, history:, operated_solar_terms:)
-          return month unless month.western_date == history.western_date
-
           operated_month = Monthly::OperatedMonth.new(
             context: context,
             month_label: month.month_label, first_day: month.first_day,
@@ -130,13 +179,9 @@ module Zakuro
             operated_solar_terms: operated_solar_terms
           )
 
-          operated_month.rewrite
+          operated_month.rewrite unless history.invalid?
 
-          Monthly::Month.new(
-            context: context,
-            month_label: operated_month.month_label, first_day: operated_month.first_day,
-            solar_terms: operated_month.solar_terms
-          )
+          operated_month
         end
       end
     end
