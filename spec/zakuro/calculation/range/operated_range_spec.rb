@@ -28,6 +28,16 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Range' do
       describe 'OperatedRange' do
+        # :reek:UnityFunction
+
+        def to_parent_class(actual:)
+          Zakuro::Calculation::Monthly::Month.new(
+            context: actual.context,
+            month_label: actual.month_label,
+            first_day: actual.first_day,
+            solar_terms: actual.solar_terms
+          )
+        end
         describe '.get' do
           let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
 
@@ -74,7 +84,8 @@ describe 'Zakuro' do
                 ).get
               ).get
 
-              actual = range[14].months[0]
+              actual = to_parent_class(actual: range[14].months[0])
+
               # 貞観 15年 1 小 丁卯 2-5359 873 2  1 (4)17-937
               expected = Zakuro::Calculation::Monthly::Month.new(
                 context: context,
@@ -148,7 +159,7 @@ describe 'Zakuro' do
                 ).get
               ).get
 
-              actual = range[1].months[10]
+              actual = to_parent_class(actual: range[1].months[10])
               expected = Zakuro::Calculation::Monthly::Month.new(
                 context: context,
                 month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
@@ -173,7 +184,7 @@ describe 'Zakuro' do
             end
 
             it 'should be add at 1202-12-16' do
-              #           - id: 266-1-0
+              # - id: 266-1-0
               # relation_id: 266-1-1
               # parent_id: "-"
               # page: '266'
@@ -214,7 +225,8 @@ describe 'Zakuro' do
                 ).get
               ).get
 
-              actual = range[1].months[11]
+              actual = to_parent_class(actual: range[1].months[11])
+
               expected = Zakuro::Calculation::Monthly::Month.new(
                 context: context,
                 month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
@@ -231,12 +243,16 @@ describe 'Zakuro' do
                 solar_terms: [
                   Zakuro::Senmyou::Cycle::SolarTerm.new(
                     index: 1,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 22, minute: 1580, second: 0)
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 22, minute: 1580, second: 0
+                    )
                   ),
                   # 6-8145 -> 7-8145
                   Zakuro::Senmyou::Cycle::SolarTerm.new(
                     index: 0,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 7, minute: 8145, second: 0)
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 7, minute: 8145, second: 0
+                    )
                   )
                 ]
               )
