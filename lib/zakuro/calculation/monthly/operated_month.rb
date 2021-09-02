@@ -9,7 +9,7 @@ module Zakuro
   module Calculation
     # :nodoc:
     module Monthly
-      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
+      # :reek:TooManyInstanceVariables { max_instance_variables: 6 }
 
       #
       # OperatedMonth 月情報（運用）
@@ -205,23 +205,47 @@ module Zakuro
           western_date
         end
 
+        #
+        # 運用情報では昨年の月か
+        #
+        # @return [True] 昨年の月
+        # @return [False] 今年/来年の月
+        #
         def last_year?
-          # TODO: numberの取得方法を考える
-          number = @history.diffs.month.number
-          number.last_year?
+          history_month_number.last_year?
         end
 
+        #
+        # 運用情報では来年の月か
+        #
+        # @return [True] 来年の月
+        # @return [False] 今年/昨年の月
+        #
         def next_year?
-          number = @history.diffs.month.number
-          number.next_year?
+          history_month_number.next_year?
         end
 
+        #
+        # 別の年に移動したか
+        #
+        # @return [True] 移動済
+        # @return [False] 移動なし
+        #
         def moved?
           @moved
         end
 
+        #
+        # 移動済とする
+        #
         def moved
           @moved = true
+        end
+
+        private
+
+        def history_month_number
+          @history.diffs.month.number
         end
       end
     end
