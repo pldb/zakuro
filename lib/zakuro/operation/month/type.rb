@@ -364,6 +364,64 @@ module Zakuro
       def invalid?
         @calc == -1 || @actual == -1
       end
+
+      #
+      # 無効か
+      #
+      # @return [True] 無効
+      # @return [False] 有効
+      #
+      def valid?
+        !invalid?
+      end
+
+      #
+      # 差分の間隔
+      #
+      # @return [Integer] 間隔
+      #
+      def interval
+        @calc - @actual
+      end
+
+      #
+      # 年変化するか
+      #
+      # @return [True] 変化あり
+      # @return [False] 変化なし
+      #
+      def change_year?
+        return false unless valid?
+
+        # 1年分の変化（12ヶ月以上）なしと見なす
+        return false if interval.abs < 11
+
+        true
+      end
+
+      #
+      # 昨年の月か
+      #
+      # @return [True] 昨年
+      # @return [False] 昨年ではない
+      #
+      def last_year?
+        return false unless change_year?
+
+        interval.negative?
+      end
+
+      #
+      # 来年の月か
+      #
+      # @return [True] 来年
+      # @return [False] 来年ではない
+      #
+      def next_year?
+        return false unless change_year?
+
+        interval.positive?
+      end
     end
 
     #

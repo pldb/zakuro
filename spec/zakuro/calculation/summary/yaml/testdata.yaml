@@ -216,154 +216,152 @@
           zodiac_name: "壬申"
           remainder: "8-1330"
           western_date: "0711-10-16"
-# FIXME: 運用情報で年の変更ができていない。天平宝字7年のままになっている
-# - western_date: "0763-01-19"
-#   version: "Gihou"
-#   japan_date: "天平宝字7年1月1日 -> 天平宝字6年閏12月1日"
-#   description: "儀鳳暦で運用情報による月を変更できること"
-#   expected:
-#     data:
-#       year:
-#         first_gengou: "天平宝字6年"
-#         second_gengou: ""
-#         zodiac_name: "壬寅"
-#         total_days: 384
-#       month:
-#         number: 12
-#         leaped: true
-#         days_name: "小"
-#         first_day:
-#           number: 1
-#           zodiac_name: "乙亥"
-#           remainder: "11-439"
-#           western_date: "0763-01-19"
-#         odd_solar_terms:
-#           index: 3
-#           remainder: "25-90"
-#         even_solar_terms:
-#       day:
-#         number: 1
-#         zodiac_name: "乙亥"
-#         remainder: "11-439"
-#         western_date: "0763-01-19"
-#     operation:
-#       operated: true
-#       month:
-#         current:
-#           id: "119-3-1"
-#           western_date: "0763-01-19"
-#           page: 119
-#           number: 3
-#           annotations:
-#             - description: "計算では閏正月となる。続日本紀によれば，閏は前年，天平宝字6年12月におかれている。したがって計算の1月は天平宝字6年閏12月である。"
-#               note: ""
-#             - description: "計算では41乙巳であるが，中気のない月を閏月とするという規則と矛盾しないように，40甲辰になった。こうすると正月中雨水と同じ干支となる。即ち雨水が元旦になり，その前月に中気がなくなる。元旦のユリウス暦日は2月17日となる。"
-#               note: "変更なし"
-#         parent:
-#           id: ""
-#           western_date: ""
-#           page: -1
-#           number: -1
-#           annotations:
-#       original:
-#         year:
-#           first_gengou: "天平宝字7年"
-#           second_gengou: ""
-#           zodiac_name: "癸卯"
-#           total_days: 384
-#         month:
-#           number: 1
-#           leaped: false
-#           days_name: "大"
-#           first_day:
-#             number: 1
-#             zodiac_name: "乙亥"
-#             remainder: "11-439"
-#             western_date: "0763-01-19"
-#           odd_solar_terms:
-#             index: 3
-#             remainder: "25-90"
-#           even_solar_terms:
-#             index: 4
-#             remainder: "40-383"
-#         day:
-#           number: 1
-#           zodiac_name: "乙亥"
-#           remainder: "11-439"
-#           western_date: "0763-01-19"
-# FIXME: 計算上の年日数が355日にならない。運用情報で前年閏12月を今年1月にしているが、それが計算上の年日数計算を狂わせているか
-# - western_date: "0764-02-06"
-#   version: "Gihou"
-#   japan_date: "天平宝字7年12月30日"
-#   description: "儀鳳暦の末日が計算できること"
-#   expected:
-#     data:
-#       year:
-#         first_gengou: "天平宝字7年"
-#         second_gengou: ""
-#         zodiac_name: "癸卯"
-#         total_days: 384
-#       month:
-#         number: 12
-#         leaped: false
-#         days_name: "大"
-#         first_day:
-#           number: 1
-#           zodiac_name: "己巳"
-#           remainder: "5-630"
-#           western_date: "0764-01-08"
-#         odd_solar_terms:
-#           index: 3
-#           remainder: "30-418"
-#         even_solar_terms:
-#           index: 2
-#           remainder: "15-125"
-#       day:
-#         number: 30
-#         zodiac_name: "戊戌"
-#         remainder: "34-630"
-#         western_date: "0764-02-06"
-#     operation:
-#       operated: false
-#       month:
-#         current:
-#           id: ""
-#           western_date: ""
-#           page: -1
-#           number: -1
-#           annotations:
-#         parent:
-#           id: ""
-#           western_date: ""
-#           page: -1
-#           number: -1
-#           annotations:
-#       original:
-#         year:
-#           first_gengou: "天平宝字7年"
-#           second_gengou: ""
-#           zodiac_name: "癸卯"
-#           total_days: 355
-#         month:
-#           number: 12
-#           leaped: false
-#           days_name: "大"
-#           first_day:
-#             number: 1
-#             zodiac_name: "己巳"
-#             remainder: "5-630"
-#             western_date: "0764-01-08"
-#           odd_solar_terms:
-#             index: 3
-#             remainder: "30-418"
-#           even_solar_terms:
-#             index: 2
-#             remainder: "15-125"
-#         day:
-#           number: 30
-#           zodiac_name: "戊戌"
-#           remainder: "34-630"
-#           western_date: "0764-02-06"
+- western_date: "0763-01-19"
+  version: "Gihou"
+  japan_date: "天平宝字7年1月1日 -> 天平宝字6年閏12月1日"
+  description: "儀鳳暦で運用情報による月を変更できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平宝字6年"
+        second_gengou: ""
+        zodiac_name: "壬寅"
+        total_days: 384
+      month:
+        number: 12
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "乙亥"
+          remainder: "11-439"
+          western_date: "0763-01-19"
+        odd_solar_terms:
+          index: 3
+          remainder: "25-90"
+        even_solar_terms:
+      day:
+        number: 1
+        zodiac_name: "乙亥"
+        remainder: "11-439"
+        western_date: "0763-01-19"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "119-3-1"
+          western_date: "0763-01-19"
+          page: 119
+          number: 3
+          annotations:
+            - description: "計算では閏正月となる。続日本紀によれば，閏は前年，天平宝字6年12月におかれている。したがって計算の1月は天平宝字6年閏12月である。"
+              note: ""
+            - description: "計算では41乙巳であるが，中気のない月を閏月とするという規則と矛盾しないように，40甲辰になった。こうすると正月中雨水と同じ干支となる。即ち雨水が元旦になり，その前月に中気がなくなる。元旦のユリウス暦日は2月17日となる。"
+              note: "変更なし"
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平宝字7年"
+          second_gengou: ""
+          zodiac_name: "癸卯"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "乙亥"
+            remainder: "11-439"
+            western_date: "0763-01-19"
+          odd_solar_terms:
+            index: 3
+            remainder: "25-90"
+          even_solar_terms:
+            index: 4
+            remainder: "40-383"
+        day:
+          number: 1
+          zodiac_name: "乙亥"
+          remainder: "11-439"
+          western_date: "0763-01-19"
+- western_date: "0764-02-06"
+  version: "Gihou"
+  japan_date: "天平宝字7年12月30日"
+  description: "儀鳳暦の末日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天平宝字7年"
+        second_gengou: ""
+        zodiac_name: "癸卯"
+        total_days: 355
+      month:
+        number: 12
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "己巳"
+          remainder: "5-630"
+          western_date: "0764-01-08"
+        odd_solar_terms:
+          index: 3
+          remainder: "30-418"
+        even_solar_terms:
+          index: 2
+          remainder: "15-125"
+      day:
+        number: 30
+        zodiac_name: "戊戌"
+        remainder: "34-630"
+        western_date: "0764-02-06"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天平宝字7年"
+          second_gengou: ""
+          zodiac_name: "癸卯"
+          total_days: 384
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "己巳"
+            remainder: "5-630"
+            western_date: "0764-01-08"
+          odd_solar_terms:
+            index: 3
+            remainder: "30-418"
+          even_solar_terms:
+            index: 2
+            remainder: "15-125"
+        day:
+          number: 30
+          zodiac_name: "戊戌"
+          remainder: "34-630"
+          western_date: "0764-02-06"
 - western_date: "0764-02-07"
   version: "Daien"
   japan_date: "天平宝字8年1月1日"
