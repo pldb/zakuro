@@ -30,6 +30,8 @@ module Zakuro
           TOTAL_YEAR = 5703
           # @return [Integer] 暦の開始年（元嘉20年）
           BEGIN_YEAR = 443
+          # @return [Integer] 西暦0年の積年
+          WESTERN_YEAR = 1612
         end
       end
     end
