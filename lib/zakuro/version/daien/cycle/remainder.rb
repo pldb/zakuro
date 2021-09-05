@@ -32,6 +32,19 @@ module Zakuro
           super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
+
+        #
+        # 特定の文字フォーマットにして出力する
+        #
+        # @param [String] form フォーマット（大余、小余、秒それぞれを%dで指定する）
+        #
+        # @return [String] フォーマットした結果
+        #
+        def format(form: '%d-%d')
+          return '' if invalid?
+
+          super(form, @day, @minute, @second)
+        end
       end
 
       #
@@ -52,6 +65,19 @@ module Zakuro
         def initialize(day: -1, minute: -1, second: -1, total: -1)
           super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
                 day: day, minute: minute, second: second, total: total)
+        end
+
+        #
+        # 特定の文字フォーマットにして出力する
+        #
+        # @param [String] form フォーマット（大余、小余、秒それぞれを%dで指定する）
+        #
+        # @return [String] フォーマットした結果
+        #
+        def format(form: '%d-%d')
+          return '' if invalid?
+
+          super(form, @day, @minute, @second)
         end
       end
     end
