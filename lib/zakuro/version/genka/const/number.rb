@@ -18,6 +18,8 @@ module Zakuro
         module Cycle
           # @return [Integer] 日法（1日=752分）
           DAY = 752
+          # @return [Integer] 二十四節気の1日（1日=608分）
+          TERM_DAY = 608
           # @return [Integer] 朔望月
           SYNODIC_MONTH = 22_207
         end

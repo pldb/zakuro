@@ -13,8 +13,10 @@ module Zakuro
       # FirstTerm 年初の中気（正月中雨水）
       #
       module FirstTerm
-        # @return [Integer] 朔望月
-        SYNODIC_MONTH = Const::Number::Cycle::SYNODIC_MONTH
+        # @return [Integer] 二十四節気の1日
+        TERM_DAY = Const::Number::Cycle::TERM_DAY
+        # @return [Float] 朔望月
+        SYNODIC_MONTH = (Const::Number::Cycle::SYNODIC_MONTH * 10).to_f
         # @return [Integer] 西暦0年の積年
         WESTERN_YEAR = Const::Number::Stack::WESTERN_YEAR
 
@@ -26,9 +28,10 @@ module Zakuro
         # @return [Remainder] 年初の中気（正月中雨水）
         #
         def self.get(western_year:)
-          # (1612 + x) * 222070/608 = A' ...余りが中気の小余
-          stack = ((WESTERN_YEAR + western_year) * ((SYNODIC_MONTH * 10).to_f / 608)).to_i
-          minute = ((WESTERN_YEAR + western_year) * (SYNODIC_MONTH * 10).to_f % 608).to_i
+          total_western_year = WESTERN_YEAR + western_year
+          # (1612 + x) * 222070 / 608 = A' ...余りが中気の小余
+          stack = (total_western_year * SYNODIC_MONTH / TERM_DAY).to_i
+          minute = (total_western_year * SYNODIC_MONTH % TERM_DAY).to_i
           # A' / 60 = B' ...余りが朔の大余
           day = stack % Cycle::TermRemainder::LIMIT
           # p stack

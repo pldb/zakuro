@@ -21,6 +21,15 @@ describe 'Zakuro' do
               expect(actual.class).to eq Zakuro::Genka::Cycle::TermRemainder
             end
           end
+          context 'specified western year' do
+            it 'should be returned a remainder value' do
+              actual = Zakuro::Genka::Origin::FirstTerm.get(
+                western_year: 529
+              )
+
+              expect(actual.format).to eq '13.2072'
+            end
+          end
         end
       end
     end
