@@ -14,8 +14,12 @@ module Zakuro
       # Remainder 時刻情報（大余小余）
       #
       class Remainder < Calculation::Cycle::AbstractRemainder
-        # @return [Integer] 分（1分=-秒）
-        MINUTE = 0
+        #
+        # @note 『歴代天文律暦等志彙編　六』中華書房 p.1727
+        # 「推弦望法..加朔大餘七，小餘二百八十七，小分三，小分満四從小餘」
+        #
+        # @return [Integer] 分（1分=4秒）
+        MINUTE = 4
 
         #
         # 初期化
@@ -45,8 +49,12 @@ module Zakuro
       # TermRemainder 時刻情報（大余小余）
       #
       class TermRemainder < Calculation::Cycle::AbstractRemainder
-        # @return [Integer] 分（1分=-秒）
-        MINUTE = 0
+        #
+        # @note 『歴代天文律暦等志彙編　六』中華書房 p.1726
+        # 「氣法，二十四」
+        #
+        # @return [Integer] 分（1分=24秒）
+        MINUTE = 24
 
         #
         # 初期化
