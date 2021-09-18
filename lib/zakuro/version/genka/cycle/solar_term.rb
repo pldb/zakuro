@@ -17,7 +17,7 @@ module Zakuro
       #
       class SolarTerm < Calculation::Cycle::AbstractSolarTerm
         # @return [Remainder] 気策（24分の1年）
-        SOLAR_TERM_AVERAGE = Const::Remainder::Solar::SOLAR_TERM_AVERAGE
+        SOLAR_TERM_AVERAGE = Const::Remainder::SOLAR_TERM_AVERAGE
 
         #
         # 初期化

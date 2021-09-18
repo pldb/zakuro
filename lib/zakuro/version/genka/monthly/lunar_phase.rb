@@ -19,7 +19,7 @@ module Zakuro
       #
       class LunarPhase
         # @return [Cycle::Remainder] 弦
-        QUARTER = Const::Remainder::Solar::QUARTER
+        QUARTER = Const::Remainder::QUARTER
 
         # TODO: AbstractLunarPhase でも使用している
 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../../calculation/stella/solar/abstract_average'
+
 require_relative '../../const/remainder'
 
 require_relative '../../cycle/solar_term'
@@ -13,14 +15,14 @@ module Zakuro
       #
       # Average 平気（太陽軌道平均）
       #
-      class Average
+      class Average < Calculation::Solar::AbstractAverage
         #
         # 初期化
         #
         # @param [Integer] western_year 西暦年
         #
-        def initialize(western_year:)
-          # TODO: 初期化
+        def initialize(solar_term:)
+          super(solar_term: solar_term)
         end
 
         #
@@ -31,8 +33,7 @@ module Zakuro
         # @return [Array<Month>] 1年データ
         #
         def set(annual_range:)
-          # TODO: 割り当て
-          # super(annual_range: annual_range)
+          super(annual_range: annual_range)
         end
       end
     end

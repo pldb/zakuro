@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../../../calculation/range/medieval_annual_range'
 require_relative '../../../output/logger'
 require_relative '../monthly/lunar_phase'
 require_relative '../stella/solar/average'
@@ -39,42 +40,14 @@ module Zakuro
           # 経
           remainder = Origin::January.get(western_year: western_year)
 
-          # TODO: 雨水よりも手前の節気から開始すべきだが、それには経朔と比較しなければならない
           lunar_phase = Monthly::LunarPhase.new(remainder: remainder, solar_term: solar_term)
 
-          initialized_annual_range(context: context, lunar_phase: lunar_phase)
+          solar_average = Solar::Average.new(solar_term: solar_term)
 
-          # TODO: 残処理
+          Calculation::Range::MedievalAnnualRange.get(
+            context: context, lunar_phase: lunar_phase, solar_average: solar_average
+          )
         end
-
-        #
-        # 1年データを取得する
-        #
-        # @param [Context] context 暦コンテキスト
-        # @param [Monthly::LunarPhase] lunar_phase 月の位相
-        #
-        # @return [Array<Month>] 1年データ
-        #
-        def self.initialized_annual_range(context:, lunar_phase:)
-          result = []
-
-          # 14ヶ月分を生成する（閏年で最大13ヶ月 + 末月の大小/二十四節気を求めるために必要な月）
-          (0..13).each do |_index|
-            adjusted = lunar_phase.next_month
-
-            result.push(
-              Monthly::InitializedMonth.new(
-                context: context,
-                month_label: Monthly::MonthLabel.new,
-                first_day: Monthly::FirstDay.new(remainder: adjusted),
-                phase_index: 0
-              )
-            )
-          end
-
-          result
-        end
-        private_class_method :initialized_annual_range
       end
     end
   end
