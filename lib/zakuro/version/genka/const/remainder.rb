@@ -26,7 +26,7 @@ module Zakuro
         # 「推二十四氣術」「求次氣，加朔大餘十五，小餘六十六，小分十一，小分満氣法從小餘，小餘満度法從大餘」
         #
         # @return [Cycle::Remainder] 気策（24分の1年）
-        SOLAR_TERM_AVERAGE = Cycle::TermRemainder.new(day: 15, minute: 66, second: 11)
+        SOLAR_TERM_AVERAGE = Cycle::TermRemainder.new(day: 15, minute: 66 + 11.0 / 24, second: 0)
       end
     end
   end

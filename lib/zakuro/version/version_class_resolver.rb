@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require_relative './genka/cycle/remainder'
+require_relative './genka/cycle/solar_term'
+require_relative './genka/range/annual_range'
+
 require_relative './gihou/cycle/remainder'
 require_relative './gihou/cycle/solar_term'
 require_relative './gihou/range/annual_range'

@@ -40,6 +40,8 @@ module Zakuro
         # @return [String] フォーマットした結果
         #
         def format
+          return '' if invalid?
+
           decimal = @day + @minute / @base_day.to_f
           super('%.4f', decimal)
         end
@@ -75,6 +77,8 @@ module Zakuro
         # @return [String] フォーマットした結果
         #
         def format
+          return '' if invalid?
+
           decimal = @day + @minute / @base_day.to_f
           super('%.4f', decimal)
         end

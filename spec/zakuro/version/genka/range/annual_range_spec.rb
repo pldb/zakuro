@@ -10,21 +10,21 @@ require File.expand_path('../../../../../' \
 
 # rubocop:disable Layout/LineLength
 GENKA_EXPECTED_MONTHS = {
-  # 445 => [
-  #   { is_many_days: true, month: 1, leaped: false, remainder: '27.6157', phase_index: 0, even_term: '52.4836', even_term_index: 4, odd_term: '37.2649', odd_term_index: 3 },
-  #   { is_many_days: false, month: 2, leaped: false, remainder: '57.1463', phase_index: 0, even_term: '22.9208', even_term_index: 6, odd_term: '7.7022', odd_term_index: 5 },
-  #   { is_many_days: true, month: 3, leaped: false, remainder: '26.6769', phase_index: 0, even_term: '53.3580', even_term_index: 8, odd_term: '38.1394', odd_term_index: 7 },
-  #   { is_many_days: false, month: 4, leaped: false, remainder: '56.2074', phase_index: 0, even_term: '23.7952', even_term_index: 10, odd_term: '8.5766', odd_term_index: 9 },
-  #   { is_many_days: true, month: 5, leaped: false, remainder: '25.7380', phase_index: 0, even_term: '54.2325', even_term_index: 12, odd_term: '39.0138', odd_term_index: 11 },
-  #   { is_many_days: false, month: 5, leaped: true, remainder: '55.2686', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '9.4511', odd_term_index: 13 },
-  #   { is_many_days: true, month: 6, leaped: false, remainder: '24.7992', phase_index: 0, even_term: '24.6697', even_term_index: 14, odd_term: '39.8883', odd_term_index: 15 },
-  #   { is_many_days: false, month: 7, leaped: false, remainder: '54.3298', phase_index: 0, even_term: '55.1069', even_term_index: 16, odd_term: '10.3255', odd_term_index: 17 },
-  #   { is_many_days: true, month: 8, leaped: false, remainder: '23.8604', phase_index: 0, even_term: '25.5441', even_term_index: 18, odd_term: '40.7627', odd_term_index: 19 },
-  #   { is_many_days: false, month: 9, leaped: false, remainder: '53.3910', phase_index: 0, even_term: '55.9814', even_term_index: 20, odd_term: '11.2000', odd_term_index: 21 },
-  #   { is_many_days: true, month: 10, leaped: false, remainder: '22.9215', phase_index: 0, even_term: '26.4186', even_term_index: 22, odd_term: '41.6372', odd_term_index: 23 },
-  #   { is_many_days: false, month: 11, leaped: false, remainder: '52.4521', phase_index: 0, even_term: '56.8558', even_term_index: 0, odd_term: '12.0744', odd_term_index: 1 },
-  #   { is_many_days: true, month: 12, leaped: false, remainder: '21.9827', phase_index: 0, even_term: '27.2930', even_term_index: 2, odd_term: '42.5117', odd_term_index: 3 }
-  # ],
+  445 => [
+    { is_many_days: true, month: 1, leaped: false, remainder: '27.6157', phase_index: 0, even_term: '52.4836', even_term_index: 4, odd_term: '37.2649', odd_term_index: 3 },
+    { is_many_days: false, month: 2, leaped: false, remainder: '57.1463', phase_index: 0, even_term: '22.9208', even_term_index: 6, odd_term: '7.7022', odd_term_index: 5 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '26.6769', phase_index: 0, even_term: '53.3580', even_term_index: 8, odd_term: '38.1394', odd_term_index: 7 },
+    { is_many_days: false, month: 4, leaped: false, remainder: '56.2074', phase_index: 0, even_term: '23.7952', even_term_index: 10, odd_term: '8.5766', odd_term_index: 9 },
+    { is_many_days: true, month: 5, leaped: false, remainder: '25.7380', phase_index: 0, even_term: '54.2325', even_term_index: 12, odd_term: '39.0138', odd_term_index: 11 },
+    { is_many_days: false, month: 5, leaped: true, remainder: '55.2686', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '9.4511', odd_term_index: 13 },
+    { is_many_days: true, month: 6, leaped: false, remainder: '24.7992', phase_index: 0, even_term: '24.6697', even_term_index: 14, odd_term: '39.8883', odd_term_index: 15 },
+    { is_many_days: false, month: 7, leaped: false, remainder: '54.3298', phase_index: 0, even_term: '55.1069', even_term_index: 16, odd_term: '10.3255', odd_term_index: 17 },
+    { is_many_days: true, month: 8, leaped: false, remainder: '23.8604', phase_index: 0, even_term: '25.5441', even_term_index: 18, odd_term: '40.7627', odd_term_index: 19 },
+    { is_many_days: false, month: 9, leaped: false, remainder: '53.3910', phase_index: 0, even_term: '55.9814', even_term_index: 20, odd_term: '11.2000', odd_term_index: 21 },
+    { is_many_days: true, month: 10, leaped: false, remainder: '22.9215', phase_index: 0, even_term: '26.4186', even_term_index: 22, odd_term: '41.6372', odd_term_index: 23 },
+    { is_many_days: false, month: 11, leaped: false, remainder: '52.4521', phase_index: 0, even_term: '56.8558', even_term_index: 0, odd_term: '12.0744', odd_term_index: 1 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '21.9827', phase_index: 0, even_term: '27.2930', even_term_index: 2, odd_term: '42.5117', odd_term_index: 3 }
+  ],
   # 446 => [
   #   { is_many_days: true, month: 1, leaped: false, remainder: '51.5133', phase_index: 0, even_term: '57.7303', even_term_index: 4, odd_term: '12.9489', odd_term_index: 5 },
   #   { is_many_days: false, month: 2, leaped: false, remainder: '21.0439', phase_index: 0, even_term: '28.1675', even_term_index: 6, odd_term: '43.3861', odd_term_index: 7 },
