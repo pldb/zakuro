@@ -803,7 +803,7 @@ GENKA_EXPECTED_MONTHS = {
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
-  describe 'Gihou' do
+  describe 'Genka' do
     describe 'Range' do
       describe 'AnnualRange' do
         describe 'get' do
@@ -840,8 +840,8 @@ describe 'Zakuro' do
               fails = []
               GENKA_EXPECTED_MONTHS.each do |year, expects|
                 actuals = \
-                  Zakuro::Gihou::Range::AnnualRange.get(
-                    context: Zakuro::Context.new(version_name: 'Gihou'),
+                  Zakuro::Genka::Range::AnnualRange.get(
+                    context: Zakuro::Context.new(version_name: 'Genka'),
                     western_year: year
                   )
                 actuals.each_with_index do |month, index|

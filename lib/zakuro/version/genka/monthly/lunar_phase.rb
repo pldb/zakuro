@@ -27,7 +27,7 @@ module Zakuro
         PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
 
         # @return [Cycle::AbstractRemainder] 経
-        attr_reader :average_remainder
+        attr_reader :remainder
 
         #
         # 初期化
@@ -52,7 +52,7 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def next_phase
-          adjusted = current_remainder
+          adjusted = remainder.clone
 
           add_quarter_moon_size
 
@@ -89,7 +89,7 @@ module Zakuro
         end
 
         def add_quarter_moon_size
-          @average_remainder.add!(QUARTER)
+          @remainder.add!(QUARTER)
 
           next_index
         end
