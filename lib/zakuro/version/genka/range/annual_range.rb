@@ -63,7 +63,7 @@ module Zakuro
           number = 0
           annual_range.each do |month|
             # 来年
-            break if number < month.month_label.number
+            break if number > month.month_label.number
 
             number = month.month_label.number
             result.push(month)
