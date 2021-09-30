@@ -44,9 +44,32 @@ module Zakuro
 
           solar_average = Solar::Average.new(solar_term: solar_term)
 
-          Calculation::Range::MedievalAnnualRange.get(
+          annual_range = Calculation::Range::MedievalAnnualRange.get(
             context: context, lunar_phase: lunar_phase, solar_average: solar_average
           )
+
+          pop_months_on_next_year(annual_range: annual_range)
+        end
+
+        #
+        # 来年の月を除去する
+        #
+        # @param [Array<Month>] annual_range 1年データ
+        #
+        # @return [Array<Month>] 1年データ
+        #
+        def self.pop_months_on_next_year(annual_range:)
+          result = []
+          number = 0
+          annual_range.each do |month|
+            # 来年
+            break if number < month.month_label.number
+
+            number = month.month_label.number
+            result.push(month)
+          end
+
+          result
         end
       end
     end

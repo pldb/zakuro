@@ -25,20 +25,20 @@ GENKA_EXPECTED_MONTHS = {
     { is_many_days: false, month: 11, leaped: false, remainder: '52.4521', phase_index: 0, even_term: '56.8558', even_term_index: 0, odd_term: '12.0744', odd_term_index: 1 },
     { is_many_days: true, month: 12, leaped: false, remainder: '21.9827', phase_index: 0, even_term: '27.2930', even_term_index: 2, odd_term: '42.5117', odd_term_index: 3 }
   ],
-  # 446 => [
-  #   { is_many_days: true, month: 1, leaped: false, remainder: '51.5133', phase_index: 0, even_term: '57.7303', even_term_index: 4, odd_term: '12.9489', odd_term_index: 5 },
-  #   { is_many_days: false, month: 2, leaped: false, remainder: '21.0439', phase_index: 0, even_term: '28.1675', even_term_index: 6, odd_term: '43.3861', odd_term_index: 7 },
-  #   { is_many_days: true, month: 3, leaped: false, remainder: '50.5745', phase_index: 0, even_term: '58.6047', even_term_index: 8, odd_term: '13.8233', odd_term_index: 9 },
-  #   { is_many_days: false, month: 4, leaped: false, remainder: '20.1051', phase_index: 0, even_term: '29.0419', even_term_index: 10, odd_term: '44.2606', odd_term_index: 11 },
-  #   { is_many_days: true, month: 5, leaped: false, remainder: '49.6356', phase_index: 0, even_term: '59.4792', even_term_index: 12, odd_term: '14.6978', odd_term_index: 13 },
-  #   { is_many_days: false, month: 6, leaped: false, remainder: '19.1662', phase_index: 0, even_term: '29.9164', even_term_index: 14, odd_term: '45.1350', odd_term_index: 15 },
-  #   { is_many_days: true, month: 7, leaped: false, remainder: '48.6968', phase_index: 0, even_term: '0.3536', even_term_index: 16, odd_term: '15.5722', odd_term_index: 17 },
-  #   { is_many_days: false, month: 8, leaped: false, remainder: '18.2274', phase_index: 0, even_term: '30.7908', even_term_index: 18, odd_term: '46.0095', odd_term_index: 19 },
-  #   { is_many_days: true, month: 9, leaped: false, remainder: '47.7580', phase_index: 0, even_term: '1.2281', even_term_index: 20, odd_term: '16.4467', odd_term_index: 21 },
-  #   { is_many_days: false, month: 10, leaped: false, remainder: '17.2886', phase_index: 0, even_term: '31.6653', even_term_index: 22, odd_term: '', odd_term_index: -1 },
-  #   { is_many_days: true, month: 11, leaped: false, remainder: '46.8191', phase_index: 0, even_term: '2.1025', even_term_index: 0, odd_term: '46.8839', odd_term_index: 23 },
-  #   { is_many_days: false, month: 12, leaped: false, remainder: '16.3497', phase_index: 0, even_term: '32.5397', even_term_index: 2, odd_term: '17.3211', odd_term_index: 1 }
-  # ],
+  446 => [
+    { is_many_days: true, month: 1, leaped: false, remainder: '51.5133', phase_index: 0, even_term: '57.7303', even_term_index: 4, odd_term: '12.9489', odd_term_index: 5 },
+    { is_many_days: false, month: 2, leaped: false, remainder: '21.0439', phase_index: 0, even_term: '28.1675', even_term_index: 6, odd_term: '43.3861', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '50.5745', phase_index: 0, even_term: '58.6047', even_term_index: 8, odd_term: '13.8233', odd_term_index: 9 },
+    { is_many_days: false, month: 4, leaped: false, remainder: '20.1051', phase_index: 0, even_term: '29.0419', even_term_index: 10, odd_term: '44.2606', odd_term_index: 11 },
+    { is_many_days: true, month: 5, leaped: false, remainder: '49.6356', phase_index: 0, even_term: '59.4792', even_term_index: 12, odd_term: '14.6978', odd_term_index: 13 },
+    { is_many_days: false, month: 6, leaped: false, remainder: '19.1662', phase_index: 0, even_term: '29.9164', even_term_index: 14, odd_term: '45.1350', odd_term_index: 15 },
+    { is_many_days: true, month: 7, leaped: false, remainder: '48.6968', phase_index: 0, even_term: '0.3536', even_term_index: 16, odd_term: '15.5722', odd_term_index: 17 },
+    { is_many_days: false, month: 8, leaped: false, remainder: '18.2274', phase_index: 0, even_term: '30.7908', even_term_index: 18, odd_term: '46.0095', odd_term_index: 19 },
+    { is_many_days: true, month: 9, leaped: false, remainder: '47.7580', phase_index: 0, even_term: '1.2281', even_term_index: 20, odd_term: '16.4467', odd_term_index: 21 },
+    { is_many_days: false, month: 10, leaped: false, remainder: '17.2886', phase_index: 0, even_term: '31.6653', even_term_index: 22, odd_term: '', odd_term_index: -1 },
+    { is_many_days: true, month: 11, leaped: false, remainder: '46.8191', phase_index: 0, even_term: '2.1025', even_term_index: 0, odd_term: '46.8839', odd_term_index: 23 },
+    { is_many_days: false, month: 12, leaped: false, remainder: '16.3497', phase_index: 0, even_term: '32.5397', even_term_index: 2, odd_term: '17.3211', odd_term_index: 1 }
+  ],
   # 447 => [
   #   { is_many_days: true, month: 1, leaped: false, remainder: '45.8803', phase_index: 0, even_term: '2.9770', even_term_index: 4, odd_term: '47.7584', odd_term_index: 3 },
   #   { is_many_days: false, month: 2, leaped: false, remainder: '15.4109', phase_index: 0, even_term: '33.4142', even_term_index: 6, odd_term: '18.1956', odd_term_index: 5 },
