@@ -330,21 +330,21 @@ GENKA_EXPECTED_MONTHS = {
     { is_many_days: true, month: 11, leaped: false, remainder: '20.8737', phase_index: 0, even_term: '47.0367', even_term_index: 0, odd_term: '31.8181', odd_term_index: 23 },
     { is_many_days: false, month: 12, leaped: false, remainder: '50.4043', phase_index: 0, even_term: '17.4740', even_term_index: 2, odd_term: '2.2553', odd_term_index: 1 }
   ],
-  # TODO: 全体的に誤算
-  # 467 => [
-  #   { is_many_days: false, month: 1, leaped: true, remainder: '49.4654', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '3.1298', odd_term_index: 5 },
-  #   { is_many_days: true, month: 2, leaped: false, remainder: '18.9960', phase_index: 0, even_term: '18.3484', even_term_index: 6, odd_term: '33.5670', odd_term_index: 7 },
-  #   { is_many_days: true, month: 3, leaped: false, remainder: '48.5266', phase_index: 0, even_term: '48.7856', even_term_index: 8, odd_term: '4.0042', odd_term_index: 9 },
-  #   { is_many_days: false, month: 4, leaped: false, remainder: '18.0572', phase_index: 0, even_term: '19.2229', even_term_index: 10, odd_term: '34.4415', odd_term_index: 11 },
-  #   { is_many_days: true, month: 5, leaped: false, remainder: '47.5878', phase_index: 0, even_term: '49.6601', even_term_index: 12, odd_term: '4.8787', odd_term_index: 13 },
-  #   { is_many_days: false, month: 6, leaped: false, remainder: '17.1184', phase_index: 0, even_term: '20.0973', even_term_index: 14, odd_term: '35.3159', odd_term_index: 15 },
-  #   { is_many_days: true, month: 7, leaped: false, remainder: '46.6489', phase_index: 0, even_term: '50.5345', even_term_index: 16, odd_term: '5.7532', odd_term_index: 17 },
-  #   { is_many_days: false, month: 8, leaped: false, remainder: '16.1795', phase_index: 0, even_term: '20.9718', even_term_index: 18, odd_term: '36.1804', odd_term_index: 19 },
-  #   { is_many_days: true, month: 9, leaped: false, remainder: '45.7101', phase_index: 0, even_term: '51.4090', even_term_index: 20, odd_term: '6.6276', odd_term_index: 21 },
-  #   { is_many_days: false, month: 10, leaped: false, remainder: '15.2407', phase_index: 0, even_term: '21.8462', even_term_index: 22, odd_term: '37.0648', odd_term_index: 23 },
-  #   { is_many_days: true, month: 11, leaped: false, remainder: '44.7713', phase_index: 0, even_term: '52.2834', even_term_index: 0, odd_term: '7.5021', odd_term_index: 1 },
-  #   { is_many_days: false, month: 12, leaped: false, remainder: '14.3019', phase_index: 0, even_term: '22.7207', even_term_index: 2, odd_term: '37.9393', odd_term_index: 3 }
-  # ],
+  467 => [
+    { is_many_days: true, month: 1, leaped: false, remainder: '19.9348', phase_index: 0, even_term: '47.9112', even_term_index: 4, odd_term: '32.6926', odd_term_index: 3 },
+    { is_many_days: false, month: 1, leaped: true, remainder: '49.4654', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '3.1298', odd_term_index: 5 },
+    { is_many_days: true, month: 2, leaped: false, remainder: '18.9960', phase_index: 0, even_term: '18.3484', even_term_index: 6, odd_term: '33.5670', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '48.5266', phase_index: 0, even_term: '48.7856', even_term_index: 8, odd_term: '4.0042', odd_term_index: 9 },
+    { is_many_days: false, month: 4, leaped: false, remainder: '18.0572', phase_index: 0, even_term: '19.2229', even_term_index: 10, odd_term: '34.4415', odd_term_index: 11 },
+    { is_many_days: true, month: 5, leaped: false, remainder: '47.5878', phase_index: 0, even_term: '49.6601', even_term_index: 12, odd_term: '4.8787', odd_term_index: 13 },
+    { is_many_days: false, month: 6, leaped: false, remainder: '17.1184', phase_index: 0, even_term: '20.0973', even_term_index: 14, odd_term: '35.3159', odd_term_index: 15 },
+    { is_many_days: true, month: 7, leaped: false, remainder: '46.6489', phase_index: 0, even_term: '50.5345', even_term_index: 16, odd_term: '5.7532', odd_term_index: 17 },
+    { is_many_days: false, month: 8, leaped: false, remainder: '16.1795', phase_index: 0, even_term: '20.9718', even_term_index: 18, odd_term: '36.1904', odd_term_index: 19 },
+    { is_many_days: true, month: 9, leaped: false, remainder: '45.7101', phase_index: 0, even_term: '51.4090', even_term_index: 20, odd_term: '6.6276', odd_term_index: 21 },
+    { is_many_days: false, month: 10, leaped: false, remainder: '15.2407', phase_index: 0, even_term: '21.8462', even_term_index: 22, odd_term: '37.0648', odd_term_index: 23 },
+    { is_many_days: true, month: 11, leaped: false, remainder: '44.7713', phase_index: 0, even_term: '52.2834', even_term_index: 0, odd_term: '7.5021', odd_term_index: 1 },
+    { is_many_days: false, month: 12, leaped: false, remainder: '14.3019', phase_index: 0, even_term: '22.7207', even_term_index: 2, odd_term: '37.9393', odd_term_index: 3 }
+  ],
   468 => [
     { is_many_days: true, month: 1, leaped: false, remainder: '43.8324', phase_index: 0, even_term: '53.1579', even_term_index: 4, odd_term: '8.3765', odd_term_index: 5 },
     { is_many_days: false, month: 2, leaped: false, remainder: '13.3630', phase_index: 0, even_term: '23.5951', even_term_index: 6, odd_term: '38.8137', odd_term_index: 7 },
@@ -604,21 +604,21 @@ GENKA_EXPECTED_MONTHS = {
     { is_many_days: true, month: 11, leaped: false, remainder: '0.5612', phase_index: 0, even_term: '26.7242', even_term_index: 0, odd_term: '11.5056', odd_term_index: 23 },
     { is_many_days: false, month: 12, leaped: false, remainder: '30.0918', phase_index: 0, even_term: '57.1615', even_term_index: 2, odd_term: '41.9428', odd_term_index: 1 }
   ],
-  # TODO: 全体的に誤算
-  # 486 => [
-  #   { is_many_days: false, month: 1, leaped: true, remainder: '29.1529', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '42.8173', odd_term_index: 5 },
-  #   { is_many_days: true, month: 2, leaped: false, remainder: '58.6835', phase_index: 0, even_term: '58.0359', even_term_index: 6, odd_term: '13.2545', odd_term_index: 7 },
-  #   { is_many_days: false, month: 3, leaped: false, remainder: '28.2141', phase_index: 0, even_term: '28.4731', even_term_index: 8, odd_term: '43.6917', odd_term_index: 9 },
-  #   { is_many_days: true, month: 4, leaped: false, remainder: '57.7447', phase_index: 0, even_term: '58.9104', even_term_index: 10, odd_term: '14.1290', odd_term_index: 11 },
-  #   { is_many_days: false, month: 5, leaped: false, remainder: '27.2753', phase_index: 0, even_term: '29.3476', even_term_index: 12, odd_term: '44.5662', odd_term_index: 13 },
-  #   { is_many_days: true, month: 6, leaped: false, remainder: '56.8059', phase_index: 0, even_term: '59.7848', even_term_index: 14, odd_term: '15.0034', odd_term_index: 15 },
-  #   { is_many_days: false, month: 7, leaped: false, remainder: '26.3364', phase_index: 0, even_term: '30.2220', even_term_index: 16, odd_term: '45.4407', odd_term_index: 17 },
-  #   { is_many_days: true, month: 8, leaped: false, remainder: '55.8670', phase_index: 0, even_term: '0.6593', even_term_index: 18, odd_term: '15.8779', odd_term_index: 19 },
-  #   { is_many_days: false, month: 9, leaped: false, remainder: '25.3976', phase_index: 0, even_term: '31.0965', even_term_index: 20, odd_term: '46.3151', odd_term_index: 21 },
-  #   { is_many_days: true, month: 10, leaped: false, remainder: '54.9282', phase_index: 0, even_term: '1.5337', even_term_index: 22, odd_term: '16.7523', odd_term_index: 23 },
-  #   { is_many_days: false, month: 11, leaped: false, remainder: '24.4588', phase_index: 0, even_term: '31.9709', even_term_index: 0, odd_term: '47.1896', odd_term_index: 1 },
-  #   { is_many_days: true, month: 12, leaped: false, remainder: '53.9894', phase_index: 0, even_term: '2.4082', even_term_index: 2, odd_term: '17.6268', odd_term_index: 3 }
-  # ],
+  486 => [
+    { is_many_days: true, month: 1, leaped: false, remainder: '59.6223', phase_index: 0, even_term: '27.5987', even_term_index: 4, odd_term: '12.3801', odd_term_index: 3 },
+    { is_many_days: false, month: 1, leaped: true, remainder: '29.1529', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '42.8173', odd_term_index: 5 },
+    { is_many_days: true, month: 2, leaped: false, remainder: '58.6835', phase_index: 0, even_term: '58.0359', even_term_index: 6, odd_term: '13.2545', odd_term_index: 7 },
+    { is_many_days: false, month: 3, leaped: false, remainder: '28.2141', phase_index: 0, even_term: '28.4731', even_term_index: 8, odd_term: '43.6917', odd_term_index: 9 },
+    { is_many_days: true, month: 4, leaped: false, remainder: '57.7447', phase_index: 0, even_term: '58.9104', even_term_index: 10, odd_term: '14.1290', odd_term_index: 11 },
+    { is_many_days: false, month: 5, leaped: false, remainder: '27.2753', phase_index: 0, even_term: '29.3476', even_term_index: 12, odd_term: '44.5662', odd_term_index: 13 },
+    { is_many_days: true, month: 6, leaped: false, remainder: '56.8059', phase_index: 0, even_term: '59.7848', even_term_index: 14, odd_term: '15.0034', odd_term_index: 15 },
+    { is_many_days: false, month: 7, leaped: false, remainder: '26.3364', phase_index: 0, even_term: '30.2220', even_term_index: 16, odd_term: '45.4407', odd_term_index: 17 },
+    { is_many_days: true, month: 8, leaped: false, remainder: '55.8670', phase_index: 0, even_term: '0.6593', even_term_index: 18, odd_term: '15.8779', odd_term_index: 19 },
+    { is_many_days: false, month: 9, leaped: false, remainder: '25.3976', phase_index: 0, even_term: '31.0965', even_term_index: 20, odd_term: '46.3151', odd_term_index: 21 },
+    { is_many_days: true, month: 10, leaped: false, remainder: '54.9282', phase_index: 0, even_term: '1.5337', even_term_index: 22, odd_term: '16.7523', odd_term_index: 23 },
+    { is_many_days: false, month: 11, leaped: false, remainder: '24.4588', phase_index: 0, even_term: '31.9709', even_term_index: 0, odd_term: '47.1896', odd_term_index: 1 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '53.9894', phase_index: 0, even_term: '2.4082', even_term_index: 2, odd_term: '17.6268', odd_term_index: 3 }
+  ],
   487 => [
     { is_many_days: true, month: 1, leaped: false, remainder: '23.5199', phase_index: 0, even_term: '32.8454', even_term_index: 4, odd_term: '48.0640', odd_term_index: 5 },
     { is_many_days: false, month: 2, leaped: false, remainder: '53.0505', phase_index: 0, even_term: '3.2826', even_term_index: 6, odd_term: '18.5012', odd_term_index: 7 },
