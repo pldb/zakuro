@@ -197,21 +197,23 @@ GENKA_EXPECTED_MONTHS = {
     { is_many_days: true, month: 11, leaped: false, remainder: '42.9787', phase_index: 0, even_term: '59.8163', even_term_index: 0, odd_term: '44.5977', odd_term_index: 23 },
     { is_many_days: true, month: 12, leaped: false, remainder: '12.5093', phase_index: 0, even_term: '30.2536', even_term_index: 2, odd_term: '15.0350', odd_term_index: 1 }
   ],
-  # TODO: 全体的に誤算
-  # 458 => [
-  #   { is_many_days: true, month: 1, leaped: false, remainder: '43.8324', phase_index: 0, even_term: '53.1579', even_term_index: 4, odd_term: '8.3765', odd_term_index: 5 },
-  #   { is_many_days: false, month: 2, leaped: false, remainder: '13.3630', phase_index: 0, even_term: '23.5951', even_term_index: 6, odd_term: '38.8137', odd_term_index: 7 },
-  #   { is_many_days: true, month: 3, leaped: false, remainder: '42.8936', phase_index: 0, even_term: '54.0323', even_term_index: 8, odd_term: '9.2510', odd_term_index: 9 },
-  #   { is_many_days: false, month: 4, leaped: false, remainder: '12.4242', phase_index: 0, even_term: '24.4696', even_term_index: 10, odd_term: '39.6882', odd_term_index: 11 },
-  #   { is_many_days: true, month: 5, leaped: false, remainder: '41.9548', phase_index: 0, even_term: '54.9068', even_term_index: 12, odd_term: '10.1254', odd_term_index: 13 },
-  #   { is_many_days: true, month: 6, leaped: false, remainder: '11.4854', phase_index: 0, even_term: '25.3440', even_term_index: 14, odd_term: '40.5626', odd_term_index: 15 },
-  #   { is_many_days: false, month: 7, leaped: false, remainder: '41.0160', phase_index: 0, even_term: '55.7813', even_term_index: 16, odd_term: '', odd_term_index: -1 },
-  #   { is_many_days: true, month: 8, leaped: false, remainder: '10.5465', phase_index: 0, even_term: '26.2185', even_term_index: 18, odd_term: '10.9999', odd_term_index: 17 },
-  #   { is_many_days: false, month: 9, leaped: false, remainder: '40.0771', phase_index: 0, even_term: '56.6557', even_term_index: 20, odd_term: '41.4371', odd_term_index: 19 },
-  #   { is_many_days: true, month: 10, leaped: false, remainder: '9.6077', phase_index: 0, even_term: '27.0929', even_term_index: 22, odd_term: '11.8743', odd_term_index: 21 },
-  #   { is_many_days: false, month: 11, leaped: false, remainder: '39.1383', phase_index: 0, even_term: '57.5302', even_term_index: 0, odd_term: '42.3115', odd_term_index: 23 },
-  #   { is_many_days: true, month: 12, leaped: false, remainder: '8.6689', phase_index: 0, even_term: '27.9674', even_term_index: 2, odd_term: '12.7488', odd_term_index: 1 }
-  # ],
+  458 => [
+    { is_many_days: false, month: 1, leaped: false, remainder: '42.0399', phase_index: 0, even_term: '0.6908', even_term_index: 4, odd_term: '45.4722', odd_term_index: 3 },
+    { is_many_days: true, month: 2, leaped: false, remainder: '11.5705', phase_index: 0, even_term: '31.1280', even_term_index: 6, odd_term: '15.9094', odd_term_index: 5 },
+    { is_many_days: false, month: 3, leaped: false, remainder: '41.1011', phase_index: 0, even_term: '1.5652', even_term_index: 8, odd_term: '46.3466', odd_term_index: 7 },
+    { is_many_days: true, month: 4, leaped: false, remainder: '10.6316', phase_index: 0, even_term: '32.0025', even_term_index: 10, odd_term: '16.7839', odd_term_index: 9 },
+    { is_many_days: false, month: 5, leaped: false, remainder: '40.1622', phase_index: 0, even_term: '2.4397', even_term_index: 12, odd_term: '47.2211', odd_term_index: 11 },
+    { is_many_days: true, month: 6, leaped: false, remainder: '9.6928', phase_index: 0, even_term: '32.8769', even_term_index: 14, odd_term: '17.6583', odd_term_index: 13 },
+    { is_many_days: false, month: 7, leaped: false, remainder: '39.2234', phase_index: 0, even_term: '3.3141', even_term_index: 16, odd_term: '48.0955', odd_term_index: 15 },
+    { is_many_days: true, month: 8, leaped: false, remainder: '8.7540', phase_index: 0, even_term: '33.7514', even_term_index: 18, odd_term: '18.5328', odd_term_index: 17 },
+    # NOTE: 『日本暦日原典』の誤記。閏9ではなく9にすべき
+    { is_many_days: false, month: 9, leaped: false, remainder: '38.2846', phase_index: 0, even_term: '4.1886', even_term_index: 20, odd_term: '48.9700', odd_term_index: 19 },
+    { is_many_days: true, month: 10, leaped: false, remainder: '7.8152', phase_index: 0, even_term: '34.6258', even_term_index: 22, odd_term: '19.4072', odd_term_index: 21 },
+    { is_many_days: false, month: 11, leaped: false, remainder: '37.3457', phase_index: 0, even_term: '5.0630', even_term_index: 0, odd_term: '49.8444', odd_term_index: 23 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '6.8763', phase_index: 0, even_term: '35.5003', even_term_index: 2, odd_term: '20.2817', odd_term_index: 1 },
+    # NOTE: 『日本暦日原典』の誤記。12ではなく閏12にすべき
+    { is_many_days: false, month: 12, leaped: true, remainder: '36.4069', phase_index: 0, even_term: '', even_term_index: -1, odd_term: '50.7189', odd_term_index: 3 }
+  ],
   459 => [
     { is_many_days: true, month: 1, leaped: false, remainder: '5.9375', phase_index: 0, even_term: '5.9375', even_term_index: 4, odd_term: '21.1561', odd_term_index: 5 },
     { is_many_days: false, month: 2, leaped: false, remainder: '35.4681', phase_index: 0, even_term: '36.3747', even_term_index: 6, odd_term: '51.5933', odd_term_index: 7 },
@@ -343,7 +345,21 @@ GENKA_EXPECTED_MONTHS = {
   #   { is_many_days: true, month: 11, leaped: false, remainder: '44.7713', phase_index: 0, even_term: '52.2834', even_term_index: 0, odd_term: '7.5021', odd_term_index: 1 },
   #   { is_many_days: false, month: 12, leaped: false, remainder: '14.3019', phase_index: 0, even_term: '22.7207', even_term_index: 2, odd_term: '37.9393', odd_term_index: 3 }
   # ],
-  # TODO: 458年が欠けている
+  468 => [
+    { is_many_days: true, month: 1, leaped: false, remainder: '43.8324', phase_index: 0, even_term: '53.1579', even_term_index: 4, odd_term: '8.3765', odd_term_index: 5 },
+    { is_many_days: false, month: 2, leaped: false, remainder: '13.3630', phase_index: 0, even_term: '23.5951', even_term_index: 6, odd_term: '38.8137', odd_term_index: 7 },
+    { is_many_days: true, month: 3, leaped: false, remainder: '42.8936', phase_index: 0, even_term: '54.0323', even_term_index: 8, odd_term: '9.2510', odd_term_index: 9 },
+    { is_many_days: false, month: 4, leaped: false, remainder: '12.4242', phase_index: 0, even_term: '24.4696', even_term_index: 10, odd_term: '39.6882', odd_term_index: 11 },
+    { is_many_days: true, month: 5, leaped: false, remainder: '41.9548', phase_index: 0, even_term: '54.9068', even_term_index: 12, odd_term: '10.1254', odd_term_index: 13 },
+    { is_many_days: true, month: 6, leaped: false, remainder: '11.4854', phase_index: 0, even_term: '25.3440', even_term_index: 14, odd_term: '40.5626', odd_term_index: 15 },
+    # TODO: 55.7813 <=> 55.7812
+    { is_many_days: false, month: 7, leaped: false, remainder: '41.0160', phase_index: 0, even_term: '55.7813', even_term_index: 16, odd_term: '', odd_term_index: -1 },
+    { is_many_days: true, month: 8, leaped: false, remainder: '10.5465', phase_index: 0, even_term: '26.2185', even_term_index: 18, odd_term: '10.9999', odd_term_index: 17 },
+    { is_many_days: false, month: 9, leaped: false, remainder: '40.0771', phase_index: 0, even_term: '56.6557', even_term_index: 20, odd_term: '41.4371', odd_term_index: 19 },
+    { is_many_days: true, month: 10, leaped: false, remainder: '9.6077', phase_index: 0, even_term: '27.0929', even_term_index: 22, odd_term: '11.8743', odd_term_index: 21 },
+    { is_many_days: false, month: 11, leaped: false, remainder: '39.1383', phase_index: 0, even_term: '57.5302', even_term_index: 0, odd_term: '42.3115', odd_term_index: 23 },
+    { is_many_days: true, month: 12, leaped: false, remainder: '8.6689', phase_index: 0, even_term: '27.9674', even_term_index: 2, odd_term: '12.7488', odd_term_index: 1 }
+  ],
   469 => [
     { is_many_days: false, month: 1, leaped: false, remainder: '38.1995', phase_index: 0, even_term: '58.4046', even_term_index: 4, odd_term: '43.1860', odd_term_index: 3 },
     { is_many_days: true, month: 2, leaped: false, remainder: '7.7301', phase_index: 0, even_term: '28.8418', even_term_index: 6, odd_term: '13.6232', odd_term_index: 5 },
