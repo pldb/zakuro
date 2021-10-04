@@ -40,7 +40,7 @@ module Zakuro
           # 経
           remainder = Origin::January.get(western_year: western_year)
 
-          lunar_phase = Monthly::LunarPhase.new(remainder: remainder, solar_term: solar_term)
+          lunar_phase = Monthly::LunarPhase.new(remainder: remainder)
 
           solar_average = Solar::Average.new(solar_term: solar_term)
 

@@ -878,9 +878,9 @@ describe 'Zakuro' do
               expect(fails).to be_empty, error_message(fails)
             end
             # it 'call example' do
-            #   Zakuro::Gihou::Range::AnnualRange.get(
-            #     context: Zakuro::Context.new(version_name: 'Gihou'),
-            #     western_year: 700
+            #   Zakuro::Genka::Range::AnnualRange.get(
+            #     context: Zakuro::Context.new(version_name: 'Genka'),
+            #     western_year: 468
             #   )
             # end
           end

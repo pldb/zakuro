@@ -33,12 +33,8 @@ module Zakuro
         # 初期化
         #
         # @param [Cycle::Remainder] remainder 正月経朔
-        # @param [Cycle::SolarTerm] solar_term 正月中気/節気
         #
-        def initialize(remainder:, solar_term:)
-          # 二十四節気
-          @solar_term = solar_term
-
+        def initialize(remainder:)
           # 経
           @remainder = remainder
 
