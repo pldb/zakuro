@@ -39,11 +39,11 @@ module Zakuro
         #
         # @return [String] フォーマットした結果
         #
-        def format
+        def format(form: '%.4f', digit: 4)
           return '' if invalid?
 
           decimal = @day + @minute / @base_day.to_f
-          super('%.4f', decimal)
+          super(form, decimal.round(digit))
         end
       end
 
@@ -76,11 +76,15 @@ module Zakuro
         #
         # @return [String] フォーマットした結果
         #
-        def format
+        def format(form: '%.4f', digit: 4)
           return '' if invalid?
 
           decimal = @day + @minute / @base_day.to_f
-          super('%.4f', decimal)
+          # NOTE: roundなしで format を使用した場合は、四捨五入が正しく実行されないことが判明した
+          # 具体的には、468年の中気は '55.7813' だが '55.7812' になる
+          # これは '55.7812500' を4桁にした際に、境界値の少数点以下5桁目の '5' が切り捨てを受けたためである
+          # format による四捨五入は避け、roundによる四捨五入を採用する
+          super(form, decimal.round(digit))
         end
       end
     end
