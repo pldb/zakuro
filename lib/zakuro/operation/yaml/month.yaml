@@ -1,4 +1,676 @@
 ---
+- id: 49-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '49'
+  number: '1'
+  japan_date: 欽明天皇 14年 5 大 壬戌 58.5997
+  western_date: 553-5-28
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 54-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '54'
+  number: '1'
+  japan_date: 欽明天皇 31年 閏4 小 甲申 20.0226
+  western_date: 570-5-21
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 56-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '56'
+  number: '1'
+  japan_date: 敏達天皇 4年 2 小 丙戌 22.3271
+  western_date: 575-2-26
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 72-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '72'
+  number: '1'
+  japan_date: 推古天皇 31年  1 大 丁丑 13.9641
+  western_date: 623-2-5
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 72-1-2
+  relation_id: "-"
+  parent_id: "-"
+  page: '72'
+  number: '1'
+  japan_date: 推古天皇 32年  1 小 壬申 8.3311
+  western_date: 624-1-26
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 74-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '74'
+  number: '1'
+  japan_date: 推古天皇 36年 4 小 丁丑  13.4521
+  western_date: 628-5-9
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 74-2-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '74'
+  number: '2'
+  japan_date: 推古天皇 36年 9 小 乙巳  41.1051
+  western_date: 628-10-4
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 81-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '81'
+  number: '1'
+  japan_date: 大化 5年 4 小 乙亥  11.4043
+  western_date: 649-5-17
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 81-2-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '81'
+  number: '2'
+  japan_date: 大化 5年 5 大 甲辰  40.9348
+  western_date: 649-6-15
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 95-1-0
+  relation_id: "-"
+  parent_id: 95-1-1
+  page: '95'
+  number: "-"
+  japan_date: 持統 6年 10 小 壬戌 58.8590
+  western_date: 692-11-14
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 95-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '95'
+  number: '1'
+  japan_date: 持統 6年 11 大 辛卯  28.3896
+  western_date: 692-12-14
+  description: 計算（元嘉暦による）では28壬辰となるが，書紀は11月辛卯朔，したがってユリウス暦は12月13日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
+- id: 96-1-0
+  relation_id: "-"
+  parent_id: 96-1-1
+  page: '96'
+  number: "-"
+  japan_date: 持統 10年 11 大 己亥 35.3893
+  western_date: 696-11-30
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 96-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '96'
+  number: '1'
+  japan_date: 持統 10年 12 小 己巳 4.9189
+  western_date: 696-12-29
+  description: 元嘉暦では4戊辰となるが，書紀は12月己巳朔，したがってユリウス暦は12月30日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 97-1-0
+  relation_id: "-"
+  parent_id: 97-1-1
+  page: '97'
+  number: "-"
+  japan_date: 文武 1年 3 小 丁酉 33.5106
+  western_date: 697-3-28
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 97-1-1
+  relation_id: 97-0-1
+  parent_id: "-"
+  page: '97'
+  number: '1'
+  japan_date: 文武 1年 4 大 丙寅  3.0412
+  western_date: 697-4-27
+  description: 元嘉暦では3丁卯となるが，書紀は4月丙寅朔，したがって4月朔のユリウス暦は4月26日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
+- id: 97-2-0
+  relation_id: "-"
+  parent_id: 97-2-1
+  page: '97'
+  number: "-"
+  japan_date: 文武 1年 7 小 乙未 31.6330
+  western_date: 697-7-24
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 97-2-1
+  relation_id: 97-0-1
+  parent_id: "-"
+  page: '97'
+  number: '2'
+  japan_date: 文武 1年 8 大 甲子 1.1636
+  western_date: 697-8-23
+  description: 元嘉暦では1乙丑，書紀も乙丑朔とあるが，ここは続日本紀にしたがって甲子とする。したがってユリウス暦は8月22日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-1"
+- id: 97-3-1
+  relation_id: 97-0-1
+  parent_id: "-"
+  page: '97'
+  number: '3'
+  japan_date: 文武 1年 閏12 小 癸巳  28.8165
+  western_date: 698-1-17
+  description: 元嘉暦では28壬辰であるが，続日本紀に閏12月癸巳朔とある。したがってユリウス暦は1月18日となる。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: '12'
+        actual: '12'
+      leaped:
+        calc: 'false'
+        actual: 'true'
+      days:
+        calc: 大
+        actual: 小
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 97-4-1
+  relation_id: 97-0-1
+  parent_id: "-"
+  page: '97'
+  number: '4'
+  japan_date: 文武 1年 11 大 癸巳 29.7553
+  western_date: 697-11-19
+  description: 元嘉暦では閏10月と推算されるが，続日本紀により閏12月。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: '10'
+        actual: '11'
+      leaped:
+        calc: 'true'
+        actual: 'false'
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 97-4-2
+  relation_id: 97-0-1
+  parent_id: 97-4-1
+  page: '97'
+  number: '4'
+  japan_date: 文武 1年 12 大 癸亥 59.2859
+  western_date: 697-12-19
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        calc: '11'
+        actual: '12'
+      leaped:
+        calc: 'false'
+        actual: 'false'
+      days:
+        calc: 小
+        actual: 大
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 97-0-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '97'
+  number: "-"
+  japan_date: "-"
+  western_date: "-"
+  description: 註. 1)〜4)は、儀鳳暦によればすべて合うものである。（儀鳳暦による計算値は本文529頁参照）
+  note: "-"
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        calc: "-"
+        actual: "-"
+      leaped:
+        calc: "-"
+        actual: "-"
+      days:
+        calc: "-"
+        actual: "-"
+    solar_term:
+      calc:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      actual:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 98-1-1
   relation_id: "-"
   parent_id: "-"
