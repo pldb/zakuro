@@ -15,7 +15,6 @@ module Zakuro
       # @return [True] リリースあり
       RELEASE = true
 
-
       # @return [String] 暦クラス名
       VERSION_NAME = 'Genka'
 
