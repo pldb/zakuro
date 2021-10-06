@@ -1,3 +1,147 @@
+- western_date: "0445-01-24"
+  version: "Genka"
+  japan_date: "允恭天皇34年1月1日"
+  description: "元嘉暦の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "允恭天皇34年"
+        second_gengou: ""
+        zodiac_name: "乙酉"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "辛卯"
+          remainder: "27.6157"
+          western_date: "0445-01-24"
+        odd_solar_terms:
+          index: 3
+          remainder: "37.2649"
+        even_solar_terms:
+          index: 4
+          remainder: "52.4836"
+      day:
+        number: 1
+        zodiac_name: "辛卯"
+        remainder: "27.6157"
+        western_date: "0445-01-24"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "允恭天皇34年"
+          second_gengou: ""
+          zodiac_name: "乙酉"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "辛卯"
+            remainder: "27.6157"
+            western_date: "0445-01-24"
+          odd_solar_terms:
+            index: 3
+            remainder: "37.2649"
+          even_solar_terms:
+            index: 4
+            remainder: "52.4836"
+        day:
+          number: 1
+          zodiac_name: "辛卯"
+          remainder: "27.6157"
+          western_date: "0445-01-24"
+- western_date: "0446-02-11"
+  version: "Genka"
+  japan_date: "允恭天皇34年12月30日"
+  description: "元嘉暦の初年度末日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "允恭天皇34年"
+        second_gengou: ""
+        zodiac_name: "乙酉"
+        total_days: 384
+      month:
+        number: 12
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "乙酉"
+          remainder: "21.9827"
+          western_date: "0446-01-13"
+        odd_solar_terms:
+          index: 3
+          remainder: "42.5117"
+        even_solar_terms:
+          index: 2
+          remainder: "27.2930"
+      day:
+        number: 30
+        zodiac_name: "甲寅"
+        remainder: "50.9827"
+        western_date: "0446-02-11"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "允恭天皇34年"
+          second_gengou: ""
+          zodiac_name: "乙酉"
+          total_days: 384
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "乙酉"
+            remainder: "21.9827"
+            western_date: "0446-01-13"
+          odd_solar_terms:
+            index: 3
+            remainder: "42.5117"
+          even_solar_terms:
+            index: 2
+            remainder: "27.2930"
+        day:
+          number: 30
+          zodiac_name: "甲寅"
+          remainder: "50.9827"
+          western_date: "0446-02-11"
 - western_date: "0698-02-16"
   version: "Gihou"
   japan_date: "文武天皇2年1月1日"
