@@ -26,11 +26,10 @@ describe 'Zakuro' do
         end
       end
       context 'genka' do
-        it 'should be raised ArgumentError' do
+        it 'should be got gateway module' do
           date = Date.new(445, 1, 24)
-          expect do
-            Zakuro::VersionFactory.get_runnable_constant(date: date)
-          end.to raise_error(ArgumentError)
+          actual = Zakuro::VersionFactory.get_runnable_constant(date: date)
+          expect(actual).to eq(Zakuro::Genka::Gateway)
         end
       end
       context 'gihou' do

@@ -55,7 +55,7 @@ module Zakuro
           # 二十四節気（冬至）
           solar_term = Cycle::SolarTerm.new(index: 0, remainder: winter_solstice)
 
-          first_solar_term_index = Average.calc_fist_solar_term_index(western_year: western_year)
+          first_solar_term_index = Average.calc_first_solar_term_index(western_year: western_year)
 
           # 対象の二十四節気まで戻す
           solar_term.prev_by_index(first_solar_term_index)
@@ -77,7 +77,7 @@ module Zakuro
         #
         # @return [Integer] 二十四節気番号
         #
-        def self.calc_fist_solar_term_index(western_year:)
+        def self.calc_first_solar_term_index(western_year:)
           # 天正閏余
           lunar_age = Origin::LunarAge.get(western_year: western_year)
 

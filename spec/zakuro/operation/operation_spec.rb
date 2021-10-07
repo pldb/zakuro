@@ -18,14 +18,16 @@ describe 'Zakuro' do
       context 'default month file' do
         it 'should be loaded' do
           result = Zakuro::Operation.month_histories
-          # 446(全行) - 79（無効行）
-          expect(result.size).to eq 367
+          # 467(全行) - 89（無効行）
+          expect(result.size).to eq 378
         end
         it 'should be loaded any elements' do
+          id = '156-1-1'
           result = Zakuro::Operation.month_histories
+          expect = result.select { |history| history.id == id }
           TestTools::Stringifier.eql?(
             expected: Zakuro::Operation::MonthHistory.new(
-              id: '156-1-1',
+              id: id,
               reference: Zakuro::Operation::Reference.new(
                 page: 156, number: 1, japan_date: '貞観15年 1  小 丁卯 2-5359'
               ),
@@ -47,7 +49,7 @@ describe 'Zakuro' do
                 days: 1
               )
             ),
-            actual: result[196],
+            actual: expect[0],
             class_prefix: 'Zakuro::Operation'
           )
         end
