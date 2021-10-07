@@ -142,6 +142,154 @@
           zodiac_name: "甲寅"
           remainder: "50.9827"
           western_date: "0446-02-11"
+- western_date: "0697-01-28"
+  version: "Genka"
+  japan_date: "文武天皇1年1月1日"
+  description: "元嘉暦の最終年の初日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "文武天皇1年"
+        second_gengou: ""
+        zodiac_name: "丁酉"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "戊戌"
+          remainder: "34.4495"
+          western_date: "0697-01-28"
+        odd_solar_terms:
+          index: 3
+          remainder: "39.4360"
+        even_solar_terms:
+          index: 4
+          remainder: "54.6546"
+      day:
+        number: 1
+        zodiac_name: "戊戌"
+        remainder: "34.4495"
+        western_date: "0697-01-28"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "文武天皇1年"
+          second_gengou: ""
+          zodiac_name: "丁酉"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "戊戌"
+            remainder: "34.4495"
+            western_date: "0697-01-28"
+          odd_solar_terms:
+            index: 3
+            remainder: "39.4360"
+          even_solar_terms:
+            index: 4
+            remainder: "54.6546"
+        day:
+          number: 1
+          zodiac_name: "戊戌"
+          remainder: "34.4495"
+          western_date: "0697-01-28"
+- western_date: "0698-02-15"
+  version: "Genka"
+  japan_date: "文武天皇1年閏12月29日（12月の大 -> 閏12月の小）"
+  description: "元嘉暦の末日が計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "文武天皇1年"
+        second_gengou: ""
+        zodiac_name: "丁酉"
+        total_days: 384
+      month:
+        number: 12
+        leaped: true
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "癸巳"
+          remainder: "29.8165"
+          western_date: "0698-01-18"
+        odd_solar_terms:
+          index: 3
+          remainder: "44.6827"
+        even_solar_terms:
+          index: 2
+          remainder: "29.4641"
+      day:
+        number: 29
+        zodiac_name: "辛酉"
+        remainder: "57.8165"
+        western_date: "0698-02-15"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "97-3-1"
+          western_date: "0698-01-17"
+          page: 97
+          number: 3
+          annotations:
+            - description: "元嘉暦では28壬辰であるが，続日本紀に閏12月癸巳朔とある。したがってユリウス暦は1月18日となる。"
+              note: ""
+            - description: "註. 1)〜4)は、儀鳳暦によればすべて合うものである。（儀鳳暦による計算値は本文529頁参照）"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "文武天皇1年"
+          second_gengou: ""
+          zodiac_name: "丁酉"
+          total_days: 384
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "壬辰"
+            remainder: "28.8165"
+            western_date: "0698-01-17"
+          odd_solar_terms:
+            index: 3
+            remainder: "44.6827"
+          even_solar_terms:
+            index: 2
+            remainder: "29.4641"
+        day:
+          number: 30
+          zodiac_name: "辛酉"
+          remainder: "57.8165"
+          western_date: "0698-02-15"
 - western_date: "0698-02-16"
   version: "Gihou"
   japan_date: "文武天皇2年1月1日"
