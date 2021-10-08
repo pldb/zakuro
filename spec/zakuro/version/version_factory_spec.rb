@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require File.expand_path('../testtools/const', __dir__)
+require File.expand_path('../../testtools/const', __dir__)
 
 require 'date'
-require File.expand_path('../../' \
+require File.expand_path('../../../' \
                          'lib/zakuro/output/error',
                          __dir__)
-require File.expand_path('../../' \
-                         'lib/zakuro/version_factory',
+require File.expand_path('../../../' \
+                         'lib/zakuro/version/version_factory',
                          __dir__)
-require File.expand_path('../../' \
+require File.expand_path('../../../' \
                          'lib/zakuro/version/senmyou/senmyou',
                          __dir__)
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './version_factory'
+require_relative './version/version_factory'
 require_relative './condition'
 
 require_relative './output/error'

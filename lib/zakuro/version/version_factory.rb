@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative './era/japan/reki'
-require_relative './era/western'
-require_relative './version/genka/genka'
-require_relative './version/gihou/gihou'
-require_relative './version/daien/daien'
-require_relative './version/senmyou/senmyou'
-require_relative './version/joukyou/joukyou'
-require_relative './version/houryaku/houryaku'
-require_relative './version/kansei/kansei'
-require_relative './version/tenpou/tenpou'
-require_relative './version/gregorio/gregorio'
+require_relative '../era/japan/reki'
+require_relative '../era/western'
+require_relative './genka/genka'
+require_relative './gihou/gihou'
+require_relative './daien/daien'
+require_relative './senmyou/senmyou'
+require_relative './joukyou/joukyou'
+require_relative './houryaku/houryaku'
+require_relative './kansei/kansei'
+require_relative './tenpou/tenpou'
+require_relative './gregorio/gregorio'
 
 # :nodoc:
 module Zakuro
