@@ -17,15 +17,15 @@ module Zakuro
       # @return [Array<Set>] 元号セット情報リスト
       LIST = [
         Parser.run(filepath: File.expand_path(
-          './yaml/set-001-until-south.yaml',
+          './gengou/yaml/set-001-until-south.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './yaml/set-002-from-north.yaml',
+          './gengou/yaml/set-002-from-north.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './yaml/set-003-modern.yaml',
+          './gengou/yaml/set-003-modern.yaml',
           __dir__
         ))
       ].freeze

@@ -5,7 +5,7 @@ require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/gengou',
 require 'yaml'
 
 ACTUAL_YAML_PATH = File.expand_path(
-  '../../../../lib/zakuro/era/japan/yaml/set-001-until-south.yaml',
+  '../../../../lib/zakuro/era/japan/gengou/yaml/set-001-until-south.yaml',
   __dir__
 )
 TEST_YAML_PATH = File.expand_path(
