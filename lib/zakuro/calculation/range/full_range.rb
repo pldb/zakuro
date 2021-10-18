@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../era/western'
+require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
 require_relative '../base/multi_gengou_roller'

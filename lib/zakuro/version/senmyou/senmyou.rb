@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative '../../era/western'
+require_relative '../../era/western/calendar'
 require_relative '../abstract_version'
 require_relative '../context'
 require_relative '../../calculation/summary/single'

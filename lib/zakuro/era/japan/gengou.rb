@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../western'
+require_relative '../western/calendar'
 require_relative './gengou/parser'
 require_relative './gengou/type'
 

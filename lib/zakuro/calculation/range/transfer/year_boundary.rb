@@ -3,7 +3,7 @@
 require_relative '../../../calculation/base/multi_gengou_roller'
 require_relative '../../../calculation/base/year'
 
-require_relative '../../../era/western'
+require_relative '../../../era/western/calendar'
 
 # :nodoc:
 module Zakuro

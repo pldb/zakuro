@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
-require File.expand_path('../../../../zakuro/lib/zakuro/era/western',
+require File.expand_path('../../../../zakuro/lib/zakuro/era/western/calendar',
                          __dir__)
 
 describe 'Zakuro' do

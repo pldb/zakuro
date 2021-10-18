@@ -3,7 +3,7 @@
 require_relative '../base/multi_gengou_roller'
 require_relative '../base/year'
 
-require_relative '../../era/western'
+require_relative '../../era/western/calendar'
 require_relative '../../output/response'
 require_relative '../../output/logger'
 
