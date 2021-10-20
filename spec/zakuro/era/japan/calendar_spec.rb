@@ -1,0 +1,56 @@
+# frozen_string_literal: true
+
+require 'date'
+require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/calendar',
+                         __dir__)
+
+# rubocop:disable Metrics/BlockLength
+describe 'Zakuro' do
+  describe 'Japan' do
+    describe 'Calendar' do
+      describe 'attr_reader' do
+        context 'japan date text' do
+          let!(:leaped) do
+            '元中4年閏5月1日'
+          end
+          it 'is parsed gengou' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).gengou
+            ).to eq '元中'
+          end
+          it 'is parsed year' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).year
+            ).to eq 4
+          end
+          it 'is parsed month leap' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).leaped
+            ).to eq true
+          end
+          it 'is parsed month' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).month
+            ).to eq 5
+          end
+          it 'is parsed day' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).day
+            ).to eq 1
+          end
+        end
+        context 'japan date text without leap' do
+          let!(:not_leaped) do
+            '元中4年6月1日'
+          end
+          it 'is parsed month leap' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: not_leaped).leaped
+            ).to eq false
+          end
+        end
+      end
+    end
+  end
+end
+# rubocop:enable Metrics/BlockLength
