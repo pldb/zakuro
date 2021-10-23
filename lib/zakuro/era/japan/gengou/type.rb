@@ -122,6 +122,37 @@ module Zakuro
     end
 
     #
+    # StartYear 開始年
+    #
+    class StartYear
+      INVALID = -1
+      # @return [Integer] 和暦元号年
+      attr_reader :japan
+      # @return [Integer] 西暦年
+      attr_reader :western
+
+      def initialize(japan: INVALID, western: INVALID)
+        @japan = japan
+        @western = western
+      end
+    end
+
+    #
+    # StartDate 開始日
+    #
+    class StartDate
+      # @return [Japan::Calendar] 和暦日
+      attr_reader :japan
+      # @return [Western::Calendar] 西暦日
+      attr_reader :western
+
+      def initialize(japan: Japan::Calendar, western: Western::Calendar)
+        @japan = japan
+        @western = western
+      end
+    end
+
+    #
     # Set 元号セット
     #
     class Set
