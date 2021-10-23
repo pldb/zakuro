@@ -11,7 +11,7 @@ describe 'Zakuro' do
       describe 'attr_reader' do
         context 'japan date text' do
           let!(:leaped) do
-            '元中4年閏5月1日'
+            '元中04年閏05月01日'
           end
           it 'is parsed gengou' do
             expect(
@@ -41,12 +41,24 @@ describe 'Zakuro' do
         end
         context 'japan date text without leap' do
           let!(:not_leaped) do
-            '元中4年6月1日'
+            '元中04年06月01日'
           end
           it 'is parsed month leap' do
             expect(
               Zakuro::Japan::Calendar.new(text: not_leaped).leaped
             ).to eq false
+          end
+        end
+      end
+      describe '#format' do
+        let!(:leaped) do
+          '元中04年閏05月01日'
+        end
+        context 'japan date text' do
+          it 'should be formatted' do
+            expect(
+              Zakuro::Japan::Calendar.new(text: leaped).format
+            ).to eq leaped
           end
         end
       end
