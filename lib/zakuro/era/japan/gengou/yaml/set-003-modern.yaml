@@ -1,28 +1,43 @@
+---
 id: 3
-name: "近代（一世一元）"
-end_date: "9999-12-31"
+name: 近代（一世一元）
+end_date:
+  japan: 令和7981年12月31日
+  western: '9999-12-31'
 list:
-  - name: "明治"
-    # 1年9月8日
-    start_year: 1
-    start_date: "1868-10-23"
-    new_year_date: "1868-1-25"
-    note: ""
-  - name: "大正"
-    # 1年7月30日
-    start_year: 1
-    start_date: "1912-7-30"
-    new_year_date: "1912-1-1"
-    note: ""
-  - name: "昭和"
-    # 1年12月25日
-    start_year: 1
-    start_date: "1926-12-25"
-    new_year_date: "1926-1-1"
-    note: ""
-  - name: "令和"
-    # 1年5月1日
-    start_year: 1
-    start_date: "2019-5-1"
-    new_year_date: "2019-1-1"
-    note: ""
+- name: 明治
+  start_year:
+    japan: 1
+    western: 1868
+  start_date:
+    japan: 明治01年09月08日
+    western: '1868-10-23'
+  new_year_date: '1868-1-25'
+  note: ''
+- name: 大正
+  start_year:
+    japan: 1
+    western: 1912
+  start_date:
+    japan: 大正01年07月30日
+    western: '1912-7-30'
+  new_year_date: '1912-1-1'
+  note: ''
+- name: 昭和
+  start_year:
+    japan: 1
+    western: 1926
+  start_date:
+    japan: 昭和01年12月25日
+    western: '1926-12-25'
+  new_year_date: '1926-1-1'
+  note: ''
+- name: 令和
+  start_year:
+    japan: 1
+    western: 2019
+  start_date:
+    japan: 令和01年05月01日
+    western: '2019-5-1'
+  new_year_date: '2019-1-1'
+  note: ''
