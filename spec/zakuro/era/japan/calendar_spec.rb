@@ -8,34 +8,34 @@ require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/calendar',
 describe 'Zakuro' do
   describe 'Japan' do
     describe 'Calendar' do
-      describe 'attr_reader' do
+      describe '.parse' do
         context 'japan date text' do
           let!(:leaped) do
             '元中04年閏05月01日'
           end
           it 'is parsed gengou' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).gengou
+              Zakuro::Japan::Calendar.parse(text: leaped).gengou
             ).to eq '元中'
           end
           it 'is parsed year' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).year
+              Zakuro::Japan::Calendar.parse(text: leaped).year
             ).to eq 4
           end
           it 'is parsed month leap' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).leaped
+              Zakuro::Japan::Calendar.parse(text: leaped).leaped
             ).to eq true
           end
           it 'is parsed month' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).month
+              Zakuro::Japan::Calendar.parse(text: leaped).month
             ).to eq 5
           end
           it 'is parsed day' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).day
+              Zakuro::Japan::Calendar.parse(text: leaped).day
             ).to eq 1
           end
         end
@@ -45,7 +45,7 @@ describe 'Zakuro' do
           end
           it 'is parsed month leap' do
             expect(
-              Zakuro::Japan::Calendar.new(text: not_leaped).leaped
+              Zakuro::Japan::Calendar.parse(text: not_leaped).leaped
             ).to eq false
           end
         end
@@ -57,7 +57,7 @@ describe 'Zakuro' do
         context 'japan date text' do
           it 'should be formatted' do
             expect(
-              Zakuro::Japan::Calendar.new(text: leaped).format
+              Zakuro::Japan::Calendar.parse(text: leaped).format
             ).to eq leaped
           end
         end
