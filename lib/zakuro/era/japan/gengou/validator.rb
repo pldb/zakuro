@@ -14,6 +14,8 @@ module Zakuro
     # Validator yaml解析
     #
     module Validator
+      # TODO: type, parser に合わせること
+
       # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
 
       #

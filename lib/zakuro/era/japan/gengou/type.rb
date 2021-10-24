@@ -117,6 +117,62 @@ module Zakuro
     end
 
     #
+    # Set 元号セット
+    #
+    class Set
+      # @return [Integer] 不正値
+      INVALID = -1
+      # @return [Integer] 元号セットID
+      attr_reader :id
+      # @return [String] 元号セット名
+      attr_reader :name
+      # @return [Both::Date] 元号セットでの終了日
+      attr_reader :both_end_date
+      # @return [Array<Gengou>] 元号リスト
+      attr_reader :list
+
+      #
+      # 初期化
+      #
+      # @param [Integer] id 元号セットID
+      # @param [String] name 元号セット名
+      # @param [Western::Calendar] end_date 元号セットでの終了日
+      # @param [Array<Gengou>] list 元号リスト
+      #
+      def initialize(id: INVALID, name: '', both_end_date: Both::Date.new, list: [])
+        @id = id
+        @name = name
+        @both_end_date = both_end_date
+        @list = list
+      end
+
+      #
+      # 指定した日付を含む元号を返す
+      #
+      # @param [Western::Calendar] date 日
+      #
+      # @return [Gengou] 元号
+      #
+      def include_item(date:)
+        @list.each do |item|
+          return item if item.include?(date: date)
+        end
+
+        Gengou.new
+      end
+
+      #
+      # 元号セットが不正かどうかを確認する
+      #
+      # @return [True] 正しくない
+      # @return [False] 正しい
+      #
+      def invalid?
+        @id == INVALID
+      end
+    end
+
+    #
     # 和暦/西暦
     #
     module Both
@@ -170,62 +226,6 @@ module Zakuro
         def invalid?
           @japan.invalid? || @western.invalid?
         end
-      end
-    end
-
-    #
-    # Set 元号セット
-    #
-    class Set
-      # @return [Integer] 不正値
-      INVALID = -1
-      # @return [Integer] 元号セットID
-      attr_reader :id
-      # @return [String] 元号セット名
-      attr_reader :name
-      # @return [Both::Date] 元号セットでの終了日
-      attr_reader :both_end_date
-      # @return [Array<Gengou>] 元号リスト
-      attr_reader :list
-
-      #
-      # 初期化
-      #
-      # @param [Integer] id 元号セットID
-      # @param [String] name 元号セット名
-      # @param [Western::Calendar] end_date 元号セットでの終了日
-      # @param [Array<Gengou>] list 元号リスト
-      #
-      def initialize(id: INVALID, name: '', both_end_date: Both::Date.new, list: [])
-        @id = id
-        @name = name
-        @both_end_date = both_end_date
-        @list = list
-      end
-
-      #
-      # 指定した日付を含む元号を返す
-      #
-      # @param [Western::Calendar] date 日
-      #
-      # @return [Gengou] 元号
-      #
-      def include_item(date:)
-        @list.each do |item|
-          return item if item.include?(date: date)
-        end
-
-        Gengou.new
-      end
-
-      #
-      # 元号セットが不正かどうかを確認する
-      #
-      # @return [True] 正しくない
-      # @return [False] 正しい
-      #
-      def invalid?
-        @id == INVALID
       end
     end
   end
