@@ -19,6 +19,8 @@ module Zakuro
     module Parser
       # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
 
+      # TODO: type に合わせること
+
       #
       # GengouParser 元号情報の検証/展開を行う
       #

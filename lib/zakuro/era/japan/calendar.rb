@@ -16,8 +16,10 @@ module Zakuro
       INVALID = -1
       # @return [String] 空文字列
       EMPTY = ''
+      # @return [String] 閏を示す文字列
+      LEAPED_TEXT = '閏'
       # @return [Regexp] 和暦日フォーマット
-      FORMAT = /^([一-龥]{2,4})([0-9]+)年(閏)?([0-9]+)月([0-9]+)日$/.freeze
+      FORMAT = /^([一-龥]{2,4})([0-9]+)年(#{LEAPED_TEXT})?([0-9]+)月([0-9]+)日$/.freeze
       # @return [String] 出力用デフォルトフォーマット
       DEFAULT_OUTPUT_FORM = '%s%02d年%s%02d月%02d日'
 
@@ -66,12 +68,12 @@ module Zakuro
       # @return [String] 和暦日フォーマット文字列
       #
       def format(form: DEFAULT_OUTPUT_FORM)
-        leaped_text = @leaped ? '閏' : ''
+        leaped_text = @leaped ? LEAPED_TEXT : ''
         super(form, @gengou, @year, leaped_text, @month, @day)
       end
 
       #
-      # 年月日情報（西暦）を生成する
+      # 年月日情報（和暦）を生成する
       #
       # @param [Regexp] regex 正規表現
       # @param [String] text 和暦日文字列
@@ -79,11 +81,9 @@ module Zakuro
       # @return [Calendar] 年月日情報（和暦）
       #
       def self.parse(regex: FORMAT, text: '')
-        return Calendar.new unless text
+        return Calendar.new unless valid_date_string(regex: regex, text: text)
 
         matched = text.match(regex)
-
-        return Calendar.new unless matched
 
         Calendar.new(
           gengou: matched[1],
@@ -92,6 +92,25 @@ module Zakuro
           month: Tools::Typeconv.to_i(text: matched[4], default: INVALID),
           day: Tools::Typeconv.to_i(text: matched[5], default: INVALID)
         )
+      end
+
+      #
+      # 日付文字列を検証する
+      #
+      # @param [Regexp] regex 正規表現
+      # @param [String] text 和暦日文字列
+      #
+      # @return [True] 正しい
+      # @return [True] 正しくない
+      #
+      def self.valid_date_string(regex: FORMAT, text: '')
+        return false unless text
+
+        matched = text.match(regex)
+
+        return false unless matched
+
+        matched.size == 6
       end
     end
   end
