@@ -12,8 +12,9 @@ list:
   start_date:
     japan: 明治01年09月08日
     western: '1868-10-23'
-  new_year_date: '1868-1-25'
-  note: ''
+  disuse:
+    new_year_date: '1868-1-25'
+    note: ''
 - name: 大正
   start_year:
     japan: 1
@@ -21,8 +22,9 @@ list:
   start_date:
     japan: 大正01年07月30日
     western: '1912-7-30'
-  new_year_date: '1912-1-1'
-  note: ''
+  disuse:
+    new_year_date: '1912-1-1'
+    note: ''
 - name: 昭和
   start_year:
     japan: 1
@@ -30,8 +32,9 @@ list:
   start_date:
     japan: 昭和01年12月25日
     western: '1926-12-25'
-  new_year_date: '1926-1-1'
-  note: ''
+  disuse:
+    new_year_date: '1926-1-1'
+    note: ''
 - name: 令和
   start_year:
     japan: 1
@@ -39,5 +42,6 @@ list:
   start_date:
     japan: 令和01年05月01日
     western: '2019-5-1'
-  new_year_date: '2019-1-1'
-  note: ''
+  disuse:
+    new_year_date: '2019-1-1'
+    note: ''
