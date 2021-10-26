@@ -91,7 +91,7 @@ module Zakuro
           both_end_date = Both::DateParser.new(hash: @both_end_date).create
           list = create_list
           Set.new(
-            id: @id, name: @name, end_date: both_end_date, list: list
+            id: @id, name: @name, both_end_date: both_end_date, list: list
           )
         end
 
@@ -127,13 +127,13 @@ module Zakuro
         #
         def calc_end_date_on_gengou_data(next_index:, gengou:)
           if next_index >= @list.size
-            end_date = Western::Calendar.parse(str: @end_date)
+            end_date = Western::Calendar.parse(str: @both_end_date['western'])
             gengou.write_end_date(end_date: end_date)
             return gengou
           end
           next_start_date = @list[next_index]['start_date']
           gengou.convert_next_start_date_to_end_date(
-            next_start_date_string: next_start_date
+            next_start_date_string: next_start_date['western']
           )
           gengou
         end
@@ -171,7 +171,7 @@ module Zakuro
             japan = @japan.to_i
             western = @western.to_i
 
-            Both::Year.new(japan: japan, western: western)
+            Japan::Both::Year.new(japan: japan, western: western)
           end
         end
 
@@ -201,9 +201,9 @@ module Zakuro
           #
           def create
             japan = Japan::Calendar.parse(text: @japan)
-            western = Western::Calendar.parse(text: @western)
+            western = Western::Calendar.parse(str: @western)
 
-            Both::Date.new(japan: japan, western: western)
+            Japan::Both::Date.new(japan: japan, western: western)
           end
         end
       end

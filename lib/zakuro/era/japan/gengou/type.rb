@@ -99,16 +99,18 @@ module Zakuro
       # @return [False] 不正なし
       #
       def invalid?
-        @year == -1
+        @both_start_year.japan == -1
       end
+
+      # TODO: 要不要を判断する
 
       #
       # 1元号年を追加する
       #
-      def next_year
-        @year += 1 unless invalid?
-        nil
-      end
+      # def next_year
+      #   @year += 1 unless invalid?
+      #   nil
+      # end
 
       def to_s
         "name: #{@name}, both_start_year: #{@both_start_year.format}, " \

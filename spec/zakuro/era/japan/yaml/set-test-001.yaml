@@ -1,14 +1,27 @@
 id: 1
 name: "test-001"
-end_date: "555-2-3"
+end_date:
+  japan: "元号2年1月10日"
+  western: "555-2-3"
 list:
   - name: "元号名1"
-    start_date: "501-1-10"
-    new_year_date: "501-1-10"
-    start_year: 11
+    start_year:
+      japan: 11
+      western: 1001
+    start_date:
+      japan: "元号2年1月11日"
+      western: "501-1-11"
   - name: "元号名2"
-    start_date: "510-10-11"
-    new_year_date: "510-10-11"
+    start_year:
+      japan: 12
+      western: 1002
+    start_date:
+      japan: "元号2年10月12日"
+      western: "501-10-12"
   - name: "元号名3"
-    start_date: "550-1-2"
-    new_year_date: "550-1-2"
+    start_year:
+      japan: 13
+      western: 1003
+    start_date:
+      japan: "元号2年11月13日"
+      western: "501-12-13"

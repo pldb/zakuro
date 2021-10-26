@@ -57,7 +57,7 @@ describe 'Zakuro' do
           end
           context 'end_date' do
             it 'is the same data in file' do
-              expect(actual.end_date).to eq(
+              expect(actual.both_end_date.western).to eq(
                 Zakuro::Western::Calendar.new(year: 555, month: 2, day: 3)
               )
             end
@@ -82,21 +82,21 @@ describe 'Zakuro' do
             end
             context 'start_date' do
               it 'is the same data in file' do
-                expect(item.start_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 501, month: 1, day: 10)
+                expect(item.both_start_date.western).to eq(
+                  Zakuro::Western::Calendar.new(year: 501, month: 1, day: 11)
                 )
               end
             end
             context 'end_date' do
               it 'is the same data in file' do
                 expect(item.end_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 510, month: 10, day: 10)
+                  Zakuro::Western::Calendar.new(year: 501, month: 10, day: 11)
                 )
               end
             end
             context 'year' do
               it 'is the same data in file' do
-                expect(item.year).to eq(11)
+                expect(item.both_start_year.japan).to eq(11)
               end
             end
           end
@@ -109,8 +109,8 @@ describe 'Zakuro' do
             end
             context 'start_date' do
               it 'is the same data in file' do
-                expect(item.start_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 550, month: 1, day: 2)
+                expect(item.both_start_date.western).to eq(
+                  Zakuro::Western::Calendar.new(year: 501, month: 12, day: 13)
                 )
               end
             end
@@ -123,7 +123,7 @@ describe 'Zakuro' do
             end
             context 'year' do
               it 'is the same data in file' do
-                expect(item.year).to eq(1)
+                expect(item.both_start_year.japan).to eq(13)
               end
             end
           end
