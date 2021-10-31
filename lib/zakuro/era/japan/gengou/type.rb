@@ -99,10 +99,9 @@ module Zakuro
       # @return [False] 不正なし
       #
       def invalid?
-        @both_start_year.japan == -1
+        @both_start_year.japan == -1 || @both_start_year.invalid? ||
+          @both_start_date.invalid? || @end_date.invalid?
       end
-
-      # TODO: 要不要を判断する
 
       #
       # 1元号年を追加する
