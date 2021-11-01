@@ -25,10 +25,10 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [<Type>] first_gengou_list 1行目元号
-        # @param [<Type>] second_gengou_list 2行目元号
-        # @param [<Type>] start_date 開始日
-        # @param [<Type>] end_date 終了日
+        # @param [List<Base::CountableGengou>] first_gengou_list 1行目元号
+        # @param [List<Base::CountableGengou>] second_gengou_list 2行目元号
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] end_date 終了日
         #
         def initialize(first_gengou_list: [], second_gengou_list: [],
                        start_date: Western::Calendar.new, end_date: Western::Calendar)

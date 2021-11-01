@@ -44,8 +44,26 @@ module Zakuro
           self
         end
 
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
         def invalid?
           @gengou.invalid? || @japan_year.invalid? || @western_year.invalid?
+        end
+
+        #
+        # 指定した日が元号に含まれるか
+        #
+        # @param [Western::Calendar] date 日
+        #
+        # @return [True] 含まれる
+        # @return [False] 含まれない
+        #
+        def include?
+          @gengou.include?
         end
 
         #
