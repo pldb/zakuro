@@ -28,7 +28,6 @@ module Zakuro
       # @param [Both::Year] both_start_year 開始年（和暦/西暦）
       # @param [Both::Date] both_start_date 開始日（和暦/西暦）
       # @param [Western::Calendar] end_date 終了日
-      # @param [Integer] year 元号年
       #
       def initialize(name: '', both_start_year: Both::Year.new,
                      both_start_date: Both::Date.new,

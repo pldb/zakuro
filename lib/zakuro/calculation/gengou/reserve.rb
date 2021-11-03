@@ -31,7 +31,7 @@ module Zakuro
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] end_date 終了日
         #
-        # @return [ReservedInterval] 予約済み計算範囲
+        # @return [Interval] 予約済み計算範囲
         #
         def self.get(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
           first_gengou_list = List.new(
