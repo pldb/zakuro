@@ -1,6 +1,9 @@
 ---
 id: 3
 name: 近代（一世一元）
+end_year:
+  japan: 7981
+  western: 9999
 end_date:
   japan: 令和7981年12月31日
   western: '9999-12-31'

@@ -23,6 +23,8 @@ module Zakuro
         attr_reader :id
         # @return [String] 元号セット名
         attr_reader :name
+        # @return [Hash<String, String>] 終了年
+        attr_reader :both_end_year
         # @return [Hash<String, String>] 終了日
         attr_reader :both_end_date
         # @return [Array<Hash<String, String>>] 元号情報
@@ -36,6 +38,7 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
+          @both_end_year = hash['end_year']
           @both_end_date = hash['end_date']
           @list = hash['list']
         end
@@ -50,6 +53,8 @@ module Zakuro
           failed.push("invalid id. #{@id}") unless id?
 
           failed.push("invalid name. #{@name}") unless name?
+
+          failed |= validate_both_end_year
 
           failed |= validate_both_end_date
 
@@ -79,6 +84,15 @@ module Zakuro
           return false unless @name
 
           @name.is_a?(String)
+        end
+
+        #
+        # 終了年を検証する
+        #
+        # @return [Array<String>] 不正メッセージ
+        #
+        def validate_both_end_year
+          Both::Year.new(hash: @both_end_year).validate
         end
 
         #

@@ -1,6 +1,9 @@
 ---
 id: 2
 name: 北朝+南北朝後
+end_year:
+  japan: 1
+  western: 1865
 end_date:
   japan: 慶応01年09月07日
   western: '1868-10-22'

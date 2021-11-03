@@ -126,6 +126,8 @@ module Zakuro
       attr_reader :id
       # @return [String] 元号セット名
       attr_reader :name
+      # @return [Both::Date] 元号セットでの終了年
+      attr_reader :both_end_year
       # @return [Both::Date] 元号セットでの終了日
       attr_reader :both_end_date
       # @return [Array<Gengou>] 元号リスト
@@ -139,9 +141,11 @@ module Zakuro
       # @param [Western::Calendar] end_date 元号セットでの終了日
       # @param [Array<Gengou>] list 元号リスト
       #
-      def initialize(id: INVALID, name: '', both_end_date: Both::Date.new, list: [])
+      def initialize(id: INVALID, name: '', both_end_year: Both::Year.new,
+                     both_end_date: Both::Date.new, list: [])
         @id = id
         @name = name
+        @both_end_year = both_end_year
         @both_end_date = both_end_date
         @list = list
       end
