@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../../era/western/calendar'
+require_relative './reserve/interval'
+require_relative './reserve/list'
 
 # :nodoc:
 module Zakuro
@@ -12,7 +14,7 @@ module Zakuro
       #
       # 元号に基づき計算範囲を予約する
       #
-      module Reserver
+      module Reserve
         #
         # 予約結果を取得する
         #
@@ -32,7 +34,15 @@ module Zakuro
         # @return [ReservedInterval] 予約済み計算範囲
         #
         def self.get(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
-          # TODO: todo
+          first_gengou_list = List.new(
+            method_name: :first_line, start_date: start_date, end_date: end_date
+          ).get
+          second_gengou_list = List.new(
+            method_name: :second_line, start_date: start_date, end_date: end_date
+          ).get
+
+          Interval.new(first_gengou_list: first_gengou_list,
+                       second_gengou_list: second_gengou_list)
         end
       end
     end
