@@ -17,7 +17,7 @@ module Zakuro
       LOGGER = Output::Logger.new(location: 'Typeconv')
 
       #
-      # 文字列を数値化する
+      # 文字列を10進数で数値化する
       #
       # @param [String] text 対象文字列
       # @param [Integer] default デフォルト数値
@@ -26,7 +26,7 @@ module Zakuro
       #
       def self.to_i(text:, default:)
         begin
-          return Integer(text)
+          return Integer(text, 10)
         rescue StandardError => e
           LOGGER.debug(e)
         end
