@@ -31,7 +31,7 @@ module Zakuro
           #
           # 初期化
           #
-          # @param [Symbol] method_name メソッド名
+          # @param [Symbol] method_name メソッド名（first_line: 1行目元号, second_line: 2行目元号）
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] end_date 終了日
           #
@@ -42,6 +42,11 @@ module Zakuro
             @end_date = end_date
           end
 
+          #
+          # 予約元号一覧を取得する
+          #
+          # @return [Array<Japan::Gengou>] 予約元号一覧
+          #
           def get
             result = internal
 
@@ -54,6 +59,11 @@ module Zakuro
             result
           end
 
+          #
+          # 開始日・終了日に対応する予約元号一覧を取得する
+          #
+          # @return [Array<Japan::Gengou>] 予約元号一覧
+          #
           def internal
             current_gengou = line(date: start_date)
             result = []
@@ -71,6 +81,13 @@ module Zakuro
             result
           end
 
+          #
+          # 前の元号を設定する
+          #
+          # @note 開始日の30日前に前の元号がある場合は、前の元号を設定する
+          #
+          # @param [Array<Japan::Gengou>] list 元号一覧
+          #
           def prev_gengou(list:)
             return unless list
 
@@ -80,13 +97,20 @@ module Zakuro
 
             return if first_gendou_date < start_date - MAX_MONTH_DAYS
 
-            # 開始日の30日前に前の元号がある場合
-
             gengou = line(date: first_gendou_date - 1)
+
+            return if gengou.invalid?
 
             list.unshift(gengou)
           end
 
+          #
+          # 次の元号を設定する
+          #
+          # @note 開始日の30日後に次の元号がある場合は、次の元号を設定する
+          #
+          # @param [Array<Japan::Gengou>] list 元号一覧
+          #
           def next_gengou(list:)
             return unless list
 
@@ -96,21 +120,42 @@ module Zakuro
 
             return if end_date + MAX_MONTH_DAYS < last_gendou_date
 
-            # 開始日の30日後に次の元号がある場合
-
             gengou = line(date: last_gendou_date + 1)
+
+            return if gengou.invalid?
 
             list.push(gengou)
           end
 
+          #
+          # 元号
+          #
+          # @param [Western::Calendar] date 日付
+          #
+          # @return [Japan::Gengou] 元号
+          #
           def line(date:)
             List.send(method_name, { date: date })
           end
 
+          #
+          # 1行目元号
+          #
+          # @param [Western::Calendar] date 日付
+          #
+          # @return [Japan::Gengou] 1行目元号
+          #
           def self.first_line(date:)
             Zakuro::Japan::GengouResource.first_line(date: date)
           end
 
+          #
+          # 2行目元号
+          #
+          # @param [Western::Calendar] date 日付
+          #
+          # @return [Japan::Gengou] 2行目元号
+          #
           def self.second_line(date:)
             Zakuro::Japan::GengouResource.second_line(date: date)
           end
