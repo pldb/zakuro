@@ -49,7 +49,7 @@ module Zakuro
       # @param [Integer] end_year 終了年
       #
       def write_end_year(end_year:)
-        unless Gengou.valid_year(date: end_year)
+        unless Gengou.valid_year(year: end_year)
           raise ArgumentError, "invalid year format. [#{end_year}]"
         end
 
@@ -81,7 +81,7 @@ module Zakuro
       def self.valid_year(year:)
         return false unless year
 
-        date.is_a?(Integer)
+        year.is_a?(Integer)
       end
 
       #
@@ -101,19 +101,15 @@ module Zakuro
       #
       # 次の元号の開始年から、元号の終了年に変換する
       #
-      # @param [String] next_start_year 次回開始年
+      # @param [Integer] next_start_year 次回開始年
       #
-      def convert_next_start_year_to_end_year(next_start_year: '')
-        raise ArgumentError, 'empty string cannot convert' if next_start_year.empty?
-
-        start_year = next_start_year.to_i
-
-        if @both_start_year.western >= start_year
-          @end_year = start_year
+      def convert_next_start_year_to_end_year(next_start_year:)
+        if @both_start_year.western >= next_start_year
+          @end_year = next_start_year
           return
         end
 
-        @end_year = start_year - 1
+        @end_year = next_start_year - 1
 
         nil
       end

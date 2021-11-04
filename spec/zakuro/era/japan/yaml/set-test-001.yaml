@@ -2,7 +2,7 @@ id: 1
 name: "test-001"
 end_year:
   japan: 2
-  western: 555
+  western: 1055
 end_date:
   japan: "元号2年1月10日"
   western: "555-2-3"
@@ -20,11 +20,11 @@ list:
       western: 1002
     start_date:
       japan: "元号2年10月12日"
-      western: "501-10-12"
+      western: "502-10-12"
   - name: "元号名3"
     start_year:
       japan: 13
-      western: 1003
+      western: 1005
     start_date:
       japan: "元号2年11月13日"
-      western: "501-12-13"
+      western: "505-12-13"

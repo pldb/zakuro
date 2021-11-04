@@ -130,7 +130,7 @@ module Zakuro
         #
         def calc_end_date_on_gengou_data(next_index:, gengou:)
           if next_index >= @list.size
-            gengou.write_end_year(year: @both_end_year['western'])
+            gengou.write_end_year(end_year: @both_end_year['western'])
             end_date = Western::Calendar.parse(str: @both_end_date['western'])
             gengou.write_end_date(end_date: end_date)
             return gengou

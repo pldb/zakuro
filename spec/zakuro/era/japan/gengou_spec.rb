@@ -105,10 +105,17 @@ describe 'Zakuro' do
                 )
               end
             end
-            context 'end_date' do
+            context 'end_year' do
               it 'is the same data in file' do
+                expect(item.end_year).to eq(
+                  1001
+                )
+              end
+            end
+            context 'end_date' do
+              it 'is calculated by next gengou' do
                 expect(item.end_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 501, month: 10, day: 11)
+                  Zakuro::Western::Calendar.new(year: 502, month: 10, day: 11)
                 )
               end
             end
@@ -142,7 +149,14 @@ describe 'Zakuro' do
             context 'westen date in both_start_date' do
               it 'is the same data in file' do
                 expect(item.both_start_date.western).to eq(
-                  Zakuro::Western::Calendar.new(year: 501, month: 12, day: 13)
+                  Zakuro::Western::Calendar.new(year: 505, month: 12, day: 13)
+                )
+              end
+            end
+            context 'end_year' do
+              it 'is the same data in file' do
+                expect(item.end_year).to eq(
+                  1055
                 )
               end
             end
@@ -160,7 +174,7 @@ describe 'Zakuro' do
             end
             context 'western year in both_start_year' do
               it 'is the same data in file' do
-                expect(item.both_start_year.western).to eq(1003)
+                expect(item.both_start_year.western).to eq(1005)
               end
             end
           end
