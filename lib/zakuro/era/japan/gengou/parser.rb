@@ -65,6 +65,8 @@ module Zakuro
         attr_reader :id
         # @return [String] 元号セット名
         attr_reader :name
+        # @return [Hash<String, String>] 終了年
+        attr_reader :both_end_year
         # @return [Hash<String, String>] 終了日
         attr_reader :both_end_date
         # @return [Array<Hash<String, String>>] 元号情報
@@ -78,6 +80,7 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
+          @both_end_year = hash['end_year']
           @both_end_date = hash['end_date']
           @list = hash['list']
         end
@@ -127,13 +130,17 @@ module Zakuro
         #
         def calc_end_date_on_gengou_data(next_index:, gengou:)
           if next_index >= @list.size
+            gengou.write_end_year(year: @both_end_year['western'])
             end_date = Western::Calendar.parse(str: @both_end_date['western'])
             gengou.write_end_date(end_date: end_date)
             return gengou
           end
-          next_start_date = @list[next_index]['start_date']
+          next_item = @list[next_index]
+          gengou.convert_next_start_year_to_end_year(
+            next_start_year: next_item['start_year']['western']
+          )
           gengou.convert_next_start_date_to_end_date(
-            next_start_date_string: next_start_date['western']
+            next_start_date: next_item['start_date']['western']
           )
           gengou
         end

@@ -18,6 +18,8 @@ module Zakuro
       attr_reader :both_start_year
       # @return [Both::Date] 開始日（和暦/西暦）
       attr_reader :both_start_date
+      # @return [Integer] 終了年
+      attr_reader :end_year
       # @return [Western::Calendar] 終了日
       attr_reader :end_date
 
@@ -27,15 +29,31 @@ module Zakuro
       # @param [String] name 元号名
       # @param [Both::Year] both_start_year 開始年（和暦/西暦）
       # @param [Both::Date] both_start_date 開始日（和暦/西暦）
+      # @param [Integer] end_date 終了年
       # @param [Western::Calendar] end_date 終了日
       #
       def initialize(name: '', both_start_year: Both::Year.new,
                      both_start_date: Both::Date.new,
-                     end_date: Western::Calendar.new)
+                     end_date: Western::Calendar.new,
+                     end_year: Both::Year::INVALID)
         @name = name
         @both_start_year = both_start_year
         @both_start_date = both_start_date
+        @end_year = end_year
         @end_date = end_date
+      end
+
+      #
+      # 終了年を更新する
+      #
+      # @param [Integer] end_year 終了年
+      #
+      def write_end_year(end_year:)
+        unless Gengou.valid_year(date: end_year)
+          raise ArgumentError, "invalid year format. [#{end_year}]"
+        end
+
+        @end_year = end_year
       end
 
       #
@@ -53,6 +71,20 @@ module Zakuro
       end
 
       #
+      # 年が不正なしかどうかを確認する
+      #
+      # @param [Integer] year 年
+      #
+      # @return [True] 不正なし
+      # @return [False] 不正
+      #
+      def self.valid_year(year:)
+        return false unless year
+
+        date.is_a?(Integer)
+      end
+
+      #
       # 日付が不正なしかどうかを確認する
       #
       # @param [Western::Calendar] date 日付
@@ -67,15 +99,36 @@ module Zakuro
       end
 
       #
+      # 次の元号の開始年から、元号の終了年に変換する
+      #
+      # @param [String] next_start_year 次回開始年
+      #
+      def convert_next_start_year_to_end_year(next_start_year: '')
+        raise ArgumentError, 'empty string cannot convert' if next_start_year.empty?
+
+        start_year = next_start_year.to_i
+
+        if @both_start_year.western >= start_year
+          @end_year = start_year
+          return
+        end
+
+        @end_year = start_year - 1
+
+        nil
+      end
+
+      #
       # 次の元号の開始日から、元号の終了日に変換する
       #
-      # @param [String] next_start_date_string 次回開始日
+      # @param [String] next_start_date 次回開始日
       #
-      def convert_next_start_date_to_end_date(next_start_date_string: '')
-        raise ArgumentError, 'empty string cannot convert' if next_start_date_string.empty?
+      def convert_next_start_date_to_end_date(next_start_date: '')
+        raise ArgumentError, 'empty string cannot convert' if next_start_date.empty?
 
-        start_date = Western::Calendar.parse(str: next_start_date_string)
+        start_date = Western::Calendar.parse(str: next_start_date)
         @end_date = start_date - 1
+
         nil
       end
 
