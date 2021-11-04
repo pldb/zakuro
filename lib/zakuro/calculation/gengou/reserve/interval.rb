@@ -51,8 +51,22 @@ module Zakuro
             first_start_year <= second_start_year ? first_start_year : second_start_year
           end
 
+          #
+          # 終了西暦年を取得する
+          #
+          # @return [Integer] 終了西暦年
+          #
           def end_western_year
-            # TODO: end_year?
+            # TODO: test
+            return INVALID_YEAR if invalid?
+
+            first_end_year = first_gengou_list[-1].end_year
+
+            return first_end_year if invalid_second?
+
+            second_end_year = second_gengou_list[-1].end_year
+
+            first_end_year >= second_end_year ? first_end_year : second_end_year
           end
 
           #
