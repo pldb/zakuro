@@ -42,6 +42,24 @@ describe 'Zakuro' do
               actual = list.get
               expect(actual.size).to eq 2
             end
+            it 'should be a gengou to include start date' do
+              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                method_name: :first_line,
+                start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
+                end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
+              )
+              actual = list.get
+              expect(actual[0].name).to eq '允恭天皇'
+            end
+            it 'should be a gengou to include end date' do
+              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                method_name: :first_line,
+                start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
+                end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
+              )
+              actual = list.get
+              expect(actual[1].name).to eq '安康天皇'
+            end
           end
           # TODO: more tests
         end
