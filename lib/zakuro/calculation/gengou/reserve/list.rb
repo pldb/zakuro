@@ -97,7 +97,7 @@ module Zakuro
 
             return if first_gendou_date < start_date - MAX_MONTH_DAYS
 
-            gengou = line(date: first_gendou_date - 1)
+            gengou = line(date: first_gendou_date.clone - 1)
 
             return if gengou.invalid?
 
