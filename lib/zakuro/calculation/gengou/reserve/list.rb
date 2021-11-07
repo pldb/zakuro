@@ -74,7 +74,7 @@ module Zakuro
             (0..MAX_SEARCH_COUNT).each do |_index|
               break if current_gengou.end_date > end_date
 
-              current_gengou = line(date: current_gengou.end_date + 1)
+              current_gengou = line(date: current_gengou.end_date.clone + 1)
               result.push(current_gengou)
             end
 
@@ -116,11 +116,11 @@ module Zakuro
 
             return if list.size.zero?
 
-            last_gendou_date = list[0].end_date
+            last_gendou_date = list[-1].end_date
 
             return if end_date + MAX_MONTH_DAYS < last_gendou_date
 
-            gengou = line(date: last_gendou_date + 1)
+            gengou = line(date: last_gendou_date.clone + 1)
 
             return if gengou.invalid?
 

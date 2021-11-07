@@ -40,7 +40,6 @@ describe 'Zakuro' do
                 end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
               )
               actual = list.get
-              # TODO: fix test
               expect(actual.size).to eq 2
             end
           end
