@@ -33,30 +33,64 @@ describe 'Zakuro' do
             end
           end
           context 'western date has two gengou' do
-            it 'should be two elements in result array' do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+            let(:list) {
+              Zakuro::Calculation::Gengou::Reserve::List.new(
                 method_name: :first_line,
                 start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
                 end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
               )
+            }
+            it 'should be two elements in result array' do
               actual = list.get
               expect(actual.size).to eq 2
             end
             it 'should be a gengou to include start date' do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
-                method_name: :first_line,
-                start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
-                end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
-              )
               actual = list.get
               expect(actual[0].name).to eq '允恭天皇'
             end
             it 'should be a gengou to include end date' do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              actual = list.get
+              expect(actual[1].name).to eq '安康天皇'
+            end
+          end
+          context 'western date has a gengou and previous gengou' do
+            let(:list) {
+              Zakuro::Calculation::Gengou::Reserve::List.new(
                 method_name: :first_line,
-                start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
-                end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
+                start_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13),
+                end_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13)
               )
+            }
+            it 'should be two elements in result array' do
+              actual = list.get
+              expect(actual.size).to eq 2
+            end
+            it 'should be a previous gengou' do
+              actual = list.get
+              expect(actual[0].name).to eq '允恭天皇'
+            end
+            it 'should be a gengou between start date and end date' do
+              actual = list.get
+              expect(actual[1].name).to eq '安康天皇'
+            end
+          end
+          context 'western date has a gengou and next gengou' do
+            let(:list) {
+              Zakuro::Calculation::Gengou::Reserve::List.new(
+                method_name: :first_line,
+                start_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14),
+                end_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14)
+              )
+            }
+            it 'should be two elements in result array' do
+              actual = list.get
+              expect(actual.size).to eq 2
+            end
+            it 'should be a gengou between start date and end date' do
+              actual = list.get
+              expect(actual[0].name).to eq '允恭天皇'
+            end
+            it 'should be a next gengou' do
               actual = list.get
               expect(actual[1].name).to eq '安康天皇'
             end
