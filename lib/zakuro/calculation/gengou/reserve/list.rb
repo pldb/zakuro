@@ -31,13 +31,13 @@ module Zakuro
           #
           # 初期化
           #
-          # @param [Symbol] method_name メソッド名（first_line: 1行目元号, second_line: 2行目元号）
+          # @param [True, False] first true:1行目元号, false:2行目元号
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] end_date 終了日
           #
-          def initialize(method_name:, start_date: Western::Calendar.new,
+          def initialize(first: true, start_date: Western::Calendar.new,
                          end_date: Western::Calendar)
-            @method_name = method_name
+            @method_name = first ? :first_line : :second_line
             @start_date = start_date
             @end_date = end_date
           end
@@ -72,9 +72,10 @@ module Zakuro
 
             result.push(current_gengou)
             (0..MAX_SEARCH_COUNT).each do |_index|
-              break if current_gengou.end_date > end_date
+              current_end_date = current_gengou.end_date.clone
+              break if current_end_date > end_date
 
-              current_gengou = line(date: current_gengou.end_date.clone + 1)
+              current_gengou = line(date: current_end_date + 1)
               result.push(current_gengou)
             end
 
@@ -93,11 +94,13 @@ module Zakuro
 
             return if list.size.zero?
 
-            first_gendou_date = list[0].both_start_date.western
+            first_gengou_date = list[0].both_start_date.western.clone
 
-            return if first_gendou_date < start_date - MAX_MONTH_DAYS
+            border_date = start_date.clone - MAX_MONTH_DAYS
 
-            gengou = line(date: first_gendou_date.clone - 1)
+            return if first_gengou_date < border_date
+
+            gengou = line(date: first_gengou_date - 1)
 
             return if gengou.invalid?
 
@@ -116,11 +119,13 @@ module Zakuro
 
             return if list.size.zero?
 
-            last_gendou_date = list[-1].end_date
+            last_gengou_date = list[-1].end_date.clone
 
-            return if end_date + MAX_MONTH_DAYS < last_gendou_date
+            border_date = end_date.clone + MAX_MONTH_DAYS
 
-            gengou = line(date: last_gendou_date.clone + 1)
+            return if border_date < last_gengou_date
+
+            gengou = line(date: last_gengou_date + 1)
 
             return if gengou.invalid?
 
