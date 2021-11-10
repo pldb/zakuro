@@ -22,11 +22,11 @@ describe 'Zakuro' do
                 )
               end
               it 'should be a element in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 1
               end
               it 'should be target gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '允恭天皇'
               end
             end
@@ -39,15 +39,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a gengou to include start date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '允恭天皇'
               end
               it 'should be a gengou to include end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '安康天皇'
               end
             end
@@ -60,15 +60,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a previous gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '允恭天皇'
               end
               it 'should be a gengou between start date and end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '安康天皇'
               end
             end
@@ -81,15 +81,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a gengou between start date and end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '允恭天皇'
               end
               it 'should be a next gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '安康天皇'
               end
             end
@@ -104,11 +104,11 @@ describe 'Zakuro' do
                 )
               end
               it 'should be a element in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 1
               end
               it 'should be target gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '正慶'
               end
             end
@@ -121,15 +121,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a gengou to include start date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '正慶'
               end
               it 'should be a gengou to include end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '建武'
               end
             end
@@ -142,15 +142,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a previous gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '正慶'
               end
               it 'should be a gengou between start date and end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '建武'
               end
             end
@@ -163,15 +163,15 @@ describe 'Zakuro' do
                 )
               end
               it 'should be two elements in result array' do
-                actual = list.get
+                actual = list.list
                 expect(actual.size).to eq 2
               end
               it 'should be a gengou between start date and end date' do
-                actual = list.get
+                actual = list.list
                 expect(actual[0].name).to eq '正慶'
               end
               it 'should be a next gengou' do
-                actual = list.get
+                actual = list.list
                 expect(actual[1].name).to eq '建武'
               end
             end
