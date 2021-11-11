@@ -2,6 +2,8 @@
 
 require_relative '../../../era/western/calendar'
 
+require_relative './list'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -15,12 +17,10 @@ module Zakuro
         # 予約済み計算範囲
         #
         class Interval
-          # @return [Integer] 不正年
-          INVALID_YEAR = -1
-          # @return [List<Base::CountableGengou>] 1行目元号
-          attr_reader :first_gengou_list
-          # @return [List<Base::CountableGengou>] 2行目元号
-          attr_reader :second_gengou_list
+          # @return [List] 1行目元号
+          attr_reader :first_gengou
+          # @return [List] 2行目元号
+          attr_reader :second_gengou
 
           #
           # 初期化
@@ -28,9 +28,19 @@ module Zakuro
           # @param [List<Base::CountableGengou>] first_gengou_list 1行目元号
           # @param [List<Base::CountableGengou>] second_gengou_list 2行目元号
           #
-          def initialize(first_gengou_list: [], second_gengou_list: [])
-            @first_gengou_list = first_gengou_list
-            @second_gengou_list = second_gengou_list
+          def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+            @first_gengou = List.new(first: true, start_date: start_date, end_date: end_date)
+            @second_gengou = List.new(first: false, start_date: start_date, end_date: end_date)
+          end
+
+          #
+          # 不正か
+          #
+          # @return [True] 不正
+          # @return [False] 不正なし
+          #
+          def invalid?
+            @first_gengou.invalid?
           end
 
           #
@@ -38,17 +48,17 @@ module Zakuro
           #
           # @return [Integer] 開始西暦年
           #
-          def start_western_year
-            # TODO: test
-            return INVALID_YEAR if invalid?
+          def western_start_year
+            first_start_year = @first_gengou.western_start_year
+            second_start_year = @second_gengou.western_start_year
 
-            first_start_year = first_gengou_list[0].both_start_year.western
+            return first_start_year if @first_gengou.invalid?
 
-            return first_start_year if invalid_second?
+            return first_start_year if @second_gengou.invalid?
 
-            second_start_year = second_gengou_list[0].both_start_year.western
+            return first_start_year if first_start_year < second_start_year
 
-            first_start_year <= second_start_year ? first_start_year : second_start_year
+            second_start_year
           end
 
           #
@@ -56,55 +66,17 @@ module Zakuro
           #
           # @return [Integer] 終了西暦年
           #
-          def end_western_year
-            # TODO: test
-            return INVALID_YEAR if invalid?
+          def western_end_year
+            first_end_year = @first_gengou.western_end_year
+            second_end_year = @second_gengou.western_end_year
 
-            first_end_year = first_gengou_list[-1].end_year
+            return first_end_year if @first_gengou.invalid?
 
-            return first_end_year if invalid_second?
+            return first_end_year if @second_gengou.invalid?
 
-            second_end_year = second_gengou_list[-1].end_year
+            return first_end_year if first_end_year > second_end_year
 
-            first_end_year >= second_end_year ? first_end_year : second_end_year
-          end
-
-          #
-          # 1行目元号が不正か
-          #
-          # @return [True] 不正
-          # @return [True] 不正なし
-          #
-          def invalid_first?
-            return true unless first_gengou_list
-
-            first_gengou_list.size.zero?
-          end
-
-          #
-          # 2行目元号が不正か
-          #
-          # @return [True] 不正
-          # @return [True] 不正なし
-          #
-          def invalid_second?
-            return true unless second_gengou_list
-
-            second_gengou_list.size.zero?
-          end
-
-          #
-          # 不正か
-          #
-          # @return [True] 不正
-          # @return [True] 不正なし
-          #
-          def invalid?
-            # 1行目元号が存在しない場合は不正
-            return true if invalid_first?
-
-            # 2行目元号のみ正しい場合も不正と見なす
-            !invalid_second?
+            second_end_year
           end
         end
       end

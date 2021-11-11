@@ -16,6 +16,8 @@ module Zakuro
         # 予約元号一覧
         #
         class List
+          # @return [Integer] 不正年
+          INVALID_YEAR = -1
           # @return [Integer] 最大試行数
           MAX_SEARCH_COUNT = 10_000
           # @return [Integer] 最大月日数
@@ -27,6 +29,8 @@ module Zakuro
           attr_reader :start_date
           # @return [Western::Calendar] 終了日
           attr_reader :end_date
+          # @return [Array<Japan::Gengou>] 予約元号一覧
+          attr_reader :list
 
           #
           # 初期化
@@ -40,12 +44,53 @@ module Zakuro
             @method_name = first ? :first_line : :second_line
             @start_date = start_date
             @end_date = end_date
+            @list = []
+
+            get
           end
 
           #
-          # 予約元号一覧を取得する
+          # 西暦開始年を取得する
           #
-          # @return [Array<Japan::Gengou>] 予約元号一覧
+          # @return [Integer] 西暦開始年
+          #
+          def western_start_year
+            return INVALID_YEAR if invalid?
+
+            @list[0].both_start_year.western
+          end
+
+          #
+          # 西暦終了年を取得する
+          #
+          # @return [Integer] 西暦終了年
+          #
+          def western_end_year
+            return INVALID_YEAR if invalid?
+
+            return INVALID_YEAR if @list.size.zero?
+
+            @list[-1].end_year
+          end
+
+          #
+          # 不正か
+          #
+          # @return [True] 不正
+          # @return [False] 不正なし
+          #
+          def invalid?
+            return true unless @list
+
+            return true if @list.size.zero?
+
+            false
+          end
+
+          private
+
+          #
+          # 予約元号一覧を取得する
           #
           def get
             result = internal
@@ -56,7 +101,7 @@ module Zakuro
 
             next_gengou(list: result)
 
-            result
+            @list = result
           end
 
           #
@@ -153,6 +198,7 @@ module Zakuro
           def self.first_line(date:)
             Zakuro::Japan::GengouResource.first_line(date: date)
           end
+          private_class_method :first_line
 
           #
           # 2行目元号
@@ -164,6 +210,7 @@ module Zakuro
           def self.second_line(date:)
             Zakuro::Japan::GengouResource.second_line(date: date)
           end
+          private_class_method :second_line
         end
       end
     end

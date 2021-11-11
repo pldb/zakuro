@@ -34,15 +34,7 @@ module Zakuro
         # @return [Interval] 予約済み計算範囲
         #
         def self.get(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
-          first_gengou_list = List.new(
-            method_name: :first_line, start_date: start_date, end_date: end_date
-          ).get
-          second_gengou_list = List.new(
-            method_name: :second_line, start_date: start_date, end_date: end_date
-          ).get
-
-          Interval.new(first_gengou_list: first_gengou_list,
-                       second_gengou_list: second_gengou_list)
+          Interval.new(start_date: start_date, end_date: end_date)
         end
       end
     end
