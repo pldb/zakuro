@@ -49,7 +49,7 @@ module Zakuro
             @end_date = end_date
             @list = []
 
-            get
+            collect
           end
 
           #
@@ -134,7 +134,7 @@ module Zakuro
           #
           # 予約元号一覧を取得する
           #
-          def get
+          def collect
             result = internal
 
             return result if result.size.zero?
@@ -227,7 +227,7 @@ module Zakuro
           # @return [Japan::Gengou] 元号
           #
           def line(date:)
-            List.send(method_name, { date: date })
+            List.send(method_name, **{ date: date })
           end
 
           #
