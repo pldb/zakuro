@@ -11,7 +11,7 @@ module Zakuro
     # :nodoc:
     module Base
       #
-      # CountableGengou 計算対象の元号
+      # CountableGengou 加算元号
       #
       class CountableGengou
         # @return [Japan::Gengou] 元号
@@ -30,6 +30,39 @@ module Zakuro
           @gengou = gengou
           @japan_year = gengou.both_start_year.japan
           @western_year = gengou.both_start_year.western
+        end
+
+        #
+        # 和暦開始日を取得する
+        #
+        # @return [Japan::Calendar] 和暦開始日
+        #
+        def japan_start_date
+          return Japan::Calendar.new if @gengou.invalid?
+
+          @gengou.both_start_date.japan
+        end
+
+        #
+        # 西暦開始日を取得する
+        #
+        # @return [Western::Calendar] 西暦開始日
+        #
+        def western_start_date
+          return Western::Calendar.new if @gengou.invalid?
+
+          @gengou.both_start_date.western
+        end
+
+        #
+        # 西暦終了日を取得する
+        #
+        # @return [Western::Calendar] 西暦終了日
+        #
+        def western_end_date
+          return Western::Calendar.new if @gengou.invalid?
+
+          @gengou.end_date
         end
 
         #

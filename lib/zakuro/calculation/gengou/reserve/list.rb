@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 require_relative '../../../era/japan/gengou'
+require_relative '../../../era/japan/calendar'
 require_relative '../../../era/western/calendar'
+
+require_relative '../../base/countable_gengou'
 
 # :nodoc:
 module Zakuro
@@ -47,6 +50,45 @@ module Zakuro
             @list = []
 
             get
+          end
+
+          #
+          # 元号を取得する
+          #
+          # @param [Western::Calendar] western_date 西暦日
+          #
+          # @return [Base::CountableGengou] 加算元号
+          #
+          def get(western_date: Western::Calendar.new)
+            @list.each do |gengou|
+              if gengou.include?(date: western_date)
+                return Base::CountableGengou.new(gengou: gengou)
+              end
+            end
+
+            Base::CountableGengou.new
+          end
+
+          #
+          # 和暦開始日を取得する
+          #
+          # @return [Japan::Calendar] 和暦開始日
+          #
+          def japan_start_date
+            return Japan::Calendar.new if invalid?
+
+            @list[0].both_start_date.japan
+          end
+
+          #
+          # 西暦開始日を取得する
+          #
+          # @return [Western::Calendar] 西暦開始日
+          #
+          def western_start_date
+            return Western::Calendar.new if invalid?
+
+            @list[0].both_start_date.western
           end
 
           #

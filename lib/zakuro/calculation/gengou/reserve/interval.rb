@@ -44,6 +44,32 @@ module Zakuro
           end
 
           #
+          # 最古の元号から和暦開始日を取得する
+          #
+          # @return [Japan::Calendar] 和暦開始日
+          #
+          def japan_start_date
+            gengou = oldest_gengou
+
+            return Japan::Calendar.new if gengou.invalid?
+
+            gengou.japan_start_date
+          end
+
+          #
+          # 最古の元号から西暦開始日を取得する
+          #
+          # @return [Western::Calendar] 西暦開始日
+          #
+          def western_start_date
+            gengou = oldest_gengou
+
+            return Western::Calendar.new if gengou.invalid?
+
+            gengou.western_start_date
+          end
+
+          #
           # 開始西暦年を取得する
           #
           # @return [Integer] 開始西暦年
@@ -77,6 +103,30 @@ module Zakuro
             return first_end_year if first_end_year > second_end_year
 
             second_end_year
+          end
+
+          private
+
+          #
+          # 最古の元号を取得する
+          #
+          # @return [Japan::Gengou] 最古の元号
+          #
+          def oldest_gengou
+            return @first_gengou if @first_gengou.invalid?
+
+            return @first_gengou if @second_gengou.invalid?
+
+            first_western_date = @first_gengou.western_start_date
+            second_western_date = @second_gengou.western_start_date
+
+            return @first_gengou if first_western_date.invalid?
+
+            return @first_gengou if second_western_date.invalid?
+
+            return @first_gengou if first_western_date < second_western_date
+
+            @second_gengou
           end
         end
       end
