@@ -25,8 +25,8 @@ module Zakuro
           #
           # 初期化
           #
-          # @param [List<Base::CountableGengou>] first_gengou_list 1行目元号
-          # @param [List<Base::CountableGengou>] second_gengou_list 2行目元号
+          # @param [Western::Calendar] start_date 西暦開始日
+          # @param [Western::Calendar] end_date 西暦終了日
           #
           def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
             @first_gengou = List.new(first: true, start_date: start_date, end_date: end_date)

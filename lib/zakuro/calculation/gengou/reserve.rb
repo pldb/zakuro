@@ -10,7 +10,7 @@ module Zakuro
   module Calculation
     # :nodoc:
     module Gengou
-      # Reserver
+      # Reserve
       #
       # 元号に基づき計算範囲を予約する
       #
