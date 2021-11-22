@@ -73,6 +73,22 @@ module Zakuro
       end
 
       #
+      # 同月か
+      #   年と日は無視する
+      #
+      # @param [True, False] leaped 閏
+      # @param [Integer] month 月
+      #
+      # @return [True] 同月
+      # @return [True] 同月ではない
+      #
+      def same_month?(leaped:, month:)
+        return false unless @leaped == leaped
+
+        @month == month
+      end
+
+      #
       # 年月日情報（和暦）を生成する
       #
       # @param [Regexp] regex 正規表現
