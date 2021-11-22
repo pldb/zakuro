@@ -9,11 +9,11 @@ module Zakuro
   # :nodoc:
   module Calculation
     # :nodoc:
-    module Base
+    module Gengou
       #
-      # CountableGengou 加算元号
+      # Counter 加算元号
       #
-      class CountableGengou
+      class Counter
         # @return [Japan::Gengou] 元号
         attr_reader :gengou
         # @return [Integer] 元号年

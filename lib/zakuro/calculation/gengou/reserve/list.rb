@@ -4,7 +4,7 @@ require_relative '../../../era/japan/gengou'
 require_relative '../../../era/japan/calendar'
 require_relative '../../../era/western/calendar'
 
-require_relative '../../base/countable_gengou'
+require_relative '../counter'
 
 # :nodoc:
 module Zakuro
@@ -57,16 +57,14 @@ module Zakuro
           #
           # @param [Western::Calendar] western_date 西暦日
           #
-          # @return [Base::CountableGengou] 加算元号
+          # @return [Gengou::Counter] 加算元号
           #
           def get(western_date: Western::Calendar.new)
             @list.each do |gengou|
-              if gengou.include?(date: western_date)
-                return Base::CountableGengou.new(gengou: gengou)
-              end
+              return Gengou::Counter.new(gengou: gengou) if gengou.include?(date: western_date)
             end
 
-            Base::CountableGengou.new
+            Gengou::Counter.new
           end
 
           #
