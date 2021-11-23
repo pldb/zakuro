@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative './year'
-require_relative './multi_gengou'
 
 # :nodoc:
 module Zakuro
@@ -16,14 +15,13 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Gengou] multi_gengou 元号
         # @param [Array<OperatedMonth>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         # @param [Western::Calendar] new_year_date 元旦
         #
-        def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
+        def initialize(new_year_date: Western::Calendar.new,
                        months: [], total_days: 0)
-          super(multi_gengou: multi_gengou, new_year_date: new_year_date,
+          super(new_year_date: new_year_date,
                 months: months, total_days: total_days)
         end
 

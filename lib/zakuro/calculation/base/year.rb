@@ -12,8 +12,6 @@ module Zakuro
       # Year 年
       #
       class Year
-        # @return [Gengou] 元号
-        attr_reader :multi_gengou
         # @return [Array<Month>] 年内の全ての月
         attr_reader :months
         # @return [Integer] 年の日数
@@ -24,14 +22,12 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Gengou] multi_gengou 元号
         # @param [Array<Month>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         # @param [Western::Calendar] new_year_date 元旦
         #
-        def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
+        def initialize(new_year_date: Western::Calendar.new,
                        months: [], total_days: 0)
-          @multi_gengou = multi_gengou
           @months = months
           @new_year_date = new_year_date
           @total_days = total_days
@@ -58,8 +54,6 @@ module Zakuro
         # @return [MultiGengou] 自身
         #
         def next_year
-          @multi_gengou.next_year
-
           @new_year_date += @total_days
           @total_days = 0
 
