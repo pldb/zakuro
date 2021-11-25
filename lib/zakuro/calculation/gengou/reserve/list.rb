@@ -68,6 +68,26 @@ module Zakuro
           end
 
           #
+          # 元号を進めて取得する
+          #
+          # @param [Western::Calendar] western_date 西暦日
+          #
+          # @return [Gengou::Counter] 加算元号
+          #
+          def proceed(western_date: Western::Calendar.new)
+            passed = false
+            @list.each do |gengou|
+              next if gengou.invalid?
+
+              return Gengou::Counter.new(gengou: gengou) if passed
+
+              passed = true if gengou.include?(date: western_date)
+            end
+
+            Gengou::Counter.new
+          end
+
+          #
           # 和暦開始日を取得する
           #
           # @return [Japan::Calendar] 和暦開始日

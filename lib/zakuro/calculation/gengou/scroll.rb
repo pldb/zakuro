@@ -18,10 +18,8 @@ module Zakuro
         attr_reader :current_date
         # @return [Reserve::Interval] 予約範囲
         attr_reader :interval
-        # @return [Base::CountableGengou] 1行目元号
-        attr_reader :first_gengou
-        # @return [Base::CountableGengou] 2行目元号
-        attr_reader :second_gengou
+        # @return [Base::Gengou] 元号
+        attr_reader :gengou
 
         #
         # 初期化
@@ -65,6 +63,11 @@ module Zakuro
 
           # 今月末まで進める（開始日 + 月日数 - 和暦日の日）- 1
           end_date = western_start_date.clone + (month.days - japan_start_date.day) - 1
+
+          # TODO: make
+          # first_line = []
+          # second_line = []
+          # second_gengou = @interval.match_second_gengou(western_date: western_start_date)
 
           p start_date
           p end_date
