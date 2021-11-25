@@ -51,11 +51,9 @@ module Zakuro
         # @param [Monthly::Month] month 月
         #
         def ignite(month:)
-          return unless @current_date.invalid?
+          return unless ignitable?(month: month)
 
           japan_start_date = @interval.japan_start_date
-
-          return unless japan_start_date.same_month?(leaped: month.leaped?, month: month.number)
 
           western_start_date = @interval.western_start_date
 
@@ -64,18 +62,38 @@ module Zakuro
           # 今月末まで進める（開始日 + 月日数 - 和暦日の日）- 1
           end_date = western_start_date.clone + (month.days - japan_start_date.day) - 1
 
-          # TODO: make
-          # first_line = []
-          # second_line = []
-          # second_gengou = @interval.match_second_gengou(western_date: western_start_date)
+          current_month_gengou(start_date: start_date, end_date: end_date)
+        end
 
-          p start_date
-          p end_date
+        #
+        # 開始可能か
+        #
+        # @param [Monthly::Month] month 月
+        #
+        # @return [True] 開始可
+        # @return [True] 開始不可
+        #
+        def ignitable?(month:)
+          return false unless @current_date.invalid?
 
+          japan_start_date = @interval.japan_start_date
+
+          japan_start_date.same_month?(leaped: month.leaped?, month: month.number)
+        end
+
+        #
+        # 当月内元号を取得する
+        #
+        # @param [Western::Calendar] start_date 西暦開始日
+        # @param [Western::Calendar] end_date 西暦終了日
+        #
+        def current_month_gengou(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
           # TODO: make
           # * 一致する場合はその月を元号開始月にする
           #    * 月のうち、何日かを見て範囲も設定する
           #    * 現在日を来月初日に更新する
+          p start_date
+          p end_date
         end
 
         #

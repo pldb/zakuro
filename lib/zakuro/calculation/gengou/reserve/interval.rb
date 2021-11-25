@@ -66,6 +66,28 @@ module Zakuro
           end
 
           #
+          # 一つ先の1行目元号を取得する
+          #
+          # @param [Western::Calendar] western_date 西暦日
+          #
+          # @return [Gengou::Counter] 加算元号
+          #
+          def proceed_first_gengou(western_date: Western::Calendar.new)
+            @first_gengou.proceed(western_date: western_date)
+          end
+
+          #
+          # 一つ先の2行目元号を取得する
+          #
+          # @param [Western::Calendar] western_date 西暦日
+          #
+          # @return [Gengou::Counter] 加算元号
+          #
+          def proceed_second_gengou(western_date: Western::Calendar.new)
+            @second_gengou.proceed(western_date: western_date)
+          end
+
+          #
           # 最古の元号から和暦開始日を取得する
           #
           # @return [Japan::Calendar] 和暦開始日
