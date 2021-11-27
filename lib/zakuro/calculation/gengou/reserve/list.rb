@@ -49,7 +49,7 @@ module Zakuro
             @end_date = end_date
             @list = []
 
-            collect
+            update
           end
 
           #
@@ -202,9 +202,9 @@ module Zakuro
           private
 
           #
-          # 予約元号一覧を取得する
+          # 予約元号一覧を更新する
           #
-          def collect
+          def update
             result = internal
 
             return result if result.size.zero?
