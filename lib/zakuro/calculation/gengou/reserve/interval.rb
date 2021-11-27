@@ -66,25 +66,29 @@ module Zakuro
           end
 
           #
-          # 一つ先の1行目元号を取得する
+          # 範囲内元号（1行目元号）を取得する
           #
-          # @param [Western::Calendar] western_date 西暦日
+          # @param [Western::Calendar] start_date 西暦開始日
+          # @param [Western::Calendar] end_date 西暦終了日
           #
-          # @return [Gengou::Counter] 加算元号
+          # @return [Array<Gengou::Counter>] 範囲内元号（1行目元号）
           #
-          def proceed_first_gengou(western_date: Western::Calendar.new)
-            @first_gengou.proceed(western_date: western_date)
+          def collect_first_gengou(start_date: Western::Calendar.new,
+                                   end_date: Western::Calendar.new)
+            @first_gengou.collect(start_date: start_date, end_date: end_date)
           end
 
           #
-          # 一つ先の2行目元号を取得する
+          # 範囲内元号（2行目元号）を取得する
           #
-          # @param [Western::Calendar] western_date 西暦日
+          # @param [Western::Calendar] start_date 西暦開始日
+          # @param [Western::Calendar] end_date 西暦終了日
           #
-          # @return [Gengou::Counter] 加算元号
+          # @return [Array<Gengou::Counter>] 範囲内元号（2行目元号）
           #
-          def proceed_second_gengou(western_date: Western::Calendar.new)
-            @second_gengou.proceed(western_date: western_date)
+          def collect_second_gengou(start_date: Western::Calendar.new,
+                                    end_date: Western::Calendar.new)
+            @second_gengou.collect(start_date: start_date, end_date: end_date)
           end
 
           #

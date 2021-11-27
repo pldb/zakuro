@@ -61,10 +61,62 @@ module Zakuro
           #
           def get(western_date: Western::Calendar.new)
             @list.each do |gengou|
-              return Gengou::Counter.new(gengou: gengou) if gengou.include?(date: western_date)
+              if gengou.include?(date: western_date)
+                return Gengou::Counter.new(gengou: gengou).clone
+              end
             end
 
             Gengou::Counter.new
+          end
+
+          #
+          # 範囲内元号を取得する
+          #
+          #   次のパターンが考えられる
+          #   1. 元号の開始日から終了日まで該当元号なし（無効な元号）
+          #   2. 元号の開始日までは該当元号なし（無効な元号、開始日以降の元号）
+          #   3. 元号の開始日と月初日が合致し、末日まで同一元号（開始日以降の元号のみ）
+          #   4. 月の途中で有効な元号が切り替わる（有効な元号、有効な元号...）
+          #   5. 途中から該当元号なし（開始日以降の元号、無効な元号）
+          #
+          # @param [Western::Calendar] start_date 西暦開始日
+          # @param [Western::Calendar] end_date 西暦終了日
+          #
+          # @return [Array<Gengou::Counter>] 範囲内元号
+          #
+          def collect(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+            result = []
+            # TODO: refact
+
+            # 開始チェック
+            current_gengou = get(western_date: start_date)
+            result.push(current_gengou)
+
+            ## 範囲内に次の有効元号があるか
+            current_gengou = proceed(western_date: start_date) if current_gengou.invalid?
+
+            ## 有効元号なし
+            return result if current_gengou.invalid?
+
+            ## 範囲内元号なし
+            return result if current_gengou.western_start_date > end_date
+
+            # 有効元号チェック
+            current_date = start_date
+            MAX_SEARCH_COUNT.each do |_index|
+              current_gengou = proceed(western_date: current_date)
+
+              break if current_gengou.invalid?
+
+              # 範囲外
+              return result if current_gengou.western_start_date > end_date
+
+              # 範囲内元号
+              result.push(current_gengou)
+            end
+
+            # 終了
+            result
           end
 
           #
@@ -79,7 +131,7 @@ module Zakuro
             @list.each do |gengou|
               next if gengou.invalid?
 
-              return Gengou::Counter.new(gengou: gengou) if passed
+              return Gengou::Counter.new(gengou: gengou).clone if passed
 
               passed = true if gengou.include?(date: western_date)
             end
@@ -95,7 +147,7 @@ module Zakuro
           def japan_start_date
             return Japan::Calendar.new if invalid?
 
-            @list[0].both_start_date.japan
+            @list[0].both_start_date.japan.clone
           end
 
           #
@@ -106,7 +158,7 @@ module Zakuro
           def western_start_date
             return Western::Calendar.new if invalid?
 
-            @list[0].both_start_date.western
+            @list[0].both_start_date.western.clone
           end
 
           #
@@ -117,7 +169,7 @@ module Zakuro
           def western_start_year
             return INVALID_YEAR if invalid?
 
-            @list[0].both_start_year.western
+            @list[0].both_start_year.western.clone
           end
 
           #
