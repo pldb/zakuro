@@ -14,6 +14,9 @@ module Zakuro
       # Counter 加算元号
       #
       class Counter
+        # @return [Integer] 不正値
+        INVALID_YEAR = -1
+
         # @return [Japan::Gengou] 元号
         attr_reader :gengou
         # @return [Integer] 元号年
@@ -84,7 +87,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @gengou.invalid? || @japan_year.invalid? || @western_year.invalid?
+          @gengou.invalid? || @japan_year == INVALID_YEAR || @western_year == INVALID_YEAR
         end
 
         #

@@ -101,9 +101,12 @@ module Zakuro
             ## 範囲内元号なし
             return result if current_gengou.western_start_date > end_date
 
+            result.push(current_gengou)
+
             # 有効元号チェック
             current_date = start_date
-            MAX_SEARCH_COUNT.each do |_index|
+            (0..MAX_SEARCH_COUNT).each do |_index|
+              # FIXME: 引き当て条件がproceedと食い違っている
               current_gengou = proceed(western_date: current_date)
 
               break if current_gengou.invalid?
@@ -127,13 +130,29 @@ module Zakuro
           # @return [Gengou::Counter] 加算元号
           #
           def proceed(western_date: Western::Calendar.new)
-            passed = false
+            current_gengou = get(western_date: western_date)
+
+            # 無効な元号
+            if current_gengou.invalid?
+              @list.each do |gengou|
+                next if gengou.invalid?
+
+                # すでに超過している場合
+                break if western_date > gengou.end_date
+
+                return Gengou::Counter.new(gengou: gengou).clone
+              end
+
+              return Gengou::Counter.new
+            end
+
+            # 有効な元号
             @list.each do |gengou|
               next if gengou.invalid?
 
-              return Gengou::Counter.new(gengou: gengou).clone if passed
-
-              passed = true if gengou.include?(date: western_date)
+              if gengou.both_start_date.western > current_gengou.end_date
+                return Gengou::Counter.new(gengou: gengou).clone
+              end
             end
 
             Gengou::Counter.new

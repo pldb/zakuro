@@ -6,6 +6,9 @@ require File.expand_path('../../../../../lib/zakuro/calculation/gengou/reserve/l
 require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
                          __dir__)
 
+require File.expand_path('../../../../../lib/zakuro/era/japan/gengou',
+                         __dir__)
+
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Calculation' do
@@ -205,6 +208,73 @@ describe 'Zakuro' do
               it 'should be a next gengou' do
                 actual = list.list
                 expect(actual[1].name).to eq '建武'
+              end
+            end
+          end
+          context '#collect' do
+            let(:list) do
+              Zakuro::Calculation::Gengou::Reserve::List.new(
+                first: false,
+                start_date: Zakuro::Western::Calendar.new,
+                end_date: Zakuro::Western::Calendar.new
+              )
+            end
+            context 'no gengou in range' do
+              it 'should be only invalid gengou' do
+                actual = list.collect(
+                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
+                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
+                )
+                expect(actual[0].invalid?).to be_truthy
+              end
+            end
+            context 'valid gengou from the middle' do
+              it 'should be included invalid gengou' do
+                list.instance_variable_set(
+                  :@list, [
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号1', both_start_date: Zakuro::Japan::Both::Date.new(
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 12
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
+                  ]
+                )
+                actual = list.collect(
+                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
+                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
+                )
+                expect(actual[0].invalid?).to be_truthy
+              end
+              it 'should be included valid gengou' do
+                list.instance_variable_set(
+                  '@list', [
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 450
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 12
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
+                  ]
+                )
+                # FIXME: test
+                actual = list.collect(
+                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
+                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
+                )
+                expect(actual[1].invalid?).to be_falsely
               end
             end
           end
