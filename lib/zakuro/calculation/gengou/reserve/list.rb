@@ -104,9 +104,8 @@ module Zakuro
             result.push(current_gengou)
 
             # 有効元号チェック
-            current_date = start_date
+            current_date = current_gengou.western_end_date.clone + 1
             (0..MAX_SEARCH_COUNT).each do |_index|
-              # FIXME: 引き当て条件がproceedと食い違っている
               current_gengou = proceed(western_date: current_date)
 
               break if current_gengou.invalid?
@@ -116,6 +115,8 @@ module Zakuro
 
               # 範囲内元号
               result.push(current_gengou)
+
+              current_date = current_gengou.western_end_date.clone + 1
             end
 
             # 終了

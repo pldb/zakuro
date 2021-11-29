@@ -269,12 +269,11 @@ describe 'Zakuro' do
                     )
                   ]
                 )
-                # FIXME: test
                 actual = list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
                   end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
                 )
-                expect(actual[1].invalid?).to be_falsely
+                expect(actual[1].invalid?).to be_falsey
               end
             end
           end

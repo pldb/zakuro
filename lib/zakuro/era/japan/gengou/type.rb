@@ -265,7 +265,7 @@ module Zakuro
         # @return [Western::Calendar] 西暦日
         attr_reader :western
 
-        def initialize(japan: Japan::Calendar, western: Western::Calendar)
+        def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
           @japan = japan
           @western = western
         end
