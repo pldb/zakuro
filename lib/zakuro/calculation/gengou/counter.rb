@@ -81,6 +81,17 @@ module Zakuro
         end
 
         #
+        # 元号名を取得する
+        #
+        # @return [String] 元号名
+        #
+        def name
+          return '' unless @gengou
+
+          @gengou.name
+        end
+
+        #
         # 不正か
         #
         # @return [True] 不正
