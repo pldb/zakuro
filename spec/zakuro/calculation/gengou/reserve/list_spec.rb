@@ -333,8 +333,15 @@ describe 'Zakuro' do
               it 'should be valid gengou on first element' do
                 expect(actual[0].invalid?).to be_falsey
               end
+              it 'should be valid gengou name on first element' do
+                expect(actual[0].name).to eq '元号1'
+              end
               it 'should be valid gengou on second element' do
                 expect(actual[1].invalid?).to be_falsey
+              end
+              it 'should be valid gengou name on second element' do
+                # FIXME: pass
+                expect(actual[1].name).to eq '元号2'
               end
             end
             context 'valid three gengou' do
@@ -410,11 +417,21 @@ describe 'Zakuro' do
               it 'should be valid gengou on first element' do
                 expect(actual[0].invalid?).to be_falsey
               end
+              it 'should be valid gengou name on first element' do
+                expect(actual[0].name).to eq '元号1'
+              end
               it 'should be valid gengou on second element' do
                 expect(actual[1].invalid?).to be_falsey
               end
+              it 'should be valid gengou name on second element' do
+                # FIXME: pass
+                expect(actual[1].name).to eq '元号2'
+              end
               it 'should be valid gengou on third element' do
-                expect(actual[1].invalid?).to be_falsey
+                expect(actual[2].invalid?).to be_falsey
+              end
+              it 'should be valid gengou name on third element' do
+                expect(actual[2].name).to eq '元号3'
               end
             end
           end
