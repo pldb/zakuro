@@ -321,18 +321,99 @@ describe 'Zakuro' do
                 )
                 result
               end
-              it 'should be valid gengou on first element' do
-                actual = list.collect(
+              let(:actual) do
+                list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
                   end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
                 )
+              end
+              it 'should be two elements' do
+                expect(actual.size).to eq 2
+              end
+              it 'should be valid gengou on first element' do
                 expect(actual[0].invalid?).to be_falsey
               end
               it 'should be valid gengou on second element' do
-                actual = list.collect(
-                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
+                expect(actual[1].invalid?).to be_falsey
+              end
+            end
+            context 'valid three gengou' do
+              let(:list) do
+                result = Zakuro::Calculation::Gengou::Reserve::List.new(
+                  first: false,
+                  start_date: Zakuro::Western::Calendar.new,
+                  end_date: Zakuro::Western::Calendar.new
                 )
+                result.instance_variable_set(
+                  :@list, [
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 450
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 1
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                    ),
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号2',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 450
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 21
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 31)
+                    ),
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号3',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 450
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号3', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 4, day: 1
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                    )
+                  ]
+                )
+                result
+              end
+              let(:actual) do
+                list.collect(
+                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
+                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 2)
+                )
+              end
+              it 'should be three elements' do
+                expect(actual.size).to eq 3
+              end
+              it 'should be valid gengou on first element' do
+                expect(actual[0].invalid?).to be_falsey
+              end
+              it 'should be valid gengou on second element' do
+                expect(actual[1].invalid?).to be_falsey
+              end
+              it 'should be valid gengou on third element' do
                 expect(actual[1].invalid?).to be_falsey
               end
             end
