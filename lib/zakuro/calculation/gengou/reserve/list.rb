@@ -151,7 +151,7 @@ module Zakuro
             @list.each do |gengou|
               next if gengou.invalid?
 
-              if gengou.both_start_date.western > current_gengou.end_date
+              if gengou.both_start_date.western > current_gengou.western_end_date
                 return Gengou::Counter.new(gengou: gengou).clone
               end
             end
