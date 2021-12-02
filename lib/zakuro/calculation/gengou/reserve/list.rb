@@ -19,6 +19,8 @@ module Zakuro
         # 予約元号一覧
         #
         class List
+          # TODO: refactor
+
           # @return [Integer] 不正年
           INVALID_YEAR = -1
           # @return [Integer] 最大試行数
@@ -79,6 +81,8 @@ module Zakuro
           #   4. 月の途中で有効な元号が切り替わる（有効な元号、有効な元号...）
           #   5. 途中から該当元号なし（開始日以降の元号、無効な元号）
           #
+          # FIXME: 有効な元号、無効な元号、有効な元号のようなストライプのパターンに対応していない
+          #
           # @param [Western::Calendar] start_date 西暦開始日
           # @param [Western::Calendar] end_date 西暦終了日
           #
@@ -86,7 +90,6 @@ module Zakuro
           #
           def collect(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
             result = []
-            # TODO: refact
 
             # 開始チェック
             current_gengou = get(western_date: start_date)
@@ -104,39 +107,8 @@ module Zakuro
             return result if suspend?(current_gengou: current_gengou, end_date: end_date)
 
             # 有効元号チェック
-            current_date = current_gengou.western_end_date.clone
-            (0..MAX_SEARCH_COUNT).each do |_index|
-              current_gengou = proceed(western_date: current_date)
-
-              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
-
-              # 範囲内元号
-              result.push(current_gengou)
-
-              current_date = current_gengou.western_end_date.clone
-            end
-
-            # 終了
-            result
-          end
-
-          #
-          # 中断する
-          #
-          # @param [Gengou::Counter] current_gengou 現在元号
-          # @param [Western::Calendar] end_date 終了日
-          #
-          # @return [True] 中断
-          # @return [False] 継続
-          #
-          def suspend?(current_gengou:, end_date:)
-            ## 有効元号なし
-            return true if current_gengou.invalid?
-
-            ## 範囲内元号なし
-            return true if current_gengou.western_start_date > end_date
-
-            false
+            continue(result: result, current_date: current_gengou.western_end_date.clone,
+                     end_date: end_date)
           end
 
           #
@@ -334,6 +306,50 @@ module Zakuro
           #
           def line(date:)
             List.send(method_name, **{ date: date })
+          end
+
+          #
+          # 有効元号を継続する
+          #
+          # @param [Array<Gengou::Counter>] result 範囲内元号
+          # @param [Gengou::Counter] current_gengou 現在元号
+          # @param [Western::Calendar] end_date 終了日
+          #
+          # @return [Array<Gengou::Counter>] 範囲内元号
+          #
+          def continue(result:, current_date:, end_date:)
+            (0..MAX_SEARCH_COUNT).each do |_index|
+              current_gengou = proceed(western_date: current_date)
+
+              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
+
+              # 範囲内元号
+              result.push(current_gengou)
+
+              current_date = current_gengou.western_end_date.clone
+            end
+
+            # 終了
+            result
+          end
+
+          #
+          # 中断する
+          #
+          # @param [Gengou::Counter] current_gengou 現在元号
+          # @param [Western::Calendar] end_date 終了日
+          #
+          # @return [True] 中断
+          # @return [False] 継続
+          #
+          def suspend?(current_gengou:, end_date:)
+            ## 有効元号なし
+            return true if current_gengou.invalid?
+
+            ## 範囲内元号なし
+            return true if current_gengou.western_start_date > end_date
+
+            false
           end
 
           #
