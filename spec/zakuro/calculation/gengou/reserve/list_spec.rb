@@ -426,6 +426,48 @@ describe 'Zakuro' do
                 expect(actual[2].name).to eq '元号3'
               end
             end
+            context 'invalid gengou from the middle' do
+              let(:list) do
+                list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                  first: false,
+                  start_date: Zakuro::Western::Calendar.new,
+                  end_date: Zakuro::Western::Calendar.new
+                )
+                list.instance_variable_set(
+                  '@list', [
+                    Zakuro::Japan::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 450
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 12
+                        )
+                      ),
+                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
+                  ]
+                )
+                list
+              end
+              let(:actual) do
+                list.collect(
+                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 21),
+                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                )
+              end
+              it 'should be a element' do
+                expect(actual.size).to eq 1
+              end
+              it 'should be included valid gengou' do
+                expect(actual[0].invalid?).to be_falsey
+              end
+            end
           end
         end
       end
