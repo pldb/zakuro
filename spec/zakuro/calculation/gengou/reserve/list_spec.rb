@@ -212,14 +212,14 @@ describe 'Zakuro' do
             end
           end
           context '#collect' do
-            let(:list) do
-              Zakuro::Calculation::Gengou::Reserve::List.new(
-                first: false,
-                start_date: Zakuro::Western::Calendar.new,
-                end_date: Zakuro::Western::Calendar.new
-              )
-            end
             context 'no gengou in range' do
+              let(:list) do
+                Zakuro::Calculation::Gengou::Reserve::List.new(
+                  first: false,
+                  start_date: Zakuro::Western::Calendar.new,
+                  end_date: Zakuro::Western::Calendar.new
+                )
+              end
               it 'should be only invalid gengou' do
                 actual = list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
@@ -229,26 +229,12 @@ describe 'Zakuro' do
               end
             end
             context 'valid gengou from the middle' do
-              it 'should be included invalid gengou' do
-                list.instance_variable_set(
-                  :@list, [
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号1', both_start_date: Zakuro::Japan::Both::Date.new(
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 12
-                        )
-                      ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
-                    )
-                  ]
+              let(:list) do
+                list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                  first: false,
+                  start_date: Zakuro::Western::Calendar.new,
+                  end_date: Zakuro::Western::Calendar.new
                 )
-                actual = list.collect(
-                  start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
-                )
-                expect(actual[0].invalid?).to be_truthy
-              end
-              it 'should be included valid gengou' do
                 list.instance_variable_set(
                   '@list', [
                     Zakuro::Japan::Gengou.new(
@@ -269,10 +255,18 @@ describe 'Zakuro' do
                     )
                   ]
                 )
-                actual = list.collect(
+                list
+              end
+              let(:actual) do
+                list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
                   end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
                 )
+              end
+              it 'should be included invalid gengou' do
+                expect(actual[0].invalid?).to be_truthy
+              end
+              it 'should be included valid gengou' do
                 expect(actual[1].invalid?).to be_falsey
               end
             end
