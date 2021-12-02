@@ -96,30 +96,19 @@ module Zakuro
             if current_gengou.invalid?
               current_gengou = proceed(western_date: start_date)
 
-              ## 有効元号なし
-              return result if current_gengou.invalid?
-
-              ## 範囲内元号なし
-              return result if current_gengou.western_start_date > end_date
+              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
 
               result.push(current_gengou)
             end
 
-            ## 有効元号なし
-            return result if current_gengou.invalid?
-
-            ## 範囲内元号なし
-            return result if current_gengou.western_start_date > end_date
+            return result if suspend?(current_gengou: current_gengou, end_date: end_date)
 
             # 有効元号チェック
             current_date = current_gengou.western_end_date.clone
             (0..MAX_SEARCH_COUNT).each do |_index|
               current_gengou = proceed(western_date: current_date)
 
-              break if current_gengou.invalid?
-
-              # 範囲外
-              return result if current_gengou.western_start_date > end_date
+              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
 
               # 範囲内元号
               result.push(current_gengou)
@@ -129,6 +118,25 @@ module Zakuro
 
             # 終了
             result
+          end
+
+          #
+          # 中断する
+          #
+          # @param [Gengou::Counter] current_gengou 現在元号
+          # @param [Western::Calendar] end_date 終了日
+          #
+          # @return [True] 中断
+          # @return [False] 継続
+          #
+          def suspend?(current_gengou:, end_date:)
+            ## 有効元号なし
+            return true if current_gengou.invalid?
+
+            ## 範囲内元号なし
+            return true if current_gengou.western_start_date > end_date
+
+            false
           end
 
           #
