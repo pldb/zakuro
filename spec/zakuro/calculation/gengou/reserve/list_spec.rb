@@ -340,7 +340,6 @@ describe 'Zakuro' do
                 expect(actual[1].invalid?).to be_falsey
               end
               it 'should be valid gengou name on second element' do
-                # FIXME: pass
                 expect(actual[1].name).to eq '元号2'
               end
             end
@@ -424,7 +423,6 @@ describe 'Zakuro' do
                 expect(actual[1].invalid?).to be_falsey
               end
               it 'should be valid gengou name on second element' do
-                # FIXME: pass
                 expect(actual[1].name).to eq '元号2'
               end
               it 'should be valid gengou on third element' do

@@ -93,7 +93,17 @@ module Zakuro
             result.push(current_gengou)
 
             ## 範囲内に次の有効元号があるか
-            current_gengou = proceed(western_date: start_date) if current_gengou.invalid?
+            if current_gengou.invalid?
+              current_gengou = proceed(western_date: start_date)
+
+              ## 有効元号なし
+              return result if current_gengou.invalid?
+
+              ## 範囲内元号なし
+              return result if current_gengou.western_start_date > end_date
+
+              result.push(current_gengou)
+            end
 
             ## 有効元号なし
             return result if current_gengou.invalid?
@@ -101,10 +111,8 @@ module Zakuro
             ## 範囲内元号なし
             return result if current_gengou.western_start_date > end_date
 
-            result.push(current_gengou)
-
             # 有効元号チェック
-            current_date = current_gengou.western_end_date.clone + 1
+            current_date = current_gengou.western_end_date.clone
             (0..MAX_SEARCH_COUNT).each do |_index|
               current_gengou = proceed(western_date: current_date)
 
@@ -116,7 +124,7 @@ module Zakuro
               # 範囲内元号
               result.push(current_gengou)
 
-              current_date = current_gengou.western_end_date.clone + 1
+              current_date = current_gengou.western_end_date.clone
             end
 
             # 終了
