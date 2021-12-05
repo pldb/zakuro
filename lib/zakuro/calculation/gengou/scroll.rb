@@ -18,8 +18,10 @@ module Zakuro
         attr_reader :current_date
         # @return [Reserve::Interval] 予約範囲
         attr_reader :interval
-        # @return [Base::Gengou] 元号
-        attr_reader :gengou
+        # @return [Array<Gengou::Counter>] 当月1行目元号
+        attr_reader :current_first_gengou
+        # @return [Array<Gengou::Counter>] 当月2行目元号
+        attr_reader :current_second_gengou
 
         #
         # 初期化
@@ -30,6 +32,8 @@ module Zakuro
         def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
           @current_date = Western::Calendar.new
           @interval = Reserve::Interval.new(start_date: start_date, end_date: end_date)
+          @current_first_gengou = []
+          @current_second_gengou = []
         end
 
         #
@@ -65,9 +69,38 @@ module Zakuro
           first_gengou = @interval.collect_first_gengou(start_date: start_date, end_date: end_date)
           second_gengou = @interval.collect_second_gengou(start_date: start_date, end_date: end_date)
 
-          # TODO: make
-          p first_gengou
-          p second_gengou
+          replace_first_gengou(gengou: first_gengou)
+          replace_second_gengou(gengou: second_gengou)
+        end
+
+        def replace_first_gengou(gengou: [])
+          # TODO: refactor
+          return if gengou.zize.zero?
+
+          if @current_first_gengou.size.zero?
+            @current_first_gengou = gengou
+            return
+          end
+
+          last = @current_first_gengou[-1]
+          gengou[0] = last if gengou[0].name == last.name
+
+          @current_first_gengou = gengou
+        end
+
+        def replace_second_gengou(gengou: [])
+          # TODO: refactor
+          return if gengou.zize.zero?
+
+          if @current_second_gengou.size.zero?
+            @current_second_gengou = gengou
+            return
+          end
+
+          last = @current_second_gengou[-1]
+          gengou[0] = last if gengou[0].name == last.name
+
+          @current_second_gengou = gengou
         end
 
         #
