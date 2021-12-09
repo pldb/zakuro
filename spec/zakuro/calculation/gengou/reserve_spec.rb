@@ -10,7 +10,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'Reserve' do
-        describe 'List' do
+        describe '.get' do
           context 'western date has a gengou' do
             it 'should be start year from target gengou' do
               interval = Zakuro::Calculation::Gengou::Reserve.get(
