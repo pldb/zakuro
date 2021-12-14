@@ -61,13 +61,18 @@ module Zakuro
 
           western_start_date = @interval.western_start_date
 
-          start_date = western_start_date.clone - month.days
+          # 今月初日（和暦日が1月2日であれば、開始日の1日前が初日）
+          start_date = western_start_date.clone - japan_start_date.day + 1
 
-          # 今月末まで進める（開始日 + 月日数 - 和暦日の日）- 1
-          end_date = western_start_date.clone + (month.days - japan_start_date.day) - 1
+          # 今月末
+          end_date = start_date + month.days
 
-          first_gengou = @interval.collect_first_gengou(start_date: start_date, end_date: end_date)
-          second_gengou = @interval.collect_second_gengou(start_date: start_date, end_date: end_date)
+          first_gengou = @interval.collect_first_gengou(
+            start_date: start_date, end_date: end_date
+          )
+          second_gengou = @interval.collect_second_gengou(
+            start_date: start_date, end_date: end_date
+          )
 
           replace_first_gengou(gengou: first_gengou)
           replace_second_gengou(gengou: second_gengou)
@@ -75,7 +80,7 @@ module Zakuro
 
         def replace_first_gengou(gengou: [])
           # TODO: refactor
-          return if gengou.zize.zero?
+          return if gengou.size.zero?
 
           if @current_first_gengou.size.zero?
             @current_first_gengou = gengou
@@ -90,7 +95,7 @@ module Zakuro
 
         def replace_second_gengou(gengou: [])
           # TODO: refactor
-          return if gengou.zize.zero?
+          return if gengou.size.zero?
 
           if @current_second_gengou.size.zero?
             @current_second_gengou = gengou
