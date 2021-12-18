@@ -99,11 +99,11 @@ describe 'Zakuro' do
 
             it 'should be empty array on first gengou' do
               scroll.run(month: month)
-              expect(scroll.current_first_gengou).to eq []
+              expect(scroll.current_gengou.first_line).to eq []
             end
             it 'should be empty array on second gengou' do
               scroll.run(month: month)
-              expect(scroll.current_second_gengou).to eq []
+              expect(scroll.current_gengou.second_line).to eq []
             end
           end
           context 'a month has a first gengou' do
@@ -181,7 +181,16 @@ describe 'Zakuro' do
             end
             it 'should be a element on first gengou' do
               scroll.run(month: month)
-              expect(scroll.current_first_gengou.size).to eq 1
+              expect(scroll.current_gengou.first_line.size).to eq 1
+            end
+            it 'should be a specified element on first gengou' do
+              scroll.run(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[0].name).to eq '元号1'
+            end
+            it 'should be no element on second gengou' do
+              # TODO: 現状では1つの無効元号を入れている。入れるべきか要検討する
+              # none
             end
           end
           # TODO: more tests
