@@ -79,10 +79,9 @@ module Zakuro
           first_line = replace_first_gengou(gengou: first_gengou)
           second_line = replace_second_gengou(gengou: second_gengou)
 
-          # TODO: gengou は LinearGengouに差し替える
-
           @current_gengou = Base::Gengou.new(
-            first_line: first_line, second_line: second_line
+            first_line: to_linear_gengou(start_date: start_date, end_date: end_date, gengou: first_line),
+            second_line: to_linear_gengou(start_date: start_date, end_date: end_date, gengou: second_line)
           )
         end
 
@@ -108,6 +107,22 @@ module Zakuro
 
           last = current_gengou[-1]
           gengou[0] = last if gengou[0].name == last.name
+
+          gengou
+        end
+
+        def to_linear_gengou(start_date:, end_date:, gengou: [])
+          # TODO: gengou は LinearGengouに差し替える
+
+          # TODO: 構想
+          # * 最初の元号：開始日～その元号の終了日
+          # * 中間の元号：その元号の開始日～その元号の終了日
+          # * 最後の元号：その元号の開始日～終了日
+
+          return [] if gengou.size.zero?
+
+          p start_date
+          p end_date
 
           gengou
         end
