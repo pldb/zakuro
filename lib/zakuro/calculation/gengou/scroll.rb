@@ -76,42 +76,46 @@ module Zakuro
             start_date: start_date, end_date: end_date
           )
 
-          first_line = replace_first_gengou(gengou: first_gengou)
-          second_line = replace_second_gengou(gengou: second_gengou)
+          first_line = replace_first_gengou(gengou_list: first_gengou)
+          second_line = replace_second_gengou(gengou_list: second_gengou)
 
           @current_gengou = Base::Gengou.new(
-            first_line: to_linear_gengou(start_date: start_date, end_date: end_date, gengou: first_line),
-            second_line: to_linear_gengou(start_date: start_date, end_date: end_date, gengou: second_line)
+            first_line: to_linear_gengou(
+              start_date: start_date, end_date: end_date, gengou_list: first_line
+            ),
+            second_line: to_linear_gengou(
+              start_date: start_date, end_date: end_date, gengou_list: second_line
+            )
           )
         end
 
-        def replace_first_gengou(gengou: [])
-          return gengou if gengou.size.zero?
+        def replace_first_gengou(gengou_list: [])
+          return gengou_list if gengou_list.size.zero?
 
           current_gengou = @current_gengou.first_line
 
-          return gengou if current_gengou.size.zero?
+          return gengou_list if current_gengou.size.zero?
 
           last = current_gengou[-1]
-          gengou[0] = last if gengou[0].name == last.name
+          gengou_list[0] = last if gengou_list[0].name == last.name
 
-          gengou
+          gengou_list
         end
 
-        def replace_second_gengou(gengou: [])
-          return gengou if gengou.size.zero?
+        def replace_second_gengou(gengou_list: [])
+          return gengou_list if gengou_list.size.zero?
 
           current_gengou = @current_gengou.second_line
 
-          return gengou if current_gengou.size.zero?
+          return gengou_list if current_gengou.size.zero?
 
           last = current_gengou[-1]
-          gengou[0] = last if gengou[0].name == last.name
+          gengou_list[0] = last if gengou_list[0].name == last.name
 
-          gengou
+          gengou_list
         end
 
-        def to_linear_gengou(start_date:, end_date:, gengou: [])
+        def to_linear_gengou(start_date:, end_date:, gengou_list: [])
           # TODO: gengou は LinearGengouに差し替える
 
           # TODO: 構想
@@ -119,12 +123,19 @@ module Zakuro
           # * 中間の元号：その元号の開始日～その元号の終了日
           # * 最後の元号：その元号の開始日～終了日
 
-          return [] if gengou.size.zero?
+          return [] if gengou_list.size.zero?
 
+          gengou_list.each do |gengou|
+            gengou_start_date = gengou.western_start_date
+            gengou_end_date = gengou.western_end_date
+
+            p gengou_start_date
+            p gengou_end_date
+          end
           p start_date
           p end_date
 
-          gengou
+          gengou_list
         end
 
         #
