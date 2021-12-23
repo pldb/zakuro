@@ -2,6 +2,7 @@
 
 require_relative '../../era/western/calendar'
 require_relative '../base/gengou'
+require_relative '../base/linear_gengou'
 require_relative './reserve/interval'
 
 # :nodoc:
@@ -116,8 +117,6 @@ module Zakuro
         end
 
         def to_linear_gengou(start_date:, end_date:, gengou_list: [])
-          # TODO: gengou は LinearGengouに差し替える
-
           # TODO: 構想
           # * 最初の元号：開始日～その元号の終了日
           # * 中間の元号：その元号の開始日～その元号の終了日
@@ -125,15 +124,30 @@ module Zakuro
 
           return [] if gengou_list.size.zero?
 
-          gengou_list.each do |gengou|
-            gengou_start_date = gengou.western_start_date
-            gengou_end_date = gengou.western_end_date
+          result = []
 
-            p gengou_start_date
-            p gengou_end_date
+          gengou_list.each do |gengou|
+            if gengou.invalid?
+              # 後で開始日・終了日を設定する
+              result.push(Base::LinearGengou.new)
+              next
+            end
+            gengou_start_date = gengou.western_start_date.clone
+            gengou_end_date = gengou.western_end_date.clone
+
+            gengou_start_date = start_date.clone if start_date > gengou_start_date
+            gengou_end_date = end_date.clone if end_date < gengou_end_date
+
+            result.push(
+              Base::LinearGengou.new(
+                start_date: gengou_start_date, end_date: gengou_end_date,
+                name: gengou.gengou.name, year: gengou.japan_year
+              )
+            )
           end
-          p start_date
-          p end_date
+
+          # TODO: result を返す
+          # TODO: 無効元号にも開始日・終了日を設定する？
 
           gengou_list
         end
