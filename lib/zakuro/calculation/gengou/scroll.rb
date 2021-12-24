@@ -42,10 +42,10 @@ module Zakuro
         #
         def run(month:)
           # 開始日の検索を行う
-          ignite(month: month)
+          ignited = ignite(month: month)
 
           # 時間を進める
-          advance(month: month)
+          advance(month: month) unless ignited
         end
 
         #
@@ -53,8 +53,11 @@ module Zakuro
         #
         # @param [Monthly::Month] month 月
         #
+        # @return [True] 開始あり
+        # @return [False] 開始なし
+        #
         def ignite(month:)
-          return unless ignitable?(month: month)
+          return false unless ignitable?(month: month)
 
           japan_start_date = @interval.japan_start_date
 
@@ -66,10 +69,12 @@ module Zakuro
           # 今月末
           end_date = start_date + month.days
 
-          uptdate_current_gengou(start_date: start_date, end_date: end_date)
+          update_current_gengou(start_date: start_date, end_date: end_date)
+
+          true
         end
 
-        def uptdate_current_gengou(start_date:, end_date:)
+        def update_current_gengou(start_date:, end_date:)
           first_gengou = @interval.collect_first_gengou(
             start_date: start_date, end_date: end_date
           )
@@ -88,6 +93,9 @@ module Zakuro
               start_date: start_date, end_date: end_date, gengou_list: second_line
             )
           )
+
+          # 来月初日
+          @current_date = end_date.clone + 1
         end
 
         def replace_first_gengou(gengou_list: [])
@@ -116,19 +124,27 @@ module Zakuro
           gengou_list
         end
 
+        #
+        # 直列元号に変換する
+        #
+        #   * 最初の元号：開始日～その元号の終了日
+        #   * 中間の元号：その元号の開始日～その元号の終了日
+        #   * 最後の元号：その元号の開始日～終了日
+        #
+        # @param [Western::Calendar] start_date 西暦開始日
+        # @param [Western::Calendar] end_date 西暦終了日
+        # @param [Array<Counter>] gengou_list 元号リスト
+        #
+        # @return [Array<Base::Gengou>] 元号リスト
+        #
         def to_linear_gengou(start_date:, end_date:, gengou_list: [])
-          # TODO: 構想
-          # * 最初の元号：開始日～その元号の終了日
-          # * 中間の元号：その元号の開始日～その元号の終了日
-          # * 最後の元号：その元号の開始日～終了日
-
           return [] if gengou_list.size.zero?
 
           result = []
 
           gengou_list.each do |gengou|
             if gengou.invalid?
-              # 後で開始日・終了日を設定する
+              # 無効元号は無効のままにする
               result.push(Base::LinearGengou.new)
               next
             end
@@ -141,15 +157,12 @@ module Zakuro
             result.push(
               Base::LinearGengou.new(
                 start_date: gengou_start_date, end_date: gengou_end_date,
-                name: gengou.gengou.name, year: gengou.japan_year
+                name: gengou.name, year: gengou.japan_year
               )
             )
           end
 
-          # TODO: result を返す
-          # TODO: 無効元号にも開始日・終了日を設定する？
-
-          gengou_list
+          result
         end
 
         #
