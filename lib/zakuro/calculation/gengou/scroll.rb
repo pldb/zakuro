@@ -75,15 +75,12 @@ module Zakuro
         end
 
         def update_current_gengou(start_date:, end_date:)
-          first_gengou = @interval.collect_first_gengou(
-            start_date: start_date, end_date: end_date
-          )
-          second_gengou = @interval.collect_second_gengou(
-            start_date: start_date, end_date: end_date
-          )
+          first_gengou = @interval.collect_first_gengou(start_date: start_date, end_date: end_date)
+          second_gengou = @interval.collect_second_gengou(start_date: start_date,
+                                                          end_date: end_date)
 
-          first_line = replace_first_gengou(gengou_list: first_gengou)
-          second_line = replace_second_gengou(gengou_list: second_gengou)
+          first_line = replace_gengou(method: :first_line, gengou_list: first_gengou)
+          second_line = replace_gengou(method: :second_line, gengou_list: second_gengou)
 
           @current_gengou = Base::Gengou.new(
             first_line: to_linear_gengou(
@@ -98,23 +95,10 @@ module Zakuro
           @current_date = end_date.clone + 1
         end
 
-        def replace_first_gengou(gengou_list: [])
+        def replace_gengou(method:, gengou_list: [])
           return gengou_list if gengou_list.size.zero?
 
-          current_gengou = @current_gengou.first_line
-
-          return gengou_list if current_gengou.size.zero?
-
-          last = current_gengou[-1]
-          gengou_list[0] = last if gengou_list[0].name == last.name
-
-          gengou_list
-        end
-
-        def replace_second_gengou(gengou_list: [])
-          return gengou_list if gengou_list.size.zero?
-
-          current_gengou = @current_gengou.second_line
+          current_gengou = @current_gengou.send(method)
 
           return gengou_list if current_gengou.size.zero?
 
