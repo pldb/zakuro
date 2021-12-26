@@ -88,7 +88,6 @@ module Zakuro
         def advance(month:)
           @monthly_start_date = @monthly_end_date.clone + 1
 
-          # 今月末
           @monthly_end_date = @monthly_start_date.clone + month.days - 1
 
           next_year if month.number == 1 && !month.leaped
@@ -117,6 +116,9 @@ module Zakuro
 
         private
 
+        #
+        # 現在月に合わせて元号を更新する
+        #
         def update_current_gengou
           start_date = @monthly_start_date
           end_date = @monthly_end_date
@@ -128,6 +130,14 @@ module Zakuro
           @second_gengou = replace_gengou(source: @second_gengou, destination: second_gengou)
         end
 
+        #
+        # 元号を差し替える
+        #
+        # @param [Array<Counter>] source 元の元号
+        # @param [Array<Counter>] destination 次の元号
+        #
+        # @return [Array<Counter>] 差し替え結果
+        #
         def replace_gengou(source: [], destination: [])
           return destination if destination.size.zero?
 
@@ -196,8 +206,12 @@ module Zakuro
           japan_start_date.same_month?(leaped: month.leaped?, month: month.number)
         end
 
+        #
+        # 次年にする
+        #
         def next_year
-          # FIXME: Counter を全く使えていない
+          @first_gengou.each(&:next_year)
+          @second_gengou.each(&:next_year)
         end
       end
     end
