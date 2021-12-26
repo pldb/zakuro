@@ -171,9 +171,16 @@ module Zakuro
         # @param [Monthly::Month] month 月
         #
         def advance(month:)
-          # TODO: make
-          # * 月の日数だけ現在日を進める
-          # * 月が1月の時は年を改める
+          start_date = @current_date.clone
+          end_date = start_date.clone + month.days - 1
+
+          next_year if month.number == 1 && !month.leaped
+
+          update_current_gengou(start_date: start_date, end_date: end_date)
+        end
+
+        def next_year
+          # FIXME: Counter を全く使えていない
         end
       end
     end
