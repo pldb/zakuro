@@ -22,7 +22,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'Scroll' do
-        describe '#run' do
+        describe '#ignite' do
           let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
           context 'a month has no gengou' do
             let(:month) do
@@ -98,15 +98,15 @@ describe 'Zakuro' do
             end
 
             it 'should be empty array on first gengou' do
-              scroll.run(month: month)
+              scroll.ignite(month: month)
               expect(scroll.current_gengou.first_line).to eq []
             end
             it 'should be empty array on second gengou' do
-              scroll.run(month: month)
+              scroll.ignite(month: month)
               expect(scroll.current_gengou.second_line).to eq []
             end
           end
-          context 'a month has a first gengou' do
+          context 'a month has a first gengou with same start date' do
             let(:month) do
               Zakuro::Calculation::Monthly::Month.new(
                 context: context,
@@ -180,17 +180,131 @@ describe 'Zakuro' do
               scroll
             end
             it 'should be a element on first gengou' do
-              scroll.run(month: month)
+              scroll.ignite(month: month)
               expect(scroll.current_gengou.first_line.size).to eq 1
             end
             it 'should be a specified element on first gengou' do
-              scroll.run(month: month)
+              scroll.ignite(month: month)
               actual = scroll.current_gengou.first_line
               expect(actual[0].name).to eq '元号1'
             end
-            it 'should be no element on second gengou' do
-              # TODO: 現状では1つの無効元号を入れている。入れるべきか要検討する
-              # none
+            it 'should be first day on a month' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[0].start_date.format).to eq '0450-01-01'
+            end
+            it 'should be last day on a month' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[0].end_date.format).to eq '0450-01-29'
+            end
+            it 'should be invalid element on second gengou' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.second_line
+              expect(actual[0].invalid?).to be_truthy
+            end
+          end
+          context 'a month has a first gengou with different start date' do
+            let(:month) do
+              Zakuro::Calculation::Monthly::Month.new(
+                context: context,
+                month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                  number: 1, is_many_days: false, leaped: false
+                ),
+                first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                  western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                )
+              )
+            end
+            let(:start_date) do
+              Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1)
+            end
+            let(:end_date) do
+              Zakuro::Western::Calendar.new(year: 451, month: 1, day: 1)
+            end
+            let(:first_gengou) do
+              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                first: false,
+                start_date: Zakuro::Western::Calendar.new,
+                end_date: Zakuro::Western::Calendar.new
+              )
+              list.instance_variable_set(
+                '@list', [
+                  Zakuro::Japan::Gengou.new(
+                    name: '元号1',
+                    both_start_year: Zakuro::Japan::Both::Year.new(
+                      japan: 1,
+                      western: 450
+                    ),
+                    both_start_date: Zakuro::Japan::Both::Date.new(
+                      japan: Zakuro::Japan::Calendar.new(
+                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 2
+                      ),
+                      western: Zakuro::Western::Calendar.new(
+                        year: 450, month: 1, day: 2
+                      )
+                    ),
+                    end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                  )
+                ]
+              )
+              list
+            end
+            let(:second_gengou) do
+              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                first: false,
+                start_date: Zakuro::Western::Calendar.new,
+                end_date: Zakuro::Western::Calendar.new
+              )
+              list.instance_variable_set(
+                '@list', []
+              )
+              list
+            end
+            let(:interval) do
+              interval = Zakuro::Calculation::Gengou::Reserve::Interval.new(
+                start_date: start_date, end_date: end_date
+              )
+              interval.instance_variable_set('@first_gengou', first_gengou)
+              interval.instance_variable_set('@second_gengou', second_gengou)
+              interval
+            end
+            let(:scroll) do
+              scroll = Zakuro::Calculation::Gengou::Scroll.new(
+                start_date: start_date, end_date: end_date
+              )
+              scroll.instance_variable_set('@interval', interval)
+              scroll
+            end
+            it 'should be a element on first gengou' do
+              scroll.ignite(month: month)
+              expect(scroll.current_gengou.first_line.size).to eq 2
+            end
+            it 'should be included a invalid element on first gengou' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[0].invalid?).to be_truthy
+            end
+            it 'should be included a specified element on first gengou' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[1].name).to eq '元号1'
+            end
+            it 'should be first day on a month' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[1].start_date.format).to eq '0450-01-02'
+            end
+            it 'should be last day on a month' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.first_line
+              expect(actual[1].end_date.format).to eq '0450-01-29'
+            end
+            it 'should be invalid element on second gengou' do
+              scroll.ignite(month: month)
+              actual = scroll.current_gengou.second_line
+              expect(actual[0].invalid?).to be_truthy
             end
           end
           # TODO: more tests

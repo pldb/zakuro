@@ -67,7 +67,7 @@ module Zakuro
           start_date = western_start_date.clone - japan_start_date.day + 1
 
           # 今月末
-          end_date = start_date + month.days
+          end_date = start_date.clone + month.days - 1
 
           update_current_gengou(start_date: start_date, end_date: end_date)
 
