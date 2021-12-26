@@ -96,14 +96,16 @@ describe 'Zakuro' do
               scroll.instance_variable_set('@interval', interval)
               scroll
             end
+            let(:gengou) do
+              scroll.ignite(month: month)
+              scroll.to_gengou
+            end
 
             it 'should be empty array on first gengou' do
-              scroll.ignite(month: month)
-              expect(scroll.current_gengou.first_line).to eq []
+              expect(gengou.first_line).to eq []
             end
             it 'should be empty array on second gengou' do
-              scroll.ignite(month: month)
-              expect(scroll.current_gengou.second_line).to eq []
+              expect(gengou.second_line).to eq []
             end
           end
           context 'a month has a first gengou with same start date' do
@@ -179,28 +181,28 @@ describe 'Zakuro' do
               scroll.instance_variable_set('@interval', interval)
               scroll
             end
-            it 'should be a element on first gengou' do
+            let(:gengou) do
               scroll.ignite(month: month)
-              expect(scroll.current_gengou.first_line.size).to eq 1
+              scroll.to_gengou
+            end
+
+            it 'should be a element on first gengou' do
+              expect(gengou.first_line.size).to eq 1
             end
             it 'should be a specified element on first gengou' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[0].name).to eq '元号1'
             end
             it 'should be first day on a month' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[0].start_date.format).to eq '0450-01-01'
             end
             it 'should be last day on a month' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[0].end_date.format).to eq '0450-01-29'
             end
             it 'should be invalid element on second gengou' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.second_line
+              actual = gengou.second_line
               expect(actual[0].invalid?).to be_truthy
             end
           end
@@ -277,33 +279,31 @@ describe 'Zakuro' do
               scroll.instance_variable_set('@interval', interval)
               scroll
             end
-            it 'should be a element on first gengou' do
+            let(:gengou) do
               scroll.ignite(month: month)
-              expect(scroll.current_gengou.first_line.size).to eq 2
+              scroll.to_gengou
+            end
+            it 'should be a element on first gengou' do
+              expect(gengou.first_line.size).to eq 2
             end
             it 'should be included a invalid element on first gengou' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[0].invalid?).to be_truthy
             end
             it 'should be included a specified element on first gengou' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[1].name).to eq '元号1'
             end
             it 'should be first day on a month' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[1].start_date.format).to eq '0450-01-02'
             end
             it 'should be last day on a month' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.first_line
+              actual = gengou.first_line
               expect(actual[1].end_date.format).to eq '0450-01-29'
             end
             it 'should be invalid element on second gengou' do
-              scroll.ignite(month: month)
-              actual = scroll.current_gengou.second_line
+              actual = gengou.second_line
               expect(actual[0].invalid?).to be_truthy
             end
           end

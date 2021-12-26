@@ -22,8 +22,10 @@ module Zakuro
         attr_reader :monthly_end_date
         # @return [Reserve::Interval] 予約範囲
         attr_reader :interval
-        # @return [Base::Gengou] 元号
-        attr_reader :current_gengou
+        # @return [Array<Counte>] 1行目元号
+        attr_reader :first_gengou
+        # @return [Array<Counte>] 2行目元号
+        attr_reader :second_gengou
 
         #
         # 初期化
@@ -35,7 +37,8 @@ module Zakuro
           @monthly_start_date = Western::Calendar.new
           @monthly_end_date = Western::Calendar.new
           @interval = Reserve::Interval.new(start_date: start_date, end_date: end_date)
-          @current_gengou = Base::Gengou.new
+          @first_gengou = []
+          @second_gengou = []
         end
 
         #
@@ -93,6 +96,25 @@ module Zakuro
           update_current_gengou
         end
 
+        #
+        # 共通の元号に変換する
+        #
+        # @return [Base::Gengou] 元号
+        #
+        def to_gengou
+          start_date = @monthly_start_date
+          end_date = @monthly_end_date
+
+          Base::Gengou.new(
+            first_line: to_linear_gengou(
+              start_date: start_date, end_date: end_date, gengou_list: @first_gengou
+            ),
+            second_line: to_linear_gengou(
+              start_date: start_date, end_date: end_date, gengou_list: @second_gengou
+            )
+          )
+        end
+
         private
 
         def update_current_gengou
@@ -102,30 +124,19 @@ module Zakuro
           second_gengou = @interval.collect_second_gengou(start_date: start_date,
                                                           end_date: end_date)
 
-          first_line = replace_gengou(method: :first_line, gengou_list: first_gengou)
-          second_line = replace_gengou(method: :second_line, gengou_list: second_gengou)
-
-          @current_gengou = Base::Gengou.new(
-            first_line: to_linear_gengou(
-              start_date: start_date, end_date: end_date, gengou_list: first_line
-            ),
-            second_line: to_linear_gengou(
-              start_date: start_date, end_date: end_date, gengou_list: second_line
-            )
-          )
+          @first_gengou = replace_gengou(source: @first_gengou, destination: first_gengou)
+          @second_gengou = replace_gengou(source: @second_gengou, destination: second_gengou)
         end
 
-        def replace_gengou(method:, gengou_list: [])
-          return gengou_list if gengou_list.size.zero?
+        def replace_gengou(source: [], destination: [])
+          return destination if destination.size.zero?
 
-          current_gengou = @current_gengou.send(method)
+          return destination if source.size.zero?
 
-          return gengou_list if current_gengou.size.zero?
+          last = source[-1]
+          destination[0] = last if destination[0].name == last.name
 
-          last = current_gengou[-1]
-          gengou_list[0] = last if gengou_list[0].name == last.name
-
-          gengou_list
+          destination
         end
 
         #
