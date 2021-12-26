@@ -16,8 +16,10 @@ module Zakuro
       # 元号目録
       #
       class Scroll
-        # @return [Western::Calendar] 現在日
-        attr_reader :current_date
+        # @return [Western::Calendar] 月初日
+        attr_reader :monthly_start_date
+        # @return [Western::Calendar] 月末日
+        attr_reader :monthly_end_date
         # @return [Reserve::Interval] 予約範囲
         attr_reader :interval
         # @return [Base::Gengou] 元号
@@ -26,11 +28,12 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Western::Calendar] start_date 西暦開始日
-        # @param [Western::Calendar] end_date 西暦終了日
+        # @param [Western::Calendar] start_date 西暦開始日（最大範囲）
+        # @param [Western::Calendar] end_date 西暦終了日（最大範囲）
         #
         def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
-          @current_date = Western::Calendar.new
+          @monthly_start_date = Western::Calendar.new
+          @monthly_end_date = Western::Calendar.new
           @interval = Reserve::Interval.new(start_date: start_date, end_date: end_date)
           @current_gengou = Base::Gengou.new
         end
@@ -64,17 +67,37 @@ module Zakuro
           western_start_date = @interval.western_start_date
 
           # 今月初日（和暦日が1月2日であれば、開始日の1日前が初日）
-          start_date = western_start_date.clone - japan_start_date.day + 1
+          @monthly_start_date = western_start_date.clone - japan_start_date.day + 1
 
           # 今月末
-          end_date = start_date.clone + month.days - 1
+          @monthly_end_date = @monthly_start_date.clone + month.days - 1
 
-          update_current_gengou(start_date: start_date, end_date: end_date)
+          update_current_gengou
 
           true
         end
 
-        def update_current_gengou(start_date:, end_date:)
+        #
+        # 進める
+        #
+        # @param [Monthly::Month] month 月
+        #
+        def advance(month:)
+          @monthly_start_date = @monthly_end_date.clone + 1
+
+          # 今月末
+          @monthly_end_date = @monthly_start_date.clone + month.days - 1
+
+          next_year if month.number == 1 && !month.leaped
+
+          update_current_gengou
+        end
+
+        private
+
+        def update_current_gengou
+          start_date = @monthly_start_date
+          end_date = @monthly_end_date
           first_gengou = @interval.collect_first_gengou(start_date: start_date, end_date: end_date)
           second_gengou = @interval.collect_second_gengou(start_date: start_date,
                                                           end_date: end_date)
@@ -90,9 +113,6 @@ module Zakuro
               start_date: start_date, end_date: end_date, gengou_list: second_line
             )
           )
-
-          # 来月初日
-          @current_date = end_date.clone + 1
         end
 
         def replace_gengou(method:, gengou_list: [])
@@ -158,25 +178,11 @@ module Zakuro
         # @return [True] 開始不可
         #
         def ignitable?(month:)
-          return false unless @current_date.invalid?
+          return false unless @monthly_start_date.invalid?
 
           japan_start_date = @interval.japan_start_date
 
           japan_start_date.same_month?(leaped: month.leaped?, month: month.number)
-        end
-
-        #
-        # 進める
-        #
-        # @param [Monthly::Month] month 月
-        #
-        def advance(month:)
-          start_date = @current_date.clone
-          end_date = start_date.clone + month.days - 1
-
-          next_year if month.number == 1 && !month.leaped
-
-          update_current_gengou(start_date: start_date, end_date: end_date)
         end
 
         def next_year
