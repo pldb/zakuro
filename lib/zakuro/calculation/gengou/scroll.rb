@@ -90,7 +90,7 @@ module Zakuro
 
           @monthly_end_date = @monthly_start_date.clone + month.days - 1
 
-          next_year if month.number == 1 && !month.leaped
+          next_year if month.number == 1 && !month.leaped?
 
           update_current_gengou
         end
