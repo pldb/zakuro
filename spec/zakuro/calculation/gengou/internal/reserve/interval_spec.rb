@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../lib/zakuro/calculation/gengou/reserve/interval',
+require File.expand_path('../../../../../../' \
+                         'lib/zakuro/calculation/gengou/internal/reserve/interval',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
+require File.expand_path('../../../../../../lib/zakuro/era/western/calendar',
                          __dir__)
 
 describe 'Zakuro' do
