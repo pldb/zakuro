@@ -173,21 +173,40 @@ module Zakuro
               result.push(Base::LinearGengou.new)
               next
             end
-            gengou_start_date = gengou.western_start_date.clone
-            gengou_end_date = gengou.western_end_date.clone
 
-            gengou_start_date = start_date.clone if start_date > gengou_start_date
-            gengou_end_date = end_date.clone if end_date < gengou_end_date
-
-            result.push(
-              Base::LinearGengou.new(
-                start_date: gengou_start_date, end_date: gengou_end_date,
-                name: gengou.name, year: gengou.japan_year
-              )
+            linear_gengou = to_limited_linear_gengou(
+              start_date: start_date,
+              end_date: end_date,
+              gengou: gengou
             )
+            result.push(linear_gengou)
           end
 
           result
+        end
+
+        #
+        # 範囲を限定した直列元号に変換する
+        #
+        # * 開始日・終了日により範囲を狭める
+        #
+        # @param [Western::Calendar] start_date 西暦開始日
+        # @param [Western::Calendar] end_date 西暦終了日
+        # @param [Counter] gengou 加算元号
+        #
+        # @return [Base::Gengou] 元号
+        #
+        def to_limited_linear_gengou(start_date:, end_date:, gengou:)
+          gengou_start_date = gengou.western_start_date.clone
+          gengou_end_date = gengou.western_end_date.clone
+
+          gengou_start_date = start_date.clone if start_date > gengou_start_date
+          gengou_end_date = end_date.clone if end_date < gengou_end_date
+
+          Base::LinearGengou.new(
+            start_date: gengou_start_date, end_date: gengou_end_date,
+            name: gengou.name, year: gengou.japan_year
+          )
         end
 
         #
