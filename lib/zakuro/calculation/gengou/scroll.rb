@@ -39,6 +39,7 @@ module Zakuro
           @interval = Reserve::Interval.new(start_date: start_date, end_date: end_date)
           @first_gengou = []
           @second_gengou = []
+          @ignited = false
         end
 
         #
@@ -47,11 +48,14 @@ module Zakuro
         # @param [Monthly::Month] month 月
         #
         def run(month:)
-          # 開始日の検索を行う
-          ignited = ignite(month: month)
+          unless @ignited
+            # 開始日の検索を行う
+            @ignited = ignite(month: month)
+            return
+          end
 
           # 時間を進める
-          advance(month: month) unless ignited
+          advance(month: month)
         end
 
         #
@@ -101,8 +105,8 @@ module Zakuro
         # @return [Base::Gengou] 元号
         #
         def to_gengou
-          start_date = @monthly_start_date
-          end_date = @monthly_end_date
+          start_date = @monthly_start_date.clone
+          end_date = @monthly_end_date.clone
 
           Base::Gengou.new(
             first_line: to_linear_gengou(
@@ -112,6 +116,24 @@ module Zakuro
               start_date: start_date, end_date: end_date, gengou_list: @second_gengou
             )
           )
+        end
+
+        #
+        # 開始西暦年を取得する
+        #
+        # @return [Integer] 開始西暦年
+        #
+        def western_start_year
+          @interval.western_start_year
+        end
+
+        #
+        # 終了西暦年を取得する
+        #
+        # @return [Integer] 終了西暦年
+        #
+        def western_end_year
+          @interval.western_end_year
         end
 
         private

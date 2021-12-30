@@ -3,7 +3,9 @@
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
-require_relative '../base/multi_gengou_roller'
+require_relative '../gengou/scroll'
+
+require_relative '../base/gengou'
 require_relative '../base/year'
 
 require_relative './transfer/year_boundary'
@@ -37,11 +39,7 @@ module Zakuro
         # @return [Western::Calendar] 終了日
         attr_reader :end_date
         # @return [MultiGengouRoller] 改元処理
-        attr_reader :multi_gengou_roller
-        # @return [Western::Calendar] 最過去の元旦
-        attr_reader :new_year_date
-        # @return [Integer] 西暦年
-        attr_reader :western_year
+        attr_reader :scroll
 
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'full_range')
@@ -59,11 +57,7 @@ module Zakuro
           return if invalid?
 
           @context = context
-          @multi_gengou_roller = Base::MultiGengouRoller.new(
-            start_date: start_date, end_date: end_date
-          )
-          @new_year_date = @multi_gengou_roller.oldest_date.clone
-          @western_year = @new_year_date.year
+          @scroll = Gengou::Scroll.new(start_date: start_date, end_date: end_date)
         end
 
         #
@@ -89,9 +83,9 @@ module Zakuro
           )
           years = update_gengou(years: years)
 
-          Transfer::WesternDateAllocation.update_first_day(
-            context: @context, years: years
-          )
+          # Transfer::WesternDateAllocation.update_first_day(
+          #   context: @context, years: years
+          # )
 
           years
         end
@@ -104,12 +98,13 @@ module Zakuro
         # @return [Array<Year>] 年データ（冬至基準）
         #
         def annual_ranges
-          oldest_date = @new_year_date
-          newest_date = @multi_gengou_roller.newest_date
+          start_year = @scroll.western_start_year
+          end_year = @scroll.western_end_year
+
           annual_range = context.resolver.annual_range
 
           years = []
-          ((oldest_date.year)..(newest_date.year + 2)).each do |year|
+          (start_year..(end_year + 1)).each do |year|
             years.push(
               annual_range.get(
                 context: @context, western_year: year
@@ -120,90 +115,113 @@ module Zakuro
           years
         end
 
-        # :reek:TooManyStatements { max_statements: 8 }
-
         #
-        # 完全範囲内の年データの元号を開始年基準で更新する
+        # 元号を更新する
         #
         # @param [Array<Year>] years 年データ（元旦基準）
         #
         # @return [Array<Year>] 元号更新済み年データ（元旦基準）
         #
         def update_gengou(years:)
-          updated_years = []
-
-          nearest_end_date = choise_nearest_end_date
-
           years.each do |year|
-            next_year(years: updated_years, year: year)
-
-            if @new_year_date > nearest_end_date
-              @multi_gengou_roller.transfer
-              nearest_end_date = choise_nearest_end_date
+            year.months.each do |month|
+              # TODO: make
+              @scroll.run(month: month)
+              gengou = @scroll.to_gengou
+              if gengou.first_line.size.zero?
+                p 'nothing'
+                next
+              end
+              p gengou.first_line[0].name
+              p gengou.first_line[0].year
             end
-            @multi_gengou_roller.next_year
           end
-
-          updated_years
         end
 
-        private
+        # # :reek:TooManyStatements { max_statements: 8 }
 
-        #
-        # 元号処理対象の年を進める
-        #
-        # @param [Array<Year>] years 元号処理済み年データ（元旦基準）
-        # @param [Year] year 元号処理前の年（元旦基準）
-        #
-        def next_year(years:, year:)
-          updated_year = update_year(year: year)
+        # #
+        # # 完全範囲内の年データの元号を開始年基準で更新する
+        # #
+        # # @param [Array<Year>] years 年データ（元旦基準）
+        # #
+        # # @return [Array<Year>] 元号更新済み年データ（元旦基準）
+        # #
+        # def update_gengou(years:)
+        #   updated_years = []
 
-          years.push(updated_year)
+        #   nearest_end_date = choise_nearest_end_date
 
-          next_new_year_date(total_days: updated_year.total_days)
+        #   years.each do |year|
+        #     next_year(years: updated_years, year: year)
 
-          nil
-        end
+        #     if @new_year_date > nearest_end_date
+        #       @multi_gengou_roller.transfer
+        #       nearest_end_date = choise_nearest_end_date
+        #     end
+        #     @multi_gengou_roller.next_year
+        #   end
 
-        #
-        # 年の元号を更新する
-        #
-        # @param [Year] year 元号処理前の年（元旦基準）
-        #
-        # @return [Year] 元号処理済の年（元旦基準）
-        #
-        def update_year(year:)
-          multi_gengou = @multi_gengou_roller.multi_gengou.clone
+        #   updated_years
+        # end
 
-          updated_year = Base::Year.new(
-            multi_gengou: multi_gengou, new_year_date: @new_year_date.clone,
-            months: year.months
-          )
-          updated_year.commit
+        # private
 
-          updated_year
-        end
+        # #
+        # # 元号処理対象の年を進める
+        # #
+        # # @param [Array<Year>] years 元号処理済み年データ（元旦基準）
+        # # @param [Year] year 元号処理前の年（元旦基準）
+        # #
+        # def next_year(years:, year:)
+        #   updated_year = update_year(year: year)
 
-        #
-        # 次の年に進める
-        #
-        # @param [Integer] total_days 年の日数
-        #
-        def next_new_year_date(total_days:)
-          @new_year_date += total_days
-          @multi_gengou_roller.next(days: total_days)
+        #   years.push(updated_year)
 
-          nil
-        end
+        #   next_new_year_date(total_days: updated_year.total_days)
 
-        #
-        # 現在日からみて直近の未来に対する元号の切替前日を求める
-        #
-        # @return [Western::Calendar] 元号の切替前日
-        #
-        def choise_nearest_end_date
-          @multi_gengou_roller.choise_nearest_end_date
-        end
+        #   nil
+        # end
+
+        # #
+        # # 年の元号を更新する
+        # #
+        # # @param [Year] year 元号処理前の年（元旦基準）
+        # #
+        # # @return [Year] 元号処理済の年（元旦基準）
+        # #
+        # def update_year(year:)
+        #   multi_gengou = @multi_gengou_roller.multi_gengou.clone
+
+        #   updated_year = Base::Year.new(
+        #     multi_gengou: multi_gengou, new_year_date: @new_year_date.clone,
+        #     months: year.months
+        #   )
+        #   updated_year.commit
+
+        #   updated_year
+        # end
+
+        # #
+        # # 次の年に進める
+        # #
+        # # @param [Integer] total_days 年の日数
+        # #
+        # def next_new_year_date(total_days:)
+        #   @new_year_date += total_days
+        #   @multi_gengou_roller.next(days: total_days)
+
+        #   nil
+        # end
+
+        # #
+        # # 現在日からみて直近の未来に対する元号の切替前日を求める
+        # #
+        # # @return [Western::Calendar] 元号の切替前日
+        # #
+        # def choise_nearest_end_date
+        #   @multi_gengou_roller.choise_nearest_end_date
+        # end
       end
     end
   end

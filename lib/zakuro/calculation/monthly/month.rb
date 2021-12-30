@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../base/gengou'
 require_relative './first_day'
 require_relative './month_label'
 
@@ -21,6 +22,8 @@ module Zakuro
         attr_reader :first_day
         # @return [Array<SolarTerm>] 二十四節気
         attr_reader :solar_terms
+        # @return [Base::Gengou] 元号
+        attr_reader :gengou
 
         #
         # 初期化
@@ -31,11 +34,12 @@ module Zakuro
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         #
         def initialize(context:, month_label: MonthLabel.new, first_day: FirstDay.new,
-                       solar_terms: [])
+                       solar_terms: [], gengou: Base::Gengou.new)
           @context = context
           @month_label = month_label
           @first_day = first_day
           @solar_terms = solar_terms
+          @gengou = gengou
         end
 
         #
