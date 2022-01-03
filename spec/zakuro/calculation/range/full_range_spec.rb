@@ -24,20 +24,14 @@ describe 'Zakuro' do
       describe 'FullRange' do
         describe '.get' do
           let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
-          context 'xxx' do
-            it 'should be yyy' do
+          context 'specified "貞観" gengou' do
+            it 'should be 18 year' do
               date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
               range = Zakuro::Calculation::Range::FullRange.new(
                 context: context, start_date: date
               )
               actual = range.get
-              p actual.size
-              # TODO: make
-            end
-          end
-          context 'xxx2' do
-            it 'should be yyy2' do
-              # TODO: make
+              expect(actual.size).to eq 18
             end
           end
         end
