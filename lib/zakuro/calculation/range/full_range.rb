@@ -9,7 +9,6 @@ require_relative '../base/gengou'
 require_relative '../base/year'
 
 require_relative './transfer/year_boundary'
-require_relative './transfer/western_date_allocation'
 
 # :nodoc:
 module Zakuro
@@ -83,10 +82,6 @@ module Zakuro
           )
           years = update_gengou(years: years)
 
-          # Transfer::WesternDateAllocation.update_first_day(
-          #   context: @context, years: years
-          # )
-
           years
         end
 
@@ -124,14 +119,24 @@ module Zakuro
         #
         def update_gengou(years:)
           years.each do |year|
-            year.months.each do |month|
-              # TODO: make
+            year.months.each_with_index do |month, index|
               @scroll.run(month: month)
               gengou = @scroll.to_gengou
+              year.months[index] = Monthly::Month.new(
+                context: context,
+                month_label: month.month_label,
+                first_day: Monthly::FirstDay.new(
+                  remainder: month.first_day.remainder,
+                  western_date: gengou.start_date.clone
+                ),
+                solar_terms: month.solar_terms, gengou: gengou
+              )
+              # TODO: make
               if gengou.first_line.size.zero?
                 p 'nothing'
                 next
               end
+              p year.months[index].first_day.western_date
               p gengou.first_line[0].name
               p gengou.first_line[0].year
             end

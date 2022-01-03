@@ -109,6 +109,8 @@ module Zakuro
           end_date = @monthly_end_date.clone
 
           Base::Gengou.new(
+            start_date: start_date,
+            end_date: end_date,
             first_line: to_linear_gengou(
               start_date: start_date, end_date: end_date, gengou_list: @first_gengou
             ),

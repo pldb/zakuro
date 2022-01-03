@@ -12,6 +12,10 @@ module Zakuro
       # Gengou 元号
       #
       class Gengou
+        # @return [Western::Calendar] 開始日
+        attr_reader :start_date
+        # @return [Western::Calendar] 終了日
+        attr_reader :end_date
         # @return [Array<LinearGengou>] 1行目元号
         attr_reader :first_line
         # @return [Array<LinearGengou>] 2行目元号
@@ -20,10 +24,15 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] end_date 終了日
         # @param [Array<LinearGengou>] first_line 1行目元号
         # @param [Array<LinearGengou>] second_line 2行目元号
         #
-        def initialize(first_line: [], second_line: [])
+        def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new,
+                       first_line: [], second_line: [])
+          @start_date = start_date
+          @end_date = end_date
           @first_line = first_line
           @second_line = second_line
         end
@@ -56,6 +65,16 @@ module Zakuro
           end
 
           LinearGengou.new
+        end
+
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
+        def invalid?
+          @first_line.size.zero? && @second_line.size.zero?
         end
       end
     end
