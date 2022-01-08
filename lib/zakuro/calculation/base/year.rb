@@ -2,6 +2,8 @@
 
 require_relative '../cycle/zodiac'
 
+require_relative '../../era/western/calendar'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -16,20 +18,15 @@ module Zakuro
         attr_reader :months
         # @return [Integer] 年の日数
         attr_reader :total_days
-        # @return [Western::Calendar] 元旦
-        attr_reader :new_year_date
 
         #
         # 初期化
         #
         # @param [Array<Month>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
-        # @param [Western::Calendar] new_year_date 元旦
         #
-        def initialize(new_year_date: Western::Calendar.new,
-                       months: [], total_days: 0)
+        def initialize(months: [], total_days: 0)
           @months = months
-          @new_year_date = new_year_date
           @total_days = total_days
         end
 
@@ -54,10 +51,22 @@ module Zakuro
         # @return [MultiGengou] 自身
         #
         def next_year
-          @new_year_date += @total_days
           @total_days = 0
 
           self
+        end
+
+        #
+        # 年初を取得する
+        #
+        # @return [Western::Calendar] 年初
+        #
+        def new_year_date
+          return Western::Calendar.new unless months
+
+          return Western::Calendar.new if months.size.zero?
+
+          @months.first_day.western_date
         end
 
         #
@@ -66,7 +75,10 @@ module Zakuro
         # @return [String] 十干十二支
         #
         def zodiac_name
-          Cycle::Zodiac.year_name(western_year: @new_year_date.year)
+          date = new_year_date
+          return '' if date.invalid?
+
+          Cycle::Zodiac.year_name(western_year: date.year)
         end
 
         #

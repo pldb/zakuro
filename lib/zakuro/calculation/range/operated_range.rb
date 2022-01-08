@@ -135,10 +135,7 @@ module Zakuro
         # @return [OperatedYear] 年
         #
         def self.rewrite_year(context:, year:, operated_solar_terms:)
-          # TODO: new_year_dateを消す
-          result = Base::OperatedYear.new(
-            new_year_date: year.new_year_date
-          )
+          result = Base::OperatedYear.new
           year.months.each do |month|
             result.push(month: resolve_month(
               context: context, month: month,

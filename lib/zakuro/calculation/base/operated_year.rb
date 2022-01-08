@@ -17,20 +17,9 @@ module Zakuro
         #
         # @param [Array<OperatedMonth>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
-        # @param [Western::Calendar] new_year_date 元旦
         #
-        def initialize(new_year_date: Western::Calendar.new,
-                       months: [], total_days: 0)
-          super(new_year_date: new_year_date,
-                months: months, total_days: total_days)
-        end
-
-        def commit
-          super
-
-          return if months.empty?
-
-          @new_year_date = months[0].first_day.western_date
+        def initialize(months: [], total_days: 0)
+          super(months: months, total_days: total_days)
         end
 
         #
