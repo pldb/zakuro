@@ -10,6 +10,8 @@ require_relative '../base/year'
 
 require_relative './transfer/year_boundary'
 
+require_relative './transfer/gengou_scroller'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -80,7 +82,8 @@ module Zakuro
           years = Transfer::YearBoundary.get(
             context: @context, annual_ranges: annual_ranges
           )
-          years = update_gengou(years: years)
+
+          Transfer::GengouScroller.set(scroll: scroll, years: years)
 
           years
         end
@@ -110,38 +113,6 @@ module Zakuro
           end
 
           years
-        end
-
-        #
-        # 元号を更新する
-        #
-        # @param [Array<Base::Year>] years 年データ（元旦基準）
-        #
-        def update_gengou(years:)
-          years.each do |year|
-            update_gengou_year(year: year)
-          end
-        end
-
-        #
-        # 年の元号を更新する
-        #
-        # @param [Base::Year] year 年
-        #
-        def update_gengou_year(year:)
-          year.months.each_with_index do |month, index|
-            @scroll.run(month: month)
-            gengou = @scroll.to_gengou
-            year.months[index] = Monthly::Month.new(
-              context: context,
-              month_label: month.month_label,
-              first_day: Monthly::FirstDay.new(
-                remainder: month.first_day.remainder,
-                western_date: gengou.start_date.clone
-              ),
-              solar_terms: month.solar_terms, gengou: gengou
-            )
-          end
         end
       end
     end

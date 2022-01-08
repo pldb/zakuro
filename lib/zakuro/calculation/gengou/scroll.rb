@@ -13,7 +13,7 @@ module Zakuro
     module Gengou
       # Scroll
       #
-      # 元号目録
+      # 元号スクロール
       #
       class Scroll
         # @return [Western::Calendar] 月初日
