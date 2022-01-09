@@ -56,7 +56,7 @@ module Zakuro
           date = param.date
           days = param.days
           Result::Data::SingleDay.new(
-            year: save_year(year: year),
+            year: save_year(year: year, month: month, date: date),
             month: save_month(month: month, date: date, days: days),
             day: save_day(month: month, date: date, days: days)
           )
@@ -69,10 +69,10 @@ module Zakuro
         #
         # @return [Result::Year] 年データ
         #
-        def self.save_year(year:)
-          multi_gengou = year.multi_gengou
-          first = multi_gengou.first_line
-          second = multi_gengou.second_line
+        def self.save_year(year:, month:, date:)
+          gengou = month.gengou
+          first = gengou.match_first_line(date: date)
+          second = gengou.match_second_line(date: date)
           Result::Data::Year.new(
             first_gengou:
               Result::Data::Gengou.new(name: first.name, number: first.year),

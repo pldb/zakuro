@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../base/multi_gengou_roller'
 require_relative '../base/year'
 
 require_relative '../../era/western/calendar'
@@ -29,11 +28,7 @@ module Zakuro
         # @return [Result::Data::SingleDay] 和暦日
         #
         def self.get(years: [], date: Western::Calendar.new)
-          year = specify_year(years: years, date: date)
-
-          year = transfer(year: year, date: date)
-
-          month = specify_month(year: year, date: date)
+          year, month = specify(years: years, date: date)
           first_date = month.western_date
 
           Output::Response::SingleDay.save_single_day(
@@ -50,35 +45,18 @@ module Zakuro
         # @param [Array<Year>] years 範囲
         # @param [Western::Calendar] date 西暦日
         #
-        # @return [Year] 対象年
+        # @return [Base::Year] 対象年
+        # @return [Base::Month] 対象月
         #
-        def self.specify_year(years:, date:)
+        def self.specify(years:, date:)
           years.reverse_each do |year|
-            return year if date >= year.new_year_date
+            month = specify_month(year: year, date: date)
+            return year, month unless month.invalid?
           end
 
           raise ArgumentError, "invalid year range. date: #{date.format}"
         end
-        private_class_method :specify_year
-
-        #
-        # 改元する
-        #
-        # @param [Year] year 年
-        # @param [Western::Calendar] date 西暦日
-        #
-        # @return [Year] 改元後の年
-        #
-        def self.transfer(year:, date:)
-          multi_gengou = Calculation::Base::MultiGengouRoller.transfer(
-            multi_gengou: year.multi_gengou, date: date
-          )
-          Calculation::Base::Year.new(
-            multi_gengou: multi_gengou, new_year_date: year.new_year_date,
-            months: year.months, total_days: year.total_days
-          )
-        end
-        private_class_method :transfer
+        private_class_method :specify
 
         # :reek:TooManyStatements { max_statements: 7 }
 
@@ -93,14 +71,11 @@ module Zakuro
         def self.specify_month(year:, date:)
           months = year.months
 
-          current_month = months[0]
           months.each do |month|
-            return current_month if month.western_date > date
-
-            current_month = month
+            return month if month.western_date > date
           end
 
-          current_month
+          Monthly::Month.new
         end
         private_class_method :specify_month
       end

@@ -66,7 +66,7 @@ module Zakuro
 
           return Western::Calendar.new if months.size.zero?
 
-          @months.first_day.western_date
+          @months[0].western_date
         end
 
         #

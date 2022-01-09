@@ -33,13 +33,23 @@ module Zakuro
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         #
-        def initialize(context:, month_label: MonthLabel.new, first_day: FirstDay.new,
+        def initialize(context: Context.new, month_label: MonthLabel.new, first_day: FirstDay.new,
                        solar_terms: [], gengou: Base::Gengou.new)
           @context = context
           @month_label = month_label
           @first_day = first_day
           @solar_terms = solar_terms
           @gengou = gengou
+        end
+
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
+        def invalid?
+          @context.invalid?
         end
 
         #
