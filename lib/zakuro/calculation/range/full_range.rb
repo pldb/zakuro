@@ -83,6 +83,8 @@ module Zakuro
             context: @context, annual_ranges: annual_ranges
           )
 
+          years.each(&:commit)
+
           Transfer::GengouScroller.set(scroll: scroll, years: years)
 
           years

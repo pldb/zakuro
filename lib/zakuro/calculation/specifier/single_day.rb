@@ -49,7 +49,7 @@ module Zakuro
         # @return [Base::Month] 対象月
         #
         def self.specify(years:, date:)
-          years.reverse_each do |year|
+          years.each do |year|
             month = specify_month(year: year, date: date)
             return year, month unless month.invalid?
           end
@@ -72,7 +72,10 @@ module Zakuro
           months = year.months
 
           months.each do |month|
-            return month if month.western_date > date
+            western_date = month.western_date
+            next if western_date.invalid?
+
+            return month if month.western_date >= date
           end
 
           Monthly::Month.new
