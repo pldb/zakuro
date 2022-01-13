@@ -75,7 +75,7 @@ module Zakuro
             western_date = month.western_date
             next if western_date.invalid?
 
-            return month if month.western_date >= date
+            return month if month.include?(date: date)
           end
 
           Monthly::Month.new

@@ -32,6 +32,7 @@ module Zakuro
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
+        # @param [Base::Gengou] gengou 元号
         #
         def initialize(context: Context.new, month_label: MonthLabel.new, first_day: FirstDay.new,
                        solar_terms: [], gengou: Base::Gengou.new)
@@ -194,6 +195,38 @@ module Zakuro
         #
         def same?(other:)
           number == other.number && leaped? == other.leaped?
+        end
+
+        #
+        # 月の終了日を返す
+        #
+        # @return [Western::Calendar] 月の終了日
+        #
+        def end_date
+          return Western::Calendar.new if western_date.invalid?
+
+          western_date.clone + days - 1
+        end
+
+        #
+        # 範囲内か
+        #
+        # @param [Western::Calendar] date 日付
+        #
+        # @return [True] 範囲内
+        # @return [False] 範囲外
+        #
+        def include?(date:)
+          return false if invalid?
+
+          start_date = western_date
+          return false if start_date.invalid?
+
+          return false if date < start_date
+
+          return false if date > end_date
+
+          true
         end
       end
     end

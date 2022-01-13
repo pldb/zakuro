@@ -32,11 +32,14 @@ module Zakuro
             years: years, date: date
           )
 
-          operated_range = Calculation::Range::OperatedRange.new(context: context, years: years)
+          operated_range = Calculation::Range::OperatedRange.new(
+            context: context, start_date: date, years: years
+          )
+          operated_years = operated_range.get
 
           Result::Single.new(
             data: Calculation::Specifier::SingleDay.get(
-              years: operated_range.get, date: date
+              years: operated_years, date: date
             ),
             operation: create_operation(calc_date: calc_date)
           )
