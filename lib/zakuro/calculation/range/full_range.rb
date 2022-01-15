@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../version/context'
+
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
@@ -7,6 +9,8 @@ require_relative '../gengou/scroll'
 
 require_relative '../base/gengou'
 require_relative '../base/year'
+
+require_relative '../version/version'
 
 require_relative './transfer/year_boundary'
 
@@ -79,9 +83,7 @@ module Zakuro
         def get
           return [] if invalid?
 
-          years = Transfer::YearBoundary.get(
-            context: @context, annual_ranges: annual_ranges
-          )
+          years = version_ranges
 
           years.each(&:commit)
 
@@ -92,17 +94,64 @@ module Zakuro
 
         private
 
-        # :reek:TooManyStatements { max_statements: 7 }
+        #
+        # 暦別範囲
+        #
+        # @return [Array<Base::Year>] 完全範囲
+        #
+        def version_ranges
+          result = []
+
+          start_year = @scroll.western_start_year
+          end_year = @scroll.western_end_year
+
+          versions = Version.get(start_year: start_year, end_year: end_year)
+
+          versions.each_with_index do |version, index|
+            context = Context.new(version_name: version.name)
+            start_year = version.start_year
+            end_year = version.end_year
+            # 最後の暦だけ1年足す（次の元号の開始年まで計算するケースあり）
+            end_year += 1 if (index + 1) == versions.size
+
+            years = boundary_resolved_ranges(
+              context: context, start_year: start_year, end_year: end_year
+            )
+            result.concat(years)
+          end
+
+          result
+        end
+
+        #
+        # 年境界解決済みの範囲
+        #
+        # @param [Context] context 暦コンテキスト
+        # @param [Integer] start_year 開始西暦年
+        # @param [Integer] end_year 終了西暦年
+        #
+        # @return [Array<Base::Year>] 年境界解決済みの範囲
+        #
+        def boundary_resolved_ranges(context:, start_year:, end_year:)
+          ranges = annual_ranges(
+            context: context, start_year: start_year, end_year: end_year
+          )
+
+          Transfer::YearBoundary.get(
+            context: context, annual_ranges: ranges
+          )
+        end
 
         #
         # 完全範囲内の年データを取得する
         #
+        # @param [Context] context 暦コンテキスト
+        # @param [Integer] start_year 開始西暦年
+        # @param [Integer] end_year 終了西暦年
+        #
         # @return [Array<Base::Year>] 年データ（冬至基準）
         #
-        def annual_ranges
-          start_year = @scroll.western_start_year
-          end_year = @scroll.western_end_year
-
+        def annual_ranges(context:, start_year:, end_year:)
           annual_range = context.resolver.annual_range
 
           years = []

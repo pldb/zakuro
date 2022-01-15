@@ -16,6 +16,8 @@ module Zakuro
       # Range 暦（範囲）
       #
       class Range
+        # TODO: 暦のクラス名は消す
+
         # @return [String] 暦名
         attr_reader :name
         # @return [String] 暦のクラス名
@@ -27,6 +29,9 @@ module Zakuro
         attr_reader :start_year
         # @return [Integer] 終了西暦年
         attr_reader :end_year
+        # @return [True] リリース済
+        # @return [False] 未リリース
+        attr_reader :released
 
         #
         # 初期化
@@ -36,13 +41,15 @@ module Zakuro
         # @param [Western::Calendar] start_date 暦の開始日
         # @param [Integer] start_year 開始西暦年
         # @param [Integer] end_year 終了西暦年
+        # @param [True, False] released リリース済 / 未リリース
         #
-        def initialize(name:, class_name:, start_date:, start_year:, end_year:)
+        def initialize(name:, class_name:, start_date:, start_year:, end_year:, released:)
           @name = name
           @class_name = class_name
           @start_date = start_date
           @start_year = start_year
           @end_year = end_year
+          @released = released
         end
       end
 
@@ -57,7 +64,8 @@ module Zakuro
           class_name: 'Zakuro::Genka::Gateway',
           start_date: Western::Calendar.new(year: 445, month: 1, day: 24),
           start_year: 445,
-          end_year: 697
+          end_year: 697,
+          released: true
         ),
         # 文武天皇02年01月01日
         Range.new(
@@ -65,7 +73,8 @@ module Zakuro
           class_name: 'Zakuro::Gihou::Gateway',
           start_date: Western::Calendar.new(year: 698, month: 2, day: 16),
           start_year: 698,
-          end_year: 763
+          end_year: 763,
+          released: true
         ),
         # 天平宝字08年01月01日
         Range.new(
@@ -73,7 +82,8 @@ module Zakuro
           class_name: 'Zakuro::Daien::Gateway',
           start_date: Western::Calendar.new(year: 764, month: 2, day: 7),
           start_year: 764,
-          end_year: 861
+          end_year: 861,
+          released: true
         ),
         # 貞観02年01月01日
         Range.new(
@@ -81,7 +91,8 @@ module Zakuro
           class_name: 'Zakuro::Senmyou::Gateway',
           start_date: Western::Calendar.new(year: 862, month: 2, day: 3),
           start_year: 862,
-          end_year: 1684
+          end_year: 1684,
+          released: true
         ),
         # 貞享02年01月01日
         Range.new(
@@ -89,7 +100,8 @@ module Zakuro
           class_name: 'Zakuro::Joukyou::Gateway',
           start_date: Western::Calendar.new(year: 1685, month: 2, day: 4),
           start_year: 1685,
-          end_year: 1754
+          end_year: 1754,
+          released: false
         ),
         # 宝暦05年01月01日
         Range.new(
@@ -97,7 +109,8 @@ module Zakuro
           class_name: 'Zakuro::Houryaku::Gateway',
           start_date: Western::Calendar.new(year: 1755, month: 2, day: 11),
           start_year: 1755,
-          end_year: 1797
+          end_year: 1797,
+          released: false
         ),
         # 寛政10年01月01日
         Range.new(
@@ -105,7 +118,8 @@ module Zakuro
           class_name: 'Zakuro::Kansei::Gateway',
           start_date: Western::Calendar.new(year: 1798, month: 2, day: 16),
           start_year: 1798,
-          end_year: 1843
+          end_year: 1843,
+          released: false
         ),
         # 天保13年01月01日
         Range.new(
@@ -113,7 +127,8 @@ module Zakuro
           class_name: 'Zakuro::Tenpou::Gateway',
           start_date: Western::Calendar.new(year: 1844, month: 2, day: 18),
           start_year: 1844,
-          end_year: 1867
+          end_year: 1867,
+          released: false
         ),
         # 明治01年09月08日
         Range.new(
@@ -121,7 +136,8 @@ module Zakuro
           class_name: 'Zakuro::Gregorio::Gateway',
           start_date: Western::Calendar.new(year: 1868, month: 10, day: 23),
           start_year: 1868,
-          end_year: 9999
+          end_year: 9999,
+          released: false
         )
       ].freeze
 

@@ -27,6 +27,8 @@ module Zakuro
           result = []
 
           ranges.each do |range|
+            next unless range.released
+
             range_start_year = range.start_year
             range_start_year = start_year if start_year > range.start_year
 
