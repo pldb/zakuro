@@ -8,9 +8,12 @@ module Zakuro
   # Context 暦コンテキスト
   #
   class Context
+    # @return [String] 暦名
     attr_reader :version_name
+    # @return [VersionClassResolver] 暦リゾルバー
     attr_reader :resolver
 
+    # @return [Array<String>] 暦名
     VERSION_NAMES = %w[Genka Gihou Daien Senmyou Joukyou Kansei Tenpou Gregorio].freeze
 
     #
@@ -21,8 +24,8 @@ module Zakuro
     def initialize(version_name: '')
       @version_name = version_name
 
-      unless invalid?
-        raise ArgumentError.new, 'invalid version' unless VERSION_NAMES.include?(version_name)
+      if !invalid? && !VERSION_NAMES.include?(version_name)
+        raise ArgumentError.new, 'invalid version'
       end
 
       @resolver = VersionClassResolver.new(version_name: version_name)
