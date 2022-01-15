@@ -43,7 +43,8 @@ describe 'Zakuro' do
 
             hash.each do |test|
               western_date = test['western_date']
-              version = test['version']
+              # TODO: 暦を指定できるようになった段階で使用する
+              # version = test['version']
               expected = SingleDataFactory.create(hash: test['expected'])
 
               it "#{western_date}: #{test['japan_date']}: #{test['description']}" do
@@ -53,7 +54,7 @@ describe 'Zakuro' do
                 # end
                 eql?(
                   date: Zakuro::Western::Calendar.parse(str: western_date),
-                  version: version,
+                  version: '',
                   expected: expected
                 )
               end

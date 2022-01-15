@@ -34,10 +34,10 @@ module Zakuro
         # @param [Operation::MonthHistory] history 変更履歴（月）
         #
         def initialize(context:, operated_solar_terms:, month_label: MonthLabel.new,
-                       first_day: FirstDay.new, solar_terms: [],
+                       first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new,
                        history: Operation::MonthHistory.new)
           super(context: context, month_label: month_label, first_day: first_day,
-                solar_terms: solar_terms)
+                solar_terms: solar_terms, gengou: gengou)
           @history = history
           @operated_solar_terms = operated_solar_terms
           @moved = false

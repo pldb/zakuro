@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../western'
+require_relative '../../western/calendar'
 
 # :nodoc:
 module Zakuro
@@ -8,40 +8,52 @@ module Zakuro
   # Japan 和暦
   #
   module Japan
-    # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
-
     #
     # Gengou 元号情報
     #
     class Gengou
       # @return [String] 元号名
       attr_reader :name
-      # @return [Western::Calendar] 開始日
-      attr_reader :start_date
-      # @return [Western::Calendar] 元旦
-      attr_reader :new_year_date
+      # @return [Both::Year] 開始年（和暦/西暦）
+      attr_reader :both_start_year
+      # @return [Both::Date] 開始日（和暦/西暦）
+      attr_reader :both_start_date
+      # @return [Integer] 終了年
+      attr_reader :end_year
       # @return [Western::Calendar] 終了日
       attr_reader :end_date
-      # @return [Integer] 元号年
-      attr_reader :year
 
       #
       # 初期化
       #
       # @param [String] name 元号名
-      # @param [Western::Calendar] start_date 開始日
-      # @param [Western::Calendar] new_year_date 元旦
+      # @param [Both::Year] both_start_year 開始年（和暦/西暦）
+      # @param [Both::Date] both_start_date 開始日（和暦/西暦）
+      # @param [Integer] end_date 終了年
       # @param [Western::Calendar] end_date 終了日
-      # @param [Integer] year 元号年
       #
-      def initialize(name: '', start_date: Western::Calendar.new,
-                     new_year_date: Western::Calendar.new,
-                     end_date: Western::Calendar.new, year: -1)
+      def initialize(name: '', both_start_year: Both::Year.new,
+                     both_start_date: Both::Date.new,
+                     end_date: Western::Calendar.new,
+                     end_year: Both::Year::INVALID)
         @name = name
-        @start_date = start_date
-        @new_year_date = new_year_date
+        @both_start_year = both_start_year
+        @both_start_date = both_start_date
+        @end_year = end_year
         @end_date = end_date
-        @year = year
+      end
+
+      #
+      # 終了年を更新する
+      #
+      # @param [Integer] end_year 終了年
+      #
+      def write_end_year(end_year:)
+        unless Gengou.valid_year(year: end_year)
+          raise ArgumentError, "invalid year format. [#{end_year}]"
+        end
+
+        @end_year = end_year
       end
 
       #
@@ -59,12 +71,26 @@ module Zakuro
       end
 
       #
-      # 日付が有効かどうかを確認する
+      # 年が不正なしかどうかを確認する
+      #
+      # @param [Integer] year 年
+      #
+      # @return [True] 不正なし
+      # @return [False] 不正
+      #
+      def self.valid_year(year:)
+        return false unless year
+
+        year.is_a?(Integer)
+      end
+
+      #
+      # 日付が不正なしかどうかを確認する
       #
       # @param [Western::Calendar] date 日付
       #
-      # @return [True] 有効
-      # @return [False] 無効
+      # @return [True] 不正なし
+      # @return [False] 不正
       #
       def self.valid_date(date:)
         return false unless date
@@ -73,15 +99,32 @@ module Zakuro
       end
 
       #
+      # 次の元号の開始年から、元号の終了年に変換する
+      #
+      # @param [Integer] next_start_year 次回開始年
+      #
+      def convert_next_start_year_to_end_year(next_start_year:)
+        if @both_start_year.western >= next_start_year
+          @end_year = next_start_year
+          return
+        end
+
+        @end_year = next_start_year - 1
+
+        nil
+      end
+
+      #
       # 次の元号の開始日から、元号の終了日に変換する
       #
-      # @param [String] next_start_date_string 次回開始日
+      # @param [String] next_start_date 次回開始日
       #
-      def convert_next_start_date_to_end_date(next_start_date_string: '')
-        raise ArgumentError, 'empty string cannot convert' if next_start_date_string.empty?
+      def convert_next_start_date_to_end_date(next_start_date: '')
+        raise ArgumentError, 'empty string cannot convert' if next_start_date.empty?
 
-        start_date = Western::Calendar.parse(str: next_start_date_string)
+        start_date = Western::Calendar.parse(str: next_start_date)
         @end_date = start_date - 1
+
         nil
       end
 
@@ -94,30 +137,31 @@ module Zakuro
       # @return [False] 含まれない
       #
       def include?(date:)
-        date >= @start_date && date <= @end_date
+        date >= @both_start_date.western && date <= @end_date
       end
 
       #
-      # 不正な元号データかを確認する
+      # 不正か
       #
-      # @return [True] 正しくない
-      # @return [True] 正しい
+      # @return [True] 不正
+      # @return [False] 不正なし
       #
       def invalid?
-        @year == -1
+        @both_start_year.japan == -1 || @both_start_year.invalid? ||
+          @both_start_date.invalid? || @end_date.invalid?
       end
 
       #
       # 1元号年を追加する
       #
-      def next_year
-        @year += 1 unless invalid?
-        nil
-      end
+      # def next_year
+      #   @year += 1 unless invalid?
+      #   nil
+      # end
 
       def to_s
-        "name: #{@name}, start_date: #{@start_date.format}, " \
-        "end_date: #{@end_date.format}, year: #{@year}"
+        "name: #{@name}, both_start_year: #{@both_start_year.format}, " \
+        "both_start_date: #{@both_start_date.format}, end_date: #{@end_date.format}"
       end
     end
 
@@ -125,12 +169,16 @@ module Zakuro
     # Set 元号セット
     #
     class Set
+      # @return [Integer] 不正値
+      INVALID = -1
       # @return [Integer] 元号セットID
       attr_reader :id
       # @return [String] 元号セット名
       attr_reader :name
-      # @return [Western::Calendar] 元号セットでの終了日
-      attr_reader :end_date
+      # @return [Both::Date] 元号セットでの終了年
+      attr_reader :both_end_year
+      # @return [Both::Date] 元号セットでの終了日
+      attr_reader :both_end_date
       # @return [Array<Gengou>] 元号リスト
       attr_reader :list
 
@@ -142,10 +190,12 @@ module Zakuro
       # @param [Western::Calendar] end_date 元号セットでの終了日
       # @param [Array<Gengou>] list 元号リスト
       #
-      def initialize(id: -1, name: '', end_date: Western::Calendar.new, list: [])
+      def initialize(id: INVALID, name: '', both_end_year: Both::Year.new,
+                     both_end_date: Both::Date.new, list: [])
         @id = id
         @name = name
-        @end_date = end_date
+        @both_end_year = both_end_year
+        @both_end_date = both_end_date
         @list = list
       end
 
@@ -171,7 +221,64 @@ module Zakuro
       # @return [False] 正しい
       #
       def invalid?
-        @id == -1
+        @id == INVALID
+      end
+    end
+
+    #
+    # 和暦/西暦
+    #
+    module Both
+      #
+      # Year 年
+      #
+      class Year
+        # @return [Integer] 不正値
+        INVALID = -1
+        # @return [Integer] 和暦元号年
+        attr_reader :japan
+        # @return [Integer] 西暦年
+        attr_reader :western
+
+        def initialize(japan: INVALID, western: INVALID)
+          @japan = japan
+          @western = western
+        end
+
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
+        def invalid?
+          @japan == INVALID || @western == INVALID
+        end
+      end
+
+      #
+      # Date 日
+      #
+      class Date
+        # @return [Japan::Calendar] 和暦日
+        attr_reader :japan
+        # @return [Western::Calendar] 西暦日
+        attr_reader :western
+
+        def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
+          @japan = japan
+          @western = western
+        end
+
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
+        def invalid?
+          @japan.invalid? || @western.invalid?
+        end
       end
     end
   end

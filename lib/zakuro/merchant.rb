@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-require_relative './version_factory'
+require_relative './era/western/calendar'
+
+require_relative './calculation/summary/single'
+
 require_relative './condition'
 
 require_relative './output/error'
@@ -50,10 +53,16 @@ module Zakuro
     #
     def commit
       date = condition.date
-      return VersionFactory.to_japan_date(western_date: date) if date
 
       # TODO: does not have no patterns now
-      {}
+      return {} unless date
+
+      western_date = Western::Calendar.create(date: date)
+
+      # TODO: 引数不要
+      context = Context.new(version_name: '')
+
+      Calculation::Summary::Single.get(context: context, date: western_date)
     end
   end
 end

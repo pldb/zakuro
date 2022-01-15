@@ -3,7 +3,7 @@
 require File.expand_path('../../../testtools/stringifier', __dir__)
 
 require File.expand_path('../../../../' \
-                        'lib/zakuro/era/western',
+                        'lib/zakuro/era/western/calendar',
                          __dir__)
 
 require File.expand_path('../../../../' \

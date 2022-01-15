@@ -2,6 +2,10 @@
 
 require_relative '../cycle/zodiac'
 
+require_relative '../../era/western/calendar'
+
+require_relative '../../version/context'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -12,28 +16,23 @@ module Zakuro
       # Year 年
       #
       class Year
-        # @return [Gengou] 元号
-        attr_reader :multi_gengou
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
         # @return [Array<Month>] 年内の全ての月
         attr_reader :months
         # @return [Integer] 年の日数
         attr_reader :total_days
-        # @return [Western::Calendar] 元旦
-        attr_reader :new_year_date
 
         #
         # 初期化
         #
-        # @param [Gengou] multi_gengou 元号
+        # @param [Context] context 暦コンテキスト
         # @param [Array<Month>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
-        # @param [Western::Calendar] new_year_date 元旦
         #
-        def initialize(multi_gengou: MultiGengou.new, new_year_date: Western::Calendar.new,
-                       months: [], total_days: 0)
-          @multi_gengou = multi_gengou
+        def initialize(context: Context.new, months: [], total_days: 0)
+          @context = context
           @months = months
-          @new_year_date = new_year_date
           @total_days = total_days
         end
 
@@ -58,12 +57,22 @@ module Zakuro
         # @return [MultiGengou] 自身
         #
         def next_year
-          @multi_gengou.next_year
-
-          @new_year_date += @total_days
           @total_days = 0
 
           self
+        end
+
+        #
+        # 年初を取得する
+        #
+        # @return [Western::Calendar] 年初
+        #
+        def new_year_date
+          return Western::Calendar.new unless months
+
+          return Western::Calendar.new if months.size.zero?
+
+          @months[0].western_date
         end
 
         #
@@ -72,7 +81,10 @@ module Zakuro
         # @return [String] 十干十二支
         #
         def zodiac_name
-          Cycle::Zodiac.year_name(western_year: @new_year_date.year)
+          date = new_year_date
+          return '' if date.invalid?
+
+          Cycle::Zodiac.year_name(western_year: date.year)
         end
 
         #

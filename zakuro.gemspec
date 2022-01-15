@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'lib/zakuro/version'
-
 Gem::Specification.new do |spec|
   spec.name          = 'zakuro'
-  spec.version       = Zakuro::VERSION
+  spec.version       = File.read(File.expand_path('./VERSION', __dir__)).strip
   spec.authors       = ['pldb']
   spec.email         = ['pldb.github@gmail.com']
 

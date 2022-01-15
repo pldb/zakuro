@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../era/western'
+require_relative '../../era/western/calendar'
 
 # :nodoc:
 module Zakuro
@@ -23,7 +23,8 @@ module Zakuro
         # @param [Remainder] remainder 西暦日
         # @param [Western::Calendar] western_date 大余小余
         #
-        def initialize(western_date: Western::Calendar.new, remainder:)
+        def initialize(western_date: Western::Calendar.new,
+                       remainder: Calculation::Cycle::AbstractRemainder.new)
           # 西暦日
           @western_date = western_date
           # 大余小余

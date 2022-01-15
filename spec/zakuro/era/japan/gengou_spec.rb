@@ -5,7 +5,7 @@ require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/gengou',
 require 'yaml'
 
 ACTUAL_YAML_PATH = File.expand_path(
-  '../../../../lib/zakuro/era/japan/yaml/set-001-until-south.yaml',
+  '../../../../lib/zakuro/era/japan/gengou/yaml/set-001-until-south.yaml',
   __dir__
 )
 TEST_YAML_PATH = File.expand_path(
@@ -55,10 +55,19 @@ describe 'Zakuro' do
               expect(actual.name).to eq('test-001')
             end
           end
-          context 'end_date' do
+          context 'western date in both_end_date' do
             it 'is the same data in file' do
-              expect(actual.end_date).to eq(
+              expect(actual.both_end_date.western).to eq(
                 Zakuro::Western::Calendar.new(year: 555, month: 2, day: 3)
+              )
+            end
+          end
+          context 'japan date in both_end_date' do
+            it 'is the same data in file' do
+              expect(actual.both_end_date.japan.format).to eq(
+                Zakuro::Japan::Calendar.new(
+                  gengou: '元号', year: 2, leaped: false, month: 1, day: 10
+                ).format
               )
             end
           end
@@ -80,23 +89,44 @@ describe 'Zakuro' do
                 expect(item.name).to eq('元号名1')
               end
             end
-            context 'start_date' do
+            context 'japan date in both_start_date' do
               it 'is the same data in file' do
-                expect(item.start_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 501, month: 1, day: 10)
+                expect(item.both_start_date.japan.format).to eq(
+                  Zakuro::Japan::Calendar.new(
+                    gengou: '元号', year: 2, leaped: false, month: 1, day: 11
+                  ).format
+                )
+              end
+            end
+            context 'westen date in both_start_date' do
+              it 'is the same data in file' do
+                expect(item.both_start_date.western).to eq(
+                  Zakuro::Western::Calendar.new(year: 501, month: 1, day: 11)
+                )
+              end
+            end
+            context 'end_year' do
+              it 'is the same data in file' do
+                expect(item.end_year).to eq(
+                  1001
                 )
               end
             end
             context 'end_date' do
-              it 'is the same data in file' do
+              it 'is calculated by next gengou' do
                 expect(item.end_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 510, month: 10, day: 10)
+                  Zakuro::Western::Calendar.new(year: 502, month: 10, day: 11)
                 )
               end
             end
-            context 'year' do
+            context 'japan year in both_start_year' do
               it 'is the same data in file' do
-                expect(item.year).to eq(11)
+                expect(item.both_start_year.japan).to eq(11)
+              end
+            end
+            context 'western year in both_start_year' do
+              it 'is the same data in file' do
+                expect(item.both_start_year.western).to eq(1001)
               end
             end
           end
@@ -107,10 +137,26 @@ describe 'Zakuro' do
                 expect(item.name).to eq('元号名3')
               end
             end
-            context 'start_date' do
+            context 'japan date in both_start_date' do
               it 'is the same data in file' do
-                expect(item.start_date).to eq(
-                  Zakuro::Western::Calendar.new(year: 550, month: 1, day: 2)
+                expect(item.both_start_date.japan.format).to eq(
+                  Zakuro::Japan::Calendar.new(
+                    gengou: '元号', year: 2, leaped: false, month: 11, day: 13
+                  ).format
+                )
+              end
+            end
+            context 'westen date in both_start_date' do
+              it 'is the same data in file' do
+                expect(item.both_start_date.western).to eq(
+                  Zakuro::Western::Calendar.new(year: 505, month: 12, day: 13)
+                )
+              end
+            end
+            context 'end_year' do
+              it 'is the same data in file' do
+                expect(item.end_year).to eq(
+                  1055
                 )
               end
             end
@@ -121,9 +167,14 @@ describe 'Zakuro' do
                 )
               end
             end
-            context 'year' do
+            context 'japan year in both_start_year' do
               it 'is the same data in file' do
-                expect(item.year).to eq(1)
+                expect(item.both_start_year.japan).to eq(13)
+              end
+            end
+            context 'western year in both_start_year' do
+              it 'is the same data in file' do
+                expect(item.both_start_year.western).to eq(1005)
               end
             end
           end

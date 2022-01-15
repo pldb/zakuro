@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../western'
+require_relative '../../japan/calendar'
+require_relative '../../western/calendar'
 require_relative './type'
 require 'yaml'
 
@@ -14,8 +15,6 @@ module Zakuro
     # Validator yaml解析
     #
     module Validator
-      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
-
       #
       # Set 元号セット情報の検証/展開
       #
@@ -24,8 +23,10 @@ module Zakuro
         attr_reader :id
         # @return [String] 元号セット名
         attr_reader :name
-        # @return [String] 終了日
-        attr_reader :end_date
+        # @return [Hash<String, String>] 終了年
+        attr_reader :both_end_year
+        # @return [Hash<String, String>] 終了日
+        attr_reader :both_end_date
         # @return [Array<Hash<String, String>>] 元号情報
         attr_reader :list
 
@@ -37,11 +38,10 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
-          @end_date = hash['end_date']
+          @both_end_year = hash['end_year']
+          @both_end_date = hash['end_date']
           @list = hash['list']
         end
-
-        # :reek:TooManyStatements { max_statements: 6 }
 
         #
         # 検証する
@@ -50,11 +50,13 @@ module Zakuro
         #
         def validate
           failed = []
-          failed.push("invalid id. #{id}") unless id?
+          failed.push("invalid id. #{@id}") unless id?
 
-          failed.push("invalid name. #{name}") unless name?
+          failed.push("invalid name. #{@name}") unless name?
 
-          failed.push("invalid end_date. #{end_date}") unless western_date?
+          failed |= validate_both_end_year
+
+          failed |= validate_both_end_date
 
           failed |= validate_list
           failed
@@ -85,13 +87,21 @@ module Zakuro
         end
 
         #
-        # 日付文字列を検証する
+        # 終了年を検証する
         #
-        # @return [True] 正しい
-        # @return [False] 正しくない
+        # @return [Array<String>] 不正メッセージ
         #
-        def western_date?
-          Western::Calendar.valid_date_string(str: @end_date)
+        def validate_both_end_year
+          Both::Year.new(hash: @both_end_year).validate
+        end
+
+        #
+        # 終了日を検証する
+        #
+        # @return [Array<String>] 不正メッセージ
+        #
+        def validate_both_end_date
+          Both::Date.new(hash: @both_end_date).validate
         end
 
         #
@@ -109,8 +119,7 @@ module Zakuro
         #
         # 元号情報を検証する
         #
-        # @return [True] 正しい
-        # @return [False] 正しくない
+        # @return [Array<String>] 不正メッセージ
         #
         def validate_list
           return ["invalid list. #{@list.class}"] unless list?
@@ -123,8 +132,6 @@ module Zakuro
         end
       end
 
-      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
-
       #
       # Gengou 元号情報
       #
@@ -133,12 +140,10 @@ module Zakuro
         attr_reader :index
         # @return [String] 元号名
         attr_reader :name
-        # @return [String] 開始日
-        attr_reader :start_date
-        # @return [String] 元旦
-        attr_reader :new_year_date
-        # @return [String] 開始年
-        attr_reader :start_year
+        # @return [Hash<String, String>] 開始年
+        attr_reader :both_start_year
+        # @return [Hash<String, String>] 開始日
+        attr_reader :both_start_date
 
         #
         # 初期化
@@ -149,12 +154,9 @@ module Zakuro
         def initialize(hash:, index:)
           @index = index
           @name = hash['name']
-          @start_date = hash['start_date']
-          @new_year_date = hash['new_year_date']
-          @start_year = hash['start_year']
+          @both_start_year = hash['start_year']
+          @both_start_date = hash['start_date']
         end
-
-        # :reek:TooManyStatements { max_statements: 7 }
 
         #
         # 検証する
@@ -167,11 +169,9 @@ module Zakuro
 
           failed.push(prefix + "invalid name. #{@name}") unless name?
 
-          failed.push(prefix + "invalid start_date. #{@start_date}") unless start_date?
+          failed |= validate_both_start_year
 
-          failed.push(prefix + "invalid start_year. #{@start_year}") unless year?
-
-          failed.push(prefix + "invalid new_year_date. #{@new_year_date}") unless new_year_date?
+          failed |= validate_both_start_date
 
           failed
         end
@@ -189,35 +189,140 @@ module Zakuro
         end
 
         #
-        # 開始日文字列を検証する
+        # 開始年を検証する
         #
-        # @return [True] 正しい
-        # @return [False] 正しくない
+        # @return [Array<String>] 不正メッセージ
         #
-        def start_date?
-          Western::Calendar.valid_date_string(str: @start_date)
+        def validate_both_start_year
+          Both::Year.new(hash: @both_start_year).validate
         end
 
         #
-        # 元旦文字列を検証する
+        # 開始日を検証する
         #
-        # @return [True] 正しい
-        # @return [False] 正しくない
+        # @return [Array<String>] 不正メッセージ
         #
-        def new_year_date?
-          Western::Calendar.valid_date_string(str: @new_year_date)
+        def validate_both_start_date
+          Both::Date.new(hash: @both_start_date).validate
+        end
+      end
+
+      #
+      # 和暦/西暦
+      #
+      module Both
+        #
+        # Year 年
+        #
+        class Year
+          # @return [String] 和暦元号年
+          attr_reader :japan
+          # @return [String] 西暦年
+          attr_reader :western
+
+          #
+          # 初期化
+          #
+          # @param [Hash<String, Strin>] hash 年情報
+          #
+          def initialize(hash:)
+            @japan = hash['japan']
+            @western = hash['western']
+          end
+
+          #
+          # 検証する
+          #
+          # @return [Array<String>] 不正メッセージ
+          #
+          def validate
+            failed = []
+
+            failed.push("invalid japan year. #{@japan}") unless japan?
+
+            failed.push("invalid western year. #{@western}") unless western?
+
+            failed
+          end
+
+          #
+          # 和暦元号年を検証する
+          #
+          # @return [True] 正しい
+          # @return [False] 正しくない
+          #
+          def japan?
+            return false unless @japan
+
+            @japan.is_a?(Integer)
+          end
+
+          #
+          # 和暦元号年を検証する
+          #
+          # @return [True] 正しい
+          # @return [False] 正しくない
+          #
+          def western?
+            return false unless @western
+
+            @western.is_a?(Integer)
+          end
         end
 
         #
-        # 元号年を検証する
+        # Date 日
         #
-        # @return [True] 正しい
-        # @return [False] 正しくない
-        #
-        def year?
-          return true unless @start_year
+        class Date
+          # @return [String] 和暦日
+          attr_reader :japan
+          # @return [String] 西暦日
+          attr_reader :western
 
-          @start_year.is_a?(Integer)
+          #
+          # 初期化
+          #
+          # @param [Hash<String, Strin>] hash 日情報
+          #
+          def initialize(hash:)
+            @japan = hash['japan']
+            @western = hash['western']
+          end
+
+          #
+          # 検証する
+          #
+          # @return [Array<String>] 不正メッセージ
+          #
+          def validate
+            failed = []
+
+            failed.push("invalid japan date. #{@japan}") unless japan?
+
+            failed.push("invalid western date. #{@western}") unless western?
+
+            failed
+          end
+
+          #
+          # 和暦日を検証する
+          #
+          # @return [True] 正しい
+          # @return [False] 正しくない
+          #
+          def japan?
+            Japan::Calendar.valid_date_string(text: @japan)
+          end
+
+          #
+          # 西暦日を検証する
+          #
+          # @return [True] 正しい
+          # @return [False] 正しくない
+          #
+          def western?
+            Western::Calendar.valid_date_string(str: @western)
+          end
         end
       end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../western'
+require_relative '../../western/calendar'
 require_relative './type'
 require_relative './validator'
 require 'yaml'
@@ -17,8 +17,6 @@ module Zakuro
     # Parser yaml解析
     #
     module Parser
-      # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
-
       #
       # GengouParser 元号情報の検証/展開を行う
       #
@@ -27,12 +25,10 @@ module Zakuro
         attr_reader :index
         # @return [String] 元号名
         attr_reader :name
-        # @return [String] 開始日
-        attr_reader :start_date
-        # @return [String] 元旦
-        attr_reader :new_year_date
-        # @return [String] 開始年
-        attr_reader :start_year
+        # @return [Hash<String, String>] 開始年
+        attr_reader :both_start_year
+        # @return [Hash<String, String>] 開始日
+        attr_reader :both_start_date
 
         #
         # 初期化
@@ -43,9 +39,8 @@ module Zakuro
         def initialize(hash:, index:)
           @index = index
           @name = hash['name']
-          @start_date = hash['start_date']
-          @new_year_date = hash['new_year_date']
-          @start_year = hash['start_year']
+          @both_start_year = hash['start_year']
+          @both_start_date = hash['start_date']
         end
 
         #
@@ -54,12 +49,11 @@ module Zakuro
         # @return [Gengou] 元号情報
         #
         def create
-          start_date = Western::Calendar.parse(str: @start_date)
-          new_year_date = Western::Calendar.parse(str: @new_year_date)
-          start_year = @start_year || 1
+          both_start_year = Both::YearParser.new(hash: @both_start_year).create
+          both_start_date = Both::DateParser.new(hash: @both_start_date).create
 
-          Gengou.new(name: @name, start_date: start_date, new_year_date: new_year_date,
-                     year: start_year)
+          Gengou.new(name: @name, both_start_year: both_start_year,
+                     both_start_date: both_start_date)
         end
       end
 
@@ -71,8 +65,10 @@ module Zakuro
         attr_reader :id
         # @return [String] 元号セット名
         attr_reader :name
-        # @return [String] 終了日
-        attr_reader :end_date
+        # @return [Hash<String, String>] 終了年
+        attr_reader :both_end_year
+        # @return [Hash<String, String>] 終了日
+        attr_reader :both_end_date
         # @return [Array<Hash<String, String>>] 元号情報
         attr_reader :list
 
@@ -84,7 +80,8 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
-          @end_date = hash['end_date']
+          @both_end_year = hash['end_year']
+          @both_end_date = hash['end_date']
           @list = hash['list']
         end
 
@@ -94,10 +91,10 @@ module Zakuro
         # @return [Set] 元号セット情報
         #
         def create
-          end_date = Western::Calendar.parse(str: @end_date)
+          both_end_date = Both::DateParser.new(hash: @both_end_date).create
           list = create_list
           Set.new(
-            id: @id, name: @name, end_date: end_date, list: list
+            id: @id, name: @name, both_end_date: both_end_date, list: list
           )
         end
 
@@ -133,15 +130,88 @@ module Zakuro
         #
         def calc_end_date_on_gengou_data(next_index:, gengou:)
           if next_index >= @list.size
-            end_date = Western::Calendar.parse(str: @end_date)
+            gengou.write_end_year(end_year: @both_end_year['western'])
+            end_date = Western::Calendar.parse(str: @both_end_date['western'])
             gengou.write_end_date(end_date: end_date)
             return gengou
           end
-          next_start_date = @list[next_index]['start_date']
+          next_item = @list[next_index]
+          gengou.convert_next_start_year_to_end_year(
+            next_start_year: next_item['start_year']['western']
+          )
           gengou.convert_next_start_date_to_end_date(
-            next_start_date_string: next_start_date
+            next_start_date: next_item['start_date']['western']
           )
           gengou
+        end
+      end
+
+      #
+      # 和暦/西暦
+      #
+      module Both
+        #
+        # YearParser 年
+        #
+        class YearParser
+          # @return [Integer] 和暦元号年
+          attr_reader :japan
+          # @return [Integer] 西暦年
+          attr_reader :western
+
+          #
+          # 初期化
+          #
+          # @param [Hash<String, Object>] hash 年情報
+          #
+          def initialize(hash:)
+            @japan = hash['japan']
+            @western = hash['western']
+          end
+
+          #
+          # 年情報を生成する
+          #
+          # @return [Both::Year] 年情報
+          #
+          def create
+            japan = @japan.to_i
+            western = @western.to_i
+
+            Japan::Both::Year.new(japan: japan, western: western)
+          end
+        end
+
+        #
+        # DateParser 日
+        #
+        class DateParser
+          # @return [Japan::Calendar] 和暦日
+          attr_reader :japan
+          # @return [Western::Calendar] 西暦日
+          attr_reader :western
+
+          #
+          # 初期化
+          #
+          # @param [Hash<String, Object>] hash 日情報
+          #
+          def initialize(hash:)
+            @japan = hash['japan']
+            @western = hash['western']
+          end
+
+          #
+          # 日情報を生成する
+          #
+          # @return [Both::Date] 日情報
+          #
+          def create
+            japan = Japan::Calendar.parse(text: @japan)
+            western = Western::Calendar.parse(str: @western)
+
+            Japan::Both::Date.new(japan: japan, western: western)
+          end
         end
       end
 

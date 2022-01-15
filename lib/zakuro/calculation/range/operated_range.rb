@@ -4,6 +4,7 @@ require_relative './operated_solar_terms'
 require_relative '../../operation/operation'
 require_relative '../base/operated_year'
 require_relative '../../calculation/monthly/operated_month'
+require_relative './transfer/gengou_scroller'
 
 # :nodoc:
 module Zakuro
@@ -27,11 +28,15 @@ module Zakuro
         # 初期化
         #
         # @param [Context] context 暦コンテキスト
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] end_date 終了日
         # @param [Array<Year>] years 年データ（完全範囲）
         #
-        def initialize(context:, years: [])
+        def initialize(context:, start_date: Western::Calendar.new, end_date: Western::Calendar.new,
+                       years: [])
           @context = context
           @years = years
+          @scroll = Gengou::Scroll.new(start_date: start_date, end_date: end_date)
           @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
           @operated_solar_terms.create
         end
@@ -48,6 +53,8 @@ module Zakuro
 
           OperatedRange.commit(operated_years: operated_years)
 
+          Transfer::GengouScroller.set(scroll: @scroll, years: operated_years)
+
           operated_years
         end
 
@@ -61,7 +68,7 @@ module Zakuro
 
           years.each do |year|
             operated_year = OperatedRange.rewrite_year(
-              context: context, year: year,
+              year: year,
               operated_solar_terms: @operated_solar_terms
             )
             operated_years.push(operated_year)
@@ -121,16 +128,14 @@ module Zakuro
         #
         # 年を書き換える
         #
-        # @param [Context] context 暦コンテキスト
         # @param [Year] year 年
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
         # @return [OperatedYear] 年
         #
-        def self.rewrite_year(context:, year:, operated_solar_terms:)
-          result = Base::OperatedYear.new(
-            multi_gengou: year.multi_gengou, new_year_date: year.new_year_date
-          )
+        def self.rewrite_year(year:, operated_solar_terms:)
+          context = year.context
+          result = Base::OperatedYear.new(context: context)
           year.months.each do |month|
             result.push(month: resolve_month(
               context: context, month: month,
@@ -175,7 +180,7 @@ module Zakuro
           operated_month = Monthly::OperatedMonth.new(
             context: context,
             month_label: month.month_label, first_day: month.first_day,
-            solar_terms: month.solar_terms, history: history,
+            solar_terms: month.solar_terms, history: history, gengou: month.gengou,
             operated_solar_terms: operated_solar_terms
           )
 

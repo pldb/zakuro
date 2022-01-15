@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../western'
+require_relative '../western/calendar'
 require_relative './gengou/parser'
 require_relative './gengou/type'
 
@@ -17,15 +17,15 @@ module Zakuro
       # @return [Array<Set>] 元号セット情報リスト
       LIST = [
         Parser.run(filepath: File.expand_path(
-          './yaml/set-001-until-south.yaml',
+          './gengou/yaml/set-001-until-south.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './yaml/set-002-from-north.yaml',
+          './gengou/yaml/set-002-from-north.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './yaml/set-003-modern.yaml',
+          './gengou/yaml/set-003-modern.yaml',
           __dir__
         ))
       ].freeze
@@ -35,7 +35,7 @@ module Zakuro
       #
       # 元号（1行目,2行目）を引き当てる
       #
-      # * LINE配列の元号情報を配列順で「x行目」（1始まり）とする
+      # * LIST配列の元号情報を配列順で「x行目」（1始まり）とする
       # * 1行目にデータがあれば、第一要素に1行目のデータが設定される
       # * 1行目と2行目にデータがあれば、第二要素に2行目のデータが設定される
       # * 1行目にデータがなく、2行目以降に1つだけデータがあれば、第一要素にそのデータを設定してそれ以外の要素は未設定
