@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../era/japan/reki'
+require_relative '../era/japan/version'
 require_relative '../era/western/calendar'
 require_relative './genka/genka'
 require_relative './gihou/gihou'
@@ -29,7 +29,7 @@ module Zakuro
     # @return [AbstractVersion] 暦クラス
     #
     def self.get_runnable_constant(date:)
-      class_name = Japan::Reki.class_name(
+      class_name = Japan::Version.class_name(
         date: Western::Calendar.create(date: date)
       )
       constant = Object.const_get(class_name)

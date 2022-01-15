@@ -9,9 +9,9 @@ module Zakuro
   #
   module Japan
     #
-    # Reki 暦
+    # Version 暦
     #
-    module Reki
+    module Version
       #
       # Range 暦（範囲）
       #
