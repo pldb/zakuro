@@ -60,7 +60,7 @@ module Zakuro
       western_date = Western::Calendar.create(date: date)
 
       # TODO: 引数不要
-      context = Context.new(version_name: 'Senmyou')
+      context = Context.new(version_name: '')
 
       Calculation::Summary::Single.get(context: context, date: western_date)
     end

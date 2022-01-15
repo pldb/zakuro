@@ -57,6 +57,8 @@ module Zakuro
         # @return [SolarTerm] 二十四節気
         #
         def get(western_date: Western::Calendar.new)
+          context = current_context(western_date: western_date)
+
           solar_term_class = context.resolver.solar_term
           solar_term = @directions.fetch(western_date.format, solar_term_class.new)
 
@@ -66,23 +68,6 @@ module Zakuro
           # 合致した上で、二十四節気が移動元（削除対象）の場合
           # 合致した上で、二十四節気が移動先（追加対象）の場合
           [true, solar_term]
-        end
-
-        #
-        # 二十四節気の移動元/移動先を生成する
-        #
-        # @return [Hash<String, SolarTerm>] 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
-        #
-        def create_directions
-          directions = {}
-
-          years.each do |year|
-            OperatedSolarTerms.create_directions_with_months(
-              context: context, directions: directions, months: year.months
-            )
-          end
-
-          directions
         end
 
         # :reek:TooManyStatements { max_statements: 6 }
@@ -194,6 +179,40 @@ module Zakuro
           directions[destination.from.format] = solar_term_class.new(
             index: destination.index
           )
+        end
+
+        private
+
+        #
+        # 日付に対応する暦コンテキストを取得する
+        #
+        # @param [Western::Calendar] western_date 西暦日
+        #
+        # @return [Context] 暦コンテキスト
+        #
+        def current_context(western_date: Western::Calendar.new)
+          @years.each do |year|
+            return year.context if western_date >= year.new_year_date
+          end
+
+          Context.new
+        end
+
+        #
+        # 二十四節気の移動元/移動先を生成する
+        #
+        # @return [Hash<String, SolarTerm>] 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
+        #
+        def create_directions
+          directions = {}
+
+          years.each do |year|
+            OperatedSolarTerms.create_directions_with_months(
+              context: year.context, directions: directions, months: year.months
+            )
+          end
+
+          directions
         end
       end
     end

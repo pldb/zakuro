@@ -68,7 +68,7 @@ module Zakuro
 
           years.each do |year|
             operated_year = OperatedRange.rewrite_year(
-              context: context, year: year,
+              year: year,
               operated_solar_terms: @operated_solar_terms
             )
             operated_years.push(operated_year)
@@ -128,14 +128,14 @@ module Zakuro
         #
         # 年を書き換える
         #
-        # @param [Context] context 暦コンテキスト
         # @param [Year] year 年
         # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
         #
         # @return [OperatedYear] 年
         #
-        def self.rewrite_year(context:, year:, operated_solar_terms:)
-          result = Base::OperatedYear.new
+        def self.rewrite_year(year:, operated_solar_terms:)
+          context = year.context
+          result = Base::OperatedYear.new(context: context)
           year.months.each do |month|
             result.push(month: resolve_month(
               context: context, month: month,

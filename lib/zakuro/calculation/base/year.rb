@@ -4,6 +4,8 @@ require_relative '../cycle/zodiac'
 
 require_relative '../../era/western/calendar'
 
+require_relative '../../version/context'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -14,6 +16,8 @@ module Zakuro
       # Year 年
       #
       class Year
+        # @return [Context] 暦コンテキスト
+        attr_reader :context
         # @return [Array<Month>] 年内の全ての月
         attr_reader :months
         # @return [Integer] 年の日数
@@ -22,10 +26,12 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Array<Month>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         #
-        def initialize(months: [], total_days: 0)
+        def initialize(context: Context.new, months: [], total_days: 0)
+          @context = context
           @months = months
           @total_days = total_days
         end

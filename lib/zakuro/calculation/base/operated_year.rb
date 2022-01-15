@@ -2,6 +2,8 @@
 
 require_relative './year'
 
+require_relative '../../version/context'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -15,11 +17,12 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Context] context 暦コンテキスト
         # @param [Array<OperatedMonth>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         #
-        def initialize(months: [], total_days: 0)
-          super(months: months, total_days: total_days)
+        def initialize(context: Context.new, months: [], total_days: 0)
+          super(context: context, months: months, total_days: total_days)
         end
 
         #
