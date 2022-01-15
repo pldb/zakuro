@@ -61,6 +61,7 @@ module Zakuro
           @end_date = end_date
           return if invalid?
 
+          # TODO: 現時点では使用していない。特定の暦を指定できるようになった状態で使用する
           @context = context
           @scroll = Gengou::Scroll.new(start_date: start_date, end_date: end_date)
         end
@@ -158,7 +159,7 @@ module Zakuro
           (start_year..(end_year + 1)).each do |year|
             years.push(
               annual_range.get(
-                context: @context, western_year: year
+                context: context, western_year: year
               )
             )
           end
