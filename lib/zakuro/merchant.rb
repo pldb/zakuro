@@ -54,14 +54,42 @@ module Zakuro
     def commit
       date = condition.date
 
-      return {} unless date
+      return single(date: date) if date
 
+      range = condition.range
+
+      return range(range: range) unless range.invalid?
+
+      {}
+    end
+
+    private
+
+    #
+    # 1日検索
+    #
+    # @param [Date] date 西暦日
+    #
+    # @return [Result::Single] 検索結果
+    #
+    def single(date:)
       western_date = Western::Calendar.create(date: date)
 
       # TODO: condition で設定する
       context = Context.new(version_name: '')
 
       Calculation::Summary::Single.get(context: context, date: western_date)
+    end
+
+    #
+    # 期間検索
+    #
+    # @param [Catalog::Range] range 期間
+    #
+    # @return [<Type>] <description>
+    #
+    def range(range:)
+      # TODO: make
     end
   end
 end
