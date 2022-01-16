@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../' \
+require File.expand_path('../../../../../' \
                          'lib/zakuro/era/japan/version',
                          __dir__)
 
-require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/version/version',
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/calculation/era/version/version',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength

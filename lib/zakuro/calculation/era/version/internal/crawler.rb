@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../era/japan/version'
+require_relative '../../../../era/japan/version'
 require_relative './range'
 
 # :nodoc:

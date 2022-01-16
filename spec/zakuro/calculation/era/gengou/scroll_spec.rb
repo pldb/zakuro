@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../lib/zakuro/calculation/gengou/internal/reserve/interval',
+require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/interval',
                          __dir__)
 
-require File.expand_path('../../../../lib/zakuro/calculation/gengou/internal/reserve/list',
+require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/list',
                          __dir__)
 
-require File.expand_path('../../../../lib/zakuro/calculation/gengou/scroll',
+require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/scroll',
                          __dir__)
 
-require File.expand_path('../../../../lib/zakuro/calculation/monthly/month',
+require File.expand_path('../../../../../lib/zakuro/calculation/monthly/month',
                          __dir__)
 
-require File.expand_path('../../../../lib/zakuro/version/context',
+require File.expand_path('../../../../../lib/zakuro/version/context',
                          __dir__)
 
-require File.expand_path('../../../../lib/zakuro/era/western/calendar',
+require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
                          __dir__)
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do

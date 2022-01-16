@@ -5,12 +5,11 @@ require_relative '../../version/context'
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
-require_relative '../gengou/scroll'
+require_relative '../era/gengou/scroll'
+require_relative '../era/version/version'
 
 require_relative '../base/gengou'
 require_relative '../base/year'
-
-require_relative '../version/version'
 
 require_relative './transfer/year_boundary'
 

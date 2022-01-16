@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../era/western/calendar'
-require_relative '../base/gengou'
-require_relative '../base/linear_gengou'
+require_relative '../../../era/western/calendar'
+require_relative '../../base/gengou'
+require_relative '../../base/linear_gengou'
 require_relative './internal/reserve/interval'
 
 # :nodoc:
