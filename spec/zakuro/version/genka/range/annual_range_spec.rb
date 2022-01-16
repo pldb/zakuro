@@ -352,7 +352,6 @@ GENKA_EXPECTED_MONTHS = {
     { is_many_days: false, month: 4, leaped: false, remainder: '12.4242', phase_index: 0, even_term: '24.4696', even_term_index: 10, odd_term: '39.6882', odd_term_index: 11 },
     { is_many_days: true, month: 5, leaped: false, remainder: '41.9548', phase_index: 0, even_term: '54.9068', even_term_index: 12, odd_term: '10.1254', odd_term_index: 13 },
     { is_many_days: true, month: 6, leaped: false, remainder: '11.4854', phase_index: 0, even_term: '25.3440', even_term_index: 14, odd_term: '40.5626', odd_term_index: 15 },
-    # TODO: 55.7813 <=> 55.7812
     { is_many_days: false, month: 7, leaped: false, remainder: '41.0160', phase_index: 0, even_term: '55.7813', even_term_index: 16, odd_term: '', odd_term_index: -1 },
     { is_many_days: true, month: 8, leaped: false, remainder: '10.5465', phase_index: 0, even_term: '26.2185', even_term_index: 18, odd_term: '10.9999', odd_term_index: 17 },
     { is_many_days: false, month: 9, leaped: false, remainder: '40.0771', phase_index: 0, even_term: '56.6557', even_term_index: 20, odd_term: '41.4371', odd_term_index: 19 },

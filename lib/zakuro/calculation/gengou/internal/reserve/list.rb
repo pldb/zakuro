@@ -136,6 +136,17 @@ module Zakuro
             end
 
             # 有効な元号
+            proceed_valid_gengou(current_gengou: current_gengou)
+          end
+
+          #
+          # 有効な元号を進めて取得する
+          #
+          # @param [Gengou::Counter] current_gengou 加算元号
+          #
+          # @return [Gengou::Counter] 加算元号
+          #
+          def proceed_valid_gengou(current_gengou:)
             @list.each do |gengou|
               next if gengou.invalid?
 

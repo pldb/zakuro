@@ -54,12 +54,11 @@ module Zakuro
     def commit
       date = condition.date
 
-      # TODO: does not have no patterns now
       return {} unless date
 
       western_date = Western::Calendar.create(date: date)
 
-      # TODO: 引数不要
+      # TODO: condition で設定する
       context = Context.new(version_name: '')
 
       Calculation::Summary::Single.get(context: context, date: western_date)
