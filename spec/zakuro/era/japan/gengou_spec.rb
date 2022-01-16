@@ -55,16 +55,16 @@ describe 'Zakuro' do
               expect(actual.name).to eq('test-001')
             end
           end
-          context 'western date in both_end_date' do
+          context 'western date in both_last_date' do
             it 'is the same data in file' do
-              expect(actual.both_end_date.western).to eq(
+              expect(actual.both_last_date.western).to eq(
                 Zakuro::Western::Calendar.new(year: 555, month: 2, day: 3)
               )
             end
           end
-          context 'japan date in both_end_date' do
+          context 'japan date in both_last_date' do
             it 'is the same data in file' do
-              expect(actual.both_end_date.japan.format).to eq(
+              expect(actual.both_last_date.japan.format).to eq(
                 Zakuro::Japan::Calendar.new(
                   gengou: '元号', year: 2, leaped: false, month: 1, day: 10
                 ).format
@@ -105,16 +105,16 @@ describe 'Zakuro' do
                 )
               end
             end
-            context 'end_year' do
+            context 'last_year' do
               it 'is the same data in file' do
-                expect(item.end_year).to eq(
+                expect(item.last_year).to eq(
                   1001
                 )
               end
             end
-            context 'end_date' do
+            context 'last_date' do
               it 'is calculated by next gengou' do
-                expect(item.end_date).to eq(
+                expect(item.last_date).to eq(
                   Zakuro::Western::Calendar.new(year: 502, month: 10, day: 11)
                 )
               end
@@ -153,16 +153,16 @@ describe 'Zakuro' do
                 )
               end
             end
-            context 'end_year' do
+            context 'last_year' do
               it 'is the same data in file' do
-                expect(item.end_year).to eq(
+                expect(item.last_year).to eq(
                   1055
                 )
               end
             end
-            context 'end_date' do
+            context 'last_date' do
               it 'is the same data in file' do
-                expect(item.end_date).to eq(
+                expect(item.last_date).to eq(
                   Zakuro::Western::Calendar.new(year: 555, month: 2, day: 3)
                 )
               end

@@ -15,7 +15,7 @@ describe 'Zakuro' do
             it 'should be start year from target gengou' do
               interval = Zakuro::Calculation::Gengou::Reserve.get(
                 start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
+                last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
               )
               actual = interval.western_start_year
               expect(actual).to eq 445

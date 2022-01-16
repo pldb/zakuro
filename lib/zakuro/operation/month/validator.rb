@@ -150,7 +150,7 @@ module Zakuro
         # @return [String] ID
         attr_reader :id
         # @return [String] 親ID
-        attr_reader :parend_id
+        attr_reader :parent_id
         # @return [String] 西暦日
         attr_reader :western_date
         # @return [String] 有効行

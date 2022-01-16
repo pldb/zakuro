@@ -33,7 +33,7 @@ module Zakuro
           # @return [Western::Calendar] 開始日
           attr_reader :start_date
           # @return [Western::Calendar] 終了日
-          attr_reader :end_date
+          attr_reader :last_date
           # @return [Array<Japan::Gengou>] 予約元号一覧
           attr_reader :list
 
@@ -42,13 +42,13 @@ module Zakuro
           #
           # @param [True, False] first true:1行目元号, false:2行目元号
           # @param [Western::Calendar] start_date 開始日
-          # @param [Western::Calendar] end_date 終了日
+          # @param [Western::Calendar] last_date 終了日
           #
           def initialize(first: true, start_date: Western::Calendar.new,
-                         end_date: Western::Calendar)
+                         last_date: Western::Calendar)
             @method_name = first ? :first_line : :second_line
             @start_date = start_date
-            @end_date = end_date
+            @last_date = last_date
             @list = []
 
             update
@@ -84,11 +84,11 @@ module Zakuro
           # FIXME: 有効な元号、無効な元号、有効な元号のようなストライプのパターンに対応していない
           #
           # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] end_date 西暦終了日
+          # @param [Western::Calendar] last_date 西暦終了日
           #
           # @return [Array<Gengou::Counter>] 範囲内元号
           #
-          def collect(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+          def collect(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
             result = []
 
             # 開始チェック
@@ -99,16 +99,16 @@ module Zakuro
             if current_gengou.invalid?
               current_gengou = proceed(western_date: start_date)
 
-              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
+              return result if suspend?(current_gengou: current_gengou, last_date: last_date)
 
               result.push(current_gengou)
             end
 
-            return result if suspend?(current_gengou: current_gengou, end_date: end_date)
+            return result if suspend?(current_gengou: current_gengou, last_date: last_date)
 
             # 有効元号チェック
-            continue(result: result, current_date: current_gengou.western_end_date.clone,
-                     end_date: end_date)
+            continue(result: result, current_date: current_gengou.western_last_date.clone,
+                     last_date: last_date)
           end
 
           #
@@ -127,7 +127,7 @@ module Zakuro
                 next if gengou.invalid?
 
                 # すでに超過している場合
-                break if western_date > gengou.end_date
+                break if western_date > gengou.last_date
 
                 return Gengou::Counter.new(gengou: gengou).clone
               end
@@ -150,7 +150,7 @@ module Zakuro
             @list.each do |gengou|
               next if gengou.invalid?
 
-              if gengou.both_start_date.western > current_gengou.western_end_date
+              if gengou.both_start_date.western > current_gengou.western_last_date
                 return Gengou::Counter.new(gengou: gengou).clone
               end
             end
@@ -196,12 +196,12 @@ module Zakuro
           #
           # @return [Integer] 西暦終了年
           #
-          def western_end_year
+          def western_last_year
             return INVALID_YEAR if invalid?
 
             return INVALID_YEAR if @list.size.zero?
 
-            @list[-1].end_year
+            @list[-1].last_year
           end
 
           #
@@ -248,10 +248,10 @@ module Zakuro
 
             result.push(current_gengou)
             (0..MAX_SEARCH_COUNT).each do |_index|
-              current_end_date = current_gengou.end_date.clone
-              break if current_end_date > end_date
+              current_last_date = current_gengou.last_date.clone
+              break if current_last_date > last_date
 
-              current_gengou = line(date: current_end_date + 1)
+              current_gengou = line(date: current_last_date + 1)
               result.push(current_gengou)
             end
 
@@ -295,9 +295,9 @@ module Zakuro
 
             return if list.size.zero?
 
-            last_gengou_date = list[-1].end_date.clone
+            last_gengou_date = list[-1].last_date.clone
 
-            border_date = end_date.clone + MAX_MONTH_DAYS
+            border_date = last_date.clone + MAX_MONTH_DAYS
 
             return if border_date < last_gengou_date
 
@@ -324,20 +324,20 @@ module Zakuro
           #
           # @param [Array<Gengou::Counter>] result 範囲内元号
           # @param [Gengou::Counter] current_gengou 現在元号
-          # @param [Western::Calendar] end_date 終了日
+          # @param [Western::Calendar] last_date 終了日
           #
           # @return [Array<Gengou::Counter>] 範囲内元号
           #
-          def continue(result:, current_date:, end_date:)
+          def continue(result:, current_date:, last_date:)
             (0..MAX_SEARCH_COUNT).each do |_index|
               current_gengou = proceed(western_date: current_date)
 
-              return result if suspend?(current_gengou: current_gengou, end_date: end_date)
+              return result if suspend?(current_gengou: current_gengou, last_date: last_date)
 
               # 範囲内元号
               result.push(current_gengou)
 
-              current_date = current_gengou.western_end_date.clone
+              current_date = current_gengou.western_last_date.clone
             end
 
             # 終了
@@ -348,17 +348,17 @@ module Zakuro
           # 中断する
           #
           # @param [Gengou::Counter] current_gengou 現在元号
-          # @param [Western::Calendar] end_date 終了日
+          # @param [Western::Calendar] last_date 終了日
           #
           # @return [True] 中断
           # @return [False] 継続
           #
-          def suspend?(current_gengou:, end_date:)
+          def suspend?(current_gengou:, last_date:)
             ## 有効元号なし
             return true if current_gengou.invalid?
 
             ## 範囲内元号なし
-            return true if current_gengou.western_start_date > end_date
+            return true if current_gengou.western_start_date > last_date
 
             false
           end

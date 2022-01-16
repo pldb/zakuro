@@ -17,12 +17,12 @@ module Zakuro
         # 暦の範囲を取得する
         #
         # @param [Integer] start_year 開始西暦年
-        # @param [Integer] end_year 終了西暦年
+        # @param [Integer] last_year 終了西暦年
         #
         # @return [Array<Range>] 暦の範囲
         #
-        def self.get(start_year:, end_year:)
-          ranges = Japan::Version.ranges_with_year(start_year: start_year, end_year: end_year)
+        def self.get(start_year:, last_year:)
+          ranges = Japan::Version.ranges_with_year(start_year: start_year, last_year: last_year)
 
           result = []
 
@@ -32,13 +32,13 @@ module Zakuro
             range_start_year = range.start_year
             range_start_year = start_year if start_year > range.start_year
 
-            range_end_year = range.end_year
-            range_end_year = end_year if end_year < range.end_year
+            range_last_year = range.last_year
+            range_last_year = last_year if last_year < range.last_year
 
             result.push(
               Range.new(
                 name: range.name, start_date: range.start_date.clone,
-                start_year: range_start_year, end_year: range_end_year
+                start_year: range_start_year, last_year: range_last_year
               )
             )
           end

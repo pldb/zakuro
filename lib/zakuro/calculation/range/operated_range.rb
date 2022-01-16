@@ -29,14 +29,14 @@ module Zakuro
         #
         # @param [Context] context 暦コンテキスト
         # @param [Western::Calendar] start_date 開始日
-        # @param [Western::Calendar] end_date 終了日
+        # @param [Western::Calendar] last_date 終了日
         # @param [Array<Year>] years 年データ（完全範囲）
         #
-        def initialize(context:, start_date: Western::Calendar.new, end_date: Western::Calendar.new,
+        def initialize(context:, start_date: Western::Calendar.new, last_date: Western::Calendar.new,
                        years: [])
           @context = context
           @years = years
-          @scroll = Gengou::Scroll.new(start_date: start_date, end_date: end_date)
+          @scroll = Gengou::Scroll.new(start_date: start_date, last_date: last_date)
           @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
           @operated_solar_terms.create
         end

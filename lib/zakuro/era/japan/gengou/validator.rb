@@ -24,9 +24,9 @@ module Zakuro
         # @return [String] 元号セット名
         attr_reader :name
         # @return [Hash<String, String>] 終了年
-        attr_reader :both_end_year
+        attr_reader :both_last_year
         # @return [Hash<String, String>] 終了日
-        attr_reader :both_end_date
+        attr_reader :both_last_date
         # @return [Array<Hash<String, String>>] 元号情報
         attr_reader :list
 
@@ -38,8 +38,8 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
-          @both_end_year = hash['end_year']
-          @both_end_date = hash['end_date']
+          @both_last_year = hash['last_year']
+          @both_last_date = hash['last_date']
           @list = hash['list']
         end
 
@@ -54,9 +54,9 @@ module Zakuro
 
           failed.push("invalid name. #{@name}") unless name?
 
-          failed |= validate_both_end_year
+          failed |= validate_both_last_year
 
-          failed |= validate_both_end_date
+          failed |= validate_both_last_date
 
           failed |= validate_list
           failed
@@ -91,8 +91,8 @@ module Zakuro
         #
         # @return [Array<String>] 不正メッセージ
         #
-        def validate_both_end_year
-          Both::Year.new(hash: @both_end_year).validate
+        def validate_both_last_year
+          Both::Year.new(hash: @both_last_year).validate
         end
 
         #
@@ -100,8 +100,8 @@ module Zakuro
         #
         # @return [Array<String>] 不正メッセージ
         #
-        def validate_both_end_date
-          Both::Date.new(hash: @both_end_date).validate
+        def validate_both_last_date
+          Both::Date.new(hash: @both_last_date).validate
         end
 
         #

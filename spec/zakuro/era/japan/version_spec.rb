@@ -11,8 +11,8 @@ describe 'Zakuro' do
         context 'valid parameter has versions' do
           it 'should not be empty result' do
             start_year = 445
-            end_year = 445
-            actual = Zakuro::Japan::Version.ranges_with_year(start_year: start_year, end_year: end_year)
+            last_year = 445
+            actual = Zakuro::Japan::Version.ranges_with_year(start_year: start_year, last_year: last_year)
             expect(actual.size).to eq 1
           end
         end

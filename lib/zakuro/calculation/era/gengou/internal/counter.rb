@@ -62,10 +62,10 @@ module Zakuro
         #
         # @return [Western::Calendar] 西暦終了日
         #
-        def western_end_date
+        def western_last_date
           return Western::Calendar.new if @gengou.invalid?
 
-          @gengou.end_date
+          @gengou.last_date
         end
 
         #

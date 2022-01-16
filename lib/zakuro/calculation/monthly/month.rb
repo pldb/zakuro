@@ -202,7 +202,7 @@ module Zakuro
         #
         # @return [Western::Calendar] 月の終了日
         #
-        def end_date
+        def last_date
           return Western::Calendar.new if western_date.invalid?
 
           western_date.clone + days - 1
@@ -224,7 +224,7 @@ module Zakuro
 
           return false if date < start_date
 
-          return false if date > end_date
+          return false if date > last_date
 
           true
         end

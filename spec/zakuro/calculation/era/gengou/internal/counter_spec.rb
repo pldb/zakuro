@@ -39,7 +39,7 @@ describe 'Zakuro' do
                 japan: Zakuro::Japan::Calendar.parse(text: "元号#{japan_year}年1月1日"),
                 western: Zakuro::Western::Calendar.new(year: western_year)
               ),
-              end_date: Zakuro::Western::Calendar.new(year: 20)
+              last_date: Zakuro::Western::Calendar.new(year: 20)
             )
           end
 
