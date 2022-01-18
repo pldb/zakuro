@@ -4,6 +4,8 @@ require_relative './era/western/calendar'
 
 require_relative './calculation/summary/single'
 
+require_relative './calculation/summary/range'
+
 require_relative './condition'
 
 require_relative './output/error'
@@ -89,7 +91,13 @@ module Zakuro
     # @return [<Type>] <description>
     #
     def range(range:)
-      # TODO: make
+      start_date = range.start
+      last_date = range.last
+
+      # TODO: condition で設定する
+      context = Context.new(version_name: '')
+
+      Calculation::Summary::Range.get(context: context, start_date: start_date, last_date: last_date)
     end
   end
 end
