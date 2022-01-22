@@ -97,7 +97,9 @@ module Zakuro
       # TODO: condition で設定する
       context = Context.new(version_name: '')
 
-      Calculation::Summary::Range.get(context: context, start_date: start_date, last_date: last_date)
+      Calculation::Summary::Range.get(
+        context: context, start_date: start_date, last_date: last_date
+      )
     end
   end
 end

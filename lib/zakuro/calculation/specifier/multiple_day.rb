@@ -125,14 +125,37 @@ module Zakuro
 
           true
         end
+        private_class_method :include?
 
+        #
+        # 範囲が月より前にあるか
+        #
+        # @param [Western::Calendar] monthly_start_date 月初日
+        # @param [Western::Calendar] start_date 西暦開始日
+        # @param [Western::Calendar] last_date 西暦終了日
+        #
+        # @return [True] 前にある
+        # @return [False] 前にない
+        #
         def self.under(monthly_start_date:, start_date:, last_date:)
           start_date > monthly_start_date && last_date > monthly_start_date
         end
+        private_class_method :under
 
+        #
+        # 範囲が月より後にあるか
+        #
+        # @param [Western::Calendar] monthly_start_date 月末日
+        # @param [Western::Calendar] start_date 西暦開始日
+        # @param [Western::Calendar] last_date 西暦終了日
+        #
+        # @return [True] 後にある
+        # @return [False] 後にない
+        #
         def self.over(monthly_last_date:, start_date:, last_date:)
-          monthly_last_date < start_date && monthly_last_date < last_date
+          start_date < monthly_last_date && last_date < monthly_last_date
         end
+        private_class_method :over
       end
     end
   end

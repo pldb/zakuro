@@ -44,10 +44,9 @@ module Zakuro
         def get
           result = []
           first_date = @month.western_date.clone
-          current_date = first_date.clone
 
           (0..@month.days).each do |index|
-            current_date += index
+            current_date = first_date.clone + index
 
             next unless include?(date: current_date)
 

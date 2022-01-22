@@ -21,8 +21,19 @@ describe 'Zakuro' do
     describe 'Specifier' do
       describe 'MultipleDay' do
         describe '.get' do
+          def pre(start_date:, last_date:)
+            full_range = Zakuro::Calculation::Range::FullRange.new(
+              context: Zakuro::Context.new(version_name: ''),
+              start_date: start_date,
+              last_date: last_date
+            )
+
+            Zakuro::Calculation::Specifier::MultipleDay.get(
+              years: full_range.get, start_date: start_date, last_date: last_date
+            )
+          end
           context 'ancient month from western date 862-2-3' do
-            let!(:day) do
+            let!(:first_day) do
               Zakuro::Result::Data::SingleDay.new(
                 year: Zakuro::Result::Data::Year.new(
                   first_gengou: Zakuro::Result::Data::Gengou.new(name: '貞観', number: 4),
@@ -58,22 +69,44 @@ describe 'Zakuro' do
             context 'as 貞観4年1月' do
               example '1日' do
                 date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 3)
-
-                full_range = Zakuro::Calculation::Range::FullRange.new(
-                  context: Zakuro::Context.new(version_name: 'Senmyou'),
-                  start_date: date,
-                  last_date: date
-                )
-
-                actual = Zakuro::Calculation::Specifier::MultipleDay.get(
-                  years: full_range.get, start_date: date, last_date: date
-                )
+                actual = pre(start_date: date, last_date: date)
 
                 TestTools::Stringifier.eql?(
-                  expected: [day],
+                  expected: [first_day],
                   actual: actual,
                   class_prefix: 'Zakuro::Result'
                 )
+              end
+
+              example '2日' do
+                date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 4)
+
+                second_day = first_day
+                second_day.instance_variable_set(
+                  :@day,
+                  Zakuro::Result::Data::Day.new(number: 2, zodiac_name: '辛未',
+                                                remainder: '7-1282', western_date: date.format)
+                )
+
+                actual = pre(start_date: date, last_date: date)
+
+                TestTools::Stringifier.eql?(
+                  expected: [second_day],
+                  actual: actual,
+                  class_prefix: 'Zakuro::Result'
+                )
+              end
+            end
+          end
+          context 'parameters to get several days' do
+            context 'all days in a month' do
+              it 'should be same elements size as days of the month' do
+                start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
+                last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 22)
+
+                actual = pre(start_date: start_date, last_date: last_date)
+
+                expect(actual.size).to eq 30
               end
             end
           end
