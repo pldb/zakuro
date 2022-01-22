@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/interval',
+require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/range',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/list',
@@ -82,7 +82,7 @@ describe 'Zakuro' do
               list
             end
             let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Interval.new(
+              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
               interval.instance_variable_set('@first_gengou', first_gengou)
@@ -167,7 +167,7 @@ describe 'Zakuro' do
               list
             end
             let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Interval.new(
+              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
               interval.instance_variable_set('@first_gengou', first_gengou)
@@ -265,7 +265,7 @@ describe 'Zakuro' do
               list
             end
             let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Interval.new(
+              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
               interval.instance_variable_set('@first_gengou', first_gengou)
@@ -380,7 +380,7 @@ describe 'Zakuro' do
               list
             end
             let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Interval.new(
+              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
               interval.instance_variable_set('@first_gengou', first_gengou)

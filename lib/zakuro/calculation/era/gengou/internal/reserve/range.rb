@@ -12,11 +12,10 @@ module Zakuro
     module Gengou
       # :nodoc:
       module Reserve
-        # Interval
         #
-        # 予約済み計算範囲
+        # Range 予約済み計算範囲
         #
-        class Interval
+        class Range
           # @return [List] 1行目元号
           attr_reader :first_gengou
           # @return [List] 2行目元号

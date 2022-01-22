@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../../era/western/calendar'
-require_relative './reserve/interval'
+require_relative './reserve/range'
 require_relative './reserve/list'
 
 # :nodoc:
@@ -31,10 +31,10 @@ module Zakuro
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
         #
-        # @return [Interval] 予約済み計算範囲
+        # @return [Range] 予約済み計算範囲
         #
         def self.get(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-          Interval.new(start_date: start_date, last_date: last_date)
+          Range.new(start_date: start_date, last_date: last_date)
         end
       end
     end

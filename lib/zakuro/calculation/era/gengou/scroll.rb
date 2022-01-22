@@ -3,7 +3,7 @@
 require_relative '../../../era/western/calendar'
 require_relative '../../base/gengou'
 require_relative '../../base/linear_gengou'
-require_relative './internal/reserve/interval'
+require_relative './internal/reserve/range'
 
 # :nodoc:
 module Zakuro
@@ -20,7 +20,7 @@ module Zakuro
         attr_reader :monthly_start_date
         # @return [Western::Calendar] 月末日
         attr_reader :monthly_last_date
-        # @return [Reserve::Interval] 予約範囲
+        # @return [Reserve::Range] 予約範囲
         attr_reader :interval
         # @return [Array<Counte>] 1行目元号
         attr_reader :first_gengou
@@ -36,7 +36,7 @@ module Zakuro
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @monthly_start_date = Western::Calendar.new
           @monthly_last_date = Western::Calendar.new
-          @interval = Reserve::Interval.new(start_date: start_date, last_date: last_date)
+          @interval = Reserve::Range.new(start_date: start_date, last_date: last_date)
           @first_gengou = []
           @second_gengou = []
           @ignited = false
