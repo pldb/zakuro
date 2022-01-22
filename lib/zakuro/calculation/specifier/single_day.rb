@@ -63,10 +63,10 @@ module Zakuro
         #
         # 月を特定する
         #
-        # @param [Year] year 年
+        # @param [Base::Year] year 年
         # @param [Western::Calendar] date 西暦日
         #
-        # @return [Month] 対象月
+        # @return [Base::Month] 対象月
         #
         def self.specify_month(year:, date:)
           months = year.months
