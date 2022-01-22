@@ -109,6 +109,16 @@ describe 'Zakuro' do
                 expect(actual.size).to eq 30
               end
             end
+            context 'beyond next month' do
+              it 'should be same elements size as days of the month' do
+                start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 25)
+                last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 23)
+
+                actual = pre(start_date: start_date, last_date: last_date)
+
+                expect(actual.size).to eq 30
+              end
+            end
           end
         end
       end

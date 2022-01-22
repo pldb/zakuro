@@ -138,7 +138,7 @@ module Zakuro
         # @return [False] 前にない
         #
         def self.under(monthly_start_date:, start_date:, last_date:)
-          start_date > monthly_start_date && last_date > monthly_start_date
+          start_date < monthly_start_date && last_date < monthly_start_date
         end
         private_class_method :under
 
@@ -153,7 +153,7 @@ module Zakuro
         # @return [False] 後にない
         #
         def self.over(monthly_last_date:, start_date:, last_date:)
-          start_date < monthly_last_date && last_date < monthly_last_date
+          start_date > monthly_last_date && last_date > monthly_last_date
         end
         private_class_method :over
       end
