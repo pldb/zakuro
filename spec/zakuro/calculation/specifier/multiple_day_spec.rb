@@ -99,24 +99,58 @@ describe 'Zakuro' do
             end
           end
           context 'parameters to get several days' do
-            context 'all days in a month' do
-              it 'should be same elements size as days of the month' do
-                start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
-                last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 22)
+            context 'days of the month' do
+              context 'all days in a month' do
+                it 'should be same elements size' do
+                  start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
+                  last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 22)
 
-                actual = pre(start_date: start_date, last_date: last_date)
+                  actual = pre(start_date: start_date, last_date: last_date)
 
-                expect(actual.size).to eq 30
+                  expect(actual.size).to eq 30
+                end
+              end
+              context 'beyond next month' do
+                it 'should be same elements size' do
+                  start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 25)
+                  last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 23)
+
+                  actual = pre(start_date: start_date, last_date: last_date)
+
+                  expect(actual.size).to eq 30
+                end
+              end
+              context 'beyond next year' do
+                it 'should be same elements size' do
+                  start_date = Zakuro::Western::Calendar.new(year: 446, month: 1, day: 14)
+                  last_date = Zakuro::Western::Calendar.new(year: 446, month: 2, day: 12)
+
+                  actual = pre(start_date: start_date, last_date: last_date)
+
+                  expect(actual.size).to eq 30
+                end
               end
             end
-            context 'beyond next month' do
-              it 'should be same elements size as days of the month' do
-                start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 25)
-                last_date = Zakuro::Western::Calendar.new(year: 445, month: 2, day: 23)
+            context 'days of the year' do
+              context 'all days in a year' do
+                it 'should be same elements size' do
+                  start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
+                  last_date = Zakuro::Western::Calendar.new(year: 446, month: 2, day: 11)
 
-                actual = pre(start_date: start_date, last_date: last_date)
+                  actual = pre(start_date: start_date, last_date: last_date)
 
-                expect(actual.size).to eq 30
+                  expect(actual.size).to eq 384
+                end
+              end
+              context 'beyond next year' do
+                it 'should be same elements size' do
+                  start_date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 25)
+                  last_date = Zakuro::Western::Calendar.new(year: 446, month: 2, day: 12)
+
+                  actual = pre(start_date: start_date, last_date: last_date)
+
+                  expect(actual.size).to eq 384
+                end
               end
             end
           end
