@@ -46,6 +46,7 @@ module Zakuro
       # @param [Array<Data::SingleDay>] list 期間内データ
       #
       def initialize(list: [])
+        super
         @list = list
       end
     end

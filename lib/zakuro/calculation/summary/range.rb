@@ -28,8 +28,6 @@ module Zakuro
         # @return [Result::Range] 期間検索結果（和暦日）
         #
         def self.get(context:, start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-          # TODO: test
-
           years = get_full_range_years(
             context: context, start_date: start_date, last_date: last_date
           )
@@ -45,20 +43,7 @@ module Zakuro
             years: operated_years, start_date: start_date, last_date: last_date
           )
 
-          list = []
-          (0..(dates.size - 1)).each do |index|
-            data = operated_dates[index]
-
-            date = dates[index]
-            operation = Operation.create(calc_date: date)
-
-            list.push(
-              Result::Single.new(
-                data: data,
-                operation: operation
-              )
-            )
-          end
+          list = create_result_list(dates: dates, operated_dates: operated_dates)
 
           Result::Range.new(list: list)
         end
@@ -99,6 +84,36 @@ module Zakuro
           operated_range.get
         end
         private_class_method :get_operated_range_years
+
+        #
+        # 結果リストを生成する
+        #
+        # @param [Array<Result::Data::SingleDay>] dates 検索結果（計算値）
+        # @param [Array<Result::Data::SingleDay>] operated_dates 検索結果（運用値）
+        #
+        # @return [Array<Result::Single>] 結果リスト
+        #
+        def self.create_result_list(dates:, operated_dates:)
+          result = []
+
+          return result if dates.size != operated_dates.size
+
+          (0..(dates.size - 1)).each do |index|
+            data = operated_dates[index]
+
+            date = dates[index]
+            operation = Operation.create(calc_date: date)
+
+            result.push(
+              Result::Single.new(
+                data: data,
+                operation: operation
+              )
+            )
+          end
+
+          result
+        end
       end
     end
   end

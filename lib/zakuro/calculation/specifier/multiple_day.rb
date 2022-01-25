@@ -28,7 +28,7 @@ module Zakuro
         # @param [Western::Calendar] start_date 西暦開始日
         # @param [Western::Calendar] last_date 西暦終了日
         #
-        # @return [Result::Range] 期間検索結果（和暦日）
+        # @return [Array<Result::Data::SingleDay>] 期間検索結果（和暦日）
         #
         def self.get(years: [], start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           months = specify(years: years, start_date: start_date, last_date: last_date)
