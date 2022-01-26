@@ -52,6 +52,7 @@ module Zakuro
     # 承諾する
     #
     # @return [Result::SingleDay] 和暦日
+    # @return [Result::Range] 和暦日範囲
     #
     def commit
       date = condition.date
@@ -60,7 +61,7 @@ module Zakuro
 
       range = condition.range
 
-      return range(range: range) unless range.invalid?
+      return range(range: range) if range
 
       {}
     end
@@ -88,11 +89,11 @@ module Zakuro
     #
     # @param [Catalog::Range] range 期間
     #
-    # @return [<Type>] <description>
+    # @return [Result::Range] 和暦日範囲
     #
     def range(range:)
-      start_date = range.start
-      last_date = range.last
+      start_date = Western::Calendar.create(date: range[:start])
+      last_date = Western::Calendar.create(date: range[:last])
 
       # TODO: condition で設定する
       context = Context.new(version_name: '')
