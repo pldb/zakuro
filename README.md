@@ -119,6 +119,12 @@ puts merchant.commit.to_json
 | 日付情報 | data      |   |   | Zakuro::Result::Data::SingleDay   | -      | 運用値（計算値は運用情報内を参照のこと）|
 | 運用情報 | operation |   |   | Zakuro::Result::Operation::Bundle | -      | -                                     |
 
+### Zakuro::Result::Range
+
+| 項目名   | キー名    | - | - | データ型                               | 参考値 | 備考                                　 |
+|----------|-----------|---|---|---------------------------------------|--------|---------------------------------------|
+| 日リスト | list      |   |   | Array\<Zakuro::Result::Data::Single\>  | -      | 範囲内の日付情報すべて                  |
+
 ### Zakuro::Result::SingleDay
 
 | 項目名                   | キー名 | -                | -            | データ型                        | 参考値     | 備考                       |
@@ -176,7 +182,7 @@ puts merchant.commit.to_json
 | 月初日の西暦日     |          | western_date | 　          | String                                            | 0937-02-13                                                                                                          | 計算値               |
 | 原文頁数          |          | page         | 　          | Integer                                           | 178                                                                                                                 | 　                   |
 | 原文注釈番号      |          | number       | 　          | Integer                                            | 1                                                                                                                   | 　                   |
-| 注釈              |          | annotations | 　          | Array<Zakuro::Result::Operation::::MonthAnnotation> | 　                                                                                                                  | 　                   |
+| 注釈              |          | annotations | 　          | Array\<Zakuro::Result::Operation::MonthAnnotation\> | 　                                                                                                                  | 　                   |
 | 注釈内容          | 　       |              | description | String                                             | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
 | 注釈補記          | 　       |              | note        | String                                             | -                                                                                                                   | 原文訂正             |
 

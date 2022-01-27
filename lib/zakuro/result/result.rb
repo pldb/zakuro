@@ -43,7 +43,7 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Array<Data::SingleDay>] list 期間内データ
+      # @param [Array<Data::Single>] list 期間内データ
       #
       def initialize(list: [])
         super
