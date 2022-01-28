@@ -11,6 +11,9 @@ require File.expand_path('../../../../' \
                          'lib/zakuro/version/context',
                          __dir__)
 
+require File.expand_path('./single_data_factory',
+                         __dir__)
+
 # rubocop:disable Metrics/BlockLength
 
 describe 'Zakuro' do
@@ -44,7 +47,27 @@ describe 'Zakuro' do
               expect(actual.list[0].data.day.western_date.format).to eq start_date.format
             end
           end
-          # TODO: more test
+          context 'all range data' do
+            filepath = File.expand_path(
+              './yaml/range.yaml',
+              __dir__
+            )
+            hash = YAML.load_file(filepath)
+
+            hash.each do |test|
+              start_date = test['start_date']
+              last_date = test['last_date']
+              list = []
+              test['expected'].each do |day|
+                single_data = SingleDataFactory.create(hash: day)
+                list.push(single_data)
+              end
+
+              it "#{start_date} - #{last_date}: #{test['japan_date']}: #{test['description']}" do
+                # TODO: more test
+              end
+            end
+          end
         end
       end
     end
