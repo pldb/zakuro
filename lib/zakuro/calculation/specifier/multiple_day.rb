@@ -85,9 +85,9 @@ module Zakuro
             monthly_start_date = month.western_date.clone
             monthly_last_date = month.last_date.clone
 
-            monthly_start_date = start_date if start_date > monthly_start_date
+            monthly_start_date = start_date.clone if start_date > monthly_start_date
 
-            monthly_last_date = last_date if last_date < monthly_last_date
+            monthly_last_date = last_date.clone if last_date < monthly_last_date
 
             specify_months.push(
               Month.new(year: year, month: month,

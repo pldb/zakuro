@@ -53,7 +53,7 @@ module Zakuro
             day = Output::Response::SingleDay.save_single_day(
               param: Output::Response::SingleDay::Param.new(
                 year: @year, month: @month,
-                date: first_date, days: index
+                date: current_date, days: index
               )
             )
 

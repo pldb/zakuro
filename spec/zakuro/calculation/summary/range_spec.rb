@@ -62,9 +62,20 @@ describe 'Zakuro' do
                 single_data = SingleDataFactory.create(hash: day)
                 list.push(single_data)
               end
+              expected_range = Zakuro::Result::Range.new(list: list)
 
               it "#{start_date} - #{last_date}: #{test['japan_date']}: #{test['description']}" do
-                # TODO: more test
+                actual = Zakuro::Calculation::Summary::Range.get(
+                  context: Zakuro::Context.new(version_name: ''),
+                  start_date: Zakuro::Western::Calendar.parse(str: start_date),
+                  last_date: Zakuro::Western::Calendar.parse(str: last_date)
+                )
+
+                TestTools::Stringifier.eql?(
+                  expected: expected_range,
+                  actual: actual,
+                  class_prefix: 'Zakuro::Result'
+                )
               end
             end
           end
