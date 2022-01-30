@@ -25,26 +25,48 @@ describe 'Zakuro' do
             let!(:context) do
               Zakuro::Context.new(version_name: '')
             end
-
             let!(:start_date) do
               Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
             end
             let!(:last_date) do
               Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
             end
-            it 'should be a element in result list' do
-              actual = Zakuro::Calculation::Summary::Range.get(
+            let!(:actual) do
+              Zakuro::Calculation::Summary::Range.get(
                 context: context, start_date: start_date, last_date: last_date
               )
-
+            end
+            it 'should be a element in result list' do
               expect(actual.list.size).to eq 1
             end
             it 'should be start date in result array' do
-              actual = Zakuro::Calculation::Summary::Range.get(
+              expect(actual.list[0].data.day.western_date.format).to eq start_date.format
+            end
+          end
+          context 'any parameter to specify a year' do
+            let!(:context) do
+              Zakuro::Context.new(version_name: '')
+            end
+            let!(:start_date) do
+              Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
+            end
+            let!(:last_date) do
+              Zakuro::Western::Calendar.new(year: 446, month: 2, day: 11)
+            end
+            let!(:actual) do
+              Zakuro::Calculation::Summary::Range.get(
                 context: context, start_date: start_date, last_date: last_date
               )
+            end
 
+            it 'should be a element in result list' do
+              expect(actual.list.size).to eq 384
+            end
+            it 'should be start date in result array' do
               expect(actual.list[0].data.day.western_date.format).to eq start_date.format
+            end
+            it 'should be last date in result array' do
+              expect(actual.list[-1].data.day.western_date.format).to eq last_date.format
             end
           end
           context 'all range data' do
@@ -64,6 +86,9 @@ describe 'Zakuro' do
               end
               expected_range = Zakuro::Result::Range.new(list: list)
 
+              # TODO: 下記テストに失敗する
+              # * id: 3
+              # * id: 4
               it "#{start_date} - #{last_date}: #{test['japan_date']}: #{test['description']}" do
                 actual = Zakuro::Calculation::Summary::Range.get(
                   context: Zakuro::Context.new(version_name: ''),

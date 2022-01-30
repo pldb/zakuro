@@ -3660,7 +3660,7 @@
           western_date: "1392-02-23"
 - western_date: "1392-11-19"
   version: "Senmyou"
-  japan_date: "明徳3年閏10月1日（明徳3年11月1日）"
+  japan_date: "明徳3年閏10月5日（明徳3年11月5日）"
   description: "南北朝終焉の翌日を計算できること"
   expected:
     data:
