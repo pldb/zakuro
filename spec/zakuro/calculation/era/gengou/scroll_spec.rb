@@ -309,8 +309,8 @@ describe 'Zakuro' do
           end
         end
         describe '#ignite' do
-          context 'xxx' do
-            let(:monthes) do
+          context 'a month beyond year' do
+            let(:months) do
               [
                 Zakuro::Calculation::Monthly::Month.new(
                   context: context,
@@ -395,8 +395,8 @@ describe 'Zakuro' do
               scroll
             end
             let(:gengou) do
-              scroll.ignite(month: monthes[0])
-              scroll.advance(month: monthes[1])
+              scroll.ignite(month: months[0])
+              scroll.advance(month: months[1])
               scroll.to_gengou
             end
 
@@ -411,7 +411,7 @@ describe 'Zakuro' do
               actual = gengou.first_line
               expect(actual[0].start_date.format).to eq '0450-01-01'
             end
-            it 'should be valid end date' do
+            it 'should be valid last date' do
               actual = gengou.first_line
               expect(actual[0].last_date.format).to eq '0450-01-29'
             end
@@ -421,7 +421,24 @@ describe 'Zakuro' do
             end
           end
         end
-      end
+        describe '#run' do
+          context 'range included second gengou' do
+            let(:start_date) do
+              Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 22)
+            end
+            let(:last_date) do
+              Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
+            end
+            let(:scroll) do
+              Zakuro::Calculation::Gengou::Scroll.new(
+                start_date: start_date, last_date: last_date
+              )
+            end
+
+            # TODO: test
+          end
+        end
+    end
     end
   end
 end
