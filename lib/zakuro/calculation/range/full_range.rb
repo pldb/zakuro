@@ -41,7 +41,7 @@ module Zakuro
         # @return [Western::Calendar] 開始日
         attr_reader :start_date
         # @return [Western::Calendar] 終了日
-        attr_reader :end_date
+        attr_reader :last_date
         # @return [MultiGengouRoller] 改元処理
         attr_reader :scroll
 
@@ -53,16 +53,16 @@ module Zakuro
         #
         # @param [Context] context 暦コンテキスト
         # @param [Western::Calendar] start_date 開始日
-        # @param [Western::Calendar] end_date 終了日
+        # @param [Western::Calendar] last_date 終了日
         #
-        def initialize(context:, start_date: Western::Calendar.new, end_date: Western::Calendar.new)
+        def initialize(context:, start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @start_date = start_date
-          @end_date = end_date
+          @last_date = last_date
           return if invalid?
 
           # TODO: 現時点では使用していない。特定の暦を指定できるようになった状態で使用する
           @context = context
-          @scroll = Gengou::Scroll.new(start_date: start_date, end_date: end_date)
+          @scroll = Gengou::Scroll.new(start_date: start_date, last_date: last_date)
         end
 
         #
@@ -103,19 +103,19 @@ module Zakuro
           result = []
 
           start_year = @scroll.western_start_year
-          end_year = @scroll.western_end_year
+          last_year = @scroll.western_last_year
 
-          versions = Version.get(start_year: start_year, end_year: end_year)
+          versions = Version.get(start_year: start_year, last_year: last_year)
 
           versions.each_with_index do |version, index|
             context = Context.new(version_name: version.name)
             start_year = version.start_year
-            end_year = version.end_year
+            last_year = version.last_year
             # 最後の暦だけ1年足す（次の元号の開始年まで計算するケースあり）
-            end_year += 1 if (index + 1) == versions.size
+            last_year += 1 if (index + 1) == versions.size
 
             years = boundary_resolved_ranges(
-              context: context, start_year: start_year, end_year: end_year
+              context: context, start_year: start_year, last_year: last_year
             )
             result.concat(years)
           end
@@ -128,13 +128,13 @@ module Zakuro
         #
         # @param [Context] context 暦コンテキスト
         # @param [Integer] start_year 開始西暦年
-        # @param [Integer] end_year 終了西暦年
+        # @param [Integer] last_year 終了西暦年
         #
         # @return [Array<Base::Year>] 年境界解決済みの範囲
         #
-        def boundary_resolved_ranges(context:, start_year:, end_year:)
+        def boundary_resolved_ranges(context:, start_year:, last_year:)
           ranges = annual_ranges(
-            context: context, start_year: start_year, end_year: end_year
+            context: context, start_year: start_year, last_year: last_year
           )
 
           Transfer::YearBoundary.get(
@@ -147,15 +147,15 @@ module Zakuro
         #
         # @param [Context] context 暦コンテキスト
         # @param [Integer] start_year 開始西暦年
-        # @param [Integer] end_year 終了西暦年
+        # @param [Integer] last_year 終了西暦年
         #
         # @return [Array<Base::Year>] 年データ（冬至基準）
         #
-        def annual_ranges(context:, start_year:, end_year:)
+        def annual_ranges(context:, start_year:, last_year:)
           annual_range = context.resolver.annual_range
 
           years = []
-          (start_year..(end_year + 1)).each do |year|
+          (start_year..(last_year + 1)).each do |year|
             years.push(
               annual_range.get(
                 context: context, western_year: year

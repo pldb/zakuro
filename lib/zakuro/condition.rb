@@ -87,6 +87,20 @@ module Zakuro
 
         failed
       end
+
+      #
+      # 不正か
+      #
+      # @return [True] 不正
+      # @return [False] 不正なし
+      #
+      def invalid?
+        return true unless @start
+
+        return true unless @end
+
+        false
+      end
     end
 
     #

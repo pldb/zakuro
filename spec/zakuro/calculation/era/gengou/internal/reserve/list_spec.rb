@@ -22,7 +22,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
                 )
               end
               it 'should be a element in result array' do
@@ -38,7 +38,7 @@ describe 'Zakuro' do
                 expect(actual).to eq 445
               end
               it 'should be end year on target gengou' do
-                actual = list.western_end_year
+                actual = list.western_last_year
                 expect(actual).to eq 453
               end
             end
@@ -47,7 +47,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
-                  end_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
+                  last_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
                 )
               end
               it 'should be two elements in result array' do
@@ -67,7 +67,7 @@ describe 'Zakuro' do
                 expect(actual).to eq 445
               end
               it 'should be end year on a last element' do
-                actual = list.western_end_year
+                actual = list.western_last_year
                 expect(actual).to eq 456
               end
             end
@@ -76,7 +76,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13),
-                  end_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13)
+                  last_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13)
                 )
               end
               it 'should be two elements in result array' do
@@ -97,7 +97,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14),
-                  end_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14)
+                  last_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14)
                 )
               end
               it 'should be two elements in result array' do
@@ -120,7 +120,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23),
-                  end_date: Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
+                  last_date: Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
                 )
               end
               it 'should be a element in result array' do
@@ -136,7 +136,7 @@ describe 'Zakuro' do
                 expect(actual).to eq 1332
               end
               it 'should be end year on target gengou' do
-                actual = list.western_end_year
+                actual = list.western_last_year
                 expect(actual).to eq 1333
               end
             end
@@ -145,7 +145,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 3, day: 4),
-                  end_date: Zakuro::Western::Calendar.new(year: 1334, month: 3, day: 5)
+                  last_date: Zakuro::Western::Calendar.new(year: 1334, month: 3, day: 5)
                 )
               end
               it 'should be two elements in result array' do
@@ -165,7 +165,7 @@ describe 'Zakuro' do
                 expect(actual).to eq 1332
               end
               it 'should be end year on a last element' do
-                actual = list.western_end_year
+                actual = list.western_last_year
                 expect(actual).to eq 1337
               end
             end
@@ -174,7 +174,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 4, day: 4),
-                  end_date: Zakuro::Western::Calendar.new(year: 1334, month: 4, day: 4)
+                  last_date: Zakuro::Western::Calendar.new(year: 1334, month: 4, day: 4)
                 )
               end
               it 'should be two elements in result array' do
@@ -195,7 +195,7 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 2, day: 6),
-                  end_date: Zakuro::Western::Calendar.new(year: 1334, month: 2, day: 6)
+                  last_date: Zakuro::Western::Calendar.new(year: 1334, month: 2, day: 6)
                 )
               end
               it 'should be two elements in result array' do
@@ -218,13 +218,13 @@ describe 'Zakuro' do
                 Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
-                  end_date: Zakuro::Western::Calendar.new
+                  last_date: Zakuro::Western::Calendar.new
                 )
               end
               it 'should be only invalid gengou' do
                 actual = list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
                 )
                 expect(actual[0].invalid?).to be_truthy
               end
@@ -234,7 +234,7 @@ describe 'Zakuro' do
                 list = Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
-                  end_date: Zakuro::Western::Calendar.new
+                  last_date: Zakuro::Western::Calendar.new
                 )
                 list.instance_variable_set(
                   '@list', [
@@ -252,7 +252,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 12
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
                     )
                   ]
                 )
@@ -261,7 +261,7 @@ describe 'Zakuro' do
               let(:actual) do
                 list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
                 )
               end
               it 'should be included invalid gengou' do
@@ -276,7 +276,7 @@ describe 'Zakuro' do
                 result = Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
-                  end_date: Zakuro::Western::Calendar.new
+                  last_date: Zakuro::Western::Calendar.new
                 )
                 result.instance_variable_set(
                   :@list, [
@@ -294,7 +294,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 1
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
                     ),
                     Zakuro::Japan::Gengou.new(
                       name: '元号2',
@@ -310,7 +310,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 21
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
                     )
                   ]
                 )
@@ -319,7 +319,7 @@ describe 'Zakuro' do
               let(:actual) do
                 list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 30)
                 )
               end
               it 'should be two elements' do
@@ -343,7 +343,7 @@ describe 'Zakuro' do
                 result = Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
-                  end_date: Zakuro::Western::Calendar.new
+                  last_date: Zakuro::Western::Calendar.new
                 )
                 result.instance_variable_set(
                   :@list, [
@@ -361,7 +361,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 1
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
                     ),
                     Zakuro::Japan::Gengou.new(
                       name: '元号2',
@@ -377,7 +377,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 21
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 31)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 31)
                     ),
                     Zakuro::Japan::Gengou.new(
                       name: '元号3',
@@ -393,7 +393,7 @@ describe 'Zakuro' do
                           year: 450, month: 4, day: 1
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
                     )
                   ]
                 )
@@ -402,7 +402,7 @@ describe 'Zakuro' do
               let(:actual) do
                 list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 2)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 2)
                 )
               end
               it 'should be three elements' do
@@ -432,7 +432,7 @@ describe 'Zakuro' do
                 list = Zakuro::Calculation::Gengou::Reserve::List.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
-                  end_date: Zakuro::Western::Calendar.new
+                  last_date: Zakuro::Western::Calendar.new
                 )
                 list.instance_variable_set(
                   '@list', [
@@ -450,7 +450,7 @@ describe 'Zakuro' do
                           year: 450, month: 1, day: 12
                         )
                       ),
-                      end_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
                     )
                   ]
                 )
@@ -459,7 +459,7 @@ describe 'Zakuro' do
               let(:actual) do
                 list.collect(
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 21),
-                  end_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                  last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
                 )
               end
               it 'should be a element' do

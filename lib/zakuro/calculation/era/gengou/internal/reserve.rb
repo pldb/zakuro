@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../../era/western/calendar'
-require_relative './reserve/interval'
+require_relative './reserve/range'
 require_relative './reserve/list'
 
 # :nodoc:
@@ -29,12 +29,12 @@ module Zakuro
         #     * 終了日が最後の元号の改元前日30日以内の場合、さらに次の元号まで対象にする
         #
         # @param [Western::Calendar] start_date 開始日
-        # @param [Western::Calendar] end_date 終了日
+        # @param [Western::Calendar] last_date 終了日
         #
-        # @return [Interval] 予約済み計算範囲
+        # @return [Range] 予約済み計算範囲
         #
-        def self.get(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
-          Interval.new(start_date: start_date, end_date: end_date)
+        def self.get(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+          Range.new(start_date: start_date, last_date: last_date)
         end
       end
     end

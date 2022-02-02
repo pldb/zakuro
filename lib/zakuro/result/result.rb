@@ -33,5 +33,22 @@ module Zakuro
         @operation = operation
       end
     end
+
+    #
+    # Range 期間検索結果
+    #
+    class Range < Core
+      attr_reader :list
+
+      #
+      # 初期化
+      #
+      # @param [Array<Data::Single>] list 期間内データ
+      #
+      def initialize(list: [])
+        super
+        @list = list
+      end
+    end
   end
 end

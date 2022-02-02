@@ -4,6 +4,8 @@ require_relative './era/western/calendar'
 
 require_relative './calculation/summary/single'
 
+require_relative './calculation/summary/range'
+
 require_relative './condition'
 
 require_relative './output/error'
@@ -50,18 +52,55 @@ module Zakuro
     # 承諾する
     #
     # @return [Result::SingleDay] 和暦日
+    # @return [Result::Range] 和暦日範囲
     #
     def commit
       date = condition.date
 
-      return {} unless date
+      return single(date: date) if date
 
+      range = condition.range
+
+      return range(range: range) if range
+
+      {}
+    end
+
+    private
+
+    #
+    # 1日検索
+    #
+    # @param [Date] date 西暦日
+    #
+    # @return [Result::Single] 検索結果
+    #
+    def single(date:)
       western_date = Western::Calendar.create(date: date)
 
       # TODO: condition で設定する
       context = Context.new(version_name: '')
 
       Calculation::Summary::Single.get(context: context, date: western_date)
+    end
+
+    #
+    # 期間検索
+    #
+    # @param [Catalog::Range] range 期間
+    #
+    # @return [Result::Range] 和暦日範囲
+    #
+    def range(range:)
+      start_date = Western::Calendar.create(date: range[:start])
+      last_date = Western::Calendar.create(date: range[:last])
+
+      # TODO: condition で設定する
+      context = Context.new(version_name: '')
+
+      Calculation::Summary::Range.get(
+        context: context, start_date: start_date, last_date: last_date
+      )
     end
   end
 end

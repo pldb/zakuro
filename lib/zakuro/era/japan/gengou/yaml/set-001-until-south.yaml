@@ -1,10 +1,10 @@
 ---
 id: 1
 name: 南北朝前+南朝
-end_year:
+last_year:
   japan: 9
   western: 1392
-end_date:
+last_date:
   japan: 元中09年閏10月04日
   western: '1392-11-18'
 list:

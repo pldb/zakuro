@@ -36,7 +36,7 @@ describe 'Zakuro' do
           end
           context 'all single data' do
             filepath = File.expand_path(
-              './yaml/testdata.yaml',
+              './yaml/single.yaml',
               __dir__
             )
             hash = YAML.load_file(filepath)

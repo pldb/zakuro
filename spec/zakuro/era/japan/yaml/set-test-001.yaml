@@ -1,9 +1,9 @@
 id: 1
 name: "test-001"
-end_year:
+last_year:
   japan: 2
   western: 1055
-end_date:
+last_date:
   japan: "元号2年1月10日"
   western: "555-2-3"
 list:

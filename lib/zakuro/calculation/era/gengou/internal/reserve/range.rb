@@ -12,11 +12,10 @@ module Zakuro
     module Gengou
       # :nodoc:
       module Reserve
-        # Interval
         #
-        # 予約済み計算範囲
+        # Range 予約済み計算範囲
         #
-        class Interval
+        class Range
           # @return [List] 1行目元号
           attr_reader :first_gengou
           # @return [List] 2行目元号
@@ -26,11 +25,11 @@ module Zakuro
           # 初期化
           #
           # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] end_date 西暦終了日
+          # @param [Western::Calendar] last_date 西暦終了日
           #
-          def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new)
-            @first_gengou = List.new(first: true, start_date: start_date, end_date: end_date)
-            @second_gengou = List.new(first: false, start_date: start_date, end_date: end_date)
+          def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+            @first_gengou = List.new(first: true, start_date: start_date, last_date: last_date)
+            @second_gengou = List.new(first: false, start_date: start_date, last_date: last_date)
           end
 
           #
@@ -69,26 +68,26 @@ module Zakuro
           # 範囲内元号（1行目元号）を取得する
           #
           # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] end_date 西暦終了日
+          # @param [Western::Calendar] last_date 西暦終了日
           #
           # @return [Array<Gengou::Counter>] 範囲内元号（1行目元号）
           #
           def collect_first_gengou(start_date: Western::Calendar.new,
-                                   end_date: Western::Calendar.new)
-            @first_gengou.collect(start_date: start_date, end_date: end_date)
+                                   last_date: Western::Calendar.new)
+            @first_gengou.collect(start_date: start_date, last_date: last_date)
           end
 
           #
           # 範囲内元号（2行目元号）を取得する
           #
           # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] end_date 西暦終了日
+          # @param [Western::Calendar] last_date 西暦終了日
           #
           # @return [Array<Gengou::Counter>] 範囲内元号（2行目元号）
           #
           def collect_second_gengou(start_date: Western::Calendar.new,
-                                    end_date: Western::Calendar.new)
-            @second_gengou.collect(start_date: start_date, end_date: end_date)
+                                    last_date: Western::Calendar.new)
+            @second_gengou.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -140,17 +139,17 @@ module Zakuro
           #
           # @return [Integer] 終了西暦年
           #
-          def western_end_year
-            first_end_year = @first_gengou.western_end_year
-            second_end_year = @second_gengou.western_end_year
+          def western_last_year
+            first_last_year = @first_gengou.western_last_year
+            second_last_year = @second_gengou.western_last_year
 
-            return first_end_year if @first_gengou.invalid?
+            return first_last_year if @first_gengou.invalid?
 
-            return first_end_year if @second_gengou.invalid?
+            return first_last_year if @second_gengou.invalid?
 
-            return first_end_year if first_end_year > second_end_year
+            return first_last_year if first_last_year > second_last_year
 
-            second_end_year
+            second_last_year
           end
 
           private

@@ -66,9 +66,9 @@ module Zakuro
         # @return [String] 元号セット名
         attr_reader :name
         # @return [Hash<String, String>] 終了年
-        attr_reader :both_end_year
+        attr_reader :both_last_year
         # @return [Hash<String, String>] 終了日
-        attr_reader :both_end_date
+        attr_reader :both_last_date
         # @return [Array<Hash<String, String>>] 元号情報
         attr_reader :list
 
@@ -80,8 +80,8 @@ module Zakuro
         def initialize(hash:)
           @id = hash['id']
           @name = hash['name']
-          @both_end_year = hash['end_year']
-          @both_end_date = hash['end_date']
+          @both_last_year = hash['last_year']
+          @both_last_date = hash['last_date']
           @list = hash['list']
         end
 
@@ -91,10 +91,10 @@ module Zakuro
         # @return [Set] 元号セット情報
         #
         def create
-          both_end_date = Both::DateParser.new(hash: @both_end_date).create
+          both_last_date = Both::DateParser.new(hash: @both_last_date).create
           list = create_list
           Set.new(
-            id: @id, name: @name, both_end_date: both_end_date, list: list
+            id: @id, name: @name, both_last_date: both_last_date, list: list
           )
         end
 
@@ -110,7 +110,7 @@ module Zakuro
           @list.each_with_index do |li, index|
             gengou = GengouParser.new(hash: li, index: index).create
             next_index = index + 1
-            gengou = calc_end_date_on_gengou_data(next_index: next_index,
+            gengou = calc_last_date_on_gengou_data(next_index: next_index,
                                                   gengou: gengou)
             result.push(gengou)
           end
@@ -128,18 +128,18 @@ module Zakuro
         #
         # @return [Gengou] 元号情報
         #
-        def calc_end_date_on_gengou_data(next_index:, gengou:)
+        def calc_last_date_on_gengou_data(next_index:, gengou:)
           if next_index >= @list.size
-            gengou.write_end_year(end_year: @both_end_year['western'])
-            end_date = Western::Calendar.parse(str: @both_end_date['western'])
-            gengou.write_end_date(end_date: end_date)
+            gengou.write_last_year(last_year: @both_last_year['western'])
+            last_date = Western::Calendar.parse(str: @both_last_date['western'])
+            gengou.write_last_date(last_date: last_date)
             return gengou
           end
           next_item = @list[next_index]
-          gengou.convert_next_start_year_to_end_year(
+          gengou.convert_next_start_year_to_last_year(
             next_start_year: next_item['start_year']['western']
           )
-          gengou.convert_next_start_date_to_end_date(
+          gengou.convert_next_start_date_to_last_date(
             next_start_date: next_item['start_date']['western']
           )
           gengou

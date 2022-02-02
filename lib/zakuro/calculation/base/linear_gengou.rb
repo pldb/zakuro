@@ -17,7 +17,7 @@ module Zakuro
         # @return [Western::Calendar] 開始日
         attr_reader :start_date
         # @return [Western::Calendar] 終了日
-        attr_reader :end_date
+        attr_reader :last_date
         # @return [String] 元号名
         attr_reader :name
         # @return [Integer] 年
@@ -27,14 +27,14 @@ module Zakuro
         # 初期化
         #
         # @param [Western::Calendar] start_date 開始日
-        # @param [Western::Calendar] end_date 終了日
+        # @param [Western::Calendar] last_date 終了日
         # @param [String] name 元号名
         # @param [Integer] 元号年
         #
-        def initialize(start_date: Western::Calendar.new, end_date: Western::Calendar.new,
+        def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
                        name: '', year: INVALID_YEAR)
           @start_date = start_date
-          @end_date = end_date
+          @last_date = last_date
           @name = name
           @year = year
         end
@@ -62,11 +62,11 @@ module Zakuro
 
           return false if @start_date.invalid?
 
-          return false if @end_date.invalid?
+          return false if @last_date.invalid?
 
           return false if date < @start_date
 
-          return false if date > @end_date
+          return false if date > @last_date
 
           true
         end
