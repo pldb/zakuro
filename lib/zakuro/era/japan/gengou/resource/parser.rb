@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../western/calendar'
+require_relative '../../../western/calendar'
 require_relative './type'
 require_relative './validator'
 require 'yaml'

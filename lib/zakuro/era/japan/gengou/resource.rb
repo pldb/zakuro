@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../western/calendar'
-require_relative './gengou/parser'
-require_relative './gengou/type'
+require_relative './resource/parser'
 
 # :nodoc:
 module Zakuro
@@ -11,21 +9,21 @@ module Zakuro
   #
   module Japan
     #
-    # GengouResource 元号情報
+    # Resource yaml解析結果
     #
-    module GengouResource
+    module Resource
       # @return [Array<Set>] 元号セット情報リスト
       LIST = [
         Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-001-until-south.yaml',
+          './resource/yaml/set-001-until-south.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-002-from-north.yaml',
+          './resource/yaml/set-002-from-north.yaml',
           __dir__
         )),
         Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-003-modern.yaml',
+          './resource/yaml/set-003-modern.yaml',
           __dir__
         ))
       ].freeze

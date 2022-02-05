@@ -5,7 +5,7 @@ require File.expand_path('../../../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/era/japan/gengou',
+                         'lib/zakuro/era/japan/gengou/resource',
                          __dir__)
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do

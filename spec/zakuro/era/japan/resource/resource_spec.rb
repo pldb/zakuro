@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../zakuro/lib/zakuro/era/japan/gengou',
+require File.expand_path('../../../../../../zakuro/lib/zakuro/era/japan/gengou/resource',
                          __dir__)
 require 'yaml'
 
 ACTUAL_YAML_PATH = File.expand_path(
-  '../../../../lib/zakuro/era/japan/gengou/yaml/set-001-until-south.yaml',
+  '../../../../../lib/zakuro/era/japan/gengou/resource/yaml/set-001-until-south.yaml',
   __dir__
 )
 TEST_YAML_PATH = File.expand_path(
@@ -181,36 +181,36 @@ describe 'Zakuro' do
         end
       end
     end
-    describe 'GengouResource' do
+    describe 'Resource' do
       context '.first_line' do
         context 'set-001 only' do
           it 'should be got a element' do
             date = Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
-            item = Zakuro::Japan::GengouResource.first_line(date: date)
+            item = Zakuro::Japan::Resource.first_line(date: date)
             expect(item.name).to eq('允恭天皇')
           end
         end
         context 'set-001 and set-002' do
           it 'should be got a element' do
             date = Zakuro::Western::Calendar.new(year: 1384, month: 5, day: 18)
-            item = Zakuro::Japan::GengouResource.first_line(date: date)
+            item = Zakuro::Japan::Resource.first_line(date: date)
             expect(item.name).to eq('元中')
           end
           it 'should be got a set-002 element instead of set-001 one' do
             date = Zakuro::Western::Calendar.new(year: 1393, month: 2, day: 12)
-            item = Zakuro::Japan::GengouResource.first_line(date: date)
+            item = Zakuro::Japan::Resource.first_line(date: date)
             expect(item.name).to eq('明徳')
           end
           it 'should be got a set-002 element instead of set-001 one' do
             date = Zakuro::Western::Calendar.new(year: 1868, month: 1, day: 24)
-            item = Zakuro::Japan::GengouResource.first_line(date: date)
+            item = Zakuro::Japan::Resource.first_line(date: date)
             expect(item.name).to eq('慶応')
           end
         end
         context 'set-003 only' do
           it 'should be got a set-003 element instead of set-001 one' do
             date = Zakuro::Western::Calendar.new(year: 1868, month: 10, day: 23)
-            item = Zakuro::Japan::GengouResource.first_line(date: date)
+            item = Zakuro::Japan::Resource.first_line(date: date)
             expect(item.name).to eq('明治')
           end
         end
@@ -222,7 +222,7 @@ describe 'Zakuro' do
             yaml = YAML.load_file(first_line_path)
             yaml.each do |gengou|
               date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
-              item = Zakuro::Japan::GengouResource.first_line(date: date)
+              item = Zakuro::Japan::Resource.first_line(date: date)
               expect(gengou['name']).to eq(item.name)
             end
           end
@@ -232,14 +232,14 @@ describe 'Zakuro' do
         context 'set-001 and set-002' do
           it 'should be got a set-002 element' do
             date = Zakuro::Western::Calendar.new(year: 1384, month: 3, day: 19)
-            item = Zakuro::Japan::GengouResource.second_line(date: date)
+            item = Zakuro::Japan::Resource.second_line(date: date)
             expect(item.name).to eq('至徳')
           end
         end
         context 'set-002 only' do
           it 'should be got a invalid element' do
             date = Zakuro::Western::Calendar.new(year: 1393, month: 2, day: 12)
-            item = Zakuro::Japan::GengouResource.second_line(date: date)
+            item = Zakuro::Japan::Resource.second_line(date: date)
             expect(item.invalid?).to be_truthy
           end
         end
@@ -251,7 +251,7 @@ describe 'Zakuro' do
             yaml = YAML.load_file(second_line_path)
             yaml.each do |gengou|
               date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
-              item = Zakuro::Japan::GengouResource.second_line(date: date)
+              item = Zakuro::Japan::Resource.second_line(date: date)
               expect(gengou['name']).to eq(item.name)
             end
           end

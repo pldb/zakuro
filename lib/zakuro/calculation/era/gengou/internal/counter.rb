@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../era/japan/gengou'
+require_relative '../../../../era/japan/gengou/resource'
 require_relative '../../../../era/japan/calendar'
 require_relative '../../../../era/western/calendar'
 

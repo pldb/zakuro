@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../../era/japan/gengou'
+require_relative '../../../../../era/japan/gengou/resource'
 require_relative '../../../../../era/japan/calendar'
 require_relative '../../../../../era/western/calendar'
 
@@ -371,7 +371,7 @@ module Zakuro
           # @return [Japan::Gengou] 1行目元号
           #
           def self.first_line(date:)
-            Zakuro::Japan::GengouResource.first_line(date: date)
+            Zakuro::Japan::Resource.first_line(date: date)
           end
           private_class_method :first_line
 
@@ -383,7 +383,7 @@ module Zakuro
           # @return [Japan::Gengou] 2行目元号
           #
           def self.second_line(date:)
-            Zakuro::Japan::GengouResource.second_line(date: date)
+            Zakuro::Japan::Resource.second_line(date: date)
           end
           private_class_method :second_line
         end

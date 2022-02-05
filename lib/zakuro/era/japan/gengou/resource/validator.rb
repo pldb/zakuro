@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../japan/calendar'
-require_relative '../../western/calendar'
+require_relative '../../../japan/calendar'
+require_relative '../../../western/calendar'
 require_relative './type'
 require 'yaml'
 
