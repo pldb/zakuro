@@ -32,8 +32,8 @@ module Zakuro
         #
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
                        gengou: Gengou.new)
-          @start_date = start_date
-          @last_date = last_date
+          @start_date = start_date.invalid? ? gengou.both_start_date.western : start_date
+          @last_date = last_date.invalid? ? gengou.last_date : last_date
           @gengou = gengou
         end
 
@@ -67,6 +67,28 @@ module Zakuro
           return false if date > @last_date
 
           true
+        end
+
+        #
+        # 範囲が重複しない差分を返す
+        #
+        # @param [Array<LinearGengou>] other 元号
+        #
+        # @return [Array<LinearGengou>] 差分
+        #
+        def sub(other:)
+          # TODO: make
+        end
+
+        #
+        # 重複した範囲を返す
+        #
+        # @param [Array<LinearGengou>] other 元号
+        #
+        # @return [Array<LinearGengou>] 重複分
+        #
+        def meet(other:)
+          # TODO: make
         end
       end
     end
