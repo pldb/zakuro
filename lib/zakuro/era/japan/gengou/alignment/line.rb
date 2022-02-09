@@ -12,6 +12,7 @@ module Zakuro
       # Line 行
       #
       class Line
+        # TODO: refactor
         # TODO: test
 
         # @return [Array<LinearGengou>] 元号
@@ -48,7 +49,7 @@ module Zakuro
             result = and!(rest: result, other: gengou)
           end
 
-          result
+          connect(list: result)
         end
 
         def insert(list: [])
@@ -56,6 +57,8 @@ module Zakuro
           @list.each do |gengou|
             surplus_result = not!(surplus: surplus_result, other: gengou)
           end
+
+          surplus_result = connect(list: surplus_result)
 
           surplus_result.each do |gengou|
             @list.push(gengou: gengou)
@@ -183,6 +186,37 @@ module Zakuro
           result.push(
             LinearGengou.new(start_date: start, last_date: last, gengou: this.gengou)
           )
+          result
+        end
+
+        #
+        # 比較により分離した元号をつなげる
+        #
+        # @param [Array<LinearGengou>] list 元号
+        #
+        # @return [Array<LinearGengou>] 同一元号がつながった元号
+        #
+        def connect(list: [])
+          result = []
+          list.each do |linear_gengou|
+            if result.size.zero?
+              result.push(linear_gengou)
+              next
+            end
+
+            before = result[-1]
+
+            unless linear_gengou.gengou.name == before.gengou.name
+              result.push(linear_gengou)
+              next
+            end
+
+            result[-1] = LinearGengou.new(
+              start_date: before.start_date, last_date: linear_gengou.last_date,
+              gengou: linear_gengou.gengou
+            )
+          end
+
           result
         end
       end
