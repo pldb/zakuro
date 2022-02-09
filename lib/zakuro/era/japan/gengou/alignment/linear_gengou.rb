@@ -70,25 +70,48 @@ module Zakuro
         end
 
         #
-        # 範囲が重複しない差分を返す
+        # 完全に範囲内か
         #
-        # @param [Array<LinearGengou>] other 元号
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] last_date 終了日
         #
-        # @return [Array<LinearGengou>] 差分
+        # @return [True] 範囲内
+        # @return [False] 範囲外あり
         #
-        def sub(other:)
-          # TODO: make
+        def in?(start_date:, last_date:)
+          @start_date <= start_date && last_date >= @last_date
         end
 
         #
-        # 重複した範囲を返す
+        # 完全に範囲外か
         #
-        # @param [Array<LinearGengou>] other 元号
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] last_date 終了日
         #
-        # @return [Array<LinearGengou>] 重複分
+        # @return [True] 範囲外
+        # @return [False] 範囲内あり
         #
-        def meet(other:)
-          # TODO: make
+        def out?(start_date:, last_date:)
+          # 範囲より前
+          return true if start_date < @start_date && last_date < @start_date
+
+          # 範囲より後
+          return true if @last_date < start_date && @last_date < last_date
+
+          false
+        end
+
+        #
+        # 完全に範囲を超えているか
+        #
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] last_date 終了日
+        #
+        # @return [True] 完全超過
+        # @return [True] 完全超過せず
+        #
+        def covered?(start_date:, last_date:)
+          start_date < @start_date && @last_date < last_date
         end
       end
     end

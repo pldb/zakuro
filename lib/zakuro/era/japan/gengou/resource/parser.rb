@@ -111,7 +111,7 @@ module Zakuro
             gengou = GengouParser.new(hash: li, index: index).create
             next_index = index + 1
             gengou = calc_last_date_on_gengou_data(next_index: next_index,
-                                                  gengou: gengou)
+                                                   gengou: gengou)
             result.push(gengou)
           end
 
