@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../western/calendar'
+require_relative '../../../western/calendar'
 
 require_relative '../resource/type'
 
@@ -79,7 +79,7 @@ module Zakuro
         # @return [False] 範囲外あり
         #
         def in?(start_date:, last_date:)
-          @start_date <= start_date && last_date >= @last_date
+          @start_date <= start_date && last_date <= @last_date
         end
 
         #

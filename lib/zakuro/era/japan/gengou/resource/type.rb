@@ -2,6 +2,8 @@
 
 require_relative '../../../western/calendar'
 
+require_relative '../../calendar'
+
 # :nodoc:
 module Zakuro
   #
