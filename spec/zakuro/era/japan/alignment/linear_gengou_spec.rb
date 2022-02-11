@@ -113,8 +113,60 @@ describe 'Zakuro' do
             end
           end
         end
-        describe '#coverd?' do
-          # TODO: make
+        describe '#covered?' do
+          context 'parameters to be in gengou range' do
+            example 'same range' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 1),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 3)
+              )
+              expect(actual).to be_falsey
+            end
+            example 'narrow range' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 2),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 2)
+              )
+              expect(actual).to be_falsey
+            end
+          end
+          context 'parameters to be out of gengou range' do
+            example 'overwrapped range' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 999, month: 12, day: 31),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 4)
+              )
+              expect(actual).to be_truthy
+            end
+            example 'overwrapped range on start date' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 999, month: 12, day: 31),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 2)
+              )
+              expect(actual).to be_falsey
+            end
+            example 'overwrapped range on last date' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 2),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 4)
+              )
+              expect(actual).to be_falsey
+            end
+            example 'completely out range less than start date' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 999, month: 12, day: 2),
+                last_date: Zakuro::Western::Calendar.new(year: 999, month: 12, day: 31)
+              )
+              expect(actual).to be_falsey
+            end
+            example 'completely out range more than last date' do
+              actual = gengou.covered?(
+                start_date: Zakuro::Western::Calendar.new(year: 1000, month: 2, day: 4),
+                last_date: Zakuro::Western::Calendar.new(year: 1000, month: 3, day: 2)
+              )
+              expect(actual).to be_falsey
+            end
+          end
         end
       end
     end
