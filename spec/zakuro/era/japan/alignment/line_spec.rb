@@ -63,41 +63,163 @@ describe 'Zakuro' do
         describe '#push' do
           context 'no duplication parameter' do
             context 'less than start date' do
-              param = [
-                Zakuro::Japan::Alignment::LinearGengou.new(
-                  gengou: Zakuro::Japan::Gengou.new(
-                    name: '允恭天皇',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 34,
-                      western: 445
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '允恭天皇', year: 34, leaped: false, month: 1, day: 1
+              let(:param) do
+                [
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Gengou.new(
+                      name: '允恭天皇',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 34,
+                        western: 445
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 445, month: 1, day: 24
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13)
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '允恭天皇', year: 34, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 445, month: 1, day: 24
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13)
+                    )
                   )
-                )
-              ]
-
-              it 'should be empty array' do
-                rest = line.push(list: param)
-
-                expect(rest.size).to eq 0
+                ]
               end
-              it 'should be added list' do
-                line.push(list: param)
 
-                expect(line.list.size).to eq 3
+              context 'return value' do
+                it 'should be empty array' do
+                  rest = line.push(list: param)
+
+                  expect(rest.size).to eq 0
+                end
               end
-              it 'should be included parameters' do
-                line.push(list: param)
+              context 'list field value' do
+                it 'should be added list' do
+                  line.push(list: param)
 
-                expect(line.list[2].gengou.name).to eq '允恭天皇'
+                  expect(line.list.size).to eq 3
+                end
+                it 'should be included parameters' do
+                  line.push(list: param)
+
+                  expect(line.list[2].gengou.name).to eq '允恭天皇'
+                end
+              end
+            end
+            context 'more than last date' do
+              let!(:param) do
+                [
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Gengou.new(
+                      name: '清寧天皇',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 480
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '清寧天皇', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 480, month: 1, day: 28
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 485, month: 2, day: 1)
+                    )
+                  )
+                ]
+              end
+
+              context 'return value' do
+                it 'should be empty array' do
+                  rest = line.push(list: param)
+
+                  expect(rest.size).to eq 0
+                end
+              end
+              context 'list field value' do
+                it 'should be added list' do
+                  line.push(list: param)
+
+                  expect(line.list.size).to eq 3
+                end
+                it 'should be included parameters' do
+                  line.push(list: param)
+
+                  expect(line.list[2].gengou.name).to eq '清寧天皇'
+                end
+              end
+            end
+          end
+          context 'partially duplicated parameter' do
+            context 'beyond start date' do
+              let!(:param) do
+                [
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 34,
+                        western: 445
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 34, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 445, month: 1, day: 24
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13)
+                    )
+                  )
+                ]
+              end
+
+              context 'return value' do
+                it 'should be a element' do
+                  rest = line.push(list: param)
+
+                  expect(rest.size).to eq 1
+                end
+                it 'should be included parameters' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].gengou.name).to eq '元号1'
+                end
+                it 'should have start date without duplication' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].start_date.format).to eq '0454-02-14'
+                end
+                it 'should have last date like parameter' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].last_date.format).to eq '0454-03-13'
+                end
+              end
+              context 'list field value' do
+                it 'should be added list' do
+                  line.push(list: param)
+
+                  expect(line.list.size).to eq 3
+                end
+                it 'should be included parameters' do
+                  line.push(list: param)
+
+                  expect(line.list[2].gengou.name).to eq '元号1'
+                end
+                it 'should have start date like parameter' do
+                  line.push(list: param)
+
+                  expect(line.list[2].start_date.format).to eq '0445-01-24'
+                end
+                it 'should have last date without duplication' do
+                  line.push(list: param)
+
+                  # TODO: fix
+                  expect(line.list[2].last_date.format).to eq '0454-03-13'
+                end
               end
             end
           end

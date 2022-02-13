@@ -43,10 +43,10 @@ module Zakuro
         private
 
         def rest(list: [])
-          result = list.clone
+          result = []
 
           @list.each do |gengou|
-            result = and!(rest: result, other: gengou)
+            result |= and!(rest: list, other: gengou)
           end
 
           connect(list: result)
