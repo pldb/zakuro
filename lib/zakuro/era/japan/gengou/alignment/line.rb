@@ -61,7 +61,7 @@ module Zakuro
           surplus_result = connect(list: surplus_result)
 
           surplus_result.each do |gengou|
-            @list.push(gengou: gengou)
+            @list.push(gengou)
           end
         end
 

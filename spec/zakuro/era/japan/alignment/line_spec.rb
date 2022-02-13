@@ -94,6 +94,11 @@ describe 'Zakuro' do
 
                 expect(line.list.size).to eq 3
               end
+              it 'should be included parameters' do
+                line.push(list: param)
+
+                expect(line.list[2].gengou.name).to eq '允恭天皇'
+              end
             end
           end
         end
