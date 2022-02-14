@@ -142,7 +142,9 @@ module Zakuro
           last = last_date < other.last_date ? last_date : other.last_date
 
           result.push(
-            LinearGengou.new(start_date: start, last_date: last, gengou: this.gengou)
+            LinearGengou.new(
+              start_date: start.clone, last_date: last.clone, gengou: this.gengou
+            )
           )
           result
         end
@@ -180,11 +182,19 @@ module Zakuro
             return result
           end
 
-          start = start_date < other.start_date ? start_date : other.start_date
-          last = last_date > other.last_date ? last_date : other.last_date
+          start = start_date
+          last = last_date
+
+          # 開始日が比較元号の開始日より前の範囲
+          last = other.start_date.clone - 1 if start_date < other.start_date
+
+          # 終了日が比較元号の開始日より後の範囲
+          start = other.last_date + 1 if last_date > other.last_date
 
           result.push(
-            LinearGengou.new(start_date: start, last_date: last, gengou: this.gengou)
+            LinearGengou.new(
+              start_date: start.clone, last_date: last.clone, gengou: this.gengou
+            )
           )
           result
         end
