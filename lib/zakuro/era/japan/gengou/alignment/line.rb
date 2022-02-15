@@ -28,6 +28,27 @@ module Zakuro
         #
         # 追加する
         #
+        # 下記のパターンが存在し、戻り値は重複分となる
+        #
+        # 1. 完全に範囲外（開始日より前）
+        #   [@list]:      |-------|-------|
+        #   [list]:  |---|
+        # 2. 前半のみ範囲外
+        #   [@list]:      |-------|-------|
+        #   [list]:  |------|
+        # 3. 範囲内
+        #   [@list]: |-------|-------|
+        #   [list]:  |------|
+        # 4. 後半のみ範囲外
+        #   [@list]: |-------|-------|
+        #   [list]:              |------|
+        # 5. 完全に範囲外（開始日より後）
+        #   [@list]: |-------|-------|
+        #   [list]:                   |----|
+        # 6. 両端が範囲外
+        #   [@list]:   |-------|-------|
+        #   [list]:  |--------------------|
+        #
         # @param [Array<LinearGengou>] list 元号
         #
         # @return [Array<LinearGengou>] 未登録元号
@@ -42,6 +63,13 @@ module Zakuro
 
         private
 
+        #
+        # 重複分（空きがないため追加できない範囲の元号）を返す
+        #
+        # @param [Array<LinearGengou>] list 元号
+        #
+        # @return [Array<LinearGengou>] 重複分元号
+        #
         def rest(list: [])
           result = []
 
@@ -52,6 +80,11 @@ module Zakuro
           connect(list: result)
         end
 
+        #
+        # 空き範囲に元号を登録する
+        #
+        # @param [Array<LinearGengou>] list 元号
+        #
         def insert(list: [])
           surplus_result = list.clone
           @list.each do |gengou|
@@ -98,13 +131,6 @@ module Zakuro
 
           result
         end
-
-        # # 1. 完全に範囲外（開始日より前）
-        # # 2. 前半のみ範囲外
-        # # 3. 範囲内
-        # # 4. 後半のみ範囲外
-        # # 5. 完全に範囲外（開始日より後）
-        # # 6. 両端が範囲外
 
         #
         # 重複した範囲を返す
