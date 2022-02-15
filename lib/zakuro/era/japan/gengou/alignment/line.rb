@@ -173,10 +173,12 @@ module Zakuro
           if other.covered?(start_date: start_date, last_date: last_date)
             result.push(
               LinearGengou.new(
-                start_date: start_date, last_date: other.start_date, gengou: this.gengou
+                start_date: start_date.clone, last_date: other.start_date.clone - 1,
+                gengou: this.gengou
               ),
               LinearGengou.new(
-                start_date: last_date, last_date: other.last_date, gengou: this.gengou
+                start_date: last_date.clone + 1, last_date: other.last_date.clone,
+                gengou: this.gengou
               )
             )
             return result
