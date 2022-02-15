@@ -374,9 +374,95 @@ describe 'Zakuro' do
             # [list]    |----安康天皇----|----雄略天皇----|
             # [param]  |----------------元号2----------------|
             context 'covered two gengou' do
-              # TODO: make
+              let!(:param) do
+                [
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Gengou.new(
+                      name: '元号2',
+                      both_start_year: Zakuro::Japan::Both::Year.new(
+                        japan: 1,
+                        western: 453
+                      ),
+                      both_start_date: Zakuro::Japan::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 453, month: 1, day: 1
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 480, month: 2, day: 1)
+                    )
+                  )
+                ]
+              end
+              context 'return value' do
+                it 'should be a element' do
+                  rest = line.push(list: param)
+
+                  expect(rest.size).to eq 1
+                end
+                it 'should be included parameters' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].gengou.name).to eq '元号2'
+                end
+                it 'should have start date like parameter' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].start_date.format).to eq '0454-02-14'
+                end
+                it 'should have last date without duplication' do
+                  rest = line.push(list: param)
+
+                  expect(rest[0].last_date.format).to eq '0480-01-27'
+                end
+              end
+
+              context 'list field value' do
+                it 'should be added list' do
+                  line.push(list: param)
+
+                  expect(line.list.size).to eq 4
+                end
+                context 'first element' do
+                  it 'should be included parameters' do
+                    line.push(list: param)
+
+                    expect(line.list[2].gengou.name).to eq '元号2'
+                  end
+                  it 'should have start date like parameter' do
+                    line.push(list: param)
+
+                    expect(line.list[2].start_date.format).to eq '0453-01-01'
+                  end
+                  it 'should have last date without duplication' do
+                    line.push(list: param)
+
+                    expect(line.list[2].last_date.format).to eq '0454-02-13'
+                  end
+                end
+                context 'second element' do
+                  it 'should be included parameters' do
+                    line.push(list: param)
+
+                    expect(line.list[3].gengou.name).to eq '元号2'
+                  end
+                  it 'should have start date like parameter' do
+                    line.push(list: param)
+
+                    expect(line.list[3].start_date.format).to eq '0480-01-28'
+                  end
+                  it 'should have last date without duplication' do
+                    line.push(list: param)
+
+                    expect(line.list[3].last_date.format).to eq '0480-02-01'
+                  end
+                end
+              end
             end
           end
+          # TODO: make
         end
       end
     end

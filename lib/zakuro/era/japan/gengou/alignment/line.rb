@@ -177,7 +177,7 @@ module Zakuro
                 gengou: this.gengou
               ),
               LinearGengou.new(
-                start_date: last_date.clone + 1, last_date: other.last_date.clone,
+                start_date: other.last_date.clone + 1, last_date: last_date.clone,
                 gengou: this.gengou
               )
             )
@@ -191,7 +191,7 @@ module Zakuro
           last = other.start_date.clone - 1 if start_date < other.start_date
 
           # 終了日が比較元号の開始日より後の範囲
-          start = other.last_date + 1 if last_date > other.last_date
+          start = other.last_date.clone + 1 if last_date > other.last_date
 
           result.push(
             LinearGengou.new(
@@ -219,6 +219,11 @@ module Zakuro
             before = result[-1]
 
             unless linear_gengou.gengou.name == before.gengou.name
+              result.push(linear_gengou)
+              next
+            end
+
+            unless (before.last_date.clone + 1) == linear_gengou.start_date
               result.push(linear_gengou)
               next
             end
