@@ -79,7 +79,7 @@ module Zakuro
         #
         # @return [Array<LinearGengou>] 同一元号がつながった元号
         #
-        def self.connect(list: [])
+        def self.connect(list: []) # rubocop:disable Metrics/MethodLength
           result = []
           list.each do |linear_gengou|
             if result.size.zero?
@@ -110,6 +110,7 @@ module Zakuro
 
           false
         end
+        private_class_method :unconnectable?
 
         def self.split_gengou(this:, other:)
           [
@@ -143,7 +144,7 @@ module Zakuro
         end
         private_class_method :narrow_gengou
 
-        def self.shave_gengou(this:, other:)
+        def self.shave_gengou(this:, other:) # rubocop:disable Metrics/AbcSize
           start = this.start_date
           last = this.last_date
 
@@ -157,6 +158,7 @@ module Zakuro
             start_date: start.clone, last_date: last.clone, gengou: this.gengou
           )
         end
+        private_class_method :shave_gengou
       end
     end
   end
