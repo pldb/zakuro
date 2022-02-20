@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../lib/zakuro/era/japan/gengou/alignment/linear_gengou',
+require File.expand_path('../../../../../../lib/zakuro/era/japan/gengou/alignment/linear_gengou',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
+require File.expand_path('../../../../../../lib/zakuro/era/western/calendar',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength

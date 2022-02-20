@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../../zakuro/lib/zakuro/era/japan/gengou/resource',
+require File.expand_path('../../../../../../../zakuro/lib/zakuro/era/japan/gengou/resource/parser',
                          __dir__)
 require 'yaml'
 
 ACTUAL_YAML_PATH = File.expand_path(
-  '../../../../../lib/zakuro/era/japan/gengou/resource/yaml/set-001-until-south.yaml',
+  '../../../../../../lib/zakuro/era/japan/gengou/resource/yaml/set-001-until-south.yaml',
   __dir__
 )
 TEST_YAML_PATH = File.expand_path(
