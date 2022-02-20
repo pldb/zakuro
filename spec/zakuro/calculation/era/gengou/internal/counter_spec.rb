@@ -15,7 +15,7 @@ describe 'Zakuro' do
         describe '#invalid?' do
           context 'created instance' do
             it 'should be true with invalid gengou parameter' do
-              gengou = Zakuro::Japan::Gengou.new
+              gengou = Zakuro::Japan::Resource::Gengou.new
               actual = Zakuro::Calculation::Gengou::Counter.new(gengou: gengou)
 
               expect(actual.invalid?).to be_truthy
@@ -30,12 +30,12 @@ describe 'Zakuro' do
             1
           end
           let(:gengou) do
-            Zakuro::Japan::Gengou.new(
+            Zakuro::Japan::Resource::Gengou.new(
               name: '元号名',
-              both_start_year: Zakuro::Japan::Both::Year.new(
+              both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                 japan: japan_year, western: western_year
               ),
-              both_start_date: Zakuro::Japan::Both::Date.new(
+              both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                 japan: Zakuro::Japan::Calendar.parse(text: "元号#{japan_year}年1月1日"),
                 western: Zakuro::Western::Calendar.new(year: western_year)
               ),

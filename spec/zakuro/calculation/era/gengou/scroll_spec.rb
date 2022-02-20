@@ -50,21 +50,23 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 12
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 12
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
@@ -81,19 +83,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_gengou', first_gengou)
+              range.instance_variable_set('@second_gengou', second_gengou)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -135,21 +137,23 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 1
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 1
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
@@ -166,19 +170,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_gengou', first_gengou)
+              range.instance_variable_set('@second_gengou', second_gengou)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -233,21 +237,23 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 2
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 2
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 2
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 2
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
@@ -264,19 +270,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_gengou', first_gengou)
+              range.instance_variable_set('@second_gengou', second_gengou)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -348,21 +354,23 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 12, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 449, month: 12, day: 2
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 12, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 449, month: 12, day: 2
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
@@ -379,19 +387,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_gengou', first_gengou)
+              range.instance_variable_set('@second_gengou', second_gengou)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do

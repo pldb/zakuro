@@ -17,7 +17,7 @@ module Zakuro
         # @return [Integer] 不正値
         INVALID_YEAR = -1
 
-        # @return [Japan::Gengou] 元号
+        # @return [Japan::Resource::Gengou] 元号
         attr_reader :gengou
         # @return [Integer] 元号年
         attr_reader :japan_year
@@ -27,9 +27,9 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Japan::Gengou] gengou 元号
+        # @param [Japan::Resource::Gengou] gengou 元号
         #
-        def initialize(gengou: Japan::Gengou.new)
+        def initialize(gengou: Japan::Resource::Gengou.new)
           @gengou = gengou
           @japan_year = gengou.both_start_year.japan
           @western_year = gengou.both_start_year.western

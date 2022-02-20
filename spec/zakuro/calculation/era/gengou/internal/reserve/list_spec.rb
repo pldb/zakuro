@@ -238,21 +238,23 @@ describe 'Zakuro' do
                 )
                 list.instance_variable_set(
                   '@list', [
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号1',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 12
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 12
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      )
                     )
                   ]
                 )
@@ -280,37 +282,41 @@ describe 'Zakuro' do
                 )
                 result.instance_variable_set(
                   :@list, [
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号1',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 1
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 1
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                      )
                     ),
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号2',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号2',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 21
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 21
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      )
                     )
                   ]
                 )
@@ -347,53 +353,59 @@ describe 'Zakuro' do
                 )
                 result.instance_variable_set(
                   :@list, [
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号1',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 1
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 1
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 20)
+                      )
                     ),
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号2',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号2',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 21
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 31)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 21
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 31)
+                      )
                     ),
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号3',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号3', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号3',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 4, day: 1
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号3', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 4, day: 1
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
+                      )
                     )
                   ]
                 )
@@ -436,21 +448,23 @@ describe 'Zakuro' do
                 )
                 list.instance_variable_set(
                   '@list', [
-                    Zakuro::Japan::Gengou.new(
-                      name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
-                        japan: 1,
-                        western: 450
-                      ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.new(
-                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                    Zakuro::Japan::Alignment::LinearGengou.new(
+                      gengou: Zakuro::Japan::Resource::Gengou.new(
+                        name: '元号1',
+                        both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                          japan: 1,
+                          western: 450
                         ),
-                        western: Zakuro::Western::Calendar.new(
-                          year: 450, month: 1, day: 12
-                        )
-                      ),
-                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                        both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.new(
+                            gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                          ),
+                          western: Zakuro::Western::Calendar.new(
+                            year: 450, month: 1, day: 12
+                          )
+                        ),
+                        last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      )
                     )
                   ]
                 )

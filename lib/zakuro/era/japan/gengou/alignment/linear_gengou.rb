@@ -28,13 +28,22 @@ module Zakuro
         #
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
-        # @param [Gengou] gengou 元号
+        # @param [Resource::Gengou] gengou 元号
         #
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
-                       gengou: Gengou.new)
+                       gengou: Resource::Gengou.new)
           @start_date = start_date.invalid? ? gengou.both_start_date.western : start_date
           @last_date = last_date.invalid? ? gengou.last_date : last_date
           @gengou = gengou
+        end
+
+        #
+        # 元号名を取得する
+        #
+        # @return [String] 元号名
+        #
+        def name
+          @gengou.name
         end
 
         #

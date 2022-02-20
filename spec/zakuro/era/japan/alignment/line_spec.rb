@@ -18,13 +18,13 @@ describe 'Zakuro' do
           line = Zakuro::Japan::Alignment::Line.new
           list = [
             Zakuro::Japan::Alignment::LinearGengou.new(
-              gengou: Zakuro::Japan::Gengou.new(
+              gengou: Zakuro::Japan::Resource::Gengou.new(
                 name: '安康天皇',
-                both_start_year: Zakuro::Japan::Both::Year.new(
+                both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                   japan: 1,
                   western: 454
                 ),
-                both_start_date: Zakuro::Japan::Both::Date.new(
+                both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                   japan: Zakuro::Japan::Calendar.new(
                     gengou: '安康天皇', year: 1, leaped: false, month: 1, day: 1
                   ),
@@ -36,13 +36,13 @@ describe 'Zakuro' do
               )
             ),
             Zakuro::Japan::Alignment::LinearGengou.new(
-              gengou: Zakuro::Japan::Gengou.new(
+              gengou: Zakuro::Japan::Resource::Gengou.new(
                 name: '雄略天皇',
-                both_start_year: Zakuro::Japan::Both::Year.new(
+                both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                   japan: 1,
                   western: 457
                 ),
-                both_start_date: Zakuro::Japan::Both::Date.new(
+                both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                   japan: Zakuro::Japan::Calendar.new(
                     gengou: '雄略天皇', year: 1, leaped: false, month: 1, day: 1
                   ),
@@ -68,13 +68,13 @@ describe 'Zakuro' do
               let(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '允恭天皇',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 34,
                         western: 445
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '允恭天皇', year: 34, leaped: false, month: 1, day: 1
                         ),
@@ -114,13 +114,13 @@ describe 'Zakuro' do
               let!(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '清寧天皇',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 1,
                         western: 480
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '清寧天皇', year: 1, leaped: false, month: 1, day: 1
                         ),
@@ -162,13 +162,13 @@ describe 'Zakuro' do
               let!(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 34,
                         western: 445
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '元号1', year: 34, leaped: false, month: 1, day: 1
                         ),
@@ -233,13 +233,13 @@ describe 'Zakuro' do
               let!(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '元号2',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 1,
                         western: 480
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
                         ),
@@ -306,13 +306,13 @@ describe 'Zakuro' do
               let!(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '元号1',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 1,
                         western: 453
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
                         ),
@@ -377,13 +377,13 @@ describe 'Zakuro' do
               let!(:param) do
                 [
                   Zakuro::Japan::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
                       name: '元号2',
-                      both_start_year: Zakuro::Japan::Both::Year.new(
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
                         japan: 1,
                         western: 453
                       ),
-                      both_start_date: Zakuro::Japan::Both::Date.new(
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
                         japan: Zakuro::Japan::Calendar.new(
                           gengou: '元号2', year: 1, leaped: false, month: 1, day: 1
                         ),

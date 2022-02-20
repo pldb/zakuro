@@ -60,6 +60,26 @@ module Zakuro
           rest
         end
 
+        #
+        # 範囲内の元号を取得する
+        #
+        # @param [Western::Calendar] start_date 開始日
+        # @param [Western::Calendar] last_date 終了日
+        #
+        # @return [Array<LinearGengou>] 元号
+        #
+        def get(start_date:, last_date:)
+          result = []
+          @list.each do |gengou|
+            next if gengou.out?(start_date: start_date, last_date: last_date)
+
+            # 1日でも範囲内であれば対象とみなす
+            result.push(gengou)
+          end
+
+          result
+        end
+
         private
 
         #

@@ -21,7 +21,7 @@ module Zakuro
         # @return [Western::Calendar] 月末日
         attr_reader :monthly_last_date
         # @return [Reserve::Range] 予約範囲
-        attr_reader :interval
+        attr_reader :range
         # @return [Array<Counte>] 1行目元号
         attr_reader :first_gengou
         # @return [Array<Counte>] 2行目元号
@@ -36,7 +36,7 @@ module Zakuro
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @monthly_start_date = Western::Calendar.new
           @monthly_last_date = Western::Calendar.new
-          @interval = Reserve::Range.new(start_date: start_date, last_date: last_date)
+          @range = Reserve::Range.new(start_date: start_date, last_date: last_date)
           @first_gengou = []
           @second_gengou = []
           @ignited = false
@@ -69,9 +69,9 @@ module Zakuro
         def ignite(month:)
           return false unless ignitable?(month: month)
 
-          japan_start_date = @interval.japan_start_date
+          japan_start_date = @range.japan_start_date
 
-          western_start_date = @interval.western_start_date
+          western_start_date = @range.western_start_date
 
           # 今月初日（和暦日が1月2日であれば、開始日の1日前が初日）
           @monthly_start_date = western_start_date.clone - japan_start_date.day + 1
@@ -126,7 +126,7 @@ module Zakuro
         # @return [Integer] 開始西暦年
         #
         def western_start_year
-          @interval.western_start_year
+          @range.western_start_year
         end
 
         #
@@ -135,7 +135,7 @@ module Zakuro
         # @return [Integer] 終了西暦年
         #
         def western_last_year
-          @interval.western_last_year
+          @range.western_last_year
         end
 
         private
@@ -146,9 +146,9 @@ module Zakuro
         def update_current_gengou
           start_date = @monthly_start_date
           last_date = @monthly_last_date
-          first_gengou = @interval.collect_first_gengou(start_date: start_date, last_date: last_date)
-          second_gengou = @interval.collect_second_gengou(start_date: start_date,
-                                                          last_date: last_date)
+          first_gengou = @range.collect_first_gengou(start_date: start_date, last_date: last_date)
+          second_gengou = @range.collect_second_gengou(start_date: start_date,
+                                                       last_date: last_date)
 
           @first_gengou = replace_gengou(source: @first_gengou, destination: first_gengou)
           @second_gengou = replace_gengou(source: @second_gengou, destination: second_gengou)
@@ -244,7 +244,7 @@ module Zakuro
         def ignitable?(month:)
           return false unless @monthly_start_date.invalid?
 
-          japan_start_date = @interval.japan_start_date
+          japan_start_date = @range.japan_start_date
 
           japan_start_date.same_month?(leaped: month.leaped?, month: month.number)
         end
