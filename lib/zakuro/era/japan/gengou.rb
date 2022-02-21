@@ -30,7 +30,7 @@ module Zakuro
       #
       def self.line(line: FIRST_LINE,
                     start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-        Alignment::SUMMARY.get(
+        Alignment.get(
           line: line, start_date: start_date, last_date: last_date
         )
       end
@@ -44,7 +44,7 @@ module Zakuro
       # @return [Array<LinearGengou>] 1行目元号
       #
       def self.first_line(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-        Alignment::SUMMARY.get(
+        Alignment.get(
           line: FIRST_LINE, start_date: start_date, last_date: last_date
         )
       end
@@ -58,7 +58,7 @@ module Zakuro
       # @return [Array<LinearGengou>] 2行目元号
       #
       def self.second_line(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-        Alignment::SUMMARY.get(
+        Alignment.get(
           line: SECOND_LINE, start_date: start_date, last_date: last_date
         )
       end
