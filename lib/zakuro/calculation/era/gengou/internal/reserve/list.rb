@@ -83,7 +83,11 @@ module Zakuro
               next if linear_gengou.out?(start_date: start_date, last_date: last_date)
 
               result.push(
-                Gengou::Counter.new(gengou: linear_gengou.gengou).clone
+                Gengou::Counter.new(
+                  gengou: linear_gengou.gengou.clone,
+                  start_date: linear_gengou.start_date.clone,
+                  last_date: linear_gengou.last_date.clone
+                )
               )
             end
 
@@ -103,14 +107,14 @@ module Zakuro
             end
 
             # FIXME: 有効元号の前しか見ていない
-            if start_date < result[0].gengou.both_start_date.western
+            if start_date < result[0].start_date
               result.unshift(
                 Gengou::Counter.new(
                   gengou: Japan::Resource::Gengou.new(
                     both_start_date: Japan::Resource::Both::Date.new(
                       western: start_date.clone
                     ),
-                    last_date: result[0].gengou.both_start_date.western.clone - 1
+                    last_date: result[0].start_date.clone - 1
                   )
                 )
               )

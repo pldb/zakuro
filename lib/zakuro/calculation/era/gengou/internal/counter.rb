@@ -23,16 +23,26 @@ module Zakuro
         attr_reader :japan_year
         # @return [Integer] 西暦年
         attr_reader :western_year
+        # @return [Western::Calendar] 西暦開始年
+        attr_reader :start_date
+        # @return [Western::Calendar] 西暦終了年
+        attr_reader :last_date
 
         #
         # 初期化
         #
         # @param [Japan::Resource::Gengou] gengou 元号
         #
-        def initialize(gengou: Japan::Resource::Gengou.new)
+        def initialize(gengou: Japan::Resource::Gengou.new,
+                       start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @gengou = gengou
           @japan_year = gengou.both_start_year.japan
           @western_year = gengou.both_start_year.western
+
+          @start_date = start_date.clone
+          @last_date = last_date.clone
+
+          select_valid_date
         end
 
         #
@@ -54,7 +64,7 @@ module Zakuro
         def western_start_date
           return Western::Calendar.new if @gengou.invalid?
 
-          @gengou.both_start_date.western
+          @start_date
         end
 
         #
@@ -122,6 +132,18 @@ module Zakuro
           @gengou = obj.gengou.clone
           @japan_year = obj.japan_year
           @western_year = obj.western_year
+        end
+
+        private
+
+        #
+        # 有効な日付範囲を選択する
+        #
+        def select_valid_date
+          return if @gengou.invalid?
+
+          @start_date = @gengou.both_start_date.western.clone if @start_date.invalid?
+          @last_date = @gengou.last_date.clone if @last_date.invalid?
         end
       end
     end
