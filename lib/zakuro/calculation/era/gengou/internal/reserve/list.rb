@@ -44,8 +44,8 @@ module Zakuro
           def initialize(first: true, start_date: Western::Calendar.new,
                          last_date: Western::Calendar)
             @index = first ? Japan::Gengou::FIRST_LINE : Japan::Gengou::SECOND_LINE
-            @start_date = start_date
-            @last_date = last_date
+            @start_date = start_date.clone
+            @last_date = last_date.invalid? ? start_date.clone : last_date.clone
             @list = []
 
             update
