@@ -26,6 +26,8 @@ module Zakuro
         attr_reader :first_gengou
         # @return [Array<Counte>] 2行目元号
         attr_reader :second_gengou
+        # @return [Array<Counte>] 行変更済元号
+        attr_reader :changed_gengou
 
         #
         # 初期化
@@ -108,6 +110,9 @@ module Zakuro
           start_date = @monthly_start_date.clone
           last_date = @monthly_last_date.clone
 
+          # 行を超えた元号切り替え処理
+          continue_year
+
           Base::Gengou.new(
             start_date: start_date,
             last_date: last_date,
@@ -139,6 +144,26 @@ module Zakuro
         end
 
         private
+
+        def continue_year
+          # TODO: make
+
+          # current_changed_gengou = []
+          # @first_gengou.each do |gengou|
+          #   next unless gengou.changed?
+
+          #   current_changed_gengou.push(gengou)
+          # end
+          # @second_gengou.each do |gengou|
+          #   next unless gengou.changed?
+
+          #   current_changed_gengou.push(gengou)
+          # end
+
+          # return if current_changed_gengou.size.zero?
+
+          # @changed_gengou
+        end
 
         #
         # 現在月に合わせて元号を更新する
@@ -184,7 +209,7 @@ module Zakuro
         # @param [Western::Calendar] last_date 西暦終了日
         # @param [Array<Counter>] gengou_list 元号リスト
         #
-        # @return [Array<Base::Gengou>] 元号リスト
+        # @return [Array<Base::LinearGengou>] 元号リスト
         #
         def to_linear_gengou(start_date:, last_date:, gengou_list: [])
           return [] if gengou_list.size.zero?
@@ -218,7 +243,7 @@ module Zakuro
         # @param [Western::Calendar] last_date 西暦終了日
         # @param [Counter] gengou 加算元号
         #
-        # @return [Base::Gengou] 元号
+        # @return [Base::LinearGengou] 元号
         #
         def to_limited_linear_gengou(start_date:, last_date:, gengou:)
           gengou_start_date = gengou.western_start_date.clone

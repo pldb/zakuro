@@ -32,9 +32,9 @@ module Zakuro
         #
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
                        gengou: Resource::Gengou.new)
-          @start_date = start_date.invalid? ? gengou.both_start_date.western : start_date
-          @last_date = last_date.invalid? ? gengou.last_date : last_date
           @gengou = gengou
+          @start_date = start_date.invalid? ? native_start_date : start_date
+          @last_date = last_date.invalid? ? native_last_date : last_date
         end
 
         #
@@ -121,6 +121,26 @@ module Zakuro
         #
         def covered?(start_date:, last_date:)
           start_date < @start_date && @last_date < last_date
+        end
+
+        private
+
+        #
+        # 設定された元号の開始日を取得する
+        #
+        # @return [<Type>] <description>
+        #
+        def native_start_date
+          @gengou.both_start_date.western
+        end
+
+        #
+        # 設定された元号の終了日を取得する
+        #
+        # @return [<Type>] <description>
+        #
+        def native_last_date
+          @gengou.last_date
         end
       end
     end
