@@ -75,7 +75,7 @@ module Zakuro
         def western_last_date
           return Western::Calendar.new if @gengou.invalid?
 
-          @gengou.last_date
+          @last_date
         end
 
         #

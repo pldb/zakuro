@@ -476,11 +476,14 @@ describe 'Zakuro' do
                   last_date: Zakuro::Western::Calendar.new(year: 450, month: 4, day: 30)
                 )
               end
-              it 'should be a element' do
-                expect(actual.size).to eq 1
+              it 'should be two element' do
+                expect(actual.size).to eq 2
               end
               it 'should be included valid gengou' do
                 expect(actual[0].invalid?).to be_falsey
+              end
+              it 'should be included invalid gengou' do
+                expect(actual[1].invalid?).to be_truthy
               end
             end
           end

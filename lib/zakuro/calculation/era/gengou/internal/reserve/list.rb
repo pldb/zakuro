@@ -106,16 +106,23 @@ module Zakuro
               return result
             end
 
-            # FIXME: 有効元号の前しか見ていない
+            # FIXME: 有効元号の前後しか見ていない
             if start_date < result[0].start_date
               result.unshift(
                 Gengou::Counter.new(
-                  gengou: Japan::Resource::Gengou.new(
-                    both_start_date: Japan::Resource::Both::Date.new(
-                      western: start_date.clone
-                    ),
-                    last_date: result[0].start_date.clone - 1
-                  )
+                  gengou: Japan::Resource::Gengou.new,
+                  start_date: start_date.clone,
+                  last_date: result[0].start_date.clone - 1
+                )
+              )
+            end
+
+            if last_date > result[-1].last_date
+              result.push(
+                Gengou::Counter.new(
+                  gengou: Japan::Resource::Gengou.new,
+                  start_date: result[0].last_date.clone + 1,
+                  last_date: last_date.clone
                 )
               )
             end
