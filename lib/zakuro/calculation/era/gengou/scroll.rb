@@ -146,23 +146,42 @@ module Zakuro
         private
 
         def continue_year
+          current_changed_gengou = []
+          @first_gengou.each do |gengou|
+            next unless gengou.changed?
+
+            current_changed_gengou.push(gengou)
+          end
+          @second_gengou.each do |gengou|
+            next unless gengou.changed?
+
+            current_changed_gengou.push(gengou)
+          end
+
+          return if current_changed_gengou.size.zero?
+
+          updated_gengou = []
+          resolved = false
+          @changed_gengou.each do |changed|
+            resolved = false
+            current_changed_gengou.each do |current|
+              next unless changed.name == current.name
+
+              updated_gengou.push(
+                Counter.new(
+                  gengou: current.gengou, start_date: current.start_date,
+                  last_date: current.last_date, japan_year: changed.japan_year
+                )
+              )
+              resolved = true
+              break
+            end
+            updated_gengou.push(current) unless resolved
+          end
+
           # TODO: make
 
-          # current_changed_gengou = []
-          # @first_gengou.each do |gengou|
-          #   next unless gengou.changed?
-
-          #   current_changed_gengou.push(gengou)
-          # end
-          # @second_gengou.each do |gengou|
-          #   next unless gengou.changed?
-
-          #   current_changed_gengou.push(gengou)
-          # end
-
-          # return if current_changed_gengou.size.zero?
-
-          # @changed_gengou
+          @changed_gengou
         end
 
         #

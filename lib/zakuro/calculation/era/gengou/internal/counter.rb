@@ -34,9 +34,11 @@ module Zakuro
         # @param [Japan::Resource::Gengou] gengou 元号
         #
         def initialize(gengou: Japan::Resource::Gengou.new,
-                       start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+                       start_date: Western::Calendar.new, last_date: Western::Calendar.new,
+                       japan_year: INVALID_YEAR)
           @gengou = gengou
-          @japan_year = gengou.both_start_year.japan
+          @japan_year = japan_year
+          @japan_year = gengou.both_start_year.japan if @japan_year == INVALID_YEAR
           @western_year = gengou.both_start_year.western
 
           @start_date = start_date.clone
