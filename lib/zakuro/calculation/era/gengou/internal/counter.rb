@@ -32,6 +32,9 @@ module Zakuro
         # 初期化
         #
         # @param [Japan::Resource::Gengou] gengou 元号
+        # @param [Western::Calendar] start_date 西暦開始年
+        # @param [Western::Calendar] last_date 西暦終了年
+        # @param [Integer] japan_year 和暦年
         #
         def initialize(gengou: Japan::Resource::Gengou.new,
                        start_date: Western::Calendar.new, last_date: Western::Calendar.new,
@@ -172,6 +175,8 @@ module Zakuro
           @gengou = obj.gengou.clone
           @japan_year = obj.japan_year
           @western_year = obj.western_year
+          @start_date = obj.start_date.clone
+          @last_date = obj.last_date.clone
         end
 
         private

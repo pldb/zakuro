@@ -4,6 +4,7 @@ require_relative '../../../era/western/calendar'
 require_relative '../../base/gengou'
 require_relative '../../base/linear_gengou'
 require_relative './internal/reserve/range'
+require_relative './internal/connector'
 
 # :nodoc:
 module Zakuro
@@ -26,8 +27,8 @@ module Zakuro
         attr_reader :first_gengou
         # @return [Array<Counte>] 2行目元号
         attr_reader :second_gengou
-        # @return [Array<Counte>] 行変更済元号
-        attr_reader :changed_gengou
+        # @return [Connector] 行変更済元号
+        attr_reader :connector
 
         #
         # 初期化
@@ -42,6 +43,7 @@ module Zakuro
           @first_gengou = []
           @second_gengou = []
           @ignited = false
+          @connector = Connector.new
         end
 
         #
@@ -145,43 +147,11 @@ module Zakuro
 
         private
 
+        #
+        # 行を跨ぐ元号年を継続させる
+        #
         def continue_year
-          current_changed_gengou = []
-          @first_gengou.each do |gengou|
-            next unless gengou.changed?
-
-            current_changed_gengou.push(gengou)
-          end
-          @second_gengou.each do |gengou|
-            next unless gengou.changed?
-
-            current_changed_gengou.push(gengou)
-          end
-
-          return if current_changed_gengou.size.zero?
-
-          updated_gengou = []
-          resolved = false
-          @changed_gengou.each do |changed|
-            resolved = false
-            current_changed_gengou.each do |current|
-              next unless changed.name == current.name
-
-              updated_gengou.push(
-                Counter.new(
-                  gengou: current.gengou, start_date: current.start_date,
-                  last_date: current.last_date, japan_year: changed.japan_year
-                )
-              )
-              resolved = true
-              break
-            end
-            updated_gengou.push(current) unless resolved
-          end
-
-          # TODO: make
-
-          @changed_gengou
+          @connector.update(lines: [@first_gengou, @second_gengou])
         end
 
         #
