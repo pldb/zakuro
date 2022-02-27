@@ -194,7 +194,7 @@ module Zakuro
         #
         # 設定された元号の開始日を取得する
         #
-        # @return [<Type>] <description>
+        # @return [Western::Calendar]設定された元号の開始日
         #
         def native_start_date
           @gengou.both_start_date.western
@@ -203,7 +203,7 @@ module Zakuro
         #
         # 設定された元号の終了日を取得する
         #
-        # @return [<Type>] <description>
+        # @return [Western::Calendar] 設定された元号の終了日
         #
         def native_last_date
           @gengou.last_date

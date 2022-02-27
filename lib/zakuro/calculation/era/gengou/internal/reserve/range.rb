@@ -16,6 +16,9 @@ module Zakuro
         # Range 予約済み計算範囲
         #
         class Range
+          # TODO: first_gengou -> first_list
+          # TODO: second_gengou -> second_list
+
           # @return [List] 1行目元号
           attr_reader :first_gengou
           # @return [List] 2行目元号
@@ -28,8 +31,30 @@ module Zakuro
           # @param [Western::Calendar] last_date 西暦終了日
           #
           def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+            last_date = start_date.clone if last_date.invalid?
+
             @first_gengou = List.new(first: true, start_date: start_date, last_date: last_date)
             @second_gengou = List.new(first: false, start_date: start_date, last_date: last_date)
+
+            # TODO: refactor
+            native_start_date = Western::Calendar.new
+            [@first_gengou, @second_gengou].each do |list|
+              next unless list.change_start_date?
+
+              if native_start_date.invalid?
+                native_start_date = list.native_start_date.clone
+                next
+              end
+
+              next if native_start_date <= list.native_start_date
+
+              native_start_date = list.native_start_date.clone
+            end
+
+            return if native_start_date.invalid?
+
+            @first_gengou = List.new(first: true, start_date: native_start_date, last_date: last_date)
+            @second_gengou = List.new(first: false, start_date: native_start_date, last_date: last_date)
           end
 
           #

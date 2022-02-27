@@ -56,10 +56,14 @@ module Zakuro
           end
 
           matched = @unsolved_gengou[matched_index]
+
+          japan_year = matched.japan_year > gengou.japan_year ? matched.japan_year : gengou.japan_year
           result = Counter.new(
             gengou: gengou.gengou, start_date: gengou.start_date,
-            last_date: gengou.last_date, japan_year: matched.japan_year
+            last_date: gengou.last_date, japan_year: japan_year
           )
+
+          @unsolved_gengou[matched_index] = result
 
           # 分離した元号の末尾まで到達した
           @unsolved_gengou.delete_at(matched_index) unless result.change_last_date?

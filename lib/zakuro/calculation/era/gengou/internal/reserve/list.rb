@@ -31,7 +31,7 @@ module Zakuro
           attr_reader :start_date
           # @return [Western::Calendar] 終了日
           attr_reader :last_date
-          # @return [Array<Japan::Gengou>] 予約元号一覧
+          # @return [Array<Japan::Alignment::LinearGengou>] 予約元号一覧
           attr_reader :list
 
           #
@@ -188,6 +188,29 @@ module Zakuro
             return true if @list.size.zero?
 
             false
+          end
+
+          #
+          # 設定された元号の開始日を取得する
+          #
+          # @return [Western::Calendar]設定された元号の開始日
+          #
+          def native_start_date
+            return Western::Calendar.new if @list.size.zero?
+
+            @list[0].native_start_date
+          end
+
+          #
+          # 開始日が設定された開始日と異なるか（行が変更されているか）
+          #
+          # @return [True] 異なる
+          # @return [False] 同一
+          #
+          def change_start_date?
+            return false if @list.size.zero?
+
+            @list[0].change_start_date?
           end
 
           private
