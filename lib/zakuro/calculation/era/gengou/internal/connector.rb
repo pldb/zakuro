@@ -15,15 +15,13 @@ module Zakuro
       #
       class Connector
         # @return [Array<Counter>] 未解決元号
-        attr_reader :unsolved_gengou
-
-        # TODO: refactor
+        attr_reader :unsolved_list
 
         #
         # 初期化
         #
         def initialize
-          @unsolved_gengou = []
+          @unsolved_list = []
         end
 
         #
@@ -41,9 +39,16 @@ module Zakuro
           end
         end
 
+        #
+        # 元号を年を更新した元号に入れ替える
+        #
+        # @param [Counter] gengou 元号
+        #
+        # @return [Counter] 元号/更新済元号
+        #
         def replace(gengou:)
           matched_index = -1
-          @unsolved_gengou.each_with_index do |unsolved, index|
+          @unsolved_list.each_with_index do |unsolved, index|
             next unless unsolved.name == gengou.name
 
             matched_index = index
@@ -51,24 +56,38 @@ module Zakuro
           end
 
           if matched_index == -1
-            @unsolved_gengou.push(gengou)
+            @unsolved_list.push(gengou)
             return gengou
           end
 
-          matched = @unsolved_gengou[matched_index]
+          matched = @unsolved_list[matched_index]
 
-          japan_year = matched.japan_year > gengou.japan_year ? matched.japan_year : gengou.japan_year
-          result = Counter.new(
+          result = recreate(gengou: gengou, unsolved: matched)
+
+          @unsolved_list[matched_index] = result
+
+          # 分離した元号の末尾まで到達した
+          @unsolved_list.delete_at(matched_index) unless result.change_last_date?
+
+          result
+        end
+
+        #
+        # 年を更新した元号を生成する
+        #
+        # @param [Counter] gengou 元号
+        # @param [Counter] unsolved 未解決元号
+        #
+        # @return [Counter] 更新済元号
+        #
+        def recreate(gengou:, unsolved:)
+          japan_year = gengou.japan_year
+          japan_year = unsolved.japan_year if unsolved.japan_year > gengou.japan_year
+
+          Counter.new(
             gengou: gengou.gengou, start_date: gengou.start_date,
             last_date: gengou.last_date, japan_year: japan_year
           )
-
-          @unsolved_gengou[matched_index] = result
-
-          # 分離した元号の末尾まで到達した
-          @unsolved_gengou.delete_at(matched_index) unless result.change_last_date?
-
-          result
         end
       end
     end
