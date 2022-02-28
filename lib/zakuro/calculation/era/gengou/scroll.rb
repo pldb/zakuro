@@ -160,9 +160,9 @@ module Zakuro
         def update_current_gengou
           start_date = @monthly_start_date
           last_date = @monthly_last_date
-          first_gengou = @range.collect_first_gengou(start_date: start_date, last_date: last_date)
-          second_gengou = @range.collect_second_gengou(start_date: start_date,
-                                                       last_date: last_date)
+          first_gengou = @range.collect_first(start_date: start_date, last_date: last_date)
+          second_gengou = @range.collect_second(start_date: start_date,
+                                                last_date: last_date)
 
           @first_gengou = replace_gengou(source: @first_gengou, destination: first_gengou)
           @second_gengou = replace_gengou(source: @second_gengou, destination: second_gengou)

@@ -88,7 +88,6 @@ describe 'Zakuro' do
 
               # TODO: 下記テストに失敗する
               # * id: 3
-              # * id: 4
               it "#{start_date} - #{last_date}: #{test['japan_date']}: #{test['description']}" do
                 actual = Zakuro::Calculation::Summary::Range.get(
                   context: Zakuro::Context.new(version_name: ''),
