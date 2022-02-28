@@ -36,7 +36,16 @@ module Zakuro
             @first_gengou = List.new(first: true, start_date: start_date, last_date: last_date)
             @second_gengou = List.new(first: false, start_date: start_date, last_date: last_date)
 
-            # TODO: refactor
+            renew(last_date: last_date)
+          end
+
+          #
+          # 再初期化
+          #   含まれる最初の元号が別の行にまたがっている場合に開始日を前倒しする
+          #
+          # @param [Western::Calendar] last_date 西暦終了日
+          #
+          def renew(last_date: Western::Calendar.new)
             native_start_date = Western::Calendar.new
             [@first_gengou, @second_gengou].each do |list|
               next unless list.change_start_date?
@@ -53,8 +62,10 @@ module Zakuro
 
             return if native_start_date.invalid?
 
-            @first_gengou = List.new(first: true, start_date: native_start_date, last_date: last_date)
-            @second_gengou = List.new(first: false, start_date: native_start_date, last_date: last_date)
+            @first_gengou = List.new(first: true,
+                                     start_date: native_start_date, last_date: last_date)
+            @second_gengou = List.new(first: false,
+                                      start_date: native_start_date, last_date: last_date)
           end
 
           #
