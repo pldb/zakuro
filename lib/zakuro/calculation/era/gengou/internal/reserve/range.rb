@@ -76,28 +76,6 @@ module Zakuro
           end
 
           #
-          # 1行目元号を取得する
-          #
-          # @param [Western::Calendar] western_date 西暦日
-          #
-          # @return [Gengou::Counter] 加算元号
-          #
-          def match_first_list(western_date: Western::Calendar.new)
-            @first_list.get(western_date: western_date)
-          end
-
-          #
-          # 2行目元号を取得する
-          #
-          # @param [Western::Calendar] western_date 西暦日
-          #
-          # @return [Gengou::Counter] 加算元号
-          #
-          def match_second_list(western_date: Western::Calendar.new)
-            @second_list.get(western_date: western_date)
-          end
-
-          #
           # 範囲内元号（1行目元号）を取得する
           #
           # @param [Western::Calendar] start_date 西暦開始日
