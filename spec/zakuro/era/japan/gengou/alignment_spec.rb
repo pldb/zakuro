@@ -62,8 +62,33 @@ describe 'Zakuro' do
               expect(actual[1].name).to eq '安康天皇'
             end
           end
+        end
+        context 'first gengou and second gengou' do
+          context 'parameters included second gengou end' do
+            let!(:start_date) do
+              Zakuro::Western::Calendar.new(year: 1392, month: 11, day: 18)
+            end
+            let!(:last_date) do
+              Zakuro::Western::Calendar.new(year: 1392, month: 11, day: 19)
+            end
 
-          # TODO: more test
+            let!(:actual) do
+              Zakuro::Japan::Alignment.get(
+                line: Zakuro::Japan::Alignment::FIRST_LINE,
+                start_date: start_date, last_date: last_date
+              )
+            end
+
+            it 'should be two elements' do
+              expect(actual.size).to eq 2
+            end
+            it 'should be valid first element' do
+              expect(actual[0].name).to eq '元中'
+            end
+            it 'should be valid second element' do
+              expect(actual[1].name).to eq '明徳'
+            end
+          end
         end
       end
     end

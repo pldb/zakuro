@@ -462,7 +462,6 @@ describe 'Zakuro' do
               end
             end
           end
-          # TODO: make
         end
       end
     end
