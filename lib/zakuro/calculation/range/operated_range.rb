@@ -83,7 +83,6 @@ module Zakuro
         # @param [Array<OperatedYear>] operated_years 運用結果範囲
         #
         def self.move(operated_years:)
-          # FIXME: この方式は完全ではない。範囲の1年前/1年後が必要
           move_into_next_year(operated_years: operated_years)
           move_into_last_year(operated_years: operated_years)
         end

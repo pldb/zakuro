@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../western/calendar'
-require_relative './gengou/parser'
-require_relative './gengou/type'
+
+require_relative './gengou/alignment'
 
 # :nodoc:
 module Zakuro
@@ -11,95 +11,56 @@ module Zakuro
   #
   module Japan
     #
-    # GengouResource 元号情報
+    # Gengou 元号
     #
-    module GengouResource
-      # @return [Array<Set>] 元号セット情報リスト
-      LIST = [
-        Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-001-until-south.yaml',
-          __dir__
-        )),
-        Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-002-from-north.yaml',
-          __dir__
-        )),
-        Parser.run(filepath: File.expand_path(
-          './gengou/yaml/set-003-modern.yaml',
-          __dir__
-        ))
-      ].freeze
-
-      # :reek:TooManyStatements { max_statements: 9 }
+    module Gengou
+      # @return [Integer] 1行目
+      FIRST_LINE = Alignment::Aligner::FIRST_LINE
+      # @return [Integer] 2行目
+      SECOND_LINE = Alignment::Aligner::SECOND_LINE
 
       #
-      # 元号（1行目,2行目）を引き当てる
+      # 該当行の元号を取得する
       #
-      # * LIST配列の元号情報を配列順で「x行目」（1始まり）とする
-      # * 1行目にデータがあれば、第一要素に1行目のデータが設定される
-      # * 1行目と2行目にデータがあれば、第二要素に2行目のデータが設定される
-      # * 1行目にデータがなく、2行目以降に1つだけデータがあれば、第一要素にそのデータを設定してそれ以外の要素は未設定
-      # * 1行目にデータがなく、2行目以降に2つ以上のデータがあれば、第一要素に末尾行に一番近いデータを設定してそれ以外の要素は未設定
+      # @param [Integer] line 行番号
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] last_date 終了日
       #
-      # @param [Western::Calendar] date 日
+      # @return [Array<LinearGengou>] 該当行の元号
       #
-      # @return [Array<Gengou>] 元号情報（1行目, 2行目）
-      #
-      def self.lines(date:)
-        lines = native_lines(date: date)
-        return lines unless lines[0].invalid?
-
-        first = Japan::Gengou.new
-        lines[1..].each.with_index(1) do |item, index|
-          next if item.invalid?
-
-          first = item
-          lines[index] = Japan::Gengou.new
-        end
-        lines[0] = first
-        lines
+      def self.line(line: FIRST_LINE,
+                    start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+        Alignment.get(
+          line: line, start_date: start_date, last_date: last_date
+        )
       end
 
       #
-      # 元号を引き当てる
+      # 1行目元号を取得する
       #
-      # * LISTから単純に元号を引き当てる
-      # * 1行目,2行目といった概念は無視する
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] last_date 終了日
       #
-      # @param [Western::Calendar] date 日
+      # @return [Array<LinearGengou>] 1行目元号
       #
-      # @return [Array<Gengou>] 元号情報
-      #
-      def self.native_lines(date:)
-        result = Array.new(LIST.size)
-        LIST.each_with_index do |set, index|
-          result[index] = set.include_item(date: date)
-        end
-        result
+      def self.first_line(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+        Alignment.get(
+          line: FIRST_LINE, start_date: start_date, last_date: last_date
+        )
       end
 
       #
-      # 「日本暦日原典」1行目の元号を返す
+      # 2行目元号を取得する
       #
-      # @param [Western::Calendar] date 日
+      # @param [Western::Calendar] start_date 開始日
+      # @param [Western::Calendar] last_date 終了日
       #
-      # @return [Gengou] 元号情報（1行目）
+      # @return [Array<LinearGengou>] 2行目元号
       #
-      def self.first_line(date:)
-        lines = lines(date: date)
-        lines[0].clone
-      end
-
-      #
-      # 「日本暦日原典」2行目の元号を返す
-      #
-      # @param [Western::Calendar] date 日
-      #
-      # @return [Gengou] 元号情報（2行目）
-      #
-      def self.second_line(date:)
-        lines = lines(date: date)
-        lines[1].clone
+      def self.second_line(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+        Alignment.get(
+          line: SECOND_LINE, start_date: start_date, last_date: last_date
+        )
       end
     end
   end

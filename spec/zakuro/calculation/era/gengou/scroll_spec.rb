@@ -42,7 +42,7 @@ describe 'Zakuro' do
             let(:last_date) do
               Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
             end
-            let(:first_gengou) do
+            let(:first_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -50,27 +50,29 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 12
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 12
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
               list
             end
-            let(:second_gengou) do
+            let(:second_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -81,19 +83,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_list', first_list)
+              range.instance_variable_set('@second_list', second_list)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -127,7 +129,7 @@ describe 'Zakuro' do
             let(:last_date) do
               Zakuro::Western::Calendar.new(year: 451, month: 1, day: 1)
             end
-            let(:first_gengou) do
+            let(:first_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -135,27 +137,29 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 1
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 1
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
               list
             end
-            let(:second_gengou) do
+            let(:second_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -166,19 +170,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_list', first_list)
+              range.instance_variable_set('@second_list', second_list)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -225,7 +229,7 @@ describe 'Zakuro' do
             let(:last_date) do
               Zakuro::Western::Calendar.new(year: 451, month: 1, day: 1)
             end
-            let(:first_gengou) do
+            let(:first_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -233,27 +237,29 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 1, day: 2
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 450, month: 1, day: 2
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 1, day: 2
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 450, month: 1, day: 2
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
               list
             end
-            let(:second_gengou) do
+            let(:second_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -264,19 +270,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_list', first_list)
+              range.instance_variable_set('@second_list', second_list)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -340,7 +346,7 @@ describe 'Zakuro' do
             let(:last_date) do
               Zakuro::Western::Calendar.new(year: 451, month: 2, day: 3)
             end
-            let(:first_gengou) do
+            let(:first_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -348,27 +354,29 @@ describe 'Zakuro' do
               )
               list.instance_variable_set(
                 '@list', [
-                  Zakuro::Japan::Gengou.new(
-                    name: '元号1',
-                    both_start_year: Zakuro::Japan::Both::Year.new(
-                      japan: 1,
-                      western: 450
-                    ),
-                    both_start_date: Zakuro::Japan::Both::Date.new(
-                      japan: Zakuro::Japan::Calendar.new(
-                        gengou: '元号1', year: 1, leaped: false, month: 12, day: 1
+                  Zakuro::Japan::Alignment::LinearGengou.new(
+                    gengou: Zakuro::Japan::Resource::Gengou.new(
+                      name: '元号1',
+                      both_start_year: Zakuro::Japan::Resource::Both::Year.new(
+                        japan: 1,
+                        western: 450
                       ),
-                      western: Zakuro::Western::Calendar.new(
-                        year: 449, month: 12, day: 2
-                      )
-                    ),
-                    last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                      both_start_date: Zakuro::Japan::Resource::Both::Date.new(
+                        japan: Zakuro::Japan::Calendar.new(
+                          gengou: '元号1', year: 1, leaped: false, month: 12, day: 1
+                        ),
+                        western: Zakuro::Western::Calendar.new(
+                          year: 449, month: 12, day: 2
+                        )
+                      ),
+                      last_date: Zakuro::Western::Calendar.new(year: 450, month: 3, day: 30)
+                    )
                   )
                 ]
               )
               list
             end
-            let(:second_gengou) do
+            let(:second_list) do
               list = Zakuro::Calculation::Gengou::Reserve::List.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
@@ -379,19 +387,19 @@ describe 'Zakuro' do
               )
               list
             end
-            let(:interval) do
-              interval = Zakuro::Calculation::Gengou::Reserve::Range.new(
+            let(:range) do
+              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
                 start_date: start_date, last_date: last_date
               )
-              interval.instance_variable_set('@first_gengou', first_gengou)
-              interval.instance_variable_set('@second_gengou', second_gengou)
-              interval
+              range.instance_variable_set('@first_list', first_list)
+              range.instance_variable_set('@second_list', second_list)
+              range
             end
             let(:scroll) do
               scroll = Zakuro::Calculation::Gengou::Scroll.new(
                 start_date: start_date, last_date: last_date
               )
-              scroll.instance_variable_set('@interval', interval)
+              scroll.instance_variable_set('@range', range)
               scroll
             end
             let(:gengou) do
@@ -421,128 +429,127 @@ describe 'Zakuro' do
             end
           end
         end
-        # describe '#run' do
-        #   context 'range included second gengou' do
-        #     let(:months) do
-        #       [
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 8, is_many_days: true, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1331, month: 9, day: 3),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 9, is_many_days: false, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1331, month: 10, day: 3),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 10, is_many_days: false, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 1),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 11, is_many_days: true, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 30),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 12, is_many_days: false, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1331, month: 12, day: 30),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 1, is_many_days: true, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1332, month: 1, day: 28),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 2, is_many_days: false, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1332, month: 2, day: 27),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 3, is_many_days: true, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1332, month: 3, day: 27),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         ),
-        #         Zakuro::Calculation::Monthly::Month.new(
-        #           context: context,
-        #           month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
-        #             number: 4, is_many_days: false, leaped: false
-        #           ),
-        #           first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-        #             western_date: Zakuro::Western::Calendar.new(year: 1332, month: 4, day: 26),
-        #             remainder: Zakuro::Senmyou::Cycle::Remainder.new
-        #           )
-        #         )
-        #       ]
-        #     end
-        #     let(:start_date) do
-        #       Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 22)
-        #     end
-        #     let(:last_date) do
-        #       Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
-        #     end
-        #     let(:scroll) do
-        #       Zakuro::Calculation::Gengou::Scroll.new(
-        #         start_date: start_date, last_date: last_date
-        #       )
-        #     end
-        #     let(:gengou) do
-        #       months.each do |month|
-        #         scroll.run(month: month)
-        #       end
-        #       scroll.to_gengou
-        #     end
+        describe '#run' do
+          context 'range included second gengou' do
+            let(:months) do
+              [
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 8, is_many_days: true, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1331, month: 9, day: 3),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 9, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1331, month: 10, day: 3),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 10, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 1),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 11, is_many_days: true, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 30),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 12, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1331, month: 12, day: 30),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 1, is_many_days: true, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1332, month: 1, day: 28),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 2, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1332, month: 2, day: 27),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 3, is_many_days: true, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1332, month: 3, day: 27),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                ),
+                Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 4, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 1332, month: 4, day: 26),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  )
+                )
+              ]
+            end
+            let(:start_date) do
+              Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 22)
+            end
+            let(:last_date) do
+              Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
+            end
+            let(:scroll) do
+              Zakuro::Calculation::Gengou::Scroll.new(
+                start_date: start_date, last_date: last_date
+              )
+            end
+            let(:gengou) do
+              months.each do |month|
+                scroll.run(month: month)
+              end
+              scroll.to_gengou
+            end
 
-        #     context 'should be started second gengou' do
-        #       example 'two element' do
-        #         # FIXME: interval の中に2行目元号が一つもない
-        #         expect(gengou.second_line.size).to eq 2
-        #       end
-        #     end
-        #   end
-        # end
+            context 'should be started second gengou' do
+              example 'two element' do
+                expect(gengou.second_line.size).to eq 2
+              end
+            end
+          end
+        end
       end
     end
   end

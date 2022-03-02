@@ -17,9 +17,9 @@ module Zakuro
         #
         class Range
           # @return [List] 1行目元号
-          attr_reader :first_gengou
+          attr_reader :first_list
           # @return [List] 2行目元号
-          attr_reader :second_gengou
+          attr_reader :second_list
 
           #
           # 初期化
@@ -28,8 +28,41 @@ module Zakuro
           # @param [Western::Calendar] last_date 西暦終了日
           #
           def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-            @first_gengou = List.new(first: true, start_date: start_date, last_date: last_date)
-            @second_gengou = List.new(first: false, start_date: start_date, last_date: last_date)
+            last_date = start_date.clone if last_date.invalid?
+
+            @first_list = List.new(first: true, start_date: start_date, last_date: last_date)
+            @second_list = List.new(first: false, start_date: start_date, last_date: last_date)
+
+            renew(last_date: last_date)
+          end
+
+          #
+          # 再初期化
+          #   含まれる最初の元号が別の行にまたがっている場合に開始日を前倒しする
+          #
+          # @param [Western::Calendar] last_date 西暦終了日
+          #
+          def renew(last_date: Western::Calendar.new)
+            native_start_date = Western::Calendar.new
+            [@first_list, @second_list].each do |list|
+              next unless list.change_start_date?
+
+              if native_start_date.invalid?
+                native_start_date = list.native_start_date.clone
+                next
+              end
+
+              next if native_start_date <= list.native_start_date
+
+              native_start_date = list.native_start_date.clone
+            end
+
+            return if native_start_date.invalid?
+
+            @first_list = List.new(first: true,
+                                   start_date: native_start_date, last_date: last_date)
+            @second_list = List.new(first: false,
+                                    start_date: native_start_date, last_date: last_date)
           end
 
           #
@@ -39,29 +72,7 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            @first_gengou.invalid?
-          end
-
-          #
-          # 1行目元号を取得する
-          #
-          # @param [Western::Calendar] western_date 西暦日
-          #
-          # @return [Gengou::Counter] 加算元号
-          #
-          def match_first_gengou(western_date: Western::Calendar.new)
-            @first_gengou.get(western_date: western_date)
-          end
-
-          #
-          # 2行目元号を取得する
-          #
-          # @param [Western::Calendar] western_date 西暦日
-          #
-          # @return [Gengou::Counter] 加算元号
-          #
-          def match_second_gengou(western_date: Western::Calendar.new)
-            @second_gengou.get(western_date: western_date)
+            @first_list.invalid?
           end
 
           #
@@ -72,9 +83,9 @@ module Zakuro
           #
           # @return [Array<Gengou::Counter>] 範囲内元号（1行目元号）
           #
-          def collect_first_gengou(start_date: Western::Calendar.new,
-                                   last_date: Western::Calendar.new)
-            @first_gengou.collect(start_date: start_date, last_date: last_date)
+          def collect_first(start_date: Western::Calendar.new,
+                            last_date: Western::Calendar.new)
+            @first_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -85,9 +96,9 @@ module Zakuro
           #
           # @return [Array<Gengou::Counter>] 範囲内元号（2行目元号）
           #
-          def collect_second_gengou(start_date: Western::Calendar.new,
-                                    last_date: Western::Calendar.new)
-            @second_gengou.collect(start_date: start_date, last_date: last_date)
+          def collect_second(start_date: Western::Calendar.new,
+                             last_date: Western::Calendar.new)
+            @second_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -122,12 +133,12 @@ module Zakuro
           # @return [Integer] 開始西暦年
           #
           def western_start_year
-            first_start_year = @first_gengou.western_start_year
-            second_start_year = @second_gengou.western_start_year
+            first_start_year = @first_list.western_start_year
+            second_start_year = @second_list.western_start_year
 
-            return first_start_year if @first_gengou.invalid?
+            return first_start_year if @first_list.invalid?
 
-            return first_start_year if @second_gengou.invalid?
+            return first_start_year if @second_list.invalid?
 
             return first_start_year if first_start_year < second_start_year
 
@@ -140,12 +151,12 @@ module Zakuro
           # @return [Integer] 終了西暦年
           #
           def western_last_year
-            first_last_year = @first_gengou.western_last_year
-            second_last_year = @second_gengou.western_last_year
+            first_last_year = @first_list.western_last_year
+            second_last_year = @second_list.western_last_year
 
-            return first_last_year if @first_gengou.invalid?
+            return first_last_year if @first_list.invalid?
 
-            return first_last_year if @second_gengou.invalid?
+            return first_last_year if @second_list.invalid?
 
             return first_last_year if first_last_year > second_last_year
 
@@ -160,20 +171,20 @@ module Zakuro
           # @return [Japan::Gengou] 最古の元号
           #
           def oldest_gengou
-            return @first_gengou if @first_gengou.invalid?
+            return @first_list if @first_list.invalid?
 
-            return @first_gengou if @second_gengou.invalid?
+            return @first_list if @second_list.invalid?
 
-            first_western_date = @first_gengou.western_start_date
-            second_western_date = @second_gengou.western_start_date
+            first_western_date = @first_list.western_start_date
+            second_western_date = @second_list.western_start_date
 
-            return @first_gengou if first_western_date.invalid?
+            return @first_list if first_western_date.invalid?
 
-            return @first_gengou if second_western_date.invalid?
+            return @first_list if second_western_date.invalid?
 
-            return @first_gengou if first_western_date < second_western_date
+            return @first_list if first_western_date < second_western_date
 
-            @second_gengou
+            @second_list
           end
         end
       end
