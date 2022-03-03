@@ -74,6 +74,20 @@ module Zakuro
             @lines[line].get(start_date: start_date, last_date: last_date)
           end
 
+          #
+          # 指定した範囲内の元号を取得する（元号名）
+          #
+          # @param [Integer] line 行
+          # @param [String] name 元号名
+          #
+          # @return [Array<LinearGengou>] 元号
+          #
+          def get_by_name(line:, name:)
+            raise ArgumentError.new, 'invalid line number' unless LINE_INDEXES.include?(line)
+
+            @lines[line].get_by_name(name: name)
+          end
+
           private
 
           #

@@ -37,6 +37,18 @@ module Zakuro
 
           SUMMARY.get(line: line, start_date: start_date, last_date: last_date)
         end
+
+        #
+        # 指定した範囲内の元号を取得する（元号名）
+        #
+        # @param [Integer] line 行
+        # @param [String] name 元号名
+        #
+        # @return [Array<LinearGengou>] 元号
+        #
+        def self.get_by_name(line: FIRST_LINE, name:)
+          SUMMARY.get_by_name(line: line, name: name)
+        end
       end
     end
   end

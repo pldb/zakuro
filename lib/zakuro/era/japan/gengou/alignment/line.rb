@@ -82,6 +82,22 @@ module Zakuro
             result
           end
 
+          #
+          # 範囲内の元号を取得する（元号名）
+          #
+          # @param [String] name 元号名
+          #
+          # @return [Array<LinearGengou>] 元号
+          #
+          def get_by_name(name:)
+            result = []
+            @list.each do |gengou|
+              result.push(gengou) if gengou.name == name
+            end
+
+            result
+          end
+
           private
 
           #
