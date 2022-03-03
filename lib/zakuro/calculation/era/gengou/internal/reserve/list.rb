@@ -95,8 +95,8 @@ module Zakuro
             if result.size.zero?
               result.push(
                 Gengou::Counter.new(
-                  gengou: Japan::Resource::Gengou.new(
-                    both_start_date: Japan::Resource::Both::Date.new(
+                  gengou: Japan::Gengou::Resource::Gengou.new(
+                    both_start_date: Japan::Gengou::Resource::Both::Date.new(
                       western: start_date.clone
                     ),
                     last_date: last_date.clone
@@ -110,7 +110,7 @@ module Zakuro
             if start_date < result[0].start_date
               result.unshift(
                 Gengou::Counter.new(
-                  gengou: Japan::Resource::Gengou.new,
+                  gengou: Japan::Gengou::Resource::Gengou.new,
                   start_date: start_date.clone,
                   last_date: result[0].start_date.clone - 1
                 )
@@ -120,7 +120,7 @@ module Zakuro
             if last_date > result[-1].last_date
               result.push(
                 Gengou::Counter.new(
-                  gengou: Japan::Resource::Gengou.new,
+                  gengou: Japan::Gengou::Resource::Gengou.new,
                   start_date: result[0].last_date.clone + 1,
                   last_date: last_date.clone
                 )
