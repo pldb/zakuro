@@ -228,9 +228,10 @@ module Zakuro
           end
 
           #
-          # 元号
+          # 元号を取得する
           #
-          # @param [Western::Calendar] date 日付
+          # @param [Western::Calendar] start_date 開始日
+          # @param [Western::Calendar] last_date 終了日
           #
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
