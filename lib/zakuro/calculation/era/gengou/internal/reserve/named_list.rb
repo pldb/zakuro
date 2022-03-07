@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../../era/japan/gengou/resource'
-require_relative '../../../../../era/japan/gengou'
-require_relative '../../../../../era/japan/calendar'
-require_relative '../../../../../era/western/calendar'
-
-require_relative '../counter'
+require_relative './abstract_list'
 
 # :nodoc:
 module Zakuro
@@ -19,7 +14,7 @@ module Zakuro
         #
         # 予約元号一覧（元号名）
         #
-        class NamedList
+        class NamedList < AbstractList
           # TODO: 継承
 
           #
@@ -29,13 +24,16 @@ module Zakuro
           # @param [String] name 元号名
           #
           def initialize(first: true, name: INVALID_NAME)
-            @index = first ? Japan::Gengou::FIRST_LINE : Japan::Gengou::SECOND_LINE
+            # TODO: name は開始日の元号・終了日の元号の二つを引数にする
+            update(name: name)
+            super(first: first, start_date: @start_date, last_date: @last_date)
+          end
 
-            @list = []
-
+          def update(name:)
+            # TODO: make
             @start_date = Western::Calendar.new
             @last_date = Western::Calendar.new
-            @list |= line_by_name(name: name)
+            @list |= line(name: name)
 
             return if @list.size.zero?
 
@@ -50,7 +48,7 @@ module Zakuro
           #
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
-          def line_(name:)
+          def line(name:)
             Japan::Gengou.line_by_name(line: @index, name: name)
           end
         end
