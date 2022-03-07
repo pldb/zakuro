@@ -2,7 +2,7 @@
 
 require_relative '../../../../../era/western/calendar'
 
-require_relative './list'
+require_relative './dated_list'
 
 # :nodoc:
 module Zakuro
@@ -30,8 +30,8 @@ module Zakuro
           def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
             last_date = start_date.clone if last_date.invalid?
 
-            @first_list = List.new(first: true, start_date: start_date, last_date: last_date)
-            @second_list = List.new(first: false, start_date: start_date, last_date: last_date)
+            @first_list = DatedList.new(first: true, start_date: start_date, last_date: last_date)
+            @second_list = DatedList.new(first: false, start_date: start_date, last_date: last_date)
 
             renew(last_date: last_date)
           end
@@ -59,10 +59,10 @@ module Zakuro
 
             return if native_start_date.invalid?
 
-            @first_list = List.new(first: true,
-                                   start_date: native_start_date, last_date: last_date)
-            @second_list = List.new(first: false,
-                                    start_date: native_start_date, last_date: last_date)
+            @first_list = DatedList.new(first: true, start_date: native_start_date,
+                                        last_date: last_date)
+            @second_list = DatedList.new(first: false, start_date: native_start_date,
+                                         last_date: last_date)
           end
 
           #

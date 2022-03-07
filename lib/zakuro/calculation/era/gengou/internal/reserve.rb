@@ -2,7 +2,6 @@
 
 require_relative '../../../../era/western/calendar'
 require_relative './reserve/range'
-require_relative './reserve/list'
 
 # :nodoc:
 module Zakuro

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../../../' \
-                         'lib/zakuro/calculation/era/gengou/internal/reserve/list',
+                         'lib/zakuro/calculation/era/gengou/internal/reserve/dated_list',
                          __dir__)
 
 require File.expand_path('../../../../../../../lib/zakuro/era/western/calendar',
@@ -15,11 +15,11 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'Reserve' do
-        describe 'List' do
+        describe 'DatedList' do
           context 'first line' do
             context 'western date has a gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2),
                   last_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
@@ -44,7 +44,7 @@ describe 'Zakuro' do
             end
             context 'western date has two gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 13),
                   last_date: Zakuro::Western::Calendar.new(year: 454, month: 2, day: 14)
@@ -73,7 +73,7 @@ describe 'Zakuro' do
             end
             context 'western date has a gengou and previous gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13),
                   last_date: Zakuro::Western::Calendar.new(year: 454, month: 3, day: 13)
@@ -94,7 +94,7 @@ describe 'Zakuro' do
             end
             context 'western date has a gengou and next gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: true,
                   start_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14),
                   last_date: Zakuro::Western::Calendar.new(year: 454, month: 1, day: 14)
@@ -117,7 +117,7 @@ describe 'Zakuro' do
           context 'second line' do
             context 'western date has a gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23),
                   last_date: Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
@@ -142,7 +142,7 @@ describe 'Zakuro' do
             end
             context 'western date has two gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 3, day: 4),
                   last_date: Zakuro::Western::Calendar.new(year: 1334, month: 3, day: 5)
@@ -171,7 +171,7 @@ describe 'Zakuro' do
             end
             context 'western date has a gengou and previous gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 4, day: 4),
                   last_date: Zakuro::Western::Calendar.new(year: 1334, month: 4, day: 4)
@@ -192,7 +192,7 @@ describe 'Zakuro' do
             end
             context 'western date has a gengou and next gengou' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new(year: 1334, month: 2, day: 6),
                   last_date: Zakuro::Western::Calendar.new(year: 1334, month: 2, day: 6)
@@ -215,7 +215,7 @@ describe 'Zakuro' do
           context '#collect' do
             context 'no gengou in range' do
               let(:list) do
-                Zakuro::Calculation::Gengou::Reserve::List.new(
+                Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
                   last_date: Zakuro::Western::Calendar.new
@@ -231,7 +231,7 @@ describe 'Zakuro' do
             end
             context 'valid gengou from the middle' do
               let(:list) do
-                list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
                   last_date: Zakuro::Western::Calendar.new
@@ -275,7 +275,7 @@ describe 'Zakuro' do
             end
             context 'valid two gengou' do
               let(:list) do
-                result = Zakuro::Calculation::Gengou::Reserve::List.new(
+                result = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
                   last_date: Zakuro::Western::Calendar.new
@@ -346,7 +346,7 @@ describe 'Zakuro' do
             end
             context 'valid three gengou' do
               let(:list) do
-                result = Zakuro::Calculation::Gengou::Reserve::List.new(
+                result = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
                   last_date: Zakuro::Western::Calendar.new
@@ -441,7 +441,7 @@ describe 'Zakuro' do
             end
             context 'invalid gengou from the middle' do
               let(:list) do
-                list = Zakuro::Calculation::Gengou::Reserve::List.new(
+                list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                   first: false,
                   start_date: Zakuro::Western::Calendar.new,
                   last_date: Zakuro::Western::Calendar.new

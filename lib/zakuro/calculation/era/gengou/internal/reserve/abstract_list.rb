@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+﻿# frozen_string_literal: true
 
 require_relative '../../../../../era/japan/gengou/resource'
 require_relative '../../../../../era/japan/gengou'
@@ -15,11 +15,11 @@ module Zakuro
     module Gengou
       # :nodoc:
       module Reserve
-        # List
+        # AbstractList
         #
-        # 予約元号一覧
+        # 抽象予約元号一覧
         #
-        class List
+        class AbstractList
           # @return [Integer] 不正年
           INVALID_YEAR = -1
           # @return [Integer] 最大月日数

@@ -3,7 +3,8 @@
 require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/range',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/list',
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/calculation/era/gengou/internal/reserve/dated_list',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/scroll',
@@ -43,7 +44,7 @@ describe 'Zakuro' do
               Zakuro::Western::Calendar.new(year: 450, month: 1, day: 2)
             end
             let(:first_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -73,7 +74,7 @@ describe 'Zakuro' do
               list
             end
             let(:second_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -130,7 +131,7 @@ describe 'Zakuro' do
               Zakuro::Western::Calendar.new(year: 451, month: 1, day: 1)
             end
             let(:first_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -160,7 +161,7 @@ describe 'Zakuro' do
               list
             end
             let(:second_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -230,7 +231,7 @@ describe 'Zakuro' do
               Zakuro::Western::Calendar.new(year: 451, month: 1, day: 1)
             end
             let(:first_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -260,7 +261,7 @@ describe 'Zakuro' do
               list
             end
             let(:second_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -347,7 +348,7 @@ describe 'Zakuro' do
               Zakuro::Western::Calendar.new(year: 451, month: 2, day: 3)
             end
             let(:first_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
@@ -377,7 +378,7 @@ describe 'Zakuro' do
               list
             end
             let(:second_list) do
-              list = Zakuro::Calculation::Gengou::Reserve::List.new(
+              list = Zakuro::Calculation::Gengou::Reserve::DatedList.new(
                 first: false,
                 start_date: Zakuro::Western::Calendar.new,
                 last_date: Zakuro::Western::Calendar.new
