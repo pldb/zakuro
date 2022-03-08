@@ -218,10 +218,25 @@ module Zakuro
           #
           # 予約元号一覧を更新する
           #
-          # @abstract
-          #
           def update
-            # abstract
+            # 開始日の30日前に前の元号がある場合は、前の元号を設定する
+            start_date = @start_date.clone - (MAX_MONTH_DAYS + 1)
+            # 開始日の30日後に次の元号がある場合は、次の元号を設定する
+            last_date = @last_date.clone + (MAX_MONTH_DAYS + 1)
+
+            @list |= line(start_date: start_date, last_date: last_date)
+          end
+
+          #
+          # 元号を取得する
+          #
+          # @param [Western::Calendar] start_date 開始日
+          # @param [Western::Calendar] last_date 終了日
+          #
+          # @return [Array<Japan::Alignment::LinearGengou>] 元号
+          #
+          def line(start_date:, last_date:)
+            Japan::Gengou.line(line: @index, start_date: start_date, last_date: last_date)
           end
         end
       end
