@@ -3,7 +3,7 @@
 require_relative '../../../era/western/calendar'
 require_relative '../../base/gengou'
 require_relative '../../base/linear_gengou'
-require_relative './internal/reserve/range'
+require_relative './internal/reserve/dated_range'
 require_relative './internal/connector'
 require_relative './internal/publisher'
 
@@ -40,7 +40,7 @@ module Zakuro
         def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @monthly_start_date = Western::Calendar.new
           @monthly_last_date = Western::Calendar.new
-          @range = Reserve::Range.new(start_date: start_date, last_date: last_date)
+          @range = Reserve::DatedRange.new(start_date: start_date, last_date: last_date)
           @first_gengou = []
           @second_gengou = []
           @ignited = false

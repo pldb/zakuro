@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/internal/reserve/range',
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/calculation/era/gengou/internal/reserve/dated_range',
                          __dir__)
 
 require File.expand_path('../../../../../' \
@@ -85,7 +86,7 @@ describe 'Zakuro' do
               list
             end
             let(:range) do
-              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
+              range = Zakuro::Calculation::Gengou::Reserve::DatedRange.new(
                 start_date: start_date, last_date: last_date
               )
               range.instance_variable_set('@first_list', first_list)
@@ -172,7 +173,7 @@ describe 'Zakuro' do
               list
             end
             let(:range) do
-              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
+              range = Zakuro::Calculation::Gengou::Reserve::DatedRange.new(
                 start_date: start_date, last_date: last_date
               )
               range.instance_variable_set('@first_list', first_list)
@@ -272,7 +273,7 @@ describe 'Zakuro' do
               list
             end
             let(:range) do
-              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
+              range = Zakuro::Calculation::Gengou::Reserve::DatedRange.new(
                 start_date: start_date, last_date: last_date
               )
               range.instance_variable_set('@first_list', first_list)
@@ -389,7 +390,7 @@ describe 'Zakuro' do
               list
             end
             let(:range) do
-              range = Zakuro::Calculation::Gengou::Reserve::Range.new(
+              range = Zakuro::Calculation::Gengou::Reserve::DatedRange.new(
                 start_date: start_date, last_date: last_date
               )
               range.instance_variable_set('@first_list', first_list)

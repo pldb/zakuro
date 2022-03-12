@@ -13,9 +13,9 @@ module Zakuro
       # :nodoc:
       module Reserve
         #
-        # Range 予約済み計算範囲
+        # AbstractRange 予約済み計算範囲
         #
-        class Range
+        class AbstractRange
           # @return [List] 1行目元号
           attr_reader :first_list
           # @return [List] 2行目元号
