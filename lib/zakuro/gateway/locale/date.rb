@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../../era/japan/calendar'
+require_relative '../../era/western/calendar'
+
+require 'date'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -87,12 +92,12 @@ module Zakuro
         def parse(date:)
           return unless date
 
-          if date.class == Date
+          if date.is_a?(Object::Date)
             @western_date = Western::Calendar.create(date: date)
             return
           end
 
-          return if date.class != String
+          return if date.is_a?(String)
 
           parse_text(text: date)
         end

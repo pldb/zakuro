@@ -2,7 +2,7 @@
 
 require_relative './era/western/calendar'
 
-require_relative './calculation/summary/single'
+require_relative './gateway/single'
 
 require_relative './calculation/summary/range'
 
@@ -57,7 +57,12 @@ module Zakuro
     def commit
       date = condition.date
 
-      return single(date: date) if date
+      # TODO: condition で設定する
+      context = Context.new(version_name: '')
+
+      single = Gateway::Single.new(context: context, date: date)
+
+      return single.get unless single.invalid?
 
       range = condition.range
 
@@ -67,22 +72,6 @@ module Zakuro
     end
 
     private
-
-    #
-    # 1日検索
-    #
-    # @param [Date] date 西暦日
-    #
-    # @return [Result::Single] 検索結果
-    #
-    def single(date:)
-      western_date = Western::Calendar.create(date: date)
-
-      # TODO: condition で設定する
-      context = Context.new(version_name: '')
-
-      Calculation::Summary::Single.get(context: context, date: western_date)
-    end
 
     #
     # 期間検索
