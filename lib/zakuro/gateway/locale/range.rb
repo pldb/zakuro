@@ -20,11 +20,11 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Date, String] date 日付
+        # @param [Hash<Symbol, Object>] range 範囲
         #
         def initialize(range:)
-          @start_date = LocaleDate.new(date: range[:start])
-          @last_date = LocaleDate.new(date: range[:last])
+          @start_date = Date.new(date: range[:start])
+          @last_date = Date.new(date: range[:last])
         end
 
         #
