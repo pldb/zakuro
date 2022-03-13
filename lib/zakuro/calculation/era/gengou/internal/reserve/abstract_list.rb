@@ -153,6 +153,17 @@ module Zakuro
           end
 
           #
+          # 西暦終了日を取得する
+          #
+          # @return [Western::Calendar] 西暦開始日
+          #
+          def western_last_date
+            return Western::Calendar.new if invalid?
+
+            @list[0].gengou.last_date.clone
+          end
+
+          #
           # 西暦開始年を取得する
           #
           # @return [Integer] 西暦開始年

@@ -107,11 +107,11 @@ module Zakuro
           # @return [Japan::Calendar] 和暦開始日
           #
           def japan_start_date
-            gengou = oldest_gengou
+            list = oldest_list
 
-            return Japan::Calendar.new if gengou.invalid?
+            return Japan::Calendar.new if list.invalid?
 
-            gengou.japan_start_date
+            list.japan_start_date
           end
 
           #
@@ -120,11 +120,11 @@ module Zakuro
           # @return [Western::Calendar] 西暦開始日
           #
           def western_start_date
-            gengou = oldest_gengou
+            list = oldest_list
 
-            return Western::Calendar.new if gengou.invalid?
+            return Western::Calendar.new if list.invalid?
 
-            gengou.western_start_date
+            list.western_start_date
           end
 
           #
@@ -168,9 +168,9 @@ module Zakuro
           #
           # 最古の元号を取得する
           #
-          # @return [Japan::Gengou] 最古の元号
+          # @return [List] 最古の元号
           #
-          def oldest_gengou
+          def oldest_list
             return @first_list if @first_list.invalid?
 
             return @first_list if @second_list.invalid?

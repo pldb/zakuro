@@ -15,7 +15,7 @@ module Zakuro
         # 予約元号一覧（元号名）
         #
         class NamedList < AbstractList
-          # @return [String]
+          # @return [String] 不正元号名
           INVALID_NAME = ''
 
           #
