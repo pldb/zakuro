@@ -5,7 +5,7 @@ require_relative '../../version/context'
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
-require_relative '../era/gengou/scroll'
+require_relative '../era/gengou/dated_scroll'
 require_relative '../era/version/version'
 
 require_relative '../base/gengou'
@@ -62,7 +62,7 @@ module Zakuro
 
           # TODO: 現時点では使用していない。特定の暦を指定できるようになった状態で使用する
           @context = context
-          @scroll = Gengou::Scroll.new(start_date: start_date, last_date: last_date)
+          @scroll = Gengou::DatedScroll.new(start_date: start_date, last_date: last_date)
         end
 
         #

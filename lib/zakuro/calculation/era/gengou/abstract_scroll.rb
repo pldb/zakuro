@@ -3,7 +3,6 @@
 require_relative '../../../era/western/calendar'
 require_relative '../../base/gengou'
 require_relative '../../base/linear_gengou'
-require_relative './internal/reserve/dated_range'
 require_relative './internal/connector'
 require_relative './internal/publisher'
 
@@ -13,16 +12,16 @@ module Zakuro
   module Calculation
     # :nodoc:
     module Gengou
-      # Scroll
+      # AbstractScroll
       #
       # 元号スクロール
       #
-      class Scroll
+      class AbstractScroll
         # @return [Western::Calendar] 月初日
         attr_reader :monthly_start_date
         # @return [Western::Calendar] 月末日
         attr_reader :monthly_last_date
-        # @return [Reserve::Range] 予約範囲
+        # @return [Reserve::AbstractRange] 予約範囲
         attr_reader :range
         # @return [Array<Counte>] 1行目元号
         attr_reader :first_gengou
@@ -34,13 +33,12 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Western::Calendar] start_date 西暦開始日（最大範囲）
-        # @param [Western::Calendar] last_date 西暦終了日（最大範囲）
+        # @param [Reserve::AbstractRange] range 予約範囲
         #
-        def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+        def initialize(range:)
           @monthly_start_date = Western::Calendar.new
           @monthly_last_date = Western::Calendar.new
-          @range = Reserve::DatedRange.new(start_date: start_date, last_date: last_date)
+          @range = range
           @first_gengou = []
           @second_gengou = []
           @ignited = false

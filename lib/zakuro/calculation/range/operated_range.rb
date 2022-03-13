@@ -4,6 +4,7 @@ require_relative './operated_solar_terms'
 require_relative '../../operation/operation'
 require_relative '../base/operated_year'
 require_relative '../../calculation/monthly/operated_month'
+require_relative '../era/gengou/dated_scroll'
 require_relative './transfer/gengou_scroller'
 
 # :nodoc:
@@ -36,7 +37,7 @@ module Zakuro
                        years: [])
           @context = context
           @years = years
-          @scroll = Gengou::Scroll.new(start_date: start_date, last_date: last_date)
+          @scroll = Gengou::DatedScroll.new(start_date: start_date, last_date: last_date)
           @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
           @operated_solar_terms.create
         end

@@ -8,7 +8,7 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/calculation/era/gengou/internal/reserve/dated_list',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/scroll',
+require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/dated_scroll',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/calculation/monthly/month',
@@ -94,7 +94,7 @@ describe 'Zakuro' do
               range
             end
             let(:scroll) do
-              scroll = Zakuro::Calculation::Gengou::Scroll.new(
+              scroll = Zakuro::Calculation::Gengou::DatedScroll.new(
                 start_date: start_date, last_date: last_date
               )
               scroll.instance_variable_set('@range', range)
@@ -181,7 +181,7 @@ describe 'Zakuro' do
               range
             end
             let(:scroll) do
-              scroll = Zakuro::Calculation::Gengou::Scroll.new(
+              scroll = Zakuro::Calculation::Gengou::DatedScroll.new(
                 start_date: start_date, last_date: last_date
               )
               scroll.instance_variable_set('@range', range)
@@ -281,7 +281,7 @@ describe 'Zakuro' do
               range
             end
             let(:scroll) do
-              scroll = Zakuro::Calculation::Gengou::Scroll.new(
+              scroll = Zakuro::Calculation::Gengou::DatedScroll.new(
                 start_date: start_date, last_date: last_date
               )
               scroll.instance_variable_set('@range', range)
@@ -398,7 +398,7 @@ describe 'Zakuro' do
               range
             end
             let(:scroll) do
-              scroll = Zakuro::Calculation::Gengou::Scroll.new(
+              scroll = Zakuro::Calculation::Gengou::DatedScroll.new(
                 start_date: start_date, last_date: last_date
               )
               scroll.instance_variable_set('@range', range)
@@ -534,7 +534,7 @@ describe 'Zakuro' do
               Zakuro::Western::Calendar.new(year: 1332, month: 5, day: 23)
             end
             let(:scroll) do
-              Zakuro::Calculation::Gengou::Scroll.new(
+              Zakuro::Calculation::Gengou::DatedScroll.new(
                 start_date: start_date, last_date: last_date
               )
             end
