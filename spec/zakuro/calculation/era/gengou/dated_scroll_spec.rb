@@ -23,7 +23,7 @@ require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
 describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
-      describe 'Scroll' do
+      describe 'DatedScroll' do
         let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
         describe '#ignite' do
           context 'a month has no gengou' do
@@ -316,7 +316,7 @@ describe 'Zakuro' do
             end
           end
         end
-        describe '#ignite' do
+        describe '#advance' do
           context 'a month beyond year' do
             let(:months) do
               [
