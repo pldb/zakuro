@@ -4,7 +4,7 @@ require File.expand_path('../../../testtools/stringifier',
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/range/full_range',
+                         'lib/zakuro/calculation/range/dated_full_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -22,7 +22,7 @@ describe 'Zakuro' do
       describe 'SingleDay' do
         # :reek:UnityFunction
         def eql?(date:, result:)
-          full_range = Zakuro::Calculation::Range::FullRange.new(
+          full_range = Zakuro::Calculation::Range::DatedFullRange.new(
             context: Zakuro::Context.new(version_name: 'Senmyou'),
             start_date: date
           )

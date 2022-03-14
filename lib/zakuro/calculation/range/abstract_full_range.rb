@@ -5,7 +5,6 @@ require_relative '../../version/context'
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
 
-require_relative '../era/gengou/dated_scroll'
 require_relative '../era/version/version'
 
 require_relative '../base/gengou'
@@ -35,7 +34,7 @@ module Zakuro
       #   * 引き当てたい日付が元旦ではない場合、その月日に従い元号を再度求める
       #   * この再計算が必要になるのは、元号が切り替わる年のみである
       #
-      class FullRange
+      class AbstractFullRange
         # @return [Context] 暦コンテキスト
         attr_reader :context
         # @return [Western::Calendar] 開始日
@@ -52,17 +51,19 @@ module Zakuro
         # 初期化
         #
         # @param [Context] context 暦コンテキスト
+        # @param [Gengou::AbstractScroll] scroll 元号スクロール
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
         #
-        def initialize(context:, start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+        def initialize(context:, scroll:,
+                       start_date: Western::Calendar.new, last_date: Western::Calendar.new)
           @start_date = start_date
           @last_date = last_date
           return if invalid?
 
           # TODO: 現時点では使用していない。特定の暦を指定できるようになった状態で使用する
           @context = context
-          @scroll = Gengou::DatedScroll.new(start_date: start_date, last_date: last_date)
+          @scroll = scroll
         end
 
         #

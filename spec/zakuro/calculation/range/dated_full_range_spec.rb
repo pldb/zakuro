@@ -11,7 +11,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                       'lib/zakuro/calculation/range/full_range',
+                       'lib/zakuro/calculation/range/dated_full_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -21,13 +21,13 @@ require File.expand_path('../../../../' \
 describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Range' do
-      describe 'FullRange' do
+      describe 'DatedFullRange' do
         describe '.get' do
           let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
           context 'specified "貞観" gengou' do
             it 'should be 19 year' do
               date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
-              range = Zakuro::Calculation::Range::FullRange.new(
+              range = Zakuro::Calculation::Range::DatedFullRange.new(
                 context: context, start_date: date
               )
               actual = range.get

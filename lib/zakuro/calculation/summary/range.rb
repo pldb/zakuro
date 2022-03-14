@@ -4,7 +4,7 @@ require_relative '../specifier/multiple_day'
 
 require_relative '../range/operated_range'
 
-require_relative '../range/full_range'
+require_relative '../range/dated_full_range'
 
 require_relative './internal/operation'
 
@@ -59,7 +59,7 @@ module Zakuro
         #
         def self.get_full_range_years(context:, start_date: Western::Calendar.new,
                                       last_date: Western::Calendar.new)
-          full_range = Calculation::Range::FullRange.new(
+          full_range = Calculation::Range::DatedFullRange.new(
             context: context, start_date: start_date, last_date: last_date
           )
           full_range.get

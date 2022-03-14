@@ -15,7 +15,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                       'lib/zakuro/calculation/range/full_range',
+                       'lib/zakuro/calculation/range/dated_full_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -80,7 +80,7 @@ describe 'Zakuro' do
               range = Zakuro::Calculation::Range::OperatedRange.new(
                 context: context,
                 start_date: date,
-                years: Zakuro::Calculation::Range::FullRange.new(
+                years: Zakuro::Calculation::Range::DatedFullRange.new(
                   context: context, start_date: date
                 ).get
               ).get
@@ -156,7 +156,7 @@ describe 'Zakuro' do
               range = Zakuro::Calculation::Range::OperatedRange.new(
                 context: context,
                 start_date: date,
-                years: Zakuro::Calculation::Range::FullRange.new(
+                years: Zakuro::Calculation::Range::DatedFullRange.new(
                   context: context, start_date: date
                 ).get
               ).get
@@ -223,7 +223,7 @@ describe 'Zakuro' do
               range = Zakuro::Calculation::Range::OperatedRange.new(
                 context: context,
                 start_date: date,
-                years: Zakuro::Calculation::Range::FullRange.new(
+                years: Zakuro::Calculation::Range::DatedFullRange.new(
                   context: context, start_date: date
                 ).get
               ).get
