@@ -14,10 +14,10 @@ module Zakuro
     # :nodoc:
     module Range
       #
-      # OperatedRange 運用結果範囲
+      # AbstractOperationRange 運用結果範囲
       #
       # 何らかの理由により、計算された暦とは異なる運用結果である場合、その結果に合わせて計算結果を上書きする
-      class OperatedRange
+      class AbstractOperationRange
         # @return [Array<Year>] 年データ（完全範囲）
         attr_reader :years
         # @return [OperatedSolarTerms] 運用時二十四節気
@@ -29,15 +29,13 @@ module Zakuro
         # 初期化
         #
         # @param [Context] context 暦コンテキスト
-        # @param [Western::Calendar] start_date 開始日
-        # @param [Western::Calendar] last_date 終了日
+        # @param [Gengou::AbstractScroll] scroll 元号スクロール
         # @param [Array<Year>] years 年データ（完全範囲）
         #
-        def initialize(context:, start_date: Western::Calendar.new, last_date: Western::Calendar.new,
-                       years: [])
+        def initialize(context:, scroll:, years: [])
           @context = context
           @years = years
-          @scroll = Gengou::DatedScroll.new(start_date: start_date, last_date: last_date)
+          @scroll = scroll
           @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
           @operated_solar_terms.create
         end
@@ -50,9 +48,9 @@ module Zakuro
         def get
           operated_years = rewrite
 
-          OperatedRange.move(operated_years: operated_years)
+          AbstractOperationRange.move(operated_years: operated_years)
 
-          OperatedRange.commit(operated_years: operated_years)
+          AbstractOperationRange.commit(operated_years: operated_years)
 
           Transfer::GengouScroller.set(scroll: @scroll, years: operated_years)
 
@@ -68,7 +66,7 @@ module Zakuro
           operated_years = []
 
           years.each do |year|
-            operated_year = OperatedRange.rewrite_year(
+            operated_year = AbstractOperationRange.rewrite_year(
               year: year,
               operated_solar_terms: @operated_solar_terms
             )
@@ -158,7 +156,7 @@ module Zakuro
         def self.resolve_month(context:, month:, operated_solar_terms:)
           history = Operation.specify_history(western_date: month.western_date)
 
-          OperatedRange.rewrite_month(
+          AbstractOperationRange.rewrite_month(
             context: context, month: month, history: history,
             operated_solar_terms: operated_solar_terms
           )

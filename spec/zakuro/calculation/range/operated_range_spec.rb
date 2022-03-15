@@ -7,7 +7,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/range/operated_range',
+                         'lib/zakuro/calculation/range/dated_operation_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -77,7 +77,7 @@ describe 'Zakuro' do
               #   days: '1'
               date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)
 
-              range = Zakuro::Calculation::Range::OperatedRange.new(
+              range = Zakuro::Calculation::Range::DatedOperationRange.new(
                 context: context,
                 start_date: date,
                 years: Zakuro::Calculation::Range::DatedFullRange.new(
@@ -153,7 +153,7 @@ describe 'Zakuro' do
               # rubocop:enable Layout/LineLength
               date = Zakuro::Western::Calendar.new(year: 1202, month: 11, day: 17)
 
-              range = Zakuro::Calculation::Range::OperatedRange.new(
+              range = Zakuro::Calculation::Range::DatedOperationRange.new(
                 context: context,
                 start_date: date,
                 years: Zakuro::Calculation::Range::DatedFullRange.new(
@@ -220,7 +220,7 @@ describe 'Zakuro' do
               #   days: "-"
               date = Zakuro::Western::Calendar.new(year: 1202, month: 12, day: 16)
 
-              range = Zakuro::Calculation::Range::OperatedRange.new(
+              range = Zakuro::Calculation::Range::DatedOperationRange.new(
                 context: context,
                 start_date: date,
                 years: Zakuro::Calculation::Range::DatedFullRange.new(

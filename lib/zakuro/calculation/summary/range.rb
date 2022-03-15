@@ -2,7 +2,7 @@
 
 require_relative '../specifier/multiple_day'
 
-require_relative '../range/operated_range'
+require_relative '../range/dated_operation_range'
 
 require_relative '../range/dated_full_range'
 
@@ -31,7 +31,7 @@ module Zakuro
           years = get_full_range_years(
             context: context, start_date: start_date, last_date: last_date
           )
-          operated_years = get_operated_range_years(
+          operated_years = get_operation_range_years(
             context: context, years: years, start_date: start_date, last_date: last_date
           )
 
@@ -76,14 +76,14 @@ module Zakuro
         #
         # @return [Array<Base::OperatedYear>] 運用結果範囲
         #
-        def self.get_operated_range_years(context:, years:, start_date: Western::Calendar.new,
-                                          last_date: Western::Calendar.new)
-          operated_range = Calculation::Range::OperatedRange.new(
+        def self.get_operation_range_years(context:, years:, start_date: Western::Calendar.new,
+                                           last_date: Western::Calendar.new)
+          operation_range = Calculation::Range::DatedOperationRange.new(
             context: context, start_date: start_date, last_date: last_date, years: years
           )
-          operated_range.get
+          operation_range.get
         end
-        private_class_method :get_operated_range_years
+        private_class_method :get_operation_range_years
 
         #
         # 結果リストを生成する

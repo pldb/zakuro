@@ -2,7 +2,7 @@
 
 require_relative '../specifier/single_day'
 
-require_relative '../range/operated_range'
+require_relative '../range/dated_operation_range'
 
 require_relative '../range/dated_full_range'
 
@@ -62,13 +62,13 @@ module Zakuro
         #
         # @return [Array<Base::OperatedYear>] 運用結果範囲
         #
-        def self.get_operated_range_years(context:, years:, date: Western::Calendar.new)
-          operated_range = Calculation::Range::OperatedRange.new(
+        def self.get_operation_range_years(context:, years:, date: Western::Calendar.new)
+          operation_range = Calculation::Range::DatedOperationRange.new(
             context: context, start_date: date, years: years
           )
-          operated_range.get
+          operation_range.get
         end
-        private_class_method :get_operated_range_years
+        private_class_method :get_operation_range_years
 
         #
         # 1日を取得する
@@ -80,7 +80,7 @@ module Zakuro
         # @return [Data::SingleDay] 1日
         #
         def self.get_data(context:, years:, date: Western::Calendar.new)
-          operated_years = get_operated_range_years(context: context, years: years, date: date)
+          operated_years = get_operation_range_years(context: context, years: years, date: date)
 
           Calculation::Specifier::SingleDay.get(
             years: operated_years, date: date

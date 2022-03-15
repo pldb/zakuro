@@ -15,7 +15,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/range/operated_range',
+                         'lib/zakuro/calculation/range/dated_operation_range',
                          __dir__)
 
 require File.expand_path('../../../../' \
