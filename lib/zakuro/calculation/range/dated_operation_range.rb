@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../era/gengou/dated_scroll'
+
 require_relative './abstract_operation_range'
 
 # :nodoc:

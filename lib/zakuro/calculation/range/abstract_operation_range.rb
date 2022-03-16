@@ -4,7 +4,6 @@ require_relative './operated_solar_terms'
 require_relative '../../operation/operation'
 require_relative '../base/operated_year'
 require_relative '../../calculation/monthly/operated_month'
-require_relative '../era/gengou/dated_scroll'
 require_relative './transfer/gengou_scroller'
 
 # :nodoc:
