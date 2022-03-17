@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../specifier/multiple_day'
+require_relative './specifier/multiple_day'
 
 require_relative '../range/dated_operation_range'
 

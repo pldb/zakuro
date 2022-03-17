@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../specifier/single_day'
+require_relative './specifier/single_day'
 
 require_relative '../range/dated_operation_range'
 
@@ -82,7 +82,7 @@ module Zakuro
         def self.get_data(context:, years:, date: Western::Calendar.new)
           operated_years = get_operation_range_years(context: context, years: years, date: date)
 
-          Calculation::Specifier::SingleDay.get(
+          Specifier::SingleDay.get(
             years: operated_years, date: date
           )
         end
@@ -97,7 +97,7 @@ module Zakuro
         # @return [Array<Base::Year>] 完全範囲
         #
         def self.get_operation(years:, date: Western::Calendar.new)
-          calc_date = Calculation::Specifier::SingleDay.get(
+          calc_date = Specifier::SingleDay.get(
             years: years, date: date
           )
 
