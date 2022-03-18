@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../calculation/summary/range'
+require_relative '../calculation/summary/western/range'
 
 require_relative './locale/range'
 
@@ -43,7 +43,7 @@ module Zakuro
       #
       def get
         if range.valid_western?
-          return Calculation::Summary::Range.get(
+          return Calculation::Summary::Western::Range.get(
             context: @context, start_date: range.start_date.western_date,
             last_date: range.last_date.western_date
           )

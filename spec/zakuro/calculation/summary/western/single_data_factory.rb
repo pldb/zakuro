@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/summary/single',
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/calculation/summary/western/single',
                          __dir__)
 
 #

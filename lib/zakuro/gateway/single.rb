@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../calculation/summary/single'
+require_relative '../calculation/summary/western/single'
 
 require_relative './locale/date'
 
@@ -43,7 +43,9 @@ module Zakuro
       #
       def get
         if date.valid_western?
-          return Calculation::Summary::Single.get(context: @context, date: date.western_date)
+          return Calculation::Summary::Western::Single.get(
+            context: @context, date: date.western_date
+          )
         end
 
         # TODO: make
