@@ -11,7 +11,7 @@ require File.expand_path('../../../../../' \
                          'lib/zakuro/version/context',
                          __dir__)
 
-require File.expand_path('./single_data_factory',
+require File.expand_path('../testdata/single_data_factory',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength
@@ -72,7 +72,7 @@ describe 'Zakuro' do
             end
             context 'all range data' do
               filepath = File.expand_path(
-                './yaml/range.yaml',
+                '../testdata/yaml/range.yaml',
                 __dir__
               )
               hash = YAML.load_file(filepath)
