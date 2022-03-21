@@ -16,7 +16,7 @@ module Zakuro
         #
         class NamedRange < AbstractRange
           # @return [String] 不正元号名
-          INVALID_NAME = ''
+          INVALID_NAME = Japan::Calendar::EMPTY
 
           #
           # 初期化

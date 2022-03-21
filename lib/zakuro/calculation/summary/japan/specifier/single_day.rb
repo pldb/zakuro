@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../../../../era/japan/calendar'
 require_relative '../../../../era/western/calendar'
 require_relative '../../../../output/response'
 require_relative '../../../../output/logger'
@@ -13,7 +14,7 @@ module Zakuro
     # :nodoc:
     module Summary
       # :nodoc:
-      module Western
+      module Japan
         # :nodoc:
         module Specifier
           #
@@ -27,18 +28,20 @@ module Zakuro
             # 取得する
             #
             # @param [Array<Year>] yeas 範囲
-            # @param [Western::Calendar] date 西暦日
+            # @param [Japan::Calendar] date 和暦日
             #
             # @return [Result::Data::SingleDay] 和暦日
             #
-            def self.get(years: [], date: Western::Calendar.new)
+            def self.get(years: [], date: Japan::Calendar.new)
               year, month = specify(years: years, date: date)
-              first_date = month.western_date
+              first_date = month.western_date.clone
+              days = date.day - 1
+              western_date = first_date + days
 
               Output::Response::SingleDay.save_single_day(
                 param: Output::Response::SingleDay::Param.new(
                   year: year, month: month,
-                  date: date, days: date - first_date
+                  date: western_date, days: days
                 )
               )
             end
@@ -47,7 +50,7 @@ module Zakuro
             # 年を特定する
             #
             # @param [Array<Year>] years 範囲
-            # @param [Western::Calendar] date 西暦日
+            # @param [Japan::Calendar] date 和暦日
             #
             # @return [Base::Year] 対象年
             # @return [Monthly::Month] 対象月
@@ -62,13 +65,11 @@ module Zakuro
             end
             private_class_method :specify
 
-            # :reek:TooManyStatements { max_statements: 7 }
-
             #
             # 月を特定する
             #
             # @param [Base::Year] year 年
-            # @param [Western::Calendar] date 西暦日
+            # @param [Japan::Calendar] date 和暦日
             #
             # @return [Monthly::Month] 対象月
             #
@@ -76,10 +77,7 @@ module Zakuro
               months = year.months
 
               months.each do |month|
-                western_date = month.western_date
-                next if western_date.invalid?
-
-                return month if month.include?(date: date)
+                return month if month.include_by_japan_date?(date: date)
               end
 
               Monthly::Month.new

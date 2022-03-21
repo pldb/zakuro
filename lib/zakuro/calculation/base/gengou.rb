@@ -68,6 +68,52 @@ module Zakuro
         end
 
         #
+        # 元号を取得する
+        #
+        # @param [String] name 元号名
+        #
+        # @return [LinearGengou] 元号
+        #
+        def match_by_name(name:)
+          result = match_first_line_by_name(name: name)
+          return result unless result.invalid?
+
+          result = match_second_line_by_name(name: name)
+
+          result
+        end
+
+        #
+        # 1行目元号を取得する
+        #
+        # @param [String] name 元号名
+        #
+        # @return [LinearGengou] 1行目元号
+        #
+        def match_first_line_by_name(name:)
+          @first_line.each do |line|
+            return line.clone if line.name == name
+          end
+
+          LinearGengou.new
+        end
+
+        #
+        # 2行目元号を取得する
+        #
+        # @param [String] name 元号名
+        #
+        # @return [LinearGengou] 2行目元号
+        #
+        def match_second_line_by_name(name:)
+          @second_line.each do |line|
+            return line.clone if line.name == name
+          end
+
+          LinearGengou.new
+        end
+
+        #
         # 不正か
         #
         # @return [True] 不正

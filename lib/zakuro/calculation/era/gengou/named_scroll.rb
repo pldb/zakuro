@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './abstract_scroll'
+require_relative './internal/reserve/named_range'
 
 # :nodoc:
 module Zakuro
