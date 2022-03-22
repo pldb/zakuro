@@ -4,7 +4,7 @@ require File.expand_path('../../../../testtools/stringifier',
                          __dir__)
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/calculation/summary/western/single',
+                         'lib/zakuro/calculation/summary/japan/single',
                          __dir__)
 
 require File.expand_path('../../../../../' \
@@ -24,7 +24,7 @@ describe 'Zakuro' do
           describe '.get' do
             # :reek:UnityFunction
             def eql?(date:, version:, expected:)
-              actual = Zakuro::Calculation::Summary::Western::Single.get(
+              actual = Zakuro::Calculation::Summary::Japan::Single.get(
                 context: Zakuro::Context.new(version_name: version),
                 date: date
               )
@@ -43,19 +43,19 @@ describe 'Zakuro' do
               hash = YAML.load_file(filepath)
 
               hash.each do |test|
-                western_date = test['western_date']
+                japan_date = test['japan_date']
                 # TODO: 暦を指定できるようになった段階で使用する
                 # version = test['version']
                 expected = SingleDataFactory.create(hash: test['expected'])
 
-                message = "#{test['japan_date']}[#{test['operation']}]: #{test['description']}"
-                it "#{western_date}: #{message}" do
+                message = "#{test['western_date']}[#{test['operation']}]: #{test['description']}"
+                it "#{japan_date}: #{message}" do
                   # if test['japan_date'] == '明徳3年閏10月1日（明徳3年11月1日）'
                   #   p western_date
                   #   p "use on debug mode"
                   # end
                   eql?(
-                    date: Zakuro::Western::Calendar.parse(str: western_date),
+                    date: Zakuro::Japan::Calendar.parse(text: japan_date),
                     version: '',
                     expected: expected
                   )
