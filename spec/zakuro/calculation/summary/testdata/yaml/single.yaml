@@ -3419,7 +3419,7 @@
           western_date: "1332-01-29"
 - western_date: "1332-02-26"
   version: "Senmyou"
-  japan_date: "元弘2年1月29日"
+  japan_date: "元弘2年1月30日"
   operation: ""
   description: "南北朝前の元号年を計算できること"
   expected:
