@@ -40,11 +40,11 @@ module Zakuro
           # @return [Western::Calendar] 西暦終了日
           #
           def western_last_date
-            gengou = newest_gengou
+            list = newest_gengou
 
-            return Western::Calendar.new if gengou.invalid?
+            return Western::Calendar.new if list.invalid?
 
-            gengou.western_last_date
+            list.western_last_date
           end
 
           #

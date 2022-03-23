@@ -160,7 +160,7 @@ module Zakuro
           def western_last_date
             return Western::Calendar.new if invalid?
 
-            @list[0].gengou.last_date.clone
+            @list[-1].gengou.last_date.clone
           end
 
           #
