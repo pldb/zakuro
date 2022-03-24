@@ -1,216 +1,216 @@
-﻿# - id: 1
-#   start_date: "0445-01-24"
-#   last_date: "0445-01-24"
-#   japan_date: "允恭天皇34年1月1日"
-#   description: "元嘉暦の初日が計算できること"
-#   expected:
-#     - data:
-#         year:
-#           first_gengou: "允恭天皇34年"
-#           second_gengou: ""
-#           zodiac_name: "乙酉"
-#           total_days: 384
-#         month:
-#           number: 1
-#           leaped: false
-#           days_name: "大"
-#           first_day:
-#             number: 1
-#             zodiac_name: "辛卯"
-#             remainder: "27.6157"
-#             western_date: "0445-01-24"
-#           odd_solar_terms:
-#             index: 3
-#             remainder: "37.2649"
-#           even_solar_terms:
-#             index: 4
-#             remainder: "52.4836"
-#         day:
-#           number: 1
-#           zodiac_name: "辛卯"
-#           remainder: "27.6157"
-#           western_date: "0445-01-24"
-#       operation:
-#         operated: false
-#         month:
-#           current:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#           parent:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#         original:
-#           year:
-#             first_gengou: "允恭天皇34年"
-#             second_gengou: ""
-#             zodiac_name: "乙酉"
-#             total_days: 384
-#           month:
-#             number: 1
-#             leaped: false
-#             days_name: "大"
-#             first_day:
-#               number: 1
-#               zodiac_name: "辛卯"
-#               remainder: "27.6157"
-#               western_date: "0445-01-24"
-#             odd_solar_terms:
-#               index: 3
-#               remainder: "37.2649"
-#             even_solar_terms:
-#               index: 4
-#               remainder: "52.4836"
-#           day:
-#             number: 1
-#             zodiac_name: "辛卯"
-#             remainder: "27.6157"
-#             western_date: "0445-01-24"
-# - id: 2
-#   start_date: "0862-02-02"
-#   last_date: "0862-02-03"
-#   japan_date: "貞観3年12月30日 - 貞観4年1月1日"
-#   description: "大衍暦の末日 - 宣明暦の初日が計算できること"
-#   expected:
-#     - data:
-#         year:
-#           first_gengou: "貞観3年"
-#           second_gengou: ""
-#           zodiac_name: "辛巳"
-#           total_days: 354
-#         month:
-#           number: 12
-#           leaped: false
-#           days_name: "大"
-#           first_day:
-#             number: 1
-#             zodiac_name: "庚子"
-#             remainder: "36-1692"
-#             western_date: "0862-01-04"
-#           odd_solar_terms:
-#             index: 3
-#             remainder: "4-386"
-#           even_solar_terms:
-#             index: 2
-#             remainder: "48-2762"
-#         day:
-#           number: 30
-#           zodiac_name: "己巳"
-#           remainder: "5-1692"
-#           western_date: "0862-02-02"
-#       operation:
-#         operated: false
-#         month:
-#           current:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#           parent:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#         original:
-#           year:
-#             first_gengou: "貞観3年"
-#             second_gengou: ""
-#             zodiac_name: "辛巳"
-#             total_days: 355
-#           month:
-#             number: 12
-#             leaped: false
-#             days_name: "大"
-#             first_day:
-#               number: 1
-#               zodiac_name: "庚子"
-#               remainder: "36-1692"
-#               western_date: "0862-01-04"
-#             odd_solar_terms:
-#               index: 3
-#               remainder: "4-386"
-#             even_solar_terms:
-#               index: 2
-#               remainder: "48-2762"
-#           day:
-#             number: 30
-#             zodiac_name: "己巳"
-#             remainder: "5-1692"
-#             western_date: "0862-02-02"
-#     - data:
-#         year:
-#           first_gengou: "貞観4年"
-#           second_gengou: ""
-#           zodiac_name: "壬午"
-#           total_days: 354
-#         month:
-#           number: 1
-#           leaped: false
-#           days_name: "大"
-#           first_day:
-#             number: 1
-#             zodiac_name: "庚午"
-#             remainder: "6-1282"
-#             western_date: "0862-02-03"
-#           odd_solar_terms:
-#             index: 5
-#             remainder: "34-5368"
-#           even_solar_terms:
-#             index: 4
-#             remainder: "19-3532"
-#         day:
-#           number: 1
-#           zodiac_name: "庚午"
-#           remainder: "6-1282"
-#           western_date: "0862-02-03"
-#       operation:
-#         operated: false
-#         month:
-#           current:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#           parent:
-#             id: ""
-#             western_date: ""
-#             page: -1
-#             number: -1
-#             annotations:
-#         original:
-#           year:
-#             first_gengou: "貞観4年"
-#             second_gengou: ""
-#             zodiac_name: "壬午"
-#             total_days: 354
-#           month:
-#             number: 1
-#             leaped: false
-#             days_name: "大"
-#             first_day:
-#               number: 1
-#               zodiac_name: "庚午"
-#               remainder: "6-1282"
-#               western_date: "0862-02-03"
-#             odd_solar_terms:
-#               index: 5
-#               remainder: "34-5368"
-#             even_solar_terms:
-#               index: 4
-#               remainder: "19-3532"
-#           day:
-#             number: 1
-#             zodiac_name: "庚午"
-#             remainder: "6-1282"
-#             western_date: "0862-02-03"
+﻿- id: 1
+  start_date: "0445-01-24"
+  last_date: "0445-01-24"
+  japan_date: "允恭天皇34年1月1日"
+  description: "元嘉暦の初日が計算できること"
+  expected:
+    - data:
+        year:
+          first_gengou: "允恭天皇34年"
+          second_gengou: ""
+          zodiac_name: "乙酉"
+          total_days: 384
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "辛卯"
+            remainder: "27.6157"
+            western_date: "0445-01-24"
+          odd_solar_terms:
+            index: 3
+            remainder: "37.2649"
+          even_solar_terms:
+            index: 4
+            remainder: "52.4836"
+        day:
+          number: 1
+          zodiac_name: "辛卯"
+          remainder: "27.6157"
+          western_date: "0445-01-24"
+      operation:
+        operated: false
+        month:
+          current:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+          parent:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+        original:
+          year:
+            first_gengou: "允恭天皇34年"
+            second_gengou: ""
+            zodiac_name: "乙酉"
+            total_days: 384
+          month:
+            number: 1
+            leaped: false
+            days_name: "大"
+            first_day:
+              number: 1
+              zodiac_name: "辛卯"
+              remainder: "27.6157"
+              western_date: "0445-01-24"
+            odd_solar_terms:
+              index: 3
+              remainder: "37.2649"
+            even_solar_terms:
+              index: 4
+              remainder: "52.4836"
+          day:
+            number: 1
+            zodiac_name: "辛卯"
+            remainder: "27.6157"
+            western_date: "0445-01-24"
+- id: 2
+  start_date: "0862-02-02"
+  last_date: "0862-02-03"
+  japan_date: "貞観3年12月30日 - 貞観4年1月1日"
+  description: "大衍暦の末日 - 宣明暦の初日が計算できること"
+  expected:
+    - data:
+        year:
+          first_gengou: "貞観3年"
+          second_gengou: ""
+          zodiac_name: "辛巳"
+          total_days: 354
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚子"
+            remainder: "36-1692"
+            western_date: "0862-01-04"
+          odd_solar_terms:
+            index: 3
+            remainder: "4-386"
+          even_solar_terms:
+            index: 2
+            remainder: "48-2762"
+        day:
+          number: 30
+          zodiac_name: "己巳"
+          remainder: "5-1692"
+          western_date: "0862-02-02"
+      operation:
+        operated: false
+        month:
+          current:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+          parent:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+        original:
+          year:
+            first_gengou: "貞観3年"
+            second_gengou: ""
+            zodiac_name: "辛巳"
+            total_days: 355
+          month:
+            number: 12
+            leaped: false
+            days_name: "大"
+            first_day:
+              number: 1
+              zodiac_name: "庚子"
+              remainder: "36-1692"
+              western_date: "0862-01-04"
+            odd_solar_terms:
+              index: 3
+              remainder: "4-386"
+            even_solar_terms:
+              index: 2
+              remainder: "48-2762"
+          day:
+            number: 30
+            zodiac_name: "己巳"
+            remainder: "5-1692"
+            western_date: "0862-02-02"
+    - data:
+        year:
+          first_gengou: "貞観4年"
+          second_gengou: ""
+          zodiac_name: "壬午"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚午"
+            remainder: "6-1282"
+            western_date: "0862-02-03"
+          odd_solar_terms:
+            index: 5
+            remainder: "34-5368"
+          even_solar_terms:
+            index: 4
+            remainder: "19-3532"
+        day:
+          number: 1
+          zodiac_name: "庚午"
+          remainder: "6-1282"
+          western_date: "0862-02-03"
+      operation:
+        operated: false
+        month:
+          current:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+          parent:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+        original:
+          year:
+            first_gengou: "貞観4年"
+            second_gengou: ""
+            zodiac_name: "壬午"
+            total_days: 354
+          month:
+            number: 1
+            leaped: false
+            days_name: "大"
+            first_day:
+              number: 1
+              zodiac_name: "庚午"
+              remainder: "6-1282"
+              western_date: "0862-02-03"
+            odd_solar_terms:
+              index: 5
+              remainder: "34-5368"
+            even_solar_terms:
+              index: 4
+              remainder: "19-3532"
+          day:
+            number: 1
+            zodiac_name: "庚午"
+            remainder: "6-1282"
+            western_date: "0862-02-03"
 - id: 3
   start_date: "1332-05-22"
   last_date: "1332-05-23"
