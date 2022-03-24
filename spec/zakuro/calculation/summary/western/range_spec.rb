@@ -78,8 +78,9 @@ describe 'Zakuro' do
               hash = YAML.load_file(filepath)
 
               hash.each do |test|
-                start_date = test['start_date']
-                last_date = test['last_date']
+                western = test['western']
+                start_date = western['start_date']
+                last_date = western['last_date']
                 list = []
                 test['expected'].each do |day|
                   single_data = SingleDataFactory.create(hash: day)
@@ -87,7 +88,8 @@ describe 'Zakuro' do
                 end
                 expected_range = Zakuro::Result::Range.new(list: list)
 
-                it "#{start_date} - #{last_date}: #{test['japan_date']}: #{test['description']}" do
+                note = "#{test['japan']['japan_date']}: #{test['description']}"
+                it "#{start_date} - #{last_date}: #{note}" do
                   actual = Zakuro::Calculation::Summary::Western::Range.get(
                     context: Zakuro::Context.new(version_name: ''),
                     start_date: Zakuro::Western::Calendar.parse(str: start_date),

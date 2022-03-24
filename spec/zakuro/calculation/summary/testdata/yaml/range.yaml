@@ -1,7 +1,11 @@
 ﻿- id: 1
-  start_date: "0445-01-24"
-  last_date: "0445-01-24"
-  japan_date: "允恭天皇34年1月1日"
+  western:
+    start_date: "0445-01-24"
+    last_date: "0445-01-24"
+  japan:
+    start_date: "允恭天皇34年1月1日"
+    last_date: "允恭天皇34年1月1日"
+    all: "允恭天皇34年1月1日 - 允恭天皇34年1月1日"
   description: "元嘉暦の初日が計算できること"
   expected:
     - data:
@@ -72,9 +76,13 @@
             remainder: "27.6157"
             western_date: "0445-01-24"
 - id: 2
-  start_date: "0862-02-02"
-  last_date: "0862-02-03"
-  japan_date: "貞観3年12月30日 - 貞観4年1月1日"
+  western:
+    start_date: "0862-02-02"
+    last_date: "0862-02-03"
+  japan:
+    start_date: "貞観3年12月30日"
+    last_date: "貞観4年1月1日"
+    all: "貞観3年12月30日 - 貞観4年1月1日"
   description: "大衍暦の末日 - 宣明暦の初日が計算できること"
   expected:
     - data:
@@ -212,9 +220,13 @@
             remainder: "6-1282"
             western_date: "0862-02-03"
 - id: 3
-  start_date: "1332-05-22"
-  last_date: "1332-05-23"
-  japan_date: "元弘02年04月27日 - 元弘02年04月28日/正慶01年04月28日"
+  western:
+    start_date: "1332-05-22"
+    last_date: "1332-05-23"
+  japan:
+    start_date: "元弘02年04月27日"
+    last_date: "元弘02年04月28日"
+    all: "元弘02年04月27日 - 元弘02年04月28日/正慶01年04月28日"
   description: "南北朝の前日 - 南北朝の初日が計算できること"
   expected:
     - data:
@@ -352,9 +364,13 @@
             remainder: "3-1323"
             western_date: "1332-05-23"
 - id: 4
-  start_date: "1392-11-18"
-  last_date: "1392-11-19"
-  japan_date: "元中9年閏10月4日（元中9年11月4日）/明徳3年閏10月4日（明徳3年11月4日） - 明徳3年閏10月5日（明徳3年11月5日）"
+  western:
+    start_date: "1392-11-18"
+    last_date: "1392-11-19"
+  japan:
+    start_date: "元中9年閏10月4日"
+    last_date: "明徳3年閏10月5日"
+    all: "元中9年閏10月4日（元中9年11月4日）/明徳3年閏10月4日（明徳3年11月4日） - 明徳3年閏10月5日（明徳3年11月5日）"
   description: "南北朝終焉の前日 - 南北朝終焉の初日が計算できること"
   expected:
     - data:
