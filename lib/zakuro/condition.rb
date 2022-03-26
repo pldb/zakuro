@@ -18,10 +18,9 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Date] date 西暦日
+      # @param [Date, String] date 西暦日/和暦日
       #
       def initialize(date:)
-        # TODO: 和暦日（String）から西暦日（Date）への変換
         @date = date
       end
 
