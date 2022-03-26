@@ -23,6 +23,11 @@ module Zakuro
         # @param [Hash<Symbol, Object>] range 範囲
         #
         def initialize(range:)
+          @start_date = Date.new
+          @last_date = Date.new
+
+          return unless range
+
           @start_date = Date.new(date: range[:start])
           @last_date = Date.new(date: range[:last])
         end

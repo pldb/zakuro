@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../calculation/summary/japan/range'
 require_relative '../calculation/summary/western/range'
 
 require_relative './locale/range'
@@ -42,15 +43,26 @@ module Zakuro
       # @return [Result::Single] 一日検索結果（和暦日）
       #
       def get
+        # TODO: refactor
+        start_date = range.start_date
+        last_date = range.last_date
+
         if range.valid_western?
           return Calculation::Summary::Western::Range.get(
-            context: @context, start_date: range.start_date.western_date,
-            last_date: range.last_date.western_date
+            context: @context, start_date: start_date.western_date,
+            last_date: last_date.western_date
           )
         end
 
-        # TODO: make
-        p 'a'
+        if range.valid_japan?
+          return Calculation::Summary::Japan::Range.get(
+            context: @context, start_date: start_date.japan_date,
+            last_date: last_date.japan_date
+          )
+        end
+
+        # TODO: error
+        p 'error'
       end
     end
   end

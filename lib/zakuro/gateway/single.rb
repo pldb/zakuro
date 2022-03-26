@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require_relative '../calculation/summary/japan/single'
 require_relative '../calculation/summary/western/single'
+
 
 require_relative './locale/date'
 
@@ -48,8 +50,14 @@ module Zakuro
           )
         end
 
-        # TODO: make
-        p 'a'
+        if date.valid_japan?
+          return Calculation::Summary::Japan::Single.get(
+            context: @context, date: date.japan_date
+          )
+        end
+
+        # TODO: error
+        p 'error'
       end
     end
   end

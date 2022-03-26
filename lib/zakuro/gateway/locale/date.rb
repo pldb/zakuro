@@ -15,6 +15,8 @@ module Zakuro
       # Date 日付
       #
       class Date
+        INDALID = Object::Date.new
+
         # @return [Western::Calendar] 西暦日
         attr_reader :western_date
         # @return [Japan::Calendar] 和暦日
@@ -25,7 +27,7 @@ module Zakuro
         #
         # @param [Date, String] date 日付
         #
-        def initialize(date:)
+        def initialize(date: INDALID)
           @western_date = Western::Calendar.new
           @japan_date = Japan::Calendar.new
 
@@ -92,12 +94,14 @@ module Zakuro
         def parse(date:)
           return unless date
 
+          return if date == INDALID
+
           if date.is_a?(Object::Date)
             @western_date = Western::Calendar.create(date: date)
             return
           end
 
-          return if date.is_a?(String)
+          return unless date.is_a?(String)
 
           parse_text(text: date)
         end

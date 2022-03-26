@@ -415,7 +415,7 @@ module Zakuro
         begin
           Date.parse(str, start)
         rescue ArgumentError => _e
-          false
+          return false
         end
         true
       end
