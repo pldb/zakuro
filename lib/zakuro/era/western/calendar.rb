@@ -378,6 +378,8 @@ module Zakuro
                      day: date.day, type: type)
       end
 
+      # FIXME: str -> text
+
       #
       # 年月日情報（西暦）を生成する
       #

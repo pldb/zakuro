@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
-require_relative '../../range/dated_operation_range'
+require_relative '../../range/named_operation_range'
 
-require_relative '../../range/dated_full_range'
+require_relative '../../range/named_full_range'
 
-require_relative './specifier/multiple_day'
+require_relative './specifier/single_day'
 
-require_relative './internal/operation'
+# TODO: move
+require_relative '../western/specifier/multiple_day'
+
+# TODO: move
+require_relative '../western/internal/operation'
 
 # :nodoc:
 module Zakuro
@@ -15,7 +19,7 @@ module Zakuro
     # :nodoc:
     module Summary
       # :nodoc:
-      module Western
+      module Japan
         #
         # Range 期間
         #
@@ -24,13 +28,14 @@ module Zakuro
           # 生成する
           #
           # @param [Context] context 暦コンテキスト
-          # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] last_date 西暦終了日
+          # @param [Japan::Calendar] start_date 和暦開始日
+          # @param [Japan::Calendar] last_date 和暦終了日
           #
           # @return [Result::Range] 期間検索結果（和暦日）
           #
-          def self.get(context:, start_date: Western::Calendar.new,
-                       last_date: Western::Calendar.new)
+          def self.get(context:, start_date: Japan::Calendar.new,
+                       last_date: Japan::Calendar.new)
+            # TODO: refactor
             years = get_full_range_years(
               context: context, start_date: start_date, last_date: last_date
             )
@@ -38,12 +43,18 @@ module Zakuro
               context: context, years: years, start_date: start_date, last_date: last_date
             )
 
-            dates = Specifier::MultipleDay.get(
-              years: years, start_date: start_date, last_date: last_date
+            japan_start_date = Specifier::SingleDay.get(years: operated_years, date: start_date)
+            japan_last_date = Specifier::SingleDay.get(years: operated_years, date: last_date)
+
+            western_start_date = japan_start_date.day.western_date
+            western_last_date = japan_last_date.day.western_date
+
+            operated_dates = Western::Specifier::MultipleDay.get(
+              years: operated_years, start_date: western_start_date, last_date: western_last_date
             )
 
-            operated_dates = Specifier::MultipleDay.get(
-              years: operated_years, start_date: start_date, last_date: last_date
+            dates = Western::Specifier::MultipleDay.get(
+              years: years, start_date: western_start_date, last_date: western_last_date
             )
 
             list = create_result_list(dates: dates, operated_dates: operated_dates)
@@ -55,15 +66,15 @@ module Zakuro
           # 完全範囲を取得する
           #
           # @param [Context] context 暦コンテキスト
-          # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] last_date 西暦終了日
+          # @param [Japan::Calendar] start_date 和暦開始日
+          # @param [Japan::Calendar] last_date 和暦終了日
           #
           # @return [Array<Base::Year>] 完全範囲
           #
-          def self.get_full_range_years(context:, start_date: Western::Calendar.new,
-                                        last_date: Western::Calendar.new)
-            full_range = Calculation::Range::DatedFullRange.new(
-              context: context, start_date: start_date, last_date: last_date
+          def self.get_full_range_years(context:, start_date: Japan::Calendar.new,
+                                        last_date: Japan::Calendar.new)
+            full_range = Calculation::Range::NamedFullRange.new(
+              context: context, start_name: start_date.gengou, last_name: last_date.gengou
             )
             full_range.get
           end
@@ -74,15 +85,16 @@ module Zakuro
           #
           # @param [Context] context 暦コンテキスト
           # @param [Array<Base::Year>] years 完全範囲
-          # @param [Western::Calendar] start_date 西暦開始日
-          # @param [Western::Calendar] last_date 西暦終了日
+          # @param [Japan::Calendar] start_date 和暦開始日
+          # @param [Japan::Calendar] last_date 和暦終了日
           #
           # @return [Array<Base::OperatedYear>] 運用結果範囲
           #
-          def self.get_operation_range_years(context:, years:, start_date: Western::Calendar.new,
-                                             last_date: Western::Calendar.new)
-            operation_range = Calculation::Range::DatedOperationRange.new(
-              context: context, start_date: start_date, last_date: last_date, years: years
+          def self.get_operation_range_years(context:, years:, start_date: Japan::Calendar.new,
+                                             last_date: Japan::Calendar.new)
+            operation_range = Calculation::Range::NamedOperationRange.new(
+              context: context, years: years,
+              start_name: start_date.gengou, last_name: last_date.gengou
             )
             operation_range.get
           end
@@ -105,7 +117,7 @@ module Zakuro
               data = operated_dates[index]
 
               date = dates[index]
-              operation = Operation.create(calc_date: date)
+              operation = Western::Operation.create(calc_date: date)
 
               result.push(
                 Result::Single.new(
