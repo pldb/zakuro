@@ -92,8 +92,8 @@ describe 'Zakuro' do
                 it "#{start_date} - #{last_date}: #{note}" do
                   actual = Zakuro::Calculation::Summary::Western::Range.get(
                     context: Zakuro::Context.new(version_name: ''),
-                    start_date: Zakuro::Western::Calendar.parse(str: start_date),
-                    last_date: Zakuro::Western::Calendar.parse(str: last_date)
+                    start_date: Zakuro::Western::Calendar.parse(text: start_date),
+                    last_date: Zakuro::Western::Calendar.parse(text: last_date)
                   )
 
                   TestTools::Stringifier.eql?(

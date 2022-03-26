@@ -135,7 +135,7 @@ module Zakuro
             def calc_last_date_on_gengou_data(next_index:, gengou:)
               if next_index >= @list.size
                 gengou.write_last_year(last_year: @both_last_year['western'])
-                last_date = Western::Calendar.parse(str: @both_last_date['western'])
+                last_date = Western::Calendar.parse(text: @both_last_date['western'])
                 gengou.write_last_date(last_date: last_date)
                 return gengou
               end
@@ -212,7 +212,7 @@ module Zakuro
               #
               def create
                 japan = Japan::Calendar.parse(text: @japan)
-                western = Western::Calendar.parse(str: @western)
+                western = Western::Calendar.parse(text: @western)
 
                 Japan::Gengou::Resource::Both::Date.new(japan: japan, western: western)
               end

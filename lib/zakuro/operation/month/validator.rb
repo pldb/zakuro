@@ -135,7 +135,7 @@ module Zakuro
         def self.western_date?(str: '')
           return Western::Calendar.new if str == EMPTY_STRING
 
-          Western::Calendar.valid_date_string(str: str)
+          Western::Calendar.valid_date_string(text: str)
         end
       end
 

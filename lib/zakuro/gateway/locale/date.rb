@@ -112,8 +112,8 @@ module Zakuro
         # @param [String] text 日付文字列
         #
         def parse_text(text:)
-          if Western::Calendar.valid_date_string(str: text)
-            @western_date = Western::Calendar.parse(str: text)
+          if Western::Calendar.valid_date_string(text: text)
+            @western_date = Western::Calendar.parse(text: text)
             return
           end
 

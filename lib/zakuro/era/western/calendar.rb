@@ -378,23 +378,21 @@ module Zakuro
                      day: date.day, type: type)
       end
 
-      # FIXME: str -> text
-
       #
       # 年月日情報（西暦）を生成する
       #
-      # @param [String] str 日付文字列
+      # @param [String] text 日付文字列
       # @param [Symbol] type 日付種別
       #
       # @return [Calendar] 年月日情報（西暦）
       #
-      def self.parse(str: '', type: Type::DEFAULT)
-        unless Calendar.valid_date_string(str: str, type: type)
-          raise ArgumentError, "invalid date string: #{str}"
+      def self.parse(text: '', type: Type::DEFAULT)
+        unless Calendar.valid_date_string(text: text, type: type)
+          raise ArgumentError, "invalid date string: #{text}"
         end
 
         start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
-        date = Date.parse(str, start)
+        date = Date.parse(text, start)
 
         Calendar.new(
           year: date.year, month: date.month, day: date.day, type: type
@@ -404,16 +402,16 @@ module Zakuro
       #
       # 日付文字列を検証する
       #
-      # @param [String] str 日付文字列
+      # @param [String] text 日付文字列
       # @param [Symbol] type 日付種別
       #
       # @return [True] 正しい
       # @return [True] 正しくない
       #
-      def self.valid_date_string(str: '', type: Type::DEFAULT)
+      def self.valid_date_string(text: '', type: Type::DEFAULT)
         start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
         begin
-          Date.parse(str, start)
+          Date.parse(text, start)
         rescue ArgumentError => _e
           return false
         end

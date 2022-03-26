@@ -80,7 +80,7 @@ module Zakuro
       def self.western_date(str:)
         return Western::Calendar.new if invalid?(str: str)
 
-        Western::Calendar.parse(str: str)
+        Western::Calendar.parse(text: str)
       end
 
       #

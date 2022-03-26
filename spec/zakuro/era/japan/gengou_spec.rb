@@ -54,7 +54,7 @@ describe 'Zakuro' do
             it 'should be applied historical name at boundary date' do
               yaml = YAML.load_file(first_line_path)
               yaml.each do |gengou|
-                date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+                date = Zakuro::Western::Calendar.parse(text: gengou['start_date'])
                 item = first_line(date: date)
                 expect(gengou['name']).to eq(item[0].name)
               end
@@ -87,7 +87,7 @@ describe 'Zakuro' do
             it 'should be applied historical name at boundary date' do
               yaml = YAML.load_file(second_line_path)
               yaml.each do |gengou|
-                date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+                date = Zakuro::Western::Calendar.parse(text: gengou['start_date'])
                 item = second_line(date: date)
                 if gengou['name'] == ''
                   expect(item.size).to eq 0

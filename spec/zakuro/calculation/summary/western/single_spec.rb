@@ -55,7 +55,7 @@ describe 'Zakuro' do
                   #   p "use on debug mode"
                   # end
                   eql?(
-                    date: Zakuro::Western::Calendar.parse(str: western_date),
+                    date: Zakuro::Western::Calendar.parse(text: western_date),
                     version: '',
                     expected: expected
                   )

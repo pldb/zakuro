@@ -128,7 +128,7 @@ module Zakuro
           def convert_next_start_date_to_last_date(next_start_date: '')
             raise ArgumentError, 'empty string cannot convert' if next_start_date.empty?
 
-            start_date = Western::Calendar.parse(str: next_start_date)
+            start_date = Western::Calendar.parse(text: next_start_date)
             @last_date = start_date - 1
 
             nil

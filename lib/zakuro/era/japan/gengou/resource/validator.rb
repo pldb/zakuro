@@ -325,7 +325,7 @@ module Zakuro
               # @return [False] 正しくない
               #
               def western?
-                Western::Calendar.valid_date_string(str: @western)
+                Western::Calendar.valid_date_string(text: @western)
               end
             end
           end
