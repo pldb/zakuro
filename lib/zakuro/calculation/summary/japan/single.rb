@@ -6,9 +6,9 @@ require_relative '../../range/named_full_range'
 
 require_relative './specifier/single_day'
 
-require_relative '../western/specifier/single_day'
 # TODO: move
-require_relative '../western/internal/operation'
+require_relative '../western/specifier/single_day'
+require_relative '../internal/operation'
 
 # :nodoc:
 module Zakuro
@@ -108,7 +108,7 @@ module Zakuro
               years: years, date: date
             )
 
-            Western::Operation.create(calc_date: calc_date)
+            Operation.create(calc_date: calc_date)
           end
           private_class_method :get_operation
         end

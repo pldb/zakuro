@@ -9,8 +9,7 @@ require_relative './specifier/single_day'
 # TODO: move
 require_relative '../western/specifier/multiple_day'
 
-# TODO: move
-require_relative '../western/internal/operation'
+require_relative '../internal/operation'
 
 # :nodoc:
 module Zakuro
@@ -117,7 +116,7 @@ module Zakuro
               data = operated_dates[index]
 
               date = dates[index]
-              operation = Western::Operation.create(calc_date: date)
+              operation = Operation.create(calc_date: date)
 
               result.push(
                 Result::Single.new(

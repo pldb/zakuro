@@ -6,7 +6,7 @@ require_relative '../../../../output/logger'
 
 require_relative '../../../base/year'
 
-require_relative './internal/month'
+require_relative '../../internal/month'
 
 # :nodoc:
 module Zakuro

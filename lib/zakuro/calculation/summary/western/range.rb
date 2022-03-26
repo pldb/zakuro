@@ -6,7 +6,7 @@ require_relative '../../range/dated_full_range'
 
 require_relative './specifier/multiple_day'
 
-require_relative './internal/operation'
+require_relative '../internal/operation'
 
 # :nodoc:
 module Zakuro
