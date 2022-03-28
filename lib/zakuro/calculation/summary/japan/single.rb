@@ -4,11 +4,11 @@ require_relative '../../range/named_operation_range'
 
 require_relative '../../range/named_full_range'
 
-require_relative './specifier/single_day'
-
-# TODO: move
 require_relative '../western/specifier/single_day'
+
 require_relative '../internal/operation'
+
+require_relative './specifier/single_day'
 
 # :nodoc:
 module Zakuro
