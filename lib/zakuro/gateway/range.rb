@@ -13,6 +13,8 @@ module Zakuro
     # Range 範囲
     #
     class Range
+      # @return [Context] 暦コンテキスト
+      attr_reader :context
       # @return [Locale::Range] 範囲
       attr_reader :range
 
@@ -40,29 +42,50 @@ module Zakuro
       #
       # 検索結果を取得する
       #
-      # @return [Result::Single] 一日検索結果（和暦日）
+      # @return [Result::Range] 範囲検索結果（和暦日）
       #
       def get
-        # TODO: refactor
         start_date = range.start_date
         last_date = range.last_date
 
-        if range.valid_western?
-          return Calculation::Summary::Western::Range.get(
-            context: @context, start_date: start_date.western_date,
-            last_date: last_date.western_date
-          )
-        end
+        return western(start_date: start_date, last_date: last_date) if range.valid_western?
 
-        if range.valid_japan?
-          return Calculation::Summary::Japan::Range.get(
-            context: @context, start_date: start_date.japan_date,
-            last_date: last_date.japan_date
-          )
-        end
+        return japan(start_date: start_date, last_date: last_date) if range.valid_japan?
 
         # TODO: error
         p 'error'
+      end
+
+      private
+
+      #
+      # 西暦日による結果を取得する
+      #
+      # @param [Locale::Date] start_date 西暦開始日
+      # @param [Locale::Date] last_date 西暦終了日
+      #
+      # @return [Result::Range] 範囲検索結果（和暦日）
+      #
+      def western(start_date: Locale::Date.new, last_date: Locale::Date.new)
+        Calculation::Summary::Western::Range.get(
+          context: context, start_date: start_date.western_date,
+          last_date: last_date.western_date
+        )
+      end
+
+      #
+      # 和暦日による結果を取得する
+      #
+      # @param [Locale::Date] start_date 和暦開始日
+      # @param [Locale::Date] last_date 和暦終了日
+      #
+      # @return [Result::Range] 範囲検索結果（和暦日）
+      #
+      def japan(start_date: Locale::Date.new, last_date: Locale::Date.new)
+        Calculation::Summary::Japan::Range.get(
+          context: context, start_date: start_date.japan_date,
+          last_date: last_date.japan_date
+        )
       end
     end
   end
