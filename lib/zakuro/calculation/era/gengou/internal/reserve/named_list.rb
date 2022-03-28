@@ -109,6 +109,15 @@ module Zakuro
           def line_by_name(name:)
             Japan::Gengou.line_by_name(line: @index, name: name)
           end
+
+          #
+          # 予約元号一覧を更新する
+          #
+          # すでに解決済みの開始日・終了日をそのまま使用する（前後の元号を引き当てない）
+          #
+          def update
+            @list |= line(start_date: start_date, last_date: last_date)
+          end
         end
       end
     end

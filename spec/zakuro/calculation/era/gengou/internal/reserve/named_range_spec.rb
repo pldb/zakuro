@@ -14,13 +14,13 @@ describe 'Zakuro' do
         describe 'NamedRange' do
           describe '#start_western_year' do
             context 'japan gengou name has a gengou' do
-              it 'should be start year from target gengou' do
+              it 'should be start year from neighborhood gengou' do
                 range = Zakuro::Calculation::Gengou::Reserve::NamedRange.new(
                   start_name: '清寧天皇',
                   last_name: '清寧天皇'
                 )
                 actual = range.western_start_year
-                expect(actual).to eq 454
+                expect(actual).to eq 457
               end
             end
           end

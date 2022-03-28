@@ -23,14 +23,11 @@ describe 'Zakuro' do
                   first: true, start_name: '允恭天皇'
                 )
               end
-              it 'should be included target gengou and neighborhood gengou' do
-                expect(actual.list.size).to eq 2
+              it 'should be included target gengou' do
+                expect(actual.list.size).to eq 1
               end
               it 'should be included target gengou' do
                 expect(actual.list[0].name).to eq '允恭天皇'
-              end
-              it 'should be included neighborhood gengou' do
-                expect(actual.list[1].name).to eq '安康天皇'
               end
             end
             context 'parameter with start name and last name' do
@@ -39,23 +36,17 @@ describe 'Zakuro' do
                   first: true, start_name: '雄略天皇', last_name: '顕宗天皇'
                 )
               end
-              it 'should be included target gengou and neighborhood gengou' do
-                expect(actual.list.size).to eq 5
-              end
-              it 'should be included neighborhood gengou for "start name"' do
-                expect(actual.list[0].name).to eq '安康天皇'
+              it 'should be included target gengou' do
+                expect(actual.list.size).to eq 3
               end
               it 'should be included "start name" gengou' do
-                expect(actual.list[1].name).to eq '雄略天皇'
+                expect(actual.list[0].name).to eq '雄略天皇'
               end
               it 'should be included gengou in the middle of range' do
-                expect(actual.list[2].name).to eq '清寧天皇'
+                expect(actual.list[1].name).to eq '清寧天皇'
               end
               it 'should be included "last name" gengou' do
-                expect(actual.list[3].name).to eq '顕宗天皇'
-              end
-              it 'should be included neighborhood gengou for "last name"' do
-                expect(actual.list[4].name).to eq '仁賢天皇'
+                expect(actual.list[2].name).to eq '顕宗天皇'
               end
             end
             context 'invalid parameter with only start name' do
@@ -86,14 +77,11 @@ describe 'Zakuro' do
                   first: false, start_name: '正慶'
                 )
               end
-              it 'should be included target gengou and neighborhood gengou' do
-                expect(actual.list.size).to eq 2
+              it 'should be included target gengou' do
+                expect(actual.list.size).to eq 1
               end
               it 'should be included target gengou' do
                 expect(actual.list[0].name).to eq '正慶'
-              end
-              it 'should be included neighborhood gengou' do
-                expect(actual.list[1].name).to eq '建武'
               end
             end
             context 'parameter with start name and last name' do
@@ -102,23 +90,17 @@ describe 'Zakuro' do
                   first: false, start_name: '暦応', last_name: '貞和'
                 )
               end
-              it 'should be included target gengou and neighborhood gengou' do
-                expect(actual.list.size).to eq 5
-              end
-              it 'should be included neighborhood gengou for "start name"' do
-                expect(actual.list[0].name).to eq '建武'
+              it 'should be included target gengou' do
+                expect(actual.list.size).to eq 3
               end
               it 'should be included "start name" gengou' do
-                expect(actual.list[1].name).to eq '暦応'
+                expect(actual.list[0].name).to eq '暦応'
               end
               it 'should be included gengou in the middle of range' do
-                expect(actual.list[2].name).to eq '康永'
+                expect(actual.list[1].name).to eq '康永'
               end
               it 'should be included "last name" gengou' do
-                expect(actual.list[3].name).to eq '貞和'
-              end
-              it 'should be included neighborhood gengou for "last name"' do
-                expect(actual.list[4].name).to eq '観応'
+                expect(actual.list[2].name).to eq '貞和'
               end
             end
             context 'invalid parameter with only start name' do
