@@ -24,7 +24,10 @@ module Zakuro
           #
           def initialize(first: true, start_date: Western::Calendar.new,
                          last_date: Western::Calendar)
-            super(first: first, start_date: start_date, last_date: last_date)
+            @index = parse_index(first: first)
+            @start_date = start_date.clone
+            @last_date = last_date.invalid? ? start_date.clone : last_date.clone
+            super(index: @index, start_date: start_date, last_date: last_date)
           end
         end
       end

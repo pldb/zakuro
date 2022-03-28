@@ -37,15 +37,15 @@ module Zakuro
           #
           # 初期化
           #
-          # @param [True, False] first true:1行目元号, false:2行目元号
+          # @param [Integer] index n行目元号
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] last_date 終了日
           #
-          def initialize(first: true, start_date: Western::Calendar.new,
+          def initialize(index:, start_date: Western::Calendar.new,
                          last_date: Western::Calendar)
-            @index = first ? Japan::Gengou::FIRST_LINE : Japan::Gengou::SECOND_LINE
+            @index = index
             @start_date = start_date.clone
-            @last_date = last_date.invalid? ? start_date.clone : last_date.clone
+            @last_date = last_date.clone
             @list = []
 
             update
@@ -248,6 +248,17 @@ module Zakuro
           #
           def line(start_date:, last_date:)
             Japan::Gengou.line(line: @index, start_date: start_date, last_date: last_date)
+          end
+
+          #
+          # 行番号に変換する
+          #
+          # @param [True, False] first 1行目/2行目
+          #
+          # @return [<Integer] 行番号
+          #
+          def parse_index(first: true)
+            first ? Japan::Gengou::FIRST_LINE : Japan::Gengou::SECOND_LINE
           end
         end
       end

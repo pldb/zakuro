@@ -26,13 +26,12 @@ module Zakuro
           # @param [String] last_name 終了元号名
           #
           def initialize(first: true, start_name: INVALID_NAME, last_name: INVALID_NAME)
-            # TODO: 親クラスと一部重複する
-            @index = first ? Japan::Gengou::FIRST_LINE : Japan::Gengou::SECOND_LINE
+            @index = parse_index(first: first)
             @start_date = Western::Calendar.new
             @last_date = Western::Calendar.new
 
             position(start_name: start_name, last_name: last_name)
-            super(first: first, start_date: @start_date, last_date: @last_date)
+            super(index: @index, start_date: @start_date, last_date: @last_date)
           end
 
           private
