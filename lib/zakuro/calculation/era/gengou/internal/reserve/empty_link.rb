@@ -20,6 +20,13 @@ module Zakuro
         # 空元号連結
         #
         module EmptyLink
+          #
+          # 空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          # @param [Western::Calendar] start_date 開始日
+          # @param [Western::Calendar] last_date 終了日
+          #
           def self.fill(counters:, start_date: Western::Calendar.new,
                         last_date: Western::Calendar.new)
             # TODO: make
@@ -38,23 +45,51 @@ module Zakuro
               return counters
             end
 
-            cover_both_ends(counters: counters, start_date: start_date, last_date: last_date)
+            # FIXME: 有効元号の前後しか見ていない
 
-            counters
+            fill_both_ends(counters: counters, start_date: start_date, last_date: last_date)
           end
 
-          def self.cover_both_ends(counters:, start_date: Western::Calendar.new,
-                                   last_date: Western::Calendar.new)
-            # FIXME: 有効元号の前後しか見ていない
-            if start_date < counters[0].start_date
-              counters.unshift(
-                Gengou::Counter.new(
-                  gengou: Japan::Gengou::Resource::Gengou.new, start_date: start_date.clone,
-                  last_date: counters[0].start_date.clone - 1
-                )
-              )
-            end
+          #
+          # リストの両端を空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          # @param [Western::Calendar] start_date 開始日
+          # @param [Western::Calendar] last_date 終了日
+          #
+          def self.fill_both_ends(counters:, start_date: Western::Calendar.new,
+                                  last_date: Western::Calendar.new)
+            fill_by_start(counters: counters, start_date: start_date)
 
+            fill_by_last(counters: counters, last_date: last_date)
+          end
+          private_class_method :fill_both_ends
+
+          #
+          # 先頭要素の手前を空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          # @param [Western::Calendar] start_date 開始日
+          #
+          def self.fill_by_start(counters:, start_date:)
+            return unless start_date < counters[0].start_date
+
+            counters.unshift(
+              Gengou::Counter.new(
+                gengou: Japan::Gengou::Resource::Gengou.new, start_date: start_date.clone,
+                last_date: counters[0].start_date.clone - 1
+              )
+            )
+          end
+          private_class_method :fill_by_start
+
+          #
+          # 最終要素の手前を空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          # @param [Western::Calendar] last_date 終了日
+          #
+          def self.fill_by_last(counters:, last_date:)
             return unless last_date > counters[-1].last_date
 
             counters.push(
@@ -64,6 +99,7 @@ module Zakuro
               )
             )
           end
+          private_class_method :fill_by_last
         end
       end
     end
