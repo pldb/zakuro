@@ -106,28 +106,31 @@ module Zakuro
               return result
             end
 
-            # FIXME: 有効元号の前後しか見ていない
-            if start_date < result[0].start_date
-              result.unshift(
-                Gengou::Counter.new(
-                  gengou: Japan::Gengou::Resource::Gengou.new,
-                  start_date: start_date.clone,
-                  last_date: result[0].start_date.clone - 1
-                )
-              )
-            end
-
-            if last_date > result[-1].last_date
-              result.push(
-                Gengou::Counter.new(
-                  gengou: Japan::Gengou::Resource::Gengou.new,
-                  start_date: result[0].last_date.clone + 1,
-                  last_date: last_date.clone
-                )
-              )
-            end
+            cover_both_ends(counters: result, start_date: start_date, last_date: last_date)
 
             result
+          end
+
+          def cover_both_ends(counters:, start_date: Western::Calendar.new,
+                              last_date: Western::Calendar.new)
+            # FIXME: 有効元号の前後しか見ていない
+            if start_date < counters[0].start_date
+              counters.unshift(
+                Gengou::Counter.new(
+                  gengou: Japan::Gengou::Resource::Gengou.new, start_date: start_date.clone,
+                  last_date: counters[0].start_date.clone - 1
+                )
+              )
+            end
+
+            return unless last_date > counters[-1].last_date
+
+            counters.push(
+              Gengou::Counter.new(
+                gengou: Japan::Gengou::Resource::Gengou.new,
+                start_date: counters[-1].last_date.clone + 1, last_date: last_date.clone
+              )
+            )
           end
 
           #
