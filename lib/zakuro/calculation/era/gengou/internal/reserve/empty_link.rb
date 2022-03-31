@@ -34,12 +34,9 @@ module Zakuro
             if counters.size.zero?
               counters.push(
                 Gengou::Counter.new(
-                  gengou: Japan::Gengou::Resource::Gengou.new(
-                    both_start_date: Japan::Gengou::Resource::Both::Date.new(
-                      western: start_date.clone
-                    ),
-                    last_date: last_date.clone
-                  )
+                  gengou: Japan::Gengou::Resource::Gengou.new,
+                  start_date: start_date.clone,
+                  last_date: last_date.clone
                 )
               )
               return counters
