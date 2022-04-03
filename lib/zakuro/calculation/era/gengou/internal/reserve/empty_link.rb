@@ -29,12 +29,9 @@ module Zakuro
           #
           def self.fill(counters:, start_date: Western::Calendar.new,
                         last_date: Western::Calendar.new)
-            # TODO: make
-
             if counters.size.zero?
               counters.push(
-                Gengou::Counter.new(
-                  gengou: Japan::Gengou::Resource::Gengou.new,
+                create_empty_counter(
                   start_date: start_date.clone,
                   last_date: last_date.clone
                 )
@@ -42,9 +39,9 @@ module Zakuro
               return counters
             end
 
-            # FIXME: 有効元号の前後しか見ていない
-
             fill_both_ends(counters: counters, start_date: start_date, last_date: last_date)
+
+            fill_middle(counters: counters)
           end
 
           #
@@ -72,8 +69,8 @@ module Zakuro
             return unless start_date < counters[0].start_date
 
             counters.unshift(
-              Gengou::Counter.new(
-                gengou: Japan::Gengou::Resource::Gengou.new, start_date: start_date.clone,
+              create_empty_counter(
+                start_date: start_date.clone,
                 last_date: counters[0].start_date.clone - 1
               )
             )
@@ -90,13 +87,39 @@ module Zakuro
             return unless last_date > counters[-1].last_date
 
             counters.push(
-              Gengou::Counter.new(
-                gengou: Japan::Gengou::Resource::Gengou.new,
-                start_date: counters[-1].last_date.clone + 1, last_date: last_date.clone
+              create_empty_counter(
+                start_date: counters[-1].last_date.clone + 1,
+                last_date: last_date.clone
               )
             )
           end
           private_class_method :fill_by_last
+
+          def self.fill_middle(counters:)
+            return if counters.size.zero?
+
+            size = counters.size - 1
+            (0..size).reverse_each do |index|
+              break if index <= 0
+
+              before_last_date = counters[index - 1].last_date.clone
+              current_start_date = counters[index].start_date.clone
+
+              next if (before_last_date.clone + 1) == current_start_date
+
+              counters.insert(
+                index,
+                create_empty_counter(start_date: before_last_date, last_date: current_start_date)
+              )
+            end
+          end
+
+          def self.create_empty_counter(start_date:, last_date:)
+            Gengou::Counter.new(
+              gengou: Japan::Gengou::Resource::Gengou.new,
+              start_date: start_date, last_date: last_date
+            )
+          end
         end
       end
     end
