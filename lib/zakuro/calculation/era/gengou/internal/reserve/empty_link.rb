@@ -95,6 +95,11 @@ module Zakuro
           end
           private_class_method :fill_by_last
 
+          #
+          # 元号間を空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          #
           def self.fill_middle(counters:)
             return if counters.size.zero?
 
@@ -102,24 +107,45 @@ module Zakuro
             (0..size).reverse_each do |index|
               break if index <= 0
 
-              before_last_date = counters[index - 1].last_date.clone
-              current_start_date = counters[index].start_date.clone
-
-              next if (before_last_date.clone + 1) == current_start_date
-
-              counters.insert(
-                index,
-                create_empty_counter(start_date: before_last_date, last_date: current_start_date)
-              )
+              insert(counters: counters, index: index)
             end
           end
+          private_class_method :fill_middle
 
+          #
+          # 元号間を空元号で満たす
+          #
+          # @param [Array<Gengou::Counter>] counters 加算元号リスト
+          # @param [Integer] index 要素番号
+          #
+          def self.insert(counters:, index:)
+            before_last_date = counters[index - 1].last_date.clone
+            current_start_date = counters[index].start_date.clone
+
+            return if (before_last_date.clone + 1) == current_start_date
+
+            counters.insert(
+              index,
+              create_empty_counter(start_date: before_last_date, last_date: current_start_date)
+            )
+          end
+          private_class_method :insert
+
+          #
+          # 空元号を生成する
+          #
+          # @param [Western::Calendar] start_date 西暦開始日
+          # @param [Western::Calendar] last_date 西暦終了日
+          #
+          # @return [Gengou::Counter] 加算元号（空元号）
+          #
           def self.create_empty_counter(start_date:, last_date:)
             Gengou::Counter.new(
               gengou: Japan::Gengou::Resource::Gengou.new,
               start_date: start_date, last_date: last_date
             )
           end
+          private_class_method :create_empty_counter
         end
       end
     end

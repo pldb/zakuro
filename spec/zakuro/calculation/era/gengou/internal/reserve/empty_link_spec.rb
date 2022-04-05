@@ -144,6 +144,27 @@ describe 'Zakuro' do
                 expect(actual.size).to eq 7
               end
               # TODO: more test
+              it 'should be invalid gengou at first index' do
+                expect(actual[0].invalid?).to be_truthy
+              end
+              it 'should be valid gengou at second index' do
+                expect(actual[1].invalid?).to be_falsey
+              end
+              it 'should be invalid gengou at third index' do
+                expect(actual[2].invalid?).to be_truthy
+              end
+              it 'should be valid gengou at fourth index' do
+                expect(actual[1].invalid?).to be_falsey
+              end
+              it 'should be invalid gengou at fifth index' do
+                expect(actual[2].invalid?).to be_truthy
+              end
+              it 'should be valid gengou at sixth index' do
+                expect(actual[1].invalid?).to be_falsey
+              end
+              it 'should be invalid gengou at seventh index' do
+                expect(actual[2].invalid?).to be_truthy
+              end
             end
           end
         end
