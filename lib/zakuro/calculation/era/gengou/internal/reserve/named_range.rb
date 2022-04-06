@@ -40,7 +40,7 @@ module Zakuro
           # @return [Western::Calendar] 西暦終了日
           #
           def western_last_date
-            list = newest_gengou
+            list = newest_list
 
             return Western::Calendar.new if list.invalid?
 
@@ -52,7 +52,7 @@ module Zakuro
           #
           # @return [List] 最新の元号
           #
-          def newest_gengou
+          def newest_list
             return @first_list if @first_list.invalid?
 
             return @first_list if @second_list.invalid?

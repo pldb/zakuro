@@ -30,7 +30,7 @@ module Zakuro
             @start_date = Western::Calendar.new
             @last_date = Western::Calendar.new
 
-            position(start_name: start_name, last_name: last_name)
+            locate(start_name: start_name, last_name: last_name)
             super(index: @index, start_date: @start_date, last_date: @last_date)
           end
 
@@ -42,7 +42,7 @@ module Zakuro
           # @param [String] start_name 開始元号名
           # @param [String] last_name 終了元号名
           #
-          def position(start_name:, last_name:)
+          def locate(start_name:, last_name:)
             start = start_name
             last = last_name
             last = start if last == INVALID_NAME
