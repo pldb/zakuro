@@ -39,25 +39,25 @@ table.each do |row|
     'diffs' => {
       'month' => {
         'number' => {
-          'calc' => month_str_to_number(row['月（計）']),
-          'actual' => month_str_to_number(row['月（実）'])
+          'src' => month_str_to_number(row['月（計）']),
+          'dest' => month_str_to_number(row['月（実）'])
         },
         'leaped' => {
-          'calc' => month_str_to_leaped(row['月（計）']),
-          'actual' => month_str_to_leaped(row['月（実）'])
+          'src' => month_str_to_leaped(row['月（計）']),
+          'dest' => month_str_to_leaped(row['月（実）'])
         },
         'days' => {
-          'calc' => row['月大小（計）'],
-          'actual' => row['月大小（実）']
+          'src' => row['月大小（計）'],
+          'dest' => row['月大小（実）']
         }
       },
       'solar_term' => {
-        'calc' => {
+        'src' => {
           'index' => row['中気番号（計）'],
           'to' => row['中気移動先'],
           'zodiac_name' => row['中気（計）']
         },
-        'actual' => {
+        'dest' => {
           'index' => row['中気番号（実）'],
           'from' => row['中気移動元'],
           'zodiac_name' => row['中気（実）']

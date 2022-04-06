@@ -3,8 +3,6 @@
 require_relative '../../operation/operation'
 require_relative '../monthly/month'
 
-# TODO: solar_termの中はsrc/destだが、yamlはcalc/actual。統一したい。
-
 # :nodoc:
 module Zakuro
   # :nodoc:
