@@ -140,30 +140,113 @@ describe 'Zakuro' do
                 counters
               end
 
-              it 'should be three elements' do
+              it 'should be seven elements' do
                 expect(actual.size).to eq 7
               end
-              # TODO: more test
-              it 'should be invalid gengou at first index' do
-                expect(actual[0].invalid?).to be_truthy
+              context 'first index' do
+                let!(:element) do
+                  actual[0]
+                end
+
+                it 'should be invalid' do
+                  expect(element.invalid?).to be_truthy
+                end
+                it 'should have same start date as parameter' do
+                  expect(element.start_date.format).to eq '0446-01-12'
+                end
+                it 'should have last date that the day before first gengou has' do
+                  expect(element.last_date.format).to eq '0446-02-11'
+                end
               end
-              it 'should be valid gengou at second index' do
-                expect(actual[1].invalid?).to be_falsey
+              context 'second index' do
+                let!(:element) do
+                  actual[1]
+                end
+
+                it 'should be valid' do
+                  expect(element.invalid?).to be_falsey
+                end
+                it 'should have conventional start date' do
+                  expect(element.start_date.format).to eq '0446-02-12'
+                end
+                it 'should have conventional last date' do
+                  expect(element.last_date.format).to eq '0446-03-12'
+                end
               end
-              it 'should be invalid gengou at third index' do
-                expect(actual[2].invalid?).to be_truthy
+              context 'third index' do
+                let!(:element) do
+                  actual[2]
+                end
+
+                it 'should be invalid' do
+                  expect(element.invalid?).to be_truthy
+                end
+                it 'should have start date that the day after last date first gengou has' do
+                  expect(element.start_date.format).to eq '0446-03-13'
+                end
+                it 'should have last date that the day before start date second gengou has' do
+                  expect(element.last_date.format).to eq '0446-04-11'
+                end
               end
-              it 'should be valid gengou at fourth index' do
-                expect(actual[1].invalid?).to be_falsey
+              context 'fourth index' do
+                let!(:element) do
+                  actual[3]
+                end
+
+                it 'should be valid' do
+                  expect(element.invalid?).to be_falsey
+                end
+                it 'should have conventional start date' do
+                  expect(element.start_date.format).to eq '0446-04-12'
+                end
+                it 'should have conventional last date' do
+                  expect(element.last_date.format).to eq '0446-05-12'
+                end
               end
-              it 'should be invalid gengou at fifth index' do
-                expect(actual[2].invalid?).to be_truthy
+              context 'fifth index' do
+                let!(:element) do
+                  actual[4]
+                end
+
+                it 'should be invalid' do
+                  expect(element.invalid?).to be_truthy
+                end
+                it 'should have start date that the day after last date second gengou has' do
+                  expect(element.start_date.format).to eq '0446-05-13'
+                end
+                it 'should have last date that the day before start date third gengou has' do
+                  expect(element.last_date.format).to eq '0446-06-11'
+                end
               end
-              it 'should be valid gengou at sixth index' do
-                expect(actual[1].invalid?).to be_falsey
+              context 'sixth index' do
+                let!(:element) do
+                  actual[5]
+                end
+
+                it 'should be valid' do
+                  expect(element.invalid?).to be_falsey
+                end
+                it 'should have conventional start date' do
+                  expect(element.start_date.format).to eq '0446-06-12'
+                end
+                it 'should have conventional last date' do
+                  expect(element.last_date.format).to eq '0446-07-12'
+                end
               end
-              it 'should be invalid gengou at seventh index' do
-                expect(actual[2].invalid?).to be_truthy
+              context 'seventh index' do
+                let!(:element) do
+                  actual[6]
+                end
+
+                it 'should be invalid' do
+                  expect(element.invalid?).to be_truthy
+                end
+                it 'should have start date that the day after third gengou has' do
+                  expect(element.start_date.format).to eq '0446-07-13'
+                end
+                it 'should have same last date as parameter' do
+                  expect(element.last_date.format).to eq '0446-12-12'
+                end
               end
             end
           end

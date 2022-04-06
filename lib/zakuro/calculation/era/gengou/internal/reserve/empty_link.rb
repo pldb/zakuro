@@ -19,6 +19,9 @@ module Zakuro
         #
         # 空元号連結
         #
+        #  * 開始日と終了日の間は常に元号で満たす必要がある
+        #  * もし元号が存在しない期間があれば、空の元号を生成する
+        #
         module EmptyLink
           #
           # 空元号で満たす
@@ -113,7 +116,7 @@ module Zakuro
           private_class_method :fill_middle
 
           #
-          # 元号間を空元号で満たす
+          # 対象要素に空元号を追加する
           #
           # @param [Array<Gengou::Counter>] counters 加算元号リスト
           # @param [Integer] index 要素番号
@@ -126,7 +129,9 @@ module Zakuro
 
             counters.insert(
               index,
-              create_empty_counter(start_date: before_last_date, last_date: current_start_date)
+              create_empty_counter(
+                start_date: before_last_date + 1, last_date: current_start_date - 1
+              )
             )
           end
           private_class_method :insert
