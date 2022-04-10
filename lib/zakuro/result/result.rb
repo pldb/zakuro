@@ -2,6 +2,8 @@
 
 require 'json'
 
+require_relative './error/error'
+
 require_relative './core'
 require_relative './data'
 require_relative './operation'
