@@ -6,8 +6,6 @@ require_relative './data/single_day'
 
 require_relative './operation/operation'
 
-require_relative './error/error'
-
 require_relative './core'
 
 # :nodoc:

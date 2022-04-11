@@ -2,14 +2,12 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Result 演算結果
-  #
-  module Result
+  # :nodoc:
+  module Exception
     #
-    # エラーメッセージ
+    # Cause 原因
     #
-    class ErrorMessage
+    class Cause
       # @return [String] エラーコード
       attr_reader :code
       # @return [String] メッセージ
@@ -19,11 +17,11 @@ module Zakuro
       # 初期化
       #
       # @param [String] code エラーコード
-      # @param [String] name メッセージ
+      # @param [String] message メッセージ
       #
-      def initialize(code:, name:)
+      def initialize(code:, message:)
         @code = code
-        @name = name
+        @message = message
       end
     end
   end

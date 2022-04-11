@@ -12,9 +12,9 @@ module Zakuro
       LEVELS = {
         none: -1,
         debug: 0,
-        info: 1
-        # warn : 2,
-        # error : 3,
+        info: 1,
+        warn: 2,
+        error: 3
       }.freeze
 
       LEVEL = LEVELS[:none]
@@ -46,6 +46,20 @@ module Zakuro
         return if LEVEL < LEVELS[:info]
 
         output('INFO', *messages)
+      end
+
+      #
+      # ERRORレベルの標準出力を行う
+      #
+      # @param [Error] error 例外
+      # @param [String] messages メッセージ
+      #
+      def error(error, *messages)
+        return if LEVEL < LEVELS[:error]
+
+        output('ERROR', *messages)
+        output('ERROR', error.message)
+        output('ERROR', *error.backtrace)
       end
 
       private
