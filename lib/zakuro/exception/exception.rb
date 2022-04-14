@@ -4,7 +4,7 @@ require_relative '../output/logger'
 
 require_relative './cause'
 
-require_relative './const'
+require_relative './cause_pattern'
 
 require_relative './zakuro_error'
 
@@ -21,21 +21,14 @@ module Zakuro
     #
     # 例外を取得する
     #
-    # @param [Array<Symbol>] codes エラーコード
+    # @param [Array<CauseTemplate>] cause_presets 原因プリセット
     #
     # @return [ZakuroError] ライブラリエラー
     #
-    def self.get(codes: [])
+    def self.get(cause_presets: [])
       causes = []
-      begin
-        codes.each do |code|
-          message = Const.const_get(code)
-          causes.push(Cause.new(code: code.to_s, message: message))
-        end
-      rescue StandardError => e
-        LOGGER.error(e, MESSAGE)
-        message = Const.const_get(:ERROR_NOCODE)
-        causes.push(Cause.new(code: :ERROR_NOCODE.to_s, message: message))
+      cause_presets.each do |preset|
+        causes.push(Cause.new(code: preset.code, message: preset.message))
       end
 
       ZakuroError.new(msg: MESSAGE, causes: causes)
