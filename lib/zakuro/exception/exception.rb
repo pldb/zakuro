@@ -4,7 +4,7 @@ require_relative '../output/logger'
 
 require_relative './cause'
 
-require_relative './cause_pattern'
+require_relative './case/pattern'
 
 require_relative './zakuro_error'
 
@@ -21,13 +21,13 @@ module Zakuro
     #
     # 例外を取得する
     #
-    # @param [Array<CauseTemplate>] cause_presets 原因プリセット
+    # @param [Array<Template>] presets 原因プリセット
     #
     # @return [ZakuroError] ライブラリエラー
     #
-    def self.get(cause_presets: [])
+    def self.get(presets: [])
       causes = []
-      cause_presets.each do |preset|
+      presets.each do |preset|
         causes.push(Cause.new(code: preset.code, message: preset.message))
       end
 
