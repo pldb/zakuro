@@ -9,6 +9,7 @@ require File.expand_path('../../../lib/zakuro/exception/case/pattern',
 require File.expand_path('../../../lib/zakuro/exception/case/preset',
                          __dir__)
 
+# rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Exception' do
     describe 'get' do
@@ -23,6 +24,28 @@ describe 'Zakuro' do
           expect(exception.causes.size).to eq 1
         end
       end
+      context 'a valid error code with message' do
+        let!(:exception) do
+          presets = [
+            Zakuro::Exception::Case::Preset.new(
+              1,
+              template: Zakuro::Exception::Case::Template.new(
+                code: 'dummy',
+                message: 'test %d',
+                length: 1
+              )
+            )
+          ]
+          Zakuro::Exception.get(presets: presets)
+        end
+        it 'should have a cause' do
+          expect(exception.causes.size).to eq 1
+        end
+        it 'should have a formatted message' do
+          expect(exception.causes[0].message).to eq 'test 1'
+        end
+      end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

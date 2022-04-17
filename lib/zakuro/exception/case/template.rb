@@ -40,7 +40,7 @@ module Zakuro
         def format(*args)
           return '' unless args.size == length
 
-          super(template, *args)
+          super(message, *args)
         end
       end
     end
