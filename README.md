@@ -87,13 +87,15 @@ puts merchant.commit.to_json
 | 項目名         | キー名  | hash内キー名 | データ型 | 備考               |
 |----------------|---------|--------------|----------|--------------------|
 | 基準日         | date    |              | Date     | 西暦日             |
-|                |         |              | String   | 和暦日             |
-| 範囲（開始日） | range   | start        | Date     |                    |
-| 範囲（終了日） |         | last         | Date     |                    |
+|                |         |              | String   | 和暦日/西暦日      |
+| 範囲（開始日）   | range   | start        | Date     | 西暦日             |
+|                |         |              | String   | 和暦日/西暦日      |
+| 範囲（終了日）   |         | last         | Date     | 西暦日             |
+|                |         |              | String   | 和暦日/西暦日      |
 | 列             | columns |              | Array    | 取得したい列の列名 |
 | オプション     | options |              | Array    | 取得オプション     |
 
-現時点では `date` の西暦日のみ対応中です。
+現時点では `date` と `range` のみ対応中です。
 
 ## オプション
 
