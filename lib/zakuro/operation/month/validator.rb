@@ -135,7 +135,7 @@ module Zakuro
         def self.western_date?(str: '')
           return Western::Calendar.new if str == EMPTY_STRING
 
-          Western::Calendar.valid_date_string(str: str)
+          Western::Calendar.valid_date_string(text: str)
         end
       end
 
@@ -461,14 +461,14 @@ module Zakuro
           #
           # @param [Integer] index 連番
           # @param [Hash<String, Object>] yaml_hash yaml
-          # @option yaml_hash [Hash] :calc 移動元
-          # @option yaml_hash [Hash] :actual 移動先
+          # @option yaml_hash [Hash] :src 移動元
+          # @option yaml_hash [Hash] :dest 移動先
           # @option yaml_hash [String] :days 中気差分
           #
           def initialize(index:, yaml_hash: {})
             @index = index
-            @source = Source.new(diff_index: index, yaml_hash: yaml_hash['calc'])
-            @destination = Destination.new(diff_index: index, yaml_hash: yaml_hash['actual'])
+            @source = Source.new(diff_index: index, yaml_hash: yaml_hash['src'])
+            @destination = Destination.new(diff_index: index, yaml_hash: yaml_hash['dest'])
             @days = yaml_hash['days']
           end
 
@@ -537,7 +537,7 @@ module Zakuro
           def validate
             failed = []
 
-            prefix = "[#{@diff_index}][solar_term.calc] invalid"
+            prefix = "[#{@diff_index}][solar_term.src] invalid"
 
             failed.push("#{prefix} 'index'. #{@index}") unless index?
 
@@ -600,7 +600,7 @@ module Zakuro
           def validate
             failed = []
 
-            prefix = "[#{@diff_index}][solar_term.actual] invalid"
+            prefix = "[#{@diff_index}][solar_term.dest] invalid"
 
             failed.push("#{prefix} 'index'. #{@index}") unless index?
 
@@ -633,23 +633,23 @@ module Zakuro
 
         # @return [Integer] 連番
         attr_reader :index
-        # @return [String] 計算
-        attr_reader :calc
-        # @return [String] 運用
-        attr_reader :actual
+        # @return [String] 移動元
+        attr_reader :src
+        # @return [String] 移動先
+        attr_reader :dest
 
         #
         # 初期化
         #
         # @param [Integer] index 連番
         # @param [Hash<String, String>] yaml_hash yaml
-        # @option yaml_hash [String] :calc 計算
-        # @option yaml_hash [String] :actual 運用
+        # @option yaml_hash [String] :src 移動元
+        # @option yaml_hash [String] :dest 移動先
         #
         def initialize(index:, yaml_hash: {})
           @index = index
-          @calc = yaml_hash['calc']
-          @actual = yaml_hash['actual']
+          @src = yaml_hash['src']
+          @dest = yaml_hash['dest']
         end
 
         #
@@ -662,19 +662,19 @@ module Zakuro
 
           prefix = "[#{@index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+          failed.push("#{prefix} 'src'. #{@src}") unless src?
 
-          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
 
           failed
         end
 
-        def calc?
-          Types.positive?(str: @calc)
+        def src?
+          Types.positive?(str: @src)
         end
 
-        def actual?
-          Types.positive?(str: @actual)
+        def dest?
+          Types.positive?(str: @dest)
         end
       end
 
@@ -686,23 +686,23 @@ module Zakuro
 
         # @return [Integer] 連番
         attr_reader :index
-        # @return [String] 計算
-        attr_reader :calc
-        # @return [String] 運用
-        attr_reader :actual
+        # @return [String] 移動元
+        attr_reader :src
+        # @return [String] 移動先
+        attr_reader :dest
 
         #
         # 初期化
         #
         # @param [Integer] index 連番
         # @param [Hash<String, String>] yaml_hash yaml
-        # @option yaml_hash [String] :calc 計算
-        # @option yaml_hash [String] :actual 運用
+        # @option yaml_hash [String] :src 移動元
+        # @option yaml_hash [String] :dest 移動先
         #
         def initialize(index:, yaml_hash: {})
           @index = index
-          @calc = yaml_hash['calc']
-          @actual = yaml_hash['actual']
+          @src = yaml_hash['src']
+          @dest = yaml_hash['dest']
         end
 
         #
@@ -715,19 +715,19 @@ module Zakuro
 
           prefix = "[#{@index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+          failed.push("#{prefix} 'src'. #{@src}") unless src?
 
-          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
 
           failed
         end
 
-        def calc?
-          Types.empiable_bool?(str: @calc)
+        def src?
+          Types.empiable_bool?(str: @src)
         end
 
-        def actual?
-          Types.empiable_bool?(str: @actual)
+        def dest?
+          Types.empiable_bool?(str: @dest)
         end
       end
 
@@ -739,23 +739,23 @@ module Zakuro
 
         # @return [Integer] 連番
         attr_reader :index
-        # @return [String] 計算
-        attr_reader :calc
-        # @return [String] 運用
-        attr_reader :actual
+        # @return [String] 移動元
+        attr_reader :src
+        # @return [String] 移動先
+        attr_reader :dest
 
         #
         # 初期化
         #
         # @param [Integer] index 連番
         # @param [Hash<String, String>] yaml_hash yaml
-        # @option yaml_hash [String] :calc 計算
-        # @option yaml_hash [String] :actual 運用
+        # @option yaml_hash [String] :src 移動元
+        # @option yaml_hash [String] :dest 移動先
         #
         def initialize(index:, yaml_hash: {})
           @index = index
-          @calc = yaml_hash['calc']
-          @actual = yaml_hash['actual']
+          @src = yaml_hash['src']
+          @dest = yaml_hash['dest']
         end
 
         #
@@ -768,19 +768,19 @@ module Zakuro
 
           prefix = "[#{@index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'calc'. #{@calc}") unless calc?
+          failed.push("#{prefix} 'src'. #{@src}") unless src?
 
-          failed.push("#{prefix} 'actual'. #{@actual}") unless actual?
+          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
 
           failed
         end
 
-        def calc?
-          Types.month_days?(str: @calc)
+        def src?
+          Types.month_days?(str: @src)
         end
 
-        def actual?
-          Types.month_days?(str: @actual)
+        def dest?
+          Types.month_days?(str: @dest)
         end
       end
 

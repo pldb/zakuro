@@ -54,7 +54,7 @@ describe 'Zakuro' do
             it 'should be applied historical name at boundary date' do
               yaml = YAML.load_file(first_line_path)
               yaml.each do |gengou|
-                date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+                date = Zakuro::Western::Calendar.parse(text: gengou['start_date'])
                 item = first_line(date: date)
                 expect(gengou['name']).to eq(item[0].name)
               end
@@ -87,7 +87,7 @@ describe 'Zakuro' do
             it 'should be applied historical name at boundary date' do
               yaml = YAML.load_file(second_line_path)
               yaml.each do |gengou|
-                date = Zakuro::Western::Calendar.parse(str: gengou['start_date'])
+                date = Zakuro::Western::Calendar.parse(text: gengou['start_date'])
                 item = second_line(date: date)
                 if gengou['name'] == ''
                   expect(item.size).to eq 0
@@ -95,6 +95,54 @@ describe 'Zakuro' do
                 end
                 expect(gengou['name']).to eq(item[0].name)
               end
+            end
+          end
+        end
+      end
+      describe '.line_by_name' do
+        context 'first_line' do
+          def first_line(name:)
+            line = Zakuro::Japan::Gengou::FIRST_LINE
+            Zakuro::Japan::Gengou.line_by_name(line: line, name: name)
+          end
+          context 'set-001 only' do
+            it 'should be got a element' do
+              name = '允恭天皇'
+              item = first_line(name: name)
+              expect(item[0].name).to eq(name)
+            end
+            context 'set-001 and set-002' do
+              it 'should be got a element' do
+                name = '元中'
+                item = first_line(name: name)
+                expect(item[0].name).to eq(name)
+              end
+            end
+            context 'set-003 only' do
+              it 'should be got a set-003 element instead of set-001 one' do
+                name = '明治'
+                item = first_line(name: name)
+                expect(item[0].name).to eq(name)
+              end
+            end
+          end
+        end
+        context 'second_line' do
+          def second_line(name:)
+            line = Zakuro::Japan::Gengou::SECOND_LINE
+            Zakuro::Japan::Gengou.line_by_name(line: line, name: name)
+          end
+          context 'set-001 and set-002' do
+            it 'should be got a set-002 element' do
+              name = '至徳'
+              item = second_line(name: name)
+              expect(item[0].name).to eq(name)
+            end
+          end
+          context 'set-002 only' do
+            it 'should be got a invalid element' do
+              item = second_line(name: '允恭天皇')
+              expect(item.size.zero?).to be_truthy
             end
           end
         end

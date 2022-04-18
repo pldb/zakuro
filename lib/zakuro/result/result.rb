@@ -2,9 +2,11 @@
 
 require 'json'
 
+require_relative './data/single_day'
+
+require_relative './operation/operation'
+
 require_relative './core'
-require_relative './data'
-require_relative './operation'
 
 # :nodoc:
 module Zakuro

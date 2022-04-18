@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../../era/western/calendar'
-require_relative './reserve/range'
-require_relative './reserve/list'
+require_relative './reserve/dated_range'
 
 # :nodoc:
 module Zakuro
@@ -34,7 +33,7 @@ module Zakuro
         # @return [Range] 予約済み計算範囲
         #
         def self.get(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-          Range.new(start_date: start_date, last_date: last_date)
+          DatedRange.new(start_date: start_date, last_date: last_date)
         end
       end
     end

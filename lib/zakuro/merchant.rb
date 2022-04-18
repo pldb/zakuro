@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './era/western/calendar'
+require_relative './gateway/single'
 
-require_relative './calculation/summary/single'
-
-require_relative './calculation/summary/range'
+require_relative './gateway/range'
 
 require_relative './condition'
 
@@ -55,52 +53,18 @@ module Zakuro
     # @return [Result::Range] 和暦日範囲
     #
     def commit
-      date = condition.date
+      # TODO: condition で設定する
+      context = Context.new(version_name: '')
 
-      return single(date: date) if date
+      single = Gateway::Single.new(context: context, date: condition.date)
 
-      range = condition.range
+      return single.get unless single.invalid?
 
-      return range(range: range) if range
+      range = Gateway::Range.new(context: context, range: condition.range)
+
+      return range.get unless range.invalid?
 
       {}
-    end
-
-    private
-
-    #
-    # 1日検索
-    #
-    # @param [Date] date 西暦日
-    #
-    # @return [Result::Single] 検索結果
-    #
-    def single(date:)
-      western_date = Western::Calendar.create(date: date)
-
-      # TODO: condition で設定する
-      context = Context.new(version_name: '')
-
-      Calculation::Summary::Single.get(context: context, date: western_date)
-    end
-
-    #
-    # 期間検索
-    #
-    # @param [Catalog::Range] range 期間
-    #
-    # @return [Result::Range] 和暦日範囲
-    #
-    def range(range:)
-      start_date = Western::Calendar.create(date: range[:start])
-      last_date = Western::Calendar.create(date: range[:last])
-
-      # TODO: condition で設定する
-      context = Context.new(version_name: '')
-
-      Calculation::Summary::Range.get(
-        context: context, start_date: start_date, last_date: last_date
-      )
     end
   end
 end

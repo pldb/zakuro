@@ -80,7 +80,7 @@ module Zakuro
           default = month_label.send(method_name)
           return default if diff.invalid?
 
-          diff.actual
+          diff.dest
         end
 
         #

@@ -339,20 +339,20 @@ module Zakuro
     # Number 月
     #
     class Number
-      # @return [Integer] 計算
-      attr_reader :calc
-      # @return [Integer] 運用
-      attr_reader :actual
+      # @return [Integer] 移動もと
+      attr_reader :src
+      # @return [Integer] 移動先
+      attr_reader :dest
 
       #
       # 初期化
       #
-      # @param [Integer] calc 計算
-      # @param [Integer] actual 運用
+      # @param [Integer] src 移動元
+      # @param [Integer] dest 移動先
       #
-      def initialize(calc: -1, actual: -1)
-        @calc = calc
-        @actual = actual
+      def initialize(src: -1, dest: -1)
+        @src = src
+        @dest = dest
       end
 
       #
@@ -362,7 +362,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        @calc == -1 || @actual == -1
+        @src == -1 || @dest == -1
       end
 
       #
@@ -381,7 +381,7 @@ module Zakuro
       # @return [Integer] 間隔
       #
       def interval
-        @calc - @actual
+        @src - @dest
       end
 
       #
@@ -428,22 +428,22 @@ module Zakuro
     # Leaped 閏有無
     #
     class Leaped
-      # @return [True, False] 計算
-      attr_reader :calc
-      # @return [True, False] 運用
-      attr_reader :actual
+      # @return [True, False] 移動元
+      attr_reader :src
+      # @return [True, False] 移動先
+      attr_reader :dest
 
       # :reek:BooleanParameter
 
       #
       # 初期化
       #
-      # @param [True, False] calc 計算
-      # @param [True, False] actual 運用
+      # @param [True, False] src 移動元
+      # @param [True, False] dest 移動先
       #
-      def initialize(calc: false, actual: false)
-        @calc = calc
-        @actual = actual
+      def initialize(src: false, dest: false)
+        @src = src
+        @dest = dest
       end
 
       #
@@ -453,7 +453,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        !@calc && !@actual
+        !@src && !@dest
       end
     end
 
@@ -469,12 +469,12 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [String] calc 計算
-      # @param [String] actual 運用
+      # @param [String] src 移動元
+      # @param [String] dest 移動先
       #
-      def initialize(calc: '小', actual: '小')
-        @calc = calc
-        @actual = actual
+      def initialize(src: '小', dest: '小')
+        @src = src
+        @dest = dest
       end
 
       #
@@ -483,8 +483,8 @@ module Zakuro
       # @return [True] 大
       # @return [False] 小
       #
-      def calc
-        @calc == BIG
+      def src
+        @src == BIG
       end
 
       #
@@ -493,8 +493,8 @@ module Zakuro
       # @return [True] 大
       # @return [False] 小
       #
-      def actual
-        @actual == BIG
+      def dest
+        @dest == BIG
       end
 
       #
@@ -504,7 +504,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        @calc == @actual
+        @src == @dest
       end
     end
   end

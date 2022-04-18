@@ -43,7 +43,7 @@ describe 'Zakuro' do
                 month: Zakuro::Operation::Month.new(
                   number: Zakuro::Operation::Number.new,
                   leaped: Zakuro::Operation::Leaped.new,
-                  is_many_days: Zakuro::Operation::Days.new(calc: '大', actual: '小')
+                  is_many_days: Zakuro::Operation::Days.new(src: '大', dest: '小')
                 ),
                 solar_term: Zakuro::Operation::SolarTerm::Direction.new,
                 days: 1

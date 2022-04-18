@@ -84,4 +84,5 @@ module Const
       )
     )
   )
+  SENMYOU_RANGE = Zakuro::Result::Range.new(list: [SENMYOU_FIRST_DAY])
 end

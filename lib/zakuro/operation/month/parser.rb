@@ -80,7 +80,7 @@ module Zakuro
       def self.western_date(str:)
         return Western::Calendar.new if invalid?(str: str)
 
-        Western::Calendar.parse(str: str)
+        Western::Calendar.parse(text: str)
       end
 
       #
@@ -311,8 +311,8 @@ module Zakuro
 
       def self.create_solar_term(yaml_hash: {})
         SolarTerm::Direction.new(
-          source: create_source_solar_term(yaml_hash: yaml_hash['calc']),
-          destination: create_destination_solar_term(yaml_hash: yaml_hash['actual']),
+          source: create_source_solar_term(yaml_hash: yaml_hash['src']),
+          destination: create_destination_solar_term(yaml_hash: yaml_hash['dest']),
           days: Operation::TypeParser.days(str: yaml_hash['days'])
         )
       end
@@ -347,24 +347,24 @@ module Zakuro
 
       def self.create_month_number(yaml_hash: {})
         Number.new(
-          calc: Operation::TypeParser.month_number(str: yaml_hash['calc']),
-          actual: Operation::TypeParser.month_number(str: yaml_hash['actual'])
+          src: Operation::TypeParser.month_number(str: yaml_hash['src']),
+          dest: Operation::TypeParser.month_number(str: yaml_hash['dest'])
         )
       end
       private_class_method :create_month_number
 
       def self.create_month_leaped(yaml_hash: {})
         Leaped.new(
-          calc: Operation::TypeParser.month_leaped(str: yaml_hash['calc']),
-          actual: Operation::TypeParser.month_leaped(str: yaml_hash['actual'])
+          src: Operation::TypeParser.month_leaped(str: yaml_hash['src']),
+          dest: Operation::TypeParser.month_leaped(str: yaml_hash['dest'])
         )
       end
       private_class_method :create_month_leaped
 
       def self.create_month_day(yaml_hash: {})
         Days.new(
-          calc: yaml_hash['calc'],
-          actual: yaml_hash['actual']
+          src: yaml_hash['src'],
+          dest: yaml_hash['dest']
         )
       end
       private_class_method :create_month_day
