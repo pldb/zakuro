@@ -2,6 +2,8 @@
 
 require_relative '../calculation/summary/japan/range'
 require_relative '../calculation/summary/western/range'
+require_relative '../exception/case/preset'
+require_relative '../exception/exception'
 
 require_relative './locale/range'
 
@@ -52,8 +54,13 @@ module Zakuro
 
         return japan(start_date: start_date, last_date: last_date) if range.valid_japan?
 
-        # TODO: error
-        p 'error'
+        raise Exception.get(
+          presets: [
+            Exception::Case::Preset.new(
+              template: Exception::Case::Pattern::INVALID_RANGE
+            )
+          ]
+        )
       end
 
       private

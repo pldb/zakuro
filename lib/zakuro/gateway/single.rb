@@ -2,7 +2,8 @@
 
 require_relative '../calculation/summary/japan/single'
 require_relative '../calculation/summary/western/single'
-
+require_relative '../exception/case/preset'
+require_relative '../exception/exception'
 
 require_relative './locale/date'
 
@@ -56,8 +57,13 @@ module Zakuro
           )
         end
 
-        # TODO: error
-        p 'error'
+        raise Exception.get(
+          presets: [
+            Exception::Case::Preset.new(
+              template: Exception::Case::Pattern::INVALID_DATE
+            )
+          ]
+        )
       end
     end
   end

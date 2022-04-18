@@ -18,9 +18,15 @@ module Zakuro
           length: 0
         )
 
-        UNKWON_CAUSE = Template.new(
-          code: 'ERROR_0999',
-          message: '存在しないエラーコードです。',
+        INVALID_DATE = Template.new(
+          code: 'ERROR_0002',
+          message: '一日検索の日付指定が誤っています。',
+          length: 0
+        )
+
+        INVALID_RANGE = Template.new(
+          code: 'ERROR_0003',
+          message: '範囲検索の日付指定が誤っています。',
           length: 0
         )
       end
