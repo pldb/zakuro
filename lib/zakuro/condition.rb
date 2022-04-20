@@ -42,7 +42,7 @@ module Zakuro
         failed.push(
           Exception::Case::Preset.new(
             date.class,
-            template: Exception::Cause::Pattern::INVALID_DATE_TYPE
+            template: Exception::Case::Pattern::INVALID_DATE_TYPE
           )
         )
         failed
@@ -87,7 +87,7 @@ module Zakuro
           failed.push(
             Exception::Case::Preset.new(
               hash.class,
-              template: Exception::Cause::Pattern::INVALID_RANGE_TYPE
+              template: Exception::Case::Pattern::INVALID_RANGE_TYPE
             )
           )
           return failed
@@ -149,7 +149,7 @@ module Zakuro
         failed.push(
           Exception::Case::Preset.new(
             hash.class,
-            template: Exception::Cause::Pattern::INVALID_COLUMN_TYPE
+            template: Exception::Case::Pattern::INVALID_COLUMN_TYPE
           )
         )
 
@@ -196,7 +196,7 @@ module Zakuro
         failed.push(
           Exception::Case::Preset.new(
             hash.class,
-            template: Exception::Cause::Pattern::INVALID_OPTION_TYPE
+            template: Exception::Case::Pattern::INVALID_OPTION_TYPE
           )
         )
         failed
@@ -249,7 +249,7 @@ module Zakuro
         failed.push(
           Exception::Case::Preset.new(
             hash.class,
-            template: Exception::Cause::Pattern::INVALID_CONDITION_TYPE
+            template: Exception::Case::Pattern::INVALID_CONDITION_TYPE
           )
         )
         return failed
