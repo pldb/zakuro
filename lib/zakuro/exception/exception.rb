@@ -2,11 +2,11 @@
 
 require_relative '../output/logger'
 
-require_relative './cause'
-
+require_relative './case/preset'
 require_relative './case/pattern'
 
 require_relative './zakuro_error'
+require_relative './cause'
 
 # :nodoc:
 module Zakuro
@@ -21,7 +21,7 @@ module Zakuro
     #
     # 例外を取得する
     #
-    # @param [Array<Template>] presets 原因プリセット
+    # @param [Array<Case::Preset>] presets 原因プリセット
     #
     # @return [ZakuroError] ライブラリエラー
     #

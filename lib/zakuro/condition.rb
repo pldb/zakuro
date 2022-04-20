@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './exception/exception'
+
 require 'date'
 
 # :nodoc:
@@ -29,7 +31,7 @@ module Zakuro
       #
       # @param [Date] date 日付
       #
-      # @return [Array<String>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラーメッセージ
       #
       def self.validate(date:)
         failed = []
@@ -37,7 +39,12 @@ module Zakuro
 
         return failed if date.is_a?(Date) || date.is_a?(String)
 
-        failed.push("invalid date: #{date}")
+        failed.push(
+          Exception::Case::Preset.new(
+            date.class,
+            template: Exception::Cause::Pattern::INVALID_DATE_TYPE
+          )
+        )
         failed
       end
     end
@@ -54,7 +61,7 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Hash<Symbol>] hash パラメータ
+      # @param [Hash<Symbol, Object>] hash パラメータ
       # @option hash [Symbol] :start 開始日
       # @option hash [Symbol] :start 終了日
       #
@@ -68,16 +75,21 @@ module Zakuro
       #
       # 検証する
       #
-      # @param [Hash<Symbol>] hash パラメータ
+      # @param [Hash<Symbol, Object>] hash パラメータ
       #
-      # @return [Array<String>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラーメッセージ
       #
       def self.validate(hash:)
         failed = []
         return failed unless hash
 
         unless hash.is_a?(Hash)
-          failed.push("invalid range type. #{hash}. should be hash")
+          failed.push(
+            Exception::Case::Preset.new(
+              hash.class,
+              template: Exception::Cause::Pattern::INVALID_RANGE_TYPE
+            )
+          )
           return failed
         end
 
@@ -124,7 +136,7 @@ module Zakuro
       #
       # @param [Array<String>] columns 列
       #
-      # @return [Array<String>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラーメッセージ
       #
       def self.validate(columns:)
         # TODO: 列内容のバリデーション
@@ -134,7 +146,12 @@ module Zakuro
 
         return failed if columns.is_a?(Array)
 
-        failed.push("invalid columns type. #{columns}. should be array")
+        failed.push(
+          Exception::Case::Preset.new(
+            hash.class,
+            template: Exception::Cause::Pattern::INVALID_COLUMN_TYPE
+          )
+        )
 
         failed
       end
@@ -155,7 +172,7 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Array<String>] options オプション
+      # @param [Hash<Symbol, Object>] options オプション
       #
       def initialize(options: [])
         @options = options
@@ -166,9 +183,9 @@ module Zakuro
       #
       # 検証する
       #
-      # @param [Array<String>] options オプション
+      # @param [Hash<Symbol, Object>] options オプション
       #
-      # @return [Array<String>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラーメッセージ
       #
       def self.validate(options:)
         failed = []
@@ -176,8 +193,12 @@ module Zakuro
 
         return failed if options.is_a?(Hash)
 
-        failed.push("invalid options type. #{options}. should be hash")
-
+        failed.push(
+          Exception::Case::Preset.new(
+            hash.class,
+            template: Exception::Cause::Pattern::INVALID_OPTION_TYPE
+          )
+        )
         failed
       end
     end
@@ -219,13 +240,18 @@ module Zakuro
     #
     # @param [Hash<Symbol, Object>] hash パラメータ
     #
-    # @return [Array<String>] エラーメッセージ
+    # @return [Array<Exception::Case::Preset>] エラーメッセージ
     #
     def self.validate(hash:)
       failed = []
 
       unless hash.is_a?(Hash)
-        failed.push("invalid condition type. #{hash}. should be hash")
+        failed.push(
+          Exception::Case::Preset.new(
+            hash.class,
+            template: Exception::Cause::Pattern::INVALID_CONDITION_TYPE
+          )
+        )
         return failed
       end
 

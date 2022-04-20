@@ -6,7 +6,7 @@ require_relative './gateway/range'
 
 require_relative './condition'
 
-require_relative './output/error'
+require_relative './exception/exception'
 
 # :nodoc:
 module Zakuro
@@ -25,7 +25,7 @@ module Zakuro
     #
     def initialize(condition: {})
       failed = Condition.validate(hash: condition)
-      raise Output::ZakuroError, failed.join('\n') unless failed.empty?
+      raise Exception.get(presets: failed) unless failed.empty?
 
       @condition = Condition.new(hash: condition)
     end
@@ -39,7 +39,7 @@ module Zakuro
     #
     def offer(condition: {})
       failed = Condition.validate(hash: condition)
-      raise Output::ZakuroError, failed.join('\n') unless failed.empty?
+      raise Exception.get(presets: failed) unless failed.empty?
 
       @condition.rewrite(hash: condition)
 
