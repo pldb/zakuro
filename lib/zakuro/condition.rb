@@ -31,7 +31,7 @@ module Zakuro
       #
       # @param [Date] date 日付
       #
-      # @return [Array<Exception::Case::Preset>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラープリセット配列
       #
       def self.validate(date:)
         failed = []
@@ -77,7 +77,7 @@ module Zakuro
       #
       # @param [Hash<Symbol, Object>] hash パラメータ
       #
-      # @return [Array<Exception::Case::Preset>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラープリセット
       #
       def self.validate(hash:)
         failed = []
@@ -136,7 +136,7 @@ module Zakuro
       #
       # @param [Array<String>] columns 列
       #
-      # @return [Array<Exception::Case::Preset>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラープリセット配列
       #
       def self.validate(columns:)
         # TODO: 列内容のバリデーション
@@ -185,7 +185,7 @@ module Zakuro
       #
       # @param [Hash<Symbol, Object>] options オプション
       #
-      # @return [Array<Exception::Case::Preset>] エラーメッセージ
+      # @return [Array<Exception::Case::Preset>] エラープリセット配列
       #
       def self.validate(options:)
         failed = []
@@ -240,7 +240,7 @@ module Zakuro
     #
     # @param [Hash<Symbol, Object>] hash パラメータ
     #
-    # @return [Array<Exception::Case::Preset>] エラーメッセージ
+    # @return [Array<Exception::Case::Preset>] エラープリセット配列
     #
     def self.validate(hash:)
       failed = []
@@ -255,6 +255,20 @@ module Zakuro
         return failed
       end
 
+      failed.concat(validate_hash(hash: hash))
+
+      failed
+    end
+
+    #
+    # ハッシュ内を検証する
+    #
+    # @param [Hash<Symbol, Object>] hash パラメータ
+    #
+    # @return [Array<Exception::Case::Preset>] エラープリセット配列
+    #
+    def self.validate_hash(hash:)
+      failed = []
       failed.concat(Catalog::BasisDate.validate(date: hash[:date]))
       failed.concat(Catalog::Range.validate(hash: hash[:range]))
       failed.concat(Catalog::Columns.validate(columns: hash[:columns]))
