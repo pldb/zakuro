@@ -209,6 +209,11 @@ puts merchant.commit.to_json
 
 [宣明暦](./lib/zakuro/version/senmyou/README.md) のみ記載しております。
 
+# 例外
+
+条件不正などで例外が発生します。
+詳細は [例外処理](./doc/error.md) を参照してください。
+
 ## コントリビュート（Contributing）
 
 バグ報告/修正はこちらまで。
