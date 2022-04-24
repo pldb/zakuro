@@ -52,6 +52,8 @@ module Zakuro
             # @return [Base::Year] 対象年
             # @return [Monthly::Month] 対象月
             #
+            # @raise [ArgumentError] 引数エラー
+            #
             def self.specify(years:, date:)
               years.each do |year|
                 month = specify_month(year: year, date: date)

@@ -8,7 +8,17 @@ require File.expand_path('../lib/zakuro',
 
 describe 'Zakuro' do
   describe 'Merchant' do
-    describe 'commit' do
+    describe '#new' do
+      context 'invalid parameter' do
+        example 'date' do
+          hash = { date: 1 }
+          expect do
+            Zakuro::Merchant.new(condition: hash)
+          end.to raise_error(Zakuro::Exception::ZakuroError)
+        end
+      end
+    end
+    describe '#commit' do
       context '862-2-3' do
         example '貞観4年1月1日' do
           date = Date.new(862, 2, 3)

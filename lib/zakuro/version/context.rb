@@ -21,6 +21,8 @@ module Zakuro
     #
     # @param [String] version_name 暦名
     #
+    # @raise [ArgumentError] 引数エラー
+    #
     def initialize(version_name: '')
       @version_name = version_name
 

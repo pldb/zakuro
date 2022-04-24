@@ -113,6 +113,8 @@ module Zakuro
         # @return [True] 無効
         # @return [False] 有効
         #
+        # @raise [ArgumentError] 引数エラー
+        #
         def invalid?(param: self)
           raise ArgumentError, 'unmatch parameter type' unless param.is_a?(AbstractRemainder)
 

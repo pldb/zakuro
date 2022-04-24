@@ -105,6 +105,8 @@ module Zakuro
         #
         # 初回の入定気を定める
         #
+        # @raise [ArgumentError] 引数エラー
+        #
         def define_first
           # 入定気の起算方法
           # 概要:
