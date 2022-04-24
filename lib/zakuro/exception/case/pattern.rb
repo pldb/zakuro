@@ -14,7 +14,7 @@ module Zakuro
       module Pattern
         INTERNAL_ERROR = Template.new(
           code: 'ERROR_0001',
-          message: '致命的なエラーです。',
+          message: '内部エラーです。',
           length: 0
         )
 
@@ -57,6 +57,12 @@ module Zakuro
         INVALID_RANGE = Template.new(
           code: 'ERROR_0202',
           message: '範囲検索の日付指定が誤っています。',
+          length: 0
+        )
+
+        UNCOMMITTABLE_DATE = Template.new(
+          code: 'ERROR_0203',
+          message: '検索不可能な日付指定です。',
           length: 0
         )
       end
