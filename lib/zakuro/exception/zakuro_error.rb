@@ -26,6 +26,8 @@ module Zakuro
         super(out)
       end
 
+      private
+
       #
       # 原因をJSON文字列にする
       #

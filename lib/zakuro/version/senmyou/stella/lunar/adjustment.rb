@@ -205,6 +205,8 @@ module Zakuro
         #
         # @return [Row] 補正値
         #
+        # @raise [ArgumentError] 引数エラー
+        #
         def self.specify(forward:, day:, minute:)
           LIST.each do |row|
             # NOTE: 範囲が重複している場合、最初に引き当てたほうを優先する

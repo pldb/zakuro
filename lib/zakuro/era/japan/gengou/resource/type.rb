@@ -54,6 +54,8 @@ module Zakuro
           #
           # @param [Integer] last_year 終了年
           #
+          # @raise [ArgumentError] 引数エラー
+          #
           def write_last_year(last_year:)
             unless Gengou.valid_year(year: last_year)
               raise ArgumentError, "invalid year format. [#{last_year}]"
@@ -66,6 +68,8 @@ module Zakuro
           # 終了日を更新する
           #
           # @param [Western::Calendar] last_date 終了日
+          #
+          # @raise [ArgumentError] 引数エラー
           #
           def write_last_date(last_date:)
             unless Gengou.valid_date(date: last_date)
@@ -124,6 +128,8 @@ module Zakuro
           # 次の元号の開始日から、元号の終了日に変換する
           #
           # @param [String] next_start_date 次回開始日
+          #
+          # @raise [ArgumentError] 引数エラー
           #
           def convert_next_start_date_to_last_date(next_start_date: '')
             raise ArgumentError, 'empty string cannot convert' if next_start_date.empty?

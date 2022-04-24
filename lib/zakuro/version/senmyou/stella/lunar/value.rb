@@ -55,6 +55,8 @@ module Zakuro
         # @return [True] 正しい（月の位相計算に使う大余小余）
         # @return [True] 正しくない
         #
+        # @raise [ArgumentError] 引数エラー
+        #
         def self.valid?(remainder:)
           return if remainder.is_a?(Cycle::LunarRemainder)
 

@@ -112,6 +112,8 @@ module Zakuro
       #
       # @return [Array<MonthHistory>] 変更履歴
       #
+      # @raise [ArgumentError] 引数エラー
+      #
       def self.run(filepath:)
         hash = YAML.load_file(filepath)
 

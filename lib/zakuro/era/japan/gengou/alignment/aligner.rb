@@ -68,6 +68,8 @@ module Zakuro
           #
           # @return [Array<LinearGengou>] 元号
           #
+          # @raise [ArgumentError] 引数エラー
+          #
           def get(line:, start_date:, last_date:)
             raise ArgumentError.new, 'invalid line number' unless LINE_INDEXES.include?(line)
 
@@ -81,6 +83,8 @@ module Zakuro
           # @param [String] name 元号名
           #
           # @return [Array<LinearGengou>] 元号
+          #
+          # @raise [ArgumentError] 引数エラー
           #
           def get_by_name(line:, name:)
             raise ArgumentError.new, 'invalid line number' unless LINE_INDEXES.include?(line)

@@ -226,6 +226,8 @@ module Zakuro
           #
           # @return [Set] 元号セット情報
           #
+          # @raise [ArgumentError] 引数エラー
+          #
           def self.run(filepath: '')
             yaml = YAML.load_file(filepath)
 

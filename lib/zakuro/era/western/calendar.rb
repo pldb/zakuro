@@ -188,6 +188,8 @@ module Zakuro
       # @param [Integer] day 日
       # @param [Symbol] type 日付種別
       #
+      # @raise [ArgumentError] 引数エラー
+      #
       def initialize(year: -4712, month: 1, day: 1, type: Type::DEFAULT)
         start = Western.to_native_start(type: type)
         @param = Parameter.new(year: year, month: month, day: day, start: start)
@@ -385,6 +387,8 @@ module Zakuro
       # @param [Symbol] type 日付種別
       #
       # @return [Calendar] 年月日情報（西暦）
+      #
+      # @raise [ArgumentError] 引数エラー
       #
       def self.parse(text: '', type: Type::DEFAULT)
         unless Calendar.valid_date_string(text: text, type: type)

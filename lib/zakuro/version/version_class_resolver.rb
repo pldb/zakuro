@@ -22,18 +22,35 @@ module Zakuro
   # VersionClassResolver 暦リゾルバー
   #
   class VersionClassResolver
+    # @return [String] 暦名
     attr_reader :version_name
 
+    # @return [Hash<String, String>] 関連
     CLASSES = {
       'remainder' => 'Zakuro::$VERSION::Cycle::Remainder',
       'solar_term' => 'Zakuro::$VERSION::Cycle::SolarTerm',
       'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange'
     }.freeze
 
+    #
+    # 初期化
+    #
+    # @param [String] version_name 暦名
+    #
     def initialize(version_name:)
       @version_name = version_name
     end
 
+    #
+    # 該当の暦のクラスを取得する
+    #
+    # @param [String] version_name 暦名
+    # @param [String] class_name クラス名
+    #
+    # @return [Object] 該当クラス
+    #
+    # @raise [ArgumentError] 引数エラー
+    #
     def self.get_class(version_name:, class_name:)
       constant = CLASSES.fetch(class_name, '')
 

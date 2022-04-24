@@ -27,6 +27,8 @@ module Zakuro
     #
     # @param [Hash<Symbol, Object>] condition 条件
     #
+    # @raise [Exception::ZakuroError] ライブラリ内エラー
+    #
     def initialize(condition: {})
       failed = Condition.validate(hash: condition)
       raise Exception.get(presets: failed) unless failed.empty?
@@ -44,6 +46,8 @@ module Zakuro
     # @param [Hash<Symbol, Object>] condition 条件
     #
     # @return [Merchant] 自インスタンス
+    #
+    # @raise [Exception::ZakuroError] ライブラリ内エラー
     #
     def offer(condition: {})
       failed = Condition.validate(hash: condition)
@@ -63,6 +67,8 @@ module Zakuro
     #
     # @return [Result::SingleDay] 和暦日
     # @return [Result::Range] 和暦日範囲
+    #
+    # @raise [Exception::ZakuroError] ライブラリ内エラー
     #
     def commit
       # TODO: condition で設定する
