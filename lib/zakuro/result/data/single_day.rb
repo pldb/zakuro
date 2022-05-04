@@ -2,6 +2,8 @@
 
 require_relative '../core'
 
+require_relative './option/bundle'
+
 require_relative 'year'
 
 require_relative 'month'
@@ -35,12 +37,16 @@ module Zakuro
         # @param [Year] year 年
         # @param [Month] month 月
         # @param [Day] day 日
+        # @param [Option::Bundle] option オプション
         #
-        def initialize(year:, month:, day:)
+        def initialize(year:, month:, day:, option: Option::Bundle.new)
           super
           @year = year
           @month = month
           @day = day
+
+          # TODO: use option
+          # p option
         end
       end
     end
