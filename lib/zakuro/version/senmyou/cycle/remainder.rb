@@ -26,7 +26,7 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
+          super(base_day: Const::Number::Cycle::DAY, base_minute: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
 
@@ -60,7 +60,7 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          super(base_day: Const::Number::Cycle::DAY, base_mitune: MINUTE,
+          super(base_day: Const::Number::Cycle::DAY, base_minute: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
 
