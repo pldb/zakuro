@@ -78,9 +78,9 @@ module Zakuro
         end
 
         #
-        # LunarRemainder 没日の計算向け時刻情報（没余）
+        # DroppedRemainder 没日の計算向け時刻情報（没余）
         #
-        class MotsunichiRemainder < Calculation::Cycle::AbstractRemainder
+        class DroppedRemainder < Calculation::Cycle::AbstractRemainder
           # @return [Integer] 通余
           MINUTE = Const::Number::Derivation::REMAINDER_ALL_YEAR
 
