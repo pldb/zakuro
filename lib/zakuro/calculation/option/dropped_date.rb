@@ -54,7 +54,7 @@ module Zakuro
         #
         # @return [Cycle::AbstractRemainder] 没余
         #
-        def remainder
+        def get
           # TODO: refactor
 
           # 1. 二十四節気の大余小余を取り出す
@@ -69,7 +69,7 @@ module Zakuro
           result = remainder_class.new(total: diff)
           # 5. 上記4の商と上記1の大余が没日大余、余りが小余（没余）
           day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
-          result + day
+          result += day
           result
         end
 
