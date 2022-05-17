@@ -69,7 +69,7 @@ module Zakuro
           result = remainder_class.new(total: diff)
           # 5. 上記4の商と上記1の大余が没日大余、余りが小余（没余）
           day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
-          result += day
+          result = result.add(day)
           result
         end
 

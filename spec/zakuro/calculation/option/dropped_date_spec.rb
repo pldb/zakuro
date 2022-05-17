@@ -20,7 +20,7 @@ describe 'Zakuro' do
         def init(solar_term)
           limit = Zakuro::Senmyou::Const::Remainder::Solar::DROPPED_DATE_LIMIT
           year = Zakuro::Senmyou::Const::Number::Cycle::YEAR
-          remainder_class = Zakuro::Senmyou::Cycle::DroppedRemainder.class
+          remainder_class = Zakuro::Senmyou::Cycle::DroppedRemainder
 
           Zakuro::Calculation::Option::DroppedDate.new(
             limit: limit, year: year, solar_term: solar_term, remainder_class: remainder_class
@@ -61,21 +61,19 @@ describe 'Zakuro' do
             end
           end
         end
-        # describe '#get' do
-        #   context ' same paramters "長慶宣明暦算法"' do
-        #     it 'xxx' do
-        #       # TODO: test
-        #       dropped_date = init(
-        #         Zakuro::Senmyou::Cycle::SolarTerm.new(
-        #           index: 3,
-        #           remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 56, minute: 8236, second: 0)
-        #         )
-        #       )
-        #       p dropped_date.class
-        #       p dropped_date.get.format
-        #     end
-        #   end
-        # end
+        describe '#get' do
+          context ' same paramters "長慶宣明暦算法"' do
+            it 'should be same result' do
+              dropped_date = init(
+                Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  index: 3,
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 56, minute: 8236, second: 7)
+                )
+              )
+              expect(dropped_date.get.format).to eq '58-14670'
+            end
+          end
+        end
       end
     end
   end

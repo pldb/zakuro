@@ -82,8 +82,8 @@ module Zakuro
       # DroppedRemainder 没日の計算向け時刻情報（没余）
       #
       class DroppedRemainder < Calculation::Cycle::AbstractRemainder
-        # @return [Integer] 通余
-        MINUTE = Const::Number::Derivation::REMAINDER_ALL_YEAR
+        # @return [Integer] 分（1分=8秒）
+        MINUTE = 8
 
         #
         # 初期化
@@ -94,7 +94,8 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          super(base_day: Const::Number::Cycle::DAY, base_minute: MINUTE,
+          # 小余 = 通余
+          super(base_day: Const::Number::Derivation::REMAINDER_ALL_YEAR, base_minute: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
 
