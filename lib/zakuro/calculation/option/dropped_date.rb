@@ -10,6 +10,9 @@ module Zakuro
       # DroppedDate 没日
       #
       class DroppedDate
+        # @return [Integer] 理想上の年日数
+        IDEAL_YEAR = 360
+
         # @return [Cycle::AbstractRemainder] 「有没之気」判定
         attr_reader :limit
         # @return [Integer] 年
@@ -55,14 +58,10 @@ module Zakuro
         # @return [Cycle::AbstractRemainder] 没余
         #
         def get
-          # TODO: refactor
-
           # 1. 二十四節気の大余小余を取り出す
           remainder = solar_term_remainder
-          # 2. 小余360、秒45（360/8）で積算する
-          minute = remainder.minute * 360
-          second = remainder.second * (360 / remainder.base_minute)
-          total = minute + second
+          # 2. 小余360、秒45（360/8）で乗算する
+          total = multiple_ideal_year(remainder: remainder)
           # 3. 上記2と章歳（3068055）の差を求める
           diff = (year - total).abs
           # 4. 上記3を通余で徐算する
@@ -75,8 +74,28 @@ module Zakuro
 
         private
 
+        #
+        # 二十四節気の大余小余を取得する
+        #
+        # @return [Cycle::AbstractRemainder] 大余小余
+        #
         def solar_term_remainder
           solar_term.remainder.clone
+        end
+
+        #
+        # 理想上の年数を乗算する
+        #
+        #  宣明暦：小余360、秒45（360/8）で積算する
+        #
+        # @return [Cycle::AbstractRemainder] 大余小余
+        #
+        # @return [Integer] 乗算結果
+        #
+        def multiple_ideal_year(remainder:)
+          minute = remainder.minute * IDEAL_YEAR
+          second = remainder.second * (IDEAL_YEAR / remainder.base_minute)
+          minute + second
         end
       end
     end
