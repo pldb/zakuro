@@ -15,9 +15,9 @@ module Zakuro
       #
       module Option
         #
-        # Motsunichi 没日
+        # DroppedDate 没日
         #
-        module Motsunichi
+        module DroppedDate
           #
           # SolarTerm 二十四節気
           #

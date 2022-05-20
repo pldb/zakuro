@@ -104,8 +104,8 @@ puts merchant.commit.to_json
 | 単位   | unit      | String   | year   | 年単位                 |
 |        |           |          | month  | 月単位                 |
 |        |           |          | day    | 日単位（デフォルト）   |
-| 没日   | lost_days | TRUE     |        | 没日あり               |
-|        |           | FALSE    |        | 没日なし（デフォルト） |
+| 没日   | dropped_days | TRUE     |        | 没日あり            |
+|        |             | FALSE    |        | 没日なし（デフォルト） |
 | 四季   | seasons   | TRUE     |        | 四季あり               |
 |        |           | FALSE    |        | 四季なし（デフォルト） |
 

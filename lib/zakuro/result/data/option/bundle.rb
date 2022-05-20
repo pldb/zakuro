@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './motsunichi/bundle'
+require_relative './dropped_date/bundle'
 
 # :nodoc:
 module Zakuro
@@ -20,16 +20,16 @@ module Zakuro
         # Bundle オプション集約
         #
         class Bundle
-          # @return [Motsunichi::Bundle] 没日
-          attr_reader :motsunichi
+          # @return [DroppedDate::Bundle] 没日
+          attr_reader :dropped_date
 
           #
           # 初期化
           #
-          # @param [Motsunichi::Bundle] motsunichi 没日
+          # @param [DroppedDate::Bundle] dropped_date 没日
           #
-          def initialize(motsunichi: Motsunichi::Bundle.new)
-            @motsunichi = motsunichi
+          def initialize(dropped_date: DroppedDate::Bundle.new)
+            @dropped_date = dropped_date
           end
         end
       end

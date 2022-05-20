@@ -17,9 +17,9 @@ module Zakuro
       #
       module Option
         #
-        # Motsunichi 没日
+        # DroppedDate 没日
         #
-        module Motsunichi
+        module DroppedDate
           #
           # Bundle 没日集約
           #
