@@ -3,18 +3,22 @@
 require_relative './genka/cycle/remainder'
 require_relative './genka/cycle/solar_term'
 require_relative './genka/range/annual_range'
+require_relative './genka/option/dropped_date/parameter'
 
 require_relative './gihou/cycle/remainder'
 require_relative './gihou/cycle/solar_term'
 require_relative './gihou/range/annual_range'
+require_relative './gihou/option/dropped_date/parameter'
 
 require_relative './daien/cycle/remainder'
 require_relative './daien/cycle/solar_term'
 require_relative './daien/range/annual_range'
+require_relative './daien/option/dropped_date/parameter'
 
 require_relative './senmyou/cycle/remainder'
 require_relative './senmyou/cycle/solar_term'
 require_relative './senmyou/range/annual_range'
+require_relative './senmyou/option/dropped_date/parameter'
 
 # :nodoc:
 module Zakuro
@@ -29,7 +33,8 @@ module Zakuro
     CLASSES = {
       'remainder' => 'Zakuro::$VERSION::Cycle::Remainder',
       'solar_term' => 'Zakuro::$VERSION::Cycle::SolarTerm',
-      'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange'
+      'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange',
+      'dropped_date_parameter' => 'Zakuro::$VERSION::Option::DroppedDate::Parameter',
     }.freeze
 
     #
@@ -86,6 +91,17 @@ module Zakuro
     #
     def annual_range
       VersionClassResolver.get_class(version_name: @version_name, class_name: 'annual_range')
+    end
+
+    #
+    # 没日引数を返す
+    #
+    # @return [Class] 没日引数クラス
+    #
+    def dropped_date_parameter
+      VersionClassResolver.get_class(
+        version_name: @version_name, class_name: 'dropped_date_parameter'
+      )
     end
   end
 end
