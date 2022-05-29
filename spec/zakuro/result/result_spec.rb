@@ -84,7 +84,8 @@ describe 'Zakuro' do
                   'zodiac_name' => '庚午',
                   'remainder' => '6-1282',
                   'western_date' => '0862-02-03'
-                }
+                },
+                'options' => {}
               }
             )
           end

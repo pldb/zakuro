@@ -2,7 +2,7 @@
 
 require_relative '../core'
 
-require_relative './option/bundle'
+require_relative './option/abstract_option'
 
 require_relative 'year'
 
@@ -30,6 +30,8 @@ module Zakuro
         attr_reader :month
         # @return [Day] 日
         attr_reader :day
+        # @return [Map<String, Option::AbstractOption>] オプション
+        attr_reader :options
 
         #
         # 初期化
@@ -37,16 +39,14 @@ module Zakuro
         # @param [Year] year 年
         # @param [Month] month 月
         # @param [Day] day 日
-        # @param [Option::Bundle] option オプション
+        # @param [Option::Bundle] options オプション
         #
-        def initialize(year:, month:, day:, option: Option::Bundle.new)
+        def initialize(year:, month:, day:, options: {})
           super
           @year = year
           @month = month
           @day = day
-
-          # TODO: use option
-          # p option
+          @options = options
         end
       end
     end

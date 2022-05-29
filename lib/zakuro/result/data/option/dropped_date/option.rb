@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../abstract_option'
+
 require_relative './calculation'
 
 # :nodoc:
@@ -21,28 +23,20 @@ module Zakuro
         #
         module DroppedDate
           #
-          # Bundle 没日集約
+          # Option 没日集約
           #
-          class Bundle
-            # @return [True] 使用有
-            # @return [False] 使用無
-            attr_reader :available
-            # @return [True] 没日有
-            # @return [False] 没日無
-            attr_reader :matched
+          class Option < AbstractOption
             # @return [Calculation] 演算値
             attr_reader :calculation
 
             #
             # 初期化
             #
-            # @param [True, False] available 使用有無
-            # @param [True, False] matched 没日有無
+            # @param [True, False] matched オプション値有無
             # @param [Calculation] calculation 演算値
             #
-            def initialize(available: false, matched: false, calculation: Calculation.new)
-              @available = available
-              @matched = matched
+            def initialize(matched: false, calculation: Calculation.new)
+              super(matched: matched)
               @calculation = calculation
             end
           end
