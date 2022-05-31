@@ -50,7 +50,7 @@ module Zakuro
 
             next unless include?(date: current_date)
 
-            day = Output::Response::SingleDay.save_single_day(
+            day = Output::Response::SingleDay.create(
               param: Output::Response::SingleDay::Param.new(
                 year: @year, month: @month,
                 date: current_date, days: index

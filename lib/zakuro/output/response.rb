@@ -14,6 +14,8 @@ module Zakuro
       # SingleDay 1日データ
       #
       module SingleDay
+        # TODO: ディレクトリ変更
+
         #
         # Param 引数
         #
@@ -48,9 +50,9 @@ module Zakuro
         #
         # @param [Parameter] param 引数
         #
-        # @return [SingleDay] 1日データ
+        # @return [Result::Data::SingleDay] 1日データ
         #
-        def self.save_single_day(param:)
+        def self.create(param:)
           year = param.year
           month = param.month
           date = param.date
@@ -59,6 +61,25 @@ module Zakuro
             year: save_year(year: year, month: month, date: date),
             month: save_month(month: month, date: date, days: days),
             day: save_day(month: month, date: date, days: days)
+          )
+        end
+
+        #
+        # 1日データを再生成する
+        #
+        # @param [Result::Data::Year] year 年
+        # @param [Result::Data::Month] month 月
+        # @param [Result::Data::Day] day 日
+        # @param [Hash<String, Result::Data::Option::AbstractOption>] options オプション
+        #
+        # @return [Result::Data::SingleDay] 1日データ
+        #
+        def self.recreate(year:, month:, day:, options: {})
+          Result::Data::SingleDay.new(
+            year: year,
+            month: month,
+            day: day,
+            options: options
           )
         end
 

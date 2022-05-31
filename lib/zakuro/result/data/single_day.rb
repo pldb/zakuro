@@ -30,7 +30,7 @@ module Zakuro
         attr_reader :month
         # @return [Day] 日
         attr_reader :day
-        # @return [Map<String, Option::AbstractOption>] オプション
+        # @return [Hash<String, Option::AbstractOption>] オプション
         attr_reader :options
 
         #
@@ -39,7 +39,7 @@ module Zakuro
         # @param [Year] year 年
         # @param [Month] month 月
         # @param [Day] day 日
-        # @param [Option::Bundle] options オプション
+        # @param [Hash<String, Option::AbstractOption>] options オプション
         #
         def initialize(year:, month:, day:, options: {})
           super

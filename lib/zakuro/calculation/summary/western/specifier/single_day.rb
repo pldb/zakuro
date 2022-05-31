@@ -35,7 +35,7 @@ module Zakuro
               year, month = specify(years: years, date: date)
               first_date = month.western_date
 
-              Output::Response::SingleDay.save_single_day(
+              Output::Response::SingleDay.create(
                 param: Output::Response::SingleDay::Param.new(
                   year: year, month: month,
                   date: date, days: date - first_date
