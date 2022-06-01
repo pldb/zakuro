@@ -39,10 +39,8 @@ module Zakuro
               western_date = first_date + days
 
               Output::Response::SingleDay.create(
-                param: Output::Response::SingleDay::Param.new(
-                  year: year, month: month,
-                  date: western_date, days: days
-                )
+                year: year, month: month,
+                date: western_date, days: days
               )
             end
 

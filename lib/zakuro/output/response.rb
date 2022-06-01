@@ -17,46 +17,16 @@ module Zakuro
         # TODO: ディレクトリ変更
 
         #
-        # Param 引数
-        #
-        class Param
-          # @return [Year] 年情報（各暦のデータ型）
-          attr_reader :year
-          # @return [Month] 月情報（各暦のデータ型）
-          attr_reader :month
-          # @return [Western::Calendar] 年月日情報（西暦）
-          attr_reader :date
-          # @return [Integer] 日数（月初日から指定日までの日数）
-          attr_reader :days
-
-          #
-          # 初期化
-          #
-          # @param [Year] year 年情報（各暦のデータ型）
-          # @param [Month] month 月情報（各暦のデータ型）
-          # @param [Western::Calendar] date 年月日情報（西暦）
-          # @param [Integer] days 日数（月初日から指定日までの日数）
-          #
-          def initialize(year:, month:, date:, days:)
-            @year = year
-            @month = month
-            @date = date
-            @days = days
-          end
-        end
-
-        #
         # 1日データを生成する
         #
-        # @param [Parameter] param 引数
+        # @param [Year] year 年情報（各暦のデータ型）
+        # @param [Month] month 月情報（各暦のデータ型）
+        # @param [Western::Calendar] date 年月日情報（西暦）
+        # @param [Integer] days 日数（月初日から指定日までの日数）
         #
         # @return [Result::Data::SingleDay] 1日データ
         #
-        def self.create(param:)
-          year = param.year
-          month = param.month
-          date = param.date
-          days = param.days
+        def self.create(year:, month:, date:, days:)
           Result::Data::SingleDay.new(
             year: save_year(year: year, month: month, date: date),
             month: save_month(month: month, date: date, days: days),
