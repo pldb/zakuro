@@ -8,7 +8,7 @@ require File.expand_path('../../../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/context',
+                         'lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../../' \

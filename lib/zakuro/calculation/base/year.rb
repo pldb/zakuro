@@ -4,7 +4,7 @@ require_relative '../cycle/zodiac'
 
 require_relative '../../era/western/calendar'
 
-require_relative '../../version/context'
+require_relative '../../context/context'
 
 # :nodoc:
 module Zakuro

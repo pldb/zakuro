@@ -2,7 +2,7 @@
 
 require_relative './year'
 
-require_relative '../../version/context'
+require_relative '../../context/context'
 
 # :nodoc:
 module Zakuro

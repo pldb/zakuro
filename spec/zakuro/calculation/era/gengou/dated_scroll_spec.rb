@@ -14,7 +14,7 @@ require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/dated
 require File.expand_path('../../../../../lib/zakuro/calculation/monthly/month',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/version/context',
+require File.expand_path('../../../../../lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/era/western/calendar',

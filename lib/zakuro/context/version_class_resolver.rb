@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative './genka/cycle/remainder'
-require_relative './genka/cycle/solar_term'
-require_relative './genka/range/annual_range'
-require_relative './genka/option/dropped_date/parameter'
+require_relative '../version/genka/cycle/remainder'
+require_relative '../version/genka/cycle/solar_term'
+require_relative '../version/genka/range/annual_range'
+require_relative '../version/genka/option/dropped_date/parameter'
 
-require_relative './gihou/cycle/remainder'
-require_relative './gihou/cycle/solar_term'
-require_relative './gihou/range/annual_range'
-require_relative './gihou/option/dropped_date/parameter'
+require_relative '../version/gihou/cycle/remainder'
+require_relative '../version/gihou/cycle/solar_term'
+require_relative '../version/gihou/range/annual_range'
+require_relative '../version/gihou/option/dropped_date/parameter'
 
-require_relative './daien/cycle/remainder'
-require_relative './daien/cycle/solar_term'
-require_relative './daien/range/annual_range'
-require_relative './daien/option/dropped_date/parameter'
+require_relative '../version/daien/cycle/remainder'
+require_relative '../version/daien/cycle/solar_term'
+require_relative '../version/daien/range/annual_range'
+require_relative '../version/daien/option/dropped_date/parameter'
 
-require_relative './senmyou/cycle/remainder'
-require_relative './senmyou/cycle/solar_term'
-require_relative './senmyou/range/annual_range'
-require_relative './senmyou/option/dropped_date/parameter'
+require_relative '../version/senmyou/cycle/remainder'
+require_relative '../version/senmyou/cycle/solar_term'
+require_relative '../version/senmyou/range/annual_range'
+require_relative '../version/senmyou/option/dropped_date/parameter'
 
 # :nodoc:
 module Zakuro

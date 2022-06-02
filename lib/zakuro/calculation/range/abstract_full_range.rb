@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../version/context'
+require_relative '../../context/context'
 
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
