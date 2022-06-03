@@ -161,8 +161,8 @@ module Zakuro
     # Options オプション
     # 取得内容を変更する
     #
-    #   * unit: 年/月/日
-    #   * lost_days: 没日あり
+    #   * version: 暦
+    #   * dropped_days: 没日あり
     #   * seasons: 四季あり
     #
     class Options

@@ -101,9 +101,15 @@ puts merchant.commit.to_json
 
 | 項目名 | キー名    | データ型 | データ | 備考                   |
 |--------|-----------|----------|--------|------------------------|
-| 単位   | unit      | String   | year   | 年単位                 |
-|        |           |          | month  | 月単位                 |
-|        |           |          | day    | 日単位（デフォルト）   |
+| 暦     | version   | String   | Genka |  元嘉暦               |
+|        |           |          | Gihou |  儀鳳暦               |
+|        |           |          | Daien |  大衍暦              |
+|        |           |          | Senmyou | 宣明暦             |
+|        |           |          | Joukyou | 貞享暦             |
+|        |           |          | Kansei |  寛政暦             |
+|        |           |          | Tenpou |  天保暦             |
+|        |           |          | Gregorio | グレゴリオ暦        |
+|        |           |          |         | 指定なし（デフォルト） |
 | 没日   | dropped_days | TRUE     |        | 没日あり            |
 |        |             | FALSE    |        | 没日なし（デフォルト） |
 | 四季   | seasons   | TRUE     |        | 四季あり               |
