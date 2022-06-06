@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../type/optional'
-
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -17,6 +15,8 @@ module Zakuro
           # @return [Integer] 理想上の年日数
           IDEAL_YEAR = 360
 
+          # @return [Context::Context] 暦コンテキスト
+          attr_reader :context
           # @return [True] 有効
           # @return [False] 無効
           attr_reader :valid
@@ -37,6 +37,7 @@ module Zakuro
           #
           def initialize(context:, solar_terms: [])
             parameter = context.resolver.dropped_date_parameter.new
+            @context = context
             @valid = parameter.valid
             @limit = parameter.limit
             @year = parameter.year
@@ -61,9 +62,7 @@ module Zakuro
           # @return [False] 存在なし
           #
           def exist?
-            optional = solar_term_remainder
-
-            !optional.invalid?
+            !solar_term_remainder.invalid?
           end
 
           #
@@ -73,7 +72,7 @@ module Zakuro
           #
           def get
             # 1. 二十四節気の大余小余を取り出す
-            remainder = solar_term_remainder.get
+            remainder = solar_term_remainder
             # 2. 小余360、秒45（360/8）で乗算する
             total = multiple_ideal_year(remainder: remainder)
             # 3. 上記2と章歳（3068055）の差を求める
@@ -94,21 +93,25 @@ module Zakuro
           # @return [Type::Optional<Cycle::AbstractRemainder>] 大余小余
           #
           def solar_term_remainder
-            optional = Type::Optional.new
+            solar_term.remainder
+          end
 
+          #
+          # 該当の二十四節気を取得する
+          #
+          # @return [Cycle::AbstractSolarTerm] 二十四節気
+          #
+          def solar_term
             solar_terms.each do |solar_term|
               remainder = solar_term.remainder.clone
               minute_later = remainder.class.new(
                 day: 0, minute: remainder.minute, second: remainder.second
               )
 
-              if minute_later >= limit
-                optional = Type::Optional.new(obj: remainder)
-                break
-              end
+              return solar_term if minute_later >= limit
             end
 
-            optional
+            context.resolver.solar_term.new
           end
 
           #
