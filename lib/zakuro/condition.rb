@@ -230,7 +230,7 @@ module Zakuro
       @date = hash[:date]
       @range = hash[:range]
       @columns = hash[:columns]
-      @options = hash[:options] ? hash[:options] : {}
+      @options = hash[:options] || {}
     end
 
     # :reek:TooManyStatements { max_statements: 8 }

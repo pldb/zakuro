@@ -10,13 +10,16 @@ module Zakuro
     class Option
       # @return [String] 無効暦名
       INVALID_VERSION_NAME = ''
+      # @return [Array<String>] 暦名
+      VERSION_NAMES = %w[Genka Gihou Daien Senmyou Joukyou Kansei Tenpou Gregorio].freeze
+
+      # @return [String] 没日オプションキー名
+      DROPPED_DATE_KEY = 'dropped_date'
+
       # @return [Hash<String, Object>] オプション値
       attr_reader :hash
       # @return [String] デフォルト暦名
       attr_reader :default_version
-
-      # @return [Array<String>] 暦名
-      VERSION_NAMES = %w[Genka Gihou Daien Senmyou Joukyou Kansei Tenpou Gregorio].freeze
 
       #
       # 初期化
@@ -62,9 +65,21 @@ module Zakuro
       # @return [False] 無効
       #
       def version?
-        return false if version == INVALID_VERSION_NAME
+        self.class.version?(version: version)
+      end
 
-        true
+      #
+      # 没日か
+      #
+      # @return [True] 没日あり
+      # @return [False] 没日なし
+      #
+      def dropped_date?
+        value = @hash[DROPPED_DATE_KEY]
+
+        return true if value.is_a?(TrueClass)
+
+        false
       end
 
       #

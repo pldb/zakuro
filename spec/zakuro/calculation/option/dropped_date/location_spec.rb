@@ -23,12 +23,14 @@ describe 'Zakuro' do
               it 'should be true' do
                 dropped_date = Zakuro::Calculation::Option::DroppedDate::Location.new(
                   context: context,
-                  solar_term: Zakuro::Senmyou::Cycle::SolarTerm.new(
-                    index: 3,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 56, minute: 8236, second: 0
+                  solar_terms: [
+                    Zakuro::Senmyou::Cycle::SolarTerm.new(
+                      index: 3,
+                      remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                        day: 56, minute: 8236, second: 0
+                      )
                     )
-                  )
+                  ]
                 )
                 expect(dropped_date.exist?).to be_truthy
               end
@@ -37,12 +39,14 @@ describe 'Zakuro' do
               it 'should be true' do
                 dropped_date = Zakuro::Calculation::Option::DroppedDate::Location.new(
                   context: context,
-                  solar_term: Zakuro::Senmyou::Cycle::SolarTerm.new(
-                    index: 3,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 56, minute: 6564, second: 3
+                  solar_terms: [
+                    Zakuro::Senmyou::Cycle::SolarTerm.new(
+                      index: 3,
+                      remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                        day: 56, minute: 6564, second: 3
+                      )
                     )
-                  )
+                  ]
                 )
                 expect(dropped_date.exist?).to be_truthy
               end
@@ -51,12 +55,14 @@ describe 'Zakuro' do
               it 'should be false' do
                 dropped_date = Zakuro::Calculation::Option::DroppedDate::Location.new(
                   context: context,
-                  solar_term: Zakuro::Senmyou::Cycle::SolarTerm.new(
-                    index: 3,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 56, minute: 6564, second: 2
+                  solar_terms: [
+                    Zakuro::Senmyou::Cycle::SolarTerm.new(
+                      index: 3,
+                      remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                        day: 56, minute: 6564, second: 2
+                      )
                     )
-                  )
+                  ]
                 )
                 expect(dropped_date.exist?).to be_falsey
               end
@@ -67,12 +73,14 @@ describe 'Zakuro' do
               it 'should be same result' do
                 dropped_date = Zakuro::Calculation::Option::DroppedDate::Location.new(
                   context: context,
-                  solar_term: Zakuro::Senmyou::Cycle::SolarTerm.new(
-                    index: 3,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 56, minute: 8236, second: 7
+                  solar_terms: [
+                    Zakuro::Senmyou::Cycle::SolarTerm.new(
+                      index: 3,
+                      remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                        day: 56, minute: 8236, second: 7
+                      )
                     )
-                  )
+                  ]
                 )
                 expect(dropped_date.get.format).to eq '58-14670'
               end
