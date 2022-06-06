@@ -25,7 +25,7 @@ describe 'Zakuro' do
             # :reek:UnityFunction
             def eql?(date:, result:)
               full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-                context: Zakuro::Context.new(version_name: 'Senmyou'),
+                context: Zakuro::Context::Context.new(version: 'Senmyou'),
                 start_date: date
               )
               expected = Zakuro::Calculation::Summary::Western::Specifier::SingleDay.get(

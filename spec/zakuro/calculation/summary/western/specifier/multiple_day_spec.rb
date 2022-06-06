@@ -25,7 +25,7 @@ describe 'Zakuro' do
             describe '.get' do
               def pre(start_date:, last_date:)
                 full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-                  context: Zakuro::Context.new(version_name: ''),
+                  context: Zakuro::Context::Context.new(version: ''),
                   start_date: start_date,
                   last_date: last_date
                 )

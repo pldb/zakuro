@@ -24,7 +24,7 @@ describe 'Zakuro' do
           describe '.get' do
             context 'any parameter to specify one day' do
               let!(:context) do
-                Zakuro::Context.new(version_name: '')
+                Zakuro::Context::Context.new(version: '')
               end
               let!(:start_date) do
                 # Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
@@ -48,7 +48,7 @@ describe 'Zakuro' do
             end
             context 'any parameter to specify a year' do
               let!(:context) do
-                Zakuro::Context.new(version_name: '')
+                Zakuro::Context::Context.new(version: '')
               end
               let!(:start_date) do
                 # Zakuro::Western::Calendar.new(year: 445, month: 1, day: 24)
@@ -94,7 +94,7 @@ describe 'Zakuro' do
 
                 it "#{start_date} - #{last_date}: #{japan['all']}: #{test['description']}" do
                   actual = Zakuro::Calculation::Summary::Japan::Range.get(
-                    context: Zakuro::Context.new(version_name: ''),
+                    context: Zakuro::Context::Context.new(version: ''),
                     start_date: Zakuro::Japan::Calendar.parse(text: start_date),
                     last_date: Zakuro::Japan::Calendar.parse(text: last_date)
                   )

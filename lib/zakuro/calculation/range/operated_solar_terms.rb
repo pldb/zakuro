@@ -21,13 +21,13 @@ module Zakuro
         # * 移動先の二十四節気：移動元からの二十四節気（追加対象）
         #
         attr_reader :directions
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         attr_reader :context
 
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Array<Year>] years 完全範囲（年データ）
         #
         def initialize(context:, years: [])
@@ -73,7 +73,7 @@ module Zakuro
         #
         # 年内の全ての月の移動方向を作成する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Array<Month>] months 年内の全ての月
         #
@@ -98,7 +98,7 @@ module Zakuro
         #
         # 月毎の移動方向を作成する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Month] 月
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Diretion] 二十四節気（移動）
@@ -119,7 +119,7 @@ module Zakuro
         #
         # 移動先に有効な二十四節気（差し替える二十四節気）を指定する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [SolarTerm] solar_term 二十四節気（計算値）
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
@@ -141,7 +141,7 @@ module Zakuro
         #
         # 移動先に有効な二十四節気（差し替える二十四節気）を生成する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [SolarTerm] solar_term 二十四節気（計算値）
         # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
         #
@@ -165,7 +165,7 @@ module Zakuro
         #
         # 移動元に無効な二十四節気（連番のみ指定）を指定する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
         # @param [Operation::SolarTerm::Destination] destination 二十四節気（移動先）
         #
@@ -186,14 +186,14 @@ module Zakuro
         #
         # @param [Western::Calendar] western_date 西暦日
         #
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         #
         def current_context(western_date: Western::Calendar.new)
           @years.each do |year|
             return year.context if western_date >= year.new_year_date
           end
 
-          Context.new
+          Context::Context.new
         end
 
         #

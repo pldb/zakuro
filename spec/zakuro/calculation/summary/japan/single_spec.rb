@@ -25,7 +25,7 @@ describe 'Zakuro' do
             # :reek:UnityFunction
             def eql?(date:, version:, expected:)
               actual = Zakuro::Calculation::Summary::Japan::Single.get(
-                context: Zakuro::Context.new(version_name: version),
+                context: Zakuro::Context::Context.new(version: version),
                 date: date
               )
 

@@ -23,7 +23,7 @@ module Zakuro
           #
           # 生成する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Result::Single] 一日検索結果（和暦日）
@@ -44,7 +44,7 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Array<Base::Year>] 完全範囲
@@ -58,7 +58,7 @@ module Zakuro
           #
           # 運用結果範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Array<Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
@@ -75,7 +75,7 @@ module Zakuro
           #
           # 1日を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Array<Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
@@ -93,7 +93,7 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Array<Base::Year>] 完全範囲

@@ -17,11 +17,11 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Array<OperatedMonth>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         #
-        def initialize(context: Context.new, months: [], total_days: 0)
+        def initialize(context: Context::Context.new, months: [], total_days: 0)
           super(context: context, months: months, total_days: total_days)
         end
 

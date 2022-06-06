@@ -20,7 +20,7 @@ module Zakuro
         #   * 対象年に対して、前年11月-当年11月までを出力する
         #   * 対象年（西暦）と計算年（元号x年）の紐付けは行わない
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Integer] western_year 西暦年
         #
         # @return [Array<Month>] 1年データ

@@ -16,7 +16,7 @@ describe 'Zakuro' do
       describe 'DroppedDate' do
         describe 'Location' do
           let!(:context) do
-            Zakuro::Context.new(version_name: 'Senmyou')
+            Zakuro::Context::Context.new(version: 'Senmyou')
           end
           describe '#existed?' do
             context 'solar term has dropped date' do

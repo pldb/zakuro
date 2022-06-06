@@ -33,7 +33,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Base' do
       describe 'OperatedYear' do
-        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+        let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         let(:first_day) do
           Zakuro::Calculation::Monthly::FirstDay.new(
             remainder: Zakuro::Senmyou::Cycle::Remainder.new

@@ -39,7 +39,7 @@ describe 'Zakuro' do
           )
         end
         describe '.get' do
-          let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+          let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
 
           context 'the month with changed first day' do
             it 'should be in one days at 873-2-1' do

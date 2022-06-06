@@ -29,7 +29,7 @@ module Zakuro
         #   * 対象年に対して、前年11月-当年11月までを出力する
         #   * 対象年（西暦）と計算年（元号x年）の紐付けは行わない
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Monthly::AbstractLunarPhase] lunar_phase 月の位相
         # @param [Solar::AbstractAverage] solar_average 定気（太陽軌道平均）
         #
@@ -51,7 +51,7 @@ module Zakuro
         #
         # 1年データを取得する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Monthly::LunarPhase] lunar_phase 月の位相
         #
         # @return [Array<Month>] 1年データ

@@ -20,7 +20,7 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [String] start_name 開始元号名
         # @param [String] last_name 終了元号名
         # @param [Array<Year>] years 年データ（完全範囲）

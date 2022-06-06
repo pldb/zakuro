@@ -32,11 +32,11 @@ describe 'Zakuro' do
           # :reek:UtilityFunction
           def create_operated_solar_terms(western_date: Zakuro::Western::Calendar.new)
             full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-              context: Zakuro::Context.new(version_name: 'Senmyou'),
+              context: Zakuro::Context::Context.new(version: 'Senmyou'),
               start_date: western_date
             )
             operated_solar_terms = Zakuro::Calculation::Range::OperatedSolarTerms.new(
-              context: Zakuro::Context.new(version_name: 'Senmyou'),
+              context: Zakuro::Context::Context.new(version: 'Senmyou'),
               years: full_range.get
             )
             operated_solar_terms.create

@@ -24,7 +24,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'NamedScroll' do
-        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+        let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         describe '#advance' do
           context 'a month beyond year' do
             let(:months) do

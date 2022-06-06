@@ -16,7 +16,7 @@ module Zakuro
       # Year 年
       #
       class Year
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         attr_reader :context
         # @return [Array<Month>] 年内の全ての月
         attr_reader :months
@@ -26,11 +26,11 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Array<Month>] months 年内の全ての月
         # @param [Integer] total_days 年の日数
         #
-        def initialize(context: Context.new, months: [], total_days: 0)
+        def initialize(context: Context::Context.new, months: [], total_days: 0)
           @context = context
           @months = months
           @total_days = total_days

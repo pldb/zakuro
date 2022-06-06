@@ -23,7 +23,7 @@ describe 'Zakuro' do
     describe 'Range' do
       describe 'DatedFullRange' do
         describe '.get' do
-          let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+          let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
           context 'specified "貞観" gengou' do
             it 'should be 19 year' do
               date = Zakuro::Western::Calendar.new(year: 873, month: 2, day: 1)

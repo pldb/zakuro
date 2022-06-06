@@ -862,7 +862,7 @@ describe 'Zakuro' do
               GENKA_EXPECTED_MONTHS.each do |year, expects|
                 actuals = \
                   Zakuro::Genka::Range::AnnualRange.get(
-                    context: Zakuro::Context.new(version_name: 'Genka'),
+                    context: Zakuro::Context::Context.new(version: 'Genka'),
                     western_year: year
                   )
                 actuals.each_with_index do |month, index|
@@ -878,7 +878,7 @@ describe 'Zakuro' do
             end
             # it 'call example' do
             #   Zakuro::Genka::Range::AnnualRange.get(
-            #     context: Zakuro::Context.new(version_name: 'Genka'),
+            #     context: Zakuro::Context::Context.new(version: 'Genka'),
             #     western_year: 468
             #   )
             # end

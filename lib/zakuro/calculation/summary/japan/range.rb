@@ -25,7 +25,7 @@ module Zakuro
           #
           # 生成する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Japan::Calendar] start_date 和暦開始日
           # @param [Japan::Calendar] last_date 和暦終了日
           #
@@ -81,7 +81,7 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Japan::Calendar] start_date 和暦開始日
           # @param [Japan::Calendar] last_date 和暦終了日
           #
@@ -99,7 +99,7 @@ module Zakuro
           #
           # 運用結果範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Array<Base::Year>] years 完全範囲
           # @param [Japan::Calendar] start_date 和暦開始日
           # @param [Japan::Calendar] last_date 和暦終了日

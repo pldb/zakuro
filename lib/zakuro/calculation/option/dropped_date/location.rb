@@ -30,7 +30,7 @@ module Zakuro
           #
           # 初期化
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Cycle::AbstractSolarTerm] solar_term 二十四節気
           #
           def initialize(context:, solar_term:)
