@@ -30,7 +30,7 @@ module Zakuro
         # @param [Western::Calendar] western_date 西暦日
         # @param [Cycle::AbstractRemainder] 和暦日
         #
-        def initialize(number: 1, western_date: Western::Calendar.new,
+        def initialize(number: INVALID_NUMBER, western_date: Western::Calendar.new,
                        remainder: Cycle::AbstractRemainder.new)
           @number = number
           @western_date = western_date

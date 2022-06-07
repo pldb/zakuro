@@ -7,6 +7,8 @@ require_relative '../../../../output/logger'
 
 require_relative '../../../base/year'
 
+require_relative '../../internal/day'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -37,10 +39,10 @@ module Zakuro
               first_date = month.western_date.clone
               days = date.day - 1
               western_date = first_date + days
+              day = Day.get(month: month, date: western_date)
 
               Output::Response::SingleDay.create(
-                year: year, month: month,
-                date: western_date, days: days
+                year: year, month: month, day: day
               )
             end
 

@@ -2,6 +2,8 @@
 
 require_relative '../../../output/response'
 
+require_relative './day'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -50,12 +52,12 @@ module Zakuro
 
             next unless include?(date: current_date)
 
-            day = Output::Response::SingleDay.create(
-              year: @year, month: @month,
-              date: current_date, days: index
+            day = Day.get(month: @month, date: current_date)
+            single_day = Output::Response::SingleDay.create(
+              year: @year, month: @month, day: day
             )
 
-            result.push(day)
+            result.push(single_day)
           end
 
           result

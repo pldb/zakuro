@@ -28,7 +28,7 @@ module Zakuro
             #
             # 取得する
             #
-            # @param [Array<Base::Year>] years 範囲
+            # @param [Array<Calculation::Base::Year>] years 範囲
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
@@ -49,7 +49,7 @@ module Zakuro
             #
             # 年を特定する
             #
-            # @param [Array<Year>] years 範囲
+            # @param [Array<Calculation::Base::Year>] years 範囲
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
@@ -73,7 +73,7 @@ module Zakuro
             #
             # 月を特定する
             #
-            # @param [Year] year 年
+            # @param [Calculation::Base::Year] year 年
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
@@ -107,7 +107,7 @@ module Zakuro
             #
             # 月が範囲に含まれるか
             #
-            # @param [Monthly::Month] month 月
+            # @param [Calculation::Monthly::Month] month 月
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
