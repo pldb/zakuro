@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../../context/option'
 require_relative '../../result/data/option/dropped_date/option'
 
 # :nodoc:
@@ -16,18 +17,20 @@ module Zakuro
         # 初期化
         #
         # @param [Context::Context] context 暦コンテキスト
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Base::Day] day 日情報
         #
-        # @return [Array<Result::Data::Option::AbstractOption>] オプション結果
+        # @return [Hash<String, Result::Data::Option::AbstractOption>] オプション結果
         #
-        def self.create(context:)
-          options = []
+        def self.create(context:, month:, day:)
+          # TODO: test
+          options = {}
 
           if context.dropped_date?
-            # TODO: Suitable parameter
-            remainde = nil
-            solar_terms = []
-            option = dropped_date(context: context, remainder: remainde, solar_terms: solar_terms)
-            options.push(option)
+            remainder = day.remainder
+            solar_terms = month.solar_terms
+            option = dropped_date(context: context, remainder: remainder, solar_terms: solar_terms)
+            options[Context::Context::Option::DROPPED_DATE_KEY] = option
           end
 
           options

@@ -18,7 +18,7 @@ module Zakuro
         # 1日データを生成する
         #
         # @param [Calculation::Base::Year] year 年情報（各暦のデータ型）
-        # @param [Calculation::Base::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
         # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Data::SingleDay] 1日データ
@@ -54,7 +54,7 @@ module Zakuro
         # 年データを保存する
         #
         # @param [Calculation::Base::Year] year 年情報（各暦のデータ型）
-        # @param [Calculation::Base::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
         # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Year] 年データ
@@ -77,7 +77,7 @@ module Zakuro
         #
         # 月データを保存する
         #
-        # @param [Calculation::Base::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
         # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Month] 月データ
