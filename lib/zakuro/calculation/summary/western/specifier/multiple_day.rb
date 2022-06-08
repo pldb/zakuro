@@ -28,15 +28,18 @@ module Zakuro
             #
             # 取得する
             #
+            # @param [Context::Context] context 暦コンテキスト
             # @param [Array<Calculation::Base::Year>] years 範囲
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
             # @return [Array<Result::Data::SingleDay>] 期間検索結果（和暦日）
             #
-            def self.get(years: [], start_date: Western::Calendar.new,
+            def self.get(context:, years: [], start_date: Western::Calendar.new,
                          last_date: Western::Calendar.new)
-              months = specify(years: years, start_date: start_date, last_date: last_date)
+              months = specify(
+                context: context, years: years, start_date: start_date, last_date: last_date
+              )
 
               result = []
               months.each do |month|
@@ -49,18 +52,19 @@ module Zakuro
             #
             # 年を特定する
             #
+            # @param [Context::Context] context 暦コンテキスト
             # @param [Array<Calculation::Base::Year>] years 範囲
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
             # @return [Array<Month>] 特定月
             #
-            def self.specify(years: [], start_date: Western::Calendar.new,
+            def self.specify(context:, years: [], start_date: Western::Calendar.new,
                              last_date: Western::Calendar.new)
               result = []
               years.each do |year|
                 result |= specify_month(
-                  year: year, start_date: start_date, last_date: last_date
+                  context: context, year: year, start_date: start_date, last_date: last_date
                 )
               end
 
@@ -73,13 +77,14 @@ module Zakuro
             #
             # 月を特定する
             #
+            # @param [Context::Context] context 暦コンテキスト
             # @param [Calculation::Base::Year] year 年
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
             #
             # @return [Month] 対象月
             #
-            def self.specify_month(year:, start_date: Western::Calendar.new,
+            def self.specify_month(context:, year:, start_date: Western::Calendar.new,
                                    last_date: Western::Calendar.new)
               months = year.months
 
@@ -95,7 +100,7 @@ module Zakuro
                 monthly_last_date = last_date.clone if last_date < monthly_last_date
 
                 specify_months.push(
-                  Month.new(year: year, month: month,
+                  Month.new(context: context, year: year, month: month,
                             start_date: monthly_start_date, last_date: monthly_last_date)
                 )
               end

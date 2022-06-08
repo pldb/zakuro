@@ -24,14 +24,15 @@ describe 'Zakuro' do
           describe 'MultipleDay' do
             describe '.get' do
               def pre(start_date:, last_date:)
+                context = Zakuro::Context::Context.new(version: '')
                 full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-                  context: Zakuro::Context::Context.new(version: ''),
+                  context: context,
                   start_date: start_date,
                   last_date: last_date
                 )
 
                 Zakuro::Calculation::Summary::Western::Specifier::MultipleDay.get(
-                  years: full_range.get, start_date: start_date, last_date: last_date
+                  context: context, years: full_range.get, start_date: start_date, last_date: last_date
                 )
               end
               context 'ancient month from western date 862-2-3' do

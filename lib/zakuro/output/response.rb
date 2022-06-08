@@ -20,32 +20,15 @@ module Zakuro
         # @param [Calculation::Base::Year] year 年情報（各暦のデータ型）
         # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
         # @param [Calculation::Base::Day] day 日情報
-        #
-        # @return [Result::Data::SingleDay] 1日データ
-        #
-        def self.create(year:, month:, day:)
-          Result::Data::SingleDay.new(
-            year: save_year(year: year, month: month, day: day),
-            month: save_month(month: month, day: day),
-            day: save_day(day: day)
-          )
-        end
-
-        #
-        # 1日データを再生成する
-        #
-        # @param [Result::Data::Year] year 年
-        # @param [Result::Data::Month] month 月
-        # @param [Result::Data::Day] day 日
         # @param [Hash<String, Result::Data::Option::AbstractOption>] options オプション
         #
         # @return [Result::Data::SingleDay] 1日データ
         #
-        def self.recreate(year:, month:, day:, options: {})
+        def self.create(year:, month:, day:, options: {})
           Result::Data::SingleDay.new(
-            year: year,
-            month: month,
-            day: day,
+            year: save_year(year: year, month: month, day: day),
+            month: save_month(month: month, day: day),
+            day: save_day(day: day),
             options: options
           )
         end

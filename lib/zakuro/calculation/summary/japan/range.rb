@@ -40,10 +40,15 @@ module Zakuro
               context: context, years: years, start_date: start_date, last_date: last_date
             )
 
-            japan_start_date = Specifier::SingleDay.get(years: operated_years, date: start_date)
-            japan_last_date = Specifier::SingleDay.get(years: operated_years, date: last_date)
+            japan_start_date = Specifier::SingleDay.get(
+              context: context, years: operated_years, date: start_date
+            )
+            japan_last_date = Specifier::SingleDay.get(
+              context: context, years: operated_years, date: last_date
+            )
 
             list = create_list(
+              context: context,
               operated_years: operated_years, years: years,
               start_date: japan_start_date, last_date: japan_last_date
             )
@@ -52,8 +57,9 @@ module Zakuro
           end
 
           #
-          # <Description>
+          # 1日検索結果リストを生成する
           #
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Array<Base::OperatedYear>] operated_years 運用結果範囲
           # @param [Array<Base::Year>] years 完全範囲
           # @param [Result::Data::SingleDay] start_date 和暦開始日
@@ -61,17 +67,17 @@ module Zakuro
           #
           # @return [Array<Result::Single>] 結果リスト
           #
-          def self.create_list(operated_years: [], years: [],
+          def self.create_list(context:, operated_years: [], years: [],
                                start_date:, last_date:)
             western_start_date = start_date.day.western_date
             western_last_date = last_date.day.western_date
 
             operated_dates = Western::Specifier::MultipleDay.get(
-              years: operated_years, start_date: western_start_date, last_date: western_last_date
+              context: context, years: operated_years, start_date: western_start_date, last_date: western_last_date
             )
 
             dates = Western::Specifier::MultipleDay.get(
-              years: years, start_date: western_start_date, last_date: western_last_date
+              context: context, years: years, start_date: western_start_date, last_date: western_last_date
             )
 
             create_result_list(dates: dates, operated_dates: operated_dates)

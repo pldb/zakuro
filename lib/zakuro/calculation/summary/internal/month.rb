@@ -3,6 +3,7 @@
 require_relative '../../../output/response'
 
 require_relative './day'
+require_relative './option'
 
 # :nodoc:
 module Zakuro
@@ -14,6 +15,8 @@ module Zakuro
       # Month 特定月
       #
       class Month
+        # @return [Context::Context] 暦コンテキスト
+        attr_reader :context
         # @return [Western::Calendar] 西暦開始日
         attr_reader :start_date
         # @return [Western::Calendar] 西暦終了日
@@ -26,12 +29,14 @@ module Zakuro
         #
         # 初期化
         #
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Western::Calendar] start_date 西暦開始日
         # @param [Western::Calendar] last_date 西暦終了日
         # @param [Base::Year] year 年
         # @param [Monthly::Month] month 月
         #
-        def initialize(start_date:, last_date:, year:, month:)
+        def initialize(context:, start_date:, last_date:, year:, month:)
+          @context = context
           @start_date = start_date
           @last_date = last_date
           @year = year
@@ -53,8 +58,11 @@ module Zakuro
             next unless include?(date: current_date)
 
             day = Day.get(month: @month, date: current_date)
+
+            options = Option.create(context: @context, month: @month, day: day)
+
             single_day = Output::Response::SingleDay.create(
-              year: @year, month: @month, day: day
+              year: @year, month: @month, day: day, options: options
             )
 
             result.push(single_day)

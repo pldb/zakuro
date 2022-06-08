@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../context/option'
-require_relative '../../result/data/option/dropped_date/option'
+require_relative '../../../context/option'
+require_relative '../../../result/data/option/dropped_date/option'
 
 # :nodoc:
 module Zakuro
@@ -26,7 +26,7 @@ module Zakuro
           # TODO: test
           options = {}
 
-          if context.dropped_date?
+          if context.option.dropped_date?
             remainder = day.remainder
             solar_terms = month.solar_terms
             option = dropped_date(context: context, remainder: remainder, solar_terms: solar_terms)

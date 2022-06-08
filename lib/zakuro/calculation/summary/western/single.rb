@@ -33,7 +33,7 @@ module Zakuro
 
             data = get_data(context: context, years: years, date: date)
 
-            operation = get_operation(years: years, date: date)
+            operation = get_operation(context: context, years: years, date: date)
 
             Result::Single.new(
               data: data,
@@ -47,7 +47,7 @@ module Zakuro
           # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
-          # @return [Array<Base::Year>] 完全範囲
+          # @return [Array<Calculation::Base::Year>] 完全範囲
           #
           def self.get_full_range_years(context:, date: Western::Calendar.new)
             full_range = Calculation::Range::DatedFullRange.new(context: context, start_date: date)
@@ -59,7 +59,7 @@ module Zakuro
           # 運用結果範囲を取得する
           #
           # @param [Context::Context] context 暦コンテキスト
-          # @param [Array<Base::Year>] years 完全範囲
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Array<Base::OperatedYear>] 運用結果範囲
@@ -76,7 +76,7 @@ module Zakuro
           # 1日を取得する
           #
           # @param [Context::Context] context 暦コンテキスト
-          # @param [Array<Base::Year>] years 完全範囲
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Data::SingleDay] 1日
@@ -85,7 +85,7 @@ module Zakuro
             operated_years = get_operation_range_years(context: context, years: years, date: date)
 
             Specifier::SingleDay.get(
-              years: operated_years, date: date
+              context: context, years: operated_years, date: date
             )
           end
           private_class_method :get_data
@@ -94,13 +94,14 @@ module Zakuro
           # 完全範囲を取得する
           #
           # @param [Context::Context] context 暦コンテキスト
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
-          # @return [Array<Base::Year>] 完全範囲
+          # @return [Array<Calculation::Base::Year>] 完全範囲
           #
-          def self.get_operation(years:, date: Western::Calendar.new)
+          def self.get_operation(context:, years:, date: Western::Calendar.new)
             calc_date = Specifier::SingleDay.get(
-              years: years, date: date
+              context: context, years: years, date: date
             )
 
             Operation.create(calc_date: calc_date)

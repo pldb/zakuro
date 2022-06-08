@@ -24,12 +24,12 @@ describe 'Zakuro' do
           describe 'SingleDay' do
             # :reek:UnityFunction
             def eql?(date:, result:)
+              context = Zakuro::Context::Context.new(version: 'Senmyou')
               full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                start_date: date
+                context: context, start_date: date
               )
               expected = Zakuro::Calculation::Summary::Western::Specifier::SingleDay.get(
-                years: full_range.get, date: date
+                context: context, years: full_range.get, date: date
               )
 
               TestTools::Stringifier.eql?(
