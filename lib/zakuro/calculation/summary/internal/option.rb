@@ -30,7 +30,7 @@ module Zakuro
             remainder = day.remainder
             solar_terms = month.solar_terms
             option = dropped_date(context: context, remainder: remainder, solar_terms: solar_terms)
-            options[Context::Context::Option::DROPPED_DATE_KEY] = option
+            options[Context::Option::DROPPED_DATE_KEY] = option
           end
 
           options
@@ -52,7 +52,7 @@ module Zakuro
             calculation: Result::Data::Option::DroppedDate::Calculation.new
           )
 
-          return option unless parameter.valid
+          return option if remainder.invalid?
 
           location = Calculation::Option::DroppedDate::Location.new(
             context: context, solar_terms: solar_terms
