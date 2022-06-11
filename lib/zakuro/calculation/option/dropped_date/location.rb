@@ -82,18 +82,7 @@ module Zakuro
             # 5. 上記4の商と上記1の大余が没日大余、余りが小余（没余）
             day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
 
-            result.add(day)
-          end
-
-          private
-
-          #
-          # 二十四節気の大余小余を取得する
-          #
-          # @return [Type::Optional<Cycle::AbstractRemainder>] 大余小余
-          #
-          def solar_term_remainder
-            solar_term.remainder
+            day.add(result)
           end
 
           #
@@ -112,6 +101,17 @@ module Zakuro
             end
 
             context.resolver.solar_term.new
+          end
+
+          private
+
+          #
+          # 二十四節気の大余小余を取得する
+          #
+          # @return [Type::Optional<Cycle::AbstractRemainder>] 大余小余
+          #
+          def solar_term_remainder
+            solar_term.remainder
           end
 
           #

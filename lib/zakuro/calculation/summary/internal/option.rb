@@ -2,6 +2,9 @@
 
 require_relative '../../../context/option'
 require_relative '../../../result/data/option/dropped_date/option'
+require_relative '../../../result/data/solar_term'
+
+require_relative '../../option/dropped_date/location'
 
 # :nodoc:
 module Zakuro
@@ -64,11 +67,11 @@ module Zakuro
 
           return option unless remainder.day == dropped_date.day
 
-          solar_term = dropped_date.solar_term
+          solar_term = location.solar_term
           Result::Data::Option::DroppedDate::Option.new(
             matched: true,
             calculation: Result::Data::Option::DroppedDate::Calculation.new(
-              remainder: remainder.format,
+              remainder: dropped_date.format,
               solar_term: Result::Data::SolarTerm.new(
                 index: solar_term.index,
                 remainder: solar_term.remainder.format
