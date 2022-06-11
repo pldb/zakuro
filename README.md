@@ -115,7 +115,7 @@ puts merchant.commit.to_json
 | 四季   | seasons   | TRUE     |        | 四季あり               |
 |        |           | FALSE    |        | 四季なし（デフォルト） |
 
-現時点では `没日` のみ対応しております。
+現時点では宣明暦の [没日](./doc/dropped_date.md) のみ試験的に対応しております（結果未検証）。
 
 # 期待値
 暦算値は『日本暦日原典』、元号の切り替えは『日本史年表　第5版』を範とします。
@@ -208,7 +208,16 @@ puts merchant.commit.to_json
 
 #### Zakuro::Result::Data::Option::DroppedDate::Option
 
-TODO: document
+キー: dropped_date
+
+| 項目名               | キー名      | -          | -         | データ型                                               | 参考値   | 備考               |
+| -------------------- | ----------- | ---------- | --------- | ------------------------------------------------------ | -------- | ------------------ |
+| オプション値有無     | matched     |            |           | True/False                                             | true     |  |
+| 演算値               | calculation |            |           | Zakuro::Result::Data::Option::DroppedDate::Calculation |          |              |
+| 没余                 |             | remainder  |           | String                                                 | 59-34155 |                    |
+| 二十四節気           |             | solar_term |           | Zakuro::Result::Data::Option::DroppedDate::SolarTerm   |          |                    |
+| 二十四節気番号       |             |            | index     | Integer                                                | 6        |                    |
+| 二十四節気の大余小余 |             |            | remainder | String                                                 | 49-7203  |                    |
 
 # 元号
 
