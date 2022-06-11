@@ -29,7 +29,7 @@ describe 'Zakuro' do
                 context: context, start_name: date.gengou
               )
               expected = Zakuro::Calculation::Summary::Japan::Specifier::SingleDay.get(
-                context: context, years: full_range.get, date: date
+                years: full_range.get, date: date
               )
 
               TestTools::Stringifier.eql?(

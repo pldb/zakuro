@@ -33,7 +33,7 @@ module Zakuro
 
             data = get_data(context: context, years: years, date: date)
 
-            operation = get_operation(context: context, years: years, date: date)
+            operation = get_operation(years: years, date: date)
 
             Result::Single.new(
               data: data,
@@ -85,7 +85,7 @@ module Zakuro
             operated_years = get_operation_range_years(context: context, years: years, date: date)
 
             Specifier::SingleDay.get(
-              context: context, years: operated_years, date: date
+              years: operated_years, date: date
             )
           end
           private_class_method :get_data
@@ -93,15 +93,14 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context::Context] context 暦コンテキスト
           # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Array<Calculation::Base::Year>] 完全範囲
           #
-          def self.get_operation(context:, years:, date: Western::Calendar.new)
+          def self.get_operation(years:, date: Western::Calendar.new)
             calc_date = Specifier::SingleDay.get(
-              context: context, years: years, date: date
+              years: years, date: date
             )
 
             Operation.create(calc_date: calc_date)

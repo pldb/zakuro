@@ -41,10 +41,10 @@ module Zakuro
             )
 
             japan_start_date = Specifier::SingleDay.get(
-              context: context, years: operated_years, date: start_date
+              years: operated_years, date: start_date
             )
             japan_last_date = Specifier::SingleDay.get(
-              context: context, years: operated_years, date: last_date
+              years: operated_years, date: last_date
             )
 
             list = create_list(

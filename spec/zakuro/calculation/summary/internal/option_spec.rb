@@ -27,10 +27,10 @@ describe 'Zakuro' do
               options = {}
               context = Zakuro::Context::Context.new(options: options)
 
-              month = Zakuro::Calculation::Monthly::Month.new
+              month = Zakuro::Calculation::Monthly::Month.new(context: context)
               day = Zakuro::Calculation::Base::Day.new
               actual = Zakuro::Calculation::Summary::Option.create(
-                context: context, month: month, day: day
+                month: month, day: day
               )
               expect(actual.size).to eq 0
             end
@@ -43,10 +43,10 @@ describe 'Zakuro' do
                 }
                 context = Zakuro::Context::Context.new(options: options)
 
-                month = Zakuro::Calculation::Monthly::Month.new
+                month = Zakuro::Calculation::Monthly::Month.new(context: context)
                 day = Zakuro::Calculation::Base::Day.new
                 Zakuro::Calculation::Summary::Option.create(
-                  context: context, month: month, day: day
+                  month: month, day: day
                 )
               end
               it 'should be a result' do
@@ -98,7 +98,7 @@ describe 'Zakuro' do
                   )
                 )
                 Zakuro::Calculation::Summary::Option.create(
-                  context: context, month: month, day: day
+                  month: month, day: day
                 )
               end
               it 'should be a result' do

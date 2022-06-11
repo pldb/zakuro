@@ -59,7 +59,7 @@ module Zakuro
 
             day = Day.get(month: @month, date: current_date)
 
-            options = Option.create(context: @context, month: @month, day: day)
+            options = Option.create(month: @month, day: day)
 
             single_day = Output::Response::SingleDay.create(
               year: @year, month: @month, day: day, options: options

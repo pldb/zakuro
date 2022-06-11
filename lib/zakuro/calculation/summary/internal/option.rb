@@ -19,15 +19,15 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context::Context] context 暦コンテキスト
         # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
         # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Hash<String, Result::Data::Option::AbstractOption>] オプション結果
         #
-        def self.create(context:, month:, day:)
+        def self.create(month:, day:)
           # TODO: test
           options = {}
+          context = month.context
 
           if context.option.dropped_date?
             remainder = day.remainder
