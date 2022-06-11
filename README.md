@@ -93,7 +93,7 @@ puts merchant.commit.to_json
 | 範囲（終了日）   |         | last         | Date     | 西暦日             |
 |                |         |              | String   | 和暦日/西暦日      |
 | 列             | columns |              | Array    | 取得したい列の列名 |
-| オプション     | options |              | Array    | 取得オプション     |
+| オプション     | options |              | Hash<String, Object>    | 取得オプション     |
 
 現時点では `date` と `range` のみ対応中です。
 
@@ -115,7 +115,7 @@ puts merchant.commit.to_json
 | 四季   | seasons   | TRUE     |        | 四季あり               |
 |        |           | FALSE    |        | 四季なし（デフォルト） |
 
-現時点ではオプションは未対応です。
+現時点では `没日` のみ対応しております。
 
 # 期待値
 暦算値は『日本暦日原典』、元号の切り替えは『日本史年表　第5版』を範とします。
@@ -174,6 +174,7 @@ puts merchant.commit.to_json
 | 日の干支                 |        | zodiac_name      |              | String                          | 乙卯       | 日の干支                   |
 | 日の大余小余             |        | remainder        |              | String                          | 51-2479    | 大余小余                   |
 | 西暦日                   |        | western_date     |              | String                          | 0937-02-14 | 西暦日                     |
+| オプション             | options |                  | | Hash<String, Zakuro::Result::Data::Option::AbstractOption>|  | オプション値              |
 
 ### Zakuro::Result::Operation
 
@@ -203,6 +204,11 @@ puts merchant.commit.to_json
 | 注釈内容          | 　       |              | description | String                                             | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。<br>正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
 | 注釈補記          | 　       |              | note        | String                                             | -                                                                                                                   | 原文訂正             |
 
+### Zakuro::Result::Data::Option::AbstractOption
+
+#### Zakuro::Result::Data::Option::DroppedDate::Option
+
+TODO: document
 
 # 元号
 

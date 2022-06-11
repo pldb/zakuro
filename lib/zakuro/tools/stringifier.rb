@@ -17,6 +17,7 @@ module Zakuro
       #
       # @param [Object] obj 対象インスタンス
       # @param [String] class_prefix インスタンス内でハッシュ変換するクラスのプレフィックス
+      # @param [True, False] formatted 整形有無
       #
       # @return [Hash<String, Objcet>] ハッシュ
       #
@@ -31,13 +32,12 @@ module Zakuro
         hash
       end
 
-      # :reek:TooManyStatements { max_statements: 7 }
-
       #
       # 対象インスタンスをハッシュ化する（再帰処理）
       #
       # @param [Object] obj 対象インスタンス
       # @param [String] class_prefix インスタンス内でハッシュ変換するクラスのプレフィックス
+      # @param [True, False] formatted 整形有無
       #
       # @return [Hash<String, Objcet>] ハッシュ
       #
@@ -52,6 +52,20 @@ module Zakuro
           return to_h(obj: obj, class_prefix: class_prefix, formatted: formatted)
         end
 
+        general_value_to_hash(obj: obj, class_prefix: class_prefix, formatted: formatted)
+      end
+      private_class_method :value_to_hash
+
+      #
+      # ライブラリを問わない標準的な値をハッシュ化する（再帰処理）
+      #
+      # @param [Object] obj 対象インスタンス
+      # @param [String] class_prefix インスタンス内でハッシュ変換するクラスのプレフィックス
+      # @param [True, False] formatted 整形有無
+      #
+      # @return [Objcet] ハッシュ変換可能な値
+      #
+      def self.general_value_to_hash(obj:, class_prefix:, formatted:)
         # 配列は要素一つずつで再帰する
         if obj.is_a?(Array)
           arr = []
@@ -61,9 +75,18 @@ module Zakuro
           return arr
         end
 
+        # ハッシュはキーごとに再帰する
+        if obj.is_a?(Hash)
+          hash = {}
+          obj.each do |key, value|
+            hash[key] = to_h(obj: value, class_prefix: class_prefix, formatted: formatted)
+          end
+          return hash
+        end
+
         obj
       end
-      private_class_method :value_to_hash
+      private_class_method :general_value_to_hash
     end
   end
 end

@@ -4,6 +4,8 @@ require_relative '../core'
 
 require_relative './option/abstract_option'
 
+require_relative './option/dropped_date/option'
+
 require_relative 'year'
 
 require_relative 'month'
