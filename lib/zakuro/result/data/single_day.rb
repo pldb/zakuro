@@ -2,6 +2,10 @@
 
 require_relative '../core'
 
+require_relative './option/abstract_option'
+
+require_relative './option/dropped_date/option'
+
 require_relative 'year'
 
 require_relative 'month'
@@ -28,6 +32,8 @@ module Zakuro
         attr_reader :month
         # @return [Day] 日
         attr_reader :day
+        # @return [Hash<String, Option::AbstractOption>] オプション
+        attr_reader :options
 
         #
         # 初期化
@@ -35,12 +41,14 @@ module Zakuro
         # @param [Year] year 年
         # @param [Month] month 月
         # @param [Day] day 日
+        # @param [Hash<String, Option::AbstractOption>] options オプション
         #
-        def initialize(year:, month:, day:)
+        def initialize(year:, month:, day:, options: {})
           super
           @year = year
           @month = month
           @day = day
+          @options = options
         end
       end
     end

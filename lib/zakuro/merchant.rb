@@ -71,8 +71,7 @@ module Zakuro
     # @raise [Exception::ZakuroError] ライブラリ内エラー
     #
     def commit
-      # TODO: condition で設定する
-      context = Context.new(version_name: '')
+      context = Context::Context.new(options: condition.options)
 
       result = get(context: context)
 
@@ -90,7 +89,7 @@ module Zakuro
     #
     # 結果取得する
     #
-    # @param [Context] context 暦コンテキスト
+    # @param [Context::Context] context 暦コンテキスト
     #
     # @return [Calculation::Type::Optional] 参照
     #

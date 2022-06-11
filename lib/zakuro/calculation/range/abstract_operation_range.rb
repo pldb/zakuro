@@ -21,13 +21,13 @@ module Zakuro
         attr_reader :years
         # @return [OperatedSolarTerms] 運用時二十四節気
         attr_reader :operated_solar_terms
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         attr_reader :context
 
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Gengou::AbstractScroll] scroll 元号スクロール
         # @param [Array<Year>] years 年データ（完全範囲）
         #

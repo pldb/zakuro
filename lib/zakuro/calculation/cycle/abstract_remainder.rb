@@ -43,16 +43,16 @@ module Zakuro
         # 初期化
         #
         # @param [Integer] base_day 1大余に必要な小余（暦によって基数が異なる）
-        # @param [Integer] base_mitune 1小余に必要な秒（暦によって基数が異なる）
+        # @param [Integer] base_minute 1小余に必要な秒（暦によって基数が異なる）
         # @param [Integer] day 大余（"日"に相当）
         # @param [Integer] minute 小余（"分"に相当）
         # @param [Integer] second 秒
         # @param [Integer] total 繰り上げなしの小余
         #
-        def initialize(base_day: -1, base_mitune: -1, day: -1, minute: -1, second: -1, total: -1)
+        def initialize(base_day: -1, base_minute: -1, day: -1, minute: -1, second: -1, total: -1)
           @base_limit = LIMIT
           @base_day = base_day
-          @base_minute = base_mitune
+          @base_minute = base_minute
           @limited = true
 
           set(day: day, minute: minute, second: second, total: total)

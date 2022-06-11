@@ -14,7 +14,7 @@ module Zakuro
       # Month 月情報
       #
       class Month
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         attr_reader :context
         # @return [MonthLabel] 月表示名
         attr_reader :month_label
@@ -28,13 +28,13 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [Base::Gengou] gengou 元号
         #
-        def initialize(context: Context.new, month_label: MonthLabel.new, first_day: FirstDay.new,
+        def initialize(context: Context::Context.new, month_label: MonthLabel.new, first_day: FirstDay.new,
                        solar_terms: [], gengou: Base::Gengou.new)
           @context = context
           @month_label = month_label

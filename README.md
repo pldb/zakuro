@@ -63,8 +63,7 @@ western_date = Date.new(862, 2, 3)
 # 初期化時の設定
 merchant = Zakuro::Merchant.new(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"
-大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}}}
+# => {"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"options":{}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"options":{}}}}
 
 western_date = Date.new(1685, 2, 3)
 
@@ -72,12 +71,12 @@ western_date = Date.new(1685, 2, 3)
 # merchant = Zakuro::Merchant.new
 merchant.offer(condition: { date: western_date })
 puts merchant.commit.to_json
-# => {"data":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"甲子","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"}}}}
+# => {"data":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"},"options":{}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞享","number":1},"second_gengou":{"name":"","number":-1},"zodiac_name":"","total_days":354},"month":{"number":12,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"壬辰","remainder":"28-4182","western_date":"1685-01-05"},"odd_solar_terms":[{"index":1,"remainder":"30-890"}],"even_solar_terms":[{"index":2,"remainder":"45-2726"}]},"day":{"number":30,"zodiac_name":"辛酉","remainder":"57-4182","western_date":"1685-02-03"},"options":{}}}}
 
 # 期間検索
 merchant = Zakuro::Merchant.new(condition: { range: {start: Date.new(862, 2, 3), last: Date.new(862, 2, 4)}})
 puts merchant.commit.to_json
-{"list":[{"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"}}}},{"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":2,"zodiac_name":"辛未","remainder":"7-1282","western_date":"0862-02-04"}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":2,"zodiac_name":"辛未","remainder":"7-1282","western_date":"0862-02-04"}}}}]}
+# => {"list":[{"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"options":{}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"options":{}}}},{"data":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":2,"zodiac_name":"辛未","remainder":"7-1282","western_date":"0862-02-04"},"options":{}},"operation":{"operated":false,"month":{"current":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]},"parent":{"id":"","western_date":"","page":-1,"number":-1,"annotations":[]}},"original":{"year":{"first_gengou":{"name":"貞観","number":4},"second_gengou":{"name":"","number":-1},"zodiac_name":"壬午","total_days":354},"month":{"number":1,"leaped":false,"days_name":"大","first_day":{"number":1,"zodiac_name":"庚午","remainder":"6-1282","western_date":"0862-02-03"},"odd_solar_terms":[{"index":5,"remainder":"34-5368"}],"even_solar_terms":[{"index":4,"remainder":"19-3532"}]},"day":{"number":2,"zodiac_name":"辛未","remainder":"7-1282","western_date":"0862-02-04"},"options":{}}}}]}
 ```
 
 # 条件
@@ -93,7 +92,7 @@ puts merchant.commit.to_json
 | 範囲（終了日）   |         | last         | Date     | 西暦日             |
 |                |         |              | String   | 和暦日/西暦日      |
 | 列             | columns |              | Array    | 取得したい列の列名 |
-| オプション     | options |              | Array    | 取得オプション     |
+| オプション     | options |              | Hash<String, Object>    | 取得オプション     |
 
 現時点では `date` と `range` のみ対応中です。
 
@@ -101,15 +100,21 @@ puts merchant.commit.to_json
 
 | 項目名 | キー名    | データ型 | データ | 備考                   |
 |--------|-----------|----------|--------|------------------------|
-| 単位   | unit      | String   | year   | 年単位                 |
-|        |           |          | month  | 月単位                 |
-|        |           |          | day    | 日単位（デフォルト）   |
-| 没日   | lost_days | TRUE     |        | 没日あり               |
-|        |           | FALSE    |        | 没日なし（デフォルト） |
+| 暦     | version   | String   | Genka |  元嘉暦               |
+|        |           |          | Gihou |  儀鳳暦               |
+|        |           |          | Daien |  大衍暦              |
+|        |           |          | Senmyou | 宣明暦             |
+|        |           |          | Joukyou | 貞享暦             |
+|        |           |          | Kansei |  寛政暦             |
+|        |           |          | Tenpou |  天保暦             |
+|        |           |          | Gregorio | グレゴリオ暦        |
+|        |           |          |         | 指定なし（デフォルト） |
+| 没日   | dropped_days | TRUE     |        | 没日あり            |
+|        |             | FALSE    |        | 没日なし（デフォルト） |
 | 四季   | seasons   | TRUE     |        | 四季あり               |
 |        |           | FALSE    |        | 四季なし（デフォルト） |
 
-現時点ではオプションは未対応です。
+現時点では宣明暦の [没日](./doc/dropped_date.md) のみ試験的に対応しております（結果未検証）。
 
 # 期待値
 暦算値は『日本暦日原典』、元号の切り替えは『日本史年表　第5版』を範とします。
@@ -168,6 +173,7 @@ puts merchant.commit.to_json
 | 日の干支                 |        | zodiac_name      |              | String                          | 乙卯       | 日の干支                   |
 | 日の大余小余             |        | remainder        |              | String                          | 51-2479    | 大余小余                   |
 | 西暦日                   |        | western_date     |              | String                          | 0937-02-14 | 西暦日                     |
+| オプション             | options |                  | | Hash<String, Zakuro::Result::Data::Option::AbstractOption>|  | オプション値              |
 
 ### Zakuro::Result::Operation
 
@@ -197,6 +203,20 @@ puts merchant.commit.to_json
 | 注釈内容          | 　       |              | description | String                                             | 計算は51乙卯であるが, 日本紀略に甲寅朔とある。<br>正月甲寅朔のユリウス暦日は2月13日となる。（元旦日食 をさけるための変更か） | 　                   |
 | 注釈補記          | 　       |              | note        | String                                             | -                                                                                                                   | 原文訂正             |
 
+### Zakuro::Result::Data::Option::AbstractOption
+
+#### Zakuro::Result::Data::Option::DroppedDate::Option
+
+キー: dropped_date
+
+| 項目名               | キー名      | -          | -         | データ型                                               | 参考値   | 備考               |
+| -------------------- | ----------- | ---------- | --------- | ------------------------------------------------------ | -------- | ------------------ |
+| オプション値有無     | matched     |            |           | True/False                                             | true     |  |
+| 演算値               | calculation |            |           | Zakuro::Result::Data::Option::DroppedDate::Calculation |          |              |
+| 没余                 |             | remainder  |           | String                                                 | 59-34155 |                    |
+| 二十四節気           |             | solar_term |           | Zakuro::Result::Data::Option::DroppedDate::SolarTerm   |          |                    |
+| 二十四節気番号       |             |            | index     | Integer                                                | 6        |                    |
+| 二十四節気の大余小余 |             |            | remainder | String                                                 | 49-7203  |                    |
 
 # 元号
 

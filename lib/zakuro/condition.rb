@@ -161,8 +161,8 @@ module Zakuro
     # Options オプション
     # 取得内容を変更する
     #
-    #   * unit: 年/月/日
-    #   * lost_days: 没日あり
+    #   * version: 暦
+    #   * dropped_days: 没日あり
     #   * seasons: 四季あり
     #
     class Options
@@ -214,7 +214,7 @@ module Zakuro
     attr_reader :range
     # @return [Array<String>] 列
     attr_reader :columns
-    # @return [Array<String>] オプション
+    # @return [Hash<String, Object>] オプション
     attr_reader :options
 
     #
@@ -224,13 +224,13 @@ module Zakuro
     # @option hash [Date] :date 基準日
     # @option hash [Hash<Symbol, Date>] :range 範囲
     # @option hash [Array<String>] :columns 列
-    # @option hash [Array<String>] :options オプション
+    # @option hash [Hash<String, Object>] :options オプション
     #
     def initialize(hash: {})
       @date = hash[:date]
       @range = hash[:range]
       @columns = hash[:columns]
-      @options = hash[:options]
+      @options = hash[:options] || {}
     end
 
     # :reek:TooManyStatements { max_statements: 8 }

@@ -15,7 +15,7 @@ module Zakuro
     # Range 範囲
     #
     class Range
-      # @return [Context] 暦コンテキスト
+      # @return [Context::Context] 暦コンテキスト
       attr_reader :context
       # @return [Locale::Range] 範囲
       attr_reader :range
@@ -23,7 +23,7 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Context] context 暦コンテキスト
+      # @param [Context::Context] context 暦コンテキスト
       # @param [Hash<Symbol, Object>] range 範囲
       #
       def initialize(context:, range:)

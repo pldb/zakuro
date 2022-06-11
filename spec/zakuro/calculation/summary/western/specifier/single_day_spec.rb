@@ -8,7 +8,7 @@ require File.expand_path('../../../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../../../' \
-                         'lib/zakuro/version/context',
+                         'lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../../' \
@@ -24,9 +24,9 @@ describe 'Zakuro' do
           describe 'SingleDay' do
             # :reek:UnityFunction
             def eql?(date:, result:)
+              context = Zakuro::Context::Context.new(version: 'Senmyou')
               full_range = Zakuro::Calculation::Range::DatedFullRange.new(
-                context: Zakuro::Context.new(version_name: 'Senmyou'),
-                start_date: date
+                context: context, start_date: date
               )
               expected = Zakuro::Calculation::Summary::Western::Specifier::SingleDay.get(
                 years: full_range.get, date: date

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/version/context',
+                         'lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -33,7 +33,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Base' do
       describe 'OperatedYear' do
-        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+        let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         let(:first_day) do
           Zakuro::Calculation::Monthly::FirstDay.new(
             remainder: Zakuro::Senmyou::Cycle::Remainder.new

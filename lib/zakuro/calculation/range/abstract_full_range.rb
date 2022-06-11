@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../version/context'
+require_relative '../../context/context'
 
 require_relative '../../era/western/calendar'
 require_relative '../../output/logger'
@@ -35,7 +35,7 @@ module Zakuro
       #   * この再計算が必要になるのは、元号が切り替わる年のみである
       #
       class AbstractFullRange
-        # @return [Context] 暦コンテキスト
+        # @return [Context::Context] 暦コンテキスト
         attr_reader :context
         # @return [Western::Calendar] 開始日
         attr_reader :start_date
@@ -50,7 +50,7 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Gengou::AbstractScroll] scroll 元号スクロール
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
@@ -61,7 +61,6 @@ module Zakuro
           @last_date = last_date
           return if invalid?
 
-          # TODO: 現時点では使用していない。特定の暦を指定できるようになった状態で使用する
           @context = context
           @scroll = scroll
         end
@@ -106,17 +105,20 @@ module Zakuro
           start_year = @scroll.western_start_year
           last_year = @scroll.western_last_year
 
+          # TODO: context にデフォルト暦名が設定されている場合は使用しない
           versions = Version.get(start_year: start_year, last_year: last_year)
 
           versions.each_with_index do |version, index|
-            context = Context.new(version_name: version.name)
+            specified_context = Context::Context.new(
+              version: version.name, options: context.option.hash
+            )
             start_year = version.start_year
             last_year = version.last_year
             # 最後の暦だけ1年足す（次の元号の開始年まで計算するケースあり）
             last_year += 1 if (index + 1) == versions.size
 
             years = boundary_resolved_ranges(
-              context: context, start_year: start_year, last_year: last_year
+              context: specified_context, start_year: start_year, last_year: last_year
             )
             result.concat(years)
           end
@@ -127,7 +129,7 @@ module Zakuro
         #
         # 年境界解決済みの範囲
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Integer] start_year 開始西暦年
         # @param [Integer] last_year 終了西暦年
         #
@@ -146,7 +148,7 @@ module Zakuro
         #
         # 完全範囲内の年データを取得する
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Integer] start_year 開始西暦年
         # @param [Integer] last_year 終了西暦年
         #

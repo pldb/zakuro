@@ -25,7 +25,7 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [FirstDay] first_day 月初日（朔日）

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/context',
+                         'lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../' \
@@ -1042,7 +1042,7 @@ describe 'Zakuro' do
               GIHOU_EXPECTED_MONTHS.each do |year, expects|
                 actuals = \
                   Zakuro::Gihou::Range::AnnualRange.get(
-                    context: Zakuro::Context.new(version_name: 'Gihou'),
+                    context: Zakuro::Context::Context.new(version: 'Gihou'),
                     western_year: year
                   )
                 actuals.each_with_index do |month, index|
@@ -1058,7 +1058,7 @@ describe 'Zakuro' do
             end
             # it 'call example' do
             #   Zakuro::Gihou::Range::AnnualRange.get(
-            #     context: Zakuro::Context.new(version_name: 'Gihou'),
+            #     context: Zakuro::Context::Context.new(version: 'Gihou'),
             #     western_year: 700
             #   )
             # end

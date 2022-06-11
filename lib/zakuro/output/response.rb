@@ -15,62 +15,36 @@ module Zakuro
       #
       module SingleDay
         #
-        # Param 引数
-        #
-        class Param
-          # @return [Year] 年情報（各暦のデータ型）
-          attr_reader :year
-          # @return [Month] 月情報（各暦のデータ型）
-          attr_reader :month
-          # @return [Western::Calendar] 年月日情報（西暦）
-          attr_reader :date
-          # @return [Integer] 日数（月初日から指定日までの日数）
-          attr_reader :days
-
-          #
-          # 初期化
-          #
-          # @param [Year] year 年情報（各暦のデータ型）
-          # @param [Month] month 月情報（各暦のデータ型）
-          # @param [Western::Calendar] date 年月日情報（西暦）
-          # @param [Integer] days 日数（月初日から指定日までの日数）
-          #
-          def initialize(year:, month:, date:, days:)
-            @year = year
-            @month = month
-            @date = date
-            @days = days
-          end
-        end
-
-        #
         # 1日データを生成する
         #
-        # @param [Parameter] param 引数
+        # @param [Calculation::Base::Year] year 年情報（各暦のデータ型）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Base::Day] day 日情報
+        # @param [Hash<String, Result::Data::Option::AbstractOption>] options オプション
         #
-        # @return [SingleDay] 1日データ
+        # @return [Result::Data::SingleDay] 1日データ
         #
-        def self.save_single_day(param:)
-          year = param.year
-          month = param.month
-          date = param.date
-          days = param.days
+        def self.create(year:, month:, day:, options: {})
           Result::Data::SingleDay.new(
-            year: save_year(year: year, month: month, date: date),
-            month: save_month(month: month, date: date, days: days),
-            day: save_day(month: month, date: date, days: days)
+            year: save_year(year: year, month: month, day: day),
+            month: save_month(month: month, day: day),
+            day: save_day(day: day),
+            options: options
           )
         end
 
         #
         # 年データを保存する
         #
-        # @param [Year] year 年情報（各暦のデータ型）
+        # @param [Calculation::Base::Year] year 年情報（各暦のデータ型）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Year] 年データ
         #
-        def self.save_year(year:, month:, date:)
+        def self.save_year(year:, month:, day:)
           gengou = month.gengou
+          date = day.western_date
           first = gengou.match_first_line(date: date)
           second = gengou.match_second_line(date: date)
           Result::Data::Year.new(
@@ -86,17 +60,16 @@ module Zakuro
         #
         # 月データを保存する
         #
-        # @param [Month] month 月情報（各暦のデータ型）
-        # @param [Western::Calendar] date 年月日情報（西暦）
-        # @param [Integer] days 日数（月初日から指定日までの日数）
+        # @param [Calculation::Monthly::Month] month 月情報（各暦のデータ型）
+        # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Month] 月データ
         #
-        def self.save_month(month:, date:, days:)
+        def self.save_month(month:, day:)
           Result::Data::Month.new(
             number: month.number, leaped: month.leaped?, days_name: month.days_name,
             first_day: save_first_day(remainder: month.remainder,
-                                      date: date, days: days),
+                                      date: day.western_date, days: day.number - 1),
             odd_solar_terms: save_solar_term(term: month.odd_term),
             even_solar_terms: save_solar_term(term: month.even_term)
           )
@@ -147,23 +120,17 @@ module Zakuro
         #
         # 日データを保存する
         #
-        # @param [Month] month 月情報（各暦のデータ型）
-        # @param [Western::Calendar] date 年月日情報（西暦）
-        # @param [Integer] days 日数（月初日から指定日までの日数）
+        # @param [Calculation::Base::Day] day 日情報
         #
         # @return [Result::Day] 日データ
         #
-        def self.save_day(month:, date:, days:)
-          remainder = month.remainder
-          remainder = remainder.add(
-            # 常に参照元のRemainderクラスで生成する
-            remainder.class.new(day: days, minute: 0, second: 0)
-          )
+        def self.save_day(day:)
+          remainder = day.remainder
           Result::Data::Day.new(
-            number: (days + 1),
+            number: day.number,
             zodiac_name: remainder.zodiac_name,
             remainder: remainder,
-            western_date: date
+            western_date: day.western_date
           )
         end
         private_class_method :save_day

@@ -8,7 +8,7 @@ require File.expand_path('../../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../../' \
-                         'lib/zakuro/version/context',
+                         'lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../testdata/single_data_factory',
@@ -25,7 +25,7 @@ describe 'Zakuro' do
             # :reek:UnityFunction
             def eql?(date:, version:, expected:)
               actual = Zakuro::Calculation::Summary::Western::Single.get(
-                context: Zakuro::Context.new(version_name: version),
+                context: Zakuro::Context::Context.new(version: version),
                 date: date
               )
 

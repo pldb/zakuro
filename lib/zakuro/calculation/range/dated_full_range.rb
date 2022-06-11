@@ -16,7 +16,7 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Context] context 暦コンテキスト
+        # @param [Context::Context] context 暦コンテキスト
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
         #

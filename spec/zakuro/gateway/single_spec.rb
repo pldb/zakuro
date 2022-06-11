@@ -8,7 +8,7 @@ describe 'Zakuro' do
     describe 'Single' do
       context 'valid date type paramter' do
         it 'should be no error' do
-          context = Zakuro::Context.new
+          context = Zakuro::Context::Context.new
           date = '0460-01-01'
 
           range = Zakuro::Gateway::Single.new(context: context, date: date)
@@ -19,7 +19,7 @@ describe 'Zakuro' do
       end
       context 'invalid date type paramter' do
         it 'should be raised error' do
-          context = Zakuro::Context.new
+          context = Zakuro::Context::Context.new
           date = 'xxxx-xx-xx'
 
           range = Zakuro::Gateway::Single.new(context: context, date: date)

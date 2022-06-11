@@ -21,7 +21,7 @@ module Zakuro
       #
       # 初期化
       #
-      # @param [Context] context 暦コンテキスト
+      # @param [Context::Context] context 暦コンテキスト
       # @param [Date, String] date 日付
       #
       def initialize(context:, date:)

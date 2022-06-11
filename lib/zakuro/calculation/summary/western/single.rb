@@ -23,7 +23,7 @@ module Zakuro
           #
           # 生成する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Result::Single] 一日検索結果（和暦日）
@@ -44,10 +44,10 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Context::Context] context 暦コンテキスト
           # @param [Western::Calendar] date 西暦日
           #
-          # @return [Array<Base::Year>] 完全範囲
+          # @return [Array<Calculation::Base::Year>] 完全範囲
           #
           def self.get_full_range_years(context:, date: Western::Calendar.new)
             full_range = Calculation::Range::DatedFullRange.new(context: context, start_date: date)
@@ -58,8 +58,8 @@ module Zakuro
           #
           # 運用結果範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
-          # @param [Array<Base::Year>] years 完全範囲
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Array<Base::OperatedYear>] 運用結果範囲
@@ -75,8 +75,8 @@ module Zakuro
           #
           # 1日を取得する
           #
-          # @param [Context] context 暦コンテキスト
-          # @param [Array<Base::Year>] years 完全範囲
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
           # @return [Data::SingleDay] 1日
@@ -93,10 +93,10 @@ module Zakuro
           #
           # 完全範囲を取得する
           #
-          # @param [Context] context 暦コンテキスト
+          # @param [Array<Calculation::Base::Year>] years 完全範囲
           # @param [Western::Calendar] date 西暦日
           #
-          # @return [Array<Base::Year>] 完全範囲
+          # @return [Array<Calculation::Base::Year>] 完全範囲
           #
           def self.get_operation(years:, date: Western::Calendar.new)
             calc_date = Specifier::SingleDay.get(

@@ -14,7 +14,7 @@ require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/dated
 require File.expand_path('../../../../../lib/zakuro/calculation/monthly/month',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/version/context',
+require File.expand_path('../../../../../lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
@@ -24,7 +24,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'DatedScroll' do
-        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+        let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         describe '#ignite' do
           context 'a month has no gengou' do
             let(:month) do

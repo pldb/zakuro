@@ -6,6 +6,9 @@ require_relative '../../../../output/logger'
 
 require_relative '../../../base/year'
 
+require_relative '../../internal/day'
+require_relative '../../internal/option'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -26,20 +29,20 @@ module Zakuro
             #
             # 取得する
             #
-            # @param [Array<Year>] yeas 範囲
+            # @param [Array<Calculation::Base::Year>] years 範囲
             # @param [Western::Calendar] date 西暦日
             #
             # @return [Result::Data::SingleDay] 和暦日
             #
             def self.get(years: [], date: Western::Calendar.new)
               year, month = specify(years: years, date: date)
-              first_date = month.western_date
 
-              Output::Response::SingleDay.save_single_day(
-                param: Output::Response::SingleDay::Param.new(
-                  year: year, month: month,
-                  date: date, days: date - first_date
-                )
+              day = Day.get(month: month, date: date)
+
+              options = Option.create(month: month, day: day)
+
+              Output::Response::SingleDay.create(
+                year: year, month: month, day: day, options: options
               )
             end
 

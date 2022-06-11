@@ -14,7 +14,7 @@ require File.expand_path('../../../../../lib/zakuro/calculation/era/gengou/named
 require File.expand_path('../../../../../lib/zakuro/calculation/monthly/month',
                          __dir__)
 
-require File.expand_path('../../../../../lib/zakuro/version/context',
+require File.expand_path('../../../../../lib/zakuro/context/context',
                          __dir__)
 
 require File.expand_path('../../../../../lib/zakuro/era/western/calendar',
@@ -24,7 +24,7 @@ describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'NamedScroll' do
-        let(:context) { Zakuro::Context.new(version_name: 'Senmyou') }
+        let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         describe '#advance' do
           context 'a month beyond year' do
             let(:months) do
