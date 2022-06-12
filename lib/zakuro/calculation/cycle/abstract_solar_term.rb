@@ -67,7 +67,7 @@ module Zakuro
         # @return [False] 正しい
         #
         def invalid?
-          (@index == -1 || @remainder.invalid?)
+          (index == -1 || remainder.invalid?)
         end
 
         #
@@ -77,7 +77,7 @@ module Zakuro
         # @return [False] データあり
         #
         def empty?
-          (@index == -1 && @remainder.invalid?)
+          (index == -1 && remainder.invalid?)
         end
 
         #
@@ -106,9 +106,9 @@ module Zakuro
         #
         def next_term
           @index += 1
-          @index = 0 if @index >= ORDER.size
+          @index = 0 if index >= ORDER.size
 
-          @remainder.add(@average)
+          remainder.add(average)
         end
 
         #
@@ -119,8 +119,9 @@ module Zakuro
         def next_by_index(index)
           return ArgumentError.new, 'invalid index' unless AbstractSolarTerm.index?(index)
 
-          loop do
-            return if @index == index
+          (0..(ORDER.size - 1)).each do |_index|
+            inner_index = @index
+            break if inner_index == index
 
             next!
           end
@@ -134,8 +135,9 @@ module Zakuro
         def prev_by_index(index)
           return ArgumentError.new, 'invalid index' unless AbstractSolarTerm.index?(index)
 
-          loop do
-            return if @index == index
+          (0..(ORDER.size - 1)).each do |_index|
+            inner_index = @index
+            break if inner_index == index
 
             prev_term!
           end
@@ -153,9 +155,9 @@ module Zakuro
         #
         def prev_term
           @index -= 1
-          @index = 23 if @index.negative?
+          @index = 23 if index.negative?
 
-          @remainder.sub(@average)
+          remainder.sub(average)
         end
 
         #
