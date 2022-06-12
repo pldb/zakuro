@@ -53,7 +53,7 @@ module Zakuro
       failed = Condition.validate(hash: condition)
       raise Exception.get(presets: failed) unless failed.empty?
 
-      @condition.rewrite(hash: condition)
+      condition.rewrite(hash: condition)
 
       self
     rescue Exception::ZakuroError => e
