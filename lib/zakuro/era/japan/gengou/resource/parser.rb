@@ -53,11 +53,11 @@ module Zakuro
             # @return [Gengou] 元号情報
             #
             def create
-              both_start_year = Both::YearParser.new(hash: @both_start_year).create
-              both_start_date = Both::DateParser.new(hash: @both_start_date).create
+              start_year = Both::YearParser.new(hash: both_start_year).create
+              start_date = Both::DateParser.new(hash: both_start_date).create
 
-              Gengou.new(name: @name, both_start_year: both_start_year,
-                         both_start_date: both_start_date)
+              Gengou.new(name: name, both_start_year: start_year,
+                         both_start_date: start_date)
             end
           end
 
@@ -95,10 +95,10 @@ module Zakuro
             # @return [Set] 元号セット情報
             #
             def create
-              both_last_date = Both::DateParser.new(hash: @both_last_date).create
+              last_date = Both::DateParser.new(hash: both_last_date).create
               list = create_list
               Set.new(
-                id: @id, name: @name, both_last_date: both_last_date, list: list
+                id: id, name: name, both_last_date: last_date, list: list
               )
             end
 
@@ -111,7 +111,7 @@ module Zakuro
             #
             def create_list
               result = []
-              @list.each_with_index do |li, index|
+              list.each_with_index do |li, index|
                 gengou = GengouParser.new(hash: li, index: index).create
                 next_index = index + 1
                 gengou = calc_last_date_on_gengou_data(next_index: next_index,
@@ -133,13 +133,13 @@ module Zakuro
             # @return [Gengou] 元号情報
             #
             def calc_last_date_on_gengou_data(next_index:, gengou:)
-              if next_index >= @list.size
-                gengou.write_last_year(last_year: @both_last_year['western'])
-                last_date = Western::Calendar.parse(text: @both_last_date['western'])
+              if next_index >= list.size
+                gengou.write_last_year(last_year: both_last_year['western'])
+                last_date = Western::Calendar.parse(text: both_last_date['western'])
                 gengou.write_last_date(last_date: last_date)
                 return gengou
               end
-              next_item = @list[next_index]
+              next_item = list[next_index]
               gengou.convert_next_start_year_to_last_year(
                 next_start_year: next_item['start_year']['western']
               )
@@ -179,10 +179,12 @@ module Zakuro
               # @return [Both::Year] 年情報
               #
               def create
-                japan = @japan.to_i
-                western = @western.to_i
+                japan_year = japan.to_i
+                western_year = western.to_i
 
-                Japan::Gengou::Resource::Both::Year.new(japan: japan, western: western)
+                Japan::Gengou::Resource::Both::Year.new(
+                  japan: japan_year, western: western_year
+                )
               end
             end
 
@@ -211,10 +213,12 @@ module Zakuro
               # @return [Both::Date] 日情報
               #
               def create
-                japan = Japan::Calendar.parse(text: @japan)
-                western = Western::Calendar.parse(text: @western)
+                japan_date = Japan::Calendar.parse(text: japan)
+                western_date = Western::Calendar.parse(text: western)
 
-                Japan::Gengou::Resource::Both::Date.new(japan: japan, western: western)
+                Japan::Gengou::Resource::Both::Date.new(
+                  japan: japan_date, western: western_date
+                )
               end
             end
           end

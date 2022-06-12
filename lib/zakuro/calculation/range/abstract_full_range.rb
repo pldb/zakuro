@@ -72,7 +72,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @start_date.invalid?
+          start_date.invalid?
         end
 
         #
@@ -102,8 +102,8 @@ module Zakuro
         def version_ranges
           result = []
 
-          start_year = @scroll.western_start_year
-          last_year = @scroll.western_last_year
+          start_year = scroll.western_start_year
+          last_year = scroll.western_last_year
 
           # TODO: context にデフォルト暦名が設定されている場合は使用しない
           versions = Version.get(start_year: start_year, last_year: last_year)

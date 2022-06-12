@@ -41,7 +41,7 @@ module Zakuro
           def initialize(resources: [])
             @lines = []
             (1..LINE_SIZE).each do |_index|
-              @lines.push(Line.new)
+              lines.push(Line.new)
             end
 
             save(resources: resources)
@@ -73,7 +73,7 @@ module Zakuro
           def get(line:, start_date:, last_date:)
             raise ArgumentError.new, 'invalid line number' unless LINE_INDEXES.include?(line)
 
-            @lines[line].get(start_date: start_date, last_date: last_date)
+            lines[line].get(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -89,7 +89,7 @@ module Zakuro
           def get_by_name(line:, name:)
             raise ArgumentError.new, 'invalid line number' unless LINE_INDEXES.include?(line)
 
-            @lines[line].get_by_name(name: name)
+            lines[line].get_by_name(name: name)
           end
 
           private
@@ -114,7 +114,7 @@ module Zakuro
             rest = [
               LinearGengou.new(gengou: gengou)
             ]
-            @lines.each do |line|
+            lines.each do |line|
               rest = line.push(list: rest)
             end
           end

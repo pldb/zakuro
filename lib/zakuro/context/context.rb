@@ -37,7 +37,7 @@ module Zakuro
       # @return [False] 不正なし
       #
       def invalid?
-        !@option.version?
+        !option.version?
       end
     end
   end

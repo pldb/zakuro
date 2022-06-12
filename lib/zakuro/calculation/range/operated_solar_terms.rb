@@ -58,7 +58,7 @@ module Zakuro
           context = current_context(western_date: western_date)
 
           solar_term_class = context.resolver.solar_term
-          solar_term = @directions.fetch(western_date.format, solar_term_class.new)
+          solar_term = directions.fetch(western_date.format, solar_term_class.new)
 
           # 合致しない場合
           return false, solar_term_class.new if solar_term.empty?
@@ -189,7 +189,7 @@ module Zakuro
         # @return [Context::Context] 暦コンテキスト
         #
         def current_context(western_date: Western::Calendar.new)
-          @years.each do |year|
+          years.each do |year|
             return year.context if western_date >= year.new_year_date
           end
 

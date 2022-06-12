@@ -50,19 +50,19 @@ module Zakuro
         #
         def get
           result = []
-          first_date = @month.western_date.clone
+          first_date = month.western_date.clone
 
-          (0..@month.days).each do |index|
+          (0..month.days).each do |index|
             current_date = first_date.clone + index
 
             next unless include?(date: current_date)
 
-            day = Day.get(month: @month, date: current_date)
+            day = Day.get(month: month, date: current_date)
 
-            options = Option.create(month: @month, day: day)
+            options = Option.create(month: month, day: day)
 
             single_day = Output::Response::SingleDay.create(
-              year: @year, month: @month, day: day, options: options
+              year: year, month: month, day: day, options: options
             )
 
             result.push(single_day)
@@ -80,9 +80,9 @@ module Zakuro
         # @return [False] 含まない
         #
         def include?(date:)
-          return false if date < @start_date
+          return false if date < start_date
 
-          return false if date > @last_date
+          return false if date > last_date
 
           true
         end

@@ -87,7 +87,7 @@ module Zakuro
         # 二十四節気ごとの差分で書き換える
         #
         def rewrite_solar_terms
-          matched, operated_solar_term = @operated_solar_terms.get(
+          matched, operated_solar_term = operated_solar_terms.get(
             western_date: first_day.western_date
           )
 
@@ -164,7 +164,7 @@ module Zakuro
         # 月初日ごとの差分で書き換える
         #
         def rewrite_first_day
-          diffs = @history.diffs
+          diffs = history.diffs
           return if diffs.invalid_days?
 
           days = diffs.days
@@ -245,7 +245,7 @@ module Zakuro
         private
 
         def history_month_number
-          @history.diffs.month.number
+          history.diffs.month.number
         end
       end
     end

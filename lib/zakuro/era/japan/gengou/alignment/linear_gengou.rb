@@ -45,7 +45,7 @@ module Zakuro
           # @return [String] 元号名
           #
           def name
-            @gengou.name
+            gengou.name
           end
 
           #
@@ -55,7 +55,7 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            @gengou.invalid?
+            gengou.invalid?
           end
 
           #
@@ -69,13 +69,13 @@ module Zakuro
           def include?(date: Western::Calendar.new)
             return false if invalid?
 
-            return false if @start_date.invalid?
+            return false if start_date.invalid?
 
-            return false if @last_date.invalid?
+            return false if last_date.invalid?
 
-            return false if date < @start_date
+            return false if date < start_date
 
-            return false if date > @last_date
+            return false if date > last_date
 
             true
           end
@@ -90,7 +90,9 @@ module Zakuro
           # @return [False] 範囲外あり
           #
           def in?(start_date:, last_date:)
-            @start_date <= start_date && last_date <= @last_date
+            inner_start_date = @start_date
+            inner_last_date = @last_date
+            inner_start_date <= start_date && last_date <= inner_last_date
           end
 
           #
@@ -103,11 +105,13 @@ module Zakuro
           # @return [False] 範囲内あり
           #
           def out?(start_date:, last_date:)
+            inner_start_date = @start_date
+            inner_last_date = @last_date
             # 範囲より前
-            return true if start_date < @start_date && last_date < @start_date
+            return true if start_date < inner_start_date && last_date < inner_start_date
 
             # 範囲より後
-            return true if @last_date < start_date && @last_date < last_date
+            return true if inner_last_date < start_date && inner_last_date < last_date
 
             false
           end
@@ -122,7 +126,9 @@ module Zakuro
           # @return [True] 完全超過せず
           #
           def covered?(start_date:, last_date:)
-            start_date < @start_date && @last_date < last_date
+            inner_start_date = @start_date
+            inner_last_date = @last_date
+            start_date < inner_start_date && inner_last_date < last_date
           end
 
           #
@@ -148,7 +154,7 @@ module Zakuro
           def change_start_date?
             return false if invalid?
 
-            @start_date != native_start_date
+            start_date != native_start_date
           end
 
           #
@@ -160,7 +166,7 @@ module Zakuro
           def change_last_date?
             return false if invalid?
 
-            @last_date != native_last_date
+            last_date != native_last_date
           end
 
           #
@@ -169,7 +175,7 @@ module Zakuro
           # @return [Western::Calendar]設定された元号の開始日
           #
           def native_start_date
-            @gengou.both_start_date.western
+            gengou.both_start_date.western
           end
 
           #
@@ -178,7 +184,7 @@ module Zakuro
           # @return [Western::Calendar] 設定された元号の終了日
           #
           def native_last_date
-            @gengou.last_date
+            gengou.last_date
           end
         end
       end
