@@ -35,7 +35,7 @@ module Zakuro
           lunar_age = Origin::LunarAge.get(western_year: western_year)
 
           super(
-            quater: QUARTER,
+            quarter: QUARTER,
             average_remainder: Origin::AverageNovember.get(western_year: western_year),
             solar_location: Solar::Location.new(lunar_age: lunar_age),
             lunar_location: Lunar::Location.new(

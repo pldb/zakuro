@@ -56,9 +56,9 @@ module Zakuro
         # @return [Japan::Calendar] 和暦開始日
         #
         def japan_start_date
-          return Japan::Calendar.new if @gengou.invalid?
+          return Japan::Calendar.new if gengou.invalid?
 
-          @gengou.both_start_date.japan
+          gengou.both_start_date.japan
         end
 
         #
@@ -67,9 +67,9 @@ module Zakuro
         # @return [Western::Calendar] 西暦開始日
         #
         def western_start_date
-          return Western::Calendar.new if @gengou.invalid?
+          return Western::Calendar.new if gengou.invalid?
 
-          @start_date
+          start_date
         end
 
         #
@@ -78,9 +78,9 @@ module Zakuro
         # @return [Western::Calendar] 西暦終了日
         #
         def western_last_date
-          return Western::Calendar.new if @gengou.invalid?
+          return Western::Calendar.new if gengou.invalid?
 
-          @last_date
+          last_date
         end
 
         #
@@ -103,7 +103,7 @@ module Zakuro
         def name
           return '' unless @gengou
 
-          @gengou.name
+          gengou.name
         end
 
         #
@@ -113,7 +113,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @gengou.invalid? || @japan_year == INVALID_YEAR || @western_year == INVALID_YEAR
+          gengou.invalid? || japan_year == INVALID_YEAR || western_year == INVALID_YEAR
         end
 
         #
@@ -125,7 +125,7 @@ module Zakuro
         # @return [False] 含まれない
         #
         def include?
-          @gengou.include?
+          gengou.include?
         end
 
         #
@@ -151,7 +151,7 @@ module Zakuro
         def change_start_date?
           return false if invalid?
 
-          @start_date != native_start_date
+          start_date != native_start_date
         end
 
         #
@@ -163,7 +163,7 @@ module Zakuro
         def change_last_date?
           return false if invalid?
 
-          @last_date != native_last_date
+          last_date != native_last_date
         end
 
         #
@@ -185,10 +185,10 @@ module Zakuro
         # 有効な日付範囲を選択する
         #
         def select_valid_date
-          return if @gengou.invalid?
+          return if gengou.invalid?
 
-          @start_date = @gengou.both_start_date.western.clone if @start_date.invalid?
-          @last_date = @gengou.last_date.clone if @last_date.invalid?
+          @start_date = gengou.both_start_date.western.clone if start_date.invalid?
+          @last_date = gengou.last_date.clone if last_date.invalid?
         end
 
         #
@@ -197,7 +197,7 @@ module Zakuro
         # @return [Western::Calendar]設定された元号の開始日
         #
         def native_start_date
-          @gengou.both_start_date.western
+          gengou.both_start_date.western
         end
 
         #
@@ -206,7 +206,7 @@ module Zakuro
         # @return [Western::Calendar] 設定された元号の終了日
         #
         def native_last_date
-          @gengou.last_date
+          gengou.last_date
         end
       end
     end

@@ -61,7 +61,7 @@ module Zakuro
           # @return [Gengou::Counter] 加算元号
           #
           def get(western_date: Western::Calendar.new)
-            @list.each do |linear_gengou|
+            list.each do |linear_gengou|
               next if linear_gengou.out?(start_date: western_date, last_date: western_date)
 
               Gengou::Counter.new(gengou: linear_gengou.gengou).clone
@@ -81,7 +81,7 @@ module Zakuro
           def collect(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
             result = []
 
-            @list.each do |linear_gengou|
+            list.each do |linear_gengou|
               next if linear_gengou.out?(start_date: start_date, last_date: last_date)
 
               result.push(
@@ -106,7 +106,7 @@ module Zakuro
           def japan_start_date
             return Japan::Calendar.new if invalid?
 
-            @list[0].gengou.both_start_date.japan.clone
+            list[0].gengou.both_start_date.japan.clone
           end
 
           #
@@ -117,7 +117,7 @@ module Zakuro
           def western_start_date
             return Western::Calendar.new if invalid?
 
-            @list[0].gengou.both_start_date.western.clone
+            list[0].gengou.both_start_date.western.clone
           end
 
           #
@@ -128,7 +128,7 @@ module Zakuro
           def western_last_date
             return Western::Calendar.new if invalid?
 
-            @list[-1].gengou.last_date.clone
+            list[-1].gengou.last_date.clone
           end
 
           #
@@ -139,7 +139,7 @@ module Zakuro
           def western_start_year
             return INVALID_YEAR if invalid?
 
-            @list[0].gengou.both_start_year.western.clone
+            list[0].gengou.both_start_year.western.clone
           end
 
           #
@@ -150,9 +150,9 @@ module Zakuro
           def western_last_year
             return INVALID_YEAR if invalid?
 
-            return INVALID_YEAR if @list.size.zero?
+            return INVALID_YEAR if list.size.zero?
 
-            @list[-1].gengou.last_year
+            list[-1].gengou.last_year
           end
 
           #
@@ -162,9 +162,9 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            return true unless @list
+            return true unless list
 
-            return true if @list.size.zero?
+            return true if list.size.zero?
 
             false
           end
@@ -175,9 +175,9 @@ module Zakuro
           # @return [Western::Calendar]設定された元号の開始日
           #
           def native_start_date
-            return Western::Calendar.new if @list.size.zero?
+            return Western::Calendar.new if list.size.zero?
 
-            @list[0].native_start_date
+            list[0].native_start_date
           end
 
           #
@@ -187,9 +187,9 @@ module Zakuro
           # @return [False] 同一
           #
           def change_start_date?
-            return false if @list.size.zero?
+            return false if list.size.zero?
 
-            @list[0].change_start_date?
+            list[0].change_start_date?
           end
 
           private
@@ -210,7 +210,7 @@ module Zakuro
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
           def line(start_date:, last_date:)
-            Japan::Gengou.line(line: @index, start_date: start_date, last_date: last_date)
+            Japan::Gengou.line(line: index, start_date: start_date, last_date: last_date)
           end
 
           #

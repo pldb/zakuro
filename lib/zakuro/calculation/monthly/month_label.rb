@@ -43,7 +43,7 @@ module Zakuro
         # @return [Integer] 日数
         #
         def days
-          @is_many_days ? 30 : 29
+          is_many_days ? 30 : 29
         end
 
         #
@@ -52,7 +52,7 @@ module Zakuro
         # @return [String] 月の名前（大小）
         #
         def days_name
-          @is_many_days ? '大' : '小'
+          is_many_days ? '大' : '小'
         end
 
         #
@@ -64,7 +64,7 @@ module Zakuro
         def back_to_last_month
           @number -= 1
 
-          return false if @number.positive?
+          return false if number.positive?
 
           @number = 12
 
@@ -80,7 +80,7 @@ module Zakuro
         # @return [False] 異なる月
         #
         def same?(other:)
-          @number == other.number && @leaped == other.leaped
+          number == other.number && leaped == other.leaped
         end
       end
     end

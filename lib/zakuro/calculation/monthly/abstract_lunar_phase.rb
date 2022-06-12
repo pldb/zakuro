@@ -18,6 +18,8 @@ module Zakuro
         # @return [Array<String>] 月内の弦
         PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
 
+        # @return [Cycle::AbstractRemainder] 弦
+        attr_reader :quarter
         # @return [Cycle::AbstractRemainder] 経
         attr_reader :average_remainder
         # @return [Solar::AbstractLocation] 入定気
@@ -30,14 +32,14 @@ module Zakuro
         #
         # 初期化
         #
-        # @param [Cycle::AbstractRemainder] quater 弦
+        # @param [Cycle::AbstractRemainder] quarter 弦
         # @param [Solar::AbstractLocation] average_remainder 経
         # @param [Solar::AbstractLocation] solar_location 入定気
         # @param [Lunar::AbstractLocation] lunar_location 入暦
         #
-        def initialize(quater:, average_remainder:, solar_location:, lunar_location:)
+        def initialize(quarter:, average_remainder:, solar_location:, lunar_location:)
           # 弦
-          @quarter = quater
+          @quarter = quarter
           # 経
           @average_remainder = average_remainder
           # 入定気
@@ -87,7 +89,7 @@ module Zakuro
         #
         def next_index
           @index += 1
-          @index = 0 if @index >= PHASE_INDEXES.size
+          @index = 0 if index >= PHASE_INDEXES.size
           @index
         end
 
@@ -98,7 +100,7 @@ module Zakuro
         # @return [False] 朔月ではない
         #
         def first_phase?
-          @index.zero?
+          index.zero?
         end
 
         #
@@ -157,9 +159,9 @@ module Zakuro
         end
 
         def add_quarter_moon_size
-          @average_remainder.add!(@quarter)
-          @solar_location.add_quarter
-          @lunar_location.add_quarter
+          average_remainder.add!(quarter)
+          solar_location.add_quarter
+          lunar_location.add_quarter
 
           next_index
         end

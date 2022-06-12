@@ -34,8 +34,8 @@ module Zakuro
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [Base::Gengou] gengou 元号
         #
-        def initialize(context: Context::Context.new, month_label: MonthLabel.new, first_day: FirstDay.new,
-                       solar_terms: [], gengou: Base::Gengou.new)
+        def initialize(context: Context::Context.new, month_label: MonthLabel.new,
+                       first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new)
           @context = context
           @month_label = month_label
           @first_day = first_day
@@ -50,7 +50,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @context.invalid?
+          context.invalid?
         end
 
         #
@@ -68,7 +68,7 @@ module Zakuro
         # @return [Western::Calendar] 西暦日
         #
         def western_date
-          @first_day.western_date
+          first_day.western_date
         end
 
         #
@@ -77,7 +77,7 @@ module Zakuro
         # @return [Remainder] 大余小余
         #
         def remainder
-          @first_day.remainder
+          first_day.remainder
         end
 
         #
@@ -87,7 +87,7 @@ module Zakuro
         # @return [False] 小の月（29日）
         #
         def many_days?
-          @month_label.is_many_days
+          month_label.is_many_days
         end
 
         #
@@ -96,7 +96,7 @@ module Zakuro
         # @return [Integer] 日数
         #
         def days
-          @month_label.days
+          month_label.days
         end
 
         #
@@ -105,7 +105,7 @@ module Zakuro
         # @return [String] 月の名前（大小）
         #
         def days_name
-          @month_label.days_name
+          month_label.days_name
         end
 
         #
@@ -114,7 +114,7 @@ module Zakuro
         # @return [Integer] 月（xx月のxx）
         #
         def number
-          @month_label.number
+          month_label.number
         end
 
         #
@@ -124,7 +124,7 @@ module Zakuro
         # @return [False] 平月
         #
         def leaped?
-          @month_label.leaped
+          month_label.leaped
         end
 
         #
@@ -147,7 +147,7 @@ module Zakuro
         # @return [False] 設定あり
         #
         def empty_solar_term?
-          @solar_terms.empty?
+          solar_terms.empty?
         end
 
         #
@@ -156,7 +156,7 @@ module Zakuro
         # @return [SolarTerm] 中気
         #
         def even_term
-          @solar_terms.each do |term|
+          solar_terms.each do |term|
             return term if term.index.even?
           end
 
@@ -169,7 +169,7 @@ module Zakuro
         # @return [SolarTerm] 節気
         #
         def odd_term
-          @solar_terms.each do |term|
+          solar_terms.each do |term|
             return term if term.index.odd?
           end
 
@@ -182,7 +182,7 @@ module Zakuro
         # @param [SolarTerm] term 二十四節気
         #
         def add_term(term:)
-          @solar_terms.push(term)
+          solar_terms.push(term)
         end
 
         #
@@ -240,7 +240,7 @@ module Zakuro
         def include_by_japan_date?(date:)
           return false if invalid?
 
-          linear_gengou = @gengou.match_by_name(name: date.gengou)
+          linear_gengou = gengou.match_by_name(name: date.gengou)
           return false if linear_gengou.invalid?
 
           return false unless linear_gengou.name == date.gengou
