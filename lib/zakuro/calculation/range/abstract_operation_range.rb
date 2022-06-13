@@ -67,7 +67,7 @@ module Zakuro
           years.each do |year|
             operated_year = AbstractOperationRange.rewrite_year(
               year: year,
-              operated_solar_terms: @operated_solar_terms
+              operated_solar_terms: operated_solar_terms
             )
             operated_years.push(operated_year)
           end

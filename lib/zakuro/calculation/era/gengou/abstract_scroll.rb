@@ -200,8 +200,8 @@ module Zakuro
         # 次年にする
         #
         def next_year
-          @first_gengou.each(&:next_year)
-          @second_gengou.each(&:next_year)
+          first_gengou.each(&:next_year)
+          second_gengou.each(&:next_year)
         end
       end
     end

@@ -10,6 +10,9 @@ module Zakuro
       # AbstractAverage 平気（太陽軌道平均）
       #
       class AbstractAverage
+        # @return [Cycle::AbstractSolarTerm] 入定気
+        attr_reader :solar_term
+
         #
         # 初期化
         #
@@ -84,7 +87,7 @@ module Zakuro
           # * 最大2回設定する（中気・節気）
           (0..3).each do |_index|
             in_range = AbstractAverage.in_solar_term?(
-              solar_term: @solar_term.remainder, current_month: current_month.remainder,
+              solar_term: solar_term.remainder, current_month: current_month.remainder,
               next_month: next_month.remainder
             )
 
@@ -97,7 +100,7 @@ module Zakuro
               next
             end
 
-            current_month.add_term(term: @solar_term.clone)
+            current_month.add_term(term: solar_term.clone)
             next_solar_term
 
             # 定気は最大2つまで
@@ -109,7 +112,7 @@ module Zakuro
         # 次の二十四節気に移る
         #
         def next_solar_term
-          @solar_term.next_term!
+          solar_term.next_term!
         end
       end
     end

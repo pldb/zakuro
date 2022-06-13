@@ -45,7 +45,7 @@ module Zakuro
         # @return [LinearGengou] 1行目元号
         #
         def match_first_line(date: Western::Calendar)
-          @first_line.each do |line|
+          first_line.each do |line|
             return line.clone if line.include?(date: date)
           end
 
@@ -60,7 +60,7 @@ module Zakuro
         # @return [LinearGengou] 2行目元号
         #
         def match_second_line(date: Western::Calendar)
-          @second_line.each do |line|
+          second_line.each do |line|
             return line.clone if line.include?(date: date)
           end
 
@@ -91,7 +91,7 @@ module Zakuro
         # @return [LinearGengou] 1行目元号
         #
         def match_first_line_by_name(name:)
-          @first_line.each do |line|
+          first_line.each do |line|
             return line.clone if line.name == name
           end
 
@@ -106,7 +106,7 @@ module Zakuro
         # @return [LinearGengou] 2行目元号
         #
         def match_second_line_by_name(name:)
-          @second_line.each do |line|
+          second_line.each do |line|
             return line.clone if line.name == name
           end
 
@@ -120,7 +120,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @first_line.size.zero? && @second_line.size.zero?
+          first_line.size.zero? && second_line.size.zero?
         end
       end
     end

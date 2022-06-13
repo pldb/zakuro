@@ -44,7 +44,7 @@ module Zakuro
           #
           def renew(last_date: Western::Calendar.new)
             native_start_date = Western::Calendar.new
-            [@first_list, @second_list].each do |list|
+            [first_list, second_list].each do |list|
               next unless list.change_start_date?
 
               if native_start_date.invalid?
@@ -72,7 +72,7 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            @first_list.invalid?
+            first_list.invalid?
           end
 
           #
@@ -85,7 +85,7 @@ module Zakuro
           #
           def collect_first(start_date: Western::Calendar.new,
                             last_date: Western::Calendar.new)
-            @first_list.collect(start_date: start_date, last_date: last_date)
+            first_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -98,7 +98,7 @@ module Zakuro
           #
           def collect_second(start_date: Western::Calendar.new,
                              last_date: Western::Calendar.new)
-            @second_list.collect(start_date: start_date, last_date: last_date)
+            second_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -133,12 +133,12 @@ module Zakuro
           # @return [Integer] 開始西暦年
           #
           def western_start_year
-            first_start_year = @first_list.western_start_year
-            second_start_year = @second_list.western_start_year
+            first_start_year = first_list.western_start_year
+            second_start_year = second_list.western_start_year
 
-            return first_start_year if @first_list.invalid?
+            return first_start_year if first_list.invalid?
 
-            return first_start_year if @second_list.invalid?
+            return first_start_year if second_list.invalid?
 
             return first_start_year if first_start_year < second_start_year
 
@@ -151,12 +151,12 @@ module Zakuro
           # @return [Integer] 終了西暦年
           #
           def western_last_year
-            first_last_year = @first_list.western_last_year
-            second_last_year = @second_list.western_last_year
+            first_last_year = first_list.western_last_year
+            second_last_year = second_list.western_last_year
 
-            return first_last_year if @first_list.invalid?
+            return first_last_year if first_list.invalid?
 
-            return first_last_year if @second_list.invalid?
+            return first_last_year if second_list.invalid?
 
             return first_last_year if first_last_year > second_last_year
 
@@ -171,20 +171,20 @@ module Zakuro
           # @return [List] 最古の元号
           #
           def oldest_list
-            return @first_list if @first_list.invalid?
+            return first_list if first_list.invalid?
 
-            return @first_list if @second_list.invalid?
+            return first_list if second_list.invalid?
 
-            first_western_date = @first_list.western_start_date
-            second_western_date = @second_list.western_start_date
+            first_western_date = first_list.western_start_date
+            second_western_date = second_list.western_start_date
 
-            return @first_list if first_western_date.invalid?
+            return first_list if first_western_date.invalid?
 
-            return @first_list if second_western_date.invalid?
+            return first_list if second_western_date.invalid?
 
-            return @first_list if first_western_date < second_western_date
+            return first_list if first_western_date < second_western_date
 
-            @second_list
+            second_list
           end
         end
       end
