@@ -54,9 +54,9 @@ module Zakuro
             #
             def validate
               failed = []
-              failed.push("invalid id. #{@id}") unless id?
+              failed.push("invalid id. #{id}") unless id?
 
-              failed.push("invalid name. #{@name}") unless name?
+              failed.push("invalid name. #{name}") unless name?
 
               failed |= validate_both_last_year
 
@@ -73,9 +73,9 @@ module Zakuro
             # @return [False] 正しくない
             #
             def id?
-              return false unless @id
+              return false unless id
 
-              @id.is_a?(Integer)
+              id.is_a?(Integer)
             end
 
             #
@@ -87,7 +87,7 @@ module Zakuro
             def name?
               return false unless @name
 
-              @name.is_a?(String)
+              name.is_a?(String)
             end
 
             #
@@ -96,7 +96,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_both_last_year
-              Both::Year.new(hash: @both_last_year).validate
+              Both::Year.new(hash: both_last_year).validate
             end
 
             #
@@ -105,7 +105,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_both_last_date
-              Both::Date.new(hash: @both_last_date).validate
+              Both::Date.new(hash: both_last_date).validate
             end
 
             #
@@ -115,9 +115,9 @@ module Zakuro
             # @return [False] 正しくない
             #
             def list?
-              return false unless @list
+              return false unless list
 
-              @list.is_a?(Array)
+              list.is_a?(Array)
             end
 
             #
@@ -126,7 +126,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_list
-              return ["invalid list. #{@list.class}"] unless list?
+              return ["invalid list. #{list.class}"] unless list?
 
               failed = []
               list.each_with_index do |li, index|
@@ -171,7 +171,7 @@ module Zakuro
               prefix = "list[#{index}]. "
               failed = []
 
-              failed.push(prefix + "invalid name. #{@name}") unless name?
+              failed.push(prefix + "invalid name. #{name}") unless name?
 
               failed |= validate_both_start_year
 
@@ -187,9 +187,9 @@ module Zakuro
             # @return [False] 正しくない
             #
             def name?
-              return false unless @name
+              return false unless name
 
-              @name.is_a?(String)
+              name.is_a?(String)
             end
 
             #
@@ -198,7 +198,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_both_start_year
-              Both::Year.new(hash: @both_start_year).validate
+              Both::Year.new(hash: both_start_year).validate
             end
 
             #
@@ -207,7 +207,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_both_start_date
-              Both::Date.new(hash: @both_start_date).validate
+              Both::Date.new(hash: both_start_date).validate
             end
           end
 
@@ -242,9 +242,9 @@ module Zakuro
               def validate
                 failed = []
 
-                failed.push("invalid japan year. #{@japan}") unless japan?
+                failed.push("invalid japan year. #{japan}") unless japan?
 
-                failed.push("invalid western year. #{@western}") unless western?
+                failed.push("invalid western year. #{western}") unless western?
 
                 failed
               end
@@ -258,7 +258,7 @@ module Zakuro
               def japan?
                 return false unless @japan
 
-                @japan.is_a?(Integer)
+                japan.is_a?(Integer)
               end
 
               #
@@ -270,7 +270,7 @@ module Zakuro
               def western?
                 return false unless @western
 
-                @western.is_a?(Integer)
+                western.is_a?(Integer)
               end
             end
 
@@ -301,9 +301,9 @@ module Zakuro
               def validate
                 failed = []
 
-                failed.push("invalid japan date. #{@japan}") unless japan?
+                failed.push("invalid japan date. #{japan}") unless japan?
 
-                failed.push("invalid western date. #{@western}") unless western?
+                failed.push("invalid western date. #{western}") unless western?
 
                 failed
               end
@@ -315,7 +315,7 @@ module Zakuro
               # @return [False] 正しくない
               #
               def japan?
-                Japan::Calendar.valid_date_string(text: @japan)
+                Japan::Calendar.valid_date_string(text: japan)
               end
 
               #
@@ -325,7 +325,7 @@ module Zakuro
               # @return [False] 正しくない
               #
               def western?
-                Western::Calendar.valid_date_string(text: @western)
+                Western::Calendar.valid_date_string(text: western)
               end
             end
           end

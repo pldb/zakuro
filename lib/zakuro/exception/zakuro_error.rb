@@ -35,7 +35,7 @@ module Zakuro
       #
       def text
         list = []
-        @causes.each do |cause|
+        causes.each do |cause|
           list.push(Tools::Stringifier.to_h(obj: cause, class_prefix: 'Zakuro'))
         end
 
