@@ -39,7 +39,7 @@ module Zakuro
         # @return [False] 無効
         #
         def valid_western?
-          @start_date.valid_western? && @last_date.valid_western?
+          start_date.valid_western? && last_date.valid_western?
         end
 
         #
@@ -49,7 +49,7 @@ module Zakuro
         # @return [False] 無効
         #
         def valid_japan?
-          @start_date.valid_japan? && @last_date.valid_japan?
+          start_date.valid_japan? && last_date.valid_japan?
         end
 
         #
@@ -59,7 +59,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @start_date.invalid? && @last_date.invalid?
+          start_date.invalid? && last_date.invalid?
         end
       end
     end

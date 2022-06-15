@@ -250,7 +250,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid_days?
-          @days == INVALID_DAY_VALUE
+          days == INVALID_DAY_VALUE
         end
 
         #
@@ -260,7 +260,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @source.invalid? && @destination.invalid?
+          source.invalid? && destination.invalid?
         end
       end
 
@@ -295,7 +295,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @index == -1
+          index == -1
         end
       end
 
@@ -330,7 +330,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @index == -1
+          index == -1
         end
       end
     end
@@ -362,7 +362,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        @src == -1 || @dest == -1
+        src == -1 || dest == -1
       end
 
       #
@@ -381,7 +381,7 @@ module Zakuro
       # @return [Integer] 間隔
       #
       def interval
-        @src - @dest
+        src - dest
       end
 
       #
@@ -453,7 +453,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        !@src && !@dest
+        !src && !dest
       end
     end
 

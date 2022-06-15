@@ -238,7 +238,7 @@ module Zakuro
       def create
         @yaml_hash.each do |month|
           AnnotationParser.resolve_history(
-            hash: month, annotations: @annotations, relations: @relations
+            hash: month, annotations: annotations, relations: relations
           )
         end
       end
@@ -295,7 +295,7 @@ module Zakuro
       end
 
       def annotation(id: '')
-        @annotations.fetch(id, Annotation.new)
+        annotations.fetch(id, Annotation.new)
       end
     end
 
