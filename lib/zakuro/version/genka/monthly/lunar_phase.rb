@@ -26,6 +26,8 @@ module Zakuro
         # @return [Array<String>] 月内の弦
         PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
 
+        # @return [Integer] 弦の位置
+        attr_reader :index
         # @return [Cycle::AbstractRemainder] 経
         attr_reader :remainder
 
@@ -80,12 +82,12 @@ module Zakuro
         #
         def next_index
           @index += 1
-          @index = 0 if @index >= PHASE_INDEXES.size
+          @index = 0 if index >= PHASE_INDEXES.size
           @index
         end
 
         def add_quarter_moon_size
-          @remainder.add!(QUARTER)
+          remainder.add!(QUARTER)
 
           next_index
         end

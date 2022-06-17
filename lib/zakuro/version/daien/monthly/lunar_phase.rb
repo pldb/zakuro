@@ -61,7 +61,7 @@ module Zakuro
           adjusted = average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          # 大衍暦では進朔しない
+          # NOTE: 大衍暦では進朔しない
           # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")

@@ -60,9 +60,10 @@ module Zakuro
           # @return [False] 不一致
           #
           def match?(day:, minute:)
-            return false unless @day == day
+            inner_day = @day
+            return false unless inner_day == day
 
-            return false unless @range.include?(minute: minute)
+            return false unless range.include?(minute: minute)
 
             true
           end
@@ -73,7 +74,7 @@ module Zakuro
           # @return [Integer] 分母
           #
           def denominator
-            @range.denominator
+            range.denominator
           end
         end
 
@@ -111,7 +112,7 @@ module Zakuro
           # @return [False] 含まれない
           #
           def include?(minute:)
-            minute >= @min && minute <= @max
+            minute >= min && minute <= max
           end
 
           #
@@ -120,7 +121,7 @@ module Zakuro
           # @return [Integer] 分母
           #
           def denominator
-            @max - @min
+            max - min
           end
         end
 
@@ -150,7 +151,7 @@ module Zakuro
           # @return [String] 文字
           #
           def to_s
-            "per:#{@per}, stack:#{@stack}"
+            "per:#{per}, stack:#{stack}"
           end
         end
 
