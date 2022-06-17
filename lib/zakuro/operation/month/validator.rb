@@ -381,9 +381,9 @@ module Zakuro
 
           prefix = "[#{@index}] invalid"
 
-          failed += @month.validate
+          failed += month.validate
 
-          failed += @solar_term.validate
+          failed += solar_term.validate
 
           failed.push("#{prefix} 'days'. #{@days}") unless days?
 
@@ -432,11 +432,11 @@ module Zakuro
         def validate
           failed = []
 
-          failed += @number.validate
+          failed += number.validate
 
-          failed += @leaped.validate
+          failed += leaped.validate
 
-          failed += @days.validate
+          failed += days.validate
 
           failed
         end
@@ -473,7 +473,7 @@ module Zakuro
           end
 
           def days?
-            Types.positive?(str: @days)
+            Types.positive?(str: days)
           end
 
           # :reek:TooManyStatements { max_statements: 6 }
@@ -488,9 +488,9 @@ module Zakuro
 
             prefix = "[#{index}][solar_term] invalid"
 
-            failed += @source.validate
+            failed += source.validate
 
-            failed += @destination.validate
+            failed += destination.validate
 
             failed.push("#{prefix} 'days'. #{@days}") unless days?
 
@@ -537,27 +537,27 @@ module Zakuro
           def validate
             failed = []
 
-            prefix = "[#{@diff_index}][solar_term.src] invalid"
+            prefix = "[#{diff_index}][solar_term.src] invalid"
 
-            failed.push("#{prefix} 'index'. #{@index}") unless index?
+            failed.push("#{prefix} 'index'. #{index}") unless index?
 
-            failed.push("#{prefix} 'to'. #{@to}") unless to?
+            failed.push("#{prefix} 'to'. #{to}") unless to?
 
-            failed.push("#{prefix} 'zodiac_name'. #{@zodiac_name}") unless zodiac_name?
+            failed.push("#{prefix} 'zodiac_name'. #{zodiac_name}") unless zodiac_name?
 
             failed
           end
 
           def index?
-            Types.positive?(str: @index)
+            Types.positive?(str: index)
           end
 
           def to?
-            Types.western_date?(str: @to)
+            Types.western_date?(str: to)
           end
 
           def zodiac_name?
-            Types.string?(str: @zodiac_name)
+            Types.string?(str: zodiac_name)
           end
         end
 
@@ -600,27 +600,27 @@ module Zakuro
           def validate
             failed = []
 
-            prefix = "[#{@diff_index}][solar_term.dest] invalid"
+            prefix = "[#{diff_index}][solar_term.dest] invalid"
 
-            failed.push("#{prefix} 'index'. #{@index}") unless index?
+            failed.push("#{prefix} 'index'. #{index}") unless index?
 
-            failed.push("#{prefix} 'from'. #{@from}") unless from?
+            failed.push("#{prefix} 'from'. #{from}") unless from?
 
-            failed.push("#{prefix} 'zodiac_name'. #{@zodiac_name}") unless zodiac_name?
+            failed.push("#{prefix} 'zodiac_name'. #{zodiac_name}") unless zodiac_name?
 
             failed
           end
 
           def index?
-            Types.positive?(str: @index)
+            Types.positive?(str: index)
           end
 
           def from?
-            Types.western_date?(str: @from)
+            Types.western_date?(str: from)
           end
 
           def zodiac_name?
-            Types.string?(str: @zodiac_name)
+            Types.string?(str: zodiac_name)
           end
         end
       end
@@ -660,21 +660,21 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "[#{@index}][#{NAME}] invalid"
+          prefix = "[#{index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'src'. #{@src}") unless src?
+          failed.push("#{prefix} 'src'. #{src}") unless src?
 
-          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
+          failed.push("#{prefix} 'dest'. #{dest}") unless dest?
 
           failed
         end
 
         def src?
-          Types.positive?(str: @src)
+          Types.positive?(str: src)
         end
 
         def dest?
-          Types.positive?(str: @dest)
+          Types.positive?(str: dest)
         end
       end
 
@@ -713,21 +713,21 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "[#{@index}][#{NAME}] invalid"
+          prefix = "[#{index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'src'. #{@src}") unless src?
+          failed.push("#{prefix} 'src'. #{src}") unless src?
 
-          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
+          failed.push("#{prefix} 'dest'. #{dest}") unless dest?
 
           failed
         end
 
         def src?
-          Types.empiable_bool?(str: @src)
+          Types.empiable_bool?(str: src)
         end
 
         def dest?
-          Types.empiable_bool?(str: @dest)
+          Types.empiable_bool?(str: dest)
         end
       end
 
@@ -766,21 +766,21 @@ module Zakuro
         def validate
           failed = []
 
-          prefix = "[#{@index}][#{NAME}] invalid"
+          prefix = "[#{index}][#{NAME}] invalid"
 
-          failed.push("#{prefix} 'src'. #{@src}") unless src?
+          failed.push("#{prefix} 'src'. #{src}") unless src?
 
-          failed.push("#{prefix} 'dest'. #{@dest}") unless dest?
+          failed.push("#{prefix} 'dest'. #{dest}") unless dest?
 
           failed
         end
 
         def src?
-          Types.month_days?(str: @src)
+          Types.month_days?(str: src)
         end
 
         def dest?
-          Types.month_days?(str: @dest)
+          Types.month_days?(str: dest)
         end
       end
 

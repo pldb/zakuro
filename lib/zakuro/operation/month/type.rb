@@ -339,7 +339,7 @@ module Zakuro
     # Number 月
     #
     class Number
-      # @return [Integer] 移動もと
+      # @return [Integer] 移動元
       attr_reader :src
       # @return [Integer] 移動先
       attr_reader :dest
@@ -465,6 +465,15 @@ module Zakuro
       SMALL = '小'
       # @return [String] 30日
       BIG = '大'
+
+      # NOTE: 下記readerは不要とする
+      #  * Number/Leaped とメソッド名を揃えている
+      #  * 大小の真偽値が必要で、文字列ではない
+      #
+      # @return [String] 移動元
+      # attr_reader :src
+      # @return [String] 移動先
+      # attr_reader :dest
 
       #
       # 初期化

@@ -55,13 +55,13 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def current_remainder
-          # debug("@average_remainder.format: #{@average_remainder.format(form: '%d-%d-%.5f')}")
+          # debug("average_remainder.format: #{average_remainder.format(form: '%d-%d-%.5f')}")
 
           sum = correction_value
-          adjusted = @average_remainder.add(
+          adjusted = average_remainder.add(
             Cycle::Remainder.new(day: 0, minute: sum, second: 0)
           )
-          # TODO: 大衍暦では進朔するか
+          # 大衍暦では進朔しない
           # adjusted.up_on_new_moon!
 
           debug("result: #{adjusted.format}")
@@ -75,14 +75,12 @@ module Zakuro
         # @return [Integer] 太陽運動の補正値
         #
         def correction_solar_value
-          @solar_location.run
-          # debug("@solar_term.remainder: #{@solar_location.remainder.format(form: '%d-%d-%.5f')}")
-          # debug("@solar_term.index: #{@solar_location.index}")
+          solar_location.run
+          # debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d-%.5f')}")
+          # debug("solar_term.index: #{solar_location.index}")
 
-          Solar::Value.get(solar_location: @solar_location)
+          Solar::Value.get(solar_location: solar_location)
         end
-
-        # :reek:TooManyStatements { max_statements: 6 }
 
         #
         # 月運動の補正値を得る
@@ -90,9 +88,9 @@ module Zakuro
         # @return [Integer] 月運動の補正値
         #
         def correction_moon_value
-          @lunar_location.run
+          lunar_location.run
 
-          remainder = @lunar_location.adjusted_remainder
+          remainder = lunar_location.adjusted_remainder
 
           # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
           # debug("[lunar]remainder.day: #{remainder.day}")
