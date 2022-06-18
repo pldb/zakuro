@@ -36,7 +36,7 @@ module Zakuro
           @years = years
           @scroll = scroll
           @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
-          @operated_solar_terms.create
+          operated_solar_terms.create
         end
 
         #
