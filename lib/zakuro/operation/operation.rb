@@ -35,7 +35,7 @@ module Zakuro
     # @return [Operation::MonthHistory] 変更履歴
     #
     def self.specify_history(western_date:)
-      month_histroies = Operation.month_histories
+      month_histroies = month_histories
 
       month_histroies.each do |history|
         return history if western_date == history.western_date
@@ -54,7 +54,7 @@ module Zakuro
     # @return [Operation::MonthHistory] 変更履歴
     #
     def self.specify_history_by_id(id:)
-      month_histroies = Operation.month_histories
+      month_histroies = month_histories
 
       month_histroies.each do |history|
         return history if id == history.id

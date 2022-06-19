@@ -61,13 +61,13 @@ module Zakuro
           diff = history.diffs.month
 
           @month_label = MonthLabel.new(
-            number: OperatedMonth.rewrite_month_fields(
+            number: self.class.rewrite_month_fields(
               month_diff: diff, month_label: month_label, name: 'number'
             ),
-            is_many_days: OperatedMonth.rewrite_month_fields(
+            is_many_days: self.class.rewrite_month_fields(
               month_diff: diff, month_label: month_label, name: 'is_many_days'
             ),
-            leaped: OperatedMonth.rewrite_month_fields(
+            leaped: self.class.rewrite_month_fields(
               month_diff: diff, month_label: month_label, name: 'leaped'
             )
           )
@@ -93,7 +93,7 @@ module Zakuro
 
           return unless matched
 
-          @solar_terms = OperatedMonth.create_operated_solar_terms(
+          @solar_terms = self.class.create_operated_solar_terms(
             operated_solar_term: operated_solar_term,
             solar_terms: solar_terms
           )

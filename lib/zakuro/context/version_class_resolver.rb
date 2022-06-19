@@ -74,7 +74,7 @@ module Zakuro
       # @return [Class] 大余小余（暦別）クラス
       #
       def remainder
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'remainder')
+        self.class.get_class(version_name: @version_name, class_name: 'remainder')
       end
 
       #
@@ -83,7 +83,7 @@ module Zakuro
       # @return [Class] 二十四節気クラス
       #
       def solar_term
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'solar_term')
+        self.class.get_class(version_name: @version_name, class_name: 'solar_term')
       end
 
       #
@@ -92,7 +92,7 @@ module Zakuro
       # @return [Class] 年間範囲クラス
       #
       def annual_range
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'annual_range')
+        self.class.get_class(version_name: @version_name, class_name: 'annual_range')
       end
 
       #
@@ -101,7 +101,7 @@ module Zakuro
       # @return [Class] 没日引数クラス
       #
       def dropped_date_parameter
-        VersionClassResolver.get_class(
+        self.class.get_class(
           version_name: @version_name, class_name: 'dropped_date_parameter'
         )
       end

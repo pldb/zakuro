@@ -86,7 +86,7 @@ module Zakuro
           # * 閏月は1回しか設定しない
           # * 最大2回設定する（中気・節気）
           (0..3).each do |_index|
-            in_range = AbstractAverage.in_solar_term?(
+            in_range = self.class.in_solar_term?(
               solar_term: solar_term.remainder, current_month: current_month.remainder,
               next_month: next_month.remainder
             )

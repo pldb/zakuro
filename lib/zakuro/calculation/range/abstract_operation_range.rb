@@ -47,9 +47,9 @@ module Zakuro
         def get
           operated_years = rewrite
 
-          AbstractOperationRange.move(operated_years: operated_years)
+          self.class.move(operated_years: operated_years)
 
-          AbstractOperationRange.commit(operated_years: operated_years)
+          self.class.commit(operated_years: operated_years)
 
           Transfer::GengouScroller.set(scroll: @scroll, years: operated_years)
 
@@ -65,7 +65,7 @@ module Zakuro
           operated_years = []
 
           years.each do |year|
-            operated_year = AbstractOperationRange.rewrite_year(
+            operated_year = self.class.rewrite_year(
               year: year,
               operated_solar_terms: operated_solar_terms
             )
@@ -155,7 +155,7 @@ module Zakuro
         def self.resolve_month(context:, month:, operated_solar_terms:)
           history = Operation.specify_history(western_date: month.western_date)
 
-          AbstractOperationRange.rewrite_month(
+          rewrite_month(
             context: context, month: month, history: history,
             operated_solar_terms: operated_solar_terms
           )

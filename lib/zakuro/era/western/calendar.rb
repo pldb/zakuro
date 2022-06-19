@@ -399,7 +399,7 @@ module Zakuro
       # @raise [ArgumentError] 引数エラー
       #
       def self.parse(text: '', type: Type::DEFAULT)
-        unless Calendar.valid_date_string(text: text, type: type)
+        unless valid_date_string(text: text, type: type)
           raise ArgumentError, "invalid date string: #{text}"
         end
 

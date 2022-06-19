@@ -24,6 +24,8 @@ module Zakuro
         # @return [Context::Context] 暦コンテキスト
         attr_reader :context
 
+        # TODO: クラス名が複数形
+
         #
         # 初期化
         #
@@ -87,7 +89,7 @@ module Zakuro
 
             next if direction.invalid?
 
-            OperatedSolarTerms.create_directions_each_month(
+            create_directions_each_month(
               context: context, directions: directions, direction: direction, month: month
             )
           end
@@ -107,10 +109,10 @@ module Zakuro
                                               direction: Operation::SolarTerm::Diretion.new)
 
           month.solar_terms.each do |solar_term|
-            OperatedSolarTerms.push_source(context: context, directions: directions,
+            push_source(context: context, directions: directions,
                                            direction: direction, solar_term: solar_term)
           end
-          OperatedSolarTerms.push_destination(context: context, directions: directions,
+          push_destination(context: context, directions: directions,
                                               destination: direction.destination)
         end
 
@@ -133,7 +135,7 @@ module Zakuro
           return unless source.index == solar_term.index
 
           # 移動先に移動元の二十四節気を指定する
-          directions[source.to.format] = OperatedSolarTerms.created_source(
+          directions[source.to.format] = created_source(
             context: context, direction: direction, solar_term: solar_term
           )
         end
@@ -205,7 +207,7 @@ module Zakuro
           directions = {}
 
           years.each do |year|
-            OperatedSolarTerms.create_directions_with_months(
+            self.class.create_directions_with_months(
               context: year.context, directions: directions, months: year.months
             )
           end

@@ -56,7 +56,7 @@ module Zakuro
         # @return [Array<OperatedMonth>] 昨年に属する月
         #
         def shift_last_year_months
-          result, @months = OperatedYear.devide_with(method: :last_year?, arr: months)
+          result, @months = self.class.devide_with(method: :last_year?, arr: months)
 
           result
         end
@@ -67,7 +67,7 @@ module Zakuro
         # @return [Array<OperatedMonth>] 来年に属する月
         #
         def pop_next_year_months
-          result, @months = OperatedYear.devide_with(method: :next_year?, arr: months)
+          result, @months = self.class.devide_with(method: :next_year?, arr: months)
 
           result
         end
