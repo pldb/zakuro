@@ -26,7 +26,7 @@ module Zakuro
         # @param [Integer] western_year 西暦年
         #
         def initialize(western_year:)
-          solar_term = Average.first_solar_term(western_year: western_year)
+          solar_term = self.class.first_solar_term(western_year: western_year)
           super(solar_term: solar_term)
         end
 
@@ -55,7 +55,7 @@ module Zakuro
           # 二十四節気（冬至）
           solar_term = Cycle::SolarTerm.new(index: 0, remainder: winter_solstice)
 
-          first_solar_term_index = Average.calc_first_solar_term_index(western_year: western_year)
+          first_solar_term_index = calc_first_solar_term_index(western_year: western_year)
 
           # 対象の二十四節気まで戻す
           solar_term.prev_by_index(first_solar_term_index)
