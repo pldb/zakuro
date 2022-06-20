@@ -17,8 +17,8 @@ module Zakuro
       class OperatedMonth < Month
         # @return [Operation::MonthHistory] 変更履歴（月）
         attr_reader :history
-        # @return [OperatedSolarTerms] 運用時二十四節気
-        attr_reader :operated_solar_terms
+        # @return [OperatedSolarTerm] 運用時二十四節気
+        attr_reader :operated_solar_term
 
         # :reek:LongParameterList {max_params: 6}
         # rubocop:disable Metrics/ParameterLists
@@ -27,19 +27,19 @@ module Zakuro
         # 初期化
         #
         # @param [Context::Context] context 暦コンテキスト
-        # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+        # @param [OperatedSolarTerm] operated_solar_term 運用時二十四節気
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [Operation::MonthHistory] history 変更履歴（月）
         #
-        def initialize(context:, operated_solar_terms:, month_label: MonthLabel.new,
+        def initialize(context:, operated_solar_term:, month_label: MonthLabel.new,
                        first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new,
                        history: Operation::MonthHistory.new)
           super(context: context, month_label: month_label, first_day: first_day,
                 solar_terms: solar_terms, gengou: gengou)
           @history = history
-          @operated_solar_terms = operated_solar_terms
+          @operated_solar_term = operated_solar_term
           @moved = false
         end
 
@@ -77,14 +77,14 @@ module Zakuro
         # 二十四節気ごとの差分で書き換える
         #
         def rewrite_solar_terms
-          matched, operated_solar_term = operated_solar_terms.get(
+          matched, solar_term = operated_solar_term.get(
             western_date: first_day.western_date
           )
 
           return unless matched
 
-          @solar_terms = self.class.create_operated_solar_terms(
-            operated_solar_term: operated_solar_term,
+          @solar_terms = self.class.create_operated_solar_term(
+            operated_solar_term: solar_term,
             solar_terms: solar_terms
           )
         end
@@ -190,7 +190,7 @@ module Zakuro
           #
           # @return [Array<SolarTerm>] 二十四節気
           #
-          def create_operated_solar_terms(operated_solar_term:, solar_terms:)
+          def create_operated_solar_term(operated_solar_term:, solar_terms:)
             index = operated_solar_term.index
 
             # 別の月に移動する二十四節気。割り当てない。

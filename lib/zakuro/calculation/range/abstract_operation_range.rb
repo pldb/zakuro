@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './operated_solar_terms'
+require_relative './operated_solar_term'
 require_relative '../../operation/operation'
 require_relative '../base/operated_year'
 require_relative '../../calculation/monthly/operated_month'
@@ -19,8 +19,8 @@ module Zakuro
       class AbstractOperationRange
         # @return [Array<Year>] 年データ（完全範囲）
         attr_reader :years
-        # @return [OperatedSolarTerms] 運用時二十四節気
-        attr_reader :operated_solar_terms
+        # @return [OperatedSolarTerm] 運用時二十四節気
+        attr_reader :operated_solar_term
         # @return [Context::Context] 暦コンテキスト
         attr_reader :context
 
@@ -35,8 +35,8 @@ module Zakuro
           @context = context
           @years = years
           @scroll = scroll
-          @operated_solar_terms = OperatedSolarTerms.new(context: context, years: @years)
-          operated_solar_terms.create
+          @operated_solar_term = OperatedSolarTerm.new(context: context, years: @years)
+          operated_solar_term.create
         end
 
         #
@@ -67,7 +67,7 @@ module Zakuro
           years.each do |year|
             operated_year = self.class.rewrite_year(
               year: year,
-              operated_solar_terms: operated_solar_terms
+              operated_solar_term: operated_solar_term
             )
             operated_years.push(operated_year)
           end
@@ -127,17 +127,17 @@ module Zakuro
           # 年を書き換える
           #
           # @param [Year] year 年
-          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          # @param [OperatedSolarTerm] operated_solar_term 運用時二十四節気
           #
           # @return [OperatedYear] 年
           #
-          def rewrite_year(year:, operated_solar_terms:)
+          def rewrite_year(year:, operated_solar_term:)
             context = year.context
             result = Base::OperatedYear.new(context: context)
             year.months.each do |month|
               result.push(month: resolve_month(
                 context: context, month: month,
-                operated_solar_terms: operated_solar_terms
+                operated_solar_term: operated_solar_term
               ))
             end
 
@@ -149,16 +149,16 @@ module Zakuro
           #
           # @param [Context] context 暦コンテキスト
           # @param [Month] month 月
-          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          # @param [OperatedSolarTerm] operated_solar_term 運用時二十四節気
           #
           # @return [Month] 月
           #
-          def resolve_month(context:, month:, operated_solar_terms:)
+          def resolve_month(context:, month:, operated_solar_term:)
             history = Operation.specify_history(western_date: month.western_date)
 
             rewrite_month(
               context: context, month: month, history: history,
-              operated_solar_terms: operated_solar_terms
+              operated_solar_term: operated_solar_term
             )
           end
 
@@ -170,16 +170,16 @@ module Zakuro
           # @param [Context] context 暦コンテキスト
           # @param [Month] month 月
           # @param [Operation::MonthHistory] history 変更履歴
-          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          # @param [OperatedSolarTerm] operated_solar_term 運用時二十四節気
           #
           # @return [Month] 月（運用結果）
           #
-          def rewrite_month(context:, month:, history:, operated_solar_terms:)
+          def rewrite_month(context:, month:, history:, operated_solar_term:)
             operated_month = Monthly::OperatedMonth.new(
               context: context,
               month_label: month.month_label, first_day: month.first_day,
               solar_terms: month.solar_terms, history: history, gengou: month.gengou,
-              operated_solar_terms: operated_solar_terms
+              operated_solar_term: operated_solar_term
             )
 
             operated_month.rewrite unless history.invalid?

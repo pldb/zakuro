@@ -12,7 +12,7 @@ module Zakuro
       #
       # OperatedSolarTerm 運用時二十四節気
       #
-      class OperatedSolarTerms
+      class OperatedSolarTerm
         # @return [Array<Year>] 完全範囲（年データ）
         attr_reader :years
         # @return [Hash<String, SolarTerm>] 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
@@ -23,8 +23,6 @@ module Zakuro
         attr_reader :directions
         # @return [Context::Context] 暦コンテキスト
         attr_reader :context
-
-        # TODO: クラス名が複数形
 
         #
         # 初期化
