@@ -1,4 +1,4 @@
-﻿# frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative '../../../../../era/japan/gengou/resource'
 require_relative '../../../../../era/japan/gengou'

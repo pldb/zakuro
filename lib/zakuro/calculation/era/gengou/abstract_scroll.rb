@@ -72,15 +72,7 @@ module Zakuro
         def ignite(month:)
           return false unless ignitable?(month: month)
 
-          japan_start_date = range.japan_start_date
-
-          western_start_date = range.western_start_date
-
-          # 今月初日（和暦日が1月2日であれば、開始日の1日前が初日）
-          @monthly_start_date = western_start_date.clone - japan_start_date.day + 1
-
-          # 今月末
-          @monthly_last_date = monthly_start_date.clone + month.days - 1
+          first_monthly_date(month: month)
 
           update_current_gengou
 
@@ -139,6 +131,23 @@ module Zakuro
         end
 
         private
+
+        #
+        # 最初の月初日/末日を設定する
+        #
+        # @param [Monthly::Month] month 月
+        #
+        def first_monthly_date(month:)
+          japan_start_date = range.japan_start_date
+
+          western_start_date = range.western_start_date
+
+          # 今月初日（和暦日が1月2日であれば、開始日の1日前が初日）
+          @monthly_start_date = western_start_date.clone - japan_start_date.day + 1
+
+          # 今月末
+          @monthly_last_date = monthly_start_date.clone + month.days - 1
+        end
 
         #
         # 行を跨ぐ元号年を継続させる
