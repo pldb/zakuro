@@ -26,26 +26,28 @@ module Zakuro
         @date = date
       end
 
-      #
-      # 検証する
-      #
-      # @param [Date] date 日付
-      #
-      # @return [Array<Exception::Case::Preset>] エラープリセット配列
-      #
-      def self.validate(date:)
-        failed = []
-        return failed unless date
+      class << self
+        #
+        # 検証する
+        #
+        # @param [Date] date 日付
+        #
+        # @return [Array<Exception::Case::Preset>] エラープリセット配列
+        #
+        def validate(date:)
+          failed = []
+          return failed unless date
 
-        return failed if date.is_a?(Date) || date.is_a?(String)
+          return failed if date.is_a?(Date) || date.is_a?(String)
 
-        failed.push(
-          Exception::Case::Preset.new(
-            date.class,
-            template: Exception::Case::Pattern::INVALID_DATE_TYPE
+          failed.push(
+            Exception::Case::Preset.new(
+              date.class,
+              template: Exception::Case::Pattern::INVALID_DATE_TYPE
+            )
           )
-        )
-        failed
+          failed
+        end
       end
     end
 
@@ -72,31 +74,33 @@ module Zakuro
 
       # :reek:TooManyStatements { max_statements: 7 }
 
-      #
-      # 検証する
-      #
-      # @param [Hash<Symbol, Object>] hash パラメータ
-      #
-      # @return [Array<Exception::Case::Preset>] エラープリセット
-      #
-      def self.validate(hash:)
-        failed = []
-        return failed unless hash
+      class << self
+        #
+        # 検証する
+        #
+        # @param [Hash<Symbol, Object>] hash パラメータ
+        #
+        # @return [Array<Exception::Case::Preset>] エラープリセット
+        #
+        def validate(hash:)
+          failed = []
+          return failed unless hash
 
-        unless hash.is_a?(Hash)
-          failed.push(
-            Exception::Case::Preset.new(
-              hash.class,
-              template: Exception::Case::Pattern::INVALID_RANGE_TYPE
+          unless hash.is_a?(Hash)
+            failed.push(
+              Exception::Case::Preset.new(
+                hash.class,
+                template: Exception::Case::Pattern::INVALID_RANGE_TYPE
+              )
             )
-          )
-          return failed
+            return failed
+          end
+
+          failed.concat(BasisDate.validate(date: hash[:start]))
+          failed.concat(BasisDate.validate(date: hash[:last]))
+
+          failed
         end
-
-        failed.concat(BasisDate.validate(date: hash[:start]))
-        failed.concat(BasisDate.validate(date: hash[:last]))
-
-        failed
       end
 
       #
@@ -131,29 +135,31 @@ module Zakuro
         @columns = columns
       end
 
-      #
-      # 検証する
-      #
-      # @param [Array<String>] columns 列
-      #
-      # @return [Array<Exception::Case::Preset>] エラープリセット配列
-      #
-      def self.validate(columns:)
-        # TODO: 列内容のバリデーション
-        failed = []
+      class << self
+        #
+        # 検証する
+        #
+        # @param [Array<String>] columns 列
+        #
+        # @return [Array<Exception::Case::Preset>] エラープリセット配列
+        #
+        def validate(columns:)
+          # TODO: 列内容のバリデーション
+          failed = []
 
-        return failed unless columns
+          return failed unless columns
 
-        return failed if columns.is_a?(Array)
+          return failed if columns.is_a?(Array)
 
-        failed.push(
-          Exception::Case::Preset.new(
-            hash.class,
-            template: Exception::Case::Pattern::INVALID_COLUMN_TYPE
+          failed.push(
+            Exception::Case::Preset.new(
+              hash.class,
+              template: Exception::Case::Pattern::INVALID_COLUMN_TYPE
+            )
           )
-        )
 
-        failed
+          failed
+        end
       end
     end
 
@@ -180,26 +186,28 @@ module Zakuro
 
       # TODO: オプションキーのバリデーション
 
-      #
-      # 検証する
-      #
-      # @param [Hash<Symbol, Object>] options オプション
-      #
-      # @return [Array<Exception::Case::Preset>] エラープリセット配列
-      #
-      def self.validate(options:)
-        failed = []
-        return failed unless options
+      class << self
+        #
+        # 検証する
+        #
+        # @param [Hash<Symbol, Object>] options オプション
+        #
+        # @return [Array<Exception::Case::Preset>] エラープリセット配列
+        #
+        def validate(options:)
+          failed = []
+          return failed unless options
 
-        return failed if options.is_a?(Hash)
+          return failed if options.is_a?(Hash)
 
-        failed.push(
-          Exception::Case::Preset.new(
-            hash.class,
-            template: Exception::Case::Pattern::INVALID_OPTION_TYPE
+          failed.push(
+            Exception::Case::Preset.new(
+              hash.class,
+              template: Exception::Case::Pattern::INVALID_OPTION_TYPE
+            )
           )
-        )
-        failed
+          failed
+        end
       end
     end
   end
@@ -235,46 +243,48 @@ module Zakuro
 
     # :reek:TooManyStatements { max_statements: 8 }
 
-    #
-    # 検証する
-    #
-    # @param [Hash<Symbol, Object>] hash パラメータ
-    #
-    # @return [Array<Exception::Case::Preset>] エラープリセット配列
-    #
-    def self.validate(hash:)
-      failed = []
+    class << self
+      #
+      # 検証する
+      #
+      # @param [Hash<Symbol, Object>] hash パラメータ
+      #
+      # @return [Array<Exception::Case::Preset>] エラープリセット配列
+      #
+      def validate(hash:)
+        failed = []
 
-      unless hash.is_a?(Hash)
-        failed.push(
-          Exception::Case::Preset.new(
-            hash.class,
-            template: Exception::Case::Pattern::INVALID_CONDITION_TYPE
+        unless hash.is_a?(Hash)
+          failed.push(
+            Exception::Case::Preset.new(
+              hash.class,
+              template: Exception::Case::Pattern::INVALID_CONDITION_TYPE
+            )
           )
-        )
-        return failed
+          return failed
+        end
+
+        failed.concat(validate_hash(hash: hash))
+
+        failed
       end
 
-      failed.concat(validate_hash(hash: hash))
+      #
+      # ハッシュ内を検証する
+      #
+      # @param [Hash<Symbol, Object>] hash パラメータ
+      #
+      # @return [Array<Exception::Case::Preset>] エラープリセット配列
+      #
+      def validate_hash(hash:)
+        failed = []
+        failed.concat(Catalog::BasisDate.validate(date: hash[:date]))
+        failed.concat(Catalog::Range.validate(hash: hash[:range]))
+        failed.concat(Catalog::Columns.validate(columns: hash[:columns]))
+        failed.concat(Catalog::Options.validate(options: hash[:options]))
 
-      failed
-    end
-
-    #
-    # ハッシュ内を検証する
-    #
-    # @param [Hash<Symbol, Object>] hash パラメータ
-    #
-    # @return [Array<Exception::Case::Preset>] エラープリセット配列
-    #
-    def self.validate_hash(hash:)
-      failed = []
-      failed.concat(Catalog::BasisDate.validate(date: hash[:date]))
-      failed.concat(Catalog::Range.validate(hash: hash[:range]))
-      failed.concat(Catalog::Columns.validate(columns: hash[:columns]))
-      failed.concat(Catalog::Options.validate(options: hash[:options]))
-
-      failed
+        failed
+      end
     end
 
     #

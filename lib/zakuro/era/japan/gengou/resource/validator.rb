@@ -330,15 +330,17 @@ module Zakuro
             end
           end
 
-          #
-          # 検証する
-          #
-          # @param [Hash<String, Object>] yaml_hash yaml取得結果
-          #
-          # @return [Array<String>] 不正メッセージ
-          #
-          def self.run(yaml_hash:)
-            Set.new(hash: yaml_hash).validate
+          class << self
+            #
+            # 検証する
+            #
+            # @param [Hash<String, Object>] yaml_hash yaml取得結果
+            #
+            # @return [Array<String>] 不正メッセージ
+            #
+            def run(yaml_hash:)
+              Set.new(hash: yaml_hash).validate
+            end
           end
         end
       end

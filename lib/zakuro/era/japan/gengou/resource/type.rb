@@ -81,34 +81,6 @@ module Zakuro
           end
 
           #
-          # 年が不正なしかどうかを確認する
-          #
-          # @param [Integer] year 年
-          #
-          # @return [True] 不正なし
-          # @return [False] 不正
-          #
-          def self.valid_year(year:)
-            return false unless year
-
-            year.is_a?(Integer)
-          end
-
-          #
-          # 日付が不正なしかどうかを確認する
-          #
-          # @param [Western::Calendar] date 日付
-          #
-          # @return [True] 不正なし
-          # @return [False] 不正
-          #
-          def self.valid_date(date:)
-            return false unless date
-
-            date.is_a?(Western::Calendar)
-          end
-
-          #
           # 次の元号の開始年から、元号の終了年に変換する
           #
           # @param [Integer] next_start_year 次回開始年
@@ -174,6 +146,36 @@ module Zakuro
           def to_s
             "name: #{@name}, both_start_year: #{both_start_year.format}, " \
             "both_start_date: #{both_start_date.format}, last_date: #{last_date.format}"
+          end
+
+          class << self
+            #
+            # 年が不正なしかどうかを確認する
+            #
+            # @param [Integer] year 年
+            #
+            # @return [True] 不正なし
+            # @return [False] 不正
+            #
+            def valid_year(year:)
+              return false unless year
+
+              year.is_a?(Integer)
+            end
+
+            #
+            # 日付が不正なしかどうかを確認する
+            #
+            # @param [Western::Calendar] date 日付
+            #
+            # @return [True] 不正なし
+            # @return [False] 不正
+            #
+            def valid_date(date:)
+              return false unless date
+
+              date.is_a?(Western::Calendar)
+            end
           end
         end
 

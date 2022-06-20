@@ -70,115 +70,117 @@ module Zakuro
           [true, solar_term]
         end
 
-        # :reek:TooManyStatements { max_statements: 6 }
+        # :reek:LongParameterList {max_params: 4}
 
-        #
-        # 年内の全ての月の移動方向を作成する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
-        # @param [Array<Month>] months 年内の全ての月
-        #
-        def self.create_directions_with_months(context:, directions: {}, months: [])
-          months.each do |month|
-            history = Operation.specify_history(western_date: month.western_date)
+        class << self
+          # :reek:TooManyStatements { max_statements: 6 }
 
-            next if history.invalid?
+          #
+          # 年内の全ての月の移動方向を作成する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
+          # @param [Array<Month>] months 年内の全ての月
+          #
+          def create_directions_with_months(context:, directions: {}, months: [])
+            months.each do |month|
+              history = Operation.specify_history(western_date: month.western_date)
 
-            direction = history.diffs.solar_term
+              next if history.invalid?
 
-            next if direction.invalid?
+              direction = history.diffs.solar_term
 
-            create_directions_each_month(
-              context: context, directions: directions, direction: direction, month: month
+              next if direction.invalid?
+
+              create_directions_each_month(
+                context: context, directions: directions, direction: direction, month: month
+              )
+            end
+          end
+
+          #
+          # 月毎の移動方向を作成する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Month] 月
+          # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
+          # @param [Operation::SolarTerm::Diretion] 二十四節気（移動）
+          #
+          def create_directions_each_month(context:, month:, directions: {},
+                                           direction: Operation::SolarTerm::Diretion.new)
+
+            month.solar_terms.each do |solar_term|
+              push_source(context: context, directions: directions,
+                          direction: direction, solar_term: solar_term)
+            end
+            push_destination(context: context, directions: directions,
+                             destination: direction.destination)
+          end
+
+          # :reek:LongParameterList {max_params: 4}
+
+          #
+          # 移動先に有効な二十四節気（差し替える二十四節気）を指定する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [SolarTerm] solar_term 二十四節気（計算値）
+          # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
+          # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
+          #
+          def push_source(context:, solar_term:, directions: {},
+                          direction: Operation::SolarTerm::Direction.new)
+            source = direction.source
+
+            return if source.invalid?
+
+            return unless source.index == solar_term.index
+
+            # 移動先に移動元の二十四節気を指定する
+            directions[source.to.format] = created_source(
+              context: context, direction: direction, solar_term: solar_term
             )
           end
-        end
 
-        # :reek:LongParameterList {max_params: 4}
-
-        #
-        # 月毎の移動方向を作成する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [Month] 月
-        # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
-        # @param [Operation::SolarTerm::Diretion] 二十四節気（移動）
-        #
-        def self.create_directions_each_month(context:, month:, directions: {},
-                                              direction: Operation::SolarTerm::Diretion.new)
-
-          month.solar_terms.each do |solar_term|
-            push_source(context: context, directions: directions,
-                                           direction: direction, solar_term: solar_term)
-          end
-          push_destination(context: context, directions: directions,
-                                              destination: direction.destination)
-        end
-
-        # :reek:LongParameterList {max_params: 4}
-
-        #
-        # 移動先に有効な二十四節気（差し替える二十四節気）を指定する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [SolarTerm] solar_term 二十四節気（計算値）
-        # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
-        # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
-        #
-        def self.push_source(context:, solar_term:, directions: {},
+          #
+          # 移動先に有効な二十四節気（差し替える二十四節気）を生成する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [SolarTerm] solar_term 二十四節気（計算値）
+          # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
+          #
+          # @return [SolarTerm] 二十四節気（運用値）
+          #
+          def created_source(context:, solar_term:,
                              direction: Operation::SolarTerm::Direction.new)
-          source = direction.source
+            operated_solar_term = solar_term.clone
+            remainder_class_name = context.resolver.remainder
 
-          return if source.invalid?
+            unless direction.invalid_days?
+              # 二十四節気の大余をずらす
+              operated_solar_term.remainder.add!(
+                remainder_class_name.new(day: direction.days, minute: 0, second: 0)
+              )
+            end
 
-          return unless source.index == solar_term.index
-
-          # 移動先に移動元の二十四節気を指定する
-          directions[source.to.format] = created_source(
-            context: context, direction: direction, solar_term: solar_term
-          )
-        end
-
-        #
-        # 移動先に有効な二十四節気（差し替える二十四節気）を生成する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [SolarTerm] solar_term 二十四節気（計算値）
-        # @param [Operation::SolarTerm::Direction] source 二十四節気（移動）
-        #
-        # @return [SolarTerm] 二十四節気（運用値）
-        #
-        def self.created_source(context:, solar_term:,
-                                direction: Operation::SolarTerm::Direction.new)
-          operated_solar_term = solar_term.clone
-          remainder_class_name = context.resolver.remainder
-
-          unless direction.invalid_days?
-            # 二十四節気の大余をずらす
-            operated_solar_term.remainder.add!(
-              remainder_class_name.new(day: direction.days, minute: 0, second: 0)
-            )
+            operated_solar_term
           end
 
-          operated_solar_term
-        end
+          #
+          # 移動元に無効な二十四節気（連番のみ指定）を指定する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
+          # @param [Operation::SolarTerm::Destination] destination 二十四節気（移動先）
+          #
+          def push_destination(context:, directions: {},
+                               destination: Operation::SolarTerm::Destination.new)
+            return if destination.invalid?
 
-        #
-        # 移動元に無効な二十四節気（連番のみ指定）を指定する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [Hash<String, SolarTerm>] directions 二十四節気の移動元/移動先（西暦日 -> 対応する二十四節気）
-        # @param [Operation::SolarTerm::Destination] destination 二十四節気（移動先）
-        #
-        def self.push_destination(context:, directions: {},
-                                  destination: Operation::SolarTerm::Destination.new)
-          return if destination.invalid?
-
-          solar_term_class = context.resolver.solar_term
-          directions[destination.from.format] = solar_term_class.new(
-            index: destination.index
-          )
+            solar_term_class = context.resolver.solar_term
+            directions[destination.from.format] = solar_term_class.new(
+              index: destination.index
+            )
+          end
         end
 
         private

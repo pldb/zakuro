@@ -223,24 +223,26 @@ module Zakuro
             end
           end
 
-          #
-          # 解析/展開する
-          #
-          # @param [String] filepath 元号セットファイルパス
-          #
-          # @return [Set] 元号セット情報
-          #
-          # @raise [ArgumentError] 引数エラー
-          #
-          def self.run(filepath: '')
-            yaml = YAML.load_file(filepath)
+          class << self
+            #
+            # 解析/展開する
+            #
+            # @param [String] filepath 元号セットファイルパス
+            #
+            # @return [Set] 元号セット情報
+            #
+            # @raise [ArgumentError] 引数エラー
+            #
+            def run(filepath: '')
+              yaml = YAML.load_file(filepath)
 
-            failed = Validator.run(yaml_hash: yaml)
+              failed = Validator.run(yaml_hash: yaml)
 
-            raise ArgumentError, failed.join("\n") unless failed.empty?
+              raise ArgumentError, failed.join("\n") unless failed.empty?
 
-            parser = SetParser.new(hash: yaml)
-            parser.create
+              parser = SetParser.new(hash: yaml)
+              parser.create
+            end
           end
         end
       end

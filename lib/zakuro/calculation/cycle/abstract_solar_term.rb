@@ -81,20 +81,6 @@ module Zakuro
         end
 
         #
-        # 有効な二十四節気番号か
-        #
-        # @param [Integer] index 連番
-        #
-        # @return [True] 有効
-        # @return [False] 無効
-        #
-        def self.index?(index)
-          result = ORDER.fetch(index, -1)
-
-          result != -1
-        end
-
-        #
         # 次の二十四節気に進める
         #
         def next_term!
@@ -168,6 +154,22 @@ module Zakuro
         def initialize_copy(obj)
           @index = obj.index.clone
           @remainder = obj.remainder.clone
+        end
+
+        class << self
+          #
+          # 有効な二十四節気番号か
+          #
+          # @param [Integer] index 連番
+          #
+          # @return [True] 有効
+          # @return [False] 無効
+          #
+          def index?(index)
+            result = ORDER.fetch(index, -1)
+
+            result != -1
+          end
         end
       end
     end

@@ -76,16 +76,18 @@ module Zakuro
           taisetsu: Row.new(stack: -54.0, per_term: +3.4091, per_day: +0.0372)     # 大雪（たいせつ）
         }.freeze
 
-        #
-        # 24気損益眺朒（ちょうじく）数の行データを特定する
-        #
-        # @param [Integer] index 連番（二十四節気）
-        #
-        # @return [Row] 行データ
-        #
-        def self.specify(index:)
-          key = Cycle::SolarTerm::ORDER[index]
-          Adjustment::MAP[key].clone
+        class << self
+          #
+          # 24気損益眺朒（ちょうじく）数の行データを特定する
+          #
+          # @param [Integer] index 連番（二十四節気）
+          #
+          # @return [Row] 行データ
+          #
+          def specify(index:)
+            key = Cycle::SolarTerm::ORDER[index]
+            Adjustment::MAP[key].clone
+          end
         end
       end
     end

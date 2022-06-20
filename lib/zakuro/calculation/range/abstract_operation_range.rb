@@ -75,115 +75,117 @@ module Zakuro
           operated_years
         end
 
-        #
-        # 運用情報で年を跨ぐ月をその年に寄せる
-        #
-        # @param [Array<OperatedYear>] operated_years 運用結果範囲
-        #
-        def self.move(operated_years:)
-          move_into_next_year(operated_years: operated_years)
-          move_into_last_year(operated_years: operated_years)
-        end
-
-        #
-        # 運用情報では来年に属する月を来年に寄せる
-        #
-        # @param [Array<OperatedYear>] operated_years 運用結果範囲
-        #
-        def self.move_into_next_year(operated_years:)
-          operated_years.each_cons(2) do |current_year, next_year|
-            months = current_year.pop_next_year_months
-
-            next_year.unshift_months(months)
-          end
-        end
-
-        #
-        # 運用情報では昨年に属する月を昨年に寄せる
-        #
-        # @param [Array<OperatedYear>] operated_years 運用結果範囲
-        #
-        def self.move_into_last_year(operated_years:)
-          rerversed_year = operated_years.reverse!
-          rerversed_year.each_cons(2) do |current_year, last_year|
-            months = current_year.shift_last_year_months
-            last_year.push_months(months)
+        class << self
+          #
+          # 運用情報で年を跨ぐ月をその年に寄せる
+          #
+          # @param [Array<OperatedYear>] operated_years 運用結果範囲
+          #
+          def move(operated_years:)
+            move_into_next_year(operated_years: operated_years)
+            move_into_last_year(operated_years: operated_years)
           end
 
-          rerversed_year.reverse!
-        end
+          #
+          # 運用情報では来年に属する月を来年に寄せる
+          #
+          # @param [Array<OperatedYear>] operated_years 運用結果範囲
+          #
+          def move_into_next_year(operated_years:)
+            operated_years.each_cons(2) do |current_year, next_year|
+              months = current_year.pop_next_year_months
 
-        #
-        # 年を確定させる
-        #
-        # @param [Array<OperatedYear>] operated_years 運用結果範囲
-        #
-        def self.commit(operated_years:)
-          operated_years.each(&:commit)
-        end
+              next_year.unshift_months(months)
+            end
+          end
 
-        #
-        # 年を書き換える
-        #
-        # @param [Year] year 年
-        # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
-        #
-        # @return [OperatedYear] 年
-        #
-        def self.rewrite_year(year:, operated_solar_terms:)
-          context = year.context
-          result = Base::OperatedYear.new(context: context)
-          year.months.each do |month|
-            result.push(month: resolve_month(
-              context: context, month: month,
+          #
+          # 運用情報では昨年に属する月を昨年に寄せる
+          #
+          # @param [Array<OperatedYear>] operated_years 運用結果範囲
+          #
+          def move_into_last_year(operated_years:)
+            rerversed_year = operated_years.reverse!
+            rerversed_year.each_cons(2) do |current_year, last_year|
+              months = current_year.shift_last_year_months
+              last_year.push_months(months)
+            end
+
+            rerversed_year.reverse!
+          end
+
+          #
+          # 年を確定させる
+          #
+          # @param [Array<OperatedYear>] operated_years 運用結果範囲
+          #
+          def commit(operated_years:)
+            operated_years.each(&:commit)
+          end
+
+          #
+          # 年を書き換える
+          #
+          # @param [Year] year 年
+          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          #
+          # @return [OperatedYear] 年
+          #
+          def rewrite_year(year:, operated_solar_terms:)
+            context = year.context
+            result = Base::OperatedYear.new(context: context)
+            year.months.each do |month|
+              result.push(month: resolve_month(
+                context: context, month: month,
+                operated_solar_terms: operated_solar_terms
+              ))
+            end
+
+            result
+          end
+
+          #
+          # 履歴情報の有無に応じた月にする
+          #
+          # @param [Context] context 暦コンテキスト
+          # @param [Month] month 月
+          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          #
+          # @return [Month] 月
+          #
+          def resolve_month(context:, month:, operated_solar_terms:)
+            history = Operation.specify_history(western_date: month.western_date)
+
+            rewrite_month(
+              context: context, month: month, history: history,
               operated_solar_terms: operated_solar_terms
-            ))
+            )
           end
 
-          result
-        end
+          # :reek:LongParameterList {max_params: 4}
 
-        #
-        # 履歴情報の有無に応じた月にする
-        #
-        # @param [Context] context 暦コンテキスト
-        # @param [Month] month 月
-        # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
-        #
-        # @return [Month] 月
-        #
-        def self.resolve_month(context:, month:, operated_solar_terms:)
-          history = Operation.specify_history(western_date: month.western_date)
+          #
+          # 月を運用結果に書き換える
+          #
+          # @param [Context] context 暦コンテキスト
+          # @param [Month] month 月
+          # @param [Operation::MonthHistory] history 変更履歴
+          # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
+          #
+          # @return [Month] 月（運用結果）
+          #
+          def rewrite_month(context:, month:, history:, operated_solar_terms:)
+            operated_month = Monthly::OperatedMonth.new(
+              context: context,
+              month_label: month.month_label, first_day: month.first_day,
+              solar_terms: month.solar_terms, history: history, gengou: month.gengou,
+              operated_solar_terms: operated_solar_terms
+            )
 
-          rewrite_month(
-            context: context, month: month, history: history,
-            operated_solar_terms: operated_solar_terms
-          )
-        end
+            operated_month.rewrite unless history.invalid?
 
-        # :reek:LongParameterList {max_params: 4}
-
-        #
-        # 月を運用結果に書き換える
-        #
-        # @param [Context] context 暦コンテキスト
-        # @param [Month] month 月
-        # @param [Operation::MonthHistory] history 変更履歴
-        # @param [OperatedSolarTerms] operated_solar_terms 運用時二十四節気
-        #
-        # @return [Month] 月（運用結果）
-        #
-        def self.rewrite_month(context:, month:, history:, operated_solar_terms:)
-          operated_month = Monthly::OperatedMonth.new(
-            context: context,
-            month_label: month.month_label, first_day: month.first_day,
-            solar_terms: month.solar_terms, history: history, gengou: month.gengou,
-            operated_solar_terms: operated_solar_terms
-          )
-
-          operated_month.rewrite unless history.invalid?
-
-          operated_month
+            operated_month
+          end
         end
       end
     end
