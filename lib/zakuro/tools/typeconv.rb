@@ -16,22 +16,24 @@ module Zakuro
     module Typeconv
       LOGGER = Output::Logger.new(location: 'Typeconv')
 
-      #
-      # 文字列を10進数で数値化する
-      #
-      # @param [String] text 対象文字列
-      # @param [Integer] default デフォルト数値
-      #
-      # @return [Integer] 数値
-      #
-      def self.to_i(text:, default:)
-        begin
-          return Integer(text, 10)
-        rescue StandardError => e
-          LOGGER.debug(e)
-        end
+      class << self
+        #
+        # 文字列を10進数で数値化する
+        #
+        # @param [String] text 対象文字列
+        # @param [Integer] default デフォルト数値
+        #
+        # @return [Integer] 数値
+        #
+        def to_i(text:, default:)
+          begin
+            return Integer(text, 10)
+          rescue StandardError => e
+            LOGGER.debug(e)
+          end
 
-        default
+          default
+        end
       end
     end
   end

@@ -58,26 +58,28 @@ module Zakuro
       Type::DEFAULT => Date::ITALY
     }.freeze
 
-    #
-    # 日付種別からRuby標準のグレゴリオ暦開始日を引き当てる
-    #
-    # @param [Symbol] type 日付種別
-    #
-    # @return [Integer] Ruby標準のグレゴリオ暦開始日
-    #
-    def self.to_native_start(type:)
-      DATE_START.fetch(type, DATE_START[Type::DEFAULT])
-    end
+    class << self
+      #
+      # 日付種別からRuby標準のグレゴリオ暦開始日を引き当てる
+      #
+      # @param [Symbol] type 日付種別
+      #
+      # @return [Integer] Ruby標準のグレゴリオ暦開始日
+      #
+      def to_native_start(type:)
+        DATE_START.fetch(type, DATE_START[Type::DEFAULT])
+      end
 
-    #
-    # Ruby標準のグレゴリオ暦開始日から日付種別を引き当てる
-    #
-    # @param [Integer] start Ruby標準のグレゴリオ暦開始日
-    #
-    # @return [Symbol] 日付種別
-    #
-    def self.to_type(start:)
-      DATE_START.invert.fetch(start, Type::DEFAULT)
+      #
+      # Ruby標準のグレゴリオ暦開始日から日付種別を引き当てる
+      #
+      # @param [Integer] start Ruby標準のグレゴリオ暦開始日
+      #
+      # @return [Symbol] 日付種別
+      #
+      def to_type(start:)
+        DATE_START.invert.fetch(start, Type::DEFAULT)
+      end
     end
 
     #
@@ -375,59 +377,61 @@ module Zakuro
         date.strftime(form)
       end
 
-      #
-      # 年月日情報（西暦）を生成する
-      #
-      # @param [Date] date Ruby標準日付
-      #
-      # @return [Calendar] 年月日情報（西暦）
-      #
-      def self.create(date: Date.new)
-        type = Western.to_type(start: date.start)
-        Calendar.new(year: date.year, month: date.month,
-                     day: date.day, type: type)
-      end
-
-      #
-      # 年月日情報（西暦）を生成する
-      #
-      # @param [String] text 日付文字列
-      # @param [Symbol] type 日付種別
-      #
-      # @return [Calendar] 年月日情報（西暦）
-      #
-      # @raise [ArgumentError] 引数エラー
-      #
-      def self.parse(text: '', type: Type::DEFAULT)
-        unless valid_date_string(text: text, type: type)
-          raise ArgumentError, "invalid date string: #{text}"
+      class << self
+        #
+        # 年月日情報（西暦）を生成する
+        #
+        # @param [Date] date Ruby標準日付
+        #
+        # @return [Calendar] 年月日情報（西暦）
+        #
+        def create(date: Date.new)
+          type = Western.to_type(start: date.start)
+          Calendar.new(year: date.year, month: date.month,
+                       day: date.day, type: type)
         end
 
-        start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
-        date = Date.parse(text, start)
+        #
+        # 年月日情報（西暦）を生成する
+        #
+        # @param [String] text 日付文字列
+        # @param [Symbol] type 日付種別
+        #
+        # @return [Calendar] 年月日情報（西暦）
+        #
+        # @raise [ArgumentError] 引数エラー
+        #
+        def parse(text: '', type: Type::DEFAULT)
+          unless valid_date_string(text: text, type: type)
+            raise ArgumentError, "invalid date string: #{text}"
+          end
 
-        Calendar.new(
-          year: date.year, month: date.month, day: date.day, type: type
-        )
-      end
+          start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
+          date = Date.parse(text, start)
 
-      #
-      # 日付文字列を検証する
-      #
-      # @param [String] text 日付文字列
-      # @param [Symbol] type 日付種別
-      #
-      # @return [True] 正しい
-      # @return [True] 正しくない
-      #
-      def self.valid_date_string(text: '', type: Type::DEFAULT)
-        start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
-        begin
-          Date.parse(text, start)
-        rescue ArgumentError => _e
-          return false
+          Calendar.new(
+            year: date.year, month: date.month, day: date.day, type: type
+          )
         end
-        true
+
+        #
+        # 日付文字列を検証する
+        #
+        # @param [String] text 日付文字列
+        # @param [Symbol] type 日付種別
+        #
+        # @return [True] 正しい
+        # @return [True] 正しくない
+        #
+        def valid_date_string(text: '', type: Type::DEFAULT)
+          start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
+          begin
+            Date.parse(text, start)
+          rescue ArgumentError => _e
+            return false
+          end
+          true
+        end
       end
     end
   end

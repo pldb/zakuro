@@ -78,24 +78,26 @@ module Zakuro
           MAP[:taisetsu]    # 23
         ].freeze
 
-        #
-        # 入気定日加減数を引き当てる
-        #
-        # @param [Integer] index 二十四節気番号
-        #
-        # @return [Cycle::Remainder] 入気定日加減数
-        #
-        def self.index_of(index)
-          LIST[index]
-        end
+        class << self
+          #
+          # 入気定日加減数を引き当てる
+          #
+          # @param [Integer] index 二十四節気番号
+          #
+          # @return [Cycle::Remainder] 入気定日加減数
+          #
+          def index_of(index)
+            LIST[index]
+          end
 
-        #
-        # 入気定日加減数の総数を返す
-        #
-        # @return [Integer] 入気定日加減数の総数
-        #
-        def self.size
-          LIST.size
+          #
+          # 入気定日加減数の総数を返す
+          #
+          # @return [Integer] 入気定日加減数の総数
+          #
+          def size
+            LIST.size
+          end
         end
       end
     end

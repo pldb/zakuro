@@ -20,122 +20,124 @@ module Zakuro
         EMPTY_STRING = '-'
         BOOLEANS = %w[true false].freeze
 
-        #
-        # 有効文字列か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 有効
-        # @return [False] 無効
-        #
-        def self.string?(str: '')
-          return false if str == ''
+        class << self
+          #
+          # 有効文字列か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 有効
+          # @return [False] 無効
+          #
+          def string?(str: '')
+            return false if str == ''
 
-          return false unless str
+            return false unless str
 
-          str.is_a?(String)
-        end
+            str.is_a?(String)
+          end
 
-        #
-        # 有効文字列（空文字許容）か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 有効
-        # @return [False] 無効
-        #
-        def self.empiable_string?(str: '')
-          return false unless str
+          #
+          # 有効文字列（空文字許容）か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 有効
+          # @return [False] 無効
+          #
+          def empiable_string?(str: '')
+            return false unless str
 
-          str.is_a?(String)
-        end
+            str.is_a?(String)
+          end
 
-        #
-        # 正数か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 正数
-        # @return [False] 負数
-        #
-        def self.positive?(str: '')
-          return true if str == EMPTY_STRING
+          #
+          # 正数か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 正数
+          # @return [False] 負数
+          #
+          def positive?(str: '')
+            return true if str == EMPTY_STRING
 
-          return false unless str
+            return false unless str
 
-          /^[0-9]+$/.match?(str)
-        end
+            /^[0-9]+$/.match?(str)
+          end
 
-        #
-        # 数値か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 数値
-        # @return [False] 非数値
-        #
-        def self.num?(str: '')
-          return true if str == EMPTY_STRING
+          #
+          # 数値か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 数値
+          # @return [False] 非数値
+          #
+          def num?(str: '')
+            return true if str == EMPTY_STRING
 
-          return false unless str
+            return false unless str
 
-          /^[-0-9]+$/.match?(str)
-        end
+            /^[-0-9]+$/.match?(str)
+          end
 
-        #
-        # booleanか
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] boolean
-        # @return [False] 非boolean
-        #
-        def self.bool?(str: '')
-          BOOLEANS.include?(str)
-        end
+          #
+          # booleanか
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] boolean
+          # @return [False] 非boolean
+          #
+          def bool?(str: '')
+            BOOLEANS.include?(str)
+          end
 
-        #
-        # boolean（空許容）か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] boolean
-        # @return [False] 非boolean
-        #
-        def self.empiable_bool?(str: '')
-          return true if str == EMPTY_STRING
+          #
+          # boolean（空許容）か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] boolean
+          # @return [False] 非boolean
+          #
+          def empiable_bool?(str: '')
+            return true if str == EMPTY_STRING
 
-          bool?(str: str)
-        end
+            bool?(str: str)
+          end
 
-        #
-        # 月差分か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 有効
-        # @return [False] 無効
-        #
-        def self.month_days?(str: '')
-          return true if str == EMPTY_STRING
+          #
+          # 月差分か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 有効
+          # @return [False] 無効
+          #
+          def month_days?(str: '')
+            return true if str == EMPTY_STRING
 
-          return false unless str
+            return false unless str
 
-          /^[大小]$/.match?(str)
-        end
+            /^[大小]$/.match?(str)
+          end
 
-        #
-        # 西暦日か
-        #
-        # @param [String] str 対象文字列
-        #
-        # @return [True] 有効
-        # @return [False] 無効
-        #
-        def self.western_date?(str: '')
-          return Western::Calendar.new if str == EMPTY_STRING
+          #
+          # 西暦日か
+          #
+          # @param [String] str 対象文字列
+          #
+          # @return [True] 有効
+          # @return [False] 無効
+          #
+          def western_date?(str: '')
+            return Western::Calendar.new if str == EMPTY_STRING
 
-          Western::Calendar.valid_date_string(text: str)
+            Western::Calendar.valid_date_string(text: str)
+          end
         end
       end
 
@@ -786,16 +788,18 @@ module Zakuro
 
       # :reek:TooManyStatements { max_statements: 7 }
 
-      def self.run(yaml_hash: {})
-        failed = []
-        yaml_hash.each_with_index do |history, index|
-          failed += MonthHistory.new(index: index, yaml_hash: history).validate
-          failed += Annotation.new(index: index, yaml_hash: history).validate
-          failed += Reference.new(index: index, yaml_hash: history).validate
-          failed += Diffs.new(index: index, yaml_hash: history['diffs']).validate
-        end
+      class << self
+        def run(yaml_hash: {})
+          failed = []
+          yaml_hash.each_with_index do |history, index|
+            failed += MonthHistory.new(index: index, yaml_hash: history).validate
+            failed += Annotation.new(index: index, yaml_hash: history).validate
+            failed += Reference.new(index: index, yaml_hash: history).validate
+            failed += Diffs.new(index: index, yaml_hash: history['diffs']).validate
+          end
 
-        failed
+          failed
+        end
       end
     end
   end
