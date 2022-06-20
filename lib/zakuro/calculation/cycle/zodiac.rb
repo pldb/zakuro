@@ -77,28 +77,30 @@ module Zakuro
         # @return [Integer] 組み合わせ数
         LENGTH = ZODIAC_NAME_PATTERNS.length
 
-        #
-        # 大余を十干十二支に変換する
-        #
-        # @param [Integer] day 大余
-        #
-        # @return [String] 十干十二支
-        #
-        def self.day_name(day:)
-          index = day % LENGTH
+        class << self
+          #
+          # 大余を十干十二支に変換する
+          #
+          # @param [Integer] day 大余
+          #
+          # @return [String] 十干十二支
+          #
+          def day_name(day:)
+            index = day % LENGTH
 
-          ZODIAC_NAME_PATTERNS[index]
-        end
+            ZODIAC_NAME_PATTERNS[index]
+          end
 
-        #
-        # 西暦年を十干十二支に変換する
-        #
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [String] 十干十二支
-        #
-        def self.year_name(western_year: 0)
-          ZODIAC_NAME_PATTERNS[(western_year - 4) % LENGTH]
+          #
+          # 西暦年を十干十二支に変換する
+          #
+          # @param [Integer] western_year 西暦年
+          #
+          # @return [String] 十干十二支
+          #
+          def year_name(western_year: 0)
+            ZODIAC_NAME_PATTERNS[(western_year - 4) % LENGTH]
+          end
         end
       end
     end

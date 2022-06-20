@@ -22,26 +22,28 @@ module Zakuro
         # @return [Float] 19年=235朔望月
         METONIC_CYCLE = 235 / 19.to_f
 
-        #
-        # 1月経朔を求める
-        #
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Remainder] 11月経朔
-        #
-        def self.get(western_year:)
-          # (1612 + x) * 235 / 19 = A ...余り
-          stack = ((WESTERN_YEAR + western_year) * METONIC_CYCLE).to_i
-          # A * 22207 / 752 = B ...余りが朔の小余
-          minute_total = (stack * SYNODIC_MONTH / DAY).to_i
-          minute = (stack * SYNODIC_MONTH % DAY).to_i
-          # B / 60 = C ...余りが朔の大余
-          day = minute_total % Cycle::Remainder::LIMIT
-          # p stack
-          # p minute_total
-          # p minute
-          # p day
-          Cycle::Remainder.new(day: day, minute: minute, second: 0)
+        class << self
+          #
+          # 1月経朔を求める
+          #
+          # @param [Integer] western_year 西暦年
+          #
+          # @return [Remainder] 11月経朔
+          #
+          def get(western_year:)
+            # (1612 + x) * 235 / 19 = A ...余り
+            stack = ((WESTERN_YEAR + western_year) * METONIC_CYCLE).to_i
+            # A * 22207 / 752 = B ...余りが朔の小余
+            minute_total = (stack * SYNODIC_MONTH / DAY).to_i
+            minute = (stack * SYNODIC_MONTH % DAY).to_i
+            # B / 60 = C ...余りが朔の大余
+            day = minute_total % Cycle::Remainder::LIMIT
+            # p stack
+            # p minute_total
+            # p minute
+            # p day
+            Cycle::Remainder.new(day: day, minute: minute, second: 0)
+          end
         end
       end
     end

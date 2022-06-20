@@ -28,26 +28,28 @@ module Zakuro
 
         # :reek:TooManyStatements { max_statements: 6 }
 
-        #
-        # 対象年の前年の冬至を求める
-        #
-        # @param [Integer] western_year 西暦年
-        #
-        # @return [Remainder] 前年の冬至
-        #
-        def self.get(western_year:)
-          # 積年の開始から対象年までの年数
-          total = TOTAL_YEAR + western_year - BEGIN_YEAR
-          remainder_year = total % SIXTY_DAYS
+        class << self
+          #
+          # 対象年の前年の冬至を求める
+          #
+          # @param [Integer] western_year 西暦年
+          #
+          # @return [Remainder] 前年の冬至
+          #
+          def get(western_year:)
+            # 積年の開始から対象年までの年数
+            total = TOTAL_YEAR + western_year - BEGIN_YEAR
+            remainder_year = total % SIXTY_DAYS
 
-          LOGGER.debug("[01]:#{remainder_year}")
+            LOGGER.debug("[01]:#{remainder_year}")
 
-          # 通余を使う
-          winter_solstice_minute = (remainder_year * REMAINDER_ALL_YEAR) % SIXTY_DAYS
+            # 通余を使う
+            winter_solstice_minute = (remainder_year * REMAINDER_ALL_YEAR) % SIXTY_DAYS
 
-          LOGGER.debug("[02]:#{winter_solstice_minute}")
+            LOGGER.debug("[02]:#{winter_solstice_minute}")
 
-          Cycle::Remainder.new(total: winter_solstice_minute)
+            Cycle::Remainder.new(total: winter_solstice_minute)
+          end
         end
       end
     end

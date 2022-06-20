@@ -23,82 +23,83 @@ module Zakuro
         # @return [Output::Logger] ロガー
         LOGGER = Output::Logger.new(location: 'medieval_annual_range')
 
-        #
-        # 一覧取得する
-        #
-        #   * 対象年に対して、前年11月-当年11月までを出力する
-        #   * 対象年（西暦）と計算年（元号x年）の紐付けは行わない
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [Monthly::AbstractLunarPhase] lunar_phase 月の位相
-        # @param [Solar::AbstractAverage] solar_average 定気（太陽軌道平均）
-        #
-        # @return [Array<Month>] 1年データ
-        #
-        def self.get(context:, lunar_phase:, solar_average:)
-          annual_range = initialized_annual_range(context: context, lunar_phase: lunar_phase)
+        class << self
+          #
+          # 一覧取得する
+          #
+          #   * 対象年に対して、前年11月-当年11月までを出力する
+          #   * 対象年（西暦）と計算年（元号x年）の紐付けは行わない
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Monthly::AbstractLunarPhase] lunar_phase 月の位相
+          # @param [Solar::AbstractAverage] solar_average 定気（太陽軌道平均）
+          #
+          # @return [Array<Month>] 1年データ
+          #
+          def get(context:, lunar_phase:, solar_average:)
+            annual_range = initialized_annual_range(context: context, lunar_phase: lunar_phase)
 
-          apply_big_and_small_of_the_month(annual_range: annual_range)
+            apply_big_and_small_of_the_month(annual_range: annual_range)
 
-          solar_average.set(annual_range: annual_range)
+            solar_average.set(annual_range: annual_range)
 
-          # 月間隔を取得するためだけの末尾要素を削除
-          annual_range.pop
+            # 月間隔を取得するためだけの末尾要素を削除
+            annual_range.pop
 
-          initialize_month_label(annual_range: annual_range)
-        end
+            initialize_month_label(annual_range: annual_range)
+          end
 
-        #
-        # 1年データを取得する
-        #
-        # @param [Context::Context] context 暦コンテキスト
-        # @param [Monthly::LunarPhase] lunar_phase 月の位相
-        #
-        # @return [Array<Month>] 1年データ
-        #
-        def self.initialized_annual_range(context:, lunar_phase:)
-          result = []
+          private
 
-          # 14ヶ月分を生成する（閏年で最大13ヶ月 + 末月の大小/二十四節気を求めるために必要な月）
-          (0..13).each do |_index|
-            adjusted = lunar_phase.next_month
+          #
+          # 1年データを取得する
+          #
+          # @param [Context::Context] context 暦コンテキスト
+          # @param [Monthly::LunarPhase] lunar_phase 月の位相
+          #
+          # @return [Array<Month>] 1年データ
+          #
+          def initialized_annual_range(context:, lunar_phase:)
+            result = []
 
-            result.push(
-              Monthly::InitializedMonth.new(
-                context: context,
-                month_label: Monthly::MonthLabel.new,
-                first_day: Monthly::FirstDay.new(remainder: adjusted),
-                phase_index: 0
+            # 14ヶ月分を生成する（閏年で最大13ヶ月 + 末月の大小/二十四節気を求めるために必要な月）
+            (0..13).each do |_index|
+              adjusted = lunar_phase.next_month
+
+              result.push(
+                Monthly::InitializedMonth.new(
+                  context: context,
+                  month_label: Monthly::MonthLabel.new,
+                  first_day: Monthly::FirstDay.new(remainder: adjusted),
+                  phase_index: 0
+                )
               )
-            )
+            end
+
+            result
           end
 
-          result
-        end
-        private_class_method :initialized_annual_range
+          #
+          # 1年データの各月に月の大小を設定する
+          #
+          # @param [Array<Month>] annual_range 1年データ
+          #
+          def apply_big_and_small_of_the_month(annual_range:)
+            # NOTE: 最後の月は処理できない（=計算外の余分な月が最後に必要である）
+            annual_range.each_cons(2) do |(current_month, next_month)|
+              current_month.eval_many_days(next_month_day: next_month.remainder.day)
+            end
+          end
 
-        #
-        # 1年データの各月に月の大小を設定する
-        #
-        # @param [Array<Month>] annual_range 1年データ
-        #
-        def self.apply_big_and_small_of_the_month(annual_range:)
-          # NOTE: 最後の月は処理できない（=計算外の余分な月が最後に必要である）
-          annual_range.each_cons(2) do |(current_month, next_month)|
-            current_month.eval_many_days(next_month_day: next_month.remainder.day)
+          #
+          # 月表示情報を更新する
+          #
+          # @param [Array<Month>] annual_range 1年データ
+          #
+          def initialize_month_label(annual_range:)
+            annual_range.each(&:rename_month_label_by_solar_term)
           end
         end
-        private_class_method :apply_big_and_small_of_the_month
-
-        #
-        # 月表示情報を更新する
-        #
-        # @param [Array<Month>] annual_range 1年データ
-        #
-        def self.initialize_month_label(annual_range:)
-          annual_range.each(&:rename_month_label_by_solar_term)
-        end
-        private_class_method :initialize_month_label
       end
     end
   end
