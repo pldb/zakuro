@@ -57,15 +57,9 @@ module Zakuro
 
             next unless include?(date: current_date)
 
-            day = Day.get(month: month, date: current_date)
+            day = single_day(current_date: current_date)
 
-            options = Option.create(month: month, day: day)
-
-            single_day = Output::Response::SingleDay.create(
-              year: year, month: month, day: day, options: options
-            )
-
-            result.push(single_day)
+            result.push(day)
           end
 
           result
@@ -85,6 +79,25 @@ module Zakuro
           return false if date > last_date
 
           true
+        end
+
+        private
+
+        #
+        # 1日データを取得する
+        #
+        # @param [Western::Calendar] current_date 現在西暦日
+        #
+        # @return [Result::Data::SingleDay] 1日データ
+        #
+        def single_day(current_date:)
+          day = Day.get(month: month, date: current_date)
+
+          options = Option.create(month: month, day: day)
+
+          Output::Response::SingleDay.create(
+            year: year, month: month, day: day, options: options
+          )
         end
       end
     end

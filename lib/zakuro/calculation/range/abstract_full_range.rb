@@ -100,30 +100,13 @@ module Zakuro
         # @return [Array<Base::Year>] 完全範囲
         #
         def version_ranges
-          result = []
-
           start_year = scroll.western_start_year
           last_year = scroll.western_last_year
 
           # TODO: context にデフォルト暦名が設定されている場合は使用しない
           versions = Version.get(start_year: start_year, last_year: last_year)
 
-          versions.each_with_index do |version, index|
-            specified_context = Context::Context.new(
-              version: version.name, options: context.option.hash
-            )
-            start_year = version.start_year
-            last_year = version.last_year
-            # 最後の暦だけ1年足す（次の元号の開始年まで計算するケースあり）
-            last_year += 1 if (index + 1) == versions.size
-
-            years = boundary_resolved_ranges(
-              context: specified_context, start_year: start_year, last_year: last_year
-            )
-            result.concat(years)
-          end
-
-          result
+          collect_version_ranges(versions: versions, start_year: start_year, last_year: last_year)
         end
 
         #
@@ -167,6 +150,36 @@ module Zakuro
           end
 
           years
+        end
+
+        #
+        # 暦別範囲を収集する
+        #
+        # @param [Array<Version::Range>] versions 暦の範囲
+        # @param [Integer] start_year 開始西暦年
+        # @param [Integer] last_year 終了西暦年
+        #
+        # @return [Array<Base::Year>] 完全範囲
+        #
+        def collect_version_ranges(versions:, start_year:, last_year:)
+          result = []
+
+          versions.each_with_index do |version, index|
+            specified_context = Context::Context.new(
+              version: version.name, options: context.option.hash
+            )
+            start_year = version.start_year
+            last_year = version.last_year
+            # 最後の暦だけ1年足す（次の元号の開始年まで計算するケースあり）
+            last_year += 1 if (index + 1) == versions.size
+
+            years = boundary_resolved_ranges(
+              context: specified_context, start_year: start_year, last_year: last_year
+            )
+            result.concat(years)
+          end
+
+          result
         end
       end
     end
