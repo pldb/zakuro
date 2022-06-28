@@ -32,12 +32,16 @@ module Zakuro
             if context.option.dropped_date?
               remainder = day.remainder
               solar_terms = month.solar_terms
-              option = dropped_date(context: context, remainder: remainder, solar_terms: solar_terms)
+              option = dropped_date(
+                context: context, remainder: remainder, solar_terms: solar_terms
+              )
               options[Context::Option::DROPPED_DATE_KEY] = option
             end
 
             options
           end
+
+          private
 
           #
           # 没日を求める
@@ -49,7 +53,6 @@ module Zakuro
           # @return [Result::Data::Option::DroppedDate::Option] 没日
           #
           def dropped_date(context:, remainder:, solar_terms:)
-            # TODO: refactor
             option = Result::Data::Option::DroppedDate::Option.new(
               matched: false,
               calculation: Result::Data::Option::DroppedDate::Calculation.new
@@ -67,6 +70,18 @@ module Zakuro
 
             return option unless remainder.day == dropped_date.day
 
+            dropped_date_option(location: location)
+          end
+
+          #
+          # 没日オプション値を生成する
+          #
+          # @param [Calculation::Option::DroppedDate::Location] location 没日位置
+          #
+          # @return [Result::Data::Option::DroppedDate::Option] 没日オプション値
+          #
+          def dropped_date_option(location:)
+            dropped_date = location.get
             solar_term = location.solar_term
             Result::Data::Option::DroppedDate::Option.new(
               matched: true,

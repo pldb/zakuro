@@ -76,11 +76,13 @@ module Zakuro
               western_last_date = last_date.day.western_date
 
               operated_dates = Western::Specifier::MultipleDay.get(
-                context: context, years: operated_years, start_date: western_start_date, last_date: western_last_date
+                context: context, years: operated_years,
+                start_date: western_start_date, last_date: western_last_date
               )
 
               dates = Western::Specifier::MultipleDay.get(
-                context: context, years: years, start_date: western_start_date, last_date: western_last_date
+                context: context, years: years,
+                start_date: western_start_date, last_date: western_last_date
               )
 
               create_result_list(dates: dates, operated_dates: operated_dates)
