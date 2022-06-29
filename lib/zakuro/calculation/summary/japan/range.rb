@@ -10,6 +10,8 @@ require_relative '../internal/operation'
 
 require_relative './specifier/single_day'
 
+require_relative './specifier/specified_range'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -41,17 +43,13 @@ module Zakuro
                 context: context, years: years, start_date: start_date, last_date: last_date
               )
 
-              japan_start_date = Specifier::SingleDay.get(
-                years: operated_years, date: start_date
-              )
-              japan_last_date = Specifier::SingleDay.get(
-                years: operated_years, date: last_date
+              range = specified_range(
+                operated_years: operated_years, start_date: start_date, last_date: last_date
               )
 
               list = create_list(
                 context: context,
-                operated_years: operated_years, years: years,
-                start_date: japan_start_date, last_date: japan_last_date
+                operated_years: operated_years, years: years, range: range
               )
 
               Result::Range.new(list: list)
@@ -60,20 +58,40 @@ module Zakuro
             private
 
             #
+            # 特定範囲を取得する
+            #
+            # @param [Array<Base::OperatedYear>] operated_years 運用結果範囲
+            # @param [Japan::Calendar] start_date 和暦開始日
+            # @param [Japan::Calendar] last_date 和暦終了日
+            #
+            # @return [SpecifiedRange] 特定範囲
+            #
+            def specified_range(operated_years: [], start_date: Japan::Calendar.new,
+                                last_date: Japan::Calendar.new)
+              japan_start_date = Specifier::SingleDay.get(
+                years: operated_years, date: start_date
+              )
+              japan_last_date = Specifier::SingleDay.get(
+                years: operated_years, date: last_date
+              )
+
+              SpecifiedRange.new(start_date: japan_start_date, last_date: japan_last_date)
+            end
+
+            #
             # 1日検索結果リストを生成する
             #
             # @param [Context::Context] context 暦コンテキスト
             # @param [Array<Base::OperatedYear>] operated_years 運用結果範囲
             # @param [Array<Base::Year>] years 完全範囲
-            # @param [Result::Data::SingleDay] start_date 和暦開始日
-            # @param [Result::Data::SingleDay] last_date 和暦終了日
+            # @param [SpecifiedRange] range 特定範囲
             #
             # @return [Array<Result::Single>] 結果リスト
             #
             def create_list(context:, operated_years: [], years: [],
-                            start_date:, last_date:)
-              western_start_date = start_date.day.western_date
-              western_last_date = last_date.day.western_date
+                            range:)
+              western_start_date = range.start_date.day.western_date
+              western_last_date = range.last_date.day.western_date
 
               operated_dates = Western::Specifier::MultipleDay.get(
                 context: context, years: operated_years,
