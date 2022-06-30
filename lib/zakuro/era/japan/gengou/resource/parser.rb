@@ -122,21 +122,17 @@ module Zakuro
               result
             end
 
-            # :reek:TooManyStatements { max_statements: 6 }
-
             #
             # 次の元号の開始日から、元号の終了日に変換する
             #
             # @param [Integer] next_index 次の元号の要素位置
-            # @param [String] gengou 次回開始日
+            # @param [GengouParser] gengou 元号
             #
             # @return [Gengou] 元号情報
             #
             def calc_last_date_on_gengou_data(next_index:, gengou:)
               if next_index >= list.size
-                gengou.write_last_year(last_year: both_last_year['western'])
-                last_date = Western::Calendar.parse(text: both_last_date['western'])
-                gengou.write_last_date(last_date: last_date)
+                last_gengou_data(gengou: gengou)
                 return gengou
               end
               next_item = list[next_index]
@@ -147,6 +143,19 @@ module Zakuro
                 next_start_date: next_item['start_date']['western']
               )
               gengou
+            end
+
+            private
+
+            #
+            # 最後の元号の終了日を設定する
+            #
+            # @param [GengouParser] gengou 元号
+            #
+            def last_gengou_data(gengou:)
+              gengou.write_last_year(last_year: both_last_year['western'])
+              last_date = Western::Calendar.parse(text: both_last_date['western'])
+              gengou.write_last_date(last_date: last_date)
             end
           end
 

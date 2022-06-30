@@ -44,7 +44,8 @@ module Zakuro
               )
 
               operated_dates = Specifier::MultipleDay.get(
-                context: context, years: operated_years, start_date: start_date, last_date: last_date
+                context: context, years: operated_years,
+                start_date: start_date, last_date: last_date
               )
 
               list = create_result_list(dates: dates, operated_dates: operated_dates)

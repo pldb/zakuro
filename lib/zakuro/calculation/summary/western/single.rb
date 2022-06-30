@@ -53,7 +53,9 @@ module Zakuro
             # @return [Array<Calculation::Base::Year>] 完全範囲
             #
             def get_full_range_years(context:, date: Western::Calendar.new)
-              full_range = Calculation::Range::DatedFullRange.new(context: context, start_date: date)
+              full_range = Calculation::Range::DatedFullRange.new(
+                context: context, start_date: date
+              )
               full_range.get
             end
 
