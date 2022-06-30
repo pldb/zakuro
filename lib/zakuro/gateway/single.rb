@@ -57,7 +57,18 @@ module Zakuro
           )
         end
 
-        raise Exception.get(
+        raise invalid_date_error
+      end
+
+      private
+
+      #
+      # 日付不正エラーを取得する
+      #
+      # @return [ZakuroError] ライブラリエラー
+      #
+      def invalid_date_error
+        Exception.get(
           presets: [
             Exception::Case::Preset.new(
               template: Exception::Case::Pattern::INVALID_DATE
