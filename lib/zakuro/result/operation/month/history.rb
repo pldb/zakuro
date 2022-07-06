@@ -11,11 +11,11 @@ module Zakuro
     #
     # 運用情報
     #
-    module Operation
+    class Operation
       #
       # Month 運用情報（月）
       #
-      module Month
+      class Month
         #
         # History 月別履歴情報
         #

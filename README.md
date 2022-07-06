@@ -133,7 +133,7 @@ puts merchant.commit.to_json
 | 項目名   | キー名    | - | - | データ型                          | 参考値 | 備考                                　 |
 |----------|-----------|---|---|-----------------------------------|--------|---------------------------------------|
 | 日付情報 | data      |   |   | Zakuro::Result::Data::SingleDay   | -      | 運用値（計算値は運用情報内を参照のこと）|
-| 運用情報 | operation |   |   | Zakuro::Result::Operation::Bundle | -      | -                                     |
+| 運用情報 | operation |   |   | Zakuro::Result::Operation         | -      | -                                     |
 
 ### Zakuro::Result::Range
 
@@ -180,10 +180,10 @@ puts merchant.commit.to_json
 | 項目名       | キー名   | -          | -           | データ型                                   | 参考値   | 備考                 |
 |--------------|----------|------------|-------------|--------------------------------------------|---------|----------------------|
 | 運用有無     | operated | 　         | 　          | True/False                                 | true     | 　                   |
-| 月別履歴情報 | month    | 　         | 　          | Zakuro::Result::Operation::Month::Bundle   | 　       | 　                   |
+| 月別履歴情報  | month    | 　         | 　          | Zakuro::Result::Operation::Month            | 　       | 　                   |
 | 計算値       | original | 　         | 　          | Zakuro::Result::Data::SingleDay            | 　       | 運用値差替前の計算値 |
 
-### Zakuro::Result::Operation::Month::Bundle
+### Zakuro::Result::Operation::Month
 
 | 項目名                   | キー名   | -          | -        | データ型                                   | 参考値        | 備考                                         |
 |--------------------------|----------|------------|----------|--------------------------------------------|--------------|---------------------------------------------|

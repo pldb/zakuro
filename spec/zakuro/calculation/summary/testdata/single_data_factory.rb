@@ -87,7 +87,7 @@ module SingleDataFactory
     end
 
     def operation_month(hash:)
-      Zakuro::Result::Operation::Month::Bundle.new(
+      Zakuro::Result::Operation::Month.new(
         current: operation_month_history(hash: hash['current']),
         parent: operation_month_history(hash: hash['parent'])
       )
@@ -104,7 +104,7 @@ module SingleDataFactory
     end
 
     def operation(hash:)
-      Zakuro::Result::Operation::Bundle.new(
+      Zakuro::Result::Operation.new(
         operated: hash['operated'],
         month: operation_month(hash: hash['month']),
         original: single_day(hash: hash['original'])

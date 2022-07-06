@@ -18,7 +18,7 @@ module Zakuro
           #
           # @param [Result::Data::SingleDay] calc_date 和暦日（計算値）
           #
-          # @return [Result::Operation::Bundle] 運用情報
+          # @return [Result::Operation] 運用情報
           #
           def create(calc_date: Result::Data::SingleDay.new)
             first_day = calc_date.month.first_day.western_date
@@ -26,7 +26,7 @@ module Zakuro
 
             operation_month = create_operation_month(operation_history: operation_history)
 
-            Result::Operation::Bundle.new(
+            Result::Operation.new(
               operated: !operation_history.invalid?, month: operation_month, original: calc_date
             )
           end
@@ -38,16 +38,16 @@ module Zakuro
           #
           # @param [Operation::MonthHistory] operation_history 変更履歴（月）
           #
-          # @return [Result::Operation::Month::Bundle] 月履歴集約情報
+          # @return [Result::Operation::Month] 月履歴情報
           #
           def create_operation_month(operation_history: Operation::MonthHistory.new)
-            return Result::Operation::Month::Bundle.new if operation_history.invalid?
+            return Result::Operation::Month.new if operation_history.invalid?
 
             parent_operation_history = Zakuro::Operation.specify_history_by_id(
               id: operation_history.parent_id
             )
 
-            Result::Operation::Month::Bundle.new(
+            Result::Operation::Month.new(
               current: create_operation_month_history(operation_history: operation_history),
               parent: create_operation_month_history(operation_history: parent_operation_history)
             )
