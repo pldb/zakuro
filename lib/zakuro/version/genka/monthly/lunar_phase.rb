@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../calculation/monthly/const'
+
 require_relative '../const/remainder'
 
 require_relative '../cycle/solar_term'
@@ -21,10 +23,8 @@ module Zakuro
         # @return [Cycle::Remainder] 弦
         QUARTER = Const::Remainder::QUARTER
 
-        # TODO: AbstractLunarPhase でも使用している
-
         # @return [Array<String>] 月内の弦
-        PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
+        PHASE_INDEXES = Calculation::Monthly::Const::PHASE_INDEXES
 
         # @return [Integer] 弦の位置
         attr_reader :index

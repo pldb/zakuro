@@ -2,6 +2,8 @@
 
 require_relative '../../output/logger'
 
+require_relative './const'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -16,7 +18,7 @@ module Zakuro
         LOGGER = Output::Logger.new(location: 'lunar_phase')
 
         # @return [Array<String>] 月内の弦
-        PHASE_INDEXES = %w[朔日 上弦 望月 下弦].freeze
+        PHASE_INDEXES = Const::PHASE_INDEXES
 
         # @return [Cycle::AbstractRemainder] 弦
         attr_reader :quarter
