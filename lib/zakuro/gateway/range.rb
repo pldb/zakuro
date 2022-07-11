@@ -38,7 +38,7 @@ module Zakuro
       # @return [False] 不正なし
       #
       def invalid?
-        @range.invalid?
+        range.invalid?
       end
 
       #

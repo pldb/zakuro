@@ -250,7 +250,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid_days?
-          @days == INVALID_DAY_VALUE
+          days == INVALID_DAY_VALUE
         end
 
         #
@@ -260,7 +260,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @source.invalid? && @destination.invalid?
+          source.invalid? && destination.invalid?
         end
       end
 
@@ -295,7 +295,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @index == -1
+          index == -1
         end
       end
 
@@ -330,7 +330,7 @@ module Zakuro
         # @return [False] 有効
         #
         def invalid?
-          @index == -1
+          index == -1
         end
       end
     end
@@ -339,7 +339,7 @@ module Zakuro
     # Number 月
     #
     class Number
-      # @return [Integer] 移動もと
+      # @return [Integer] 移動元
       attr_reader :src
       # @return [Integer] 移動先
       attr_reader :dest
@@ -362,7 +362,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        @src == -1 || @dest == -1
+        src == -1 || dest == -1
       end
 
       #
@@ -381,7 +381,7 @@ module Zakuro
       # @return [Integer] 間隔
       #
       def interval
-        @src - @dest
+        src - dest
       end
 
       #
@@ -453,7 +453,7 @@ module Zakuro
       # @return [False] 有効
       #
       def invalid?
-        !@src && !@dest
+        !src && !dest
       end
     end
 
@@ -465,6 +465,15 @@ module Zakuro
       SMALL = '小'
       # @return [String] 30日
       BIG = '大'
+
+      # NOTE: 下記readerは不要とする
+      #  * Number/Leaped とメソッド名を揃えている
+      #  * 大小の真偽値が必要で、文字列ではない
+      #
+      # @return [String] 移動元
+      # attr_reader :src
+      # @return [String] 移動先
+      # attr_reader :dest
 
       #
       # 初期化

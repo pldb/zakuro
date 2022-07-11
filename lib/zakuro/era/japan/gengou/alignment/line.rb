@@ -72,7 +72,7 @@ module Zakuro
           #
           def get(start_date:, last_date:)
             result = []
-            @list.each do |gengou|
+            list.each do |gengou|
               next if gengou.out?(start_date: start_date, last_date: last_date)
 
               # 1日でも範囲内であれば対象とみなす
@@ -91,7 +91,7 @@ module Zakuro
           #
           def get_by_name(name:)
             result = []
-            @list.each do |gengou|
+            list.each do |gengou|
               result.push(gengou) if gengou.name == name
             end
 
@@ -110,7 +110,8 @@ module Zakuro
           def rest(list: [])
             result = []
 
-            @list.each do |gengou|
+            inner_list = @list
+            inner_list.each do |gengou|
               result |= and!(rest: list, other: gengou)
             end
 
@@ -123,15 +124,16 @@ module Zakuro
           # @param [Array<LinearGengou>] list 元号
           #
           def insert(list: [])
+            inner_list = @list
             surplus_result = list.clone
-            @list.each do |gengou|
+            inner_list.each do |gengou|
               surplus_result = not!(surplus: surplus_result, other: gengou)
             end
 
             surplus_result = Division.connect(list: surplus_result)
 
             surplus_result.each do |gengou|
-              @list.push(gengou)
+              inner_list.push(gengou)
             end
           end
 

@@ -5,7 +5,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/range/operated_solar_terms',
+                         'lib/zakuro/calculation/range/operated_solar_term',
                          __dir__)
 
 require File.expand_path('../../../../' \
@@ -39,18 +39,18 @@ describe 'Zakuro' do
             remainder: Zakuro::Senmyou::Cycle::Remainder.new
           )
         end
-        let(:operated_solar_terms) do
-          Zakuro::Calculation::Range::OperatedSolarTerms.new(context: context)
+        let(:operated_solar_term) do
+          Zakuro::Calculation::Range::OperatedSolarTerm.new(context: context)
         end
         let(:months) do
           [
             Zakuro::Calculation::Monthly::OperatedMonth.new(
-              context: context, operated_solar_terms: operated_solar_terms,
+              context: context, operated_solar_term: operated_solar_term,
               month_label: Zakuro::Calculation::Monthly::MonthLabel.new(number: 3),
               first_day: first_day
             ),
             Zakuro::Calculation::Monthly::OperatedMonth.new(
-              context: context, operated_solar_terms: operated_solar_terms,
+              context: context, operated_solar_term: operated_solar_term,
               month_label: Zakuro::Calculation::Monthly::MonthLabel.new(number: 4),
               first_day: first_day
             )
@@ -62,7 +62,7 @@ describe 'Zakuro' do
               year = Zakuro::Calculation::Base::OperatedYear.new(months: months)
               first_months = [
                 Zakuro::Calculation::Monthly::OperatedMonth.new(
-                  context: context, operated_solar_terms: operated_solar_terms,
+                  context: context, operated_solar_term: operated_solar_term,
                   month_label: Zakuro::Calculation::Monthly::MonthLabel.new(number: 2),
                   first_day: first_day
                 )
@@ -79,7 +79,7 @@ describe 'Zakuro' do
               year = Zakuro::Calculation::Base::OperatedYear.new(months: months)
               first_months = [
                 Zakuro::Calculation::Monthly::OperatedMonth.new(
-                  context: context, operated_solar_terms: operated_solar_terms,
+                  context: context, operated_solar_term: operated_solar_term,
                   month_label: Zakuro::Calculation::Monthly::MonthLabel.new(number: 5),
                   first_day: first_day
                 )

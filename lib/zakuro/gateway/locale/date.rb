@@ -51,7 +51,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid_japan?
-          @japan_date.invalid?
+          japan_date.invalid?
         end
 
         #
@@ -71,7 +71,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid_western?
-          @western_date.invalid?
+          western_date.invalid?
         end
 
         #

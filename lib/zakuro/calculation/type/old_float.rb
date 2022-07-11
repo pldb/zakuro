@@ -42,7 +42,7 @@ module Zakuro
         # @return [Float] 絶対値
         #
         def floor
-          @abs.floor
+          abs.floor
         end
 
         #
@@ -51,7 +51,7 @@ module Zakuro
         # @return [Float] 符号つき浮動小数点数
         #
         def get
-          @sign * @abs
+          sign * abs
         end
 
         #

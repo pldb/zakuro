@@ -125,26 +125,28 @@ module Zakuro
         )
       ].freeze
 
-      #
-      # 年を基準に暦を引き当てる
-      #
-      # @param [Integer] start_year 開始西暦年
-      # @param [Integer] last_year 終了西暦年
-      #
-      # @return [Array<Range>] 和暦
-      #
-      def self.ranges_with_year(start_year:, last_year:)
-        result = []
+      class << self
+        #
+        # 年を基準に暦を引き当てる
+        #
+        # @param [Integer] start_year 開始西暦年
+        # @param [Integer] last_year 終了西暦年
+        #
+        # @return [Array<Range>] 和暦
+        #
+        def ranges_with_year(start_year:, last_year:)
+          result = []
 
-        LIST.each do |range|
-          next if start_year > range.last_year
+          LIST.each do |range|
+            next if start_year > range.last_year
 
-          next if last_year < range.start_year
+            next if last_year < range.start_year
 
-          result.push(range)
+            result.push(range)
+          end
+
+          result
         end
-
-        result
       end
     end
   end

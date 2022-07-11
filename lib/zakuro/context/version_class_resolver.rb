@@ -49,32 +49,12 @@ module Zakuro
       end
 
       #
-      # 該当の暦のクラスを取得する
-      #
-      # @param [String] version_name 暦名
-      # @param [String] class_name クラス名
-      #
-      # @return [Object] 該当クラス
-      #
-      # @raise [ArgumentError] 引数エラー
-      #
-      def self.get_class(version_name:, class_name:)
-        constant = CLASSES.fetch(class_name, '')
-
-        raise ArgumentError.new, 'invalid class name' if constant == ''
-
-        resolved_constant = constant.gsub('$VERSION', version_name)
-
-        Object.const_get(resolved_constant)
-      end
-
-      #
       # 大余小余（暦別）クラスを返す
       #
       # @return [Class] 大余小余（暦別）クラス
       #
       def remainder
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'remainder')
+        self.class.get_class(version_name: @version_name, class_name: 'remainder')
       end
 
       #
@@ -83,7 +63,7 @@ module Zakuro
       # @return [Class] 二十四節気クラス
       #
       def solar_term
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'solar_term')
+        self.class.get_class(version_name: @version_name, class_name: 'solar_term')
       end
 
       #
@@ -92,7 +72,7 @@ module Zakuro
       # @return [Class] 年間範囲クラス
       #
       def annual_range
-        VersionClassResolver.get_class(version_name: @version_name, class_name: 'annual_range')
+        self.class.get_class(version_name: @version_name, class_name: 'annual_range')
       end
 
       #
@@ -101,9 +81,31 @@ module Zakuro
       # @return [Class] 没日引数クラス
       #
       def dropped_date_parameter
-        VersionClassResolver.get_class(
+        self.class.get_class(
           version_name: @version_name, class_name: 'dropped_date_parameter'
         )
+      end
+
+      class << self
+        #
+        # 該当の暦のクラスを取得する
+        #
+        # @param [String] version_name 暦名
+        # @param [String] class_name クラス名
+        #
+        # @return [Object] 該当クラス
+        #
+        # @raise [ArgumentError] 引数エラー
+        #
+        def get_class(version_name:, class_name:)
+          constant = CLASSES.fetch(class_name, '')
+
+          raise ArgumentError.new, 'invalid class name' if constant == ''
+
+          resolved_constant = constant.gsub('$VERSION', version_name)
+
+          Object.const_get(resolved_constant)
+        end
       end
     end
   end

@@ -16,51 +16,53 @@ module Zakuro
       __dir__
     ))
 
-    #
-    # 変更履歴（月）を返す
-    #
-    # @return [Array<MonthHistory>] 変更履歴
-    #
-    def self.month_histories
-      MONTH_HISTORIES
-    end
-
-    # :reek:ControlParameter
-
-    #
-    # 変更履歴を特定する
-    #
-    # @param [Western::Calendar] western_date 月初日の西暦日
-    #
-    # @return [Operation::MonthHistory] 変更履歴
-    #
-    def self.specify_history(western_date:)
-      month_histroies = Operation.month_histories
-
-      month_histroies.each do |history|
-        return history if western_date == history.western_date
+    class << self
+      #
+      # 変更履歴（月）を返す
+      #
+      # @return [Array<MonthHistory>] 変更履歴
+      #
+      def month_histories
+        MONTH_HISTORIES
       end
 
-      Operation::MonthHistory.new
-    end
+      # :reek:ControlParameter
 
-    # :reek:ControlParameter
+      #
+      # 変更履歴を特定する
+      #
+      # @param [Western::Calendar] western_date 月初日の西暦日
+      #
+      # @return [Operation::MonthHistory] 変更履歴
+      #
+      def specify_history(western_date:)
+        month_histroies = month_histories
 
-    #
-    # 変更履歴を特定する
-    #
-    # @param [Western::Calendar] id 変更履歴ID
-    #
-    # @return [Operation::MonthHistory] 変更履歴
-    #
-    def self.specify_history_by_id(id:)
-      month_histroies = Operation.month_histories
+        month_histroies.each do |history|
+          return history if western_date == history.western_date
+        end
 
-      month_histroies.each do |history|
-        return history if id == history.id
+        Operation::MonthHistory.new
       end
 
-      Operation::MonthHistory.new
+      # :reek:ControlParameter
+
+      #
+      # 変更履歴を特定する
+      #
+      # @param [Western::Calendar] id 変更履歴ID
+      #
+      # @return [Operation::MonthHistory] 変更履歴
+      #
+      def specify_history_by_id(id:)
+        month_histroies = month_histories
+
+        month_histroies.each do |history|
+          return history if id == history.id
+        end
+
+        Operation::MonthHistory.new
+      end
     end
   end
 end

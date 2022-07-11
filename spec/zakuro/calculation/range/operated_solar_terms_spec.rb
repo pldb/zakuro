@@ -27,30 +27,30 @@ require File.expand_path('../../../../' \
 describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Range' do
-      describe 'OperatedSolarTerms' do
+      describe 'OperatedSolarTerm' do
         describe '.get' do
           # :reek:UtilityFunction
-          def create_operated_solar_terms(western_date: Zakuro::Western::Calendar.new)
+          def create_operated_solar_term(western_date: Zakuro::Western::Calendar.new)
             full_range = Zakuro::Calculation::Range::DatedFullRange.new(
               context: Zakuro::Context::Context.new(version: 'Senmyou'),
               start_date: western_date
             )
-            operated_solar_terms = Zakuro::Calculation::Range::OperatedSolarTerms.new(
+            operated_solar_term = Zakuro::Calculation::Range::OperatedSolarTerm.new(
               context: Zakuro::Context::Context.new(version: 'Senmyou'),
               years: full_range.get
             )
-            operated_solar_terms.create
+            operated_solar_term.create
 
-            operated_solar_terms
+            operated_solar_term
           end
 
           context 'specified solar term' do
             it 'should invalid at 1002-01-16' do
               western_date = Zakuro::Western::Calendar.new(year: 1002, month: 1, day: 16)
 
-              operated_solar_terms = create_operated_solar_terms(western_date: western_date)
+              operated_solar_term = create_operated_solar_term(western_date: western_date)
 
-              matched, solar_term = operated_solar_terms.get(western_date: western_date)
+              matched, solar_term = operated_solar_term.get(western_date: western_date)
 
               expect(matched).to eq true
 
@@ -64,9 +64,9 @@ describe 'Zakuro' do
             it 'should valid at 1001-12-18' do
               western_date = Zakuro::Western::Calendar.new(year: 1001, month: 12, day: 18)
 
-              operated_solar_terms = create_operated_solar_terms(western_date: western_date)
+              operated_solar_term = create_operated_solar_term(western_date: western_date)
 
-              matched, solar_term = operated_solar_terms.get(western_date: western_date)
+              matched, solar_term = operated_solar_term.get(western_date: western_date)
 
               expect(matched).to eq true
 

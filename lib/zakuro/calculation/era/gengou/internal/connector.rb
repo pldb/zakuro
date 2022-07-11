@@ -60,7 +60,7 @@ module Zakuro
         #
         def replace(gengou:)
           matched_index = -1
-          @unsolved_list.each_with_index do |unsolved, index|
+          unsolved_list.each_with_index do |unsolved, index|
             next unless unsolved.name == gengou.name
 
             matched_index = index
@@ -68,18 +68,18 @@ module Zakuro
           end
 
           if matched_index == -1
-            @unsolved_list.push(gengou)
+            unsolved_list.push(gengou)
             return gengou
           end
 
-          matched = @unsolved_list[matched_index]
+          matched = unsolved_list[matched_index]
 
           result = recreate(gengou: gengou, unsolved: matched)
 
           @unsolved_list[matched_index] = result
 
           # 分離した元号の末尾まで到達した
-          @unsolved_list.delete_at(matched_index) unless result.change_last_date?
+          unsolved_list.delete_at(matched_index) unless result.change_last_date?
 
           result
         end

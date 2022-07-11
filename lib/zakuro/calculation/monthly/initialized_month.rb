@@ -68,43 +68,6 @@ module Zakuro
         end
 
         #
-        # 中気の連番に合わせて月を返す
-        #
-        # @example
-        #   20: 9月
-        #   22: 10月
-        #   0: 11月
-        #   2: 12月
-        #   4: 1月
-        #
-        # @param [Integer] index 中気番号
-        #
-        # @return [Integer] 月
-        #
-        def self.month_number_by_even_term_index(index)
-          half_index = index / 2
-
-          # 11月、12月
-          return half_index + 11 if half_index < 2
-
-          # 1月～10月
-          half_index - 1
-        end
-
-        #
-        # 節気の連番に合わせて月を返す
-        #
-        # @param [Integer] index 節気番号
-        #
-        # @return [Integer] 月
-        #
-        def self.month_number_by_odd_term_index(index)
-          even_index = index - 1
-
-          month_number_by_even_term_index(even_index)
-        end
-
-        #
         # 一ヶ月戻す
         #
         def back_to_last_month
@@ -118,6 +81,45 @@ module Zakuro
         #
         def solar_term_size
           solar_terms.size
+        end
+
+        class << self
+          #
+          # 中気の連番に合わせて月を返す
+          #
+          # @example
+          #   20: 9月
+          #   22: 10月
+          #   0: 11月
+          #   2: 12月
+          #   4: 1月
+          #
+          # @param [Integer] index 中気番号
+          #
+          # @return [Integer] 月
+          #
+          def month_number_by_even_term_index(index)
+            half_index = index / 2
+
+            # 11月、12月
+            return half_index + 11 if half_index < 2
+
+            # 1月～10月
+            half_index - 1
+          end
+
+          #
+          # 節気の連番に合わせて月を返す
+          #
+          # @param [Integer] index 節気番号
+          #
+          # @return [Integer] 月
+          #
+          def month_number_by_odd_term_index(index)
+            even_index = index - 1
+
+            month_number_by_even_term_index(even_index)
+          end
         end
       end
     end

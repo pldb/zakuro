@@ -4,7 +4,7 @@ require 'json'
 
 require_relative './data/single_day'
 
-require_relative './operation/bundle'
+require_relative './operation'
 
 require_relative './core'
 
@@ -20,14 +20,14 @@ module Zakuro
     class Single < Core
       # @return [Data::SingleDay] 1日
       attr_reader :data
-      # @return [Operation::Bundle] 運用情報
+      # @return [Operation] 運用情報
       attr_reader :operation
 
       #
       # 初期化
       #
       # @param [Data::SingleDay] data 1日
-      # @param [Operation::Bundle] operation 運用情報
+      # @param [Operation] operation 運用情報
       #
       def initialize(data:, operation:)
         super

@@ -43,25 +43,13 @@ module Zakuro
           # @param [Western::Calendar] last_date 西暦終了日
           #
           def renew(last_date: Western::Calendar.new)
-            native_start_date = Western::Calendar.new
-            [@first_list, @second_list].each do |list|
-              next unless list.change_start_date?
+            start_date = native_start_date
 
-              if native_start_date.invalid?
-                native_start_date = list.native_start_date.clone
-                next
-              end
+            return if start_date.invalid?
 
-              next if native_start_date <= list.native_start_date
-
-              native_start_date = list.native_start_date.clone
-            end
-
-            return if native_start_date.invalid?
-
-            @first_list = DatedList.new(first: true, start_date: native_start_date,
+            @first_list = DatedList.new(first: true, start_date: start_date,
                                         last_date: last_date)
-            @second_list = DatedList.new(first: false, start_date: native_start_date,
+            @second_list = DatedList.new(first: false, start_date: start_date,
                                          last_date: last_date)
           end
 
@@ -72,7 +60,7 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            @first_list.invalid?
+            first_list.invalid?
           end
 
           #
@@ -85,7 +73,7 @@ module Zakuro
           #
           def collect_first(start_date: Western::Calendar.new,
                             last_date: Western::Calendar.new)
-            @first_list.collect(start_date: start_date, last_date: last_date)
+            first_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -98,7 +86,7 @@ module Zakuro
           #
           def collect_second(start_date: Western::Calendar.new,
                              last_date: Western::Calendar.new)
-            @second_list.collect(start_date: start_date, last_date: last_date)
+            second_list.collect(start_date: start_date, last_date: last_date)
           end
 
           #
@@ -133,12 +121,12 @@ module Zakuro
           # @return [Integer] 開始西暦年
           #
           def western_start_year
-            first_start_year = @first_list.western_start_year
-            second_start_year = @second_list.western_start_year
+            first_start_year = first_list.western_start_year
+            second_start_year = second_list.western_start_year
 
-            return first_start_year if @first_list.invalid?
+            return first_start_year if first_list.invalid?
 
-            return first_start_year if @second_list.invalid?
+            return first_start_year if second_list.invalid?
 
             return first_start_year if first_start_year < second_start_year
 
@@ -151,12 +139,12 @@ module Zakuro
           # @return [Integer] 終了西暦年
           #
           def western_last_year
-            first_last_year = @first_list.western_last_year
-            second_last_year = @second_list.western_last_year
+            first_last_year = first_list.western_last_year
+            second_last_year = second_list.western_last_year
 
-            return first_last_year if @first_list.invalid?
+            return first_last_year if first_list.invalid?
 
-            return first_last_year if @second_list.invalid?
+            return first_last_year if second_list.invalid?
 
             return first_last_year if first_last_year > second_last_year
 
@@ -166,25 +154,60 @@ module Zakuro
           private
 
           #
+          # 設定された元号の開始日を取得する
+          #
+          # @return [Western::Calendar] 設定された元号の開始日
+          #
+          def native_start_date
+            result = Western::Calendar.new
+            [first_list, second_list].each do |list|
+              next unless list.change_start_date?
+
+              if result.invalid?
+                result = list.native_start_date.clone
+                next
+              end
+
+              next if result <= list.native_start_date
+
+              result = list.native_start_date.clone
+            end
+
+            result
+          end
+
+          #
           # 最古の元号を取得する
           #
           # @return [List] 最古の元号
           #
           def oldest_list
-            return @first_list if @first_list.invalid?
+            return first_list if invalid_list?
 
-            return @first_list if @second_list.invalid?
+            first_western_date = first_list.western_start_date
+            second_western_date = second_list.western_start_date
 
-            first_western_date = @first_list.western_start_date
-            second_western_date = @second_list.western_start_date
+            return first_list if first_western_date.invalid?
 
-            return @first_list if first_western_date.invalid?
+            return first_list if second_western_date.invalid?
 
-            return @first_list if second_western_date.invalid?
+            return first_list if first_western_date < second_western_date
 
-            return @first_list if first_western_date < second_western_date
+            second_list
+          end
 
-            @second_list
+          #
+          # 元号リストが不正か
+          #
+          # @return [True] 不正
+          # @return [False] 不正なし
+          #
+          def invalid_list?
+            return true if first_list.invalid?
+
+            return true if second_list.invalid?
+
+            false
           end
         end
       end

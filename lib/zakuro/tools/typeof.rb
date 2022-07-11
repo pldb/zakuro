@@ -14,22 +14,24 @@ module Zakuro
     # Typeof 型判定
     #
     module Typeof
-      #
-      # 時間を表す型か
-      #
-      # @param [Object] obj 引数
-      #
-      # @return [True] 時間型である
-      # @return [False] 時間型ではない
-      #
-      def self.time?(obj:)
-        return true if obj.is_a?(Japan::Calendar)
+      class << self
+        #
+        # 時間を表す型か
+        #
+        # @param [Object] obj 引数
+        #
+        # @return [True] 時間型である
+        # @return [False] 時間型ではない
+        #
+        def time?(obj:)
+          return true if obj.is_a?(Japan::Calendar)
 
-        return true if obj.is_a?(Western::Calendar)
+          return true if obj.is_a?(Western::Calendar)
 
-        return true if obj.is_a?(Calculation::Cycle::AbstractRemainder)
+          return true if obj.is_a?(Calculation::Cycle::AbstractRemainder)
 
-        false
+          false
+        end
       end
     end
   end

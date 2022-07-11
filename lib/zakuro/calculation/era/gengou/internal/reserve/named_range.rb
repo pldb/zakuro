@@ -53,20 +53,18 @@ module Zakuro
           # @return [List] 最新の元号
           #
           def newest_list
-            return @first_list if @first_list.invalid?
+            return first_list if invalid_list?
 
-            return @first_list if @second_list.invalid?
+            first_western_date = first_list.western_last_date
+            second_western_date = second_list.western_last_date
 
-            first_western_date = @first_list.western_last_date
-            second_western_date = @second_list.western_last_date
+            return first_list if first_western_date.invalid?
 
-            return @first_list if first_western_date.invalid?
+            return first_list if second_western_date.invalid?
 
-            return @first_list if second_western_date.invalid?
+            return first_list if first_western_date > second_western_date
 
-            return @first_list if first_western_date > second_western_date
-
-            @second_list
+            second_list
           end
         end
       end

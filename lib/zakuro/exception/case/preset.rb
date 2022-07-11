@@ -34,7 +34,7 @@ module Zakuro
         # @return [String] エラーコード
         #
         def code
-          @template.code
+          template.code
         end
 
         #
@@ -43,7 +43,7 @@ module Zakuro
         # @return [String] メッセージ
         #
         def message
-          @template.format(*args)
+          template.format(*args)
         end
       end
     end

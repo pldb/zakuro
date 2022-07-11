@@ -56,7 +56,7 @@ module Zakuro
         # @return [Array<OperatedMonth>] 昨年に属する月
         #
         def shift_last_year_months
-          result, @months = OperatedYear.devide_with(method: :last_year?, arr: months)
+          result, @months = self.class.devide_with(method: :last_year?, arr: months)
 
           result
         end
@@ -67,36 +67,38 @@ module Zakuro
         # @return [Array<OperatedMonth>] 来年に属する月
         #
         def pop_next_year_months
-          result, @months = OperatedYear.devide_with(method: :next_year?, arr: months)
+          result, @months = self.class.devide_with(method: :next_year?, arr: months)
 
           result
         end
 
         # :reek:TooManyStatements { max_statements: 8 }
 
-        #
-        # メソッドで配列を分離する
-        #
-        # @param [Symbol] method 条件メソッド
-        # @param [Array<Object>] arr 配列
-        #
-        # @return [Array<Object>] 一致配列
-        # @return [Array<Object>] 不一致配列
-        #
-        def self.devide_with(method:, arr: [])
-          match = []
-          unmatch = []
+        class << self
+          #
+          # メソッドで配列を分離する
+          #
+          # @param [Symbol] method 条件メソッド
+          # @param [Array<Object>] arr 配列
+          #
+          # @return [Array<Object>] 一致配列
+          # @return [Array<Object>] 不一致配列
+          #
+          def devide_with(method:, arr: [])
+            match = []
+            unmatch = []
 
-          arr.each do |item|
-            if !item.moved? && item.send(method)
-              match.push(item)
-              next
+            arr.each do |item|
+              if !item.moved? && item.send(method)
+                match.push(item)
+                next
+              end
+
+              unmatch.push(item)
             end
 
-            unmatch.push(item)
+            [match, unmatch]
           end
-
-          [match, unmatch]
         end
       end
     end

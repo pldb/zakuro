@@ -12,59 +12,61 @@ module Zakuro
       # ChoukeiValue 再考長慶宣明暦算法
       #
       module ChoukeiValue
-        #
-        # 四捨五入した大余を返す
-        #
-        # @param [Integer] per 増減率
-        # @param [Integer] denominator 小余の分母
-        # @param [Integer] minute 小余
-        #
-        # @return [Integer] 累計値（大余）
-        #
-        def self.rounded_day(per:, denominator:, minute:)
-          remainder_minute = Type::OldFloat.new((per * minute).to_f)
-          day = day_only(remainder_minute: remainder_minute.get, denominator: denominator)
-          # 繰り上げ結果を足す
-          day += carried_minute(remainder_minute: remainder_minute, denominator: denominator)
+        class << self
+          #
+          # 四捨五入した大余を返す
+          #
+          # @param [Integer] per 増減率
+          # @param [Integer] denominator 小余の分母
+          # @param [Integer] minute 小余
+          #
+          # @return [Integer] 累計値（大余）
+          #
+          def rounded_day(per:, denominator:, minute:)
+            remainder_minute = Type::OldFloat.new((per * minute).to_f)
+            day = day_only(remainder_minute: remainder_minute.get, denominator: denominator)
+            # 繰り上げ結果を足す
+            day += carried_minute(remainder_minute: remainder_minute, denominator: denominator)
 
-          day
+            day
+          end
+
+          #
+          # 秒がない大余小余にする
+          #
+          # @param [Cycle::LunarRemainder] remainder 大余小余
+          #
+          # @note 815年で大余繰り上げあり
+          #
+          # @return [Integer] 大余
+          # @return [Float] 小余
+          #
+          def remainder_without_second(remainder:)
+            adjusted = remainder.class.new(
+              day: remainder.day, minute: remainder.floor_minute, second: 0
+            )
+            adjusted.carry!
+
+            [adjusted.day, adjusted.minute]
+          end
+
+          private
+
+          def day_only(remainder_minute:, denominator:)
+            float_day = Type::OldFloat.new(remainder_minute / denominator)
+            # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
+            float_day.floor!
+            float_day.get
+          end
+
+          def carried_minute(remainder_minute:, denominator:)
+            remainder_day = remainder_minute.abs % denominator
+            # 四捨五入（1/2日 以上なら繰り上げる）
+            return remainder_minute.sign if remainder_day >= (denominator / 2)
+
+            0
+          end
         end
-
-        #
-        # 秒がない大余小余にする
-        #
-        # @param [Cycle::LunarRemainder] remainder 大余小余
-        #
-        # @note 815年で大余繰り上げあり
-        #
-        # @return [Integer] 大余
-        # @return [Float] 小余
-        #
-        def self.remainder_without_second(remainder:)
-          adjusted = remainder.class.new(
-            day: remainder.day, minute: remainder.floor_minute, second: 0
-          )
-          adjusted.carry!
-
-          [adjusted.day, adjusted.minute]
-        end
-
-        def self.day_only(remainder_minute:, denominator:)
-          float_day = Type::OldFloat.new(remainder_minute / denominator)
-          # 切り捨て（プラスマイナスに関わらず小数点以下切り捨て）
-          float_day.floor!
-          float_day.get
-        end
-        private_class_method :day_only
-
-        def self.carried_minute(remainder_minute:, denominator:)
-          remainder_day = remainder_minute.abs % denominator
-          # 四捨五入（1/2日 以上なら繰り上げる）
-          return remainder_minute.sign if remainder_day >= (denominator / 2)
-
-          0
-        end
-        private_class_method :carried_minute
       end
     end
   end

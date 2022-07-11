@@ -88,45 +88,47 @@ module Zakuro
         @month == month
       end
 
-      #
-      # 年月日情報（和暦）を生成する
-      #
-      # @param [Regexp] regex 正規表現
-      # @param [String] text 和暦日文字列
-      #
-      # @return [Calendar] 年月日情報（和暦）
-      #
-      def self.parse(regex: FORMAT, text: '')
-        return Calendar.new unless valid_date_string(regex: regex, text: text)
+      class << self
+        #
+        # 年月日情報（和暦）を生成する
+        #
+        # @param [Regexp] regex 正規表現
+        # @param [String] text 和暦日文字列
+        #
+        # @return [Calendar] 年月日情報（和暦）
+        #
+        def parse(regex: FORMAT, text: '')
+          return Calendar.new unless valid_date_string(regex: regex, text: text)
 
-        matched = text.match(regex)
+          matched = text.match(regex)
 
-        Calendar.new(
-          gengou: matched[1],
-          year: Tools::Typeconv.to_i(text: matched[2], default: INVALID),
-          leaped: matched[3] ? true : false,
-          month: Tools::Typeconv.to_i(text: matched[4], default: INVALID),
-          day: Tools::Typeconv.to_i(text: matched[5], default: INVALID)
-        )
-      end
+          Calendar.new(
+            gengou: matched[1],
+            year: Tools::Typeconv.to_i(text: matched[2], default: INVALID),
+            leaped: matched[3] ? true : false,
+            month: Tools::Typeconv.to_i(text: matched[4], default: INVALID),
+            day: Tools::Typeconv.to_i(text: matched[5], default: INVALID)
+          )
+        end
 
-      #
-      # 日付文字列を検証する
-      #
-      # @param [Regexp] regex 正規表現
-      # @param [String] text 和暦日文字列
-      #
-      # @return [True] 正しい
-      # @return [True] 正しくない
-      #
-      def self.valid_date_string(regex: FORMAT, text: '')
-        return false unless text
+        #
+        # 日付文字列を検証する
+        #
+        # @param [Regexp] regex 正規表現
+        # @param [String] text 和暦日文字列
+        #
+        # @return [True] 正しい
+        # @return [True] 正しくない
+        #
+        def valid_date_string(regex: FORMAT, text: '')
+          return false unless text
 
-        matched = text.match(regex)
+          matched = text.match(regex)
 
-        return false unless matched
+          return false unless matched
 
-        matched.size == 6
+          matched.size == 6
+        end
       end
     end
   end

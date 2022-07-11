@@ -13,37 +13,54 @@ module Zakuro
       # 暦検索
       #
       module Crawler
-        #
-        # 暦の範囲を取得する
-        #
-        # @param [Integer] start_year 開始西暦年
-        # @param [Integer] last_year 終了西暦年
-        #
-        # @return [Array<Range>] 暦の範囲
-        #
-        def self.get(start_year:, last_year:)
-          ranges = Japan::Version.ranges_with_year(start_year: start_year, last_year: last_year)
+        class << self
+          #
+          # 暦の範囲を取得する
+          #
+          # @param [Integer] start_year 開始西暦年
+          # @param [Integer] last_year 終了西暦年
+          #
+          # @return [Array<Range>] 暦の範囲
+          #
+          def get(start_year:, last_year:)
+            ranges = Japan::Version.ranges_with_year(start_year: start_year, last_year: last_year)
 
-          result = []
+            result = []
 
-          ranges.each do |range|
-            next unless range.released
+            ranges.each do |range|
+              next unless range.released
 
+              narrowed_range = narrow(range: range, start_year: start_year, last_year: last_year)
+
+              result.push(narrowed_range)
+            end
+
+            result
+          end
+
+          private
+
+          #
+          # 範囲を開始年・終了年に合わせて狭める
+          #
+          # @param [Range] range 範囲
+          # @param [Integer] start_year 開始西暦年
+          # @param [Integer] last_year 終了西暦年
+          #
+          # @return [Range] 範囲
+          #
+          def narrow(range:, start_year:, last_year:)
             range_start_year = range.start_year
             range_start_year = start_year if start_year > range.start_year
 
             range_last_year = range.last_year
             range_last_year = last_year if last_year < range.last_year
 
-            result.push(
-              Range.new(
-                name: range.name, start_date: range.start_date.clone,
-                start_year: range_start_year, last_year: range_last_year
-              )
+            Range.new(
+              name: range.name, start_date: range.start_date.clone,
+              start_year: range_start_year, last_year: range_last_year
             )
           end
-
-          result
         end
       end
     end

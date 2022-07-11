@@ -10,6 +10,9 @@ module Zakuro
       # AbstractAverage 平気（太陽軌道平均）
       #
       class AbstractAverage
+        # @return [Cycle::AbstractSolarTerm] 入定気
+        attr_reader :solar_term
+
         #
         # 初期化
         #
@@ -41,30 +44,32 @@ module Zakuro
 
         # :reek:TooManyStatements { max_statements: 7 }
 
-        #
-        # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
-        # @note 大余60で一巡するため 以下2パターンがある
-        #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
-        #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
-        #
-        # @param [Cycle::AbstractRemainder] solar_term 二十四節気
-        # @param [Cycle::AbstractRemainder] current_month 月初
-        # @param [Cycle::AbstractRemainder] next_month 月末
-        #
-        # @return [True] 対象の二十四節気がある
-        # @return [False] 対象の二十四節気がない
-        #
-        def self.in_solar_term?(solar_term:, current_month:, next_month:)
-          # 大余で比較する
-          target_time = solar_term.day
-          current_month_time = current_month.day
-          next_month_time = next_month.day
-          current_month_over = (target_time >= current_month_time)
-          next_month_under = (target_time < next_month_time)
+        class << self
+          #
+          # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
+          # @note 大余60で一巡するため 以下2パターンがある
+          #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
+          #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
+          #
+          # @param [Cycle::AbstractRemainder] solar_term 二十四節気
+          # @param [Cycle::AbstractRemainder] current_month 月初
+          # @param [Cycle::AbstractRemainder] next_month 月末
+          #
+          # @return [True] 対象の二十四節気がある
+          # @return [False] 対象の二十四節気がない
+          #
+          def in_solar_term?(solar_term:, current_month:, next_month:)
+            # 大余で比較する
+            target_time = solar_term.day
+            current_month_time = current_month.day
+            next_month_time = next_month.day
+            current_month_over = (target_time >= current_month_time)
+            next_month_under = (target_time < next_month_time)
 
-          return current_month_over && next_month_under if current_month_time <= next_month_time
+            return current_month_over && next_month_under if current_month_time <= next_month_time
 
-          current_month_over || next_month_under
+            current_month_over || next_month_under
+          end
         end
 
         private
@@ -83,8 +88,8 @@ module Zakuro
           # * 閏月は1回しか設定しない
           # * 最大2回設定する（中気・節気）
           (0..3).each do |_index|
-            in_range = AbstractAverage.in_solar_term?(
-              solar_term: @solar_term.remainder, current_month: current_month.remainder,
+            in_range = self.class.in_solar_term?(
+              solar_term: solar_term.remainder, current_month: current_month.remainder,
               next_month: next_month.remainder
             )
 
@@ -97,7 +102,7 @@ module Zakuro
               next
             end
 
-            current_month.add_term(term: @solar_term.clone)
+            current_month.add_term(term: solar_term.clone)
             next_solar_term
 
             # 定気は最大2つまで
@@ -109,7 +114,7 @@ module Zakuro
         # 次の二十四節気に移る
         #
         def next_solar_term
-          @solar_term.next_term!
+          solar_term.next_term!
         end
       end
     end

@@ -75,8 +75,8 @@ module Zakuro
           @second = second
 
           if total != -1
-            @day = (total.to_f / @base_day).floor
-            @minute = (total % @base_day)
+            @day = (total.to_f / base_day).floor
+            @minute = (total % base_day)
             @second = 0
           end
 
@@ -127,7 +127,7 @@ module Zakuro
         # @return [String] 十干十二支名
         #
         def zodiac_name
-          Cycle::Zodiac.day_name(day: @day)
+          Cycle::Zodiac.day_name(day: day)
         end
 
         #
@@ -139,9 +139,9 @@ module Zakuro
         # @return [False] 当月朔日と翌月朔日が異なる十干（「小」の月）
         #
         def same_remainder_divided_by_ten?(other:)
-          day = @day % LIMIT
+          remainder_day = day % LIMIT
 
-          (day % 10) == (other % 10)
+          (remainder_day % 10) == (other % 10)
         end
 
         #
@@ -153,12 +153,14 @@ module Zakuro
         #
         def add(other)
           invalid?(param: other)
-          day = @day + other.day
-          minute = @minute + other.minute
-          second = @second + other.second
-          day, minute, second = carry(day, minute, second)
+          sum_day = day + other.day
+          sum_minute = minute + other.minute
+          sum_second = second + other.second
+          sum_day, sum_minute, sum_second = carry(
+            sum_day, sum_minute, sum_second
+          )
 
-          clone.set(day: day, minute: minute, second: second)
+          clone.set(day: sum_day, minute: sum_minute, second: sum_second)
         end
 
         #
@@ -186,12 +188,14 @@ module Zakuro
         #
         def sub(other)
           invalid?(param: other)
-          day = @day - other.day
-          minute = @minute - other.minute
-          second = @second - other.second
-          day, minute, second = carry(day, minute, second)
+          sum_day = day - other.day
+          sum_minute = minute - other.minute
+          sum_second = second - other.second
+          sum_day, sum_minute, sum_second = carry(
+            sum_day, sum_minute, sum_second
+          )
 
-          clone.set(day: day, minute: minute, second: second)
+          clone.set(day: sum_day, minute: sum_minute, second: sum_second)
         end
 
         #
@@ -300,9 +304,9 @@ module Zakuro
         def up_on_new_moon
           cloned = clone
           limit = (base_day * 3) / 4
-          if @minute >= limit
-            day, minute, second = carry((@day + 1), @minute, @second)
-            return cloned.set(day: day, minute: minute, second: second)
+          if minute >= limit
+            sum_day, sum_minute, sum_second = carry((day + 1), minute, second)
+            return cloned.set(day: sum_day, minute: sum_minute, second: sum_second)
           end
 
           cloned
@@ -333,7 +337,7 @@ module Zakuro
         # @return [Integer] 小余
         #
         def to_minute
-          @day * @base_day + @minute
+          day * base_day + minute
         end
 
         #
@@ -354,7 +358,7 @@ module Zakuro
         # @return [Float] 小余
         #
         def float_minute
-          @minute + @second.to_f / @base_minute
+          minute + second.to_f / base_minute
         end
 
         #
@@ -363,10 +367,10 @@ module Zakuro
         # @return [AbstractRemainder] 大余
         #
         def round
-          day = @day
-          day += 1 if @minute >= (@base_day / 2)
+          sum_day = day
+          sum_day += 1 if minute >= (base_day / 2)
 
-          initialize(day, 0, 0)
+          initialize(sum_day, 0, 0)
         end
 
         #
@@ -375,7 +379,7 @@ module Zakuro
         # @return [String] 文字化
         #
         def to_s
-          "大余（日）: #{@day}, 小余（分）: #{@minute}, 小余（秒）: #{@second}"
+          "大余（日）: #{day}, 小余（分）: #{minute}, 小余（秒）: #{second}"
         end
 
         #
@@ -384,7 +388,7 @@ module Zakuro
         # @return [AbstractRemainder] 繰り上げ結果
         #
         def carry!
-          @day, @minute, @second = carry(@day, @minute, @second)
+          @day, @minute, @second = carry(day, minute, second)
 
           self
         end
@@ -406,11 +410,11 @@ module Zakuro
         def carry_second(param_minute, param_second)
           sign = param_second.negative? ? -1 : 1
           abs = sign * param_second
-          minute = param_minute + (sign * (abs / @base_minute).floor)
-          second = sign * (abs % @base_minute)
+          minute = param_minute + (sign * (abs / base_minute).floor)
+          second = sign * (abs % base_minute)
 
           if sign.negative?
-            second += @base_minute
+            second += base_minute
             minute -= 1
           end
 
@@ -421,11 +425,11 @@ module Zakuro
           sign = param_minute.negative? ? -1 : 1
           abs = sign * param_minute
 
-          day = param_day + (sign * (abs / @base_day).floor)
-          minute = sign * (abs % @base_day)
+          day = param_day + (sign * (abs / base_day).floor)
+          minute = sign * (abs % base_day)
 
           if sign.negative?
-            minute += @base_day
+            minute += base_day
             day -= 1
           end
 
@@ -435,37 +439,39 @@ module Zakuro
         def carry_day(day, limited)
           sign = day.negative? ? -1 : 1
           abs = sign * day
-          carried = sign * (abs % @base_limit) if limited
-          carried += @base_limit if sign.negative?
+          carried = sign * (abs % base_limit) if limited
+          carried += base_limit if sign.negative?
           carried
         end
 
         def up?(other)
           invalid?(param: other)
-          day = other.day
-          minute = other.float_minute
+          other_day = other.day
+          other_minute = other.float_minute
 
-          return true if @day > day
-          return false if @day < day
+          return true if day > other_day
 
-          float_minute > minute
+          return false if day < other_day
+
+          float_minute > other_minute
         end
 
         def eql?(other)
           invalid?(param: other)
 
-          (@day == other.day && float_minute == other.float_minute)
+          (day == other.day && float_minute == other.float_minute)
         end
 
         def down?(other)
           invalid?(param: other)
-          day = other.day
-          minute = other.float_minute
+          other_day = other.day
+          other_minute = other.float_minute
 
-          return true if @day < day
-          return false if @day > day
+          return true if day < other_day
 
-          float_minute < minute
+          return false if day > other_day
+
+          float_minute < other_minute
         end
       end
     end

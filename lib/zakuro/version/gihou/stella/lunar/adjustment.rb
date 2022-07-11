@@ -72,9 +72,10 @@ module Zakuro
           # @return [False] 不一致
           #
           def match?(day:, minute:)
-            return false unless @day == day
+            inner_day = @day
+            return false unless inner_day == day
 
-            return false unless @range.include?(minute: minute)
+            return false unless range.include?(minute: minute)
 
             true
           end
@@ -85,7 +86,7 @@ module Zakuro
           # @return [Integer] 分母
           #
           def denominator
-            @range.denominator
+            range.denominator
           end
         end
 
@@ -123,7 +124,7 @@ module Zakuro
           # @return [False] 含まれない
           #
           def include?(minute:)
-            minute >= @min && minute <= @max
+            minute >= min && minute <= max
           end
 
           #
@@ -132,7 +133,7 @@ module Zakuro
           # @return [Integer] 分母
           #
           def denominator
-            @max - @min
+            max - min
           end
         end
 
@@ -162,7 +163,7 @@ module Zakuro
           # @return [String] 文字
           #
           def to_s
-            "per:#{@per}, stack:#{@stack}"
+            "per:#{per}, stack:#{stack}"
           end
         end
 
@@ -207,44 +208,46 @@ module Zakuro
         ].freeze
         # rubocop:enable Layout/LineLength
 
-        #
-        # 月軌道の補正に必要な基本値を引き当てる
-        #
-        # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
-        # @param [Integer] day 大余
-        # @param [Integer] minute 小余
-        #
-        # @return [Row] 補正値
-        #
-        # @raise [ArgumentError] 引数エラー
-        #
-        def self.specify(day:, minute:)
-          LIST.each do |row|
-            # NOTE: 範囲が重複している場合、最初に引き当てたほうを優先する
-            return row if row.match?(day: day, minute: minute)
+        class << self
+          #
+          # 月軌道の補正に必要な基本値を引き当てる
+          #
+          # @param [True, False] forward 進（遠地点より数える）/退（近地点より数える）
+          # @param [Integer] day 大余
+          # @param [Integer] minute 小余
+          #
+          # @return [Row] 補正値
+          #
+          # @raise [ArgumentError] 引数エラー
+          #
+          def specify(day:, minute:)
+            LIST.each do |row|
+              # NOTE: 範囲が重複している場合、最初に引き当てたほうを優先する
+              return row if row.match?(day: day, minute: minute)
+            end
+
+            raise ArgumentError.new, "invalid parameter: #{day}/#{minute}"
           end
 
-          raise ArgumentError.new, "invalid parameter: #{day}/#{minute}"
-        end
+          # :reek:ControlParameter
 
-        # :reek:ControlParameter
+          #
+          # 小余の下げ幅を求める
+          #
+          # @param [Integer] day 大余
+          # @param [Integer] minute 小余
+          #
+          # @return [Integer] 小余の下げ幅
+          #
+          def minus_minute(day:, minute:)
+            limit = DAY_LIMIT.fetch(day, -1)
+            # 該当なし
+            return minute if limit == -1
 
-        #
-        # 小余の下げ幅を求める
-        #
-        # @param [Integer] day 大余
-        # @param [Integer] minute 小余
-        #
-        # @return [Integer] 小余の下げ幅
-        #
-        def self.minus_minute(day:, minute:)
-          limit = DAY_LIMIT.fetch(day, -1)
-          # 該当なし
-          return minute if limit == -1
+            return minute unless minute > limit
 
-          return minute unless minute > limit
-
-          minute - limit
+            minute - limit
+          end
         end
       end
     end

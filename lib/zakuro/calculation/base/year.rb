@@ -72,7 +72,7 @@ module Zakuro
 
           return Western::Calendar.new if months.size.zero?
 
-          @months[0].western_date
+          months[0].western_date
         end
 
         #
@@ -95,7 +95,7 @@ module Zakuro
         def push(month:)
           return if duplicated?(month: month)
 
-          @months.push(month)
+          months.push(month)
 
           nil
         end
@@ -111,7 +111,7 @@ module Zakuro
         # @return [True] 重複していない
         #
         def duplicated?(month:)
-          @months.each do |existed|
+          months.each do |existed|
             return true if existed.same?(other: month)
           end
           false

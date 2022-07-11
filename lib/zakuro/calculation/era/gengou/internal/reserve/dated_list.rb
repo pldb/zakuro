@@ -35,11 +35,11 @@ module Zakuro
           #
           def update
             # 開始日の30日前に前の元号がある場合は、前の元号を設定する
-            start_date = @start_date.clone - (MAX_MONTH_DAYS + 1)
+            start = start_date.clone - (MAX_MONTH_DAYS + 1)
             # 開始日の30日後に次の元号がある場合は、次の元号を設定する
-            last_date = @last_date.clone + (MAX_MONTH_DAYS + 1)
+            last = last_date.clone + (MAX_MONTH_DAYS + 1)
 
-            @list |= line(start_date: start_date, last_date: last_date)
+            @list |= line(start_date: start, last_date: last)
           end
         end
       end

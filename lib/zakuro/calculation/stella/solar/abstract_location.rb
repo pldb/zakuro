@@ -58,7 +58,7 @@ module Zakuro
         # 弦の分だけ太陽地点を進める
         #
         def add_quarter
-          @remainder.add!(quarter)
+          remainder.add!(quarter)
         end
 
         #
@@ -151,12 +151,12 @@ module Zakuro
         def prev(index:)
           interval = interval(index: index)
           if remainder > interval
-            @remainder.sub!(interval)
+            remainder.sub!(interval)
             return
           end
 
           # 入定気が確定する
-          @remainder = interval.sub(@remainder)
+          @remainder = interval.sub(remainder)
           @index = index
         end
 
@@ -165,7 +165,7 @@ module Zakuro
         #
         def next_index
           @index += 1
-          @index = 0 if @index >= interval_size
+          @index = 0 if index >= interval_size
         end
 
         #
@@ -176,7 +176,7 @@ module Zakuro
           # 現在の二十四節気に留まる
           return if remainder < interval
 
-          @remainder.sub!(interval)
+          remainder.sub!(interval)
 
           next_index
 

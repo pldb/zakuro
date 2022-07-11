@@ -31,7 +31,7 @@ module Zakuro
             @last_date = Western::Calendar.new
 
             locate(start_name: start_name, last_name: last_name)
-            super(index: @index, start_date: @start_date, last_date: @last_date)
+            super(index: index, start_date: start_date, last_date: last_date)
           end
 
           private
@@ -71,12 +71,12 @@ module Zakuro
           def choise_start_date(date:)
             return if date.invalid?
 
-            if @start_date.invalid?
+            if start_date.invalid?
               @start_date = date
               return
             end
 
-            return if date > @start_date
+            return if date > start_date
 
             @start_date = date
           end
@@ -89,12 +89,12 @@ module Zakuro
           def choise_last_date(date:)
             return if date.invalid?
 
-            if @last_date.invalid?
+            if last_date.invalid?
               @last_date = date
               return
             end
 
-            return if date < @last_date
+            return if date < last_date
 
             @last_date = date
           end
@@ -107,7 +107,7 @@ module Zakuro
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
           def line_by_name(name:)
-            Japan::Gengou.line_by_name(line: @index, name: name)
+            Japan::Gengou.line_by_name(line: index, name: name)
           end
 
           #

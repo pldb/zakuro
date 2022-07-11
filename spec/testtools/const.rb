@@ -42,9 +42,9 @@ module Const # rubocop:disable Metrics/ModuleLength
         western_date: '0862-02-03'
       )
     ),
-    operation: Zakuro::Result::Operation::Bundle.new(
+    operation: Zakuro::Result::Operation.new(
       operated: false,
-      month: Zakuro::Result::Operation::Month::Bundle.new,
+      month: Zakuro::Result::Operation::Month.new,
       original: Zakuro::Result::Data::SingleDay.new(
         year: Zakuro::Result::Data::Year.new(
           first_gengou: Zakuro::Result::Data::Gengou.new(
@@ -132,9 +132,9 @@ module Const # rubocop:disable Metrics/ModuleLength
         )
       }
     ),
-    operation: Zakuro::Result::Operation::Bundle.new(
+    operation: Zakuro::Result::Operation.new(
       operated: false,
-      month: Zakuro::Result::Operation::Month::Bundle.new,
+      month: Zakuro::Result::Operation::Month.new,
       original: Zakuro::Result::Data::SingleDay.new(
         year: Zakuro::Result::Data::Year.new(
           first_gengou: Zakuro::Result::Data::Gengou.new(

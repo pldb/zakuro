@@ -18,20 +18,22 @@ module Zakuro
     # @return [String] 共通メッセージ
     MESSAGE = 'an error has occurred'
 
-    #
-    # 例外を取得する
-    #
-    # @param [Array<Case::Preset>] presets 原因プリセット
-    #
-    # @return [ZakuroError] ライブラリエラー
-    #
-    def self.get(presets: [])
-      causes = []
-      presets.each do |preset|
-        causes.push(Cause.new(code: preset.code, message: preset.message))
-      end
+    class << self
+      #
+      # 例外を取得する
+      #
+      # @param [Array<Case::Preset>] presets 原因プリセット
+      #
+      # @return [ZakuroError] ライブラリエラー
+      #
+      def get(presets: [])
+        causes = []
+        presets.each do |preset|
+          causes.push(Cause.new(code: preset.code, message: preset.message))
+        end
 
-      ZakuroError.new(msg: MESSAGE, causes: causes)
+        ZakuroError.new(msg: MESSAGE, causes: causes)
+      end
     end
   end
 end

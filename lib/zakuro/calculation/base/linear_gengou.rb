@@ -46,7 +46,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @name == '' || @year == INVALID_YEAR
+          name == '' || year == INVALID_YEAR
         end
 
         #
@@ -60,13 +60,13 @@ module Zakuro
         def include?(date: Western::Calendar.new)
           return false if invalid?
 
-          return false if @start_date.invalid?
+          return false if start_date.invalid?
 
-          return false if @last_date.invalid?
+          return false if last_date.invalid?
 
-          return false if date < @start_date
+          return false if date < start_date
 
-          return false if date > @last_date
+          return false if date > last_date
 
           true
         end

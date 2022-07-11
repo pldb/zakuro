@@ -82,35 +82,37 @@ module Zakuro
         false
       end
 
-      #
-      # 暦名を返す
-      #
-      # @param [String] version 暦名
-      #
-      # @return [String] 暦名
-      #
-      def self.version(version: INVALID_VERSION_NAME)
-        return INVALID_VERSION_NAME unless version
+      class << self
+        #
+        # 暦名を返す
+        #
+        # @param [String] version 暦名
+        #
+        # @return [String] 暦名
+        #
+        def version(version: INVALID_VERSION_NAME)
+          return INVALID_VERSION_NAME unless version
 
-        return INVALID_VERSION_NAME if version.empty?
+          return INVALID_VERSION_NAME if version.empty?
 
-        return INVALID_VERSION_NAME unless VERSION_NAMES.include?(version)
+          return INVALID_VERSION_NAME unless VERSION_NAMES.include?(version)
 
-        version
-      end
+          version
+        end
 
-      #
-      # 有効な暦か
-      #
-      # @param [String] version 暦名
-      #
-      # @return [True] 有効
-      # @return [False] 無効
-      #
-      def self.version?(version: INVALID_VERSION_NAME)
-        return false if version == INVALID_VERSION_NAME
+        #
+        # 有効な暦か
+        #
+        # @param [String] version 暦名
+        #
+        # @return [True] 有効
+        # @return [False] 無効
+        #
+        def version?(version: INVALID_VERSION_NAME)
+          return false if version == INVALID_VERSION_NAME
 
-        true
+          true
+        end
       end
     end
   end
