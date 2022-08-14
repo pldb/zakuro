@@ -39,6 +39,7 @@ describe 'Zakuro' do
               message = ''
               fails.each do |fail|
                 message += "[year: #{fail[:year]}, \n" \
+                    "num: #{fail[:num]}\n" \
                     "actual: #{fail[:actual]}\n" \
                     "expect: #{fail[:expect]}]\n"
               end
@@ -58,20 +59,17 @@ describe 'Zakuro' do
                 actuals.each_with_index do |month, index|
                   actual = month_actual(month: month)
 
-                  next if actual.eql?(expects[index])
+                  expect_month = expects[index][:month]
+                  next if actual.eql?(expect_month)
 
-                  fails.push(year: year, actual: actual, expect: expects[index])
+                  fails.push(
+                    year: year, num: expects[index][:num], actual: actual, expect: expect_month
+                  )
                 end
               end
 
               expect(fails).to be_empty, error_message(fails)
             end
-            # it 'call example' do
-            #   Zakuro::Genka::Range::AnnualRange.get(
-            #     context: Zakuro::Context::Context.new(version: 'Genka'),
-            #     western_year: 468
-            #   )
-            # end
           end
         end
       end

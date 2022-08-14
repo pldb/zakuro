@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './month'
+require_relative './line'
 
 # :nodoc:
 module Zakuro
@@ -15,20 +15,21 @@ module Zakuro
         # @return [Array<Integer, Hash>] テストデータ
         #
         def get
-          months = to_month
+          lines = to_line
 
           result = {}
 
           value = []
-          months.each do |month|
+          lines.each do |line|
+            month = line.month
             unless month.first?
-              value.push(month.to_h)
+              value.push(line.to_h)
               next
             end
 
             break if month.western_year >= 698
 
-            value = [month.to_h]
+            value = [line.to_h]
             result[month.western_year] = value
           end
 
@@ -37,25 +38,27 @@ module Zakuro
 
         private
 
-        def to_month
-          months = []
+        def to_line
+          lines = []
 
           filepath = File.expand_path(
             '../../../../../../zakuro-data/text/rekijitu.txt',
             __dir__
           )
 
+          num = 0
           File.open(filepath, 'r') do |f|
             f.each_line do |line|
+              num += 1
               month = Month.new(text: line)
 
               next if month.invalid?
 
-              months.push(month)
+              lines.push(Line.new(num: num, month: month))
             end
           end
 
-          months
+          lines
         end
       end
     end
