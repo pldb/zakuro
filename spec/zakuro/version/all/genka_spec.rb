@@ -38,8 +38,8 @@ describe 'Zakuro' do
             def error_message(fails)
               message = ''
               fails.each do |fail|
-                message += "[year: #{fail[:year]}, \n" \
-                    "num: #{fail[:num]}\n" \
+                message += "[num: #{fail[:num]}, \n" \
+                    "year: #{fail[:year]}, \n" \
                     "actual: #{fail[:actual]}\n" \
                     "expect: #{fail[:expect]}]\n"
               end
