@@ -10,6 +10,9 @@ module Zakuro
     module Genka
       # Month 月
       class Month
+        # @return [Regexp] コメント行
+        COMMENT = /^\s*#/.freeze
+
         # @return [Regexp] 前方抽出
         #
         # 1 大 庚午
@@ -105,6 +108,10 @@ module Zakuro
         private
 
         def parse(text:)
+          # コメント行
+          matched = text.match(COMMENT)
+          return if matched
+
           matched = text.match(PREFIX)
 
           return unless matched
