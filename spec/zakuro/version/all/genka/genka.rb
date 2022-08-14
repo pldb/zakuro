@@ -21,13 +21,15 @@ module Zakuro
 
           value = []
           months.each do |month|
-            if month.first?
-              value = [month.to_h]
-              result[month.western_year] = value
+            unless month.first?
+              value.push(month.to_h)
               next
             end
 
-            value.push(month.to_h)
+            break if month.western_year >= 698
+
+            value = [month.to_h]
+            result[month.western_year] = value
           end
 
           result

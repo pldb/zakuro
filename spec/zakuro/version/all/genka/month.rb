@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../../../lib/zakuro/tools/stringifier'
-
 require_relative './solar_term'
 
 # :nodoc:
@@ -27,7 +25,7 @@ module Zakuro
         SUFFIX = /^.+\s+([0-9]{1,2}\.[0-9]{1,4})\s+([0-9]{3,4}\s+[0-9]{1,2}\s+[0-9]{1,2})\s+(\([0-9]{1,2}\)[0-9]{1,2}\.[0-9]{1,4}\s+)?(\([0-9]{1,2}\)[0-9]{1,2}\.[0-9]{1,4})$/.freeze
         # rubocop:enable Layout/LineLength
 
-        # @return [String] 西暦年
+        # @return [Integer] 西暦年
         attr_reader :western_year
         # @return [True, False] 閏の有無
         attr_reader :leaped
@@ -81,7 +79,17 @@ module Zakuro
         # @return [Hash<String, Objcet>] ハッシュ
         #
         def to_h
-          Zakuro::Tools::Stringifier.to_h(obj: self, class_prefix: 'Zakuro::All', formatted: false)
+          {
+            is_many_days: is_many_days,
+            month: month,
+            leaped: leaped,
+            remainder: remainder,
+            phase_index: @phase_index,
+            even_term: even_term.remainder,
+            even_term_index: even_term.index,
+            odd_term: odd_term.remainder,
+            odd_term_index: odd_term.index
+          }
         end
 
         #
@@ -111,10 +119,10 @@ module Zakuro
 
           # 450 1 2
           date = matched[2].split(/\s+/)
-          @western_year = date[0]
+          @western_year = date[0].to_i
 
-          solar_terms(terms:
-            [
+          solar_terms(
+            terms: [
               SolarTerm.new(text: matched[3]), SolarTerm.new(text: matched[4])
             ]
           )
