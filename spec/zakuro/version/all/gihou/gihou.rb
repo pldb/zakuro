@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative './gengou'
 require_relative './line'
 
 # :nodoc:
@@ -19,21 +20,45 @@ module Zakuro
 
           result = {}
 
-          # TODO: 最初の1月-10月のケースが処理されていない
+          # TODO: refactor
 
           value = []
-          lines.each do |line|
+          first = true
+          current_index = 0
+          lines.each_with_index do |line, index|
             month = line.month
-            # 11月はじまりにする
-            unless month.month == 11
-              value.push(line.to_h)
+            if first
+              first = false
+              value = [line.to_h]
+              # 11月ではないので1年前倒しする
+              result[month.western_year - 1] = value
               next
             end
 
-            break if month.western_year >= 698
+            if month.month == 11
+              current_index = index
+              break
+            end
 
-            value = [line.to_h]
-            result[month.western_year] = value
+            value.push(line.to_h)
+          end
+
+          value = []
+          lines.each_with_index do |line, index|
+            next if index < current_index
+
+            month = line.month
+
+            if month.month == 11
+              # 11月自体は前年にも足す
+              value.push(line.to_h)
+              # 11月開始にする
+              value = [line.to_h]
+              result[month.western_year] = value
+              next
+            end
+
+            value.push(line.to_h)
           end
 
           result
@@ -44,21 +69,28 @@ module Zakuro
         def to_line
           lines = []
 
+          # TODO: ファイルが存在しない場合はスキップするようにする
           filepath = File.expand_path(
             '../../../../../../zakuro-data/text/rekijitu.txt',
             __dir__
           )
 
+          gengou = Gengou.new
           num = 0
+          in_range = false
           File.open(filepath, 'r') do |f|
             f.each_line do |line|
               num += 1
 
-              next unless range?(num: num)
-
               month = Month.new(text: line)
 
               next if month.invalid?
+
+              gengou = Gengou.new(text: line) if month.first?
+
+              in_range = range?(in_range: in_range, gengou: gengou)
+
+              next unless in_range
 
               lines.push(Line.new(num: num, month: month))
             end
@@ -67,22 +99,18 @@ module Zakuro
           lines
         end
 
-        #
-        # 範囲内か
-        #
-        # @param [Integer] num 行番号
-        #
-        # @return [True] 範囲内
-        # @return [False] 範囲外
-        #
-        def range?(num:)
-          # 文武 1年 以前
-          return false if num < 3400
+        def range?(in_range:, gengou:)
+          # 開始
+          unless in_range
+            return true if gengou.name == '文武' && gengou.year == 2
+          end
 
-          # 天平宝字 8年 以降
-          return false if num > 4282
+          # 終了
+          if in_range
+            return false if gengou.name == '天平宝字' && gengou.year == 8
+          end
 
-          true
+          in_range
         end
       end
     end
