@@ -55,7 +55,15 @@ module Zakuro
 
             month = line.month
 
-            if month.month == 11
+            if month.leaped_october?
+              value.push(line.to_h)
+              # 閏10月開始にする
+              value = [line.to_h]
+              result[month.western_year] = value
+              next
+            end
+
+            if month.november? && value.size != 1
               # 11月自体は前年にも足す
               value.push(line.to_h)
               # 11月開始にする
