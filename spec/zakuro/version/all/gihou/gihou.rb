@@ -20,29 +20,35 @@ module Zakuro
 
           result = {}
 
-          # TODO: refactor
+          current_index = to_first_result(lines: lines, result: result)
 
+          to_result(lines: lines, result: result, current_index: current_index)
+
+          result
+        end
+
+        private
+
+        def to_first_result(lines: [], result: {})
           value = []
-          first = true
-          current_index = 0
           lines.each_with_index do |line, index|
             month = line.month
-            if first
-              first = false
+            if index.zero?
               value = [line.to_h]
               # 11月ではないので1年前倒しする
               result[month.western_year - 1] = value
               next
             end
 
-            if month.month == 11
-              current_index = index
-              break
-            end
+            return index if month.month == 11
 
             value.push(line.to_h)
           end
 
+          0
+        end
+
+        def to_result(lines:, result:, current_index:)
           value = []
           lines.each_with_index do |line, index|
             next if index < current_index
@@ -60,25 +66,15 @@ module Zakuro
 
             value.push(line.to_h)
           end
-
-          result
         end
 
-        private
-
-        def to_line
+        def to_line # rubocop:disable Metrics/MethodLength
           lines = []
-
-          # TODO: ファイルが存在しない場合はスキップするようにする
-          filepath = File.expand_path(
-            '../../../../../../zakuro-data/text/rekijitu.txt',
-            __dir__
-          )
 
           gengou = Gengou.new
           num = 0
           in_range = false
-          File.open(filepath, 'r') do |f|
+          File.open(fullpath, 'r') do |f|
             f.each_line do |line|
               num += 1
 
@@ -97,6 +93,14 @@ module Zakuro
           end
 
           lines
+        end
+
+        def fullpath
+          # TODO: ファイルが存在しない場合はスキップするようにする
+          File.expand_path(
+            '../../../../../../zakuro-data/text/rekijitu.txt',
+            __dir__
+          )
         end
 
         def range?(in_range:, gengou:)

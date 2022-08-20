@@ -124,15 +124,19 @@ module Zakuro
 
           @remainder = matched[1]
 
-          # 450 1 2
-          date = matched[2].split(/\s+/)
-          @western_year = date[0].to_i
+          extract_year(text: matched[2])
 
           solar_terms(
             terms: [
               SolarTerm.new(text: matched[3]), SolarTerm.new(text: matched[4])
             ]
           )
+        end
+
+        def extract_year(text:)
+          # 450 1 2
+          date = text.split(/\s+/)
+          @western_year = date[0].to_i
         end
 
         def prefix(matched:)

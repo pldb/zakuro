@@ -44,10 +44,42 @@ describe 'Zakuro' do
           message
         end
 
+        # :reek:UtilityFunction
+        def check_with_partially_expection(year:, expects: [], actuals: [], fails: [])
+          expects.each do |expect_line|
+            matched = matched_actuals(
+              year: year, expect_line: expect_line, actuals: actuals, fails: fails
+            )
+
+            next if matched
+
+            fails.push(
+              year: year, num: expect_line[:num], actual: {}, expect: expect_line[:month]
+            )
+          end
+        end
+
+        # :reek:UtilityFunction
+        def matched_actuals(year:, expect_line:, actuals:, fails:)
+          expect = expect_line[:month]
+          actuals.each do |month|
+            actual = month_actual(month: month)
+
+            next unless actual[:month] == expect[:month] && actual[:leaped] == expect[:leaped]
+
+            unless actual.eql?(expect)
+              fails.push(
+                year: year, num: expect_line[:num], actual: actual, expect: expect
+              )
+            end
+            return true
+          end
+
+          false
+        end
+
         it 'should be expected values' do
           expected = Zakuro::All::Gihou.get
-
-          # TODO: refactor
 
           fails = []
           expected.each_with_index do |(year, expects), hash_index|
@@ -59,33 +91,9 @@ describe 'Zakuro' do
 
             # 暦の切り替え時は完全なチェックができない
             if hash_index.zero? || hash_index == expected.size - 1
-              p 'first or last'
-
-              expects.each do |expect_line|
-                expect = expect_line[:month]
-                matched = false
-                actuals.each do |month|
-                  actual = month_actual(month: month)
-
-                  next unless actual[:month] == expect[:month] && actual[:leaped] == expect[:leaped]
-
-                  matched = true
-
-                  break if actual.eql?(expect)
-
-                  fails.push(
-                    year: year, num: expect_line[:num], actual: actual, expect: expect
-                  )
-                  break
-                end
-
-                next if matched
-
-                fails.push(
-                  year: year, num: expect_line[:num], actual: {}, expect: expect
-                )
-              end
-
+              check_with_partially_expection(
+                year: year, expects: expects, actuals: actuals, fails: fails
+              )
               next
             end
 
