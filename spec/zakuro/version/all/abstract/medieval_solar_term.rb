@@ -6,8 +6,8 @@ module Zakuro
   module All
     # :nodoc:
     module Gihou
-      # SolarTerm 二十四節気
-      class SolarTerm
+      # MedievalSolarTerm 二十四節気（中世）
+      class MedievalSolarTerm
         # @return [Regexp] 正規表現
         REGEX = /\(([0-9]{1,2})\)([0-9]{1,2}-[0-9]{1,4})/.freeze
 

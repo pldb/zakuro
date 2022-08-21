@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './solar_term'
+require_relative './medieval_solar_term'
 
 # :nodoc:
 module Zakuro
@@ -8,8 +8,8 @@ module Zakuro
   module All
     # :nodoc:
     module Gihou
-      # Month 月
-      class Month
+      # MedievalMonth 月（中世）
+      class MedievalMonth
         # @return [Regexp] コメント行
         COMMENT = /^\s*#/.freeze
 
@@ -56,8 +56,8 @@ module Zakuro
           @phase_index = 0
           @is_many_days = false
           @remainder = ''
-          @even_term = SolarTerm.new
-          @odd_term = SolarTerm.new
+          @even_term = MedievalSolarTerm.new
+          @odd_term = MedievalSolarTerm.new
 
           parse(text: text)
         end
@@ -156,7 +156,7 @@ module Zakuro
 
           solar_terms(
             terms: [
-              SolarTerm.new(text: matched[3]), SolarTerm.new(text: matched[4])
+              MedievalSolarTerm.new(text: matched[3]), MedievalSolarTerm.new(text: matched[4])
             ]
           )
         end

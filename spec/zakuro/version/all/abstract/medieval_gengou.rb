@@ -6,8 +6,8 @@ module Zakuro
   module All
     # :nodoc:
     module Gihou
-      # Gengou 元号
-      class Gengou
+      # MedievalGengou 元号（中世）
+      class MedievalGengou
         # @return [Regexp] 正規表現
         REGEX = /^\s*([一-龥]{1,4})\s+([0-9]{1,2})年/.freeze
 
