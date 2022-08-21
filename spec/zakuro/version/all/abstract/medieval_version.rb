@@ -10,7 +10,7 @@ require_relative './medieval_line'
 module Zakuro
   # :nodoc:
   module All
-    # :nodoc:
+    # MedievalVersion 中世暦の期待値生成
     module MedievalVersion
       class << self
         #
