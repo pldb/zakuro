@@ -17,7 +17,8 @@ module Zakuro
       # 閏10月開始を標準とするが、歴算値によっては11月開始となる
       #
       NOVEMBER_FIRST_GENGOU = [
-        MedievalGengou.new(text: '天平神護 1年')
+        MedievalGengou.new(text: '天平神護 1年'),
+        MedievalGengou.new(text: '延暦 22年')
       ].freeze
 
       class << self
