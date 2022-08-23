@@ -18,7 +18,8 @@ module Zakuro
       #
       NOVEMBER_FIRST_GENGOU = [
         MedievalGengou.new(text: '天平神護 1年'),
-        MedievalGengou.new(text: '延暦 22年')
+        MedievalGengou.new(text: '延暦 22年'),
+        MedievalGengou.new(text: '元慶 3年')
       ].freeze
 
       class << self
