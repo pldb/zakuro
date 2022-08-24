@@ -103,6 +103,20 @@ module Zakuro
       end
 
       #
+      # 閏11月か
+      #
+      # @return [True] 閏11月
+      # @return [True] 閏11月以外
+      #
+      def leaped_november?
+        return false unless @month == 11
+
+        return false unless @leaped
+
+        true
+      end
+
+      #
       # ハッシュ化する
       #
       # @return [Hash<String, Objcet>] ハッシュ

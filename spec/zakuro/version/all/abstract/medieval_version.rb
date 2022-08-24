@@ -19,7 +19,17 @@ module Zakuro
       NOVEMBER_FIRST_GENGOU = [
         MedievalGengou.new(text: '天平神護 1年'),
         MedievalGengou.new(text: '延暦 22年'),
-        MedievalGengou.new(text: '元慶 3年')
+        MedievalGengou.new(text: '元慶 3年'),
+        MedievalGengou.new(text: '昌泰 1年'),
+        MedievalGengou.new(text: '延喜 17年')
+      ].freeze
+
+      # @return [Array<MedievalGengou>] 閏11月開始
+      #
+      # 閏10月開始を標準とするが、歴算値によっては閏11月開始となる
+      #
+      LEAPED_NOVEMBER_FIRST_GENGOU = [
+        MedievalGengou.new(text: '承平 6年')
       ].freeze
 
       class << self
@@ -75,6 +85,8 @@ module Zakuro
         end
 
         def first(result:, line:, value:)
+          # TODO: refactor
+
           month = line.month
 
           if leaped_october?(line: line)
@@ -94,6 +106,13 @@ module Zakuro
             return value, true
           end
 
+          if leaped_november?(line: line) && value.size == 1
+            # 11月開始にする
+            value = [line.to_h]
+            result[month.western_year] = value
+            return value, true
+          end
+
           [value, false]
         end
 
@@ -103,6 +122,14 @@ module Zakuro
           return false if NOVEMBER_FIRST_GENGOU.include?(line.gengou)
 
           true
+        end
+
+        def leaped_november?(line:)
+          return false unless line.month.leaped_november?
+
+          return true if LEAPED_NOVEMBER_FIRST_GENGOU.include?(line.gengou)
+
+          false
         end
 
         def to_line(range:) # rubocop:disable Metrics/MethodLength
@@ -144,14 +171,6 @@ module Zakuro
           return false if in_range && range.last?(gengou: gengou)
 
           in_range
-        end
-
-        def start_range?(gengou:)
-          gengou.name == '文武' && gengou.year == 2
-        end
-
-        def last_range?(gengou:)
-          gengou.name == '天平宝字' && gengou.year == 8
         end
       end
     end
