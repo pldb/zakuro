@@ -138,7 +138,14 @@ module Zakuro
           gengou = MedievalGengou.new
           num = 0
           in_range = false
-          File.open(fullpath, 'r') do |f|
+          path = fullpath
+
+          if path == ''
+            p 'test data does not exist.skip test.'
+            return lines
+          end
+
+          File.open(path, 'r') do |f|
             f.each_line do |line|
               num += 1
 
