@@ -14,9 +14,17 @@ module Zakuro
       TEST_DATA_PATH = '../../../../../../zakuro-data/text/rekijitu.txt'
 
       class << self
+        #
+        # テストデータのパスを取得する
+        #
+        # @return [String] パス（存在なし時は空文字）
+        #
         def path
-          # TODO: ファイルが存在しない場合はスキップするようにする
-          File.expand_path(TEST_DATA_PATH, __dir__)
+          fullpath = File.expand_path(TEST_DATA_PATH, __dir__)
+
+          return fullpath if File.exist?(fullpath)
+
+          ''
         end
       end
     end
