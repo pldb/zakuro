@@ -23,7 +23,8 @@ module Zakuro
         MedievalGengou.new(text: '昌泰 1年'),
         MedievalGengou.new(text: '延喜 17年'),
         MedievalGengou.new(text: '天延 2年'),
-        MedievalGengou.new(text: '正暦 4年')
+        MedievalGengou.new(text: '正暦 4年'),
+        MedievalGengou.new(text: '長和 1年')
       ].freeze
 
       # @return [Array<MedievalGengou>] 閏11月開始
@@ -87,35 +88,37 @@ module Zakuro
         end
 
         def first(result:, line:, value:)
-          # TODO: refactor
-
-          month = line.month
-
           if leaped_october?(line: line)
             value.push(line.to_h)
             # 閏10月開始にする
-            value = [line.to_h]
-            result[month.western_year] = value
+            value = start_year(result: result, line: line)
             return value, true
           end
 
-          if month.november? && value.size != 1
+          if november?(line: line, value: value)
             # 11月自体は前年にも足す
             value.push(line.to_h)
             # 11月開始にする
-            value = [line.to_h]
-            result[month.western_year] = value
+            value = start_year(result: result, line: line)
             return value, true
           end
 
-          if leaped_november?(line: line) && value.size == 1
+          if leaped_november?(line: line, value: value)
             # 11月開始にする
-            value = [line.to_h]
-            result[month.western_year] = value
+            value = start_year(result: result, line: line)
             return value, true
           end
 
           [value, false]
+        end
+
+        def start_year(result:, line:)
+          month = line.month
+
+          update_value = [line.to_h]
+          result[month.western_year] = update_value
+
+          update_value
         end
 
         def leaped_october?(line:)
@@ -126,12 +129,22 @@ module Zakuro
           true
         end
 
-        def leaped_november?(line:)
+        def november?(line:, value:)
+          return false unless line.month.november?
+
+          return false if value.size == 1
+
+          true
+        end
+
+        def leaped_november?(line:, value:)
           return false unless line.month.leaped_november?
 
-          return true if LEAPED_NOVEMBER_FIRST_GENGOU.include?(line.gengou)
+          return false unless LEAPED_NOVEMBER_FIRST_GENGOU.include?(line.gengou)
 
-          false
+          return false unless value.size == 1
+
+          true
         end
 
         def to_line(range:) # rubocop:disable Metrics/MethodLength
