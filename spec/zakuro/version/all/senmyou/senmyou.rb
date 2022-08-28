@@ -17,9 +17,15 @@ module Zakuro
         # @return [Array<Integer, Hash>] テストデータ
         #
         def get
+          # TODO: チェック済み分を除外
+          # MedievalVersion.get(
+          #   range: MedievalRange.new(
+          #     start: MedievalGengou.new(text: '貞観 4年'), last: MedievalGengou.new(text: '貞享 2年')
+          #   )
+          # )
           MedievalVersion.get(
             range: MedievalRange.new(
-              start: MedievalGengou.new(text: '貞観 4年'), last: MedievalGengou.new(text: '貞享 2年')
+              start: MedievalGengou.new(text: '安貞 1年'), last: MedievalGengou.new(text: '貞享 2年')
             )
           )
         end
