@@ -27,7 +27,11 @@ module Zakuro
         MedievalGengou.new(text: '長和 1年'),
         MedievalGengou.new(text: '正応 2年'),
         MedievalGengou.new(text: '応永 10年'),
-        MedievalGengou.new(text: '応永 29年')
+        MedievalGengou.new(text: '応永 29年'),
+        MedievalGengou.new(text: '明応 7年'),
+        MedievalGengou.new(text: '永正 14年'),
+        MedievalGengou.new(text: '天文 5年'),
+        MedievalGengou.new(text: '弘治 1年')
       ].freeze
 
       # @return [Array<MedievalGengou>] 閏11月開始
@@ -35,7 +39,8 @@ module Zakuro
       # 閏10月開始を標準とするが、歴算値によっては閏11月開始となる
       #
       LEAPED_NOVEMBER_FIRST_GENGOU = [
-        MedievalGengou.new(text: '承平 6年')
+        MedievalGengou.new(text: '承平 6年'),
+        MedievalGengou.new(text: '天正 2年')
       ].freeze
 
       class << self
