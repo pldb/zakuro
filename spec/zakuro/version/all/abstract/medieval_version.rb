@@ -31,7 +31,11 @@ module Zakuro
         MedievalGengou.new(text: '明応 7年'),
         MedievalGengou.new(text: '永正 14年'),
         MedievalGengou.new(text: '天文 5年'),
-        MedievalGengou.new(text: '弘治 1年')
+        MedievalGengou.new(text: '弘治 1年'),
+        MedievalGengou.new(text: '慶長 17年'),
+        MedievalGengou.new(text: '寛永 8年'),
+        MedievalGengou.new(text: '慶安 3年'),
+        MedievalGengou.new(text: '寛文 9年')
       ].freeze
 
       # @return [Array<MedievalGengou>] 閏11月開始
