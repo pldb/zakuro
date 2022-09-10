@@ -1279,13 +1279,13 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 111-2-1
+- id: 112-1-1
   relation_id: "-"
   parent_id: "-"
-  page: '111'
-  number: '2'
-  japan_date: 天平 10年 5 大 戊辰  4-1080
-  western_date: 738-5-23
+  page: '112'
+  number: '1'
+  japan_date: 天平 14年 12 小 壬申 8-258
+  western_date: 743-1-1
   description: "-"
   note: 改変なし（内容転記せず）
   modified: 'false'
@@ -1311,6 +1311,102 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 113-2-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '113'
+  number: '2'
+  japan_date: 天平 15年 1 大 辛丑 37-1147
+  western_date: 743-1-30
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 113-3-a
+  relation_id: "-"
+  parent_id: 113-3-1
+  page: '113'
+  number: "-"
+  japan_date: 天平 15年 9 大 丁酉 33-47
+  western_date: 743-9-23
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 113-3-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '113'
+  number: '3'
+  japan_date: 天平 15年 10 小 丁卯 2-953
+  western_date: 743-10-22
+  description: 計算は2丙寅, 続日本紀10月辛巳条によりこの日は15日と考えられる。15日辛巳なら丁卯朔となる。したがってユリウス暦日は10月23日になる。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 113-1-1
   relation_id: "-"
   parent_id: "-"
@@ -1736,7 +1832,7 @@
   western_date: 762-12-20
   description: "-"
   note: 変更なし
-  modified: 'true'
+  modified: 'false'
   diffs:
     month:
       number:
@@ -2502,7 +2598,7 @@
   number: '1'
   japan_date: 宝亀 7年 閏8 小 丙戌 21-2885
   western_date: 776-9-17
-  description: 計算では21乙酉となるが，続日本紀に閏8月とある。そのためには置閏の法則に従うために閏8月朔は進朔して22丙戌にしているはずである。閏8月朔のユリウス暦日は9月18日となる。
+  description: 計算では21乙酉で閏7月となるが，続日本紀に閏8月とある。そのためには置閏の法則に従うために閏8月朔は進朔して22丙戌にしているはずである。閏8月朔のユリウス暦日は9月18日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -2783,7 +2879,7 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 124-6-1
+- id: 124-6-2
   relation_id: "-"
   parent_id: 124-6-1
   page: '124'
@@ -2815,7 +2911,7 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 124-6-1
+- id: 124-6-3
   relation_id: "-"
   parent_id: 124-6-1
   page: '124'
@@ -2847,7 +2943,7 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 124-6-1
+- id: 124-6-4
   relation_id: "-"
   parent_id: 124-6-1
   page: '124'
@@ -2982,7 +3078,7 @@
   number: '2'
   japan_date: 宝亀 10年 12 大 丁酉 32-2481
   western_date: 780-1-11
-  description: 計算では32丙申であるが翌月の正月が続日本紀によると丁卯朔となっているから，12月丁卯朔にしないと12月が31日になる。したがって12月朔のユリウス暦日は1月12日。
+  description: 計算では32丙申であるが翌月の正月が続日本紀によると丁卯朔となっているから，12月丁酉朔にしないと12月が31日になる。したがって12月朔のユリウス暦日は1月12日。
   note: "-"
   modified: 'true'
   diffs:
@@ -3428,8 +3524,8 @@
   parent_id: "-"
   page: '126'
   number: '5'
-  japan_date: 延暦 3年 10 大 戊辰  4-2886
-  western_date: 784-11-17
+  japan_date: 延暦 2年 12 大 癸卯 39-2806
+  western_date: 783-12-28
   description: "-"
   note: 改変なし（内容転記せず）
   modified: 'false'
@@ -3460,6 +3556,38 @@
   parent_id: "-"
   page: '126'
   number: '6'
+  japan_date: 延暦 3年 10 大 戊辰  4-2886
+  western_date: 784-11-17
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 126-7-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '126'
+  number: '7'
   japan_date: 延暦 3年 11 大 戊戌 34-1579
   western_date: 784-12-17
   description: "-"
@@ -3903,6 +4031,70 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
+- id: 128-3-a
+  relation_id: "-"
+  parent_id: "-"
+  page: '128'
+  number: "-"
+  japan_date: 延暦 9年 2 大 戊辰 4-402
+  western_date: 790-2-19
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 128-3-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '128'
+  number: '1'
+  japan_date: 延暦 9年 3 小 戊戌 33-2598
+  western_date: 790-3-20
+  description: 計算では丁酉朔, 類聚国史歳時4, 3月3日の条より3月戊戌朔, ユリウス暦は3月21日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 129-1-a
   relation_id: "-"
   parent_id: 129-1-1
@@ -4006,7 +4198,7 @@
   number: '2'
   japan_date: 延暦 11年 3 小 丙辰 51-2238
   western_date: 792-3-27
-  description: 計算では51乙卯であるが日本逸史2月の條に乙卯があるから丙辰とする。3月丙辰朔とすればそのユリウス暦日は3月28日となる。
+  description: 計算では51乙卯であるが類聚国史2月の條に乙卯があるから丙辰とする。3月丙辰朔とすればそのユリウス暦日は3月28日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -4070,7 +4262,7 @@
   number: '3'
   japan_date: 延暦 11年 10 小 癸未 18-2659
   western_date: 792-10-20
-  description: 計算では18壬午，日本逸史により癸未，したがって10月朔のユリウス暦日は10月21日。
+  description: 計算では18壬午，日本紀略により癸未，したがって10月朔のユリウス暦日は10月21日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4134,7 +4326,7 @@
   number: '4'
   japan_date: 延暦 11年 閏11 小 壬午 17-2671
   western_date: 792-12-18
-  description: 計算では17辛巳，日本逸史により壬午，したがって閏11月朔のユリウス暦日は12月19日。
+  description: 計算では17辛巳，日本紀略により壬午，したがって閏11月朔のユリウス暦日は12月19日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4191,6 +4383,102 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 129-6-a
+  relation_id: "-"
+  parent_id: "-"
+  page: '129'
+  number: "-"
+  japan_date: 延暦 10年 4 大 辛卯 27-726
+  western_date: 791-5-8
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 129-6-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '129'
+  number: '6'
+  japan_date: 延暦 10年 5 小 辛酉 56-2635
+  western_date: 791-6-6
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 130-1-a
+  relation_id: "-"
+  parent_id: 130-1-1
+  page: '130'
+  number: "-"
+  japan_date: 延暦 13年 4 小 癸卯 39-1639
+  western_date: 794-5-4
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
 - id: 130-1-1
   relation_id: "-"
   parent_id: "-"
@@ -4198,6 +4486,38 @@
   number: '1'
   japan_date: 延暦 13年 5 大 壬申 8-2810
   western_date: 794-6-2
+  description: 日本紀略の弘仁8年5月の条ならびに延暦13年5月己亥より5月朔癸酉と決まる。そのユリウス暦日は6月3日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 130-2-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '130'
+  number: '2'
+  japan_date: 延暦 13年 10 大 庚子 36-2985
+  western_date: 794-10-28
   description: "-"
   note: 改変なし（内容転記せず）
   modified: 'false'
@@ -4223,11 +4543,11 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 130-2-1
+- id: 130-3-1
   relation_id: "-"
   parent_id: "-"
   page: '130'
-  number: '2'
+  number: '3'
   japan_date: 延暦 14年 1 小 庚午  6-32
   western_date: 795-1-26
   description: "-"
@@ -4255,77 +4575,13 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 130-3-a
-  relation_id: "-"
-  parent_id: 130-3-1
-  page: '130'
-  number: "-"
-  japan_date: 延暦 14年 8 大 乙丑  1-897
-  western_date: 795-9-18
-  description: "-"
-  note: "-"
-  modified: 'true'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: 小
-        dest: 大
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: "-"
-- id: 130-3-1
-  relation_id: "-"
-  parent_id: "-"
-  page: '130'
-  number: '3'
-  japan_date: 延暦 14年 9 小 乙未  30-2999
-  western_date: 795-10-17
-  description: 計算は30甲午，日本逸史により乙未，したがって9月朔日のユリウス暦日は10月18日。
-  note: "-"
-  modified: 'true'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: 大
-        dest: 小
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: '1'
 - id: 130-4-a
   relation_id: "-"
   parent_id: 130-4-1
   page: '130'
   number: "-"
-  japan_date: 延暦 14年 12 大 甲子 0-953
-  western_date: 796-1-15
+  japan_date: 延暦 14年 8 大 乙丑  1-897
+  western_date: 795-9-18
   description: "-"
   note: "-"
   modified: 'true'
@@ -4356,6 +4612,70 @@
   parent_id: "-"
   page: '130'
   number: '4'
+  japan_date: 延暦 14年 9 小 乙未  30-2999
+  western_date: 795-10-17
+  description: 計算は30甲午，日本逸史により乙未，したがって9月朔日のユリウス暦日は10月18日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 130-5-a
+  relation_id: "-"
+  parent_id: 130-5-1
+  page: '130'
+  number: "-"
+  japan_date: 延暦 14年 12 大 甲子 0-953
+  western_date: 796-1-15
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 130-5-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '130'
+  number: '5'
   japan_date: 延暦 15年 1 小 甲午 29-2943
   western_date: 796-2-13
   description: 計算は29癸巳，日本逸史により甲午，したがって正月朔日のユリウス暦日は2月14日。
@@ -4422,7 +4742,7 @@
   number: '1'
   japan_date: 延暦 16年 10 小 癸丑 48-3021
   western_date: 797-10-24
-  description: 計算A）では壬子であるがC）では癸丑とでる。日本逸史9月に壬子がある。したがって，進朔して癸丑とすべきである。10月癸丑朔なら，そのユリウス暦日は10月25日。
+  description: 計算A）では壬子であるがC）では癸丑とでる。類聚国史9月に壬子がある。したがって，進朔して癸丑とすべきである。10月癸丑朔なら，そのユリウス暦日は10月25日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4486,7 +4806,7 @@
   number: '2'
   japan_date: 延暦 17年 2 小 壬子 47-2780
   western_date: 798-2-20
-  description: 計算では47辛亥であるが日本逸史に壬子朔とある。したがって2月朔のユリウス暦日は2月21日。
+  description: 計算では47辛亥であるが日本紀略に壬子朔とある。したがって2月朔のユリウス暦日は2月21日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4902,7 +5222,7 @@
   number: '3'
   japan_date: 大同 1年 12 大 庚申 55-2820
   western_date: 807-1-12
-  description: 計算では55己未，日本逸史により庚申，したがって12月朔のユリウス暦日は1月13日。
+  description: 計算では55己未，類聚国史により庚申，したがって12月朔のユリウス暦日は1月13日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4934,7 +5254,7 @@
   number: '4'
   japan_date: 大同 2年 1 小 庚寅  25-2102
   western_date: 807-2-11
-  description: 計算では25己丑，日本逸史により庚寅，したがって正月朔のユリウス暦日は2月12日。
+  description: 計算では25己丑，日本紀略により庚寅，したがって正月朔のユリウス暦日は2月12日。
   note: "-"
   modified: 'true'
   diffs:
@@ -4998,7 +5318,7 @@
   number: '5'
   japan_date: 大同 3年 6 小 壬子  47-2842
   western_date: 808-6-27
-  description: 計算では47辛亥，日本逸史により壬子，したがって6月朔のユリウス暦日は6月28日。
+  description: 計算では47辛亥，日本後紀により壬子，したがって6月朔のユリウス暦日は6月28日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5055,6 +5375,134 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 134-7-a
+  relation_id: "-"
+  parent_id: 134-7-1
+  page: '134'
+  number: "-"
+  japan_date: 大同 2年 9 大 乙酉 21-1471
+  western_date: 807-10-5
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 134-7-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '134'
+  number: '7'
+  japan_date: 大同 2年 10 小 乙卯 50-2778
+  western_date: 807-11-3
+  description: 計算では甲寅朔, 大嘗会御禊日例により乙卯朔, ユリウス暦日は11月4日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 135-1-a
+  relation_id: "-"
+  parent_id: 135-1-1
+  page: '135'
+  number: "-"
+  japan_date: 弘仁 1年 10 大 戊辰 4-669
+  western_date: 810-11-1
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 135-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '135'
+  number: '1'
+  japan_date: 弘仁 1年 11 小 戊戌  33-2271
+  western_date: 810-11-30
+  description: 計算では丁酉朔, 皇年代略紀により戊戌朔, ユリウス暦日は12月1日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 136-1-a
   relation_id: "-"
   parent_id: 136-1-1
@@ -5094,7 +5542,7 @@
   number: '1'
   japan_date: 弘仁 4年 8 小 辛巳 16-3026
   western_date: 813-8-29
-  description: 計算は16庚辰，逸史により辛巳，したがって，8月朔のユリウス暦日は8月30日。
+  description: 計算は16庚辰，紀略により辛巳，したがって，8月朔のユリウス暦日は8月30日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5190,7 +5638,7 @@
   number: '2'
   japan_date: 弘仁 7年 12 小 壬辰  27-2812
   western_date: 816-12-22
-  description: 計算では27辛卯，逸史により壬辰，したがって12月朔のユリウス暦日は12月23日。
+  description: 計算では27辛卯，紀略により壬辰，したがって12月朔のユリウス暦日は12月23日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5286,7 +5734,7 @@
   number: '4'
   japan_date: 弘仁 8年 10 小 丁巳  52-2903
   western_date: 817-11-12
-  description: 計算では52丙辰，逸史により丁巳，したがって10月朔のユリウス暦日は11月13日。
+  description: 計算では52丙辰，紀略により丁巳，したがって10月朔のユリウス暦日は11月13日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5343,16 +5791,16 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 138-1-1
+- id: 138-1-a
   relation_id: "-"
-  parent_id: "-"
+  parent_id: 138-1-1
   page: '138'
-  number: '1'
-  japan_date: 弘仁 9年 5 大 癸未 19-2929
-  western_date: 818-6-7
+  number: "-"
+  japan_date: 弘仁 9年 4 大 甲寅 50-996
+  western_date: 818-5-9
   description: "-"
-  note: 改変なし（内容転記せず）
-  modified: 'false'
+  note: "-"
+  modified: 'true'
   diffs:
     month:
       number:
@@ -5362,8 +5810,8 @@
         src: "-"
         dest: "-"
       days:
-        src: "-"
-        dest: "-"
+        src: 小
+        dest: 大
     solar_term:
       src:
         index: "-"
@@ -5375,6 +5823,38 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 138-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '138'
+  number: '1'
+  japan_date: 弘仁 9年 5 小 甲申 19-2929
+  western_date: 818-6-7
+  description: 計算は19癸未であるが類聚国史歳時4, 5月5日の条より甲申朔, ユリウス暦日は6月8日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 138-2-a
   relation_id: "-"
   parent_id: 138-2-1
@@ -5414,7 +5894,7 @@
   number: '2'
   japan_date: 弘仁 10年 1 小 庚辰  15-3026
   western_date: 819-1-29
-  description: 計算では15己卯であるが，逸史に庚辰朔とある。したがって正月朔のユリウス暦日は1月30日。
+  description: 計算では15己卯であるが，紀略に庚辰朔とある。したがって正月朔のユリウス暦日は1月30日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5478,7 +5958,7 @@
   number: '3'
   japan_date: 弘仁 10年 3 小 己卯 14-2828
   western_date: 819-3-29
-  description: 計算では14戊寅であるが，逸史に己卯朔とある。したがって3月朔のユリウス暦日は3月30日。
+  description: 計算では14戊寅であるが，紀略に己卯朔とある。したがって3月朔のユリウス暦日は3月30日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5542,7 +6022,7 @@
   number: '4'
   japan_date: 弘仁 11年 2 小 甲戌  9-1402
   western_date: 820-3-18
-  description: 計算では9癸酉であるが，逸史に甲戌朔とある。したがって2月朔のユリウス暦日は3月19日。
+  description: 計算では9癸酉であるが，紀略に甲戌朔とある。したがって2月朔のユリウス暦日は3月19日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5638,7 +6118,7 @@
   number: '6'
   japan_date: 弘仁 11年 7 小 辛丑 36-2826
   western_date: 820-8-12
-  description: 計算では36庚子であるが，逸史に辛丑朔とある。したがって7月朔のユリウス暦日は8月13日。
+  description: 計算では36庚子であるが，紀略に辛丑朔とある。したがって7月朔のユリウス暦日は8月13日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5663,13 +6143,77 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 139-1-a
+- id: 139-1-1
   relation_id: "-"
-  parent_id: 139-1-1
+  parent_id: "-"
+  page: '139'
+  number: '1'
+  japan_date: 弘仁 12年 8 大 乙丑 0-2000
+  western_date: 821-8-31
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 139-1-2
+  relation_id: "-"
+  parent_id: "-"
+  page: '139'
+  number: '1'
+  japan_date: 弘仁 12年 9 小 乙未 30-1038
+  western_date: 821-9-30
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 139-2-a
+  relation_id: "-"
+  parent_id: 139-2-1
   page: '139'
   number: "-"
-  japan_date: 弘仁 12年 7 大 乙未 31-184
-  western_date: 821-8-2
+  japan_date: 弘仁 13年 1 大 癸巳 29-802
+  western_date: 822-1-27
   description: "-"
   note: "-"
   modified: 'true'
@@ -5695,46 +6239,14 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 139-1-1
-  relation_id: "-"
-  parent_id: "-"
-  page: '139'
-  number: '1'
-  japan_date: 弘仁 12年 8 大 乙丑 0-2000
-  western_date: 821-8-31
-  description: 逸史巻29，9月乙未朔とある。9月乙未とすれば8月甲子朔はあり得ない。ユリウス暦日は9月1日となる。
-  note: "-"
-  modified: 'true'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: 大
-        dest: 大
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: '1'
 - id: 139-2-1
   relation_id: "-"
   parent_id: "-"
   page: '139'
   number: '2'
-  japan_date: 弘仁 12年 9 小 乙未 30-1038
-  western_date: 821-9-30
-  description: 逸史巻29，9月乙未朔とある。したがって9月朔日のユリウス暦日は10月1日。
+  japan_date: 弘仁 13年 2 小 癸亥 58-2380
+  western_date: 822-2-25
+  description: 日本紀略に2月癸亥朔とある。したがって2月朔日のユリウス暦日は2月26日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5761,11 +6273,11 @@
     days: '1'
 - id: 139-3-a
   relation_id: "-"
-  parent_id: 139-3-1
+  parent_id: "-"
   page: '139'
   number: "-"
-  japan_date: 弘仁 13年 1 大 癸巳 29-802
-  western_date: 822-1-27
+  japan_date: 弘仁 14年 9 大 壬子 48-896
+  western_date: 823-10-8
   description: "-"
   note: "-"
   modified: 'true'
@@ -5796,9 +6308,9 @@
   parent_id: "-"
   page: '139'
   number: '3'
-  japan_date: 弘仁 13年 2 小 癸亥 58-2380
-  western_date: 822-2-25
-  description: 逸史巻30，2月癸亥朔とある。したがって2月朔日のユリウス暦日は2月26日。
+  japan_date: 弘仁 14年 10 大 壬午 17-2819
+  western_date: 823-11-6
+  description: 計算は17辛巳であるが大嘗会御禊日例, 皇年代略記等により壬午朔, ユリウス暦日は11月7日。
   note: "-"
   modified: 'true'
   diffs:
@@ -5823,38 +6335,6 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 139-4-1
-  relation_id: "-"
-  parent_id: "-"
-  page: '139'
-  number: '4'
-  japan_date: 弘仁 14年 10 大 辛巳 17-2819
-  western_date: 823-11-6
-  description: "-"
-  note: 改変なし（内容転記せず）
-  modified: 'false'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: "-"
-        dest: "-"
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: "-"
 - id: 140-1-1
   relation_id: "-"
   parent_id: "-"
@@ -5924,8 +6404,8 @@
   parent_id: 140-3-1
   page: '140'
   number: "-"
-  japan_date: 天長 2年 4 小 甲戌 10-1164
-  western_date: 825-4-22
+  japan_date: 天長 2年 12 大 己亥 35-1289
+  western_date: 825-1-12
   description: "-"
   note: "-"
   modified: 'true'
@@ -5958,7 +6438,7 @@
   number: '3'
   japan_date: 天長 3年 1 大 戊辰 5-250
   western_date: 826-2-11
-  description: 逸史に正月戊辰朔と計算より1日退いている。したがってユリウス暦日は2月10日。
+  description: 紀略に正月戊辰朔と計算より1日退いている。したがってそのユリウス暦日は2月10日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -6020,6 +6500,38 @@
   parent_id: "-"
   page: '141'
   number: '1'
+  japan_date: 天長 4年 2 大 壬辰 28-2846
+  western_date: 827-3-1
+  description: "-"
+  note: 改変なし（内容転記せず）
+  modified: 'false'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 141-1-2
+  relation_id: "-"
+  parent_id: "-"
+  page: '141'
+  number: '2'
   japan_date: 天長 4年 7 大 庚申 56-2974
   western_date: 827-7-27
   description: "-"
@@ -6047,9 +6559,9 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 141-2-a
+- id: 141-3-a
   relation_id: "-"
-  parent_id: 141-2-1
+  parent_id: 141-3-1
   page: '141'
   number: "-"
   japan_date: 天長 4年 12 大 戊子 24-1551
@@ -6079,14 +6591,14 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 141-2-1
+- id: 141-3-1
   relation_id: "-"
   parent_id: "-"
   page: '141'
-  number: '2'
+  number: '3'
   japan_date: 天長 5年 1 大 戊午 53-2901
   western_date: 828-1-20
-  description: 計算では53丁巳であるが，逸史に戊午朔とある。したがって正月朔のユリウス暦日は1月21日となる。
+  description: 計算では53丁巳であるが，紀略に戊午朔とある。したがって正月朔のユリウス暦日は1月21日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -6111,14 +6623,14 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 141-3-1
+- id: 141-4-1
   relation_id: "-"
   parent_id: "-"
   page: '141'
-  number: '3'
+  number: '4'
   japan_date: 天長 5年 2 小 戊子  23-1209
   western_date: 828-2-19
-  description: 計算では23丁亥であるが，逸史に戊子朔とある。したがって2月朔のユリウス暦日は2月20日となる。
+  description: 計算では23丁亥であるが，紀略に戊子朔とある。したがって2月朔のユリウス暦日は2月20日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -6143,14 +6655,14 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 141-4-1
+- id: 141-5-1
   relation_id: "-"
   parent_id: "-"
   page: '141'
-  number: '4'
+  number: '5'
   japan_date: 天長 5年 3 小 丁巳  52-2600
   western_date: 828-3-19
-  description: 計算では52丙辰であるが，逸史によれば2月丁巳朔，閏3月丙戌朔であるから3月朔は丁巳以外にない。したがって3月朔のユリウス暦日は3月20日となる。
+  description: 計算では52丙辰であるが，紀略によれば2月丁巳朔，閏3月丙戌朔であるから3月朔は丁巳以外にない。したがって3月朔のユリウス暦日は3月20日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -6175,16 +6687,16 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 141-5-1
+- id: 141-6-a
   relation_id: "-"
-  parent_id: "-"
+  parent_id: 141-6-1
   page: '141'
-  number: '5'
-  japan_date: 天長 5年 9 大 癸未 19-2980
-  western_date: 828-10-12
+  number: "-"
+  japan_date: 天長 5年 8 大 甲寅 50-1076
+  western_date: 828-9-13
   description: "-"
-  note: 改変なし（内容転記せず）
-  modified: 'false'
+  note: "-"
+  modified: 'true'
   diffs:
     month:
       number:
@@ -6194,8 +6706,8 @@
         src: "-"
         dest: "-"
       days:
-        src: "-"
-        dest: "-"
+        src: 小
+        dest: 大
     solar_term:
       src:
         index: "-"
@@ -6207,6 +6719,38 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 141-6-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '141'
+  number: '6'
+  japan_date: 天長 5年 9 小 甲申 19-2980
+  western_date: 828-10-12
+  description: 計算は19癸未であるが類聚国史歳時4, 重陽の条より甲申朔, 9月甲申朔ならユリウス暦日は10月13日となる。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 142-1-a
   relation_id: "-"
   parent_id: 142-1-1
@@ -6246,7 +6790,7 @@
   number: '1'
   japan_date: 天長 7年 6 小 甲辰 39-1519
   western_date: 830-6-24
-  description: 逸史巻38，6月甲辰朔とある。計算は39癸卯，したがって6月朔のユリウス暦日は6月25日。
+  description: 日本紀略6月甲辰朔とある。計算は39癸卯，したがって6月朔のユリウス暦日は6月25日。
   note: "-"
   modified: 'true'
   diffs:
@@ -6303,16 +6847,16 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 142-3-1
+- id: 142-3-a
   relation_id: "-"
-  parent_id: "-"
+  parent_id: 142-3-1
   page: '142'
-  number: '3'
-  japan_date: 天長 8年 9 大 乙未  31-2805
-  western_date: 831-10-9
+  number: "-"
+  japan_date: 天長 8年 8 大 丙寅 2-927
+  western_date: 831-9-10
   description: "-"
-  note: 改変なし（内容転記せず）
-  modified: 'false'
+  note: "-"
+  modified: 'true'
   diffs:
     month:
       number:
@@ -6322,8 +6866,8 @@
         src: "-"
         dest: "-"
       days:
-        src: "-"
-        dest: "-"
+        src: 小
+        dest: 大
     solar_term:
       src:
         index: "-"
@@ -6335,6 +6879,40 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
+- id: 142-3-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '142'
+  number: '3'
+  japan_date: 天長 8年 9 小 丙申 31-2805
+  western_date: 831-10-9
+  description: 天長9年2月は計算は甲子であるが日本紀略に乙丑〔朔〕とある。ここを乙丑朔とすると5か月大の月が続くことになるので初版ではあえて計算どおり甲子とし,
+    8年9月も計算のまま乙未とした。しかし5大を避けるためには8年9月を進朔して丙申とし, 9年2月は紀略にしたがって乙丑とすべきであると考え改めることにした。ユリウス暦日は8年9月丙申朔なら10月10日,
+    9年2月乙丑朔は3月7日となる。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 142-4-a
   relation_id: "-"
   parent_id: 142-4-1
@@ -6372,9 +6950,41 @@
   parent_id: "-"
   page: '142'
   number: '4'
-  japan_date: 天長 9年 1 小 乙未 30-2995
+  japan_date: 天長 9年 1 大 乙未 30-2995
   western_date: 832-2-5
-  description: 計算では30甲午，逸史により乙未，計算C）では乙未−25。したがって正月朔のユリウス暦日は2月6日。
+  description: 計算では30甲午，日本紀略により乙未，計算C）では乙未−25。正月乙未朔なら、その暦日は2月6日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: "-"
+        dest: "-"
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
+- id: 142-3-2
+  relation_id: 142-3-1
+  parent_id: "-"
+  page: '142'
+  number: '3'
+  japan_date: 天長 9年 2 小 乙丑 0-1895
+  western_date: 832-3-6
+  description: "-"
   note: "-"
   modified: 'true'
   diffs:
@@ -6399,38 +7009,6 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 142-5-1
-  relation_id: "-"
-  parent_id: "-"
-  page: '142'
-  number: '5'
-  japan_date: 天長 9年 2 大 甲子 0-1895
-  western_date: 832-3-6
-  description: "-"
-  note: 変更なし
-  modified: 'false'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: "-"
-        dest: "-"
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: "-"
 - id: 143-1-a
   relation_id: "-"
   parent_id: 143-1-1
@@ -8927,16 +9505,16 @@
         zodiac_name: "-"
       days: "-"
     days: '1'
-- id: 163-2-a
+- id: 163-2-1
   relation_id: "-"
-  parent_id: 163-2-1
+  parent_id: "-"
   page: '163'
-  number: "-"
-  japan_date: 寛平 4年 3 小 乙巳 41-3663
-  western_date: 892-4-1
+  number: '2'
+  japan_date: 寛平 4年 4 大 甲戌 11-6322
+  western_date: 892-5-1
   description: "-"
-  note: "-"
-  modified: 'true'
+  note: 改変なし（内容転記せず）
+  modified: 'false'
   diffs:
     month:
       number:
@@ -8946,8 +9524,8 @@
         src: "-"
         dest: "-"
       days:
-        src: 大
-        dest: 小
+        src: "-"
+        dest: "-"
     solar_term:
       src:
         index: "-"
@@ -8959,38 +9537,6 @@
         zodiac_name: "-"
       days: "-"
     days: "-"
-- id: 163-2-1
-  relation_id: "-"
-  parent_id: "-"
-  page: '163'
-  number: '2'
-  japan_date: 寛平 4年 4 大 甲戌 11-6322
-  western_date: 892-5-1
-  description: 計算では11乙亥とでるが, 北山抄により甲戌朔（大日本史料第1編の2）日本紀略の辛巳朔は間違い。したがって4月朔のユリウス暦は4月30日となる。
-  note: "-"
-  modified: 'true'
-  diffs:
-    month:
-      number:
-        src: "-"
-        dest: "-"
-      leaped:
-        src: "-"
-        dest: "-"
-      days:
-        src: 小
-        dest: 大
-    solar_term:
-      src:
-        index: "-"
-        to: "-"
-        zodiac_name: "-"
-      dest:
-        index: "-"
-        from: "-"
-        zodiac_name: "-"
-      days: "-"
-    days: "-1"
 - id: 163-3-a
   relation_id: "-"
   parent_id: 163-3-1
@@ -9511,7 +10057,7 @@
   number: '1'
   japan_date: 康保 2年 1 大 壬申 9-6710
   western_date: 965-2-5
-  description: 計算では9癸酉であるが, 日本紀略により壬申。正月壬申朔のユリウス暦日は2月4日となる。
+  description: 計算では9癸酉であるが, 日本紀略, 近衛家文書により壬申。正月壬申朔のユリウス暦日は2月4日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -9541,7 +10087,7 @@
   parent_id: 190-1-1
   page: '190'
   number: "-"
-  japan_date: 天延 1年 3 小 乙卯 51-3499
+  japan_date: 天延 1年 3 小 乙卯 51-3489
   western_date: 973-4-6
   description: "-"
   note: "-"
@@ -10184,7 +10730,7 @@
   japan_date: 長保 3年  閏12 小 戊辰 3-6021
   western_date: '1002-1-16'
   description: 計算では閏11月であるが, 日本紀略などにより閏は12月。閏12月朔は, 計算では3丁卯であるが日本紀略・権記により戊辰, 閏12月戊辰朔のユリウス暦日は1月17日となる。
-  note: "-"
+  note: 第4版には注釈が振られているが、注釈文が抜け落ちている。初版の注釈文を流用する。
   modified: 'true'
   diffs:
     month:
@@ -10248,7 +10794,7 @@
   japan_date: 長保 4年 10 大 壬戌 59-6378
   western_date: '1002-11-8'
   description: 計算では59癸亥とでるが, 日本紀略により10月壬戌朔, したがってそのユリウス暦日は11月7日。
-  note: "-"
+  note: 第4版には注釈が振られているが、注釈文が抜け落ちている。初版の注釈文を流用する。
   modified: 'true'
   diffs:
     month:
@@ -10439,7 +10985,7 @@
   number: '1'
   japan_date: 万寿 3年 9 小 甲辰 39-6082
   western_date: '1026-10-13'
-  description: 計算では39癸卯であるが, 御堂関白記・左経記など（大日本史料第2編の14）により甲辰朔。これは四大を避けるための変更である。9月甲辰朔のユリウス暦日は10月14日。
+  description: 計算では39癸卯であるが, 小右記・左経記・日本紀略などにより甲辰朔。これは四大を避けるための変更である。9月甲辰朔のユリウス暦日は10月14日。
   note: "-"
   modified: 'true'
   diffs:
@@ -10786,6 +11332,70 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 220-1-a
+  relation_id: "-"
+  parent_id: 220-1-1
+  page: '220'
+  number: "-"
+  japan_date: 康平 6年 9 大 己亥 35-2001
+  western_date: '1063-9-25'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 220-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '220'
+  number: '1'
+  japan_date: 康平 6年 10 小 己巳 4-6004
+  western_date: '1063-10-24'
+  description: 計算は4戊辰, 扶桑略記により己巳とする。10月己巳朔のユリウス暦日は10月25日。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 222-1-a
   relation_id: "-"
   parent_id: 222-1-2
@@ -10882,6 +11492,70 @@
         zodiac_name: "-"
       days: "-"
     days: "-1"
+- id: 226-1-a
+  relation_id: "-"
+  parent_id: 226-1-1
+  page: '226'
+  number: "-"
+  japan_date: 永保 2年 4 大 壬子 48-1071
+  western_date: '1082-5-1'
+  description: "-"
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 小
+        dest: 大
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: "-"
+- id: 226-1-1
+  relation_id: "-"
+  parent_id: "-"
+  page: '226'
+  number: '1'
+  japan_date: 永保 2年 5 小 壬午 17-5669
+  western_date: '1082-5-30'
+  description: 計算と扶桑略記は辛巳, 為房卿記により壬午とする方がよいと思われる。5月壬午朔とすればユリウス暦日は5月31日となる。
+  note: "-"
+  modified: 'true'
+  diffs:
+    month:
+      number:
+        src: "-"
+        dest: "-"
+      leaped:
+        src: "-"
+        dest: "-"
+      days:
+        src: 大
+        dest: 小
+    solar_term:
+      src:
+        index: "-"
+        to: "-"
+        zodiac_name: "-"
+      dest:
+        index: "-"
+        from: "-"
+        zodiac_name: "-"
+      days: "-"
+    days: '1'
 - id: 228-1-a
   relation_id: "-"
   parent_id: 228-1-1
@@ -11729,11 +12403,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '10'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'false'
+        dest: 'true'
       days:
         src: 大
         dest: 小
@@ -11761,11 +12435,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '11'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'true'
+        dest: 'false'
       days:
         src: 大
         dest: 大
@@ -11890,11 +12564,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '8'
+        dest: '7'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'false'
+        dest: 'true'
       days:
         src: 大
         dest: 小
@@ -11922,11 +12596,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '8'
+        dest: '8'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'true'
+        dest: 'false'
       days:
         src: 小
         dest: 大
@@ -11954,11 +12628,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '10'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'false'
+        dest: 'true'
       days:
         src: 大
         dest: 小
@@ -11986,11 +12660,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '11'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'true'
+        dest: 'false'
       days:
         src: 小
         dest: 大
@@ -12306,11 +12980,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '10'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'false'
+        dest: 'true'
       days:
         src: 大
         dest: 小
@@ -12338,11 +13012,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '11'
+        dest: '11'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'true'
+        dest: 'false'
       days:
         src: 小
         dest: 大
@@ -12396,7 +13070,7 @@
   number: '1'
   japan_date: 延慶 1年 11 大 乙酉 22-2281
   western_date: '1308-12-14'
-  description: 計算では22丙戌, 実施は11月乙酉朔（大日本史料第6編の1; 続史愚抄・日吉社並叡山行事記）。そのユリウス暦日は12月13日。
+  description: 計算では22丙戌, 実施は11月乙酉朔（続史愚抄・日吉社並叡山行事記）。臨時朔旦冬至を避けるため。そのユリウス暦日は12月13日。
   note: "-"
   modified: 'true'
   diffs:
@@ -12943,7 +13617,7 @@
   number: '2'
   japan_date: 延元 1年 3 大 丁未 44-6590
   western_date: '1336-4-13'
-  description: 計算では44戊申, 実施暦は丁未, 正月丁未朔のユリウス暦日は4月12日となる。
+  description: 計算では44戊申, 実施暦は丁未, 3月丁未朔のユリウス暦日は4月12日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -12975,8 +13649,8 @@
   number: "-"
   japan_date: "-"
   western_date: 1336-2-14/1336-4-13
-  description: 前頁, 建武2年11月朔よりの干支移動により3月を計算通り戊申で実施すると四大が生ずるので, これを避けるため, 丁未とし2月, 3月の大小を入れかえた。大日本史料第6編の3;
-    延元元年具注暦断簡, 御神楽雑記所引故殿御記。
+  description: 前頁, 建武2年11月朔よりの干支移動により3月を計算通り戊申で実施すると四大が生ずるので, これを避けるため, 丁未とし2月, 3月の大小を入れかえた。（延元元年具注暦断簡,
+    御神楽雑記所引故殿御記）。
   note: "-"
   modified: 'false'
   diffs:
@@ -13072,7 +13746,7 @@
   number: '3'
   japan_date: 延元 3年 8 大 壬辰 29-103
   western_date: '1338-9-15'
-  description: 計算では29癸巳, 続史愚抄ほか（大日本史料第6編の5）により壬辰, 8月壬辰朔のユリウス暦日は9月14日となる。これは章首のあとの閏8月を避けたものである。（大治4,
+  description: 計算では29癸巳, 実夏公記ほか（大日本史料第6編の5）により壬辰, 8月壬辰朔のユリウス暦日は9月14日となる。これは章首のあとの閏8月を避けたものである。（大治4,
     西暦1129年の注参照）
   note: "-"
   modified: 'true'
@@ -13234,7 +13908,7 @@
   number: '1'
   japan_date: 正平 12年 8 大 壬申 9-357
   western_date: '1357-9-15'
-  description: 計算では9癸酉であるが, 章首のあとの閏8月を避けるため壬申に変え閏7月にしたもの。（公卿補任・園太暦; 大日本史料第6編の21）8月壬申朔のユリウス暦日は9月14日となる。
+  description: 計算では9癸酉であるが, 章首のあとの閏8月を避けるため壬申に変え閏7月にしたもの。（大日本史料第6編の21）8月壬申朔のユリウス暦日は9月14日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -13521,7 +14195,7 @@
   parent_id: "-"
   page: '324'
   number: "-"
-  japan_date: 天授 2年 閏7 小 癸未 19-217
+  japan_date: 天授 2年 閏7 小 癸未 19-2176
   western_date: '1376-8-16'
   description: "-"
   note: "-"
@@ -13779,8 +14453,8 @@
   number: '2'
   japan_date: 応永 2年 9 大 辛酉 58-9
   western_date: '1395-10-15'
-  description: 計算では58壬戌, 実施暦は辛丙, 9月辛酉朔のユリウス暦日は10月14日である。
-  note: 日本暦日原典の誤り。「辛丙」ではなく「辛酉」
+  description: 計算では58壬戌, 実施暦は辛酉, 9月辛酉朔のユリウス暦日は10月14日である。
+  note: "-"
   modified: 'true'
   diffs:
     month:
@@ -13876,7 +14550,7 @@
   japan_date: "-"
   western_date: 1395-9-15/1396-1-12
   description: 章首の後の閏8月を避けるために計算では閏8月朔壬辰と出たものを辛卯にし閏7月としたもの, 8月, 10月が共に辛卯だから9月は辛酉にかえないと8月が31日になってしまう。12月は計算通りにすると四大が生ずるので,
-    それを避けるための変更, 大日本史料第7編の2; 荒暦, 松原家記録および具注暦による。
+    それを避けるための変更, 大日本史料第7編の2; 荒暦, 柳原家記録および具注暦による。
   note: "-"
   modified: 'false'
   diffs:
@@ -14067,7 +14741,7 @@
   parent_id: 343-1-1
   page: '343'
   number: "-"
-  japan_date: 永享 5年 8 小 辛亥 47-1189
+  japan_date: 永享 5年 8 小 辛亥 47-1199
   western_date: '1433-9-14'
   description: "-"
   note: "-"
@@ -14262,7 +14936,7 @@
   number: '2'
   japan_date: 嘉吉 1年 12 大 癸巳 30-6596
   western_date: '1442-1-13'
-  description: 計算では30甲午であるが, 建内記により癸巳, 11月癸巳朔のユリウス暦日は1月12日となる。
+  description: 計算では30甲午であるが, 建内記により癸巳, 12月癸巳朔のユリウス暦日は1月12日となる。
   note: "-"
   modified: 'true'
   diffs:
@@ -14454,7 +15128,7 @@
   number: "-"
   japan_date: "-"
   western_date: 1449-11-16/1450-2-13
-  description: 計算では冬至が11月晦日になるのを, 強いて朔旦冬至にするため計算の12月丁未朔を11月丙子朔に変え閏を10月に移動させた。閏10月朔を計算通り戊寅朔にしておくと閏10月は28日しかなくなってしまう。11月朔丙午,
+  description: 計算では冬至が11月晦日になるのを, 強いて朔旦冬至にするため計算の12月丁未朔を11月丙午朔に変え閏を10月に移動させた。閏10月朔を計算通り戊寅朔にしておくと閏10月は28日しかなくなってしまう。11月朔丙午,
     翌宝徳2年2月丙子とからその間の12月正月の干支は丙子, 丙子に変えないと31日の月ができてしまう。
   note: "-"
   modified: 'false'
@@ -14775,7 +15449,7 @@
   number: '1'
   japan_date: 文明 11年 11 大 壬午 19-7009
   western_date: '1479-12-14'
-  description: 計算では19癸未, 御法興院政家記, 柳原家記録, 長興宿袮記などにより18 壬午 , 11月壬午朔のユリウス暦日は12月13日となる。これは臨時朔旦冬至を避けるため計算のままでは11月1日の冬至を11月2日にするための干支変更である。ただし長防風土記および大日本史料そのものは月朔干支に癸未を採用している。以上,
+  description: 計算では19癸未, 後法興院政家記, 柳原家記録, 長興宿袮記などにより18 壬午 , 11月壬午朔のユリウス暦日は12月13日となる。これは臨時朔旦冬至を避けるため計算のままでは11月1日の冬至を11月2日にするための干支変更である。以上,
     大日本史料第8編の11。
   note: "-"
   modified: 'true'
@@ -14838,7 +15512,7 @@
   parent_id: "-"
   page: '384'
   number: "-"
-  japan_date: 弘治 1年 11 小 壬辰 28-5341
+  japan_date: 弘治 1年 閏10 小 壬辰 28-5341
   western_date: '1555-11-14'
   description: "-"
   note: "-"
@@ -14846,18 +15520,18 @@
   diffs:
     month:
       number:
-        src: '10'
-        dest: '11'
+        src: "-"
+        dest: "-"
       leaped:
-        src: 'true'
-        dest: 'false'
+        src: "-"
+        dest: "-"
       days:
         src: 大
         dest: 小
     solar_term:
       src:
-        index: '0'
-        to: '1555-12-14'
+        index: "-"
+        to: "-"
         zodiac_name: "-"
       dest:
         index: "-"
@@ -14870,19 +15544,19 @@
   parent_id: "-"
   page: '384'
   number: '1'
-  japan_date: 弘治 1年 閏11 大 辛酉 58-2774
+  japan_date: 弘治 1年 11 大 辛酉 58-2774
   western_date: '1555-12-14'
-  description: 計算は58壬戌 , 実施は辛酉, 閏11月辛酉朔のユリウス暦日は12月13日である。
+  description: 計算は58壬戌 , 実施は辛酉, 11月辛酉朔のユリウス暦日は12月13日である。
   note: "-"
   modified: 'true'
   diffs:
     month:
       number:
-        src: '11'
-        dest: '11'
+        src: "-"
+        dest: "-"
       leaped:
-        src: 'false'
-        dest: 'true'
+        src: "-"
+        dest: "-"
       days:
         src: 大
         dest: 大
@@ -14892,8 +15566,8 @@
         to: "-"
         zodiac_name: "-"
       dest:
-        index: '0'
-        from: '1555-11-14'
+        index: "-"
+        from: "-"
         zodiac_name: "-"
       days: "-"
     days: "-1"
@@ -14936,7 +15610,7 @@
   number: "-"
   japan_date: "-"
   western_date: 1555-12-14/1556-1-13
-  description: 臨時朔旦冬至をさけるため閏を10月から11月に移動させ冬至を閏11月2日にしたもの, 12月朔を壬辰から辛卯に変えないと閏11月が31日になってしまう。朔旦冬至旬部類古文書,
+  description: 臨時朔旦冬至をさけるため冬至を11月2日にしたもの, 12月朔を壬辰から辛卯に変えないと11月が31日になってしまう。朔旦冬至旬部類古文書,
     御湯殿上日記による。
   note: "-"
   modified: 'false'

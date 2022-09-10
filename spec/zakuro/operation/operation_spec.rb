@@ -18,8 +18,8 @@ describe 'Zakuro' do
       context 'default month file' do
         it 'should be loaded' do
           result = Zakuro::Operation.month_histories
-          # 467(全行) - 89（無効行）
-          expect(result.size).to eq 378
+          # 488(全行) - 91（無効行）
+          expect(result.size).to eq 397
         end
         it 'should be loaded any elements' do
           id = '156-1-1'
