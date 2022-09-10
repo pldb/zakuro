@@ -12,6 +12,14 @@ zakuro は日本の暦を扱う暦算ライブラリです。
 
 ## 導入
 
+### Ruby
+
+次の範囲で動作確認しております。
+
+`2.6.x - 3.0.x`
+
+### Gem
+
 [rubygem](https://rubygems.org/gems/zakuro) に登録しております。
 
 ```ruby
