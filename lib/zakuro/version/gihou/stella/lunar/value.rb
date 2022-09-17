@@ -41,9 +41,10 @@ module Zakuro
 
             value = row.value
 
-            # LOGGER.debug("value.per: #{value.per}")
-            # LOGGER.debug("row.denominator: #{row.denominator}")
-            # LOGGER.debug("value.stack: #{value.stack}")
+            # TODO: comment in log
+            LOGGER.debug("value.per: #{value.per}")
+            LOGGER.debug("row.denominator: #{row.denominator}")
+            LOGGER.debug("value.stack: #{value.stack}")
 
             minus_minute = Adjustment.minus_minute(day: day, minute: minute)
 
@@ -51,7 +52,7 @@ module Zakuro
               per: value.per, denominator: row.denominator, minute: minus_minute
             )
 
-            # LOGGER.debug("day: #{day}")
+            LOGGER.debug("day: #{day}")
 
             value.stack + day
           end

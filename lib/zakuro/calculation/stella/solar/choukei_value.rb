@@ -32,16 +32,17 @@ module Zakuro
             #  c: 損益率の毎日の差
             #  n: 定気の日から数えた日数
 
-            # LOGGER.debug("row.per_day: #{row.per_day}")
-            # LOGGER.debug("row.stack: #{row.stack}")
+            # TODO: comment in log
+            LOGGER.debug("row.per_day: #{row.per_day}")
+            LOGGER.debug("row.stack: #{row.stack}")
 
             day_stack = calc_day_stack(remainder: remainder, row: row)
 
-            # LOGGER.debug("day_stack: #{day_stack}")
+            LOGGER.debug("day_stack: #{day_stack}")
 
             month_stack = calc_month_stack(row: row, day: remainder.day)
 
-            # LOGGER.debug("month_stack: #{month_stack}")
+            LOGGER.debug("month_stack: #{month_stack}")
 
             # 冬至であれば眺朒数がプラスになり続けて損益率が「益」で、小雪であればマイナスの眺朒数がプラスされ続けて「損」
             month_stack + day_stack
@@ -60,8 +61,9 @@ module Zakuro
           def calc_day_stack(remainder:, row:)
             ratio = calc_ratio(day: remainder.day, per_term: row.per_term, per_day: row.per_day)
 
-            # LOGGER.debug("ratio.sign: #{ratio.sign}")
-            # LOGGER.debug("ratio.abs: #{ratio.abs}")
+            # TODO: comment in log
+            LOGGER.debug("ratio.sign: #{ratio.sign}")
+            LOGGER.debug("ratio.abs: #{ratio.abs}")
 
             calc_day_stack_from_ratio(
               ratio: ratio, minute: remainder.minute, limit: remainder.base_day
