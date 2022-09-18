@@ -93,8 +93,6 @@ module Zakuro
           remainder = lunar_location.adjusted_remainder
 
           debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
-          debug("[lunar]remainder.day: #{remainder.day}")
-          debug("[lunar]remainder.minute: #{remainder.minute}")
 
           Lunar::Value.get(remainder: remainder)
         end
