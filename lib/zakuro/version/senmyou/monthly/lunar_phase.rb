@@ -63,7 +63,7 @@ module Zakuro
           )
           adjusted.up_on_new_moon!
 
-          debug("result: #{adjusted.format}")
+          debug("result: #{adjusted.format(form: '%d-%d.%.5f')}")
 
           adjusted
         end
@@ -75,7 +75,7 @@ module Zakuro
         #
         def correction_solar_value
           solar_location.run
-          debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d.%d')}")
+          debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d.%.5f')}")
           debug("solar_term.index: #{solar_location.index}")
 
           Solar::Value.get(solar_location: solar_location)
@@ -94,7 +94,7 @@ module Zakuro
           remainder = lunar_location.adjusted_remainder
           forward = lunar_location.forward
 
-          debug("[lunar]remainder.format: #{remainder.format}")
+          debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d.%.5f')}")
           debug("[lunar]forward: #{forward}")
 
           Lunar::Value.get(remainder: remainder, forward: forward)

@@ -55,7 +55,7 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def current_remainder
-          # debug("average_remainder.format: #{average_remainder.format(form: '%d-%d-%.5f')}")
+          debug("average_remainder.format: #{average_remainder.format(form: '%d-%d-%.5f')}")
 
           sum = correction_value
           adjusted = average_remainder.add(
@@ -64,7 +64,7 @@ module Zakuro
           # NOTE: 大衍暦では進朔しない
           # adjusted.up_on_new_moon!
 
-          debug("result: #{adjusted.format}")
+          debug("result: #{adjusted.format(form: '%d-%d.%.5f')}")
 
           adjusted
         end
@@ -76,8 +76,8 @@ module Zakuro
         #
         def correction_solar_value
           solar_location.run
-          # debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d-%.5f')}")
-          # debug("solar_term.index: #{solar_location.index}")
+          debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d-%.5f')}")
+          debug("solar_term.index: #{solar_location.index}")
 
           Solar::Value.get(solar_location: solar_location)
         end
@@ -92,9 +92,9 @@ module Zakuro
 
           remainder = lunar_location.adjusted_remainder
 
-          # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
-          # debug("[lunar]remainder.day: #{remainder.day}")
-          # debug("[lunar]remainder.minute: #{remainder.minute}")
+          debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
+          debug("[lunar]remainder.day: #{remainder.day}")
+          debug("[lunar]remainder.minute: #{remainder.minute}")
 
           Lunar::Value.get(remainder: remainder)
         end
