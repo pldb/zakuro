@@ -72,31 +72,37 @@ describe 'Zakuro' do
               message
             end
 
-            it 'should be expected values' do
-              fails = []
-              DAIEN_EXPECTED_MONTHS.each do |year, expects|
-                actuals = \
-                  Zakuro::Daien::Range::AnnualRange.get(
-                    context: Zakuro::Context::Context.new(version: 'Daien'),
-                    western_year: year
-                  )
-                actuals.each_with_index do |month, index|
-                  actual = month_actual(month: month)
+            # TODO: comment out
 
-                  next if actual.eql?(expects[index])
+            # it 'should be expected values' do
+            #   fails = []
+            #   DAIEN_EXPECTED_MONTHS.each do |year, expects|
+            #     actuals = \
+            #       Zakuro::Daien::Range::AnnualRange.get(
+            #         context: Zakuro::Context::Context.new(version: 'Daien'),
+            #         western_year: year
+            #       )
+            #     actuals.each_with_index do |month, index|
+            #       actual = month_actual(month: month)
 
-                  fails.push(year: year, actual: actual, expect: expects[index])
-                end
-              end
+            #       next if actual.eql?(expects[index])
 
-              expect(fails).to be_empty, error_message(fails)
-            end
-            # it 'call example' do
-            #   Zakuro::Daien::Range::AnnualRange.get(
-            #     context: Zakuro::Context::Context.new(version: 'Daien'),
-            #     western_year: 789
-            #   )
+            #       fails.push(year: year, actual: actual, expect: expects[index])
+            #     end
+            #   end
+
+            #   expect(fails).to be_empty, error_message(fails)
             # end
+            it 'call example' do
+              Zakuro::Daien::Range::AnnualRange.get(
+                context: Zakuro::Context::Context.new(version: 'Daien'),
+                western_year: 768
+              )
+              Zakuro::Daien::Range::AnnualRange.get(
+                context: Zakuro::Context::Context.new(version: 'Daien'),
+                western_year: 852
+              )
+            end
           end
         end
       end
