@@ -55,7 +55,7 @@ module Zakuro
         # @return [Remainder] 定朔
         #
         def current_remainder
-          debug("average_remainder.format: #{average_remainder.format(form: '%d-%d-%.5f')}")
+          # debug("average_remainder.format: #{average_remainder.format(form: '%d-%d-%.5f')}")
 
           sum = correction_value
           adjusted = average_remainder.add(
@@ -76,8 +76,8 @@ module Zakuro
         #
         def correction_solar_value
           solar_location.run
-          debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d-%.5f')}")
-          debug("solar_term.index: #{solar_location.index}")
+          # debug("solar_term.remainder: #{solar_location.remainder.format(form: '%d-%d-%.5f')}")
+          # debug("solar_term.index: #{solar_location.index}")
 
           Solar::Value.get(solar_location: solar_location)
         end

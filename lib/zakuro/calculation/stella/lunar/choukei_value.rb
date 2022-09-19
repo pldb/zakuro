@@ -13,6 +13,9 @@ module Zakuro
       #
       module ChoukeiValue
         class << self
+          # @return [Output::Logger] ロガー
+          LOGGER = Output::Logger.new(location: 'choukei_value')
+
           #
           # 四捨五入した大余を返す
           #
@@ -23,7 +26,13 @@ module Zakuro
           # @return [Integer] 累計値（大余）
           #
           def rounded_day(per:, denominator:, minute:)
+            # TODO: comment in log
+            LOGGER.debug("minute: #{minute}")
+
             remainder_minute = Type::OldFloat.new((per * minute).to_f)
+
+            LOGGER.debug("remainder_minute.get: #{remainder_minute.get}")
+
             day = day_only(remainder_minute: remainder_minute.get, denominator: denominator)
             # 繰り上げ結果を足す
             day += carried_minute(remainder_minute: remainder_minute, denominator: denominator)
