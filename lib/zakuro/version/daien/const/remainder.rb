@@ -44,9 +44,7 @@ module Zakuro
           #   * 0.25 * 80（1分=80秒） = 20
           #
           # @return [Cycle::LunarRemainder] 弦（1分=80秒）
-          # TODO: 20秒だと通らない。 0.01247 〜 0.08211597 の範囲内で通る
-          # QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20.08211597)
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20.01247)
+          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20)
         end
       end
     end
