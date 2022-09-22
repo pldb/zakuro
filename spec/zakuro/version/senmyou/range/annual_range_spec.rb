@@ -91,7 +91,7 @@ describe 'Zakuro' do
             # it 'call example' do
             #   Zakuro::Senmyou::Range::AnnualRange.get(
             #     context: Zakuro::Context::Context.new(version: 'Senmyou'),
-            #     western_year: 1333
+            #     western_year: 948
             #   )
             # end
           end

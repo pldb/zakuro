@@ -19,17 +19,21 @@ module Zakuro
         attr_reader :western_year
         # @return [Cycle::LunarRemainder] 大余小余（初回：昨年天正閏余）
         attr_reader :remainder
+        # @return [Cycle::LunarRemainder] 弦（1朔望月の1/4）
+        attr_reader :quarter
 
         #
         # 初期化
         #
         # @param [Cycle::LunarRemainder] lunar_age 天正閏余（大余小余）
+        # @param [Cycle::LunarRemainder] quarter 弦（1朔望月の1/4）
         # @param [Integer] western_year 西暦年
         #
-        def initialize(lunar_age:, western_year:)
+        def initialize(lunar_age:, quarter:, western_year:)
           @calculated = false
           @western_year = western_year
           @remainder = lunar_age
+          @quarter = quarter
         end
 
         #
@@ -43,7 +47,7 @@ module Zakuro
         # 弦の分だけ月地点を進める
         #
         def add_quarter
-          # abstract
+          remainder.add!(quarter)
         end
 
         #

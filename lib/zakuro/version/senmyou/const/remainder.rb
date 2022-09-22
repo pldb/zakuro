@@ -44,8 +44,7 @@ module Zakuro
           # @note 章月 248057 = 29-4457
           #
           # @return [Cycle::LunarRemainder] 弦（1分=100秒）
-          # TODO: 秒が25では通らない。少なくとも0.00546は必要になる（最大 0.01863）
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25.00546)
+          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 3214, second: 25)
         end
       end
     end

@@ -32,7 +32,12 @@ module Zakuro
         # @param [Integer] western_year 西暦年
         #
         def initialize(lunar_age:, western_year:)
-          super(lunar_age: lunar_age, western_year: western_year)
+          super(
+            lunar_age: lunar_age,
+            quarter: QUARTER,
+            western_year: western_year
+          )
+
           # 進
           @forward = true
         end
@@ -47,13 +52,6 @@ module Zakuro
           end
 
           first
-        end
-
-        #
-        # 弦の分だけ月地点を進める
-        #
-        def add_quarter
-          remainder.add!(QUARTER)
         end
 
         private

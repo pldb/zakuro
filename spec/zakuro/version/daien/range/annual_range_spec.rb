@@ -94,7 +94,7 @@ describe 'Zakuro' do
             # it 'call example' do
             #   Zakuro::Daien::Range::AnnualRange.get(
             #     context: Zakuro::Context::Context.new(version: 'Daien'),
-            #     western_year: 789
+            #     western_year: 768
             #   )
             # end
           end

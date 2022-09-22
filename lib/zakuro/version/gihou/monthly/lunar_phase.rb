@@ -64,7 +64,7 @@ module Zakuro
           # NOTE: 儀鳳暦では進朔しない
           # adjusted.up_on_new_moon!
 
-          debug("result: #{adjusted.format}")
+          debug("result: #{adjusted.format(form: '%d-%d.%.5f')}")
 
           adjusted
         end
@@ -94,9 +94,7 @@ module Zakuro
 
           remainder = lunar_location.adjusted_remainder
 
-          # debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
-          # debug("[lunar]remainder.day: #{remainder.day}")
-          # debug("[lunar]remainder.minute: #{remainder.minute}")
+          debug("[lunar]remainder.format: #{remainder.format(form: '%d-%d-%.5f')}")
 
           Lunar::Value.get(remainder: remainder)
         end

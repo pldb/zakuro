@@ -91,7 +91,7 @@ describe 'Zakuro' do
             # it 'call example' do
             #   Zakuro::Gihou::Range::AnnualRange.get(
             #     context: Zakuro::Context::Context.new(version: 'Gihou'),
-            #     western_year: 700
+            #     western_year: 702
             #   )
             # end
           end
