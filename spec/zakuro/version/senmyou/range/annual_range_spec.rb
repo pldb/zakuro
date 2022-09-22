@@ -69,49 +69,31 @@ describe 'Zakuro' do
               message
             end
 
-            # TODO: comment out
+            it 'should be expected values' do
+              fails = []
+              SENMYOU_EXPECTED_MONTHS.each do |year, expects|
+                actuals = \
+                  Zakuro::Senmyou::Range::AnnualRange.get(
+                    context: Zakuro::Context::Context.new(version: 'Senmyou'),
+                    western_year: year
+                  )
+                actuals.each_with_index do |month, index|
+                  actual = month_actual(month: month)
 
-            # it 'should be expected values' do
-            #   fails = []
-            #   SENMYOU_EXPECTED_MONTHS.each do |year, expects|
-            #     actuals = \
-            #       Zakuro::Senmyou::Range::AnnualRange.get(
-            #         context: Zakuro::Context::Context.new(version: 'Senmyou'),
-            #         western_year: year
-            #       )
-            #     actuals.each_with_index do |month, index|
-            #       actual = month_actual(month: month)
+                  next if actual.eql?(expects[index])
 
-            #       next if actual.eql?(expects[index])
+                  fails.push(year: year, actual: actual, expect: expects[index])
+                end
+              end
 
-            #       fails.push(year: year, actual: actual, expect: expects[index])
-            #     end
-            #   end
-
-            #   expect(fails).to be_empty, error_message(fails)
-            # end
-            it 'call example' do
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                western_year: 948
-              )
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                western_year: 1152
-              )
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                western_year: 1220
-              )
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                western_year: 1227
-              )
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
-                western_year: 1438
-              )
+              expect(fails).to be_empty, error_message(fails)
             end
+            # it 'call example' do
+            #   Zakuro::Senmyou::Range::AnnualRange.get(
+            #     context: Zakuro::Context::Context.new(version: 'Senmyou'),
+            #     western_year: 948
+            #   )
+            # end
           end
         end
       end
