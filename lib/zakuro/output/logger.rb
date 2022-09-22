@@ -17,8 +17,7 @@ module Zakuro
         error: 3
       }.freeze
 
-      # TODO: origin: none
-      LEVEL = LEVELS[:debug]
+      LEVEL = LEVELS[:none]
 
       # @return [String] 呼び出し位置
       attr_reader :location
