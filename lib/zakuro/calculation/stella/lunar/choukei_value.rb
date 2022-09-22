@@ -51,6 +51,10 @@ module Zakuro
           # @return [Float] 小余
           #
           def remainder_without_second(remainder:)
+            LOGGER.debug("minute.to_f: #{remainder.minute.to_f}")
+            LOGGER.debug("second.to_f: #{remainder.second.to_f}")
+            LOGGER.debug("base_minute: #{remainder.base_minute}")
+            LOGGER.debug("second.to_f / base_minute: #{remainder.second.to_f / remainder.base_minute}")
             adjusted = remainder.class.new(
               day: remainder.day, minute: remainder.floor_minute, second: 0
             )
