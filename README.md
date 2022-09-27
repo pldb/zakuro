@@ -81,7 +81,7 @@ Or install it yourself as:
 
 # 暦算
 
-[宣明暦](./lib/zakuro/version/senmyou/README.md) のみ記載しております。
+[宣明暦](./doc/version/senmyou.md) のみ記載しております。
 
 # 例外
 
