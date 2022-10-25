@@ -81,7 +81,19 @@ Or install it yourself as:
 
 # 暦算
 
-[宣明暦](./doc/version/senmyou.md) のみ記載しております。
+暦算の解説は次の通りです。
+
+|暦   |有無|
+|:----|:----|
+|[元嘉暦](./doc/version/genka.md)|✓|
+|儀鳳暦|-|
+|大衍暦|-|
+|[宣明暦](./doc/version/senmyou.md)|✓|
+|貞享暦|-|
+|宝暦暦|-|
+|寛政暦|-|
+|天保暦|-|
+|グレゴリオ暦|-|
 
 # 例外
 
