@@ -86,8 +86,8 @@ Or install it yourself as:
 |暦   |有無|
 |:----|:----|
 |[元嘉暦](./doc/version/genka.md)|✓|
-|儀鳳暦|-|
-|大衍暦|-|
+|[儀鳳暦](./doc/version/gihou.md)|✓|
+|[大衍暦](./doc/version/daien.md)|✓|
 |[宣明暦](./doc/version/senmyou.md)|✓|
 |貞享暦|-|
 |宝暦暦|-|
