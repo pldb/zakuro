@@ -88,6 +88,8 @@ Or install it yourself as:
 
 暦算の解説は次の通りです。
 
+## 暦別
+
 |暦   |有無|
 |:----|:----|
 |[元嘉暦](./doc/version/genka.md)|✓|
@@ -99,6 +101,13 @@ Or install it yourself as:
 |寛政暦|-|
 |天保暦|-|
 |グレゴリオ暦|-|
+
+## 項目別
+
+|項目   |有無|
+|:----|:----|
+|[没日](./doc/dropped_date.md)|✓|
+|滅日|-|
 
 # 例外
 
