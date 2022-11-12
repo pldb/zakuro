@@ -47,7 +47,7 @@ module Zakuro
         #
         # 次の弦に進める
         #
-        # @return [Remainder] 定朔
+        # @return [Remainder] 経朔
         #
         def next_phase
           adjusted = remainder.clone
@@ -59,9 +59,9 @@ module Zakuro
 
         #
         # 次の月に進める
-        # @note 進めた後の月の定朔ではなく、当月のものを返却する
+        # @note 進めた後の月の経朔ではなく、当月のものを返却する
         #
-        # @return [Remainder] 当月初の定朔
+        # @return [Remainder] 当月初の経朔
         #
         def next_month
           result = nil
@@ -71,6 +71,17 @@ module Zakuro
           end
 
           result
+        end
+
+        #
+        # 経朔を返す
+        #
+        #  元嘉暦には経朔しかないが他の暦と揃える
+        #
+        # @return [Remainder] 経朔
+        #
+        def average_remainder
+          @remainder
         end
 
         private

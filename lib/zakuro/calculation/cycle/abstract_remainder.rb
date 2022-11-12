@@ -438,6 +438,19 @@ module Zakuro
           self
         end
 
+        #
+        # 特定の文字フォーマットにして出力する
+        #
+        # @param [String] form フォーマット（大余、小余、秒それぞれを%dで指定する）
+        #
+        # @return [String] フォーマットした結果
+        #
+        def format(form: '%d-%d')
+          return '' if invalid?
+
+          super(form, @day, @minute, @second)
+        end
+
         private
 
         # 繰り上げ、繰り下げ

@@ -43,7 +43,9 @@ module Zakuro
           return '' if invalid?
 
           decimal = day + minute / base_day.to_f
-          super(form, decimal.round(digit))
+
+          # NOTE: 親クラスを迂回する
+          Kernel.instance_method(:format).bind(self).call(form, decimal.round(digit))
         end
       end
 
@@ -84,7 +86,9 @@ module Zakuro
           # 具体的には、468年の中気は '55.7813' だが '55.7812' になる
           # これは '55.7812500' を4桁にした際に、境界値の少数点以下5桁目の '5' が切り捨てを受けたためである
           # format による四捨五入は避け、roundによる四捨五入を採用する
-          super(form, decimal.round(digit))
+
+          # NOTE: 親クラスを迂回する
+          Kernel.instance_method(:format).bind(self).call(form, decimal.round(digit))
         end
       end
     end

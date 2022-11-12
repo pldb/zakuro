@@ -2,6 +2,8 @@
 
 require_relative '../../era/western/calendar'
 
+require_relative '../cycle/abstract_remainder'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -16,6 +18,8 @@ module Zakuro
         attr_reader :western_date
         # @return [Remainder] 大余小余
         attr_reader :remainder
+        # @return [Remainder] 大余小余（経朔）
+        attr_reader :average_remainder
 
         #
         # 初期化
@@ -24,11 +28,14 @@ module Zakuro
         # @param [Western::Calendar] western_date 大余小余
         #
         def initialize(western_date: Western::Calendar.new,
-                       remainder: Calculation::Cycle::AbstractRemainder.new)
+                       remainder: Calculation::Cycle::AbstractRemainder.new,
+                       average_remainder: Calculation::Cycle::AbstractRemainder.new)
           # 西暦日
           @western_date = western_date
           # 大余小余
           @remainder = remainder
+          # 大余小余（経朔）
+          @average_remainder = average_remainder
         end
 
         #
@@ -39,6 +46,7 @@ module Zakuro
         def initialize_copy(obj)
           @western_date = obj.western_date.clone
           @remainder = obj.remainder.clone
+          @average_remainder = obj.average_remainder.clone
         end
       end
     end
