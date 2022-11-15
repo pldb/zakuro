@@ -23,7 +23,7 @@ module Zakuro
           # @return [Cycle::AbstractRemainder] 「有没之気」判定
           attr_reader :limit
           # @return [Cycle::AbstractRemainder] 経朔
-          attr_reader :abstract_remainder
+          attr_reader :average_remainder
           # @return [Class] 滅余クラス
           attr_reader :remainder_class
 
@@ -31,14 +31,14 @@ module Zakuro
           # 初期化
           #
           # @param [Context::Context] context 暦コンテキスト
-          # @param [Cycle::AbstractRemainder] abstract_remainder 経朔
+          # @param [Cycle::AbstractRemainder] average_remainder 経朔
           #
-          def initialize(context:, abstract_remainder:)
+          def initialize(context:, average_remainder:)
             parameter = context.resolver.dropped_date_parameter.new
             @context = context
             @valid = parameter.valid
             @limit = parameter.limit
-            @abstract_remainder = abstract_remainder
+            @average_remainder = average_remainder
             @remainder_class = parameter.remainder_class
           end
 
