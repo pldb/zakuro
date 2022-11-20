@@ -32,7 +32,7 @@ module Zakuro
           DROPPED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 6564, second: 3)
 
           # @return [Cycle::Remainder] 有滅判定
-          VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 3943, second: 3)
+          VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 3943, second: 0)
         end
 
         #

@@ -59,10 +59,10 @@ describe 'Zakuro' do
                 vanished_date = Zakuro::Calculation::Option::VanishedDate::Location.new(
                   context: context,
                   average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                    day: 25, minute: 320, second: 0
+                    day: 22, minute: 320, second: 0
                   )
                 )
-                expect(vanished_date.get.format).to eq '2-3591'
+                expect(vanished_date.get.format).to eq '24-1714'
               end
             end
           end

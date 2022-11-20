@@ -90,8 +90,8 @@ module Zakuro
         # @param [Integer] total 繰り上げなしの小余
         #
         def initialize(day: -1, minute: -1, second: -1, total: -1)
-          # 小余 = 通余
-          super(base_day: Const::Number::Derivation::REMAINDER_ALL_YEAR, base_minute: MINUTE,
+          # 小余 = 朔虚分
+          super(base_day: Const::Number::Derivation::REMAINDER_IDEAL_MONTH, base_minute: MINUTE,
                 day: day, minute: minute, second: second, total: total)
         end
       end

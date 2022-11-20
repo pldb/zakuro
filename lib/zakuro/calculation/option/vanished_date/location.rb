@@ -12,8 +12,8 @@ module Zakuro
         # Location 滅日位置
         #
         class Location
-          # @return [Integer] 理想上の年日数
-          IDEAL_MONTH = 360
+          # @return [Integer] 理想上の月日数
+          IDEAL_MONTH = 30
 
           # @return [Context::Context] 暦コンテキスト
           attr_reader :context
@@ -34,7 +34,7 @@ module Zakuro
           # @param [Cycle::AbstractRemainder] average_remainder 経朔
           #
           def initialize(context:, average_remainder:)
-            parameter = context.resolver.dropped_date_parameter.new
+            parameter = context.resolver.vanished_date_parameter.new
             @context = context
             @valid = parameter.valid
             @limit = parameter.limit
@@ -59,7 +59,10 @@ module Zakuro
           # @return [False] 存在なし
           #
           def exist?
-            # TODO: make
+            minute_later = average_remainder.class.new(
+              day: 0, minute: average_remainder.minute, second: average_remainder.second
+            )
+            minute_later < limit
           end
 
           #
@@ -68,7 +71,11 @@ module Zakuro
           # @return [Cycle::AbstractRemainder] 滅余
           #
           def get
-            # TODO: make
+            # 経朔の小余 * 30
+            minute = remainder_class.new(day: 0, minute: IDEAL_MONTH * average_remainder.minute, second: 0)
+            day = remainder_class.new(day: average_remainder.day, minute: 0, second: 0)
+
+            minute.add(day)
           end
         end
       end
