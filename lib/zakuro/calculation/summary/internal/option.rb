@@ -3,8 +3,10 @@
 require_relative '../../../context/option'
 require_relative '../../../result/data/option/dropped_date/option'
 require_relative '../../../result/data/solar_term'
+require_relative '../../../result/data/option/vanished_date/option'
 
 require_relative '../../option/dropped_date/location'
+require_relative '../../option/vanished_date/location'
 
 # :nodoc:
 module Zakuro
@@ -26,6 +28,8 @@ module Zakuro
           # @return [Hash<String, Result::Data::Option::AbstractOption>] オプション結果
           #
           def create(month:, day:)
+            # TODO: refactor
+
             options = {}
             context = month.context
 
@@ -36,6 +40,15 @@ module Zakuro
                 context: context, remainder: remainder, solar_terms: solar_terms
               )
               options[Context::Option::DROPPED_DATE_KEY] = option
+            end
+
+            if context.option.vanished_date?
+              remainder = day.remainder
+              average_remainder = month.first_day.average_remainder
+              option = vanished_date(
+                context: context, remainder: remainder, average_remainder: average_remainder
+              )
+              options[Context::Option::VANISHED_DATE_KEY] = option
             end
 
             options
@@ -53,10 +66,7 @@ module Zakuro
           # @return [Result::Data::Option::DroppedDate::Option] 没日
           #
           def dropped_date(context:, remainder:, solar_terms:)
-            option = Result::Data::Option::DroppedDate::Option.new(
-              matched: false,
-              calculation: Result::Data::Option::DroppedDate::Calculation.new
-            )
+            option = Result::Data::Option::DroppedDate::Option.new
 
             return option if remainder.invalid?
 
@@ -91,6 +101,51 @@ module Zakuro
                   index: solar_term.index,
                   remainder: solar_term.remainder.format
                 )
+              )
+            )
+          end
+
+          #
+          # 滅日を求める
+          #
+          # @param [<Type>] context <description>
+          # @param [<Type>] remainder <description>
+          # @param [<Type>] average_remainder <description>
+          #
+          # @return [<Type>] <description>
+          #
+          def vanished_date(context:, remainder:, average_remainder:)
+            option = Result::Data::Option::VanishedDate::Option.new
+
+            return option if average_remainder.invalid?
+
+            location = Calculation::Option::VanishedDate::Location.new(
+              context: context, average_remainder: average_remainder
+            )
+
+            return option unless location.exist?
+
+            vanished_date = location.get
+
+            return option unless remainder.day == vanished_date.day
+
+            vanished_date_option(location: location)
+          end
+
+          #
+          # 滅日オプション値を生成する
+          #
+          # @param [Calculation::Option::DroppedDate::Location] location 滅日位置
+          #
+          # @return [Result::Data::Option::DroppedDate::Option] 滅日オプション値
+          #
+          def vanished_date_option(location:)
+            vanished_date = location.get
+            Result::Data::Option::VanishedDate::Option.new(
+              matched: true,
+              calculation: Result::Data::Option::VanishedDate::Calculation.new(
+                remainder: vanished_date.format,
+                average_remainder: location.average_remainder
               )
             )
           end
