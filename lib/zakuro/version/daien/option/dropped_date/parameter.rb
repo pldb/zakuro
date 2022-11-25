@@ -9,9 +9,9 @@ require_relative '../../cycle/remainder'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Daien
     # :nodoc:
-    module Daien
+    module Option
       # :nodoc:
       module DroppedDate
         #
@@ -22,7 +22,9 @@ module Zakuro
           # 初期化
           #
           def initialize
-            super(valid: false)
+            super(valid: true, year: Const::Number::Cycle::YEAR,
+                  limit: Const::Remainder::Solar::DROPPED_DATE_LIMIT,
+                  remainder_class: Cycle::DroppedRemainder)
           end
         end
       end
