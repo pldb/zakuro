@@ -171,6 +171,9 @@ describe 'Zakuro' do
                   remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                     day: 38, minute: 7186, second: 0
                   ),
+                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    day: 37, minute: 7110, second: 0
+                  ),
                   western_date: date
                 ),
                 # 計算上は冬至(0)がある
@@ -238,6 +241,9 @@ describe 'Zakuro' do
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                   remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                     day: 7, minute: 5375, second: 0
+                  ),
+                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    day: 7, minute: 3167, second: 0
                   ),
                   western_date: date
                 ),

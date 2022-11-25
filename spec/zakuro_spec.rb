@@ -40,6 +40,17 @@ describe 'Zakuro' do
           end
         end
       end
+      context 'vanished date' do
+        context '862-5-1' do
+          example '貞観4年3月29日' do
+            date = Date.new(862, 5, 1)
+            actual = Zakuro::Merchant.new(
+              condition: { date: date, options: { 'vanished_date' => true } }
+            ).commit
+            expect(actual.to_pretty_json).to eql(Const::DAY_WITH_VANISHED_DATE.to_pretty_json)
+          end
+        end
+      end
     end
   end
 end

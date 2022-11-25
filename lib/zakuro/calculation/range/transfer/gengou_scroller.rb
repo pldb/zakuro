@@ -43,6 +43,7 @@ module Zakuro
                   month_label: month.month_label,
                   first_day: Monthly::FirstDay.new(
                     remainder: month.first_day.remainder,
+                    average_remainder: month.first_day.average_remainder,
                     western_date: gengou.start_date.clone
                   ),
                   solar_terms: month.solar_terms, gengou: gengou
