@@ -29,6 +29,12 @@ module Zakuro
           #
           # @return [Cycle::Remainder] 弦（1分=80秒）
           QUARTER = Cycle::Remainder.new(day: 7, minute: 1163, second: 6)
+
+          # @return [Cycle::Remainder] 有没判定
+          DROPPED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 2375, second: 17)
+
+          # @return [Cycle::Remainder] 有滅判定
+          VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 1427, second: 0)
         end
 
         #

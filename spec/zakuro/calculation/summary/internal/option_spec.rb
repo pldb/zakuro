@@ -122,6 +122,74 @@ describe 'Zakuro' do
               end
             end
           end
+
+          context 'vanished_date option key' do
+            context 'parameter with empty average remainder' do
+              let!(:actual) do
+                options = {
+                  'vanished_date' => true
+                }
+                context = Zakuro::Context::Context.new(options: options)
+
+                month = Zakuro::Calculation::Monthly::Month.new(context: context)
+                day = Zakuro::Calculation::Base::Day.new
+                Zakuro::Calculation::Summary::Option.create(
+                  month: month, day: day
+                )
+              end
+              it 'should be a result' do
+                expect(actual.size).to eq 1
+              end
+              it 'should be unmatched' do
+                expect(actual['vanished_date'].matched).to be_falsey
+              end
+            end
+            context 'parameter with valid average remainder' do
+              let!(:actual) do
+                options = {
+                  'vanished_date' => true
+                }
+                context = Zakuro::Context::Context.new(version: 'Senmyou', options: options)
+
+                month = Zakuro::Calculation::Monthly::Month.new(
+                  context: context,
+                  month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                    number: 1, is_many_days: false, leaped: false
+                  ),
+                  first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                    western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new,
+                    average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 22, minute: 320, second: 0
+                    )
+                  ),
+                  solar_terms: []
+                )
+                day = Zakuro::Calculation::Base::Day.new(
+                  number: 1,
+                  western_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 1),
+                  # 大余は滅余の計算結果（24-1714）の大余と一致させる
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    day: 24, minute: 1000, second: 0
+                  )
+                )
+                Zakuro::Calculation::Summary::Option.create(
+                  month: month, day: day
+                )
+              end
+              it 'should be a result' do
+                expect(actual.size).to eq 1
+              end
+              it 'should be matched' do
+                option = actual['vanished_date']
+                expect(option.matched).to be_truthy
+              end
+              it 'should be calculated vanished date remainder' do
+                remainder = actual['vanished_date'].calculation.remainder
+                expect(remainder).to eq '24-1714'
+              end
+            end
+          end
         end
       end
     end

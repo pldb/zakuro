@@ -4,21 +4,25 @@ require_relative '../version/genka/cycle/remainder'
 require_relative '../version/genka/cycle/solar_term'
 require_relative '../version/genka/range/annual_range'
 require_relative '../version/genka/option/dropped_date/parameter'
+require_relative '../version/genka/option/vanished_date/parameter'
 
 require_relative '../version/gihou/cycle/remainder'
 require_relative '../version/gihou/cycle/solar_term'
 require_relative '../version/gihou/range/annual_range'
 require_relative '../version/gihou/option/dropped_date/parameter'
+require_relative '../version/gihou/option/vanished_date/parameter'
 
 require_relative '../version/daien/cycle/remainder'
 require_relative '../version/daien/cycle/solar_term'
 require_relative '../version/daien/range/annual_range'
 require_relative '../version/daien/option/dropped_date/parameter'
+require_relative '../version/daien/option/vanished_date/parameter'
 
 require_relative '../version/senmyou/cycle/remainder'
 require_relative '../version/senmyou/cycle/solar_term'
 require_relative '../version/senmyou/range/annual_range'
 require_relative '../version/senmyou/option/dropped_date/parameter'
+require_relative '../version/senmyou/option/vanished_date/parameter'
 
 # :nodoc:
 module Zakuro
@@ -36,7 +40,8 @@ module Zakuro
         'remainder' => 'Zakuro::$VERSION::Cycle::Remainder',
         'solar_term' => 'Zakuro::$VERSION::Cycle::SolarTerm',
         'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange',
-        'dropped_date_parameter' => 'Zakuro::$VERSION::Option::DroppedDate::Parameter'
+        'dropped_date_parameter' => 'Zakuro::$VERSION::Option::DroppedDate::Parameter',
+        'vanished_date_parameter' => 'Zakuro::$VERSION::Option::VanishedDate::Parameter'
       }.freeze
 
       #
@@ -83,6 +88,17 @@ module Zakuro
       def dropped_date_parameter
         self.class.get_class(
           version_name: @version_name, class_name: 'dropped_date_parameter'
+        )
+      end
+
+      #
+      # 滅日引数を返す
+      #
+      # @return [Class] 没日引数クラス
+      #
+      def vanished_date_parameter
+        self.class.get_class(
+          version_name: @version_name, class_name: 'vanished_date_parameter'
         )
       end
 

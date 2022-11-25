@@ -30,6 +30,9 @@ module Zakuro
           # * 中盈（小余3671秒2）/ 2 = 小余1835秒5
           # * 日（小余8400） - 小余1835秒5 = 小余6564秒3
           DROPPED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 6564, second: 3)
+
+          # @return [Cycle::Remainder] 有滅判定
+          VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 3943, second: 0)
         end
 
         #

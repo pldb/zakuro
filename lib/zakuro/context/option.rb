@@ -16,6 +16,9 @@ module Zakuro
       # @return [String] 没日オプションキー名
       DROPPED_DATE_KEY = 'dropped_date'
 
+      # @return [String] 滅日オプションキー名
+      VANISHED_DATE_KEY = 'vanished_date'
+
       # @return [Hash<String, Object>] オプション値
       attr_reader :hash
       # @return [String] デフォルト暦名
@@ -76,6 +79,20 @@ module Zakuro
       #
       def dropped_date?
         value = @hash[DROPPED_DATE_KEY]
+
+        return true if value.is_a?(TrueClass)
+
+        false
+      end
+
+      #
+      # 滅日か
+      #
+      # @return [True] 滅日あり
+      # @return [False] 滅日なし
+      #
+      def vanished_date?
+        value = @hash[VANISHED_DATE_KEY]
 
         return true if value.is_a?(TrueClass)
 

@@ -38,6 +38,8 @@ module Zakuro
           REMAINDER_ALL_YEAR = 15_943
           # @return [Integer] 旬周（60日） DAY * 60
           SIXTY_DAYS = 182_400
+          # @return [Integer] 朔虚分: (30 * 3040) % (29 * 3040 + 1613)
+          REMAINDER_IDEAL_MONTH = 1427
         end
 
         #

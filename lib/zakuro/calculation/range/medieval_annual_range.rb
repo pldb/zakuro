@@ -64,13 +64,15 @@ module Zakuro
 
             # 14ヶ月分を生成する（閏年で最大13ヶ月 + 末月の大小/二十四節気を求めるために必要な月）
             (0..13).each do |_index|
+              average_remainder = lunar_phase.average_remainder.clone
               adjusted = lunar_phase.next_month
 
               result.push(
                 Monthly::InitializedMonth.new(
-                  context: context,
-                  month_label: Monthly::MonthLabel.new,
-                  first_day: Monthly::FirstDay.new(remainder: adjusted),
+                  context: context, month_label: Monthly::MonthLabel.new,
+                  first_day: Monthly::FirstDay.new(
+                    remainder: adjusted, average_remainder: average_remainder
+                  ),
                   phase_index: 0
                 )
               )

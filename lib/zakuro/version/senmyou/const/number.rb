@@ -30,10 +30,12 @@ module Zakuro
         # Derivation 導出
         #
         module Derivation
-          # @return [Integer] 通余:  (YEAR - DAY * 12 * 30)  = 44055
+          # @return [Integer] 通余: (YEAR - DAY * 12 * 30)  = 44055
           REMAINDER_ALL_YEAR = 44_055
           # @return [Integer] 旬周（60日） DAY * 60
           SIXTY_DAYS = 504_000
+          # @return [Integer] 朔虚分: (30 * 8400) % 248057
+          REMAINDER_IDEAL_MONTH = 3943
         end
 
         #

@@ -6,6 +6,8 @@ require_relative './option/abstract_option'
 
 require_relative './option/dropped_date/option'
 
+require_relative './option/vanished_date/option'
+
 require_relative 'year'
 
 require_relative 'month'
