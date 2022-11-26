@@ -315,7 +315,7 @@ module Zakuro
               # @return [False] 正しくない
               #
               def japan?
-                Japan::Calendar.valid_date_string(text: japan)
+                Japan::Calendar.valid_date_text(text: japan)
               end
 
               #
@@ -325,7 +325,7 @@ module Zakuro
               # @return [False] 正しくない
               #
               def western?
-                Western::Calendar.valid_date_string(text: western)
+                Western::Calendar.valid_date_text(text: western)
               end
             end
           end

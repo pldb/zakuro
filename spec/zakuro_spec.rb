@@ -50,6 +50,15 @@ describe 'Zakuro' do
             expect(actual.to_pretty_json).to eql(Const::DAY_WITH_VANISHED_DATE.to_pretty_json)
           end
         end
+        context '貞観4年3月29日' do
+          example '貞観4年3月29日' do
+            date = '貞観4年3月29日'
+            actual = Zakuro::Merchant.new(
+              condition: { date: date, options: { 'vanished_date' => true } }
+            ).commit
+            expect(actual.to_pretty_json).to eql(Const::DAY_WITH_VANISHED_DATE.to_pretty_json)
+          end
+        end
       end
     end
   end

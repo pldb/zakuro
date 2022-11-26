@@ -136,7 +136,13 @@ module Zakuro
           def western_date?(str: '')
             return Western::Calendar.new if str == EMPTY_STRING
 
-            Western::Calendar.valid_date_string(text: str)
+            # 1316-11-16/1317-4-13
+            dates = str.split('/')
+            dates.each do |date|
+              return true if Western::Calendar.valid_date_text(text: date)
+            end
+
+            false
           end
         end
       end

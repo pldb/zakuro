@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './date_text'
+
 require 'date'
 
 # :nodoc:
@@ -402,9 +404,7 @@ module Zakuro
         # @raise [ArgumentError] 引数エラー
         #
         def parse(text: '', type: Type::DEFAULT)
-          unless valid_date_string(text: text, type: type)
-            raise ArgumentError, "invalid date string: #{text}"
-          end
+          raise ArgumentError, "invalid date string: #{text}" unless valid_date_text(text: text)
 
           start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
           date = Date.parse(text, start)
@@ -423,14 +423,8 @@ module Zakuro
         # @return [True] 正しい
         # @return [True] 正しくない
         #
-        def valid_date_string(text: '', type: Type::DEFAULT)
-          start = DATE_START.fetch(type, DATE_START[Type::DEFAULT])
-          begin
-            Date.parse(text, start)
-          rescue ArgumentError => _e
-            return false
-          end
-          true
+        def valid_date_text(text: '')
+          DateText.validate(text: text)
         end
       end
     end
