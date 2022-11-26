@@ -275,7 +275,7 @@ module Const # rubocop:disable Metrics/ModuleLength
             calculation: Zakuro::Result::Data::Option::VanishedDate::Calculation.new(
               remainder: '33-2666',
               average_remainder: '5-3769'
-              )
+            )
           )
         }
       )
