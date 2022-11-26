@@ -106,3 +106,14 @@
 | 二十四節気           |             | solar_term |           | Zakuro::Result::Data::Option::DroppedDate::SolarTerm   |          |                    |
 | 二十四節気番号       |             |            | index     | Integer                                                | 6        |                    |
 | 二十四節気の大余小余 |             |            | remainder | String                                                 | 49-7203  |                    |
+
+#### Zakuro::Result::Data::Option::VanishedDate::Option
+
+キー: vanished_date
+
+| 項目名               | キー名      | -          | -         | データ型                                               | 参考値   | 備考               |
+| -------------------- | ----------- | ---------- | --------- | ------------------------------------------------------ | -------- | ------------------ |
+| オプション値有無     | matched     |            |           | True/False                                             | true     |  |
+| 演算値               | calculation |            |           | Zakuro::Result::Data::Option::VanishedDate::Calculation |          |              |
+| 滅余                 |             | remainder  |           | String                                                 | 33-2666 |                    |
+| 経朔                   |           | average_remainder |      | String                                             | 5-3769  |                    |
