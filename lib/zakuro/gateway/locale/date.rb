@@ -112,12 +112,12 @@ module Zakuro
         # @param [String] text 日付文字列
         #
         def parse_text(text:)
-          if Western::Calendar.valid_date_string(text: text)
+          if Western::Calendar.valid_date_text(text: text)
             @western_date = Western::Calendar.parse(text: text)
             return
           end
 
-          return unless Japan::Calendar.valid_date_string(text: text)
+          return unless Japan::Calendar.valid_date_text(text: text)
 
           @japan_date = Japan::Calendar.parse(text: text)
         end

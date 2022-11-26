@@ -98,7 +98,7 @@ module Zakuro
         # @return [Calendar] 年月日情報（和暦）
         #
         def parse(regex: FORMAT, text: '')
-          return Calendar.new unless valid_date_string(regex: regex, text: text)
+          return Calendar.new unless valid_date_text(regex: regex, text: text)
 
           matched = text.match(regex)
 
@@ -120,7 +120,7 @@ module Zakuro
         # @return [True] 正しい
         # @return [True] 正しくない
         #
-        def valid_date_string(regex: FORMAT, text: '')
+        def valid_date_text(regex: FORMAT, text: '')
           return false unless text
 
           matched = text.match(regex)
