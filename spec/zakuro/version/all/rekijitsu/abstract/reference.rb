@@ -11,7 +11,7 @@ module Zakuro
       # 下記の方針で管理している
       # * プライベートリポジトリに配置している
       # * ローカルに存在しない場合はテスト自体を失敗させる
-      TEST_DATA_PATH = '../../../../../../zakuro-data/text/rekijitu.txt'
+      TEST_DATA_PATH = '../../../../../../../zakuro-data/text/rekijitu.txt'
 
       class << self
         #

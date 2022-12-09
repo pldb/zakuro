@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../' \
+require File.expand_path('../../../../../' \
                          'lib/zakuro/context/context',
                          __dir__)
 
-require File.expand_path('../../../../' \
-                         'lib/zakuro/version/senmyou/range/annual_range',
+require File.expand_path('../../../../../' \
+                         'lib/zakuro/version/gihou/range/annual_range',
                          __dir__)
 
 require_relative './abstract/medieval_comperer'
 
-require_relative './senmyou/senmyou'
+require_relative './gihou/gihou'
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'All' do
-    describe 'Senmyou' do
+    describe 'Gihou' do
       context 'all months every year' do
         it 'should be expected values' do
-          expected = Zakuro::All::Senmyou.get
+          expected = Zakuro::All::Gihou.get
 
           fails = []
           expected.each_with_index do |(year, expects), hash_index|
             actuals = \
-              Zakuro::Senmyou::Range::AnnualRange.get(
-                context: Zakuro::Context::Context.new(version: 'Senmyou'),
+              Zakuro::Gihou::Range::AnnualRange.get(
+                context: Zakuro::Context::Context.new(version: 'Gihou'),
                 western_year: year + 1
               )
 

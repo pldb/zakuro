@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../' \
+require File.expand_path('../../../../../' \
                          'lib/zakuro/context/context',
                          __dir__)
 
-require File.expand_path('../../../../' \
+require File.expand_path('../../../../../' \
                          'lib/zakuro/version/genka/range/annual_range',
                          __dir__)
 
