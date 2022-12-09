@@ -4,53 +4,56 @@
 module Zakuro
   # :nodoc:
   module All
-    # MedievalSolarTerm 二十四節気（中世）
-    class MedievalSolarTerm
-      # @return [Regexp] 正規表現
-      REGEX = /\(([0-9]{1,2})\)([0-9]{1,2}-[0-9]{1,4})/.freeze
+    # :nodoc:
+    module Rekijitsu
+      # MedievalSolarTerm 二十四節気（中世）
+      class MedievalSolarTerm
+        # @return [Regexp] 正規表現
+        REGEX = /\(([0-9]{1,2})\)([0-9]{1,2}-[0-9]{1,4})/.freeze
 
-      # @return [Integer] 連番
-      attr_reader :index
-      # @return [String] 大余小余
-      attr_reader :remainder
+        # @return [Integer] 連番
+        attr_reader :index
+        # @return [String] 大余小余
+        attr_reader :remainder
 
-      #
-      # 初期化
-      #
-      # @param [String] text 文字列
-      #
-      def initialize(text: '')
-        @index = -1
-        @remainder = ''
+        #
+        # 初期化
+        #
+        # @param [String] text 文字列
+        #
+        def initialize(text: '')
+          @index = -1
+          @remainder = ''
 
-        return unless text
+          return unless text
 
-        parse(text)
-      end
+          parse(text)
+        end
 
-      #
-      # 不正か
-      #
-      # @return [True] 不正
-      # @return [False] 不正なし
-      #
-      def invalid?
-        @index == -1
-      end
+        #
+        # 不正か
+        #
+        # @return [True] 不正
+        # @return [False] 不正なし
+        #
+        def invalid?
+          @index == -1
+        end
 
-      private
+        private
 
-      #
-      # 変換する
-      #
-      # @param [String] text 文字列
-      #
-      def parse(text)
-        matched = text.match(REGEX)
-        return unless matched
+        #
+        # 変換する
+        #
+        # @param [String] text 文字列
+        #
+        def parse(text)
+          matched = text.match(REGEX)
+          return unless matched
 
-        @index = matched[1].to_i
-        @remainder = matched[2]
+          @index = matched[1].to_i
+          @remainder = matched[2]
+        end
       end
     end
   end
