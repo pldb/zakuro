@@ -44,7 +44,7 @@ module Zakuro
             lines = []
 
             filepath = File.expand_path(
-              '../../../../../../../zakuro-data/text/rekijitu.txt',
+              '../../../../../../zakuro-data/text/rekijitu.txt',
               __dir__
             )
 
