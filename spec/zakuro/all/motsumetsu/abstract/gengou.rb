@@ -31,6 +31,15 @@ module Zakuro
         end
 
         #
+        # 元号文字列
+        #
+        # @return [String] 元号文字列
+        #
+        def to_s
+          "#{name}#{year}年"
+        end
+
+        #
         # 不正か
         #
         # @return [True] 不正

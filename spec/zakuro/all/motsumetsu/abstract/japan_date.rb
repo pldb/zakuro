@@ -32,11 +32,14 @@ module Zakuro
         # 初期化
         #
         # @param [String] text 和暦日文字列
+        # @param [True, False] leaped 閏/閏なし
+        # @param [Integer] month 月
+        # @param [Integer] day 日
         #
-        def initialize(text: '')
-          @leaped = false
-          @month = -1
-          @day = -1
+        def initialize(text: '', leaped: false, month: -1, day: -1)
+          @leaped = leaped
+          @month = month
+          @day = day
           @zodiac = ''
           @dropped = false
           @vanished = false
@@ -52,6 +55,26 @@ module Zakuro
         #
         def invalid?
           @year == -1
+        end
+
+        #
+        # より大きいか（後か）
+        #
+        # @param [JapanDate] other 他和暦日
+        #
+        # @return [True] より大きい
+        # @return [False] 以下
+        #
+        def >(other)
+          return true if month > other.month
+
+          return false if month < other.month
+
+          return true if leaped && !other.leaped
+
+          return true if day > other.day
+
+          false
         end
 
         private
