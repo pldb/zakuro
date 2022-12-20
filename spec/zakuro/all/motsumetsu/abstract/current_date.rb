@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './japan_date'
+require_relative './gengou'
 
 # :nodoc:
 module Zakuro
@@ -25,6 +26,11 @@ module Zakuro
           '承和' => JapanDate.new(leaped: false, month: 1, day: 3),
           '嘉祥' => JapanDate.new(leaped: false, month: 6, day: 13),
           '仁寿' => JapanDate.new(leaped: false, month: 4, day: 28),
+          # TODO: error
+          # --- Caused by: ---
+          # ArgumentError:
+          #   invalid year range. date: 斉衡01年02月24日
+          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
           '斎衡' => JapanDate.new(leaped: false, month: 11, day: 30),
           '天安' => JapanDate.new(leaped: false, month: 2, day: 21),
           '貞観' => JapanDate.new(leaped: false, month: 4, day: 15),
@@ -199,7 +205,10 @@ module Zakuro
 
             return current_gengou if date > start_date
 
-            before_gengou
+            Gengou.new(
+              name: before_gengou.name, year: before_gengou.year + 1,
+              western_year: before_gengou.western_year + 1
+            )
           end
         end
       end
