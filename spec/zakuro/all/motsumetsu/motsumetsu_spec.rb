@@ -6,6 +6,7 @@ require_relative './abstract/current_date'
 
 require_relative './abstract/parser'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'All' do
     describe 'Motsumetsu' do
@@ -44,3 +45,4 @@ describe 'Zakuro' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

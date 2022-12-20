@@ -13,6 +13,7 @@ module Zakuro
       # テストデータを解析する
       #
       module Parser
+        # @return [Regexp] 年ありの行（その年の最初の行）
         FIRST_LINE_REGEX = /^([一-龥]{2,4}) ([0-9]{1,2})年\(([0-9]{3,4})\)・・・(.+)/.freeze
 
         # TODO: refactor
