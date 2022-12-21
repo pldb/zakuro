@@ -15,7 +15,6 @@ module Zakuro
       module CurrentDate
         # @return [Hash<String, JapanDate>] 元号別の開始日
         GENGOU_START_DATES = {
-          # TODO: all patterns
           '神護景雲' => JapanDate.new(leaped: false, month: 8, day: 16),
           '宝亀' => JapanDate.new(leaped: false, month: 10, day: 1),
           '天応' => JapanDate.new(leaped: false, month: 1, day: 1),
@@ -26,11 +25,6 @@ module Zakuro
           '承和' => JapanDate.new(leaped: false, month: 1, day: 3),
           '嘉祥' => JapanDate.new(leaped: false, month: 6, day: 13),
           '仁寿' => JapanDate.new(leaped: false, month: 4, day: 28),
-          # TODO: error
-          # --- Caused by: ---
-          # ArgumentError:
-          #   invalid year range. date: 斉衡01年02月24日
-          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
           '斎衡' => JapanDate.new(leaped: false, month: 11, day: 30),
           '天安' => JapanDate.new(leaped: false, month: 2, day: 21),
           '貞観' => JapanDate.new(leaped: false, month: 4, day: 15),
@@ -160,7 +154,68 @@ module Zakuro
           '元亨' => JapanDate.new(leaped: false, month: 2, day: 23),
           '正中' => JapanDate.new(leaped: false, month: 12, day: 9),
           '嘉暦' => JapanDate.new(leaped: false, month: 4, day: 26),
-          '元徳' => JapanDate.new(leaped: false, month: 8, day: 29)
+          # TODO: error
+          # --- Caused by: ---
+          # ArgumentError:
+          #   invalid year range. date: 元徳03年10月08日
+          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
+          '元徳' => JapanDate.new(leaped: false, month: 8, day: 29),
+          '正慶' => JapanDate.new(leaped: false, month: 4, day: 28),
+          '建武' => JapanDate.new(leaped: false, month: 1, day: 29),
+          '暦応' => JapanDate.new(leaped: false, month: 8, day: 28),
+          '康永' => JapanDate.new(leaped: false, month: 4, day: 27),
+          '貞和' => JapanDate.new(leaped: false, month: 10, day: 21),
+          '観応' => JapanDate.new(leaped: false, month: 2, day: 27),
+          '文和' => JapanDate.new(leaped: false, month: 9, day: 27),
+          '延文' => JapanDate.new(leaped: false, month: 3, day: 28),
+          '康安' => JapanDate.new(leaped: false, month: 3, day: 29),
+          '貞治' => JapanDate.new(leaped: false, month: 9, day: 23),
+          '応安' => JapanDate.new(leaped: false, month: 2, day: 18),
+          '永和' => JapanDate.new(leaped: false, month: 2, day: 27),
+          '康暦' => JapanDate.new(leaped: false, month: 3, day: 22),
+          '永徳' => JapanDate.new(leaped: false, month: 2, day: 24),
+          '至徳' => JapanDate.new(leaped: false, month: 2, day: 27),
+          '嘉慶' => JapanDate.new(leaped: false, month: 8, day: 23),
+          '康応' => JapanDate.new(leaped: false, month: 2, day: 9),
+          '明徳' => JapanDate.new(leaped: false, month: 3, day: 26),
+          '応永' => JapanDate.new(leaped: false, month: 7, day: 5),
+          '正長' => JapanDate.new(leaped: false, month: 4, day: 27),
+          '永享' => JapanDate.new(leaped: false, month: 9, day: 5),
+          '嘉吉' => JapanDate.new(leaped: false, month: 2, day: 17),
+          '文安' => JapanDate.new(leaped: false, month: 2, day: 5),
+          '宝徳' => JapanDate.new(leaped: false, month: 7, day: 28),
+          '享徳' => JapanDate.new(leaped: false, month: 7, day: 25),
+          '康正' => JapanDate.new(leaped: false, month: 7, day: 25),
+          '長禄' => JapanDate.new(leaped: false, month: 9, day: 28),
+          '寛正' => JapanDate.new(leaped: false, month: 12, day: 21),
+          '文正' => JapanDate.new(leaped: false, month: 2, day: 28),
+          '応仁' => JapanDate.new(leaped: false, month: 3, day: 5),
+          '文明' => JapanDate.new(leaped: false, month: 4, day: 28),
+          '長享' => JapanDate.new(leaped: false, month: 7, day: 20),
+          '延徳' => JapanDate.new(leaped: false, month: 8, day: 21),
+          '明応' => JapanDate.new(leaped: false, month: 7, day: 19),
+          '文亀' => JapanDate.new(leaped: false, month: 2, day: 29),
+          '永正' => JapanDate.new(leaped: false, month: 2, day: 30),
+          '大永' => JapanDate.new(leaped: false, month: 8, day: 23),
+          '享禄' => JapanDate.new(leaped: false, month: 8, day: 20),
+          '天文' => JapanDate.new(leaped: false, month: 7, day: 29),
+          '弘治' => JapanDate.new(leaped: false, month: 10, day: 23),
+          '永禄' => JapanDate.new(leaped: false, month: 2, day: 28),
+          '元亀' => JapanDate.new(leaped: false, month: 4, day: 23),
+          '天正' => JapanDate.new(leaped: false, month: 7, day: 28),
+          '文禄' => JapanDate.new(leaped: false, month: 12, day: 8),
+          '慶長' => JapanDate.new(leaped: false, month: 10, day: 27),
+          '元和' => JapanDate.new(leaped: false, month: 7, day: 13),
+          '寛永' => JapanDate.new(leaped: false, month: 2, day: 30),
+          '正保' => JapanDate.new(leaped: false, month: 12, day: 16),
+          '慶安' => JapanDate.new(leaped: false, month: 2, day: 15),
+          '承応' => JapanDate.new(leaped: false, month: 9, day: 18),
+          '明暦' => JapanDate.new(leaped: false, month: 4, day: 13),
+          '万治' => JapanDate.new(leaped: false, month: 7, day: 23),
+          '寛文' => JapanDate.new(leaped: false, month: 4, day: 25),
+          '延宝' => JapanDate.new(leaped: false, month: 9, day: 21),
+          '天和' => JapanDate.new(leaped: false, month: 9, day: 29),
+          '貞享' => JapanDate.new(leaped: false, month: 2, day: 21)
         }.freeze
 
         # @return [Hash<String, String>] 元号名（『日本暦日便覧』=>『日本史年表』）
