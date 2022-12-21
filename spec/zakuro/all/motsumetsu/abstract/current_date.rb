@@ -165,7 +165,8 @@ module Zakuro
 
         # @return [Hash<String, String>] 元号名（『日本暦日便覧』=>『日本史年表』）
         GENGOU_OTHER_NAMES = {
-          '斉衡' => '斎衡'
+          '斉衡' => '斎衡',
+          '永礑' => '永祚'
         }.freeze
 
         class << self
