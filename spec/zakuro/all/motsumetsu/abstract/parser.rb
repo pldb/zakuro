@@ -13,6 +13,9 @@ module Zakuro
       # テストデータを解析する
       #
       module Parser
+        # @return [Regexp] コメント行
+        COMMENT_LINE_REGEX = /^[\s\t]*#/.freeze
+
         # @return [Regexp] 年ありの行（その年の最初の行）
         FIRST_LINE_REGEX = /^([一-龥]{2,4}) ([0-9]{1,2})年\(([0-9]{3,4})\)・・・(.+)/.freeze
 
@@ -33,6 +36,8 @@ module Zakuro
 
                 next if text == ''
 
+                next if comment_line?(line: line)
+
                 if first_line?(line: line)
                   year = first_line(line: text)
                   next
@@ -51,6 +56,10 @@ module Zakuro
 
           def fullpath
             Reference.path
+          end
+
+          def comment_line?(line:)
+            line.match?(COMMENT_LINE_REGEX)
           end
 
           def first_line?(line:)
