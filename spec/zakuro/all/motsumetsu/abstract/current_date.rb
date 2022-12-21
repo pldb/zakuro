@@ -163,6 +163,11 @@ module Zakuro
           '元徳' => JapanDate.new(leaped: false, month: 8, day: 29)
         }.freeze
 
+        # @return [Hash<String, String>] 元号名（『日本暦日便覧』=>『日本史年表』）
+        GENGOU_OTHER_NAMES = {
+          '斉衡' => '斎衡'
+        }.freeze
+
         class << self
           #
           # 取得する
@@ -174,8 +179,12 @@ module Zakuro
           # @return [String] 和暦日文字列
           #
           def get(date:, current_gengou:, before_gengou:)
+            current = rename(gengou: current_gengou)
+
+            before = rename(gengou: before_gengou)
+
             gengou = gengou(
-              date: date, current_gengou: current_gengou, before_gengou: before_gengou
+              date: date, current_gengou: current, before_gengou: before
             )
 
             "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
@@ -208,6 +217,17 @@ module Zakuro
             Gengou.new(
               name: before_gengou.name, year: before_gengou.year + 1,
               western_year: before_gengou.western_year + 1
+            )
+          end
+
+          def rename(gengou:)
+            name = GENGOU_OTHER_NAMES[gengou.name]
+
+            return gengou unless name
+
+            Gengou.new(
+              name: name, year: gengou.year,
+              western_year: gengou.western_year
             )
           end
         end
