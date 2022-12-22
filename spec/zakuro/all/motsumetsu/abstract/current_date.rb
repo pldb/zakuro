@@ -159,6 +159,18 @@ module Zakuro
           # ArgumentError:
           #   invalid year range. date: 元徳03年10月08日
           #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
+          #
+          # 日本暦日便覧：
+          #   元徳1(1329)    元徳2(1330)    元徳3(1331)    正慶1(1332)    正慶2(1333)
+          # 日本暦日原典：
+          #   元徳1(1329)    元徳2(1330)    元弘1(1331)    正慶1(1332)    正慶2(1333)
+          #
+          #  元徳|1|1329-1-31|1年8月29日
+          #  元弘|1331-2-8|1年8月9日
+          #  正慶|1|1332-1-28|1年4月28日
+          #
+          #  元徳3年のうち、1331-2-8 ～ 1332-1-27 を元弘に差し替える必要がある
+          #
           '元徳' => JapanDate.new(leaped: false, month: 8, day: 29),
           '正慶' => JapanDate.new(leaped: false, month: 4, day: 28),
           '建武' => JapanDate.new(leaped: false, month: 1, day: 29),
