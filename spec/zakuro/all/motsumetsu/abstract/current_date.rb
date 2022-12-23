@@ -154,24 +154,13 @@ module Zakuro
           '元亨' => JapanDate.new(leaped: false, month: 2, day: 23),
           '正中' => JapanDate.new(leaped: false, month: 12, day: 9),
           '嘉暦' => JapanDate.new(leaped: false, month: 4, day: 26),
+          '元徳' => JapanDate.new(leaped: false, month: 8, day: 29),
           # TODO: error
           # --- Caused by: ---
           # ArgumentError:
           #   invalid year range. date: 元徳03年10月08日
           #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
           #
-          # 日本暦日便覧：
-          #   元徳1(1329)    元徳2(1330)    元徳3(1331)    正慶1(1332)    正慶2(1333)
-          # 日本暦日原典：
-          #   元徳1(1329)    元徳2(1330)    元弘1(1331)    正慶1(1332)    正慶2(1333)
-          #
-          #  元徳|1|1329-1-31|1年8月29日
-          #  元弘|1331-2-8|1年8月9日
-          #  正慶|1|1332-1-28|1年4月28日
-          #
-          #  元徳3年のうち、1331-2-8 ～ 1332-1-27 を元弘に差し替える必要がある
-          #
-          '元徳' => JapanDate.new(leaped: false, month: 8, day: 29),
           '正慶' => JapanDate.new(leaped: false, month: 4, day: 28),
           '建武' => JapanDate.new(leaped: false, month: 1, day: 29),
           '暦応' => JapanDate.new(leaped: false, month: 8, day: 28),
@@ -234,6 +223,35 @@ module Zakuro
         GENGOU_OTHER_NAMES = {
           '斉衡' => '斎衡',
           '永礑' => '永祚'
+        }.freeze
+
+        # @return [Hash<String, Hash<String, Object>>] 元号範囲
+        # 日本暦日便覧：
+        #   元徳1(1329)    元徳2(1330)    元徳3(1331)    正慶1(1332)    正慶2(1333)
+        # 日本暦日原典：
+        #   元徳1(1329)    元徳2(1330)    元弘1(1331)    正慶1(1332)    正慶2(1333)
+        #
+        #  * 元徳|1|1329-1-31|1年8月29日
+        #  * 元弘|1331-2-8|1年8月9日
+        #  * 正慶|1|1332-1-28|1年4月28日
+        #
+        #  元徳3年のうち、1331-2-8 ～ 1332-1-27 を元弘に差し替える必要がある
+        #   1. 元徳3年8月8日
+        #   2. 元弘1年8月9日
+        #   3. 元弘2年4月27日
+        #   4. 正慶1年4月28日
+        #
+        GENGOU_RANGE = {
+          '元徳3年' => {
+            'from' => JapanDate.new(leaped: false, month: 8, day: 9),
+            'to' => JapanDate.new,
+            'year' => '元弘1年'
+          },
+          '元徳4年' => {
+            'from' => JapanDate.new,
+            'to' => JapanDate.new(leaped: false, month: 4, day: 27),
+            'year' => '元弘2年'
+          }
         }.freeze
 
         class << self
