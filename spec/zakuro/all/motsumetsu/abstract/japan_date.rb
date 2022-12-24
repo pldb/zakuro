@@ -54,7 +54,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          @year == -1
+          @month == -1
         end
 
         #

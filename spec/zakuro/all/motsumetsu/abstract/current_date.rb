@@ -158,7 +158,7 @@ module Zakuro
           # TODO: error
           # --- Caused by: ---
           # ArgumentError:
-          #   invalid year range. date: 元徳03年10月08日
+          #   invalid year range. date: 正慶01年05月11日
           #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
           #
           '正慶' => JapanDate.new(leaped: false, month: 4, day: 28),
@@ -245,12 +245,12 @@ module Zakuro
           '元徳3年' => {
             'from' => JapanDate.new(leaped: false, month: 8, day: 9),
             'to' => JapanDate.new,
-            'year' => '元弘1年'
+            'gengou' => Gengou.new(name: '元弘', year: 1, western_year: 1331)
           },
           '元徳4年' => {
             'from' => JapanDate.new,
             'to' => JapanDate.new(leaped: false, month: 4, day: 27),
-            'year' => '元弘2年'
+            'gengou' => Gengou.new(name: '元弘', year: 2, western_year: 1332)
           }
         }.freeze
 
@@ -272,6 +272,8 @@ module Zakuro
             gengou = gengou(
               date: date, current_gengou: current, before_gengou: before
             )
+
+            gengou = range(date: date, gengou: gengou)
 
             "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
           end
@@ -306,6 +308,13 @@ module Zakuro
             )
           end
 
+          #
+          # 元号名を変更する
+          #
+          # @param [Gengou] gengou 元号
+          #
+          # @return [Gengou] 変更後元号
+          #
           def rename(gengou:)
             name = GENGOU_OTHER_NAMES[gengou.name]
 
@@ -315,6 +324,32 @@ module Zakuro
               name: name, year: gengou.year,
               western_year: gengou.western_year
             )
+          end
+
+          #
+          # 一定の範囲内で元号を差し替える
+          #
+          # @param [JapanDate] date 和暦日
+          # @param [Gengou] gengou 元号
+          #
+          # @return [Gengou] 変更後元号
+          #
+          def range(date:, gengou:)
+            range = GENGOU_RANGE[gengou.to_s]
+
+            return gengou unless range
+
+            from = range['from']
+            unless from.invalid?
+              return range['gengou'] if date > from
+            end
+
+            to = range['to']
+            unless to.invalid?
+              return range['gengou'] if to > date
+            end
+
+            gengou
           end
         end
       end
