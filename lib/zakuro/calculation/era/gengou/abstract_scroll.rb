@@ -23,9 +23,9 @@ module Zakuro
         attr_reader :monthly_last_date
         # @return [Reserve::AbstractRange] 予約範囲
         attr_reader :range
-        # @return [Array<Counte>] 1行目元号
+        # @return [Array<Counter>] 1行目元号
         attr_reader :first_gengou
-        # @return [Array<Counte>] 2行目元号
+        # @return [Array<Counter>] 2行目元号
         attr_reader :second_gengou
         # @return [Connector] 行変更済元号
         attr_reader :connector
