@@ -155,12 +155,6 @@ module Zakuro
           '正中' => JapanDate.new(leaped: false, month: 12, day: 9),
           '嘉暦' => JapanDate.new(leaped: false, month: 4, day: 26),
           '元徳' => JapanDate.new(leaped: false, month: 8, day: 29),
-          # TODO: error
-          # --- Caused by: ---
-          # ArgumentError:
-          #   invalid year range. date: 正慶01年05月11日
-          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
-          #
           '正慶' => JapanDate.new(leaped: false, month: 4, day: 28),
           '建武' => JapanDate.new(leaped: false, month: 1, day: 29),
           '暦応' => JapanDate.new(leaped: false, month: 8, day: 28),
@@ -184,6 +178,12 @@ module Zakuro
           '永享' => JapanDate.new(leaped: false, month: 9, day: 5),
           '嘉吉' => JapanDate.new(leaped: false, month: 2, day: 17),
           '文安' => JapanDate.new(leaped: false, month: 2, day: 5),
+          # TODO: error
+          # --- Caused by: ---
+          # ArgumentError:
+          #   invalid year range. date: 宝徳01年12月13日
+          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
+          #
           '宝徳' => JapanDate.new(leaped: false, month: 7, day: 28),
           '享徳' => JapanDate.new(leaped: false, month: 7, day: 25),
           '康正' => JapanDate.new(leaped: false, month: 7, day: 25),
