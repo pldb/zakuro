@@ -7,13 +7,14 @@ require File.expand_path('../../../../../../../' \
 require File.expand_path('../../../../../../../lib/zakuro/era/western/calendar',
                          __dir__)
 
+# rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'Calculation' do
     describe 'Gengou' do
       describe 'Reserve' do
         describe 'NamedRange' do
           describe '#start_western_year' do
-            context 'japan gengou name has a gengou' do
+            context 'japan gengou name has a first gengou' do
               it 'should be start year from neighborhood gengou' do
                 range = Zakuro::Calculation::Gengou::Reserve::NamedRange.new(
                   start_name: '清寧天皇',
@@ -23,9 +24,21 @@ describe 'Zakuro' do
                 expect(actual).to eq 457
               end
             end
+            context 'japan gengou name has a second gengou' do
+              it 'should be start year from neighborhood gengou' do
+                range = Zakuro::Calculation::Gengou::Reserve::NamedRange.new(
+                  start_name: '正慶',
+                  last_name: '正慶'
+                )
+                actual = range.western_start_year
+                # first gengou '元弘'
+                expect(actual).to eq 1331
+              end
+            end
           end
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

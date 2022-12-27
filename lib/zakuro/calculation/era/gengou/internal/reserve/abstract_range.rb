@@ -142,7 +142,7 @@ module Zakuro
             first_last_year = first_list.western_last_year
             second_last_year = second_list.western_last_year
 
-            return first_last_year if first_list.invalid?
+            return second_last_year if first_list.invalid?
 
             return first_last_year if second_list.invalid?
 
@@ -187,7 +187,7 @@ module Zakuro
             first_western_date = first_list.western_start_date
             second_western_date = second_list.western_start_date
 
-            return first_list if first_western_date.invalid?
+            return second_list if first_western_date.invalid?
 
             return first_list if second_western_date.invalid?
 
@@ -203,11 +203,11 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid_list?
-            return true if first_list.invalid?
+            return false unless first_list.invalid?
 
-            return true if second_list.invalid?
+            return false unless second_list.invalid?
 
-            false
+            true
           end
         end
       end
