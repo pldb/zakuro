@@ -58,7 +58,7 @@ module Zakuro
             first_western_date = first_list.western_last_date
             second_western_date = second_list.western_last_date
 
-            return first_list if first_western_date.invalid?
+            return second_list if first_western_date.invalid?
 
             return first_list if second_western_date.invalid?
 
