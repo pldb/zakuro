@@ -2,9 +2,9 @@
 
 require_relative '../../../../lib/zakuro/merchant'
 
-require_relative './abstract/current_date'
+require_relative './testdata/current_date'
 
-require_relative './abstract/parser'
+require_relative './testdata/parser'
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
