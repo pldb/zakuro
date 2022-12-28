@@ -81,7 +81,7 @@ module Zakuro
           #
           # 元号を取得する
           #
-          #  『日本暦日便覧』は元号年なの、開始日を考慮する
+          #  『日本暦日便覧』は元号年なので、『日本史年表』による開始日を考慮する
           #
           # @param [JapanDate] date 現在和暦日
           # @param [Gengou] current_gengou 現在元号
@@ -100,6 +100,7 @@ module Zakuro
 
             return current_gengou if date > start_date
 
+            # 当年の元号1年目が開始していない。前年元号に+1年した年を採用する
             Gengou.new(
               name: before_gengou.name, year: before_gengou.year + 1,
               western_year: before_gengou.western_year + 1
