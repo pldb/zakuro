@@ -19,7 +19,6 @@ module Zakuro
         # @return [Regexp] 年ありの行（その年の最初の行）
         FIRST_LINE_REGEX = /^([一-龥]{2,4}) ([0-9]{1,2})年\(([0-9]{3,4})\)・・・(.+)/.freeze
 
-        # TODO: refactor
         class << self
           #
           # データを取得する
@@ -27,20 +26,24 @@ module Zakuro
           # @return [Array<Year>] テストデータ
           #
           def get
-            result = []
-            year = Year.new
-
             path = fullpath
             if path == ''
               p 'test data does not exist.skip test.'
               return []
             end
 
+            years(path: path)
+          end
+
+          private
+
+          def years(path:)
+            result = []
+            year = Year.new
+
             File.open(path, 'r') do |f|
               f.each_line do |line|
                 text = line.strip
-
-                next if text == ''
 
                 next if comment_line?(line: line)
 
@@ -58,13 +61,13 @@ module Zakuro
             result
           end
 
-          private
-
           def fullpath
             Reference.path
           end
 
           def comment_line?(line:)
+            return true if line == ''
+
             line.match?(COMMENT_LINE_REGEX)
           end
 
