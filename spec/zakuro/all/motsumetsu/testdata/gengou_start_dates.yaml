@@ -1,0 +1,980 @@
+- name: 神護景雲
+  start_date:
+    leaped:  false
+    month: 8
+    day: 16
+- name: 宝亀
+  start_date:
+    leaped:  false
+    month: 10
+    day: 1
+- name: 天応
+  start_date:
+    leaped:  false
+    month: 1
+    day: 1
+- name: 延暦
+  start_date:
+    leaped:  false
+    month: 8
+    day: 19
+- name: 大同
+  start_date:
+    leaped:  false
+    month: 5
+    day: 18
+- name: 弘仁
+  start_date:
+    leaped:  false
+    month: 9
+    day: 19
+- name: 天長
+  start_date:
+    leaped:  false
+    month: 1
+    day: 5
+- name: 承和
+  start_date:
+    leaped:  false
+    month: 1
+    day: 3
+- name: 嘉祥
+  start_date:
+    leaped:  false
+    month: 6
+    day: 13
+- name: 仁寿
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 斎衡
+  start_date:
+    leaped:  false
+    month: 11
+    day: 30
+- name: 天安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 21
+- name: 貞観
+  start_date:
+    leaped:  false
+    month: 4
+    day: 15
+- name: 元慶
+  start_date:
+    leaped:  false
+    month: 4
+    day: 16
+- name: 仁和
+  start_date:
+    leaped:  false
+    month: 2
+    day: 21
+- name: 寛平
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 昌泰
+  start_date:
+    leaped:  false
+    month: 4
+    day: 26
+- name: 延喜
+  start_date:
+    leaped:  false
+    month: 7
+    day: 15
+- name: 延長
+  start_date:
+    leaped:  true
+    month: 4
+    day: 11
+- name: 承平
+  start_date:
+    leaped:  false
+    month: 4
+    day: 26
+- name: 天慶
+  start_date:
+    leaped:  false
+    month: 5
+    day: 22
+- name: 天暦
+  start_date:
+    leaped:  false
+    month: 4
+    day: 22
+- name: 天徳
+  start_date:
+    leaped:  false
+    month: 10
+    day: 27
+- name: 応和
+  start_date:
+    leaped:  false
+    month: 2
+    day: 16
+- name: 康保
+  start_date:
+    leaped:  false
+    month: 7
+    day: 10
+- name: 安和
+  start_date:
+    leaped:  false
+    month: 8
+    day: 13
+- name: 天禄
+  start_date:
+    leaped:  false
+    month: 3
+    day: 25
+- name: 天延
+  start_date:
+    leaped:  false
+    month: 12
+    day: 20
+- name: 貞元
+  start_date:
+    leaped:  false
+    month: 7
+    day: 13
+- name: 天元
+  start_date:
+    leaped:  false
+    month: 11
+    day: 29
+- name: 永観
+  start_date:
+    leaped:  false
+    month: 4
+    day: 15
+- name: 寛和
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 永延
+  start_date:
+    leaped:  false
+    month: 4
+    day: 5
+- name: 永祚
+  start_date:
+    leaped:  false
+    month: 8
+    day: 8
+- name: 正暦
+  start_date:
+    leaped:  false
+    month: 11
+    day: 7
+- name: 長徳
+  start_date:
+    leaped:  false
+    month: 2
+    day: 22
+- name: 長保
+  start_date:
+    leaped:  false
+    month: 1
+    day: 13
+- name: 寛弘
+  start_date:
+    leaped:  false
+    month: 7
+    day: 20
+- name: 長和
+  start_date:
+    leaped:  false
+    month: 12
+    day: 25
+- name: 寛仁
+  start_date:
+    leaped:  false
+    month: 4
+    day: 23
+- name: 治安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 2
+- name: 万寿
+  start_date:
+    leaped:  false
+    month: 7
+    day: 13
+- name: 長元
+  start_date:
+    leaped:  false
+    month: 7
+    day: 25
+- name: 長暦
+  start_date:
+    leaped:  false
+    month: 4
+    day: 21
+- name: 長久
+  start_date:
+    leaped:  false
+    month: 11
+    day: 10
+- name: 寛徳
+  start_date:
+    leaped:  false
+    month: 11
+    day: 24
+- name: 永承
+  start_date:
+    leaped:  false
+    month: 4
+    day: 14
+- name: 天喜
+  start_date:
+    leaped:  false
+    month: 1
+    day: 11
+- name: 康平
+  start_date:
+    leaped:  false
+    month: 8
+    day: 29
+- name: 治暦
+  start_date:
+    leaped:  false
+    month: 8
+    day: 2
+- name: 延久
+  start_date:
+    leaped:  false
+    month: 4
+    day: 13
+- name: 承保
+  start_date:
+    leaped:  false
+    month: 8
+    day: 23
+- name: 承暦
+  start_date:
+    leaped:  false
+    month: 11
+    day: 17
+- name: 永保
+  start_date:
+    leaped:  false
+    month: 2
+    day: 10
+- name: 応徳
+  start_date:
+    leaped:  false
+    month: 2
+    day: 7
+- name: 寛治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 7
+- name: 嘉保
+  start_date:
+    leaped:  false
+    month: 12
+    day: 15
+- name: 永長
+  start_date:
+    leaped:  false
+    month: 12
+    day: 17
+- name: 承徳
+  start_date:
+    leaped:  false
+    month: 11
+    day: 21
+- name: 康和
+  start_date:
+    leaped:  false
+    month: 8
+    day: 28
+- name: 長治
+  start_date:
+    leaped:  false
+    month: 2
+    day: 10
+- name: 嘉承
+  start_date:
+    leaped:  false
+    month: 4
+    day: 9
+- name: 天仁
+  start_date:
+    leaped:  false
+    month: 8
+    day: 3
+- name: 天永
+  start_date:
+    leaped:  false
+    month: 7
+    day: 13
+- name: 永久
+  start_date:
+    leaped:  false
+    month: 7
+    day: 13
+- name: 元永
+  start_date:
+    leaped:  false
+    month: 4
+    day: 3
+- name: 保安
+  start_date:
+    leaped:  false
+    month: 4
+    day: 10
+- name: 天治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 3
+- name: 大治
+  start_date:
+    leaped:  false
+    month: 1
+    day: 22
+- name: 天承
+  start_date:
+    leaped:  false
+    month: 1
+    day: 29
+- name: 長承
+  start_date:
+    leaped:  false
+    month: 8
+    day: 11
+- name: 保延
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 永治
+  start_date:
+    leaped:  false
+    month: 7
+    day: 10
+- name: 康治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 天養
+  start_date:
+    leaped:  false
+    month: 2
+    day: 23
+- name: 久安
+  start_date:
+    leaped:  false
+    month: 7
+    day: 22
+- name: 仁平
+  start_date:
+    leaped:  false
+    month: 1
+    day: 26
+- name: 久寿
+  start_date:
+    leaped:  false
+    month: 10
+    day: 28
+- name: 保元
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 平治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 20
+- name: 永暦
+  start_date:
+    leaped:  false
+    month: 1
+    day: 10
+- name: 応保
+  start_date:
+    leaped:  false
+    month: 9
+    day: 4
+- name: 長寛
+  start_date:
+    leaped:  false
+    month: 3
+    day: 29
+- name: 永万
+  start_date:
+    leaped:  false
+    month: 6
+    day: 5
+- name: 仁安
+  start_date:
+    leaped:  false
+    month: 8
+    day: 27
+- name: 嘉応
+  start_date:
+    leaped:  false
+    month: 4
+    day: 8
+- name: 承安
+  start_date:
+    leaped:  false
+    month: 4
+    day: 21
+- name: 安元
+  start_date:
+    leaped:  false
+    month: 7
+    day: 28
+- name: 治承
+  start_date:
+    leaped:  false
+    month: 8
+    day: 4
+- name: 養和
+  start_date:
+    leaped:  false
+    month: 7
+    day: 14
+- name: 寿永
+  start_date:
+    leaped:  false
+    month: 5
+    day: 27
+- name: 元暦
+  start_date:
+    leaped:  false
+    month: 4
+    day: 16
+- name: 文治
+  start_date:
+    leaped:  false
+    month: 8
+    day: 14
+- name: 建久
+  start_date:
+    leaped:  false
+    month: 4
+    day: 11
+- name: 正治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 建仁
+  start_date:
+    leaped:  false
+    month: 2
+    day: 13
+- name: 元久
+  start_date:
+    leaped:  false
+    month: 2
+    day: 20
+- name: 建永
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 承元
+  start_date:
+    leaped:  false
+    month: 10
+    day: 25
+- name: 建暦
+  start_date:
+    leaped:  false
+    month: 3
+    day: 9
+- name: 建保
+  start_date:
+    leaped:  false
+    month: 12
+    day: 6
+- name: 承久
+  start_date:
+    leaped:  false
+    month: 4
+    day: 12
+- name: 貞応
+  start_date:
+    leaped:  false
+    month: 4
+    day: 13
+- name: 元仁
+  start_date:
+    leaped:  false
+    month: 11
+    day: 20
+- name: 嘉禄
+  start_date:
+    leaped:  false
+    month: 4
+    day: 20
+- name: 安貞
+  start_date:
+    leaped:  false
+    month: 12
+    day: 10
+- name: 寛喜
+  start_date:
+    leaped:  false
+    month: 3
+    day: 5
+- name: 貞永
+  start_date:
+    leaped:  false
+    month: 4
+    day: 2
+- name: 天福
+  start_date:
+    leaped:  false
+    month: 4
+    day: 15
+- name: 文暦
+  start_date:
+    leaped:  false
+    month: 11
+    day: 5
+- name: 嘉禎
+  start_date:
+    leaped:  false
+    month: 9
+    day: 19
+- name: 暦仁
+  start_date:
+    leaped:  false
+    month: 11
+    day: 23
+- name: 延応
+  start_date:
+    leaped:  false
+    month: 2
+    day: 7
+- name: 仁治
+  start_date:
+    leaped:  false
+    month: 7
+    day: 16
+- name: 寛元
+  start_date:
+    leaped:  false
+    month: 2
+    day: 26
+- name: 宝治
+  start_date:
+    leaped:  false
+    month: 2
+    day: 28
+- name: 建長
+  start_date:
+    leaped:  false
+    month: 3
+    day: 18
+- name: 康元
+  start_date:
+    leaped:  false
+    month: 10
+    day: 5
+- name: 正嘉
+  start_date:
+    leaped:  false
+    month: 3
+    day: 14
+- name: 正元
+  start_date:
+    leaped:  false
+    month: 3
+    day: 26
+- name: 文応
+  start_date:
+    leaped:  false
+    month: 4
+    day: 13
+- name: 弘長
+  start_date:
+    leaped:  false
+    month: 2
+    day: 20
+- name: 文永
+  start_date:
+    leaped:  false
+    month: 2
+    day: 28
+- name: 建治
+  start_date:
+    leaped:  false
+    month: 4
+    day: 25
+- name: 弘安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 29
+- name: 正応
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 永仁
+  start_date:
+    leaped:  false
+    month: 8
+    day: 5
+- name: 正安
+  start_date:
+    leaped:  false
+    month: 4
+    day: 25
+- name: 乾元
+  start_date:
+    leaped:  false
+    month: 11
+    day: 21
+- name: 嘉元
+  start_date:
+    leaped:  false
+    month: 8
+    day: 5
+- name: 徳治
+  start_date:
+    leaped:  false
+    month: 12
+    day: 14
+- name: 延慶
+  start_date:
+    leaped:  false
+    month: 10
+    day: 9
+- name: 応長
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 正和
+  start_date:
+    leaped:  false
+    month: 3
+    day: 20
+- name: 文保
+  start_date:
+    leaped:  false
+    month: 2
+    day: 3
+- name: 元応
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 元亨
+  start_date:
+    leaped:  false
+    month: 2
+    day: 23
+- name: 正中
+  start_date:
+    leaped:  false
+    month: 12
+    day: 9
+- name: 嘉暦
+  start_date:
+    leaped:  false
+    month: 4
+    day: 26
+- name: 元徳
+  start_date:
+    leaped:  false
+    month: 8
+    day: 29
+- name: 正慶
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 建武
+  start_date:
+    leaped:  false
+    month: 1
+    day: 29
+- name: 暦応
+  start_date:
+    leaped:  false
+    month: 8
+    day: 28
+- name: 康永
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 貞和
+  start_date:
+    leaped:  false
+    month: 10
+    day: 21
+- name: 観応
+  start_date:
+    leaped:  false
+    month: 2
+    day: 27
+- name: 文和
+  start_date:
+    leaped:  false
+    month: 9
+    day: 27
+- name: 延文
+  start_date:
+    leaped:  false
+    month: 3
+    day: 28
+- name: 康安
+  start_date:
+    leaped:  false
+    month: 3
+    day: 29
+- name: 貞治
+  start_date:
+    leaped:  false
+    month: 9
+    day: 23
+- name: 応安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 18
+- name: 永和
+  start_date:
+    leaped:  false
+    month: 2
+    day: 27
+- name: 康暦
+  start_date:
+    leaped:  false
+    month: 3
+    day: 22
+- name: 永徳
+  start_date:
+    leaped:  false
+    month: 2
+    day: 24
+- name: 至徳
+  start_date:
+    leaped:  false
+    month: 2
+    day: 27
+- name: 嘉慶
+  start_date:
+    leaped:  false
+    month: 8
+    day: 23
+- name: 康応
+  start_date:
+    leaped:  false
+    month: 2
+    day: 9
+- name: 明徳
+  start_date:
+    leaped:  false
+    month: 3
+    day: 26
+- name: 応永
+  start_date:
+    leaped:  false
+    month: 7
+    day: 5
+- name: 正長
+  start_date:
+    leaped:  false
+    month: 4
+    day: 27
+- name: 永享
+  start_date:
+    leaped:  false
+    month: 9
+    day: 5
+- name: 嘉吉
+  start_date:
+    leaped:  false
+    month: 2
+    day: 17
+- name: 文安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 5
+- name: 宝徳
+  start_date:
+    leaped:  false
+    month: 7
+    day: 28
+- name: 享徳
+  start_date:
+    leaped:  false
+    month: 7
+    day: 25
+- name: 康正
+  start_date:
+    leaped:  false
+    month: 7
+    day: 25
+- name: 長禄
+  start_date:
+    leaped:  false
+    month: 9
+    day: 28
+- name: 寛正
+  start_date:
+    leaped:  false
+    month: 12
+    day: 21
+- name: 文正
+  start_date:
+    leaped:  false
+    month: 2
+    day: 28
+- name: 応仁
+  start_date:
+    leaped:  false
+    month: 3
+    day: 5
+- name: 文明
+  start_date:
+    leaped:  false
+    month: 4
+    day: 28
+- name: 長享
+  start_date:
+    leaped:  false
+    month: 7
+    day: 20
+- name: 延徳
+  start_date:
+    leaped:  false
+    month: 8
+    day: 21
+- name: 明応
+  start_date:
+    leaped:  false
+    month: 7
+    day: 19
+- name: 文亀
+  start_date:
+    leaped:  false
+    month: 2
+    day: 29
+- name: 永正
+  start_date:
+    leaped:  false
+    month: 2
+    day: 30
+- name: 大永
+  start_date:
+    leaped:  false
+    month: 8
+    day: 23
+- name: 享禄
+  start_date:
+    leaped:  false
+    month: 8
+    day: 20
+- name: 天文
+  start_date:
+    leaped:  false
+    month: 7
+    day: 29
+- name: 弘治
+  start_date:
+    leaped:  false
+    month: 10
+    day: 23
+- name: 永禄
+  start_date:
+    leaped:  false
+    month: 2
+    day: 28
+- name: 元亀
+  start_date:
+    leaped:  false
+    month: 4
+    day: 23
+- name: 天正
+  start_date:
+    leaped:  false
+    month: 7
+    day: 28
+- name: 文禄
+  start_date:
+    leaped:  false
+    month: 12
+    day: 8
+- name: 慶長
+  start_date:
+    leaped:  false
+    month: 10
+    day: 27
+- name: 元和
+  start_date:
+    leaped:  false
+    month: 7
+    day: 13
+- name: 寛永
+  start_date:
+    leaped:  false
+    month: 2
+    day: 30
+- name: 正保
+  start_date:
+    leaped:  false
+    month: 12
+    day: 16
+- name: 慶安
+  start_date:
+    leaped:  false
+    month: 2
+    day: 15
+- name: 承応
+  start_date:
+    leaped:  false
+    month: 9
+    day: 18
+- name: 明暦
+  start_date:
+    leaped:  false
+    month: 4
+    day: 13
+- name: 万治
+  start_date:
+    leaped:  false
+    month: 7
+    day: 23
+- name: 寛文
+  start_date:
+    leaped:  false
+    month: 4
+    day: 25
+- name: 延宝
+  start_date:
+    leaped:  false
+    month: 9
+    day: 21
+- name: 天和
+  start_date:
+    leaped:  false
+    month: 9
+    day: 29
+- name: 貞享
+  start_date:
+    leaped:  false
+    month: 2
+    day: 21
