@@ -15070,10 +15070,10 @@
   diffs:
     month:
       number:
-        src: '11'
+        src: '12'
         dest: '11'
       leaped:
-        src: 'true'
+        src: 'false'
         dest: 'false'
       days:
         src: 大
@@ -15102,11 +15102,11 @@
   diffs:
     month:
       number:
-        src: "-"
-        dest: "-"
+        src: '12'
+        dest: '12'
       leaped:
-        src: "-"
-        dest: "-"
+        src: 'true'
+        dest: 'false'
       days:
         src: 大
         dest: 大
