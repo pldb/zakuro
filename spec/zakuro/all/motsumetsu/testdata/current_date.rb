@@ -178,23 +178,6 @@ module Zakuro
           '永享' => JapanDate.new(leaped: false, month: 9, day: 5),
           '嘉吉' => JapanDate.new(leaped: false, month: 2, day: 17),
           '文安' => JapanDate.new(leaped: false, month: 2, day: 5),
-          # TODO: error
-          # --- Caused by: ---
-          # ArgumentError:
-          #   invalid year range. date: 宝徳01年12月13日
-          #   /home/pldb/ruby/zakuro/lib/zakuro/calculation/summary/japan/specifier/single_day.rb:72:in `specify'
-          #
-          # 運用値への書き換えが不整合をおこしている可能性あり
-          #
-          # 宝徳1年：
-          # 1449-10-17 10月(大) -> 10月(小)
-          # 1449-11-16 閏10月(小) -> 11月(小)
-          # 1449-12-15 11月(大) -> 12月(大)
-          # 1450-01-14 12月(大) -> 閏12月(大)
-          #
-          # 宝徳2年：
-          # 1450-02-13 1月(小) -> 1月(大)
-          #
           '宝徳' => JapanDate.new(leaped: false, month: 7, day: 28),
           '享徳' => JapanDate.new(leaped: false, month: 7, day: 25),
           '康正' => JapanDate.new(leaped: false, month: 7, day: 25),

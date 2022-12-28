@@ -30,7 +30,13 @@ module Zakuro
             result = []
             year = Year.new
 
-            File.open(fullpath, 'r') do |f|
+            path = fullpath
+            if path == ''
+              p 'test data does not exist.skip test.'
+              return []
+            end
+
+            File.open(path, 'r') do |f|
               f.each_line do |line|
                 text = line.strip
 
