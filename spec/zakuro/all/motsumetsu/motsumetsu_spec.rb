@@ -17,6 +17,7 @@ describe 'Zakuro' do
           years.each do |year|
             gengou = year.gengou
             year.dates.each do |date|
+              p '-------------'
               # TODO: refactor
               p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
               p "没日: #{date.dropped}"
@@ -35,8 +36,22 @@ describe 'Zakuro' do
                 }
               ).commit
               # TODO: expect
-              p "【結果】没日: #{actual.data.options['dropped_date'].matched}" if date.dropped
-              p "【結果】滅日: #{actual.data.options['vanished_date'].matched}" if date.vanished
+              options = actual.data.options
+              dropped_date = options['dropped_date']
+              vanished_date = options['vanished_date']
+              if date.dropped
+                p "【結果】没日: #{dropped_date.matched} / #{dropped_date.calculation.remainder}"
+                actual.data.month.odd_solar_terms.each do |solar_term|
+                  p "二十四節気（節気）: #{solar_term.index} / #{solar_term.remainder}"
+                end
+                actual.data.month.even_solar_terms.each do |solar_term|
+                  p "二十四節気（中気）: #{solar_term.index} / #{solar_term.remainder}"
+                end
+              end
+              next unless date.vanished
+
+              p "【結果】滅日: #{vanished_date.matched} / #{vanished_date.calculation.remainder}"
+              p "経朔： #{vanished_date.calculation.average_remainder}"
             end
             before_gengou = gengou
           end
