@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require_relative './solar_term'
+require_relative './medieval_solar_term'
 
 # :nodoc:
 module Zakuro
   # :nodoc:
   module All
     # :nodoc:
-    module Genka
-      # Month 月
-      class Month
+    module Rekijitsu
+      # MedievalMonth 月（中世）
+      class MedievalMonth
         # @return [Regexp] コメント行
         COMMENT = /^\s*#/.freeze
 
@@ -23,9 +23,9 @@ module Zakuro
 
         # @return [Regexp] 前方抽出
         #
-        # 49.8936 529 1 25 (4)13.2072 (3)57.9886
+        # 19-6647 1573 2 3 (4)28-3037 (5)43-4873
         #
-        SUFFIX = /^.+\s+([0-9]{1,2}\.[0-9]{1,4})\s+([0-9]{3,4}\s+[0-9]{1,2}\s+[0-9]{1,2})\s+(\([0-9]{1,2}\)[0-9]{1,2}\.[0-9]{1,4}\s+)?(\([0-9]{1,2}\)[0-9]{1,2}\.[0-9]{1,4})$/.freeze
+        SUFFIX = /^.+\s+([0-9]{1,2}-[0-9]{1,4})\s+([0-9]{3,4}\s+[0-9]{1,2}\s+[0-9]{1,2})\s+(\([0-9]{1,2}\)[0-9]{1,2}-[0-9]{1,4}\s+)?(\([0-9]{1,2}\)[0-9]{1,2}-[0-9]{1,4})$/.freeze
         # rubocop:enable Layout/LineLength
 
         # @return [Integer] 西暦年
@@ -56,8 +56,8 @@ module Zakuro
           @phase_index = 0
           @is_many_days = false
           @remainder = ''
-          @even_term = SolarTerm.new
-          @odd_term = SolarTerm.new
+          @even_term = MedievalSolarTerm.new
+          @odd_term = MedievalSolarTerm.new
 
           parse(text: text)
         end
@@ -72,6 +72,48 @@ module Zakuro
           return false unless @month == 1
 
           return false if @leaped
+
+          true
+        end
+
+        #
+        # 閏10月か
+        #
+        # @return [True] 閏10月
+        # @return [True] 閏10月以外
+        #
+        def leaped_october?
+          return false unless @month == 10
+
+          return false unless @leaped
+
+          true
+        end
+
+        #
+        # 11月か
+        #
+        # @return [True] 11月
+        # @return [True] 11月以外
+        #
+        def november?
+          return false unless @month == 11
+
+          return false if @leaped
+
+          true
+        end
+
+        #
+        # 閏11月か
+        #
+        # @return [True] 閏11月
+        # @return [True] 閏11月以外
+        #
+        def leaped_november?
+          return false unless @month == 11
+
+          return false unless @leaped
 
           true
         end
@@ -124,15 +166,19 @@ module Zakuro
 
           @remainder = matched[1]
 
-          # 450 1 2
-          date = matched[2].split(/\s+/)
-          @western_year = date[0].to_i
+          extract_year(text: matched[2])
 
           solar_terms(
             terms: [
-              SolarTerm.new(text: matched[3]), SolarTerm.new(text: matched[4])
+              MedievalSolarTerm.new(text: matched[3]), MedievalSolarTerm.new(text: matched[4])
             ]
           )
+        end
+
+        def extract_year(text:)
+          # 450 1 2
+          date = text.split(/\s+/)
+          @western_year = date[0].to_i
         end
 
         def prefix(matched:)

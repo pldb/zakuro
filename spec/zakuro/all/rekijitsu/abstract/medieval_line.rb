@@ -1,28 +1,33 @@
 # frozen_string_literal: true
 
-require_relative './month'
+require_relative './medieval_month'
 
 # :nodoc:
 module Zakuro
   # :nodoc:
   module All
     # :nodoc:
-    module Genka
-      # Line 行データ
-      class Line
+    module Rekijitsu
+      # MedievalLine 行データ（中世）
+      class MedievalLine
         # @return [Integer] 行番号
         attr_reader :num
-        # @return [Month] 月
+        # @return [MedievalGengou] 元号
+        attr_reader :gengou
+        # @return [MedievalMonth] 月
         attr_reader :month
 
         #
         # 初期化
         #
         # @param [Integer] num 行番号
-        # @param [Month] month 月
+        # @param [MedievalGengou] gengou 元号
+        # @param [MedievalMonth] month 月
         #
-        def initialize(num: -1, month: Month.new)
+        def initialize(num: -1, gengou: MedievalGengou.new,
+                      month: MedievalMonth.new)
           @num = num
+          @gengou = gengou
           @month = month
         end
 

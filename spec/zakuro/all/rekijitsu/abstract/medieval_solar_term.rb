@@ -5,11 +5,11 @@ module Zakuro
   # :nodoc:
   module All
     # :nodoc:
-    module Genka
-      # SolarTerm 二十四節気
-      class SolarTerm
+    module Rekijitsu
+      # MedievalSolarTerm 二十四節気（中世）
+      class MedievalSolarTerm
         # @return [Regexp] 正規表現
-        REGEX = /\(([0-9]{1,2})\)([0-9]{1,2}\.[0-9]{1,4})/.freeze
+        REGEX = /\(([0-9]{1,2})\)([0-9]{1,2}-[0-9]{1,4})/.freeze
 
         # @return [Integer] 連番
         attr_reader :index
