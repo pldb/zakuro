@@ -55,9 +55,9 @@ module Zakuro
               f.each_line do |line|
                 text = line.strip
 
-                next if comment_line?(line: line)
+                next if comment_line?(line: text)
 
-                if first_line?(line: line)
+                if first_line?(line: text)
                   year = first_line(line: text)
                   next
                 end
