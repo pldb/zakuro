@@ -17,6 +17,11 @@ describe 'Zakuro' do
           years.each do |year|
             gengou = year.gengou
             year.dates.each do |date|
+              # TODO: 没日の計算が誤っている
+              #  現状はその月が属する二十四節気から「有没之気」を求めているが、
+              #  本来はその日がどの二十四節気に属するかを求め、その後にそれが「有没之気」かを判定する
+              #  前月または来月に属する二十四節気を適切に拾えていないパターンで誤りがある
+              #  （逆に誤って「有没之気」ではない日を没日にしているパターンもありうる）
               p '-------------'
               # TODO: refactor
               p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
