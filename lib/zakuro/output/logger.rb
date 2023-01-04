@@ -17,6 +17,7 @@ module Zakuro
         error: 3
       }.freeze
 
+      # TODO: レベルの判定が逆。errorなら全てのレベルを出し、debugならdebugのみ出すようにする
       LEVEL = LEVELS[:none]
 
       # @return [String] 呼び出し位置
