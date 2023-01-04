@@ -9,6 +9,8 @@ require_relative '../../../base/year'
 require_relative '../../internal/day'
 require_relative '../../internal/option'
 
+require_relative './single_solar_term'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -30,7 +32,7 @@ module Zakuro
               #
               # 取得する
               #
-              # @param [Array<Calculation::Base::Year>] years 範囲
+              # @param [Array<Base::Year>] years 範囲
               # @param [Western::Calendar] date 西暦日
               #
               # @return [Result::Data::SingleDay] 和暦日
@@ -39,6 +41,11 @@ module Zakuro
                 year, month = specify(years: years, date: date)
 
                 day = Day.get(month: month, date: date)
+
+                solar_term = SingleSolarTerm.get(years: years, month: month, day: day)
+
+                # TODO: make
+                p solar_term
 
                 options = Option.create(month: month, day: day)
 
