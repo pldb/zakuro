@@ -76,7 +76,32 @@ module Zakuro
               # @return [Cycle::AbstractSolarTerm] 二十四節気
               #
               def specify(months: [], index:, day:)
-                # TODO: make
+                # TODO: 下記の処理は廃止したい
+                #  理由としては常に前月の二十四節気がある訳ではない
+                #  前月が必ずある時点で関連する二十四節気を収集したい
+                solar_terms = []
+                solar_terms = solar_terms.concat(months[index - 1].solar_term[-1])
+                solar_terms = solar_terms.concat(months[index].solar_terms)
+
+                # 特定方法を詳述する
+                #
+                # 求める日の大余は、求める月（month[index]）のいずれかにある
+                #
+                # |No| 項目          | 前月                |  当月              | 次月                |
+                # |1 | 月            | month[index - 1]   |   month[index]    |   month[index + 1]  |
+                # |2 | 考えられる範囲  |                    |-------------------|                     |
+                # |3 | 二十四節気連番  | 0          1       |   2        3      |   4          5      |
+                # |4 | 二十四節気大余  | 55         10      |   25       40     |   55         5      |
+                solar_terms.each_cons(2) do |current_solar_term, next_solar_term|
+                  day = day.remainder.day
+                  current_day = current_solar_term.remainder.day
+                  next_day = next_solar_term.remainder.day
+
+                  # TODO: 大余が一巡した場合の考慮がない
+                  return current_solar_term if current_day <= day && next_day > day
+                end
+
+                solar_terms[-1]
               end
             end
           end
