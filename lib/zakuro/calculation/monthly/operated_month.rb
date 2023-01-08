@@ -33,12 +33,13 @@ module Zakuro
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [Array<SolarTerm>] solar_terms 二十四節気
         # @param [Operation::MonthHistory] history 変更履歴（月）
+        # @param [Meta] meta 付加情報
         #
         def initialize(context:, operated_solar_term:, month_label: MonthLabel.new,
                        first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new,
-                       history: Operation::MonthHistory.new)
+                       history: Operation::MonthHistory.new, meta: Meta.new)
           super(context: context, month_label: month_label, first_day: first_day,
-                solar_terms: solar_terms, gengou: gengou)
+                solar_terms: solar_terms, gengou: gengou, meta: meta)
           @history = history
           @operated_solar_term = operated_solar_term
           @moved = false

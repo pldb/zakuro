@@ -2,6 +2,7 @@
 
 require_relative '../base/gengou'
 require_relative './first_day'
+require_relative './meta'
 require_relative './month_label'
 
 # :nodoc:
@@ -20,10 +21,14 @@ module Zakuro
         attr_reader :month_label
         # @return [FirstDay] 月初日（朔日）
         attr_reader :first_day
-        # @return [Array<SolarTerm>] 二十四節気
+        # @return [Array<AbstractSolarTerm>] 二十四節気
         attr_reader :solar_terms
         # @return [Base::Gengou] 元号
         attr_reader :gengou
+        # @return [Meta] 付加情報
+        attr_reader :meta
+
+        # rubocop:disable Metrics/ParameterLists
 
         #
         # 初期化
@@ -31,17 +36,22 @@ module Zakuro
         # @param [Context::Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
-        # @param [Array<SolarTerm>] solar_terms 二十四節気
+        # @param [Array<AbstractSolarTerm>] solar_terms 二十四節気
         # @param [Base::Gengou] gengou 元号
+        # @param [Meta] meta 付加情報
         #
         def initialize(context: Context::Context.new, month_label: MonthLabel.new,
-                       first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new)
+                       first_day: FirstDay.new, solar_terms: [], gengou: Base::Gengou.new,
+                       meta: Meta.new)
           @context = context
           @month_label = month_label
           @first_day = first_day
           @solar_terms = solar_terms
           @gengou = gengou
+          @meta = meta
         end
+
+        # rubocop:enable Metrics/ParameterLists
 
         #
         # 不正か
