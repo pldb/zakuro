@@ -4,6 +4,8 @@ require_relative '../../../calculation/base/year'
 
 require_relative '../../../era/western/calendar'
 
+require_relative './all_solar_term'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -27,9 +29,14 @@ module Zakuro
             #
             def get(context:, annual_ranges:)
               categorize(context: context, annual_ranges: annual_ranges)
-              # TODO: Zakuro::Calculation::Monthly::Meta を生成する
+
+              # 冬至基準で二十四節気を更新する
+              AllSolarTerm.update_months(annual_ranges: annual_ranges)
+
               rearranged_years(context: context, annual_ranges: annual_ranges)
-              # TODO: Zakuro::Calculation::Monthly::Meta を生成する
+
+              # 年データ（正月基準）で二十四節気を更新する
+              AllSolarTerm.update_years(annual_ranges: annual_ranges)
             end
 
             private
