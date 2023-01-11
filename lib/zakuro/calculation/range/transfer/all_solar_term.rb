@@ -20,10 +20,10 @@ module Zakuro
             #
             # 月内全ての二十四節気を更新する
             #
-            # @param [Array<Array<Month>>] annual_ranges 年データ（冬至基準）
+            # @param [Array<Array<Month>>] ranges 年データ（冬至基準）
             #
-            def update_months(annual_ranges:)
-              annual_ranges.each do |months|
+            def update_ranges(ranges:)
+              ranges.each do |months|
                 collect(months: months)
               end
             end
@@ -31,10 +31,10 @@ module Zakuro
             #
             # 月内全ての二十四節気を更新する
             #
-            # @param [Array<Base::Year>] annual_ranges 年データ（元旦基準）
+            # @param [Array<Base::Year>] years 年データ（元旦基準）
             #
-            def update_years(annual_ranges:)
-              annual_ranges.each do |year|
+            def update_years(years:)
+              years.each do |year|
                 collect(months: year.months)
               end
             end
@@ -60,7 +60,7 @@ module Zakuro
                   month_label: month.month_label, first_day: month.first_day,
                   solar_terms: month.solar_terms, phase_index: month.phase_index,
                   is_last_year: month.is_last_year,
-                  meta: Meta.new(all_solar_terms: all_solar_terms)
+                  meta: Monthly::Meta.new(all_solar_terms: all_solar_terms)
                 )
               end
             end
