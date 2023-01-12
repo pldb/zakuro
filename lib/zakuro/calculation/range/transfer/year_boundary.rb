@@ -23,7 +23,7 @@ module Zakuro
             # 年間範囲内の年データの開始月を変更する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Array<Month>>] annual_ranges 年データ（冬至基準）
+            # @param [Array<Array<Monthly::Month>>] annual_ranges 年データ（冬至基準）
             #
             # @return [Array<Base::Year>] 年データ（元旦基準）
             #
@@ -31,12 +31,14 @@ module Zakuro
               categorize(context: context, annual_ranges: annual_ranges)
 
               # 冬至基準で二十四節気を更新する
-              AllSolarTerm.update_months(annual_ranges: annual_ranges)
+              AllSolarTerm.update_ranges(ranges: annual_ranges)
 
-              rearranged_years(context: context, annual_ranges: annual_ranges)
+              years = rearranged_years(context: context, annual_ranges: annual_ranges)
 
               # 年データ（正月基準）で二十四節気を更新する
-              AllSolarTerm.update_years(annual_ranges: annual_ranges)
+              AllSolarTerm.update_years(years: years)
+
+              years
             end
 
             private
@@ -45,7 +47,7 @@ module Zakuro
             # 年間範囲内の年データの開始月を変更する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Array<Month>>] annual_ranges 年データ（冬至基準）
+            # @param [Array<Array<Monthly::Month>>] annual_ranges 年データ（冬至基準）
             #
             # @return [Array<Base::Year>] 年データ（元旦基準）
             #
@@ -66,7 +68,7 @@ module Zakuro
             # 年間範囲を昨年/今年で分類する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Array<Month>>] annual_range 1年データ
+            # @param [Array<Array<Monthly::Month>>] annual_range 1年データ
             #
             def categorize(context:, annual_ranges:)
               annual_ranges.each do |annual_range|
@@ -78,7 +80,7 @@ module Zakuro
             # 各月を昨年/今年で分類する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Month>] annual_range 1年データ
+            # @param [Array<Monthly::Month>] annual_range 1年データ
             #
             def categorize_year(context:, annual_range:)
               is_last_year = true
@@ -98,7 +100,7 @@ module Zakuro
             # 年データの開始月を変更する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Array<Month>>] annual_ranges 年データ（冬至基準）
+            # @param [Array<Array<Monthly::Month>>] annual_ranges 年データ（冬至基準）
             # @param [Integer] index 対象年の要素番号
             #
             # @return [Base::Year] 年データ（元旦基準）
@@ -117,7 +119,7 @@ module Zakuro
             # 当年データを生成する
             #
             # @param [Context::Context] context 暦コンテキスト
-            # @param [Array<Month>] annual_range 1年データ
+            # @param [Array<Monthly::Month>] annual_range 1年データ
             #
             # @return [Base::Year] 当年月ありの対象年
             #
@@ -135,7 +137,7 @@ module Zakuro
             #
             # 昨年データを生成する
             #
-            # @param [Array<Month>] annual_range 1年データ
+            # @param [Array<Monthly::Month>] annual_range 1年データ
             # @param [Base::Year] year 対象年
             #
             # @return [Base::Year] 昨年月ありの対象年
