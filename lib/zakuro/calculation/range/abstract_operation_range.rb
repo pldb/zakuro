@@ -179,7 +179,7 @@ module Zakuro
               context: context,
               month_label: month.month_label, first_day: month.first_day,
               solar_terms: month.solar_terms, history: history, gengou: month.gengou,
-              operated_solar_term: operated_solar_term
+              operated_solar_term: operated_solar_term, meta: month.meta
             )
 
             operated_month.rewrite unless history.invalid?

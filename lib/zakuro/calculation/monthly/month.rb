@@ -163,7 +163,7 @@ module Zakuro
         #
         # 中気を返す
         #
-        # @return [SolarTerm] 中気
+        # @return [Cycle::AbstractSolarTerm] 中気
         #
         def even_term
           solar_terms.each do |term|
@@ -176,7 +176,7 @@ module Zakuro
         #
         # 節気を返す
         #
-        # @return [SolarTerm] 節気
+        # @return [Cycle::AbstractSolarTerm] 節気
         #
         def odd_term
           solar_terms.each do |term|
@@ -258,6 +258,38 @@ module Zakuro
           return false unless linear_gengou.year == date.year
 
           same_by_japan_date?(date: date)
+        end
+
+        #
+        # 大余に対応する二十四節気
+        #
+        # @param [Integer] day 大余
+        #
+        # @return [Cycle::AbstractSolarTerm] 二十四節気
+        #
+        def solar_term_by_day(day:)
+          # TODO: refactor
+          target = context.resolver.remainder.new(day: day, minute: 0, second: 0)
+
+          meta.all_solar_terms.each_cons(2) do |current_solar_term, next_solar_term|
+            in_range = Tools::RemainderComparer.in_range?(
+              target: target, start: current_solar_term.remainder, last: next_solar_term.remainder
+            )
+            return current_solar_term if in_range
+          end
+
+          last_solar_term = meta.all_solar_terms[-1]
+
+          empty_solar_term = context.resolver.solar_term.new
+
+          return empty_solar_term unless last_solar_term
+          # NOTE: 大余20を上限として範囲チェックする
+          if Tools::RemainderComparer.in_limit?(target: target, start: last_solar_term.remainder,
+                                                limit: 20)
+            return last_solar_term
+          end
+
+          empty_solar_term
         end
 
         private

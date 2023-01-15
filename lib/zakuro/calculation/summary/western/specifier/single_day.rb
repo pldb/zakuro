@@ -9,8 +9,6 @@ require_relative '../../../base/year'
 require_relative '../../internal/day'
 require_relative '../../internal/option'
 
-require_relative './single_solar_term'
-
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -42,9 +40,9 @@ module Zakuro
 
                 day = Day.get(month: month, date: date)
 
-                solar_term = SingleSolarTerm.get(years: years, month: month, day: day)
-
                 # TODO: make
+                solar_term = month.solar_term_by_day(day: day.remainder.day)
+
                 p solar_term
 
                 options = Option.create(month: month, day: day)

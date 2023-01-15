@@ -46,7 +46,8 @@ module Zakuro
                     average_remainder: month.first_day.average_remainder,
                     western_date: gengou.start_date.clone
                   ),
-                  solar_terms: month.solar_terms, gengou: gengou
+                  solar_terms: month.solar_terms, gengou: gengou,
+                  meta: month.meta
                 )
               end
             end

@@ -164,6 +164,22 @@ module Zakuro
         end
 
         #
+        # （非破壊的に）大余のみを加算する
+        #
+        # @param [Integer] term 他の大余
+        #
+        # @return [AbstractRemainder] 加算結果
+        #
+        def add_day(term)
+          sum_day = day + term
+          sum_day, sum_minute, sum_second = carry(
+            sum_day, minute, second
+          )
+
+          clone.set(day: sum_day, minute: sum_minute, second: sum_second)
+        end
+
+        #
         # （破壊的に）加算する
         #
         # @param [AbstractRemainder] other 他の大余小余
