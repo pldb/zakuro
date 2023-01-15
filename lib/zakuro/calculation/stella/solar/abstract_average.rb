@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../tools/remainder_comparer'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -42,36 +44,6 @@ module Zakuro
           annual_range
         end
 
-        # :reek:TooManyStatements { max_statements: 7 }
-
-        class << self
-          #
-          # 月内（当月朔日から当月末日（来月朔日の前日）の間）に二十四節気があるか
-          # @note 大余60で一巡するため 以下2パターンがある
-          #   * current_month <= next_month : (二十四節気) >= current_month && (二十四節気) < next_month
-          #   * current_month > next_month  : (二十四節気) >= current_month || (二十四節気) < next_month
-          #
-          # @param [Cycle::AbstractRemainder] solar_term 二十四節気
-          # @param [Cycle::AbstractRemainder] current_month 月初
-          # @param [Cycle::AbstractRemainder] next_month 月末
-          #
-          # @return [True] 対象の二十四節気がある
-          # @return [False] 対象の二十四節気がない
-          #
-          def in_solar_term?(solar_term:, current_month:, next_month:)
-            # 大余で比較する
-            target_time = solar_term.day
-            current_month_time = current_month.day
-            next_month_time = next_month.day
-            current_month_over = (target_time >= current_month_time)
-            next_month_under = (target_time < next_month_time)
-
-            return current_month_over && next_month_under if current_month_time <= next_month_time
-
-            current_month_over || next_month_under
-          end
-        end
-
         private
 
         # :reek:TooManyStatements { max_statements: 8 }
@@ -87,10 +59,10 @@ module Zakuro
           # * 最大試行回数：4回（設定なし => 設定あり => 設定あり => 設定なし）
           # * 閏月は1回しか設定しない
           # * 最大2回設定する（中気・節気）
-          (0..3).each do |_index|
-            in_range = self.class.in_solar_term?(
-              solar_term: solar_term.remainder, current_month: current_month.remainder,
-              next_month: next_month.remainder
+          4.times.each do |_index|
+            in_range = Tools::RemainderComparer.in_range?(
+              target: solar_term.remainder, start: current_month.remainder,
+              last: next_month.remainder
             )
 
             # 範囲外
