@@ -41,6 +41,11 @@ module Zakuro
             )
           end
 
+          # その月の全ての二十四節気を収集する
+          annual_range.each_with_index do |month, index|
+            annual_range[index] = collect_all_solar_term(month: month)
+          end
+
           annual_range
         end
 
@@ -87,6 +92,52 @@ module Zakuro
         #
         def next_solar_term
           solar_term.next_term!
+        end
+
+        #
+        # 全ての二十四節気を収集する
+        #
+        # @param [Month] month 月情報
+        #
+        # @return [Month] 月情報
+        #
+        def collect_all_solar_term(month:)
+          all_solar_terms = all_solar_terms(
+            remainder: month.first_day.remainder, solar_terms: month.solar_terms
+          )
+
+          Monthly::InitializedMonth.new(
+            context: month.context,
+            month_label: month.month_label, first_day: month.first_day,
+            solar_terms: month.solar_terms, phase_index: month.phase_index,
+            is_last_year: month.is_last_year,
+            meta: Monthly::Meta.new(all_solar_terms: all_solar_terms)
+          )
+        end
+
+        #
+        # 全ての二十四節気を取得する
+        #
+        # @param [Cycle::AbstractRemainder] remainder 月初日の大余小余
+        # @param [Array<Cycle::AbstractSolarTerm>] solar_terms その月の二十四節気
+        #
+        # @return [Array<Cycle::AbstractSolarTerm>] その月の全ての二十四節気
+        #
+        def all_solar_terms(remainder:, solar_terms: [])
+          all_solar_terms = solar_terms.clone.each(&:clone)
+
+          return all_solar_terms if all_solar_terms.empty?
+
+          first = all_solar_terms[0].clone
+
+          # 最初の二十四節気が月初日と同日であれば何もしない
+          return all_solar_terms if first.remainder.day == remainder.day
+
+          first.prev_term!
+
+          all_solar_terms.unshift(first)
+
+          all_solar_terms
         end
       end
     end
