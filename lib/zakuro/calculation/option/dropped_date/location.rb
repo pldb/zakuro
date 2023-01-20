@@ -24,8 +24,8 @@ module Zakuro
           attr_reader :limit
           # @return [Integer] 年
           attr_reader :year
-          # @return [Array<Cycle::AbstractSolarTerm>] 二十四節気
-          attr_reader :solar_terms
+          # @return [Cycle::AbstractSolarTerm] 二十四節気
+          attr_reader :solar_term
           # @return [Class] 没余クラス
           attr_reader :remainder_class
 
@@ -33,16 +33,16 @@ module Zakuro
           # 初期化
           #
           # @param [Context::Context] context 暦コンテキスト
-          # @param [Array<Cycle::AbstractSolarTerm>] solar_terms 二十四節気
+          # @param [Cycle::AbstractSolarTerm] solar_term 二十四節気
           #
-          def initialize(context:, solar_terms: [])
+          def initialize(context:, solar_term:)
             parameter = context.resolver.dropped_date_parameter.new
             @context = context
             @valid = parameter.valid
             @limit = parameter.limit
             @year = parameter.year
             @remainder_class = parameter.remainder_class
-            @solar_terms = solar_terms
+            @solar_term = solar_term
           end
 
           #
@@ -83,24 +83,6 @@ module Zakuro
             day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
 
             day.add(result)
-          end
-
-          #
-          # 該当の二十四節気を取得する
-          #
-          # @return [Cycle::AbstractSolarTerm] 二十四節気
-          #
-          def solar_term
-            solar_terms.each do |solar_term|
-              remainder = solar_term.remainder.clone
-              minute_later = remainder.class.new(
-                day: 0, minute: remainder.minute, second: remainder.second
-              )
-
-              return solar_term if minute_later >= limit
-            end
-
-            context.resolver.solar_term.new
           end
 
           private

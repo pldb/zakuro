@@ -40,11 +40,6 @@ module Zakuro
 
                 day = Day.get(month: month, date: date)
 
-                # TODO: make
-                solar_term = month.solar_term_by_day(day: day.remainder.day)
-
-                p solar_term
-
                 options = Option.create(month: month, day: day)
 
                 Output::Response::SingleDay.create(

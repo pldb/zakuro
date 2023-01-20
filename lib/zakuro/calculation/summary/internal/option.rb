@@ -34,10 +34,11 @@ module Zakuro
             context = month.context
 
             if context.option.dropped_date?
+              solar_term = month.solar_term_by_day(day: day.remainder.day)
+
               remainder = day.remainder
-              solar_terms = month.solar_terms
               option = dropped_date(
-                context: context, remainder: remainder, solar_terms: solar_terms
+                context: context, remainder: remainder, solar_term: solar_term
               )
               options[Context::Option::DROPPED_DATE_KEY] = option
             end
@@ -61,17 +62,17 @@ module Zakuro
           #
           # @param [Context::Context] context 暦コンテキスト
           # @param [Cycle::AbstractRemainder] remainder 当日和暦日
-          # @param [Array<Cycle::AbstractSolarTerm>] solar_terms 二十四節気
+          # @param [Cycle::AbstractSolarTerm] solar_terms 二十四節気
           #
           # @return [Result::Data::Option::DroppedDate::Option] 没日
           #
-          def dropped_date(context:, remainder:, solar_terms:)
+          def dropped_date(context:, remainder:, solar_term:)
             option = Result::Data::Option::DroppedDate::Option.new
 
             return option if remainder.invalid?
 
             location = Calculation::Option::DroppedDate::Location.new(
-              context: context, solar_terms: solar_terms
+              context: context, solar_term: solar_term
             )
 
             return option unless location.exist?
