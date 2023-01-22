@@ -63,15 +63,18 @@ describe 'Zakuro' do
             year.dates.each do |date|
               next unless date.dropped
 
-              p '-------------'
-              # TODO: refactor
-              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-
               date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
                 date: date, current_gengou: gengou, before_gengou: before_gengou
               )
 
+              p '-------------'
+              # TODO: refactor
+              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
               p date_text
+
+              # next unless METSUNICHI_RAILED_PATTERNS.include?(date_text)
+
+              # p '-------------'
 
               actual = Zakuro::Merchant.new(
                 condition: {
@@ -81,6 +84,9 @@ describe 'Zakuro' do
               ).commit
               # TODO: expect
               options = actual.data.options
+              # p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+              # p date_text
+              p actual.data.day.western_date.format
               dropped_date = options['dropped_date']
 
               p "【結果】没日: #{dropped_date.matched} / #{dropped_date.calculation.remainder}"
