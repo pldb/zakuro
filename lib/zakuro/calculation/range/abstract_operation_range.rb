@@ -184,43 +184,7 @@ module Zakuro
 
             operated_month.rewrite unless history.invalid?
 
-            update_meta(month: operated_month)
-          end
-
-          #
-          # メタ情報を書き換える
-          #
-          # @param [Monthly::Month] month 月（運用結果）
-          #
-          # @return [Monthly::Month] 月（運用結果）
-          #
-          def update_meta(month:)
-            # TODO: 本当に変更されているか確認する
-            meta = update_all_solar_terms(
-              remainder: month.first_day.remainder, solar_terms: month.solar_terms
-            )
-
-            Monthly::OperatedMonth.new(
-              context: month.context,
-              month_label: month.month_label, first_day: month.first_day,
-              solar_terms: month.solar_terms, history: month.history, gengou: month.gengou,
-              operated_solar_term: month.operated_solar_term, meta: meta
-            )
-          end
-
-          #
-          # 月内の全ての二十四節気を書き換える
-          #
-          # @param [Cycle::AbstractRemainder] remainder 月初日の大余小余
-          # @param [Array<Cycle::AbstractSolarTerm>] solar_terms 二十四節気
-          #
-          # @return [Monthly::Meta] メタ情報
-          #
-          def update_all_solar_terms(remainder:, solar_terms: [])
-            all_solar_terms = Calculation::Solar::AllSolarTerm.get(
-              remainder: remainder, solar_terms: solar_terms
-            )
-            Monthly::Meta.new(all_solar_terms: all_solar_terms)
+            operated_month
           end
         end
       end

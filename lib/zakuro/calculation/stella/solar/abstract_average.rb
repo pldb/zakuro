@@ -2,8 +2,6 @@
 
 require_relative '../../../tools/remainder_comparer'
 
-require_relative './all_solar_term'
-
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -44,9 +42,7 @@ module Zakuro
           end
 
           # その月の全ての二十四節気を収集する
-          annual_range.each_with_index do |month, index|
-            annual_range[index] = collect_all_solar_term(month: month)
-          end
+          annual_range.each(&:update_meta)
 
           annual_range
         end
@@ -94,27 +90,6 @@ module Zakuro
         #
         def next_solar_term
           solar_term.next_term!
-        end
-
-        #
-        # 全ての二十四節気を収集する
-        #
-        # @param [Month] month 月情報
-        #
-        # @return [Month] 月情報
-        #
-        def collect_all_solar_term(month:)
-          all_solar_terms = AllSolarTerm.get(
-            remainder: month.first_day.remainder, solar_terms: month.solar_terms
-          )
-
-          Monthly::InitializedMonth.new(
-            context: month.context,
-            month_label: month.month_label, first_day: month.first_day,
-            solar_terms: month.solar_terms, phase_index: month.phase_index,
-            is_last_year: month.is_last_year,
-            meta: Monthly::Meta.new(all_solar_terms: all_solar_terms)
-          )
         end
       end
     end

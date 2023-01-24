@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../tools/remainder_comparer'
-
 # :nodoc:
 module Zakuro
   # :nodoc:
   module Calculation
     # :nodoc:
-    module Solar
+    module Monthly
       #
       # AllSolarTerm 月内の全ての二十四節気
       #

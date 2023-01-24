@@ -4,6 +4,7 @@ require_relative '../base/gengou'
 require_relative './first_day'
 require_relative './meta'
 require_relative './month_label'
+require_relative './all_solar_term'
 
 # :nodoc:
 module Zakuro
@@ -290,6 +291,13 @@ module Zakuro
           end
 
           empty_solar_term
+        end
+
+        def update_meta
+          all_solar_terms = AllSolarTerm.get(
+            remainder: first_day.remainder, solar_terms: solar_terms
+          )
+          @meta = Meta.new(all_solar_terms: all_solar_terms)
         end
 
         private
