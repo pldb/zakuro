@@ -282,6 +282,8 @@ module Zakuro
               attr_reader :japan
               # @return [String] 西暦日
               attr_reader :western
+              # @return [String] 運用差分
+              attr_reader :operated
 
               #
               # 初期化
@@ -291,6 +293,7 @@ module Zakuro
               def initialize(hash:)
                 @japan = hash['japan']
                 @western = hash['western']
+                @operated = hash['operated']
               end
 
               #
@@ -304,6 +307,8 @@ module Zakuro
                 failed.push("invalid japan date. #{japan}") unless japan?
 
                 failed.push("invalid western date. #{western}") unless western?
+
+                failed.push("invalid operated. #{operated}") unless operated?
 
                 failed
               end
@@ -326,6 +331,16 @@ module Zakuro
               #
               def western?
                 Western::Calendar.valid_date_text(text: western)
+              end
+
+              #
+              # 運用差分を検証する
+              #
+              # @return [True] 正しい
+              # @return [False] 正しくない
+              #
+              def operated?
+                operated.is_a?(Integer)
               end
             end
           end

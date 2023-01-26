@@ -205,6 +205,8 @@ module Zakuro
               attr_reader :japan
               # @return [Western::Calendar] 西暦日
               attr_reader :western
+              # @return [Integer] 運用差分
+              attr_reader :operated
 
               #
               # 初期化
@@ -214,6 +216,7 @@ module Zakuro
               def initialize(hash:)
                 @japan = hash['japan']
                 @western = hash['western']
+                @operated = hash['operated']
               end
 
               #
@@ -224,9 +227,10 @@ module Zakuro
               def create
                 japan_date = Japan::Calendar.parse(text: japan)
                 western_date = Western::Calendar.parse(text: western)
+                operated_days = operated.to_i
 
                 Japan::Gengou::Resource::Both::Date.new(
-                  japan: japan_date, western: western_date
+                  japan: japan_date, western: western_date, operated: operated_days
                 )
               end
             end

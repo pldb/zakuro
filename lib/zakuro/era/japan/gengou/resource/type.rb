@@ -278,10 +278,13 @@ module Zakuro
             attr_reader :japan
             # @return [Western::Calendar] 西暦日
             attr_reader :western
+            # @return [Integer] 運用差分
+            attr_reader :operated
 
-            def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
+            def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new, operated: 0)
               @japan = japan
               @western = western
+              @operated = operated
             end
 
             #
