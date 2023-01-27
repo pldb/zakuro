@@ -99,15 +99,14 @@ module Zakuro
           #
           # 次の元号の開始日から、元号の終了日に変換する
           #
-          # @param [String] next_start_date 次回開始日
+          # @param [Western::Calendar] next_start_date 次回開始日
           #
           # @raise [ArgumentError] 引数エラー
           #
-          def convert_next_start_date_to_last_date(next_start_date: '')
-            raise ArgumentError, 'empty string cannot convert' if next_start_date.empty?
+          def convert_next_start_date_to_last_date(next_start_date: Western::Calendar.new)
+            raise ArgumentError, 'invalid value. cannot convert' if next_start_date.invalid?
 
-            start_date = Western::Calendar.parse(text: next_start_date)
-            @last_date = start_date - 1
+            @last_date = next_start_date.clone - 1
 
             nil
           end
