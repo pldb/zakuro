@@ -23,6 +23,9 @@ module Zakuro
         # @return [Aligner] 整列結果
         SUMMARY = Aligner.new(resources: Resource::LIST)
 
+        # @return [Aligner] 整列結果（運用値）
+        OPERATED_SUMMARY = Aligner.new(resources: Resource::OPERATED_LIST)
+
         class << self
           #
           # 指定した範囲内の元号を取得する
@@ -30,11 +33,17 @@ module Zakuro
           # @param [Integer] line 行
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] last_date 終了日
+          # @param [True, False] operated 運用値設定
           #
           # @return [Array<LinearGengou>] 元号
           #
           def get(line: FIRST_LINE,
-                  start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+                  start_date: Western::Calendar.new, last_date: Western::Calendar.new,
+                  operated: false)
+
+            if operated
+              return OPERATED_SUMMARY.get(line: line, start_date: start_date, last_date: last_date)
+            end
 
             SUMMARY.get(line: line, start_date: start_date, last_date: last_date)
           end
@@ -44,10 +53,13 @@ module Zakuro
           #
           # @param [Integer] line 行
           # @param [String] name 元号名
+          # @param [True, False] operated 運用値設定
           #
           # @return [Array<LinearGengou>] 元号
           #
-          def get_by_name(line: FIRST_LINE, name:)
+          def get_by_name(line: FIRST_LINE, name:, operated: false)
+            return OPERATED_SUMMARY.get_by_name(line: line, name: name) if operated
+
             SUMMARY.get_by_name(line: line, name: name)
           end
         end

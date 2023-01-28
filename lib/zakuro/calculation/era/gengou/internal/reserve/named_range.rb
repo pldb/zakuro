@@ -23,10 +23,15 @@ module Zakuro
           #
           # @param [String] start_name 開始元号名
           # @param [String] last_name 終了元号名
+          # @param [True, False] operated 運用値設定
           #
-          def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME)
-            @first_list = NamedList.new(first: true, start_name: start_name, last_name: last_name)
-            @second_list = NamedList.new(first: false, start_name: start_name, last_name: last_name)
+          def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME, operated: false)
+            @first_list = NamedList.new(
+              first: true, start_name: start_name, last_name: last_name, operated: operated
+            )
+            @second_list = NamedList.new(
+              first: false, start_name: start_name, last_name: last_name, operated: operated
+            )
 
             start_date = western_start_date
             last_date = western_last_date

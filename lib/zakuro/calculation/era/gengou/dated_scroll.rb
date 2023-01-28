@@ -19,9 +19,13 @@ module Zakuro
         #
         # @param [Western::Calendar] start_date 西暦開始日（最大範囲）
         # @param [Western::Calendar] last_date 西暦終了日（最大範囲）
+        # @param [True, False] operated 運用値設定
         #
-        def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-          range = Reserve::DatedRange.new(start_date: start_date, last_date: last_date)
+        def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
+                       operated: false)
+          range = Reserve::DatedRange.new(
+            start_date: start_date, last_date: last_date, operated: operated
+          )
           super(range: range)
         end
       end

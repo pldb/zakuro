@@ -33,6 +33,9 @@ module Zakuro
           attr_reader :start_date
           # @return [Western::Calendar] 終了日
           attr_reader :last_date
+          # @return [True] 運用値あり
+          # @return [True] 運用値なし
+          attr_reader :operated
           # @return [Array<Japan::Alignment::LinearGengou>] 予約元号一覧
           attr_reader :list
 
@@ -42,12 +45,14 @@ module Zakuro
           # @param [Integer] index n行目元号
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] last_date 終了日
+          # @param [True, False] operated 運用値設定
           #
           def initialize(index:, start_date: Western::Calendar.new,
-                         last_date: Western::Calendar)
+                         last_date: Western::Calendar, operated: false)
             @index = index
             @start_date = start_date.clone
             @last_date = last_date.clone
+            @operated = operated
             @list = []
 
             update
@@ -210,7 +215,9 @@ module Zakuro
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
           def line(start_date:, last_date:)
-            Japan::Gengou.line(line: index, start_date: start_date, last_date: last_date)
+            Japan::Gengou.line(
+              line: index, start_date: start_date, last_date: last_date, operated: operated
+            )
           end
 
           #

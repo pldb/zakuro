@@ -24,7 +24,9 @@ module Zakuro
         # @param [String] last_name 終了元号名
         #
         def initialize(context:, start_name: INVALID_NAME, last_name: INVALID_NAME)
-          scroll = Gengou::NamedScroll.new(start_name: start_name, last_name: last_name)
+          scroll = Gengou::NamedScroll.new(
+            start_name: start_name, last_name: last_name, operated: false
+          )
           range = scroll.range
 
           super(
