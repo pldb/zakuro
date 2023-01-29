@@ -36,7 +36,7 @@ module Zakuro
             start_date = western_start_date
             last_date = western_last_date
 
-            super(start_date: start_date, last_date: last_date)
+            super(start_date: start_date, last_date: last_date, operated: operated)
           end
 
           #

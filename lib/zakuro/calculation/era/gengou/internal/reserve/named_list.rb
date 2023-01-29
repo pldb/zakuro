@@ -30,6 +30,7 @@ module Zakuro
             @index = parse_index(first: first)
             @start_date = Western::Calendar.new
             @last_date = Western::Calendar.new
+            @operated = operated
 
             locate(start_name: start_name, last_name: last_name)
             super(index: index, start_date: start_date, last_date: last_date, operated: operated)
