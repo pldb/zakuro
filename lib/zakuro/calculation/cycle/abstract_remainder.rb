@@ -455,6 +455,16 @@ module Zakuro
         end
 
         #
+        # 大余のみか
+        #
+        # @return [True] 大余のみ
+        # @return [False] 小余、秒あり
+        #
+        def only_day?
+          minute.zero? && second.zero?
+        end
+
+        #
         # 特定の文字フォーマットにして出力する
         #
         # @param [String] form フォーマット（大余、小余、秒それぞれを%dで指定する）

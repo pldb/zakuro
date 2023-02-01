@@ -12,13 +12,8 @@ METSUNICHI_RAILED_PATTERNS = %w[
   弘仁1年11月18日
   弘仁14年10月30日
   貞観4年9月25日
-  貞観12年7月18日
-  天喜5年3月11日
   治暦4年11月5日
-  寛元1年11月4日
   康永3年1月6日
-  永享2年7月26日
-  元和3年3月19日
 ].freeze
 
 # rubocop:disable Metrics/BlockLength
@@ -39,9 +34,6 @@ describe 'Zakuro' do
               )
 
               # TODO: refactor
-              # p '-------------'
-              # p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-              # p date_text
 
               next unless METSUNICHI_RAILED_PATTERNS.include?(date_text)
 

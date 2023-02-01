@@ -38,7 +38,17 @@ module Zakuro
         # @return [False] 対象日がない
         #
         def in_range?(target:, start:, last:)
-          in_range_day?(target: target.day, start: start.day, last: last.day)
+          # 『日本暦日便覧』では下記5日を没日ありとしている
+          #  これは二十四節気の小余と秒が0の場合に限って、範囲を翌日にずらすことを指している
+          #
+          # * 貞観12年7月18日
+          # * 天喜5年3月11日
+          # * 寛元1年11月4日
+          # * 永享2年7月26日
+          # * 元和3年3月19日
+          #
+          last_day = last.only_day? ? last.day + 1 : last.day
+          in_range_day?(target: target.day, start: start.day, last: last_day)
         end
 
         #
