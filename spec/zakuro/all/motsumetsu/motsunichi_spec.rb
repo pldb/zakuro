@@ -8,7 +8,7 @@ require_relative './testdata/parser'
 
 # TODO: 現状の没日の計算誤りを列記する
 METSUNICHI_RAILED_PATTERNS = %w[
-  康永3年1月5日
+  康永3年1月6日
 ].freeze
 
 # rubocop:disable Metrics/BlockLength

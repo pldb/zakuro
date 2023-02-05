@@ -28,9 +28,9 @@ module Zakuro
             # @return [String] 元号セット名
             attr_reader :name
             # @return [Hash<String, String>] 終了年
-            attr_reader :both_last_year
+            attr_reader :last_year
             # @return [Hash<String, String>] 終了日
-            attr_reader :both_last_date
+            attr_reader :last_date
             # @return [Array<Hash<String, String>>] 元号情報
             attr_reader :list
 
@@ -42,8 +42,8 @@ module Zakuro
             def initialize(hash:)
               @id = hash['id']
               @name = hash['name']
-              @both_last_year = hash['last_year']
-              @both_last_date = hash['last_date']
+              @last_year = hash['last_year']
+              @last_date = hash['last_date']
               @list = hash['list']
             end
 
@@ -58,9 +58,9 @@ module Zakuro
 
               failed.push("invalid name. #{name}") unless name?
 
-              failed |= validate_both_last_year
+              failed |= validate_last_year
 
-              failed |= validate_both_last_date
+              failed |= validate_last_date
 
               failed |= validate_list
               failed
@@ -95,8 +95,8 @@ module Zakuro
             #
             # @return [Array<String>] 不正メッセージ
             #
-            def validate_both_last_year
-              Both::Year.new(hash: both_last_year).validate
+            def validate_last_year
+              Both::Year.new(hash: last_year).validate
             end
 
             #
@@ -104,8 +104,8 @@ module Zakuro
             #
             # @return [Array<String>] 不正メッセージ
             #
-            def validate_both_last_date
-              Both::Date.new(hash: both_last_date).validate
+            def validate_last_date
+              SwitchDate.new(hash: last_date).validate
             end
 
             #
@@ -145,9 +145,9 @@ module Zakuro
             # @return [String] 元号名
             attr_reader :name
             # @return [Hash<String, String>] 開始年
-            attr_reader :both_start_year
+            attr_reader :start_year
             # @return [Hash<String, String>] 開始日
-            attr_reader :both_start_date
+            attr_reader :start_date
 
             #
             # 初期化
@@ -158,8 +158,8 @@ module Zakuro
             def initialize(hash:, index:)
               @index = index
               @name = hash['name']
-              @both_start_year = hash['start_year']
-              @both_start_date = hash['start_date']
+              @start_year = hash['start_year']
+              @start_date = hash['start_date']
             end
 
             #
@@ -173,9 +173,9 @@ module Zakuro
 
               failed.push(prefix + "invalid name. #{name}") unless name?
 
-              failed |= validate_both_start_year
+              failed |= validate_start_year
 
-              failed |= validate_both_start_date
+              failed |= validate_start_date
 
               failed
             end
@@ -197,8 +197,8 @@ module Zakuro
             #
             # @return [Array<String>] 不正メッセージ
             #
-            def validate_both_start_year
-              Both::Year.new(hash: both_start_year).validate
+            def validate_start_year
+              Both::Year.new(hash: start_year).validate
             end
 
             #
@@ -206,8 +206,63 @@ module Zakuro
             #
             # @return [Array<String>] 不正メッセージ
             #
-            def validate_both_start_date
-              Both::Date.new(hash: both_start_date).validate
+            def validate_start_date
+              SwitchDate.new(hash: start_date).validate
+            end
+          end
+
+          #
+          # SwitchDate 切替日（運用/計算）
+          #
+          class SwitchDate
+            # @return [Hash<String, Strin>] 計算値
+            attr_reader :calculation
+            # @return [Hash<String, Strin>] 運用値
+            attr_reader :operation
+
+            #
+            # 初期化
+            #
+            # @param [Hash<String, Strin>] hash 切替日（運用/計算）
+            #
+            def initialize(hash:)
+              @calculation = hash['calculation']
+              @operation = hash['operation']
+            end
+
+            #
+            # 検証する
+            #
+            # @return [Array<String>] 不正メッセージ
+            #
+            def validate
+              failed = []
+
+              failed |= validate_calculation_date
+
+              failed |= validate_operation_date
+
+              failed
+            end
+
+            private
+
+            #
+            # 日（計算値）を検証する
+            #
+            # @return [Array<String>] 不正メッセージ
+            #
+            def validate_calculation_date
+              Both::Date.new(hash: calculation, optional: true).validate
+            end
+
+            #
+            # 日（運用値）を検証する
+            #
+            # @return [Array<String>] 不正メッセージ
+            #
+            def validate_operation_date
+              Both::Date.new(hash: operation).validate
             end
           end
 
@@ -282,18 +337,19 @@ module Zakuro
               attr_reader :japan
               # @return [String] 西暦日
               attr_reader :western
-              # @return [String] 運用差分
-              attr_reader :operated
+              # @return [True] 省略可
+              # @return [False] 省略不可
+              attr_reader :optional
 
               #
               # 初期化
               #
               # @param [Hash<String, Strin>] hash 日情報
               #
-              def initialize(hash:)
+              def initialize(hash:, optional: false)
                 @japan = hash['japan']
                 @western = hash['western']
-                @operated = hash['operated']
+                @optional = optional
               end
 
               #
@@ -308,8 +364,6 @@ module Zakuro
 
                 failed.push("invalid western date. #{western}") unless western?
 
-                failed.push("invalid operated. #{operated}") unless operated?
-
                 failed
               end
 
@@ -320,6 +374,8 @@ module Zakuro
               # @return [False] 正しくない
               #
               def japan?
+                return true if optional?(text: japan)
+
                 Japan::Calendar.valid_date_text(text: japan)
               end
 
@@ -330,17 +386,25 @@ module Zakuro
               # @return [False] 正しくない
               #
               def western?
+                return true if optional?(text: western)
+
                 Western::Calendar.valid_date_text(text: western)
               end
 
               #
-              # 運用差分を検証する
+              # 省略可で省略されているか
               #
-              # @return [True] 正しい
-              # @return [False] 正しくない
+              # @param [String] text 文字列
               #
-              def operated?
-                operated.is_a?(Integer)
+              # @return [True] 省略あり
+              # @return [False] 省略なし
+              #
+              def optional?(text: '')
+                return false unless optional
+
+                return true if text == ''
+
+                false
               end
             end
           end
