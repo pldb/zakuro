@@ -15,7 +15,7 @@ describe 'Zakuro' do
           def get_start_date_by_name(name: '', list: [])
             list.each do |set|
               set.list.each do |gengou|
-                return gengou.both_start_date.western if gengou.name == name
+                return gengou.start_date.western if gengou.name == name
               end
             end
 
@@ -46,7 +46,7 @@ describe 'Zakuro' do
               expect(operated_start_date > start_date).to be_truthy
             end
             it 'last date should be changed' do
-              # 前の天皇の開始日変更により最終日が変更される
+              # 後の元号の開始日変更により最終日が変更される
               name = '宝亀'
 
               last_date = get_last_date_by_name(

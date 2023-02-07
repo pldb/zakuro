@@ -30,9 +30,9 @@ module Zakuro
             # @return [String] 元号名
             attr_reader :name
             # @return [Hash<String, String>] 開始年
-            attr_reader :both_start_year
+            attr_reader :start_year
             # @return [Hash<String, String>] 開始日
-            attr_reader :both_start_date
+            attr_reader :start_date
             # @return [True, False] 運用値
             attr_reader :operated
 
@@ -45,8 +45,8 @@ module Zakuro
             def initialize(hash:, index:, operated: false)
               @index = index
               @name = hash['name']
-              @both_start_year = hash['start_year']
-              @both_start_date = hash['start_date']
+              @start_year = hash['start_year']
+              @start_date = hash['start_date']
               @operated = operated
             end
 
@@ -56,11 +56,11 @@ module Zakuro
             # @return [Gengou] 元号情報
             #
             def create
-              start_year = Both::YearParser.new(hash: both_start_year).create
-              start_date = Both::DateParser.new(hash: both_start_date, operated: operated).create
+              year = Both::YearParser.new(hash: start_year).create
+              date = SwitchDateParser.new(hash: start_date, operated: operated).create
 
-              Gengou.new(name: name, both_start_year: start_year,
-                         both_start_date: start_date)
+              Gengou.new(name: name, start_year: year,
+                         start_date: date)
             end
           end
 
@@ -73,9 +73,9 @@ module Zakuro
             # @return [String] 元号セット名
             attr_reader :name
             # @return [Hash<String, String>] 終了年
-            attr_reader :both_last_year
+            attr_reader :last_year
             # @return [Hash<String, String>] 終了日
-            attr_reader :both_last_date
+            attr_reader :last_date
             # @return [Array<Hash<String, String>>] 元号情報
             attr_reader :list
             # @return [True, False] 運用値
@@ -87,11 +87,11 @@ module Zakuro
             # @param [Hash<String, Object>] hash 元号セット情報
             # @param [True, False] operated 運用値設定
             #
-            def initialize(hash:, operated:)
+            def initialize(hash:, operated: false)
               @id = hash['id']
               @name = hash['name']
-              @both_last_year = hash['last_year']
-              @both_last_date = hash['last_date']
+              @last_year = hash['last_year']
+              @last_date = hash['last_date']
               @list = hash['list']
               @operated = operated
             end
@@ -102,10 +102,10 @@ module Zakuro
             # @return [Set] 元号セット情報
             #
             def create
-              last_date = Both::DateParser.new(hash: both_last_date).create
+              date = SwitchDateParser.new(hash: last_date, operated: operated).create
               list = create_list
               Set.new(
-                id: id, name: name, both_last_date: last_date, list: list
+                id: id, name: name, last_date: date, list: list
               )
             end
 
@@ -140,26 +140,20 @@ module Zakuro
             # @return [Gengou] 元号情報
             #
             def calc_last_date_on_gengou_data(next_index:, gengou:)
-              # TODO: refactor
               if next_index >= list.size
                 last_gengou_data(gengou: gengou)
                 return gengou
               end
               next_item = list[next_index]
-              next_start_date = Western::Calendar.parse(
-                text: next_item['start_date']['western']
-              )
-
-              if operated
-                days = next_item['start_date']['operated']
-                next_start_date = next_start_date.clone + days
-              end
+              next_start_date = SwitchDateParser.new(
+                hash: next_item['start_date'], operated: operated
+              ).create
 
               gengou.convert_next_start_year_to_last_year(
                 next_start_year: next_item['start_year']['western']
               )
               gengou.convert_next_start_date_to_last_date(
-                next_start_date: next_start_date
+                next_start_date: next_start_date.western
               )
               gengou
             end
@@ -172,9 +166,50 @@ module Zakuro
             # @param [GengouParser] gengou 元号
             #
             def last_gengou_data(gengou:)
-              gengou.write_last_year(last_year: both_last_year['western'])
-              last_date = Western::Calendar.parse(text: both_last_date['western'])
-              gengou.write_last_date(last_date: last_date)
+              gengou.write_last_year(last_year: last_year['western'])
+
+              date = SwitchDateParser.new(hash: last_date, operated: operated).create
+
+              gengou.write_last_date(last_date: date.western)
+            end
+          end
+
+          #
+          # SwitchDateParser 切替日（運用/計算）
+          #
+          class SwitchDateParser
+            # @return [Hash<String, Strin>] 計算値
+            attr_reader :calculation
+            # @return [Hash<String, Strin>] 運用値
+            attr_reader :operation
+            # @return [True, False] 運用値
+            attr_reader :operated
+
+            #
+            # 初期化
+            #
+            # @param [Hash<String, Strin>] hash 切替日（運用/計算）
+            # @param [True, False] operated 運用値設定
+            #
+            def initialize(hash:, operated: false)
+              @calculation = hash['calculation']
+              @operation = hash['operation']
+              @operated = operated
+            end
+
+            #
+            # 切替日（運用/計算）情報を生成する
+            #
+            # @return [SwitchDate] 切替日（運用/計算）情報
+            #
+            def create
+              calculation_date = Both::DateParser.new(hash: calculation).create
+              operation_date = Both::DateParser.new(hash: operation).create
+
+              Japan::Gengou::Resource::SwitchDate.new(
+                calculation: calculation_date, operation: operation_date,
+                operated: operated
+              )
             end
           end
 
@@ -224,22 +259,15 @@ module Zakuro
               attr_reader :japan
               # @return [Western::Calendar] 西暦日
               attr_reader :western
-              # @return [Integer] 運用差分
-              attr_reader :operated_days
-              # @return [True, False] 運用値
-              attr_reader :operated
 
               #
               # 初期化
               #
               # @param [Hash<String, Object>] hash 日情報
-              # @param [True, False] operated 運用値
               #
-              def initialize(hash:, operated: false)
+              def initialize(hash:)
                 @japan = hash['japan']
                 @western = hash['western']
-                @operated_days = hash['operated']
-                @operated = operated
               end
 
               #
@@ -248,15 +276,14 @@ module Zakuro
               # @return [Both::Date] 日情報
               #
               def create
-                japan_date = Japan::Calendar.parse(text: japan)
-                western_date = Western::Calendar.parse(text: western)
-                if operated
-                  days = operated_days.to_i
-                  western_date = western_date.clone + days
-                end
+                japan_date = Japan::Calendar.new
+                western_date = Western::Calendar.new
+
+                japan_date = Japan::Calendar.parse(text: japan) unless japan == ''
+                western_date = Western::Calendar.parse(text: western) unless western == ''
 
                 Japan::Gengou::Resource::Both::Date.new(
-                  japan: japan_date, western: western_date, operated: days
+                  japan: japan_date, western: western_date
                 )
               end
             end

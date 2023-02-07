@@ -21,9 +21,9 @@ module Zakuro
           # @return [String] 元号名
           attr_reader :name
           # @return [Both::Year] 開始年（和暦/西暦）
-          attr_reader :both_start_year
-          # @return [Both::Date] 開始日（和暦/西暦）
-          attr_reader :both_start_date
+          attr_reader :start_year
+          # @return [SwitchDate] 開始日（和暦/西暦）
+          attr_reader :start_date
           # @return [Integer] 終了年
           attr_reader :last_year
           # @return [Western::Calendar] 終了日
@@ -33,18 +33,18 @@ module Zakuro
           # 初期化
           #
           # @param [String] name 元号名
-          # @param [Both::Year] both_start_year 開始年（和暦/西暦）
-          # @param [Both::Date] both_start_date 開始日（和暦/西暦）
+          # @param [Both::Year] start_year 開始年（和暦/西暦）
+          # @param [SwitchDate] start_date 開始日（和暦/西暦）
           # @param [Integer] last_date 終了年
           # @param [Western::Calendar] last_date 終了日
           #
-          def initialize(name: '', both_start_year: Both::Year.new,
-                         both_start_date: Both::Date.new,
+          def initialize(name: '', start_year: Both::Year.new,
+                         start_date: SwitchDate.new,
                          last_date: Western::Calendar.new,
                          last_year: Both::Year::INVALID)
             @name = name
-            @both_start_year = both_start_year
-            @both_start_date = both_start_date
+            @start_year = start_year
+            @start_date = start_date
             @last_year = last_year
             @last_date = last_date
           end
@@ -86,7 +86,7 @@ module Zakuro
           # @param [Integer] next_start_year 次回開始年
           #
           def convert_next_start_year_to_last_year(next_start_year:)
-            if both_start_year.western >= next_start_year
+            if start_year.western >= next_start_year
               @last_year = next_start_year
               return
             end
@@ -120,7 +120,7 @@ module Zakuro
           # @return [False] 含まれない
           #
           def include?(date:)
-            date >= both_start_date.western && date <= last_date
+            date >= start_date.western && date <= last_date
           end
 
           #
@@ -130,8 +130,8 @@ module Zakuro
           # @return [False] 不正なし
           #
           def invalid?
-            both_start_year.japan == -1 || both_start_year.invalid? ||
-              both_start_date.invalid? || last_date.invalid?
+            start_year.japan == -1 || start_year.invalid? ||
+              start_date.invalid? || last_date.invalid?
           end
 
           #
@@ -143,8 +143,8 @@ module Zakuro
           # end
 
           def to_s
-            "name: #{@name}, both_start_year: #{both_start_year.format}, " \
-            "both_start_date: #{both_start_date.format}, last_date: #{last_date.format}"
+            "name: #{@name}, start_year: #{start_year.format}, " \
+            "start_date: #{start_date.format}, last_date: #{last_date.format}"
           end
 
           class << self
@@ -189,9 +189,9 @@ module Zakuro
           # @return [String] 元号セット名
           attr_reader :name
           # @return [Both::Date] 元号セットでの終了年
-          attr_reader :both_last_year
+          attr_reader :last_year
           # @return [Both::Date] 元号セットでの終了日
-          attr_reader :both_last_date
+          attr_reader :last_date
           # @return [Array<Gengou>] 元号リスト
           attr_reader :list
 
@@ -203,12 +203,12 @@ module Zakuro
           # @param [Western::Calendar] last_date 元号セットでの終了日
           # @param [Array<Gengou>] list 元号リスト
           #
-          def initialize(id: INVALID, name: '', both_last_year: Both::Year.new,
-                         both_last_date: Both::Date.new, list: [])
+          def initialize(id: INVALID, name: '', last_year: Both::Year.new,
+                         last_date: Both::Date.new, list: [])
             @id = id
             @name = name
-            @both_last_year = both_last_year
-            @both_last_date = both_last_date
+            @last_year = last_year
+            @last_date = last_date
             @list = list
           end
 
@@ -235,6 +235,52 @@ module Zakuro
           #
           def invalid?
             @id == INVALID
+          end
+        end
+
+        #
+        # SwitchDate 切替日（運用/計算）
+        #
+        class SwitchDate
+          # @return [Both::Date] 計算値
+          attr_reader :calculation
+          # @return [Both::Date] 運用値
+          attr_reader :operation
+          # @return [True, False] 運用値
+          attr_reader :operated
+          # @return [Japan::Calendar] 和暦日
+          attr_reader :japan
+          # @return [Western::Calendar] 西暦日
+          attr_reader :western
+
+          #
+          # 初期化
+          #
+          # @param [Both::Date] calculation 計算値
+          # @param [Both::Date] operation 運用値
+          # @param [True, False] operated 運用値設定
+          #
+          def initialize(calculation: Both::Date.new, operation: Both::Date.new, operated: false)
+            @calculation = calculation
+            @operation = operation
+            @operated = operated
+
+            select
+          end
+
+          private
+
+          def select
+            @japan = operation.japan
+            @western = operation.western
+
+            return if operated
+
+            calc_japan = calculation.japan
+            calc_western = calculation.western
+
+            @japan = calc_japan unless calc_japan.invalid?
+            @western = calc_western unless calc_western.invalid?
           end
         end
 
@@ -277,13 +323,10 @@ module Zakuro
             attr_reader :japan
             # @return [Western::Calendar] 西暦日
             attr_reader :western
-            # @return [Integer] 運用差分
-            attr_reader :operated
 
-            def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new, operated: 0)
+            def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
               @japan = japan
               @western = western
-              @operated = operated
             end
 
             #

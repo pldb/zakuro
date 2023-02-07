@@ -5,7 +5,7 @@ last_year:
   japan: 9
   western: 1392
 last_date:
-  calcuration:
+  calculation:
     japan: ''
     western: ''
   operation:
@@ -17,7 +17,7 @@ list:
     japan: 34
     western: 445
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -31,7 +31,7 @@ list:
     japan: 1
     western: 454
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -45,7 +45,7 @@ list:
     japan: 1
     western: 457
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -59,7 +59,7 @@ list:
     japan: 1
     western: 480
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -73,7 +73,7 @@ list:
     japan: 1
     western: 485
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -87,7 +87,7 @@ list:
     japan: 1
     western: 488
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -101,7 +101,7 @@ list:
     japan: 1
     western: 499
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -115,7 +115,7 @@ list:
     japan: 1
     western: 507
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -129,7 +129,7 @@ list:
     japan: 1
     western: 534
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -143,7 +143,7 @@ list:
     japan: 1
     western: 536
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -157,7 +157,7 @@ list:
     japan: 1
     western: 540
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -171,7 +171,7 @@ list:
     japan: 1
     western: 572
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -185,7 +185,7 @@ list:
     japan: 1
     western: 586
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -199,7 +199,7 @@ list:
     japan: 1
     western: 588
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -213,7 +213,7 @@ list:
     japan: 1
     western: 593
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -227,7 +227,7 @@ list:
     japan: 1
     western: 629
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -241,7 +241,7 @@ list:
     japan: 1
     western: 642
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -255,7 +255,7 @@ list:
     japan: 1
     western: 645
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -269,7 +269,7 @@ list:
     japan: 1
     western: 650
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -283,7 +283,7 @@ list:
     japan: 1
     western: 655
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -297,7 +297,7 @@ list:
     japan: 1
     western: 662
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -311,7 +311,7 @@ list:
     japan: 1
     western: 672
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -325,7 +325,7 @@ list:
     japan: 1
     western: 686
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -339,7 +339,7 @@ list:
     japan: 1
     western: 687
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -353,7 +353,7 @@ list:
     japan: 1
     western: 697
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -367,7 +367,7 @@ list:
     japan: 1
     western: 701
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -381,7 +381,7 @@ list:
     japan: 1
     western: 704
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -395,7 +395,7 @@ list:
     japan: 1
     western: 708
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -409,7 +409,7 @@ list:
     japan: 1
     western: 715
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -423,7 +423,7 @@ list:
     japan: 1
     western: 717
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -437,7 +437,7 @@ list:
     japan: 1
     western: 724
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -451,7 +451,7 @@ list:
     japan: 1
     western: 729
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -465,7 +465,7 @@ list:
     japan: 1
     western: 749
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -479,7 +479,7 @@ list:
     japan: 1
     western: 749
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -493,7 +493,7 @@ list:
     japan: 1
     western: 757
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -507,7 +507,7 @@ list:
     japan: 1
     western: 765
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -521,7 +521,7 @@ list:
     japan: 1
     western: 767
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -535,7 +535,7 @@ list:
     japan: 1
     western: 770
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -549,7 +549,7 @@ list:
     japan: 1
     western: 781
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: 781-1-29
     operation:
@@ -563,7 +563,7 @@ list:
     japan: 1
     western: 782
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -577,7 +577,7 @@ list:
     japan: 1
     western: 806
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -591,7 +591,7 @@ list:
     japan: 1
     western: 810
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -605,7 +605,7 @@ list:
     japan: 1
     western: 824
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -619,7 +619,7 @@ list:
     japan: 1
     western: 834
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -633,7 +633,7 @@ list:
     japan: 1
     western: 848
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -647,7 +647,7 @@ list:
     japan: 1
     western: 851
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -661,7 +661,7 @@ list:
     japan: 1
     western: 854
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -675,7 +675,7 @@ list:
     japan: 1
     western: 857
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -689,7 +689,7 @@ list:
     japan: 1
     western: 859
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -703,7 +703,7 @@ list:
     japan: 1
     western: 877
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -717,7 +717,7 @@ list:
     japan: 1
     western: 885
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -731,7 +731,7 @@ list:
     japan: 1
     western: 889
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -745,7 +745,7 @@ list:
     japan: 1
     western: 898
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -759,7 +759,7 @@ list:
     japan: 1
     western: 901
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -773,7 +773,7 @@ list:
     japan: 1
     western: 923
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -787,7 +787,7 @@ list:
     japan: 1
     western: 931
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -801,7 +801,7 @@ list:
     japan: 1
     western: 938
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -815,7 +815,7 @@ list:
     japan: 1
     western: 947
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -829,7 +829,7 @@ list:
     japan: 1
     western: 957
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -843,7 +843,7 @@ list:
     japan: 1
     western: 961
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -857,7 +857,7 @@ list:
     japan: 1
     western: 964
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -871,7 +871,7 @@ list:
     japan: 1
     western: 968
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -885,7 +885,7 @@ list:
     japan: 1
     western: 970
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -899,7 +899,7 @@ list:
     japan: 1
     western: 973
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -913,7 +913,7 @@ list:
     japan: 1
     western: 976
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -927,7 +927,7 @@ list:
     japan: 1
     western: 978
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -941,7 +941,7 @@ list:
     japan: 1
     western: 983
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -955,7 +955,7 @@ list:
     japan: 1
     western: 985
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -969,7 +969,7 @@ list:
     japan: 1
     western: 987
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -983,7 +983,7 @@ list:
     japan: 1
     western: 989
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -997,7 +997,7 @@ list:
     japan: 1
     western: 990
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1011,7 +1011,7 @@ list:
     japan: 1
     western: 995
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1025,7 +1025,7 @@ list:
     japan: 1
     western: 999
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1039,7 +1039,7 @@ list:
     japan: 1
     western: 1004
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1053,7 +1053,7 @@ list:
     japan: 1
     western: 1012
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1067,7 +1067,7 @@ list:
     japan: 1
     western: 1017
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1081,7 +1081,7 @@ list:
     japan: 1
     western: 1021
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1095,7 +1095,7 @@ list:
     japan: 1
     western: 1024
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1109,7 +1109,7 @@ list:
     japan: 1
     western: 1028
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1123,7 +1123,7 @@ list:
     japan: 1
     western: 1037
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1137,7 +1137,7 @@ list:
     japan: 1
     western: 1040
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1151,7 +1151,7 @@ list:
     japan: 1
     western: 1044
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1165,7 +1165,7 @@ list:
     japan: 1
     western: 1046
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1179,7 +1179,7 @@ list:
     japan: 1
     western: 1053
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1193,7 +1193,7 @@ list:
     japan: 1
     western: 1058
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1207,7 +1207,7 @@ list:
     japan: 1
     western: 1065
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1221,7 +1221,7 @@ list:
     japan: 1
     western: 1069
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1235,7 +1235,7 @@ list:
     japan: 1
     western: 1074
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1249,7 +1249,7 @@ list:
     japan: 1
     western: 1077
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1263,7 +1263,7 @@ list:
     japan: 1
     western: 1081
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1277,7 +1277,7 @@ list:
     japan: 1
     western: 1084
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1291,7 +1291,7 @@ list:
     japan: 1
     western: 1087
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1305,7 +1305,7 @@ list:
     japan: 1
     western: 1094
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1319,7 +1319,7 @@ list:
     japan: 1
     western: 1096
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1333,7 +1333,7 @@ list:
     japan: 1
     western: 1097
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1347,7 +1347,7 @@ list:
     japan: 1
     western: 1099
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1361,7 +1361,7 @@ list:
     japan: 1
     western: 1104
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1375,7 +1375,7 @@ list:
     japan: 1
     western: 1106
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1389,7 +1389,7 @@ list:
     japan: 1
     western: 1108
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1403,7 +1403,7 @@ list:
     japan: 1
     western: 1110
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1417,7 +1417,7 @@ list:
     japan: 1
     western: 1113
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1431,7 +1431,7 @@ list:
     japan: 1
     western: 1118
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1445,7 +1445,7 @@ list:
     japan: 1
     western: 1120
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1459,7 +1459,7 @@ list:
     japan: 1
     western: 1124
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1473,7 +1473,7 @@ list:
     japan: 1
     western: 1126
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1487,7 +1487,7 @@ list:
     japan: 1
     western: 1131
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1501,7 +1501,7 @@ list:
     japan: 1
     western: 1132
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1515,7 +1515,7 @@ list:
     japan: 1
     western: 1135
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1529,7 +1529,7 @@ list:
     japan: 1
     western: 1141
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1543,7 +1543,7 @@ list:
     japan: 1
     western: 1142
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1557,7 +1557,7 @@ list:
     japan: 1
     western: 1144
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1571,7 +1571,7 @@ list:
     japan: 1
     western: 1145
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1585,7 +1585,7 @@ list:
     japan: 1
     western: 1151
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1599,7 +1599,7 @@ list:
     japan: 1
     western: 1154
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1613,7 +1613,7 @@ list:
     japan: 1
     western: 1156
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1627,7 +1627,7 @@ list:
     japan: 1
     western: 1159
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1641,7 +1641,7 @@ list:
     japan: 1
     western: 1160
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1655,7 +1655,7 @@ list:
     japan: 1
     western: 1161
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1669,7 +1669,7 @@ list:
     japan: 1
     western: 1163
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1683,7 +1683,7 @@ list:
     japan: 1
     western: 1165
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1697,7 +1697,7 @@ list:
     japan: 1
     western: 1166
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1711,7 +1711,7 @@ list:
     japan: 1
     western: 1169
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1725,7 +1725,7 @@ list:
     japan: 1
     western: 1171
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1739,7 +1739,7 @@ list:
     japan: 1
     western: 1175
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1753,7 +1753,7 @@ list:
     japan: 1
     western: 1177
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1767,7 +1767,7 @@ list:
     japan: 1
     western: 1181
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1781,7 +1781,7 @@ list:
     japan: 1
     western: 1182
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1795,7 +1795,7 @@ list:
     japan: 1
     western: 1184
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1809,7 +1809,7 @@ list:
     japan: 1
     western: 1185
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1823,7 +1823,7 @@ list:
     japan: 1
     western: 1190
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1837,7 +1837,7 @@ list:
     japan: 1
     western: 1199
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1851,7 +1851,7 @@ list:
     japan: 1
     western: 1201
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1865,7 +1865,7 @@ list:
     japan: 1
     western: 1204
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1879,7 +1879,7 @@ list:
     japan: 1
     western: 1206
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1893,7 +1893,7 @@ list:
     japan: 1
     western: 1207
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1907,7 +1907,7 @@ list:
     japan: 1
     western: 1211
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1921,7 +1921,7 @@ list:
     japan: 1
     western: 1213
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1935,7 +1935,7 @@ list:
     japan: 1
     western: 1219
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1949,7 +1949,7 @@ list:
     japan: 1
     western: 1222
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1963,7 +1963,7 @@ list:
     japan: 1
     western: 1224
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1977,7 +1977,7 @@ list:
     japan: 1
     western: 1225
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1991,7 +1991,7 @@ list:
     japan: 1
     western: 1227
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2005,7 +2005,7 @@ list:
     japan: 1
     western: 1229
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2019,7 +2019,7 @@ list:
     japan: 1
     western: 1232
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2033,7 +2033,7 @@ list:
     japan: 1
     western: 1233
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2047,7 +2047,7 @@ list:
     japan: 1
     western: 1234
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2061,7 +2061,7 @@ list:
     japan: 1
     western: 1235
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2075,7 +2075,7 @@ list:
     japan: 1
     western: 1238
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2089,7 +2089,7 @@ list:
     japan: 1
     western: 1239
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2103,7 +2103,7 @@ list:
     japan: 1
     western: 1240
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2117,7 +2117,7 @@ list:
     japan: 1
     western: 1243
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2131,7 +2131,7 @@ list:
     japan: 1
     western: 1247
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2145,7 +2145,7 @@ list:
     japan: 1
     western: 1249
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2159,7 +2159,7 @@ list:
     japan: 1
     western: 1256
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2173,7 +2173,7 @@ list:
     japan: 1
     western: 1257
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2187,7 +2187,7 @@ list:
     japan: 1
     western: 1259
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2201,7 +2201,7 @@ list:
     japan: 1
     western: 1260
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2215,7 +2215,7 @@ list:
     japan: 1
     western: 1261
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2229,7 +2229,7 @@ list:
     japan: 1
     western: 1264
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2243,7 +2243,7 @@ list:
     japan: 1
     western: 1275
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2257,7 +2257,7 @@ list:
     japan: 1
     western: 1278
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2271,7 +2271,7 @@ list:
     japan: 1
     western: 1288
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2285,7 +2285,7 @@ list:
     japan: 1
     western: 1293
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2299,7 +2299,7 @@ list:
     japan: 1
     western: 1299
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2313,7 +2313,7 @@ list:
     japan: 1
     western: 1302
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2327,7 +2327,7 @@ list:
     japan: 1
     western: 1303
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2341,7 +2341,7 @@ list:
     japan: 1
     western: 1306
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2355,7 +2355,7 @@ list:
     japan: 1
     western: 1308
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2369,7 +2369,7 @@ list:
     japan: 1
     western: 1311
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2383,7 +2383,7 @@ list:
     japan: 1
     western: 1312
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2397,7 +2397,7 @@ list:
     japan: 1
     western: 1317
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2411,7 +2411,7 @@ list:
     japan: 1
     western: 1319
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2425,7 +2425,7 @@ list:
     japan: 1
     western: 1321
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2439,7 +2439,7 @@ list:
     japan: 1
     western: 1324
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2453,7 +2453,7 @@ list:
     japan: 1
     western: 1326
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2467,7 +2467,7 @@ list:
     japan: 1
     western: 1329
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2481,7 +2481,7 @@ list:
     japan: 1
     western: 1331
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2495,7 +2495,7 @@ list:
     japan: 1
     western: 1334
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2509,7 +2509,7 @@ list:
     japan: 1
     western: 1336
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2523,7 +2523,7 @@ list:
     japan: 1
     western: 1340
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2537,7 +2537,7 @@ list:
     japan: 1
     western: 1346
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2551,7 +2551,7 @@ list:
     japan: 1
     western: 1370
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2565,7 +2565,7 @@ list:
     japan: 1
     western: 1372
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2579,7 +2579,7 @@ list:
     japan: 1
     western: 1375
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2593,7 +2593,7 @@ list:
     japan: 1
     western: 1381
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -2607,7 +2607,7 @@ list:
     japan: 1
     western: 1384
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:

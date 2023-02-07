@@ -5,7 +5,7 @@ last_year:
   japan: 1
   western: 1865
 last_date:
-  calcuration:
+  calculation:
     japan: ''
     western: ''
   operation:
@@ -17,7 +17,7 @@ list:
     japan: 1
     western: 1332
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -31,7 +31,7 @@ list:
     japan: 1
     western: 1334
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -45,7 +45,7 @@ list:
     japan: 1
     western: 1338
   start_date:
-    calcuration:
+    calculation:
       japan: 暦応01年閏08月27日
       western: ''
     operation:
@@ -59,7 +59,7 @@ list:
     japan: 1
     western: 1342
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -73,7 +73,7 @@ list:
     japan: 1
     western: 1345
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -87,7 +87,7 @@ list:
     japan: 1
     western: 1350
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -101,7 +101,7 @@ list:
     japan: 1
     western: 1352
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -115,7 +115,7 @@ list:
     japan: 1
     western: 1356
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -129,7 +129,7 @@ list:
     japan: 1
     western: 1361
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -143,7 +143,7 @@ list:
     japan: 1
     western: 1362
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -157,7 +157,7 @@ list:
     japan: 1
     western: 1368
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -171,7 +171,7 @@ list:
     japan: 1
     western: 1375
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -185,7 +185,7 @@ list:
     japan: 1
     western: 1379
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -199,7 +199,7 @@ list:
     japan: 1
     western: 1381
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -213,7 +213,7 @@ list:
     japan: 1
     western: 1384
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -227,7 +227,7 @@ list:
     japan: 1
     western: 1387
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -241,7 +241,7 @@ list:
     japan: 1
     western: 1389
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -255,7 +255,7 @@ list:
     japan: 1
     western: 1390
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -269,7 +269,7 @@ list:
     japan: 1
     western: 1394
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -283,7 +283,7 @@ list:
     japan: 1
     western: 1428
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -297,7 +297,7 @@ list:
     japan: 1
     western: 1429
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -311,7 +311,7 @@ list:
     japan: 1
     western: 1441
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -325,7 +325,7 @@ list:
     japan: 1
     western: 1444
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -339,7 +339,7 @@ list:
     japan: 1
     western: 1449
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -353,7 +353,7 @@ list:
     japan: 1
     western: 1452
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -367,7 +367,7 @@ list:
     japan: 1
     western: 1455
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -381,7 +381,7 @@ list:
     japan: 1
     western: 1457
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -395,7 +395,7 @@ list:
     japan: 1
     western: 1460
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -409,7 +409,7 @@ list:
     japan: 1
     western: 1466
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -423,7 +423,7 @@ list:
     japan: 1
     western: 1467
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -437,7 +437,7 @@ list:
     japan: 1
     western: 1469
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -451,7 +451,7 @@ list:
     japan: 1
     western: 1487
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -465,7 +465,7 @@ list:
     japan: 1
     western: 1489
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -479,7 +479,7 @@ list:
     japan: 1
     western: 1492
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -493,7 +493,7 @@ list:
     japan: 1
     western: 1501
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -507,7 +507,7 @@ list:
     japan: 1
     western: 1504
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -521,7 +521,7 @@ list:
     japan: 1
     western: 1521
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -535,7 +535,7 @@ list:
     japan: 1
     western: 1528
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -549,7 +549,7 @@ list:
     japan: 1
     western: 1532
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -563,7 +563,7 @@ list:
     japan: 1
     western: 1555
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -577,7 +577,7 @@ list:
     japan: 1
     western: 1558
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -591,7 +591,7 @@ list:
     japan: 1
     western: 1570
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -605,7 +605,7 @@ list:
     japan: 1
     western: 1573
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -619,7 +619,7 @@ list:
     japan: 1
     western: 1592
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -633,7 +633,7 @@ list:
     japan: 1
     western: 1596
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -647,7 +647,7 @@ list:
     japan: 1
     western: 1615
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -661,7 +661,7 @@ list:
     japan: 1
     western: 1624
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -675,7 +675,7 @@ list:
     japan: 1
     western: 1644
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -689,7 +689,7 @@ list:
     japan: 1
     western: 1648
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -703,7 +703,7 @@ list:
     japan: 1
     western: 1652
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -717,7 +717,7 @@ list:
     japan: 1
     western: 1655
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -731,7 +731,7 @@ list:
     japan: 1
     western: 1658
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -745,7 +745,7 @@ list:
     japan: 1
     western: 1661
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -759,7 +759,7 @@ list:
     japan: 1
     western: 1673
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -773,7 +773,7 @@ list:
     japan: 1
     western: 1681
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -787,7 +787,7 @@ list:
     japan: 1
     western: 1684
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -801,7 +801,7 @@ list:
     japan: 1
     western: 1688
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -815,7 +815,7 @@ list:
     japan: 1
     western: 1704
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -829,7 +829,7 @@ list:
     japan: 1
     western: 1711
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -843,7 +843,7 @@ list:
     japan: 1
     western: 1716
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -857,7 +857,7 @@ list:
     japan: 1
     western: 1736
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -871,7 +871,7 @@ list:
     japan: 1
     western: 1741
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -885,7 +885,7 @@ list:
     japan: 1
     western: 1744
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -899,7 +899,7 @@ list:
     japan: 1
     western: 1748
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -913,7 +913,7 @@ list:
     japan: 1
     western: 1751
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -927,7 +927,7 @@ list:
     japan: 1
     western: 1764
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -941,7 +941,7 @@ list:
     japan: 1
     western: 1772
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -955,7 +955,7 @@ list:
     japan: 1
     western: 1781
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -969,7 +969,7 @@ list:
     japan: 1
     western: 1789
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -983,7 +983,7 @@ list:
     japan: 1
     western: 1801
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -997,7 +997,7 @@ list:
     japan: 1
     western: 1804
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1011,7 +1011,7 @@ list:
     japan: 1
     western: 1818
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1025,7 +1025,7 @@ list:
     japan: 1
     western: 1830
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1039,7 +1039,7 @@ list:
     japan: 1
     western: 1844
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1053,7 +1053,7 @@ list:
     japan: 1
     western: 1848
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1067,7 +1067,7 @@ list:
     japan: 1
     western: 1854
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1081,7 +1081,7 @@ list:
     japan: 1
     western: 1860
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1095,7 +1095,7 @@ list:
     japan: 1
     western: 1861
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1109,7 +1109,7 @@ list:
     japan: 1
     western: 1864
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -1123,7 +1123,7 @@ list:
     japan: 1
     western: 1865
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:

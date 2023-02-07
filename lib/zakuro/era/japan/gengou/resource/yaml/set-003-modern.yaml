@@ -5,7 +5,7 @@ last_year:
   japan: 7981
   western: 9999
 last_date:
-  calcuration:
+  calculation:
     japan: ''
     western: ''
   operation:
@@ -17,7 +17,7 @@ list:
     japan: 1
     western: 1868
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -31,7 +31,7 @@ list:
     japan: 1
     western: 1912
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -45,7 +45,7 @@ list:
     japan: 1
     western: 1926
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
@@ -59,7 +59,7 @@ list:
     japan: 1
     western: 2019
   start_date:
-    calcuration:
+    calculation:
       japan: ''
       western: ''
     operation:
