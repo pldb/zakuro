@@ -6,9 +6,8 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# TODO: 現状の没日の計算誤りを列記する
+# TODO: 全て通った。滅日対応が完了するまでテストなしとする
 METSUNICHI_RAILED_PATTERNS = %w[
-  康永3年1月6日
 ].freeze
 
 # rubocop:disable Metrics/BlockLength
