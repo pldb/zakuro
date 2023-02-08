@@ -41,8 +41,8 @@ module Zakuro
                        japan_year: INVALID_YEAR)
           @gengou = gengou
           @japan_year = japan_year
-          @japan_year = gengou.both_start_year.japan if @japan_year == INVALID_YEAR
-          @western_year = gengou.both_start_year.western
+          @japan_year = gengou.start_year.japan if @japan_year == INVALID_YEAR
+          @western_year = gengou.start_year.western
 
           @start_date = start_date.clone
           @last_date = last_date.clone
@@ -58,7 +58,7 @@ module Zakuro
         def japan_start_date
           return Japan::Calendar.new if gengou.invalid?
 
-          gengou.both_start_date.japan
+          gengou.start_date.japan
         end
 
         #
@@ -187,7 +187,7 @@ module Zakuro
         def select_valid_date
           return if gengou.invalid?
 
-          @start_date = gengou.both_start_date.western.clone if start_date.invalid?
+          @start_date = gengou.start_date.western.clone if start_date.invalid?
           @last_date = gengou.last_date.clone if last_date.invalid?
         end
 
@@ -197,7 +197,7 @@ module Zakuro
         # @return [Western::Calendar]設定された元号の開始日
         #
         def native_start_date
-          gengou.both_start_date.western
+          gengou.start_date.western
         end
 
         #
