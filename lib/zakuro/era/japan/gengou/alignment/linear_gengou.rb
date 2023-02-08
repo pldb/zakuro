@@ -175,7 +175,7 @@ module Zakuro
           # @return [Western::Calendar]設定された元号の開始日
           #
           def native_start_date
-            gengou.both_start_date.western
+            gengou.start_date.western
           end
 
           #

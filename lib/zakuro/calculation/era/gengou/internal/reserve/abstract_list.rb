@@ -111,7 +111,7 @@ module Zakuro
           def japan_start_date
             return Japan::Calendar.new if invalid?
 
-            list[0].gengou.both_start_date.japan.clone
+            list[0].gengou.start_date.japan.clone
           end
 
           #
@@ -122,7 +122,7 @@ module Zakuro
           def western_start_date
             return Western::Calendar.new if invalid?
 
-            list[0].gengou.both_start_date.western.clone
+            list[0].gengou.start_date.western.clone
           end
 
           #
@@ -144,7 +144,7 @@ module Zakuro
           def western_start_year
             return INVALID_YEAR if invalid?
 
-            list[0].gengou.both_start_year.western.clone
+            list[0].gengou.start_year.western.clone
           end
 
           #
