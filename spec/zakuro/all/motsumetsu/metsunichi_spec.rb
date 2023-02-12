@@ -19,15 +19,9 @@ describe 'Zakuro' do
             year.dates.each do |date|
               next unless date.vanished
 
-              p '-------------'
-              # TODO: refactor
-              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-
               date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
                 date: date, current_gengou: gengou, before_gengou: before_gengou
               )
-
-              p date_text
 
               actual = Zakuro::Merchant.new(
                 condition: {
@@ -35,6 +29,13 @@ describe 'Zakuro' do
                   options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
                 }
               ).commit
+
+              # TODO: refactor
+              p '-------------'
+              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+              p date_text
+              p actual.data.day.western_date.format
+
               # TODO: expect
               options = actual.data.options
 
