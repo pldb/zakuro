@@ -104,7 +104,8 @@ module Zakuro
           @first_day = FirstDay.new(
             western_date: rewrite_western_date(days: days),
             remainder: rewrite_remainder(days: days),
-            average_remainder: rewrite_average_remainder(days: days)
+            # NOTE: 『日本暦日便覧』では滅日を計算値で求めている。運用値への書き換えは実施しない
+            average_remainder: first_day.average_remainder.clone
           )
         end
 
@@ -117,22 +118,6 @@ module Zakuro
         #
         def rewrite_remainder(days:)
           remainder = first_day.remainder.clone
-          remainder.add!(
-            context.resolver.remainder.new(day: days, minute: 0, second: 0)
-          )
-
-          remainder
-        end
-
-        #
-        # 月初日の大余小余を日差分で書き換える（経朔）
-        #
-        # @param [Integer] days 日差分
-        #
-        # @return [Remainder] 月初日の大余小余
-        #
-        def rewrite_average_remainder(days:)
-          remainder = first_day.average_remainder.clone
           remainder.add!(
             context.resolver.remainder.new(day: days, minute: 0, second: 0)
           )
