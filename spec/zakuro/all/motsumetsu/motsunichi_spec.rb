@@ -7,8 +7,7 @@ require_relative './testdata/current_date'
 require_relative './testdata/parser'
 
 # TODO: 全て通った。滅日対応が完了するまでテストなしとする
-METSUNICHI_RAILED_PATTERNS = %w[
-].freeze
+MOTSUNICHI_FAILED_PATTERNS = %w[].freeze
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -29,7 +28,7 @@ describe 'Zakuro' do
 
               # TODO: refactor
 
-              next unless METSUNICHI_RAILED_PATTERNS.include?(date_text)
+              next unless MOTSUNICHI_FAILED_PATTERNS.include?(date_text)
 
               p '-------------'
 
