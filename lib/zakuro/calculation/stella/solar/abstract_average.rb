@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../monthly/meta/meta_collector'
+
 require_relative '../../../tools/remainder_comparer'
 
 # :nodoc:
@@ -40,9 +42,6 @@ module Zakuro
               next_month: next_month
             )
           end
-
-          # その月の全ての二十四節気を収集する
-          annual_range.each(&:update_meta)
 
           annual_range
         end
