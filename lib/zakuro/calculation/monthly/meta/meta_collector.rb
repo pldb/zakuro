@@ -71,7 +71,7 @@ module Zakuro
           # @return [Cycle::AbstractRemainder] 前月から継承した経朔
           #
           def inherited_average_remainder(before_month:)
-            remainder = before_month.remainder
+            remainder = before_month.first_day.average_remainder
             days = before_month.days
 
             remainder = remainder.add(
