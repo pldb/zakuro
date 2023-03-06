@@ -43,9 +43,23 @@ module Zakuro
               options[Context::Option::DROPPED_DATE_KEY] = option
             end
 
+            # TODO: refactor
             if context.option.vanished_date?
               remainder = day.remainder
               average_remainder = month.first_day.average_remainder
+              # p "remainder: #{remainder.format}"
+              # p "last_average_remainder: #{month.meta.last_average_remainder.format}"
+
+              if day.number == 1
+                option = vanished_date(
+                  context: context, remainder: remainder,
+                  average_remainder: month.meta.last_average_remainder
+                )
+                options[Context::Option::VANISHED_DATE_KEY] = option
+
+                return options if option.matched
+              end
+
               option = vanished_date(
                 context: context, remainder: remainder, average_remainder: average_remainder
               )

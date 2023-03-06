@@ -27,23 +27,22 @@ module Zakuro
         #
         attr_reader :all_solar_terms
 
-        # @return [Cycle::AbstractRemainder] 前月からの平朔
+        # @return [Cycle::AbstractRemainder] 前月の平朔
         # @note 滅日計算に用いる
         #
-        # * 前月の平朔に日数を足し、今月平朔として扱えるようにする
-        # * 月の1日目で前月からの平朔が用いられている
+        #   月の1日目で前月からの平朔が用いられている
         #
-        attr_reader :inherited_average_remainder
+        attr_reader :last_average_remainder
 
         #
         # 初期化
         #
         # @param [Array<AbstractSolarTerm>] all_solar_terms 月の全ての二十四節気
-        # @param [Cycle::AbstractRemainder] inherited_average_remainder 前月からの平朔
+        # @param [Cycle::AbstractRemainder] last_average_remainder 前月の平朔
         #
-        def initialize(all_solar_terms: [], inherited_average_remainder: Cycle::AbstractRemainder.new)
+        def initialize(all_solar_terms: [], last_average_remainder: Cycle::AbstractRemainder.new)
           @all_solar_terms = all_solar_terms
-          @inherited_average_remainder = inherited_average_remainder
+          @last_average_remainder = last_average_remainder
         end
 
         #
@@ -53,7 +52,7 @@ module Zakuro
         #
         def initialize_copy(obj)
           @all_solar_terms = obj.all_solar_terms.clone
-          @inherited_average_remainder = obj.inherited_average_remainder.clone
+          @last_average_remainder = obj.last_average_remainder.clone
         end
       end
     end

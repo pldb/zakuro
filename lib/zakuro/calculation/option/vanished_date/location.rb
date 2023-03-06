@@ -72,10 +72,15 @@ module Zakuro
           #
           def get
             # 経朔の小余 * 30
-            minute = remainder_class.new(day: 0, minute: IDEAL_MONTH * average_remainder.minute, second: 0)
+            minute = remainder_class.new(
+              day: 0, minute: IDEAL_MONTH * average_remainder.minute, second: 0
+            )
+
             day = remainder_class.new(day: average_remainder.day, minute: 0, second: 0)
 
-            minute.add(day)
+            minute.add!(day)
+
+            minute
           end
         end
       end

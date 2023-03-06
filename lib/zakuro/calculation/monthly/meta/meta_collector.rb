@@ -43,7 +43,7 @@ module Zakuro
               all_solar_terms: all_solar_terms(
                 before_month: before_month, current_month: current_month
               ),
-              inherited_average_remainder: inherited_average_remainder(
+              last_average_remainder: last_average_remainder(
                 before_month: before_month
               )
             )
@@ -64,22 +64,14 @@ module Zakuro
           end
 
           #
-          # 前月から継承した経朔を取得する
+          # 前月の経朔を取得する
           #
           # @param [Monthly::Month] before_month 前月
           #
-          # @return [Cycle::AbstractRemainder] 前月から継承した経朔
+          # @return [Cycle::AbstractRemainder] 前月の経朔
           #
-          def inherited_average_remainder(before_month:)
-            remainder = before_month.first_day.average_remainder
-            days = before_month.days
-
-            remainder = remainder.add(
-              # 常に参照元のRemainderクラスで生成する
-              remainder.class.new(day: days, minute: 0, second: 0)
-            )
-
-            remainder
+          def last_average_remainder(before_month:)
+            before_month.first_day.average_remainder
           end
         end
       end
