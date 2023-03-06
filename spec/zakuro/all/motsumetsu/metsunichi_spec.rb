@@ -9,8 +9,6 @@ require_relative './testdata/parser'
 # TODO: エラーの和暦日一覧
 METSUNICHI_FAILED_PATTERNS = %w[
   延暦13年5月19日
-  天長9年10月25日
-  至徳2年9月1日
 ].freeze
 
 # rubocop:disable Metrics/BlockLength
