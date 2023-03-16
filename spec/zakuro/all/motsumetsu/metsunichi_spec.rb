@@ -6,10 +6,8 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# TODO: エラーの和暦日一覧
-METSUNICHI_FAILED_PATTERNS = %w[
-  延暦13年5月19日
-].freeze
+# TODO: 全て通った。一旦はテストなしとする
+METSUNICHI_FAILED_PATTERNS = %w[].freeze
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do

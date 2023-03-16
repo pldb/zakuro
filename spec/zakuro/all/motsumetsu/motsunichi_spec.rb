@@ -6,7 +6,7 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# TODO: 全て通った。滅日対応が完了するまでテストなしとする
+# TODO: 全て通った。一旦はテストなしとする
 MOTSUNICHI_FAILED_PATTERNS = %w[].freeze
 
 # rubocop:disable Metrics/BlockLength
