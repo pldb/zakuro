@@ -89,6 +89,8 @@ module Zakuro
               context: context, solar_term: solar_term
             )
 
+            return option if location.invalid?
+
             return option unless location.exist?
 
             dropped_date = location.get
@@ -136,6 +138,8 @@ module Zakuro
             location = Calculation::Option::VanishedDate::Location.new(
               context: context, average_remainder: average_remainder
             )
+
+            return Result::Data::Option::VanishedDate::Option.new if location.invalid?
 
             unless location.exist?
               # 結果確認のため経朔だけは設定する
