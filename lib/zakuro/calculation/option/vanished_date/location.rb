@@ -80,6 +80,8 @@ module Zakuro
 
             minute.add!(day)
 
+            # p "location.minute: #{minute.format}"
+
             minute
           end
         end

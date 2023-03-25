@@ -73,12 +73,19 @@ module Zakuro
           def get
             # 1. 二十四節気の大余小余を取り出す
             remainder = solar_term_remainder
+
+            # p "remainder: #{remainder.format(form: '%d-%d.%.5f')}"
+
             # 2. 小余360、秒45（360/8）で乗算する
             total = multiple_ideal_year(remainder: remainder)
+            # p "total: #{total}"
             # 3. 上記2と章歳（3068055）の差を求める
             diff = (year - total).abs
+            # p "year: #{year}"
+            # p "diff: #{diff}"
             # 4. 上記3を通余で徐算する
             result = remainder_class.new(total: diff)
+            # p "result: #{result.format(form: '%d-%d.%.5f')}"
             # 5. 上記4の商と上記1の大余が没日大余、余りが小余（没余）
             day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
 
