@@ -99,7 +99,7 @@ describe 'Zakuro' do
                     day: 3, minute: 5359, second: 0
                   ),
                   average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                    day: 3, minute: 4607, second: 0
+                    day: 2, minute: 4607, second: 0
                   ),
                   # 873-2-1 -> 873-2-2
                   western_date: Zakuro::Western::Calendar.new(year: 873, month: 2, day: 2)
@@ -301,7 +301,7 @@ describe 'Zakuro' do
                     day: 57, minute: 1857, second: 0
                   ),
                   average_remainder: Zakuro::Daien::Cycle::Remainder.new(
-                    day: 57, minute: 2184, second: 0
+                    day: 56, minute: 2184, second: 0
                   ),
                   western_date: date
                 ),
