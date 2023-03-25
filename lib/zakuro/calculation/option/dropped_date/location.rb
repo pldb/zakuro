@@ -62,7 +62,14 @@ module Zakuro
           # @return [False] 存在なし
           #
           def exist?
-            !solar_term_remainder.invalid?
+            remainder = solar_term_remainder
+
+            return false if remainder.invalid?
+
+            minute_later = remainder.class.new(
+              day: 0, minute: remainder.minute, second: remainder.second
+            )
+            minute_later >= limit
           end
 
           #
