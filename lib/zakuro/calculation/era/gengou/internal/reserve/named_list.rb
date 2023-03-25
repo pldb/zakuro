@@ -25,13 +25,15 @@ module Zakuro
           # @param [String] start_name 開始元号名
           # @param [String] last_name 終了元号名
           #
-          def initialize(first: true, start_name: INVALID_NAME, last_name: INVALID_NAME)
+          def initialize(first: true, start_name: INVALID_NAME, last_name: INVALID_NAME,
+                         operated: false)
             @index = parse_index(first: first)
             @start_date = Western::Calendar.new
             @last_date = Western::Calendar.new
+            @operated = operated
 
             locate(start_name: start_name, last_name: last_name)
-            super(index: index, start_date: start_date, last_date: last_date)
+            super(index: index, start_date: start_date, last_date: last_date, operated: operated)
           end
 
           private
@@ -107,7 +109,7 @@ module Zakuro
           # @return [Array<Japan::Alignment::LinearGengou>] 元号
           #
           def line_by_name(name:)
-            Japan::Gengou.line_by_name(line: index, name: name)
+            Japan::Gengou.line_by_name(line: index, name: name, operated: operated)
           end
 
           #

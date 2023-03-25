@@ -5,16 +5,24 @@ last_year:
   japan: 1
   western: 1865
 last_date:
-  japan: 慶応01年09月07日
-  western: '1868-10-22'
+  calculation:
+    japan: ''
+    western: ''
+  operation:
+    japan: 慶応01年09月07日
+    western: '1868-10-22'
 list:
 - name: 正慶
   start_year:
     japan: 1
     western: 1332
   start_date:
-    japan: 正慶01年04月28日
-    western: '1332-5-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 正慶01年04月28日
+      western: '1332-5-23'
   disuse:
     new_year_date: '1332-1-28'
     note: ''
@@ -23,8 +31,12 @@ list:
     japan: 1
     western: 1334
   start_date:
-    japan: 建武01年01月29日
-    western: '1334-3-5'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 建武01年01月29日
+      western: '1334-3-5'
   disuse:
     new_year_date: '1334-2-5'
     note: ''
@@ -33,18 +45,26 @@ list:
     japan: 1
     western: 1338
   start_date:
-    japan: 暦応01年08月28日
-    western: '1338-10-11'
+    calculation:
+      japan: 暦応01年閏08月27日
+      western: ''
+    operation:
+      japan: 暦応01年08月28日
+      western: '1338-10-11'
   disuse:
     new_year_date: '1338-1-22'
-    note: ''
+    note: '大日本史料第6編の5(計算: 暦応01年閏08月27日 / 運用: 暦応01年08月28日)'
 - name: 康永
   start_year:
     japan: 1
     western: 1342
   start_date:
-    japan: 康永01年04月27日
-    western: '1342-6-1'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 康永01年04月27日
+      western: '1342-6-1'
   disuse:
     new_year_date: '1342-2-6'
     note: ''
@@ -53,8 +73,12 @@ list:
     japan: 1
     western: 1345
   start_date:
-    japan: 貞和01年10月21日
-    western: '1345-11-15'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 貞和01年10月21日
+      western: '1345-11-15'
   disuse:
     new_year_date: '1345-2-3'
     note: ''
@@ -63,8 +87,12 @@ list:
     japan: 1
     western: 1350
   start_date:
-    japan: 観応01年02月27日
-    western: '1350-4-4'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 観応01年02月27日
+      western: '1350-4-4'
   disuse:
     new_year_date: '1350-2-8'
     note: ''
@@ -73,8 +101,12 @@ list:
     japan: 1
     western: 1352
   start_date:
-    japan: 文和01年09月27日
-    western: '1352-11-4'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文和01年09月27日
+      western: '1352-11-4'
   disuse:
     new_year_date: '1352-1-18'
     note: ''
@@ -83,8 +115,12 @@ list:
     japan: 1
     western: 1356
   start_date:
-    japan: 延文01年03月28日
-    western: '1356-4-29'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 延文01年03月28日
+      western: '1356-4-29'
   disuse:
     new_year_date: '1356-2-2'
     note: ''
@@ -93,8 +129,12 @@ list:
     japan: 1
     western: 1361
   start_date:
-    japan: 康安01年03月29日
-    western: '1361-5-4'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 康安01年03月29日
+      western: '1361-5-4'
   disuse:
     new_year_date: '1361-2-6'
     note: ''
@@ -103,8 +143,12 @@ list:
     japan: 1
     western: 1362
   start_date:
-    japan: 貞治01年09月23日
-    western: '1362-10-11'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 貞治01年09月23日
+      western: '1362-10-11'
   disuse:
     new_year_date: '1362-1-27'
     note: ''
@@ -113,8 +157,12 @@ list:
     japan: 1
     western: 1368
   start_date:
-    japan: 応安01年02月18日
-    western: '1368-3-7'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 応安01年02月18日
+      western: '1368-3-7'
   disuse:
     new_year_date: '1368-1-21'
     note: ''
@@ -123,8 +171,12 @@ list:
     japan: 1
     western: 1375
   start_date:
-    japan: 永和01年02月27日
-    western: '1375-3-29'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 永和01年02月27日
+      western: '1375-3-29'
   disuse:
     new_year_date: '1375-2-2'
     note: ''
@@ -133,8 +185,12 @@ list:
     japan: 1
     western: 1379
   start_date:
-    japan: 康暦01年03月22日
-    western: '1379-4-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 康暦01年03月22日
+      western: '1379-4-9'
   disuse:
     new_year_date: '1379-1-19'
     note: ''
@@ -143,8 +199,12 @@ list:
     japan: 1
     western: 1381
   start_date:
-    japan: 永徳01年02月24日
-    western: '1381-3-20'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 永徳01年02月24日
+      western: '1381-3-20'
   disuse:
     new_year_date: '1381-1-26'
     note: ''
@@ -153,8 +213,12 @@ list:
     japan: 1
     western: 1384
   start_date:
-    japan: 至徳01年02月27日
-    western: '1384-3-19'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 至徳01年02月27日
+      western: '1384-3-19'
   disuse:
     new_year_date: '1384-1-23'
     note: ''
@@ -163,8 +227,12 @@ list:
     japan: 1
     western: 1387
   start_date:
-    japan: 嘉慶01年08月23日
-    western: '1387-10-5'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 嘉慶01年08月23日
+      western: '1387-10-5'
   disuse:
     new_year_date: '1387-1-21'
     note: ''
@@ -173,8 +241,12 @@ list:
     japan: 1
     western: 1389
   start_date:
-    japan: 康応01年02月09日
-    western: '1389-3-7'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 康応01年02月09日
+      western: '1389-3-7'
   disuse:
     new_year_date: '1389-1-28'
     note: ''
@@ -183,8 +255,12 @@ list:
     japan: 1
     western: 1390
   start_date:
-    japan: 明徳01年03月26日
-    western: '1390-4-12'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 明徳01年03月26日
+      western: '1390-4-12'
   disuse:
     new_year_date: '1390-1-17'
     note: ''
@@ -193,8 +269,12 @@ list:
     japan: 1
     western: 1394
   start_date:
-    japan: 応永01年07月05日
-    western: '1394-8-2'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 応永01年07月05日
+      western: '1394-8-2'
   disuse:
     new_year_date: '1394-2-1'
     note: ''
@@ -203,8 +283,12 @@ list:
     japan: 1
     western: 1428
   start_date:
-    japan: 正長01年04月27日
-    western: '1428-6-10'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 正長01年04月27日
+      western: '1428-6-10'
   disuse:
     new_year_date: '1428-1-17'
     note: ''
@@ -213,8 +297,12 @@ list:
     japan: 1
     western: 1429
   start_date:
-    japan: 永享01年09月05日
-    western: '1429-10-3'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 永享01年09月05日
+      western: '1429-10-3'
   disuse:
     new_year_date: '1429-2-4'
     note: ''
@@ -223,8 +311,12 @@ list:
     japan: 1
     western: 1441
   start_date:
-    japan: 嘉吉01年02月17日
-    western: '1441-3-10'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 嘉吉01年02月17日
+      western: '1441-3-10'
   disuse:
     new_year_date: '1441-1-23'
     note: ''
@@ -233,8 +325,12 @@ list:
     japan: 1
     western: 1444
   start_date:
-    japan: 文安01年02月05日
-    western: '1444-2-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文安01年02月05日
+      western: '1444-2-23'
   disuse:
     new_year_date: '1444-1-20'
     note: ''
@@ -243,8 +339,12 @@ list:
     japan: 1
     western: 1449
   start_date:
-    japan: 宝徳01年07月28日
-    western: '1449-8-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 宝徳01年07月28日
+      western: '1449-8-16'
   disuse:
     new_year_date: '1449-1-25'
     note: ''
@@ -253,8 +353,12 @@ list:
     japan: 1
     western: 1452
   start_date:
-    japan: 享徳01年07月25日
-    western: '1452-8-10'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 享徳01年07月25日
+      western: '1452-8-10'
   disuse:
     new_year_date: '1452-1-22'
     note: ''
@@ -263,8 +367,12 @@ list:
     japan: 1
     western: 1455
   start_date:
-    japan: 康正01年07月25日
-    western: '1455-9-6'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 康正01年07月25日
+      western: '1455-9-6'
   disuse:
     new_year_date: '1455-1-18'
     note: ''
@@ -273,8 +381,12 @@ list:
     japan: 1
     western: 1457
   start_date:
-    japan: 長禄01年09月28日
-    western: '1457-10-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 長禄01年09月28日
+      western: '1457-10-16'
   disuse:
     new_year_date: '1457-1-26'
     note: ''
@@ -283,8 +395,12 @@ list:
     japan: 1
     western: 1460
   start_date:
-    japan: 寛正01年12月21日
-    western: '1461-2-1'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛正01年12月21日
+      western: '1461-2-1'
   disuse:
     new_year_date: '1460-1-24'
     note: ''
@@ -293,8 +409,12 @@ list:
     japan: 1
     western: 1466
   start_date:
-    japan: 文正01年02月28日
-    western: '1466-3-14'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文正01年02月28日
+      western: '1466-3-14'
   disuse:
     new_year_date: '1466-1-17'
     note: ''
@@ -303,8 +423,12 @@ list:
     japan: 1
     western: 1467
   start_date:
-    japan: 応仁01年03月05日
-    western: '1467-4-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 応仁01年03月05日
+      western: '1467-4-9'
   disuse:
     new_year_date: '1467-2-5'
     note: ''
@@ -313,8 +437,12 @@ list:
     japan: 1
     western: 1469
   start_date:
-    japan: 文明01年04月28日
-    western: '1469-6-8'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文明01年04月28日
+      western: '1469-6-8'
   disuse:
     new_year_date: '1469-2-12'
     note: ''
@@ -323,8 +451,12 @@ list:
     japan: 1
     western: 1487
   start_date:
-    japan: 長享01年07月20日
-    western: '1487-8-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 長享01年07月20日
+      western: '1487-8-9'
   disuse:
     new_year_date: '1487-1-25'
     note: ''
@@ -333,8 +465,12 @@ list:
     japan: 1
     western: 1489
   start_date:
-    japan: 延徳01年08月21日
-    western: '1489-9-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 延徳01年08月21日
+      western: '1489-9-16'
   disuse:
     new_year_date: '1489-2-1'
     note: ''
@@ -343,8 +479,12 @@ list:
     japan: 1
     western: 1492
   start_date:
-    japan: 明応01年07月19日
-    western: '1492-8-12'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 明応01年07月19日
+      western: '1492-8-12'
   disuse:
     new_year_date: '1492-1-30'
     note: ''
@@ -353,8 +493,12 @@ list:
     japan: 1
     western: 1501
   start_date:
-    japan: 文亀01年02月29日
-    western: '1501-3-18'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文亀01年02月29日
+      western: '1501-3-18'
   disuse:
     new_year_date: '1501-1-19'
     note: ''
@@ -363,8 +507,12 @@ list:
     japan: 1
     western: 1504
   start_date:
-    japan: 永正01年02月30日
-    western: '1504-3-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 永正01年02月30日
+      western: '1504-3-16'
   disuse:
     new_year_date: '1504-1-18'
     note: ''
@@ -373,8 +521,12 @@ list:
     japan: 1
     western: 1521
   start_date:
-    japan: 大永01年08月23日
-    western: '1521-9-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 大永01年08月23日
+      western: '1521-9-23'
   disuse:
     new_year_date: '1521-2-8'
     note: ''
@@ -383,8 +535,12 @@ list:
     japan: 1
     western: 1528
   start_date:
-    japan: 享禄01年08月20日
-    western: '1528-9-3'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 享禄01年08月20日
+      western: '1528-9-3'
   disuse:
     new_year_date: '1528-1-22'
     note: ''
@@ -393,8 +549,12 @@ list:
     japan: 1
     western: 1532
   start_date:
-    japan: 天文01年07月29日
-    western: '1532-8-29'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 天文01年07月29日
+      western: '1532-8-29'
   disuse:
     new_year_date: '1532-2-6'
     note: ''
@@ -403,8 +563,12 @@ list:
     japan: 1
     western: 1555
   start_date:
-    japan: 弘治01年10月23日
-    western: '1555-11-7'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 弘治01年10月23日
+      western: '1555-11-7'
   disuse:
     new_year_date: '1555-1-23'
     note: ''
@@ -413,8 +577,12 @@ list:
     japan: 1
     western: 1558
   start_date:
-    japan: 永禄01年02月28日
-    western: '1558-3-18'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 永禄01年02月28日
+      western: '1558-3-18'
   disuse:
     new_year_date: '1558-1-20'
     note: ''
@@ -423,8 +591,12 @@ list:
     japan: 1
     western: 1570
   start_date:
-    japan: 元亀01年04月23日
-    western: '1570-5-27'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 元亀01年04月23日
+      western: '1570-5-27'
   disuse:
     new_year_date: '1570-2-5'
     note: ''
@@ -433,8 +605,12 @@ list:
     japan: 1
     western: 1573
   start_date:
-    japan: 天正01年07月28日
-    western: '1573-8-25'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 天正01年07月28日
+      western: '1573-8-25'
   disuse:
     new_year_date: '1573-2-3'
     note: ''
@@ -443,8 +619,12 @@ list:
     japan: 1
     western: 1592
   start_date:
-    japan: 文禄01年12月08日
-    western: '1593-1-10'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文禄01年12月08日
+      western: '1593-1-10'
   disuse:
     new_year_date: '1592-2-13'
     note: ''
@@ -453,8 +633,12 @@ list:
     japan: 1
     western: 1596
   start_date:
-    japan: 慶長01年10月27日
-    western: '1596-12-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 慶長01年10月27日
+      western: '1596-12-16'
   disuse:
     new_year_date: '1596-1-30'
     note: ''
@@ -463,8 +647,12 @@ list:
     japan: 1
     western: 1615
   start_date:
-    japan: 元和01年07月13日
-    western: '1615-9-5'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 元和01年07月13日
+      western: '1615-9-5'
   disuse:
     new_year_date: '1615-1-29'
     note: ''
@@ -473,8 +661,12 @@ list:
     japan: 1
     western: 1624
   start_date:
-    japan: 寛永01年02月30日
-    western: '1624-4-17'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛永01年02月30日
+      western: '1624-4-17'
   disuse:
     new_year_date: '1624-2-19'
     note: ''
@@ -483,8 +675,12 @@ list:
     japan: 1
     western: 1644
   start_date:
-    japan: 正保01年12月16日
-    western: '1645-1-13'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 正保01年12月16日
+      western: '1645-1-13'
   disuse:
     new_year_date: '1644-2-8'
     note: ''
@@ -493,8 +689,12 @@ list:
     japan: 1
     western: 1648
   start_date:
-    japan: 慶安01年02月15日
-    western: '1648-4-7'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 慶安01年02月15日
+      western: '1648-4-7'
   disuse:
     new_year_date: '1648-1-25'
     note: ''
@@ -503,8 +703,12 @@ list:
     japan: 1
     western: 1652
   start_date:
-    japan: 承応01年09月18日
-    western: '1652-10-20'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 承応01年09月18日
+      western: '1652-10-20'
   disuse:
     new_year_date: '1652-2-10'
     note: ''
@@ -513,8 +717,12 @@ list:
     japan: 1
     western: 1655
   start_date:
-    japan: 明暦01年04月13日
-    western: '1655-5-18'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 明暦01年04月13日
+      western: '1655-5-18'
   disuse:
     new_year_date: '1655-2-7'
     note: ''
@@ -523,8 +731,12 @@ list:
     japan: 1
     western: 1658
   start_date:
-    japan: 万治01年07月23日
-    western: '1658-8-21'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 万治01年07月23日
+      western: '1658-8-21'
   disuse:
     new_year_date: '1658-2-3'
     note: ''
@@ -533,8 +745,12 @@ list:
     japan: 1
     western: 1661
   start_date:
-    japan: 寛文01年04月25日
-    western: '1661-5-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛文01年04月25日
+      western: '1661-5-23'
   disuse:
     new_year_date: '1661-1-31'
     note: ''
@@ -543,8 +759,12 @@ list:
     japan: 1
     western: 1673
   start_date:
-    japan: 延宝01年09月21日
-    western: '1673-10-30'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 延宝01年09月21日
+      western: '1673-10-30'
   disuse:
     new_year_date: '1673-2-17'
     note: ''
@@ -553,8 +773,12 @@ list:
     japan: 1
     western: 1681
   start_date:
-    japan: 天和01年09月29日
-    western: '1681-11-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 天和01年09月29日
+      western: '1681-11-9'
   disuse:
     new_year_date: '1681-2-19'
     note: ''
@@ -563,8 +787,12 @@ list:
     japan: 1
     western: 1684
   start_date:
-    japan: 貞享01年02月21日
-    western: '1684-4-5'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 貞享01年02月21日
+      western: '1684-4-5'
   disuse:
     new_year_date: '1684-2-16'
     note: ''
@@ -573,8 +801,12 @@ list:
     japan: 1
     western: 1688
   start_date:
-    japan: 元禄01年09月30日
-    western: '1688-10-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 元禄01年09月30日
+      western: '1688-10-23'
   disuse:
     new_year_date: '1688-2-2'
     note: ''
@@ -583,8 +815,12 @@ list:
     japan: 1
     western: 1704
   start_date:
-    japan: 宝永01年03月13日
-    western: '1704-4-16'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 宝永01年03月13日
+      western: '1704-4-16'
   disuse:
     new_year_date: '1704-2-5'
     note: ''
@@ -593,8 +829,12 @@ list:
     japan: 1
     western: 1711
   start_date:
-    japan: 正徳01年04月25日
-    western: '1711-6-11'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 正徳01年04月25日
+      western: '1711-6-11'
   disuse:
     new_year_date: '1711-2-17'
     note: ''
@@ -603,8 +843,12 @@ list:
     japan: 1
     western: 1716
   start_date:
-    japan: 享保01年06月22日
-    western: '1716-8-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 享保01年06月22日
+      western: '1716-8-9'
   disuse:
     new_year_date: '1716-1-25'
     note: ''
@@ -613,8 +857,12 @@ list:
     japan: 1
     western: 1736
   start_date:
-    japan: 元文01年04月28日
-    western: '1736-6-7'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 元文01年04月28日
+      western: '1736-6-7'
   disuse:
     new_year_date: '1736-2-12'
     note: ''
@@ -623,8 +871,12 @@ list:
     japan: 1
     western: 1741
   start_date:
-    japan: 寛保01年02月27日
-    western: '1741-4-12'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛保01年02月27日
+      western: '1741-4-12'
   disuse:
     new_year_date: '1741-2-16'
     note: ''
@@ -633,8 +885,12 @@ list:
     japan: 1
     western: 1744
   start_date:
-    japan: 延享01年02月21日
-    western: '1744-4-3'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 延享01年02月21日
+      western: '1744-4-3'
   disuse:
     new_year_date: '1744-2-14'
     note: ''
@@ -643,8 +899,12 @@ list:
     japan: 1
     western: 1748
   start_date:
-    japan: 寛延01年07月12日
-    western: '1748-8-5'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛延01年07月12日
+      western: '1748-8-5'
   disuse:
     new_year_date: '1748-1-30'
     note: ''
@@ -653,8 +913,12 @@ list:
     japan: 1
     western: 1751
   start_date:
-    japan: 宝暦01年10月27日
-    western: '1751-12-14'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 宝暦01年10月27日
+      western: '1751-12-14'
   disuse:
     new_year_date: '1751-1-27'
     note: ''
@@ -663,8 +927,12 @@ list:
     japan: 1
     western: 1764
   start_date:
-    japan: 明和01年06月02日
-    western: '1764-6-30'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 明和01年06月02日
+      western: '1764-6-30'
   disuse:
     new_year_date: '1764-2-2'
     note: ''
@@ -673,8 +941,12 @@ list:
     japan: 1
     western: 1772
   start_date:
-    japan: 安永01年11月16日
-    western: '1772-12-10'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 安永01年11月16日
+      western: '1772-12-10'
   disuse:
     new_year_date: '1772-2-4'
     note: ''
@@ -683,8 +955,12 @@ list:
     japan: 1
     western: 1781
   start_date:
-    japan: 天明01年04月02日
-    western: '1781-4-25'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 天明01年04月02日
+      western: '1781-4-25'
   disuse:
     new_year_date: '1781-1-24'
     note: ''
@@ -693,8 +969,12 @@ list:
     japan: 1
     western: 1789
   start_date:
-    japan: 寛政01年01月25日
-    western: '1789-2-19'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 寛政01年01月25日
+      western: '1789-2-19'
   disuse:
     new_year_date: '1789-1-26'
     note: ''
@@ -703,8 +983,12 @@ list:
     japan: 1
     western: 1801
   start_date:
-    japan: 享和01年02月05日
-    western: '1801-3-19'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 享和01年02月05日
+      western: '1801-3-19'
   disuse:
     new_year_date: '1801-2-13'
     note: ''
@@ -713,8 +997,12 @@ list:
     japan: 1
     western: 1804
   start_date:
-    japan: 文化01年02月11日
-    western: '1804-3-22'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文化01年02月11日
+      western: '1804-3-22'
   disuse:
     new_year_date: '1804-2-11'
     note: ''
@@ -723,8 +1011,12 @@ list:
     japan: 1
     western: 1818
   start_date:
-    japan: 文政01年04月22日
-    western: '1818-5-26'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文政01年04月22日
+      western: '1818-5-26'
   disuse:
     new_year_date: '1818-2-5'
     note: ''
@@ -733,8 +1025,12 @@ list:
     japan: 1
     western: 1830
   start_date:
-    japan: 天保01年12月10日
-    western: '1831-1-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 天保01年12月10日
+      western: '1831-1-23'
   disuse:
     new_year_date: '1830-1-25'
     note: ''
@@ -743,8 +1039,12 @@ list:
     japan: 1
     western: 1844
   start_date:
-    japan: 弘化01年12月02日
-    western: '1845-1-9'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 弘化01年12月02日
+      western: '1845-1-9'
   disuse:
     new_year_date: '1844-2-18'
     note: ''
@@ -753,8 +1053,12 @@ list:
     japan: 1
     western: 1848
   start_date:
-    japan: 嘉永01年02月28日
-    western: '1848-4-1'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 嘉永01年02月28日
+      western: '1848-4-1'
   disuse:
     new_year_date: '1848-2-5'
     note: ''
@@ -763,8 +1067,12 @@ list:
     japan: 1
     western: 1854
   start_date:
-    japan: 安政01年11月27日
-    western: '1855-1-15'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 安政01年11月27日
+      western: '1855-1-15'
   disuse:
     new_year_date: '1854-1-29'
     note: ''
@@ -773,8 +1081,12 @@ list:
     japan: 1
     western: 1860
   start_date:
-    japan: 万延01年03月18日
-    western: '1860-4-8'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 万延01年03月18日
+      western: '1860-4-8'
   disuse:
     new_year_date: '1860-1-23'
     note: ''
@@ -783,8 +1095,12 @@ list:
     japan: 1
     western: 1861
   start_date:
-    japan: 文久01年02月19日
-    western: '1861-3-29'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 文久01年02月19日
+      western: '1861-3-29'
   disuse:
     new_year_date: '1861-2-10'
     note: ''
@@ -793,8 +1109,12 @@ list:
     japan: 1
     western: 1864
   start_date:
-    japan: 元治01年02月20日
-    western: '1864-3-27'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 元治01年02月20日
+      western: '1864-3-27'
   disuse:
     new_year_date: '1864-2-8'
     note: ''
@@ -803,8 +1123,12 @@ list:
     japan: 1
     western: 1865
   start_date:
-    japan: 慶応01年04月07日
-    western: '1865-5-1'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 慶応01年04月07日
+      western: '1865-5-1'
   disuse:
     new_year_date: '1865-1-27'
     note: ''

@@ -53,6 +53,8 @@ module Zakuro
 
           Transfer::GengouScroller.set(scroll: @scroll, years: operated_years)
 
+          self.class.reset_meta(years: operated_years)
+
           operated_years
         end
 
@@ -172,19 +174,35 @@ module Zakuro
           # @param [Operation::MonthHistory] history 変更履歴
           # @param [OperatedSolarTerm] operated_solar_term 運用時二十四節気
           #
-          # @return [Month] 月（運用結果）
+          # @return [Monthly::Month] 月（運用結果）
           #
           def rewrite_month(context:, month:, history:, operated_solar_term:)
             operated_month = Monthly::OperatedMonth.new(
               context: context,
               month_label: month.month_label, first_day: month.first_day,
               solar_terms: month.solar_terms, history: history, gengou: month.gengou,
-              operated_solar_term: operated_solar_term
+              operated_solar_term: operated_solar_term, meta: month.meta
             )
 
             operated_month.rewrite unless history.invalid?
 
             operated_month
+          end
+
+          #
+          # メタ情報を更新する
+          #
+          # @param [Array<Base::Year>] years 完全範囲
+          #
+          def reset_meta(years: [])
+            months = []
+            years.each do |year|
+              months |= year.months
+            end
+
+            months.each_cons(2) do |last, current|
+              current.reset_meta(last: last)
+            end
           end
         end
       end

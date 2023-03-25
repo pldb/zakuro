@@ -30,7 +30,7 @@ module Zakuro
               #
               # 取得する
               #
-              # @param [Array<Calculation::Base::Year>] years 範囲
+              # @param [Array<Base::Year>] years 範囲
               # @param [Western::Calendar] date 西暦日
               #
               # @return [Result::Data::SingleDay] 和暦日

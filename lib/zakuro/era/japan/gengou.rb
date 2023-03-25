@@ -26,13 +26,15 @@ module Zakuro
         # @param [Integer] line 行番号
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
+        # @param [True, False] operated 運用値設定
         #
         # @return [Array<LinearGengou>] 該当行の元号
         #
         def line(line: FIRST_LINE,
-                 start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+                 start_date: Western::Calendar.new, last_date: Western::Calendar.new,
+                 operated: false)
           Alignment.get(
-            line: line, start_date: start_date, last_date: last_date
+            line: line, start_date: start_date, last_date: last_date, operated: operated
           )
         end
 
@@ -42,11 +44,12 @@ module Zakuro
         # @param [Integer] line 行番号
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
+        # @param [True, False] operated 運用値設定
         #
         # @return [Array<LinearGengou>] 該当行の元号
         #
-        def line_by_name(line: FIRST_LINE, name:)
-          Alignment.get_by_name(line: line, name: name)
+        def line_by_name(line: FIRST_LINE, name:, operated: false)
+          Alignment.get_by_name(line: line, name: name, operated: operated)
         end
       end
     end

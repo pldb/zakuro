@@ -6,54 +6,66 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
+require 'date'
+
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'All' do
     describe 'Motsumetsu' do
-      context 'all motsunichi and metsunichi' do
+      context 'all metsunichi' do
         it 'should be equal to a reference' do
-          years = Zakuro::All::Motsumetsu::Parser.get
-          before_gengou = Zakuro::All::Motsumetsu::Gengou.new
-          years.each do |year|
-            gengou = year.gengou
-            year.dates.each do |date|
-              p '-------------'
-              # TODO: refactor
-              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-              p "没日: #{date.dropped}"
-              p "滅日: #{date.vanished}"
+          # |698/02/16|儀鳳暦|A|✓|-|-|
+          # | | |B|-|-|-|
+          # | | |C|-|-|-|
+          # |764/02/07|大衍暦|A|✓|✓|✓|
+          # | | |B|-|-|-|
+          # | | |C|-|-|-|
+          # |862/02/03|宣明暦| |✓|✓|✓|
+          START_DATE = Date.new(764, 2, 7)
+          # TODO: 試験的に動作確認しているため期間を短くする
+          # LAST_DATE = Date.new(862, 2, 3)
+          LAST_DATE = Date.new(766, 2, 3)
 
-              date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
-                date: date, current_gengou: gengou, before_gengou: before_gengou
-              )
+          current_date = START_DATE.clone
 
-              p date_text
+          days = (LAST_DATE - START_DATE).to_i
+
+          current_date -= 1
+
+          # TODO: refactor
+          File.open('./temp.log', 'w') do |f|
+            days.times.each do |_index|
+              current_date += 1
+
+              # TODO: 不具合箇所の分析
+              # next unless current_date == Date.new(764, 8, 16)
+              # next unless current_date == Date.new(764, 8, 26)
 
               actual = Zakuro::Merchant.new(
                 condition: {
-                  date: date_text,
-                  options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
+                  date: current_date.clone,
+                  options: { 'dropped_date' => true, 'vanished_date' => true }
                 }
               ).commit
-              # TODO: expect
-              options = actual.data.options
-              dropped_date = options['dropped_date']
-              vanished_date = options['vanished_date']
-              if date.dropped
-                p "【結果】没日: #{dropped_date.matched} / #{dropped_date.calculation.remainder}"
-                actual.data.month.odd_solar_terms.each do |solar_term|
-                  p "二十四節気（節気）: #{solar_term.index} / #{solar_term.remainder}"
-                end
-                actual.data.month.even_solar_terms.each do |solar_term|
-                  p "二十四節気（中気）: #{solar_term.index} / #{solar_term.remainder}"
-                end
-              end
-              next unless date.vanished
 
-              p "【結果】滅日: #{vanished_date.matched} / #{vanished_date.calculation.remainder}"
-              p "経朔： #{vanished_date.calculation.average_remainder}"
+              options = actual.data.options
+
+              dropped_date = options['dropped_date']
+
+              vanished_date = options['vanished_date']
+
+              next unless dropped_date.matched || vanished_date.matched
+
+              data = actual.data
+              japan_date = "#{data.year.first_gengou.name}#{data.year.first_gengou.number}年" \
+              "#{data.month.leaped ? '閏' : ''}#{data.month.number}月#{data.day.number}日"
+
+              line = "western_date: #{actual.data.day.western_date.format}, japan_date: " \
+              "#{japan_date}, dropped_date: #{dropped_date.matched}, " \
+              "vanished_date: #{vanished_date.matched}\n"
+
+              f.write(line)
             end
-            before_gengou = gengou
           end
         end
       end

@@ -5,16 +5,24 @@ last_year:
   japan: 7981
   western: 9999
 last_date:
-  japan: 令和7981年12月31日
-  western: '9999-12-31'
+  calculation:
+    japan: ''
+    western: ''
+  operation:
+    japan: 令和7981年12月31日
+    western: '9999-12-31'
 list:
 - name: 明治
   start_year:
     japan: 1
     western: 1868
   start_date:
-    japan: 明治01年09月08日
-    western: '1868-10-23'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 明治01年09月08日
+      western: '1868-10-23'
   disuse:
     new_year_date: '1868-1-25'
     note: ''
@@ -23,8 +31,12 @@ list:
     japan: 1
     western: 1912
   start_date:
-    japan: 大正01年07月30日
-    western: '1912-7-30'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 大正01年07月30日
+      western: '1912-7-30'
   disuse:
     new_year_date: '1912-1-1'
     note: ''
@@ -33,8 +45,12 @@ list:
     japan: 1
     western: 1926
   start_date:
-    japan: 昭和01年12月25日
-    western: '1926-12-25'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 昭和01年12月25日
+      western: '1926-12-25'
   disuse:
     new_year_date: '1926-1-1'
     note: ''
@@ -43,8 +59,12 @@ list:
     japan: 1
     western: 2019
   start_date:
-    japan: 令和01年05月01日
-    western: '2019-5-1'
+    calculation:
+      japan: ''
+      western: ''
+    operation:
+      japan: 令和01年05月01日
+      western: '2019-5-1'
   disuse:
     new_year_date: '2019-1-1'
     note: ''

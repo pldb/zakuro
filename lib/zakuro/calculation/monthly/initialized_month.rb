@@ -31,11 +31,13 @@ module Zakuro
         # @param [FirstDay] first_day 月初日（朔日）
         # @param [True, False] is_last_year 昨年の月/今年の月
         # @param [Integer] phase_index 月齢（朔月、上弦、望月、下弦）
+        # @param [Meta] meta 付加情報
         #
         def initialize(context:, month_label: MonthLabel.new, solar_terms: [],
-                       first_day: FirstDay.new, is_last_year: false, phase_index: -1)
+                       first_day: FirstDay.new, is_last_year: false, phase_index: -1,
+                       meta: Meta.new)
           super(context: context, month_label: month_label, solar_terms: solar_terms,
-                first_day: first_day)
+                first_day: first_day, meta: meta)
           @is_last_year = is_last_year
           @phase_index = phase_index
         end

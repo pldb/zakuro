@@ -141,7 +141,7 @@ module Zakuro
         #
         def prev_term
           @index -= 1
-          @index = 23 if index.negative?
+          @index = ORDER.size - 1 if index.negative?
 
           remainder.sub(average)
         end

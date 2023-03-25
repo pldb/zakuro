@@ -98,6 +98,9 @@ describe 'Zakuro' do
                   remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                     day: 3, minute: 5359, second: 0
                   ),
+                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    day: 3, minute: 4607, second: 0
+                  ),
                   # 873-2-1 -> 873-2-2
                   western_date: Zakuro::Western::Calendar.new(year: 873, month: 2, day: 2)
                 ),
@@ -262,6 +265,55 @@ describe 'Zakuro' do
                     remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                       day: 7, minute: 8145, second: 0
                     )
+                  )
+                ]
+              )
+
+              TestTools::Stringifier.eql?(
+                expected: expected, actual: actual, class_prefix: 'Zakuro'
+              )
+            end
+          end
+
+          # NOTE: 宝亀10年12月に月の大小の運用値誤りあり。天応〜延暦にかけて西暦日が1日ずれていた
+          context 'previous gengou included any operations' do
+            it 'should be appropriate western date on operation' do
+              context = Zakuro::Context::Context.new(version: 'Daien')
+
+              date = Zakuro::Western::Calendar.new(year: 781, month: 1, day: 30)
+
+              range = Zakuro::Calculation::Range::DatedOperationRange.new(
+                context: context,
+                start_date: date,
+                years: Zakuro::Calculation::Range::DatedFullRange.new(
+                  context: context, start_date: date
+                ).get
+              ).get
+
+              actual = to_parent_class(actual: range[11].months[0])
+              expected = Zakuro::Calculation::Monthly::Month.new(
+                context: context,
+                month_label: Zakuro::Calculation::Monthly::MonthLabel.new(
+                  number: 1, is_many_days: false, leaped: false
+                ),
+                first_day: Zakuro::Calculation::Monthly::FirstDay.new(
+                  remainder: Zakuro::Daien::Cycle::Remainder.new(
+                    day: 57, minute: 1857, second: 0
+                  ),
+                  average_remainder: Zakuro::Daien::Cycle::Remainder.new(
+                    day: 57, minute: 2184, second: 0
+                  ),
+                  western_date: date
+                ),
+                # 計算上は冬至(0)がある
+                solar_terms: [
+                  Zakuro::Daien::Cycle::SolarTerm.new(
+                    index: 3,
+                    remainder: Zakuro::Daien::Cycle::Remainder.new(day: 59, minute: 1003, second: 0)
+                  ),
+                  Zakuro::Daien::Cycle::SolarTerm.new(
+                    index: 4,
+                    remainder: Zakuro::Daien::Cycle::Remainder.new(day: 14, minute: 1668, second: 0)
                   )
                 ]
               )

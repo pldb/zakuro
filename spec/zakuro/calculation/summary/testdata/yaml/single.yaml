@@ -959,6 +959,81 @@
           zodiac_name: "壬寅"
           remainder: "38-2994"
           western_date: "0768-07-18"
+- western_date: "0781-01-30"
+  version: "Daien"
+  japan_date: "天応1年1月1日"
+  operation: "天応1年1月2日 -> 天応1年1月1日"
+  description: "元号開始日が計算値/運用値で異なっていても計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "天応1年"
+        second_gengou: ""
+        zodiac_name: "辛酉"
+        total_days: 353
+      month:
+        number: 1
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "辛酉"
+          remainder: "57-1857"
+          western_date: "0781-01-30"
+        odd_solar_terms:
+          index: 3
+          remainder: "59-1003"
+        even_solar_terms:
+          index: 4
+          remainder: "14-1668"
+      day:
+        number: 1
+        zodiac_name: "辛酉"
+        remainder: "57-1857"
+        western_date: "0781-01-30"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "125-6-1"
+          western_date: "0781-01-29"
+          page: 125
+          number: 6
+          annotations:
+            - description: "計算では56庚申であるが，続日本紀は辛酉朔とある。したがって正月朔のユリウス暦日は1月30日。"
+              note: ""
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天応1年"
+          second_gengou: ""
+          zodiac_name: "辛酉"
+          total_days: 354
+        month:
+          number: 1
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚申"
+            remainder: "56-1857"
+            western_date: "0781-01-29"
+          odd_solar_terms:
+            index: 3
+            remainder: "59-1003"
+          even_solar_terms:
+            index: 4
+            remainder: "14-1668"
+        day:
+          number: 2
+          zodiac_name: "辛酉"
+          remainder: "57-1857"
+          western_date: "0781-01-30"
 - western_date: "0862-02-02"
   version: "Daien"
   japan_date: "貞観3年12月30日"
@@ -3490,6 +3565,81 @@
           zodiac_name: "庚子"
           remainder: "36-4787"
           western_date: "1332-02-26"
+- western_date: "1344-01-16"
+  version: "Senmyou"
+  japan_date: "康永3年1月1日"
+  operation: ""
+  description: "南北朝の中間にある元号を計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "興国5年"
+        second_gengou: "康永3年"
+        zodiac_name: "甲申"
+        total_days: 384
+      month:
+        number: 1
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "壬戌"
+          remainder: "58-6335"
+          western_date: "1344-01-16"
+        odd_solar_terms:
+          index: 3
+          remainder: "12-1006"
+        even_solar_terms:
+          index: 4
+          remainder: "27-2842"
+      day:
+        number: 1
+        zodiac_name: "壬戌"
+        remainder: "58-6335"
+        western_date: "1344-01-16"
+    operation:
+      operated: true
+      month:
+        current:
+          id: "313-1-a"
+          western_date: "1343-12-18"
+          page: 313
+          number: 0
+          annotations:
+        parent:
+          id: "313-1-1"
+          western_date: "1344-01-17"
+          page: 313
+          number: 1
+          annotations:
+            - description: "計算は59癸亥, 園太暦・師守記など（大日本史料第6編の8）により壬戌, 正月壬戌朔のユリウス暦日は1月16日。小余が進朔限に近く, 進朔すべきをしなかった司暦の誤りか。"
+              note: ""
+      original:
+        year:
+          first_gengou: "興国4年"
+          second_gengou: "康永2年"
+          zodiac_name: "癸未"
+          total_days: 355
+        month:
+          number: 12
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "癸巳"
+            remainder: "29-814"
+            western_date: "1343-12-18"
+          odd_solar_terms:
+            index: 1
+            remainder: "41-5735"
+          even_solar_terms:
+            index: 2
+            remainder: "56-7571"
+        day:
+          number: 30
+          zodiac_name: "壬戌"
+          remainder: "58-814"
+          western_date: "1344-01-16"
 - western_date: "1392-01-25"
   version: "Senmyou"
   japan_date: "元中9年1月1日"

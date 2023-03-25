@@ -26,12 +26,18 @@ module Zakuro
           #
           # @param [Western::Calendar] start_date 西暦開始日
           # @param [Western::Calendar] last_date 西暦終了日
+          # @param [True, False] operated 運用値設定
           #
-          def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new)
+          def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
+                         operated: false)
             last_date = start_date.clone if last_date.invalid?
 
-            @first_list = DatedList.new(first: true, start_date: start_date, last_date: last_date)
-            @second_list = DatedList.new(first: false, start_date: start_date, last_date: last_date)
+            @first_list = DatedList.new(
+              first: true, start_date: start_date, last_date: last_date, operated: operated
+            )
+            @second_list = DatedList.new(
+              first: false, start_date: start_date, last_date: last_date, operated: operated
+            )
 
             renew(last_date: last_date)
           end

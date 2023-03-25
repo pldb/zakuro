@@ -52,6 +52,32 @@ module Zakuro
           }
         }.freeze
 
+        #
+        # 『日本暦日原典』初版と第四版のずれを補正する
+        #
+        #  計算結果から『日本暦日便覧』は初版に準拠しているものと考える。
+        #  第四版の注釈に合わせて日付ずれを補正する
+        #
+        #  * 没日
+        #    * 0807-11-29 : 大同2年10月27日（第四版のみ注釈あり）
+        #    * 0810-12-17 : 弘仁1年11月18日（第四版のみ注釈あり）
+        #    * 0823-12-05 : 弘仁14年10月30日（初版のみ注釈あり）
+        #  * 滅日
+        #    * 0807-11-27 : 大同2年10月24日（第四版のみ注釈あり）
+        #    * 0823-12-03 : 弘仁14年10月27日（初版のみ注釈あり）
+        #    * 0794-06-21 : 延暦13年5月19日（初版/第四版の注釈相違。第四版では運用値に寄せる）
+        #
+        DATE_DIFF = {
+          # 没日
+          '大同2年10月27日' => '大同2年10月26日',
+          '弘仁1年11月18日' => '弘仁1年11月17日',
+          '弘仁14年10月30日' => '弘仁14年10月29日',
+          # 滅日
+          '大同2年10月24日' => '大同2年10月23日',
+          '弘仁14年10月27日' => '弘仁14年10月26日',
+          '延暦13年5月19日' => '延暦13年5月18日'
+        }.freeze
+
         class << self
           #
           # 取得する
@@ -73,10 +99,24 @@ module Zakuro
 
             gengou = range(date: date, gengou: gengou)
 
-            "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+            formatted_date = to_s(gengou: gengou, date: date)
+
+            replace(date: formatted_date)
           end
 
           private
+
+          #
+          # 和暦日文字列を生成する
+          #
+          # @param [Gengou] gengou 元号
+          # @param [JapanDate] date 現在和暦日
+          #
+          # @return [String] 和暦日文字列
+          #
+          def to_s(gengou:, date:)
+            "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+          end
 
           #
           # 元号を取得する
@@ -149,6 +189,21 @@ module Zakuro
             end
 
             gengou
+          end
+
+          #
+          # 和暦日差し替え
+          #
+          # @param [String] date 和暦日文字列
+          #
+          # @return [String] 和暦日文字列
+          #
+          def replace(date:)
+            result = DATE_DIFF[date]
+
+            return result if result
+
+            date
           end
         end
       end

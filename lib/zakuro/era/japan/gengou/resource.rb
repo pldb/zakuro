@@ -27,6 +27,22 @@ module Zakuro
             __dir__
           ))
         ].freeze
+
+        # @return [Array<Set>] 元号セット情報リスト（運用値）
+        OPERATED_LIST = [
+          Parser.run(filepath: File.expand_path(
+            './resource/yaml/set-001-until-south.yaml',
+            __dir__
+          ), operated: true),
+          Parser.run(filepath: File.expand_path(
+            './resource/yaml/set-002-from-north.yaml',
+            __dir__
+          ), operated: true),
+          Parser.run(filepath: File.expand_path(
+            './resource/yaml/set-003-modern.yaml',
+            __dir__
+          ), operated: true)
+        ].freeze
       end
     end
   end

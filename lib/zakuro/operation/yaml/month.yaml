@@ -3091,7 +3091,7 @@
         dest: "-"
       days:
         src: 大
-        dest: 小
+        dest: 大
     solar_term:
       src:
         index: "-"

@@ -41,7 +41,7 @@ describe 'Zakuro' do
                 options = {
                   'dropped_date' => true
                 }
-                context = Zakuro::Context::Context.new(options: options)
+                context = Zakuro::Context::Context.new(version: 'Senmyou', options: options)
 
                 month = Zakuro::Calculation::Monthly::Month.new(context: context)
                 day = Zakuro::Calculation::Base::Day.new
@@ -62,13 +62,35 @@ describe 'Zakuro' do
                   Zakuro::Senmyou::Cycle::SolarTerm.new(
                     index: 1,
                     remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 0, minute: 8236, second: 7
+                      day: 15, minute: 0, second: 0
                     )
                   ),
                   Zakuro::Senmyou::Cycle::SolarTerm.new(
                     index: 2,
                     remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 0, minute: 0, second: 0
+                      day: 30, minute: 0, second: 0
+                    )
+                  )
+                ]
+              end
+              let!(:all_solar_terms) do
+                [
+                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                    index: 0,
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 0, minute: 8236, second: 7
+                    )
+                  ),
+                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                    index: 1,
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 15, minute: 0, second: 0
+                    )
+                  ),
+                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                    index: 2,
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 30, minute: 0, second: 0
                     )
                   )
                 ]
@@ -88,7 +110,8 @@ describe 'Zakuro' do
                     western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
                     remainder: Zakuro::Senmyou::Cycle::Remainder.new
                   ),
-                  solar_terms: solar_terms
+                  solar_terms: solar_terms,
+                  meta: Zakuro::Calculation::Monthly::Meta.new(all_solar_terms: all_solar_terms)
                 )
                 day = Zakuro::Calculation::Base::Day.new(
                   number: 1,
@@ -114,11 +137,11 @@ describe 'Zakuro' do
               end
               it 'should be a solar term index have dropped date' do
                 solar_term = actual['dropped_date'].calculation.solar_term
-                expect(solar_term.index).to eq solar_terms[0].index
+                expect(solar_term.index).to eq all_solar_terms[0].index
               end
               it 'should be a solar term remainder have dropped date' do
                 solar_term = actual['dropped_date'].calculation.solar_term
-                expect(solar_term.remainder).to eq solar_terms[0].remainder.format
+                expect(solar_term.remainder).to eq all_solar_terms[0].remainder.format
               end
             end
           end

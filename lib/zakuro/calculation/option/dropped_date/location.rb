@@ -24,8 +24,8 @@ module Zakuro
           attr_reader :limit
           # @return [Integer] 年
           attr_reader :year
-          # @return [Array<Cycle::AbstractSolarTerm>] 二十四節気
-          attr_reader :solar_terms
+          # @return [Cycle::AbstractSolarTerm] 二十四節気
+          attr_reader :solar_term
           # @return [Class] 没余クラス
           attr_reader :remainder_class
 
@@ -33,16 +33,16 @@ module Zakuro
           # 初期化
           #
           # @param [Context::Context] context 暦コンテキスト
-          # @param [Array<Cycle::AbstractSolarTerm>] solar_terms 二十四節気
+          # @param [Cycle::AbstractSolarTerm] solar_term 二十四節気
           #
-          def initialize(context:, solar_terms: [])
+          def initialize(context:, solar_term:)
             parameter = context.resolver.dropped_date_parameter.new
             @context = context
             @valid = parameter.valid
             @limit = parameter.limit
             @year = parameter.year
             @remainder_class = parameter.remainder_class
-            @solar_terms = solar_terms
+            @solar_term = solar_term
           end
 
           #
@@ -73,34 +73,23 @@ module Zakuro
           def get
             # 1. 二十四節気の大余小余を取り出す
             remainder = solar_term_remainder
+
+            # p "remainder: #{remainder.format(form: '%d-%d.%.5f')}"
+
             # 2. 小余360、秒45（360/8）で乗算する
             total = multiple_ideal_year(remainder: remainder)
+            # p "total: #{total}"
             # 3. 上記2と章歳（3068055）の差を求める
             diff = (year - total).abs
+            # p "year: #{year}"
+            # p "diff: #{diff}"
             # 4. 上記3を通余で徐算する
             result = remainder_class.new(total: diff)
+            # p "result: #{result.format(form: '%d-%d.%.5f')}"
             # 5. 上記4の商と上記1の大余が没日大余、余りが小余（没余）
             day = remainder_class.new(day: remainder.day, minute: 0, second: 0)
 
             day.add(result)
-          end
-
-          #
-          # 該当の二十四節気を取得する
-          #
-          # @return [Cycle::AbstractSolarTerm] 二十四節気
-          #
-          def solar_term
-            solar_terms.each do |solar_term|
-              remainder = solar_term.remainder.clone
-              minute_later = remainder.class.new(
-                day: 0, minute: remainder.minute, second: remainder.second
-              )
-
-              return solar_term if minute_later >= limit
-            end
-
-            context.resolver.solar_term.new
           end
 
           private

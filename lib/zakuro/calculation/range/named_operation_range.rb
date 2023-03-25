@@ -26,7 +26,9 @@ module Zakuro
         # @param [Array<Year>] years 年データ（完全範囲）
         #
         def initialize(context:, start_name: INVALID_NAME, last_name: INVALID_NAME, years: [])
-          scroll = Gengou::NamedScroll.new(start_name: start_name, last_name: last_name)
+          scroll = Gengou::NamedScroll.new(
+            start_name: start_name, last_name: last_name, operated: true
+          )
 
           super(context: context, scroll: scroll, years: years)
         end

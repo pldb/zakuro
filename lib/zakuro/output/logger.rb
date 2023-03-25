@@ -9,6 +9,7 @@ module Zakuro
     # @note 本番では使用しない
     #
     class Logger
+      # @return [Hash<Symbol, Integer>] ログレベル
       LEVELS = {
         none: -1,
         debug: 0,
@@ -17,6 +18,7 @@ module Zakuro
         error: 3
       }.freeze
 
+      # @return [Integer] 現在ログレベル
       LEVEL = LEVELS[:none]
 
       # @return [String] 呼び出し位置
@@ -32,7 +34,9 @@ module Zakuro
       # @param [String] messages メッセージ
       #
       def debug(*messages)
-        return if LEVEL < LEVELS[:debug]
+        return if none?
+
+        return if LEVEL >= LEVELS[:debug]
 
         output('DEBUG', *messages)
       end
@@ -43,7 +47,9 @@ module Zakuro
       # @param [String] messages メッセージ
       #
       def info(*messages)
-        return if LEVEL < LEVELS[:info]
+        return if none?
+
+        return if LEVEL >= LEVELS[:info]
 
         output('INFO', *messages)
       end
@@ -55,7 +61,9 @@ module Zakuro
       # @param [String] messages メッセージ
       #
       def error(error, *messages)
-        return if LEVEL < LEVELS[:error]
+        return if none?
+
+        return if LEVEL >= LEVELS[:error]
 
         output('ERROR', *messages)
         output('ERROR', error.message)
@@ -63,6 +71,16 @@ module Zakuro
       end
 
       private
+
+      #
+      # 出力なしか
+      #
+      # @return [True] 出力なし
+      # @return [False] 出力あり
+      #
+      def none?
+        LEVEL < LEVELS[:debug]
+      end
 
       #
       # 標準出力を行う

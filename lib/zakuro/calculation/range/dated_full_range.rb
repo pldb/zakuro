@@ -22,7 +22,9 @@ module Zakuro
         #
         def initialize(context:,
                        start_date: Western::Calendar.new, last_date: Western::Calendar.new)
-          scroll = Gengou::DatedScroll.new(start_date: start_date, last_date: last_date)
+          scroll = Gengou::DatedScroll.new(
+            start_date: start_date, last_date: last_date, operated: false
+          )
 
           super(context: context, scroll: scroll, start_date: start_date, last_date: last_date)
         end

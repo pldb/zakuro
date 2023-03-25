@@ -20,8 +20,6 @@ module Zakuro
   module Calculation
     # :nodoc:
     module Range
-      # :reek:TooManyInstanceVariables { max_instance_variables: 6 }
-
       #
       # FullRange 完全範囲
       #   ある日からある日の範囲を計算可能な年月範囲
@@ -89,6 +87,8 @@ module Zakuro
 
           Transfer::GengouScroller.set(scroll: scroll, years: years)
 
+          reset_meta(years: years)
+
           years
         end
 
@@ -104,6 +104,7 @@ module Zakuro
           last_year = scroll.western_last_year
 
           # TODO: context にデフォルト暦名が設定されている場合は使用しない
+          #  現在は暦ごとの元号情報がないため使用できない
           versions = Version.get(start_year: start_year, last_year: last_year)
 
           collect_version_ranges(versions: versions, start_year: start_year, last_year: last_year)
@@ -180,6 +181,22 @@ module Zakuro
           end
 
           result
+        end
+
+        #
+        # メタ情報を更新する
+        #
+        # @param [Array<Base::Year>] years 完全範囲
+        #
+        def reset_meta(years: [])
+          months = []
+          years.each do |year|
+            months |= year.months
+          end
+
+          months.each_cons(2) do |last, current|
+            current.reset_meta(last: last)
+          end
         end
       end
     end

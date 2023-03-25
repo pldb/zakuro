@@ -109,7 +109,7 @@ Or install it yourself as:
 |項目   |有無|
 |:----|:----|
 |[没日](./doc/dropped_date.md)|✓|
-|滅日|-|
+|[滅日](./doc/vanished_date.md)|✓|
 
 # 例外
 

@@ -34,12 +34,16 @@ describe 'Zakuro' do
                   Zakuro::Calculation::Gengou::Counter.new(
                     gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
                       name: '元号甲',
-                      both_start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
                         japan: 1, western: 446
                       ),
-                      both_start_date: Zakuro::Japan::Gengou::Resource::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年1月1日'),
-                        western: Zakuro::Western::Calendar.parse(text: '0446-02-12')
+                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
+                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
+                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年1月1日'),
+                          western: Zakuro::Western::Calendar.parse(text: '0446-02-12')
+                        ),
+                        operated: true
                       ),
                       last_year: 1,
                       last_date: Zakuro::Western::Calendar.parse(text: '0446-03-12')
@@ -86,12 +90,16 @@ describe 'Zakuro' do
                   Zakuro::Calculation::Gengou::Counter.new(
                     gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
                       name: '元号甲',
-                      both_start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
                         japan: 1, western: 446
                       ),
-                      both_start_date: Zakuro::Japan::Gengou::Resource::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年1月1日'),
-                        western: Zakuro::Western::Calendar.parse(text: '0446-02-12')
+                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
+                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
+                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年1月1日'),
+                          western: Zakuro::Western::Calendar.parse(text: '0446-02-12')
+                        ),
+                        operated: true
                       ),
                       last_year: 1,
                       last_date: Zakuro::Western::Calendar.parse(text: '0446-03-12')
@@ -102,12 +110,16 @@ describe 'Zakuro' do
                   Zakuro::Calculation::Gengou::Counter.new(
                     gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
                       name: '元号乙',
-                      both_start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
                         japan: 1, western: 446
                       ),
-                      both_start_date: Zakuro::Japan::Gengou::Resource::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年3月1日'),
-                        western: Zakuro::Western::Calendar.parse(text: '0446-04-12')
+                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
+                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
+                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年3月1日'),
+                          western: Zakuro::Western::Calendar.parse(text: '0446-04-12')
+                        ),
+                        operated: true
                       ),
                       last_year: 1,
                       last_date: Zakuro::Western::Calendar.parse(text: '0446-05-12')
@@ -118,12 +130,16 @@ describe 'Zakuro' do
                   Zakuro::Calculation::Gengou::Counter.new(
                     gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
                       name: '元号丙',
-                      both_start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
                         japan: 1, western: 446
                       ),
-                      both_start_date: Zakuro::Japan::Gengou::Resource::Both::Date.new(
-                        japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年5月1日'),
-                        western: Zakuro::Western::Calendar.parse(text: '0446-06-12')
+                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
+                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
+                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                          japan: Zakuro::Japan::Calendar.parse(text: '元号甲1年5月1日'),
+                          western: Zakuro::Western::Calendar.parse(text: '0446-06-12')
+                        ),
+                        operated: true
                       ),
                       last_year: 1,
                       last_date: Zakuro::Western::Calendar.parse(text: '0446-07-12')

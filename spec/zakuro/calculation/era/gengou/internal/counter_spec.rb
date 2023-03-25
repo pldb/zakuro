@@ -32,12 +32,16 @@ describe 'Zakuro' do
           let(:gengou) do
             Zakuro::Japan::Gengou::Resource::Gengou.new(
               name: '元号名',
-              both_start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+              start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
                 japan: japan_year, western: western_year
               ),
-              both_start_date: Zakuro::Japan::Gengou::Resource::Both::Date.new(
-                japan: Zakuro::Japan::Calendar.parse(text: "元号#{japan_year}年1月1日"),
-                western: Zakuro::Western::Calendar.new(year: western_year)
+              start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
+                calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
+                operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                  japan: Zakuro::Japan::Calendar.parse(text: "元号#{japan_year}年1月1日"),
+                  western: Zakuro::Western::Calendar.new(year: western_year)
+                ),
+                operated: true
               ),
               last_date: Zakuro::Western::Calendar.new(year: 20)
             )

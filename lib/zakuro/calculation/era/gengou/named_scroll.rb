@@ -19,9 +19,12 @@ module Zakuro
         #
         # @param [String] start_name 開始元号名
         # @param [String] last_name 終了元号名
+        # @param [True, False] operated 運用値設定
         #
-        def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME)
-          range = Reserve::NamedRange.new(start_name: start_name, last_name: last_name)
+        def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME, operated: false)
+          range = Reserve::NamedRange.new(
+            start_name: start_name, last_name: last_name, operated: operated
+          )
           super(range: range)
         end
       end
