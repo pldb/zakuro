@@ -265,6 +265,7 @@ module Zakuro
         # 二十四節気を正しい順序にソートする
         #
         def sort_solar_terms
+          # TODO: refactor
           sorted = (solar_terms.sort do |termx, termy|
             termx.index <=> termy.index
           end)
