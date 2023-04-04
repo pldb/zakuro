@@ -262,6 +262,32 @@ module Zakuro
         end
 
         #
+        # 二十四節気を正しい順序にソートする
+        #
+        def sort_solar_terms
+          sorted = (solar_terms.sort do |termx, termy|
+            termx.index <=> termy.index
+          end)
+
+          first = []
+          second = []
+
+          sorted.each do |term|
+            if term.index >= (23 - 2)
+              second.push(term)
+              next
+            end
+
+            first.push(term)
+          end
+
+          # 0以前を先頭にする
+          second += first
+
+          @solar_terms = second
+        end
+
+        #
         # 大余に対応する二十四節気
         #
         # @param [Integer] day 大余
