@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../cycle/abstract_solar_term'
+
 require_relative '../base/gengou'
 require_relative './first_day'
 require_relative './meta'
@@ -22,7 +24,7 @@ module Zakuro
         attr_reader :month_label
         # @return [FirstDay] 月初日（朔日）
         attr_reader :first_day
-        # @return [Array<AbstractSolarTerm>] 二十四節気
+        # @return [Array<Cyle::AbstractSolarTerm>] 二十四節気
         attr_reader :solar_terms
         # @return [Base::Gengou] 元号
         attr_reader :gengou
@@ -37,7 +39,7 @@ module Zakuro
         # @param [Context::Context] context 暦コンテキスト
         # @param [MonthLabel] month_label 月表示名
         # @param [FirstDay] first_day 月初日（朔日）
-        # @param [Array<AbstractSolarTerm>] solar_terms 二十四節気
+        # @param [Array<Cyle::AbstractSolarTerm>] solar_terms 二十四節気
         # @param [Base::Gengou] gengou 元号
         # @param [Meta] meta 付加情報
         #
@@ -270,6 +272,11 @@ module Zakuro
             termx.index <=> termy.index
           end)
 
+          unless reset_term?(solar_terms: sorted)
+            @solar_terms = sorted
+            return
+          end
+
           first = []
           second = []
 
@@ -348,6 +355,31 @@ module Zakuro
           return false unless leaped? == date.leaped
 
           true
+        end
+
+        #
+        # 二十四節気の折り返し（23 -> 0）があるか
+        #
+        # @param [Array<Cyle::AbstractSolarTerm>] solar_terms 二十四節気
+        #
+        # @return [True] 折り返しあり
+        # @return [False] 折り返しなし
+        #
+        def reset_term?(solar_terms: [])
+          first = false
+          last = false
+
+          solar_terms.each do |term|
+            index = term.index
+            case index
+            when Cycle::AbstractSolarTerm::FIRST_INDEX
+              first = true
+            when Cycle::AbstractSolarTerm::LAST_INDEX
+              last = true
+            end
+          end
+
+          first && last
         end
       end
     end

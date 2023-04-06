@@ -47,6 +47,12 @@ module Zakuro
           23 => :taisetsu
         }.freeze
 
+        # @return [Integer] 開始番号
+        FIRST_INDEX = 0
+
+        # @return [Integer] 終了番号
+        LAST_INDEX = 23
+
         #
         # 初期化
         #

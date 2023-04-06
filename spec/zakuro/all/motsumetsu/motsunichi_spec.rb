@@ -8,7 +8,6 @@ require_relative './testdata/parser'
 
 # TODO: 没日有無判定を変更した後に通らなくなった和暦日
 MOTSUNICHI_FAILED_PATTERNS = %w[
-  弘仁8年9月15日
   永承5年11月16日
 ].freeze
 
