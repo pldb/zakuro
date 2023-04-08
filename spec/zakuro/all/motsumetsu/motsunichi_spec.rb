@@ -6,10 +6,8 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# TODO: 没日有無判定を変更した後に通らなくなった和暦日
-MOTSUNICHI_FAILED_PATTERNS = %w[
-  永承5年11月16日
-].freeze
+# TODO: 全て通った。一旦はテストなしとする
+MOTSUNICHI_FAILED_PATTERNS = %w[].freeze
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
