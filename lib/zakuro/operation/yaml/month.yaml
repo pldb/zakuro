@@ -11294,7 +11294,7 @@
         zodiac_name: "-"
       dest:
         index: '0'
-        from: '1050-12-17'
+        from: '1050-11-17'
         zodiac_name: "-"
       days: "-"
     days: "-1"

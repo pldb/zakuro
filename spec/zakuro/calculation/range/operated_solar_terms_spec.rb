@@ -79,6 +79,26 @@ describe 'Zakuro' do
                 class_prefix: 'Zakuro::Senmyou'
               )
             end
+
+            # 閏10月 -> 11月（中気の冬至移動）
+            it 'should valid at 1050-12-16' do
+              western_date = Zakuro::Western::Calendar.new(year: 1050, month: 12, day: 17)
+
+              operated_solar_term = create_operated_solar_term(western_date: western_date)
+
+              matched, solar_term = operated_solar_term.get(western_date: western_date)
+
+              expect(matched).to eq true
+
+              TestTools::Stringifier.eql?(
+                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  index: 0,
+                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 49, minute: 6585, second: 0)
+                ),
+                actual: solar_term,
+                class_prefix: 'Zakuro::Senmyou'
+              )
+            end
           end
         end
       end
