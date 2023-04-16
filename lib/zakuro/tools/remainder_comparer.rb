@@ -14,6 +14,7 @@ module Zakuro
     # RemainderComparer 大余小余比較
     #
     module RemainderComparer
+      # @return [Output::Logger] ロガー
       LOGGER = Output::Logger.new(location: 'RemainderComparer')
 
       class << self
