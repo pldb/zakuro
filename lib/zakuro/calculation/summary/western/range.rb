@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../tools/gengou_range_comparer'
+
 require_relative '../../range/dated_operation_range'
 
 require_relative '../../range/dated_full_range'
@@ -32,9 +34,20 @@ module Zakuro
             #
             def get(context:, start_date: Western::Calendar.new,
                     last_date: Western::Calendar.new)
+              # TODO: refactor
               years = get_full_range_years(
                 context: context, start_date: start_date, last_date: last_date
               )
+
+              # 年情報の再計算
+              # * 元号開始日に計算値と運用値のズレが見られる場合、年情報の範囲が異なる場合がある
+              # * 例：0781-03-01（計算値は前の元号の「宝亀」を含めるが、運用値では含まない）
+              unless Tools::GengouRangeComparer.same?(start_date: start_date, last_date: last_date)
+                years = get_full_range_years(
+                  context: context, start_date: start_date, last_date: last_date, operated: true
+                )
+              end
+
               operated_years = get_operation_range_years(
                 context: context, years: years, start_date: start_date, last_date: last_date
               )
@@ -61,13 +74,14 @@ module Zakuro
             # @param [Context::Context] context 暦コンテキスト
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
+            # @param [True, False] operated 運用値設定
             #
             # @return [Array<Base::Year>] 完全範囲
             #
             def get_full_range_years(context:, start_date: Western::Calendar.new,
-                                     last_date: Western::Calendar.new)
+                                     last_date: Western::Calendar.new, operated: false)
               full_range = Calculation::Range::DatedFullRange.new(
-                context: context, start_date: start_date, last_date: last_date
+                context: context, start_date: start_date, last_date: last_date, operated: operated
               )
               full_range.get
             end
