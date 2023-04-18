@@ -4,6 +4,8 @@ require_relative '../output/logger'
 
 require_relative '../calculation/cycle/abstract_remainder'
 
+# TODO: Tools -> Tool
+
 # :nodoc:
 module Zakuro
   #

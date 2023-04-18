@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../tools/gengou_range_comparer'
-
 require_relative '../../range/dated_operation_range'
 
 require_relative '../../range/dated_full_range'
@@ -32,14 +30,7 @@ module Zakuro
             # @return [Result::Single] 一日検索結果（和暦日）
             #
             def get(context:, date: Western::Calendar.new)
-              years = get_full_range_years(context: context, date: date)
-
-              # 年情報の再計算
-              # * 元号開始日に計算値と運用値のズレが見られる場合、年情報の範囲が異なる場合がある
-              # * 例：0781-03-01（計算値は前の元号の「宝亀」を含めるが、運用値では含まない）
-              unless Tools::GengouRangeComparer.same?(start_date: date)
-                years = get_full_range_years(context: context, date: date, operated: true)
-              end
+              years = get_full_range_years(context: context, date: date, operated: true)
 
               data = get_data(context: context, years: years, date: date)
 
