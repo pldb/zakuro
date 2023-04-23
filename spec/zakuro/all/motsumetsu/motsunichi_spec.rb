@@ -6,7 +6,11 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# TODO: 全て通った。一旦はテストなしとする
+# NOTE: 現状は全て通っている
+#
+# 非常に重い試験のため通常は実施しない
+#
+# @return [Array<String>] 滅日誤りのある和暦日文字列
 MOTSUNICHI_FAILED_PATTERNS = %w[].freeze
 
 # rubocop:disable Metrics/BlockLength

@@ -8,6 +8,12 @@ require_relative './testdata/parser'
 
 require 'date'
 
+# @return [True] 没日滅日全体チェックを実施する
+# @return [False] 没日滅日全体チェックを実施しない
+#
+# 非常に重い試験のため通常は実施しない
+MOTSUMETSU_ENABLED = false
+
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'All' do
@@ -20,9 +26,8 @@ describe 'Zakuro' do
           # |862/02/03|宣明暦| |✓|✓|✓|
           # |1685/02/04|貞享暦| |-|-|-|
           start_date = Date.new(764, 2, 7)
-          # TODO: 試験的に動作確認しているため期間を短くする
-          last_date = Date.new(766, 2, 3)
-          # last_date = Date.new(1685, 2, 3)
+          # last_date = Date.new(766, 2, 3)
+          last_date = Date.new(1685, 2, 3)
 
           current_date = start_date.clone
 
@@ -32,6 +37,8 @@ describe 'Zakuro' do
 
           # TODO: refactor
           File.open('./temp.log', 'w') do |f|
+            break unless MOTSUMETSU_ENABLED
+
             days.times.each do |_index|
               current_date += 1
 
