@@ -27,19 +27,22 @@ module Zakuro
           # @param [Western::Calendar] start_date 西暦開始日
           # @param [Western::Calendar] last_date 西暦終了日
           # @param [True, False] operated 運用値設定
+          # @param [True, False] restored 運用値から計算値に戻すか
           #
           def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
-                         operated: false)
+                         operated: false, restored: false)
             last_date = start_date.clone if last_date.invalid?
 
             @first_list = DatedList.new(
-              first: true, start_date: start_date, last_date: last_date, operated: operated
+              first: true, start_date: start_date, last_date: last_date, operated: operated,
+              restored: restored
             )
             @second_list = DatedList.new(
-              first: false, start_date: start_date, last_date: last_date, operated: operated
+              first: false, start_date: start_date, last_date: last_date, operated: operated,
+              restored: restored
             )
 
-            renew(last_date: last_date)
+            renew(last_date: last_date, operated: operated, restored: restored)
           end
 
           #
@@ -47,16 +50,22 @@ module Zakuro
           #   含まれる最初の元号が別の行にまたがっている場合に開始日を前倒しする
           #
           # @param [Western::Calendar] last_date 西暦終了日
+          # @param [True, False] operated 運用値設定
+          # @param [True, False] restored 運用値から計算値に戻すか
           #
-          def renew(last_date: Western::Calendar.new)
+          def renew(last_date: Western::Calendar.new, operated: false, restored: false)
             start_date = native_start_date
 
             return if start_date.invalid?
 
-            @first_list = DatedList.new(first: true, start_date: start_date,
-                                        last_date: last_date)
-            @second_list = DatedList.new(first: false, start_date: start_date,
-                                         last_date: last_date)
+            @first_list = DatedList.new(
+              first: true, start_date: start_date, last_date: last_date,
+              operated: operated, restored: restored
+            )
+            @second_list = DatedList.new(
+              first: false, start_date: start_date, last_date: last_date,
+              operated: operated, restored: restored
+            )
           end
 
           #

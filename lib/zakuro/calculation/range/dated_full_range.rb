@@ -20,11 +20,13 @@ module Zakuro
         # @param [Western::Calendar] start_date 開始日
         # @param [Western::Calendar] last_date 終了日
         # @param [True, False] operated 運用値設定
+        # @param [True, False] restored 運用値から計算値に戻すか
         #
         def initialize(context:, start_date: Western::Calendar.new,
-                       last_date: Western::Calendar.new, operated: false)
+                       last_date: Western::Calendar.new, operated: false, restored: false)
           scroll = Gengou::DatedScroll.new(
-            start_date: start_date, last_date: last_date, operated: operated
+            start_date: start_date, last_date: last_date, operated: operated,
+            restored: restored
           )
 
           super(context: context, scroll: scroll, start_date: start_date, last_date: last_date)

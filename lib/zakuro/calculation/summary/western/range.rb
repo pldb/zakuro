@@ -32,6 +32,7 @@ module Zakuro
             #
             def get(context:, start_date: Western::Calendar.new,
                     last_date: Western::Calendar.new)
+              # TODO: single.rb を参考に改修すること
               years = get_full_range_years(
                 context: context, start_date: start_date, last_date: last_date, operated: true
               )
@@ -67,9 +68,11 @@ module Zakuro
             # @return [Array<Base::Year>] 完全範囲
             #
             def get_full_range_years(context:, start_date: Western::Calendar.new,
-                                     last_date: Western::Calendar.new, operated: false)
+                                     last_date: Western::Calendar.new, operated: false,
+                                     restored: false)
               full_range = Calculation::Range::DatedFullRange.new(
-                context: context, start_date: start_date, last_date: last_date, operated: operated
+                context: context, start_date: start_date, last_date: last_date, operated: operated,
+                restored: restored
               )
               full_range.get
             end

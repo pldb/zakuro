@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../../tools/gengou_range_comparer'
+
 require_relative '../../range/dated_operation_range'
 
 require_relative '../../range/dated_full_range'
@@ -30,11 +32,22 @@ module Zakuro
             # @return [Result::Single] 一日検索結果（和暦日）
             #
             def get(context:, date: Western::Calendar.new)
-              years = get_full_range_years(context: context, date: date, operated: true)
+              calculated_years = get_full_range_years(context: context, date: date)
 
-              data = get_data(context: context, years: years, date: date)
+              operated_years = calculated_years.clone
 
-              operation = get_operation(years: years, date: date)
+              # 年情報の再計算
+              # * 元号開始日に計算値と運用値のズレが見られる場合、年情報の範囲が異なる場合がある
+              # * 例：0781-03-01（計算値は前の元号の「宝亀」を含めるが、運用値では含まない）
+              unless Tools::GengouRangeComparer.same?(start_date: date)
+                operated_years = get_full_range_years(
+                  context: context, date: date, operated: true, restored: true
+                )
+              end
+
+              data = get_data(context: context, years: operated_years, date: date)
+
+              operation = get_operation(years: calculated_years, date: date)
 
               Result::Single.new(
                 data: data,
@@ -50,12 +63,14 @@ module Zakuro
             # @param [Context::Context] context 暦コンテキスト
             # @param [Western::Calendar] date 西暦日
             # @param [True, False] operated 運用値設定
+            # @param [True, False] restored 運用値から計算値に戻すか
             #
             # @return [Array<Calculation::Base::Year>] 完全範囲
             #
-            def get_full_range_years(context:, date: Western::Calendar.new, operated: false)
+            def get_full_range_years(context:, date: Western::Calendar.new, operated: false,
+                                     restored: false)
               full_range = Calculation::Range::DatedFullRange.new(
-                context: context, start_date: date, operated: operated
+                context: context, start_date: date, operated: operated, restored: restored
               )
               full_range.get
             end
