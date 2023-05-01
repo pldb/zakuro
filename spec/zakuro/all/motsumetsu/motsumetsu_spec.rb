@@ -8,32 +8,37 @@ require_relative './testdata/parser'
 
 require 'date'
 
+# @return [True] 没日滅日全体チェックを実施する
+# @return [False] 没日滅日全体チェックを実施しない
+#
+# 非常に重い試験のため通常は実施しない
+MOTSUMETSU_ENABLED = false
+
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
   describe 'All' do
     describe 'Motsumetsu' do
       context 'all metsunichi' do
         it 'should be equal to a reference' do
-          # |698/02/16|儀鳳暦|A|✓|-|-|
-          # | | |B|-|-|-|
-          # | | |C|-|-|-|
           # |764/02/07|大衍暦|A|✓|✓|✓|
           # | | |B|-|-|-|
           # | | |C|-|-|-|
           # |862/02/03|宣明暦| |✓|✓|✓|
-          START_DATE = Date.new(764, 2, 7)
-          # TODO: 試験的に動作確認しているため期間を短くする
-          # LAST_DATE = Date.new(862, 2, 3)
-          LAST_DATE = Date.new(766, 2, 3)
+          # |1685/02/04|貞享暦| |-|-|-|
+          start_date = Date.new(764, 2, 7)
+          # last_date = Date.new(766, 2, 3)
+          last_date = Date.new(1685, 2, 3)
 
-          current_date = START_DATE.clone
+          current_date = start_date.clone
 
-          days = (LAST_DATE - START_DATE).to_i
+          days = (last_date - start_date).to_i
 
           current_date -= 1
 
           # TODO: refactor
           File.open('./temp.log', 'w') do |f|
+            break unless MOTSUMETSU_ENABLED
+
             days.times.each do |_index|
               current_date += 1
 

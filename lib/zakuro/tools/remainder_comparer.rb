@@ -4,6 +4,8 @@ require_relative '../output/logger'
 
 require_relative '../calculation/cycle/abstract_remainder'
 
+# TODO: Tools -> Tool
+
 # :nodoc:
 module Zakuro
   #
@@ -14,6 +16,7 @@ module Zakuro
     # RemainderComparer 大余小余比較
     #
     module RemainderComparer
+      # @return [Output::Logger] ロガー
       LOGGER = Output::Logger.new(location: 'RemainderComparer')
 
       class << self

@@ -1034,6 +1034,79 @@
           zodiac_name: "辛酉"
           remainder: "57-1857"
           western_date: "0781-01-30"
+- western_date: "0781-03-01"
+  version: "Daien"
+  japan_date: "天応1年2月2日"
+  operation: ""
+  description: "元号範囲が計算値（宝亀〜天応）/運用値（天応）で異なる日付の計算ができること"
+  expected:
+    data:
+      year:
+        first_gengou: "天応1年"
+        second_gengou: ""
+        zodiac_name: "辛酉"
+        total_days: 353
+      month:
+        number: 2
+        leaped: false
+        days_name: "大"
+        first_day:
+          number: 1
+          zodiac_name: "庚寅"
+          remainder: "26-1031"
+          western_date: "0781-02-28"
+        odd_solar_terms:
+          index: 5
+          remainder: "29-2332"
+        even_solar_terms:
+          index: 6
+          remainder: "44-2996"
+      day:
+        number: 2
+        zodiac_name: "辛卯"
+        remainder: "27-1031"
+        western_date: "0781-03-01"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "天応1年"
+          second_gengou: ""
+          zodiac_name: "辛酉"
+          total_days: 354
+        month:
+          number: 2
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚寅"
+            remainder: "26-1031"
+            western_date: "0781-02-28"
+          odd_solar_terms:
+            index: 5
+            remainder: "29-2332"
+          even_solar_terms:
+            index: 6
+            remainder: "44-2996"
+        day:
+          number: 2
+          zodiac_name: "辛卯"
+          remainder: "27-1031"
+          western_date: "0781-03-01"
 - western_date: "0862-02-02"
   version: "Daien"
   japan_date: "貞観3年12月30日"
@@ -3565,6 +3638,79 @@
           zodiac_name: "庚子"
           remainder: "36-4787"
           western_date: "1332-02-26"
+- western_date: "1340-07-06"
+  version: "Senmyou"
+  japan_date: "興国1年6月11日"
+  operation: ""
+  description: "計算値と運用値で開始日が異なる元号（暦応3年6月11日）を計算できること"
+  expected:
+    data:
+      year:
+        first_gengou: "興国1年"
+        second_gengou: "暦応3年"
+        zodiac_name: "庚辰"
+        total_days: 354
+      month:
+        number: 6
+        leaped: false
+        days_name: "小"
+        first_day:
+          number: 1
+          zodiac_name: "癸未"
+          remainder: "19-977"
+          western_date: "1340-06-26"
+        odd_solar_terms:
+          index: 13
+          remainder: "23-2743"
+        even_solar_terms:
+          index: 14
+          remainder: "38-4578"
+      day:
+        number: 11
+        zodiac_name: "癸巳"
+        remainder: "29-977"
+        western_date: "1340-07-06"
+    operation:
+      operated: false
+      month:
+        current:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+        parent:
+          id: ""
+          western_date: ""
+          page: -1
+          number: -1
+          annotations:
+      original:
+        year:
+          first_gengou: "興国1年"
+          second_gengou: "暦応3年"
+          zodiac_name: "庚辰"
+          total_days: 354
+        month:
+          number: 6
+          leaped: false
+          days_name: "小"
+          first_day:
+            number: 1
+            zodiac_name: "癸未"
+            remainder: "19-977"
+            western_date: "1340-06-26"
+          odd_solar_terms:
+            index: 13
+            remainder: "23-2743"
+          even_solar_terms:
+            index: 14
+            remainder: "38-4578"
+        day:
+          number: 11
+          zodiac_name: "癸巳"
+          remainder: "29-977"
+          western_date: "1340-07-06"
 - western_date: "1344-01-16"
   version: "Senmyou"
   japan_date: "康永3年1月1日"

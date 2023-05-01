@@ -22,13 +22,17 @@ module Zakuro
           # @param [Western::Calendar] start_date 開始日
           # @param [Western::Calendar] last_date 終了日
           # @param [True, False] operated 運用値設定
+          # @param [True, False] restored 運用値から計算値に戻すか
           #
           def initialize(first: true, start_date: Western::Calendar.new,
-                         last_date: Western::Calendar, operated: false)
+                         last_date: Western::Calendar, operated: false, restored: false)
             @index = parse_index(first: first)
             @start_date = start_date.clone
             @last_date = last_date.invalid? ? start_date.clone : last_date.clone
-            super(index: @index, start_date: start_date, last_date: last_date, operated: operated)
+            super(
+              index: @index, start_date: start_date, last_date: last_date, operated: operated,
+              restored: restored
+            )
           end
 
           #

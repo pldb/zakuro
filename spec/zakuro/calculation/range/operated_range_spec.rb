@@ -253,17 +253,17 @@ describe 'Zakuro' do
                 # 計算上は冬至(0)がない。冬至が1202-11-17から移動している
                 # 移動した冬至は大余を1増やす（=冬至を1日分、後日にする）
                 solar_terms: [
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
-                    index: 1,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
-                      day: 22, minute: 1580, second: 0
-                    )
-                  ),
                   # 6-8145 -> 7-8145
                   Zakuro::Senmyou::Cycle::SolarTerm.new(
                     index: 0,
                     remainder: Zakuro::Senmyou::Cycle::Remainder.new(
                       day: 7, minute: 8145, second: 0
+                    )
+                  ),
+                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                    index: 1,
+                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                      day: 22, minute: 1580, second: 0
                     )
                   )
                 ]

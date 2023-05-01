@@ -54,6 +54,8 @@ module Zakuro
           rewrite_month
           rewrite_solar_terms
           rewrite_first_day
+
+          sort_solar_terms
         end
 
         #

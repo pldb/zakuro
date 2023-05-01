@@ -507,3 +507,80 @@
             zodiac_name: "壬午"
             remainder: "18-3986"
             western_date: "1392-11-19"
+- id: 5
+  western:
+    start_date: "0781-03-01"
+    last_date: "0781-03-01"
+  japan:
+    start_date: "天応1年2月2日"
+    last_date: "天応1年2月2日"
+    all: "天応1年2月2日 - 天応1年2月2日"
+  description: "元号範囲が計算値（宝亀〜天応）/運用値（天応）で異なる日付の計算ができること"
+  expected:
+    - data:
+        year:
+          first_gengou: "天応1年"
+          second_gengou: ""
+          zodiac_name: "辛酉"
+          total_days: 353
+        month:
+          number: 2
+          leaped: false
+          days_name: "大"
+          first_day:
+            number: 1
+            zodiac_name: "庚寅"
+            remainder: "26-1031"
+            western_date: "0781-02-28"
+          odd_solar_terms:
+            index: 5
+            remainder: "29-2332"
+          even_solar_terms:
+            index: 6
+            remainder: "44-2996"
+        day:
+          number: 2
+          zodiac_name: "辛卯"
+          remainder: "27-1031"
+          western_date: "0781-03-01"
+      operation:
+        operated: false
+        month:
+          current:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+          parent:
+            id: ""
+            western_date: ""
+            page: -1
+            number: -1
+            annotations:
+        original:
+          year:
+            first_gengou: "天応1年"
+            second_gengou: ""
+            zodiac_name: "辛酉"
+            total_days: 354
+          month:
+            number: 2
+            leaped: false
+            days_name: "大"
+            first_day:
+              number: 1
+              zodiac_name: "庚寅"
+              remainder: "26-1031"
+              western_date: "0781-02-28"
+            odd_solar_terms:
+              index: 5
+              remainder: "29-2332"
+            even_solar_terms:
+              index: 6
+              remainder: "44-2996"
+          day:
+            number: 2
+            zodiac_name: "辛卯"
+            remainder: "27-1031"
+            western_date: "0781-03-01"

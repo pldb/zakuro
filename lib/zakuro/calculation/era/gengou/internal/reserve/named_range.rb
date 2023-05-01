@@ -24,19 +24,25 @@ module Zakuro
           # @param [String] start_name 開始元号名
           # @param [String] last_name 終了元号名
           # @param [True, False] operated 運用値設定
+          # @param [True, False] restored 運用値から計算値に戻すか
           #
-          def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME, operated: false)
+          def initialize(start_name: INVALID_NAME, last_name: INVALID_NAME,
+                         operated: false, restored: false)
             @first_list = NamedList.new(
-              first: true, start_name: start_name, last_name: last_name, operated: operated
+              first: true, start_name: start_name, last_name: last_name, operated: operated,
+              restored: restored
             )
             @second_list = NamedList.new(
-              first: false, start_name: start_name, last_name: last_name, operated: operated
+              first: false, start_name: start_name, last_name: last_name, operated: operated,
+              restored: restored
             )
 
             start_date = western_start_date
             last_date = western_last_date
 
-            super(start_date: start_date, last_date: last_date, operated: operated)
+            super(
+              start_date: start_date, last_date: last_date, operated: operated, restored: restored
+            )
           end
 
           #
