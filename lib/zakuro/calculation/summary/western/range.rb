@@ -32,9 +32,8 @@ module Zakuro
             #
             def get(context:, start_date: Western::Calendar.new,
                     last_date: Western::Calendar.new)
-              # TODO: single.rb を参考に改修すること
               years = get_full_range_years(
-                context: context, start_date: start_date, last_date: last_date, operated: true
+                context: context, start_date: start_date, last_date: last_date
               )
 
               operated_years = get_operation_range_years(
@@ -63,16 +62,19 @@ module Zakuro
             # @param [Context::Context] context 暦コンテキスト
             # @param [Western::Calendar] start_date 西暦開始日
             # @param [Western::Calendar] last_date 西暦終了日
-            # @param [True, False] operated 運用値設定
             #
             # @return [Array<Base::Year>] 完全範囲
             #
             def get_full_range_years(context:, start_date: Western::Calendar.new,
-                                     last_date: Western::Calendar.new, operated: false,
-                                     restored: false)
+                                     last_date: Western::Calendar.new)
+              # 年情報の再計算
+              # * 元号開始日に計算値と運用値のズレが見られる場合、年情報の範囲が異なる場合がある
+              # * 例：0781-03-01（計算値は前の元号の「宝亀」を含めるが、運用値では含まない）
+              #
+              # 運用値の範囲で日付検索するが、元号開始日は計算値のままで取る
               full_range = Calculation::Range::DatedFullRange.new(
-                context: context, start_date: start_date, last_date: last_date, operated: operated,
-                restored: restored
+                context: context, start_date: start_date, last_date: last_date,
+                operated: true, restored: true
               )
               full_range.get
             end
