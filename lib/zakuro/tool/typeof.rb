@@ -7,9 +7,9 @@ require_relative '../era/western/calendar'
 # :nodoc:
 module Zakuro
   #
-  # Tools 汎用メソッド群
+  # Tool 汎用メソッド群
   #
-  module Tools
+  module Tool
     #
     # Typeof 型判定
     #

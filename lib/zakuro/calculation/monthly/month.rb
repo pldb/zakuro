@@ -307,7 +307,7 @@ module Zakuro
           target = context.resolver.remainder.new(day: day, minute: 0, second: 0)
 
           meta.all_solar_terms.each_cons(2) do |current_solar_term, next_solar_term|
-            in_range = Tools::RemainderComparer.in_range?(
+            in_range = Tool::RemainderComparer.in_range?(
               target: target, start: current_solar_term.remainder, last: next_solar_term.remainder
             )
             return current_solar_term if in_range
@@ -319,7 +319,7 @@ module Zakuro
 
           return empty_solar_term unless last_solar_term
           # NOTE: 大余20を上限として範囲チェックする
-          if Tools::RemainderComparer.in_limit?(target: target, start: last_solar_term.remainder,
+          if Tool::RemainderComparer.in_limit?(target: target, start: last_solar_term.remainder,
                                                 limit: 20)
             return last_solar_term
           end

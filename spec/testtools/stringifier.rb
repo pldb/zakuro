@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require File.expand_path('../../lib/zakuro/tools/stringifier', __dir__)
+require File.expand_path('../../lib/zakuro/tool/stringifier', __dir__)
 require File.expand_path('./expection', __dir__)
 
 #
@@ -46,7 +46,7 @@ module TestTools
       # @return [String] JSON文字列
       #
       def generate_pretty_json(obj:, class_prefix:, formatted:)
-        hash = Zakuro::Tools::Stringifier.to_h(
+        hash = Zakuro::Tool::Stringifier.to_h(
           obj: obj, class_prefix: class_prefix, formatted: formatted
         )
         JSON.pretty_generate(hash)

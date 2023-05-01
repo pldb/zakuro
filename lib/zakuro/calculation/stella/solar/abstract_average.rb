@@ -2,7 +2,7 @@
 
 require_relative '../../monthly/meta/meta_collector'
 
-require_relative '../../../tools/remainder_comparer'
+require_relative '../../../tool/remainder_comparer'
 
 # :nodoc:
 module Zakuro
@@ -62,7 +62,7 @@ module Zakuro
           # * 閏月は1回しか設定しない
           # * 最大2回設定する（中気・節気）
           4.times.each do |_index|
-            in_range = Tools::RemainderComparer.in_range?(
+            in_range = Tool::RemainderComparer.in_range?(
               target: solar_term.remainder, start: current_month.remainder,
               last: next_month.remainder
             )

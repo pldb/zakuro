@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../tools/typeconv'
+require_relative '../../tool/typeconv'
 
 # :nodoc:
 module Zakuro
@@ -104,10 +104,10 @@ module Zakuro
 
           Calendar.new(
             gengou: matched[1],
-            year: Tools::Typeconv.to_i(text: matched[2], default: INVALID),
+            year: Tool::Typeconv.to_i(text: matched[2], default: INVALID),
             leaped: matched[3] ? true : false,
-            month: Tools::Typeconv.to_i(text: matched[4], default: INVALID),
-            day: Tools::Typeconv.to_i(text: matched[5], default: INVALID)
+            month: Tool::Typeconv.to_i(text: matched[4], default: INVALID),
+            day: Tool::Typeconv.to_i(text: matched[5], default: INVALID)
           )
         end
 

@@ -19,7 +19,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/tools/stringifier',
+                         'lib/zakuro/tool/stringifier',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength

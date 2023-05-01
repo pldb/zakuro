@@ -5,9 +5,9 @@ require_relative '../output/logger'
 # :nodoc:
 module Zakuro
   #
-  # Tools 汎用メソッド群
+  # Tool 汎用メソッド群
   #
-  module Tools
+  module Tool
     # :reek:UncommunicativeVariableName {accept: e}
 
     #

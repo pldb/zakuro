@@ -5,9 +5,9 @@ require_relative './typeof'
 # :nodoc:
 module Zakuro
   #
-  # Tools 汎用メソッド群
+  # Tool 汎用メソッド群
   #
-  module Tools
+  module Tool
     #
     # Stringifier 文字列処理
     #
@@ -48,7 +48,7 @@ module Zakuro
           return obj unless obj
 
           # 日付をフォーマットする
-          return obj.format if formatted && Tools::Typeof.time?(obj: obj)
+          return obj.format if formatted && Tool::Typeof.time?(obj: obj)
 
           # 同じモジュール内のオブジェクトは再帰する
           if obj.class.name.start_with?(class_prefix)

@@ -4,14 +4,12 @@ require_relative '../output/logger'
 
 require_relative '../calculation/cycle/abstract_remainder'
 
-# TODO: Tools -> Tool
-
 # :nodoc:
 module Zakuro
   #
-  # Tools 汎用メソッド群
+  # Tool 汎用メソッド群
   #
-  module Tools
+  module Tool
     #
     # RemainderComparer 大余小余比較
     #
