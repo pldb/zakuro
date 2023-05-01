@@ -5,9 +5,9 @@ require File.expand_path('../../lib/zakuro/tool/stringifier', __dir__)
 require File.expand_path('./expection', __dir__)
 
 #
-# TestTools テスト用メソッド群
+# TestTool テスト用メソッド群
 #
-module TestTools
+module TestTool
   EXPECTION = Expection.new
   #
   # Stringifier 文字列

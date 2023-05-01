@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../../testtools/stringifier',
+require File.expand_path('../../../../testtool/stringifier',
                          __dir__)
 
 require File.expand_path('../../../../../' \
@@ -29,7 +29,7 @@ describe 'Zakuro' do
                 date: date
               )
 
-              TestTools::Stringifier.eql?(
+              TestTool::Stringifier.eql?(
                 expected: expected,
                 actual: actual,
                 class_prefix: 'Zakuro::Result'

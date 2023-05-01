@@ -3,9 +3,9 @@
 require 'rspec/expectations'
 
 #
-# TestTools テスト用メソッド群
+# TestTool テスト用メソッド群
 #
-module TestTools
+module TestTool
   #
   # Expection Rspec判定
   #

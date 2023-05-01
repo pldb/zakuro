@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('./testtools/const', __dir__)
+require File.expand_path('./testtool/const', __dir__)
 
 require File.expand_path('../lib/zakuro', __dir__)
 

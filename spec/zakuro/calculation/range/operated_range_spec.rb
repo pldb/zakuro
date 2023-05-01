@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../testtools/stringifier', __dir__)
+require File.expand_path('../../../testtool/stringifier', __dir__)
 
 require File.expand_path('../../../../' \
                         'lib/zakuro/calculation/monthly/month',
@@ -110,7 +110,7 @@ describe 'Zakuro' do
                 )]
               )
 
-              TestTools::Stringifier.eql?(
+              TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -186,7 +186,7 @@ describe 'Zakuro' do
                 )]
               )
 
-              TestTools::Stringifier.eql?(
+              TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -269,7 +269,7 @@ describe 'Zakuro' do
                 ]
               )
 
-              TestTools::Stringifier.eql?(
+              TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -318,7 +318,7 @@ describe 'Zakuro' do
                 ]
               )
 
-              TestTools::Stringifier.eql?(
+              TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end

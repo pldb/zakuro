@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../testtools/stringifier', __dir__)
+require File.expand_path('../../../testtool/stringifier', __dir__)
 
 require File.expand_path('../../../../' \
                         'lib/zakuro/calculation/monthly/month',
