@@ -9,6 +9,7 @@ require_relative './internal/part/month_label'
 require_relative './internal/meta/meta_collector'
 
 require_relative './internal/solar_term_selector'
+require_relative './internal/date_comparer'
 
 # :nodoc:
 module Zakuro
@@ -235,14 +236,9 @@ module Zakuro
         def include?(date:)
           return false if invalid?
 
-          start_date = western_date
-          return false if start_date.invalid?
-
-          return false if date < start_date
-
-          return false if date > last_date
-
-          true
+          DateComparer.include?(
+            date: date, start_date: western_date, last_date: last_date
+          )
         end
 
         #
@@ -256,14 +252,9 @@ module Zakuro
         def include_by_japan_date?(date:)
           return false if invalid?
 
-          linear_gengou = gengou.match_by_name(name: date.gengou)
-          return false if linear_gengou.invalid?
-
-          return false unless linear_gengou.name == date.gengou
-
-          return false unless linear_gengou.year == date.year
-
-          same_by_japan_date?(date: date)
+          DateComparer.include_by_japan_date?(
+            date: date, gengou: gengou, month_label: month_label
+          )
         end
 
         #
@@ -294,24 +285,6 @@ module Zakuro
             before_month: last,
             current_month: self
           )
-        end
-
-        private
-
-        #
-        # 同一の月情報かを検証する
-        #
-        # @param [Japan::Calendar] date 日付
-        #
-        # @return [True] 同一の月
-        # @return [False] 異なる月
-        #
-        def same_by_japan_date?(date: Japan::Calendar.new)
-          return false unless number == date.month
-
-          return false unless leaped? == date.leaped
-
-          true
         end
       end
     end
