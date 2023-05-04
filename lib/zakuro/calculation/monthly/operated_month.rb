@@ -87,9 +87,12 @@ module Zakuro
 
           return unless matched
 
-          @solar_terms = OperatedSolarTerm.create_operated_solar_term(
+          operated_solar_terms = OperatedSolarTerm.create_operated_solar_term(
             operated_solar_term: solar_term,
             solar_terms: solar_terms
+          )
+          @solar_term_selector = SolarTermSelector.new(
+            context: context, solar_terms: operated_solar_terms
           )
         end
 
