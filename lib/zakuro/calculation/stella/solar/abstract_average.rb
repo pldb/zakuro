@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../monthly/meta/meta_collector'
+require_relative '../../monthly/internal/meta/meta_collector'
 
 require_relative '../../../tool/remainder_comparer'
 

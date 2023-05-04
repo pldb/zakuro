@@ -2,7 +2,7 @@
 
 require_relative '../../output/logger'
 
-require_relative './part/const'
+require_relative './internal/part/const'
 
 # :nodoc:
 module Zakuro

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../era/western/calendar'
+require_relative '../../../../era/western/calendar'
 
-require_relative '../month'
+require_relative '../../month'
 
 require_relative './all_solar_term'
 

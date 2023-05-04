@@ -3,12 +3,12 @@
 require_relative '../cycle/abstract_solar_term'
 
 require_relative '../base/gengou'
-require_relative './part/first_day'
-require_relative './part/meta'
-require_relative './part/month_label'
-require_relative './meta/meta_collector'
+require_relative './internal/part/first_day'
+require_relative './internal/part/meta'
+require_relative './internal/part/month_label'
+require_relative './internal/meta/meta_collector'
 
-require_relative './solar_term/solar_term_selector'
+require_relative './internal/solar_term_selector'
 
 # :nodoc:
 module Zakuro

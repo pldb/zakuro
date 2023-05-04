@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../operation/operation'
-require_relative './solar_term/operated_solar_term'
+require_relative './internal/operated_solar_term'
 require_relative './month'
 
 # :nodoc:
