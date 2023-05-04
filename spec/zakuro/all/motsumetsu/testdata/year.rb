@@ -37,7 +37,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          dates.size.zero?
+          dates.empty?
         end
       end
     end

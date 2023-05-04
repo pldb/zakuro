@@ -120,7 +120,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          first_line.size.zero? && second_line.size.zero?
+          first_line.empty? && second_line.empty?
         end
       end
     end

@@ -85,7 +85,7 @@ module Zakuro
             def connect(list: []) # rubocop:disable Metrics/MethodLength
               result = []
               list.each do |linear_gengou|
-                if result.size.zero?
+                if result.empty?
                   result.push(linear_gengou)
                   next
                 end

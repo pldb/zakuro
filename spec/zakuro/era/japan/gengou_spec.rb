@@ -77,7 +77,7 @@ describe 'Zakuro' do
             it 'should be got a invalid element' do
               date = Zakuro::Western::Calendar.new(year: 1393, month: 2, day: 12)
               item = second_line(date: date)
-              expect(item.size.zero?).to be_truthy
+              expect(item.empty?).to be_truthy
             end
           end
           context 'gengou name on second lines' do
@@ -142,7 +142,7 @@ describe 'Zakuro' do
           context 'set-002 only' do
             it 'should be got a invalid element' do
               item = second_line(name: '允恭天皇')
-              expect(item.size.zero?).to be_truthy
+              expect(item.empty?).to be_truthy
             end
           end
         end

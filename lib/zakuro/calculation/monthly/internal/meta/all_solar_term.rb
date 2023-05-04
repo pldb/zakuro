@@ -48,7 +48,7 @@ module Zakuro
 
             first = all_solar_terms[0].clone
 
-            return all_solar_terms if before_solar_terms.size.zero?
+            return all_solar_terms if before_solar_terms.empty?
 
             # 最初の二十四節気が月初日と同日であれば何もしない
             return all_solar_terms if first.remainder.day == remainder.day

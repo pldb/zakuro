@@ -60,7 +60,7 @@ module Zakuro
             [start, last].each do |name|
               gengou_list = line_by_name(name: name)
 
-              next if gengou_list.size.zero?
+              next if gengou_list.empty?
 
               choise_start_date(
                 date: gengou_list[0].start_date.clone

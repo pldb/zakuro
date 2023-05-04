@@ -148,7 +148,7 @@ module Zakuro
       def validate
         failed = valid_type
 
-        return failed unless failed.size.zero?
+        return failed unless failed.empty?
 
         valid_date
       end
@@ -207,7 +207,7 @@ module Zakuro
         @param = Parameter.new(year: year, month: month, day: day, start: start)
 
         failed = validate
-        raise ArgumentError, failed.join('\n') unless failed.size.zero?
+        raise ArgumentError, failed.join('\n') unless failed.empty?
 
         @date = Date.new(year, month, day, start)
       end

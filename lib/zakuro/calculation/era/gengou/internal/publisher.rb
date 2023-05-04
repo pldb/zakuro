@@ -54,7 +54,7 @@ module Zakuro
           # @return [Array<Base::LinearGengou>] 元号リスト
           #
           def to_linear_gengou(start_date:, last_date:, gengou_list: [])
-            return [] if gengou_list.size.zero?
+            return [] if gengou_list.empty?
 
             result = []
 
