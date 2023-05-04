@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../era/western/calendar'
+require_relative '../../../era/western/calendar'
 
-require_relative '../cycle/abstract_remainder'
+require_relative '../../cycle/abstract_remainder'
 
 # :nodoc:
 module Zakuro

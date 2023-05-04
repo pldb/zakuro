@@ -3,9 +3,9 @@
 require_relative '../cycle/abstract_solar_term'
 
 require_relative '../base/gengou'
-require_relative './first_day'
-require_relative './meta'
-require_relative './month_label'
+require_relative './part/first_day'
+require_relative './part/meta'
+require_relative './part/month_label'
 require_relative './meta/meta_collector'
 
 # :nodoc:

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../calculation/monthly/const'
+require_relative '../../../calculation/monthly/part/const'
 
 require_relative '../const/remainder'
 

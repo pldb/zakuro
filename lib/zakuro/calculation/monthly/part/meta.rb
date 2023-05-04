@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../cycle/abstract_remainder'
+require_relative '../../cycle/abstract_remainder'
 
 # :nodoc:
 module Zakuro

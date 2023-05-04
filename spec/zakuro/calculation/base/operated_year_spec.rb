@@ -13,14 +13,6 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/monthly/first_day',
-                         __dir__)
-
-require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/monthly/month_label',
-                         __dir__)
-
-require File.expand_path('../../../../' \
                          'lib/zakuro/calculation/base/operated_year',
                          __dir__)
 
