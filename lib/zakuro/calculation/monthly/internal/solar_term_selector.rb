@@ -12,6 +12,9 @@ module Zakuro
       # SolarTermSelector 二十四節気検索
       #
       class SolarTermSelector
+        # @return [Integer] 月最後の二十四節気を検索する大余の範囲上限
+        LAST_DAY_LIMIT = 20
+
         # @return [Context::Context] 暦コンテキスト
         attr_reader :context
         # @return [Array<Cyle::AbstractSolarTerm>] 二十四節気
@@ -67,7 +70,7 @@ module Zakuro
         #
         # 二十四節気を追加する
         #
-        # @param [SolarTerm] term 二十四節気
+        # @param [Cycle::AbstractSolarTerm] term 二十四節気
         #
         def add_term(term:)
           solar_terms.push(term)
@@ -77,7 +80,6 @@ module Zakuro
         # 二十四節気を正しい順序にソートする
         #
         def sort
-          # TODO: refactor
           sorted = (solar_terms.sort do |termx, termy|
             termx.index <=> termy.index
           end)
@@ -87,22 +89,7 @@ module Zakuro
             return
           end
 
-          first = []
-          second = []
-
-          sorted.each do |term|
-            if term.index >= (23 - 2)
-              second.push(term)
-              next
-            end
-
-            first.push(term)
-          end
-
-          # 0以前を先頭にする
-          second += first
-
-          @solar_terms = second
+          @solar_terms = reset(terms: sorted)
         end
 
         #
@@ -122,7 +109,6 @@ module Zakuro
         # @return [Cycle::AbstractSolarTerm] 二十四節気
         #
         def solar_term_by_day(day:, meta:)
-          # TODO: refactor
           target = context.resolver.remainder.new(day: day, minute: 0, second: 0)
 
           meta.all_solar_terms.each_cons(2) do |current_solar_term, next_solar_term|
@@ -132,18 +118,7 @@ module Zakuro
             return current_solar_term if in_range
           end
 
-          last_solar_term = meta.all_solar_terms[-1]
-
-          empty_solar_term = context.resolver.solar_term.new
-
-          return empty_solar_term unless last_solar_term
-          # NOTE: 大余20を上限として範囲チェックする
-          if Tool::RemainderComparer.in_limit?(target: target, start: last_solar_term.remainder,
-                                               limit: 20)
-            return last_solar_term
-          end
-
-          empty_solar_term
+          last_solar_term(target: target, meta: meta)
         end
 
         private
@@ -171,6 +146,56 @@ module Zakuro
           end
 
           first && last
+        end
+
+        #
+        # 二十四節気を終端で折り返す
+        #
+        # @param [Array<Cyle::AbstractSolarTerm>] terms 二十四節気
+        #
+        # @return [Array<Cyle::AbstractSolarTerm>] 折り返し済みの二十四節気
+        #
+        def reset(terms: [])
+          first = []
+          second = []
+
+          terms.each do |term|
+            # NOTE: 二十四節気は最大3つとすると、 「23, 0」「22, 23, 0」「23, 0, 1」 での折り返しが考えられる
+            if term.index >= (Cycle::AbstractSolarTerm::LAST_INDEX - 2)
+              second.push(term)
+              next
+            end
+
+            first.push(term)
+          end
+
+          # 0以前を先頭にする
+          second += first
+
+          second
+        end
+
+        #
+        # 最後の二十四節気を返す
+        #
+        # @param [Cycle::AbstractRemainder] target 対象の大余情報
+        # @param [Meta] meta メタ情報
+        #
+        # @return [Cycle::AbstractSolarTerm] 二十四節気
+        #
+        def last_solar_term(target:, meta:)
+          last = meta.all_solar_terms[-1]
+
+          empty_solar_term = context.resolver.solar_term.new
+
+          return empty_solar_term unless last
+
+          if Tool::RemainderComparer.in_limit?(target: target, start: last.remainder,
+                                               limit: LAST_DAY_LIMIT)
+            return last
+          end
+
+          empty_solar_term
         end
       end
     end
