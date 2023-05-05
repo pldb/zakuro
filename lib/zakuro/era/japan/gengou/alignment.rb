@@ -42,7 +42,9 @@ module Zakuro
                   start_date: Western::Calendar.new, last_date: Western::Calendar.new,
                   operated: false, restored: false)
             if operated
-              result = OPERATED_SUMMARY.get(line: line, start_date: start_date, last_date: last_date)
+              result = OPERATED_SUMMARY.get(
+                line: line, start_date: start_date, last_date: last_date
+              )
               return result unless restored
 
               return restore(line: line, list: result)
