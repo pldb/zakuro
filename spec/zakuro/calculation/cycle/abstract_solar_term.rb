@@ -6,7 +6,7 @@ require File.expand_path('../../../../' \
 
 require File.expand_path('../../../../' \
                           'lib/zakuro/version/senmyou/const/remainder',
-                          __dir__)
+                         __dir__)
 
 require File.expand_path('../../../../' \
                          'lib/zakuro/version/senmyou/cycle/solar_term',
@@ -19,9 +19,9 @@ describe 'Zakuro' do
         # 抽象クラスのため宣明暦のクラスを使用する
         let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         describe '.prev_term' do
-          let(:solar_term_remainder) {
+          let(:solar_term_remainder) do
             Zakuro::Senmyou::Cycle::Remainder.new(day: 0, minute: 0, second: 0)
-          }
+          end
           context 'solar term that remainder go back and advance' do
             it 'should be same as before ' do
               solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(

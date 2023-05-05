@@ -9,6 +9,7 @@ module Zakuro
   module All
     # :nodoc:
     module Motsumetsu
+      # rubocop:disable Layout/LineLength
       #
       # テストデータを解析する
       #
@@ -22,6 +23,7 @@ module Zakuro
       #                     9・19(戊申)没, 10・28(丙戌)滅,  11・1(戊午)没, 12・3(己丑)滅,
       # </pre>
       #
+      # rubocop:enable Layout/LineLength
       module Parser
         # @return [Regexp] コメント行
         COMMENT_LINE_REGEX = /^[\s\t]*#/.freeze

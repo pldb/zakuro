@@ -25,7 +25,7 @@ module Zakuro
         # @param [MedievalMonth] month 月
         #
         def initialize(num: -1, gengou: MedievalGengou.new,
-                      month: MedievalMonth.new)
+                       month: MedievalMonth.new)
           @num = num
           @gengou = gengou
           @month = month
