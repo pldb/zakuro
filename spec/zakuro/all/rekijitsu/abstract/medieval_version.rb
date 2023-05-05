@@ -13,10 +13,10 @@ module Zakuro
     # :nodoc:
     module Rekijitsu
       # MedievalVersion 中世暦の期待値生成
-      module MedievalVersion
+      module MedievalVersion # rubocop:disable Metrics/ModuleLength
         # @return [Array<MedievalGengou>] 11月開始
         #
-        # 閏10月開始を標準とするが、歴算値によっては11月開始となる
+        # 閏10月開始を標準とするが、暦算値によっては11月開始となる
         #
         NOVEMBER_FIRST_GENGOU = [
           MedievalGengou.new(text: '天平神護 1年'),
@@ -42,7 +42,7 @@ module Zakuro
 
         # @return [Array<MedievalGengou>] 閏11月開始
         #
-        # 閏10月開始を標準とするが、歴算値によっては閏11月開始となる
+        # 閏10月開始を標準とするが、暦算値によっては閏11月開始となる
         #
         LEAPED_NOVEMBER_FIRST_GENGOU = [
           MedievalGengou.new(text: '承平 6年'),
@@ -161,7 +161,7 @@ module Zakuro
             true
           end
 
-          def to_line(range:) # rubocop:disable Metrics/MethodLength
+          def to_line(range:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
             lines = []
 
             gengou = MedievalGengou.new

@@ -109,7 +109,7 @@ module Zakuro
 
           private
 
-          def parse(text:)
+          def parse(text:) # rubocop:disable Metrics/AbcSize
             # コメント行
             matched = text.match(COMMENT)
             return if matched
