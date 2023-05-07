@@ -70,6 +70,7 @@ describe 'Zakuro' do
                 expect(actual.list[-1].data.day.western_date.format).to eq last_date.format
               end
             end
+            # TODO: single.yaml でも検証できるようにする
             context 'all range data' do
               filepath = File.expand_path(
                 '../testdata/yaml/range.yaml',
