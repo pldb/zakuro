@@ -295,7 +295,7 @@ module Zakuro
         end
 
         #
-        # 和暦/西暦
+        # Both 和暦/西暦
         #
         module Both
           #
