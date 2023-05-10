@@ -57,7 +57,7 @@ module Zakuro
           # @raise [ArgumentError] 引数エラー
           #
           def write_last_year(last_year:)
-            unless Gengou.valid_year(year: last_year)
+            unless self.class.valid_year(year: last_year)
               raise ArgumentError, "invalid year format. [#{last_year}]"
             end
 
@@ -72,7 +72,7 @@ module Zakuro
           # @raise [ArgumentError] 引数エラー
           #
           def write_last_date(last_date:)
-            unless Gengou.valid_date(date: last_date)
+            unless self.class.valid_date(date: last_date)
               raise ArgumentError, "invalid date format. [#{last_date}]"
             end
 
@@ -135,13 +135,10 @@ module Zakuro
           end
 
           #
-          # 1元号年を追加する
+          # インスタンス値（文字列）を取得する
           #
-          # def next_year
-          #   @year += 1 unless invalid?
-          #   nil
-          # end
-
+          # @return [String] インスタンス値（文字列）
+          #
           def to_s
             "name: #{@name}, start_year: #{start_year.format}, " \
             "start_date: #{start_date.format}, last_date: #{last_date.format}"
@@ -188,7 +185,7 @@ module Zakuro
           attr_reader :id
           # @return [String] 元号セット名
           attr_reader :name
-          # @return [Both::Date] 元号セットでの終了年
+          # @return [Both::Year] 元号セットでの終了年
           attr_reader :last_year
           # @return [Both::Date] 元号セットでの終了日
           attr_reader :last_date
@@ -309,6 +306,12 @@ module Zakuro
             # @return [Integer] 西暦年
             attr_reader :western
 
+            #
+            # 初期化
+            #
+            # @param [Integer] japan 和暦元号年
+            # @param [Integer] western 西暦年
+            #
             def initialize(japan: INVALID, western: INVALID)
               @japan = japan
               @western = western
@@ -334,6 +337,12 @@ module Zakuro
             # @return [Western::Calendar] 西暦日
             attr_reader :western
 
+            #
+            # 初期化
+            #
+            # @param [Japan::Calendar] japan 和暦日
+            # @param [Western::Calendar] western 西暦日
+            #
             def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
               @japan = japan
               @western = western
