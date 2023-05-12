@@ -51,10 +51,11 @@ describe 'Zakuro' do
             expect(range[0].start_year).to eq start_year
           end
           it 'should be same last_year as a version' do
-            expect(range[0].last_year).to eq Zakuro::Japan::Version::LIST[0].last_year
+            expect(range[0].last_year).to eq Zakuro::Japan::Version::Resource::LIST[0].last_year
           end
           it 'should be same start_year as a version' do
-            expect(range[1].start_year).to eq Zakuro::Japan::Version::LIST[1].start_year
+            start_year = Zakuro::Japan::Version::Resource::LIST[1].start_year.western
+            expect(range[1].start_year).to eq start_year
           end
           it 'should be same last_year as a parameter' do
             expect(range[1].last_year).to eq last_year

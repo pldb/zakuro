@@ -10,153 +10,141 @@ module Zakuro
   # :nodoc:
   module Japan
     # :nodoc:
-    module Gengou
+    module Version
       #
       # Resource yaml解析結果
       #
       module Resource
-        # :reek:TooManyInstanceVariables { max_instance_variables: 5 }
-
         #
         # Parser yaml解析
         #
         module Parser
           #
-          # GengouParser 元号情報の検証/展開を行う
+          # RangeParser 暦期間情報の検証/展開を行う
           #
-          class GengouParser
+          class RangeParser
             # @return [Integer] 要素位置
             attr_reader :index
-            # @return [String] 元号名
+            # @return [String] 暦名
             attr_reader :name
             # @return [Hash<String, String>] 開始年
             attr_reader :start_year
             # @return [Hash<String, String>] 開始日
             attr_reader :start_date
-            # @return [True, False] 運用値
-            attr_reader :operated
+            # @return [True] リリース有
+            # @return [False] リリース無
+            attr_reader :released
 
             #
             # 初期化
             #
             # @param [Hash<String, Strin>] hash 元号情報
             # @param [Integer] index （元号セット内での）元号の要素位置
-            # @param [True, False] operated 運用値設定
             #
-            def initialize(hash:, index:, operated: false)
+            def initialize(hash:, index:)
               @index = index
               @name = hash['name']
               @start_year = hash['start_year']
               @start_date = hash['start_date']
-              @operated = operated
+              @released = hash['released']
             end
 
             #
-            # 元号情報を生成する
+            # 暦期間情報を生成する
             #
-            # @return [Gengou] 元号情報
+            # @return [Range] 暦期間情報
             #
             def create
               year = Both::YearParser.new(hash: start_year).create
-              date = SwitchDateParser.new(hash: start_date, operated: operated).create
+              date = Both::DateParser.new(hash: start_date).create
 
-              Gengou.new(name: name, start_year: year,
-                         start_date: date)
+              Range.new(
+                name: name, start_year: year,
+                start_date: date, released: released
+              )
             end
           end
 
           #
-          # SetParser 元号セット情報の検証/展開
+          # RootParser 暦期間情報の検証/展開
           #
-          class SetParser
-            # @return [String] 元号セットID
-            attr_reader :id
-            # @return [String] 元号セット名
-            attr_reader :name
+          class RootParser
             # @return [Hash<String, String>] 終了年
             attr_reader :last_year
             # @return [Hash<String, String>] 終了日
             attr_reader :last_date
-            # @return [Array<Hash<String, String>>] 元号情報
+            # @return [Array<Hash<String, String>>] 暦期間情報
             attr_reader :list
-            # @return [True, False] 運用値
-            attr_reader :operated
 
             #
             # 初期化
             #
-            # @param [Hash<String, Object>] hash 元号セット情報
-            # @param [True, False] operated 運用値設定
+            # @param [Hash<String, Object>] hash 暦期間情報
             #
-            def initialize(hash:, operated: false)
+            def initialize(hash:)
               @id = hash['id']
               @name = hash['name']
               @last_year = hash['last_year']
               @last_date = hash['last_date']
               @list = hash['list']
-              @operated = operated
             end
 
             #
-            # 元号セット情報を生成する
+            # 暦期間情報を生成する
             #
-            # @return [Set] 元号セット情報
+            # @return [Array<Range>] 暦期間情報
             #
             def create
-              date = SwitchDateParser.new(hash: last_date, operated: operated).create
-              list = create_list
-              Set.new(
-                id: id, name: name, last_date: date, list: list
-              )
+              Both::DateParser.new(hash: last_date).create
+
+              create_list
             end
 
             # :reek:TooManyStatements { max_statements: 7 }
 
             #
-            # 元号情報を生成する
+            # 暦期間情報を生成する
             #
-            # @return [Array<Gengou>] 元号情報
+            # @return [Array<Range>] 暦期間情報
             #
             def create_list
               result = []
               list.each_with_index do |li, index|
-                gengou = GengouParser.new(
-                  hash: li, index: index, operated: operated
-                ).create
+                range = RangeParser.new(hash: li, index: index).create
                 next_index = index + 1
-                gengou = calc_last_date_on_gengou_data(next_index: next_index,
-                                                       gengou: gengou)
-                result.push(gengou)
+                range = calc_last_date_on_range_data(next_index: next_index,
+                                                     range: range)
+                result.push(range)
               end
 
               result
             end
 
             #
-            # 次の元号の開始日から、元号の終了日に変換する
+            # 次の暦期間の開始日から、暦期間の終了日に変換する
             #
-            # @param [Integer] next_index 次の元号の要素位置
-            # @param [GengouParser] gengou 元号
+            # @param [Integer] next_index 次の暦期間の要素位置
+            # @param [RangeParser] range 暦期間
             #
-            # @return [Gengou] 元号情報
+            # @return [Range] 暦期間情報
             #
-            def calc_last_date_on_gengou_data(next_index:, gengou:)
+            def calc_last_date_on_range_data(next_index:, range:)
               if next_index >= list.size
-                last_gengou_data(gengou: gengou)
-                return gengou
+                last_range_data(range: range)
+                return range
               end
               next_item = list[next_index]
-              next_start_date = SwitchDateParser.new(
-                hash: next_item['start_date'], operated: operated
+              next_start_date = Both::DateParser.new(
+                hash: next_item['start_date']
               ).create
 
-              gengou.convert_next_start_year_to_last_year(
+              range.convert_next_start_year_to_last_year(
                 next_start_year: next_item['start_year']['western']
               )
-              gengou.convert_next_start_date_to_last_date(
+              range.convert_next_start_date_to_last_date(
                 next_start_date: next_start_date.western
               )
-              gengou
+              range
             end
 
             private
@@ -164,53 +152,14 @@ module Zakuro
             #
             # 最後の元号の終了日を設定する
             #
-            # @param [GengouParser] gengou 元号
+            # @param [RangeParser] range 暦期間情報
             #
-            def last_gengou_data(gengou:)
-              gengou.write_last_year(last_year: last_year['western'])
+            def last_range_data(range:)
+              range.write_last_year(last_year: last_year['western'])
 
-              date = SwitchDateParser.new(hash: last_date, operated: operated).create
+              date = Both::DateParser.new(hash: last_date).create
 
-              gengou.write_last_date(last_date: date.western)
-            end
-          end
-
-          #
-          # SwitchDateParser 切替日（運用/計算）
-          #
-          class SwitchDateParser
-            # @return [Hash<String, Strin>] 計算値
-            attr_reader :calculation
-            # @return [Hash<String, Strin>] 運用値
-            attr_reader :operation
-            # @return [True, False] 運用値
-            attr_reader :operated
-
-            #
-            # 初期化
-            #
-            # @param [Hash<String, Strin>] hash 切替日（運用/計算）
-            # @param [True, False] operated 運用値設定
-            #
-            def initialize(hash:, operated: false)
-              @calculation = hash['calculation']
-              @operation = hash['operation']
-              @operated = operated
-            end
-
-            #
-            # 切替日（運用/計算）情報を生成する
-            #
-            # @return [SwitchDate] 切替日（運用/計算）情報
-            #
-            def create
-              calculation_date = Both::DateParser.new(hash: calculation).create
-              operation_date = Both::DateParser.new(hash: operation).create
-
-              Japan::Gengou::Resource::SwitchDate.new(
-                calculation: calculation_date, operation: operation_date,
-                operated: operated
-              )
+              range.write_last_date(last_date: date.western)
             end
           end
 
@@ -246,7 +195,7 @@ module Zakuro
                 japan_year = japan.to_i
                 western_year = western.to_i
 
-                Japan::Gengou::Resource::Both::Year.new(
+                Japan::Version::Resource::Both::Year.new(
                   japan: japan_year, western: western_year
                 )
               end
@@ -283,7 +232,7 @@ module Zakuro
                 japan_date = Japan::Calendar.parse(text: japan) unless japan == ''
                 western_date = Western::Calendar.parse(text: western) unless western == ''
 
-                Japan::Gengou::Resource::Both::Date.new(
+                Japan::Version::Resource::Both::Date.new(
                   japan: japan_date, western: western_date
                 )
               end
@@ -294,21 +243,20 @@ module Zakuro
             #
             # 解析/展開する
             #
-            # @param [String] filepath 元号セットファイルパス
-            # @param [True, False] operated 運用値設定
+            # @param [String] filepath 暦期間情報ファイルパス
             #
-            # @return [Set] 元号セット情報
+            # @return [Array<Range>] 暦期間情報
             #
             # @raise [ArgumentError] 引数エラー
             #
-            def run(filepath: '', operated: false)
+            def run(filepath: '')
               yaml = YAML.load_file(filepath)
 
               failed = Validator.run(yaml_hash: yaml)
 
               raise ArgumentError, failed.join("\n") unless failed.empty?
 
-              parser = SetParser.new(hash: yaml, operated: operated)
+              parser = RootParser.new(hash: yaml)
               parser.create
             end
           end

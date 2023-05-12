@@ -50,14 +50,14 @@ module Zakuro
           # @return [Range] 範囲
           #
           def narrow(range:, start_year:, last_year:)
-            range_start_year = range.start_year
-            range_start_year = start_year if start_year > range.start_year
+            range_start_year = range.start_year.western
+            range_start_year = start_year if start_year > range.start_year.western
 
             range_last_year = range.last_year
             range_last_year = last_year if last_year < range.last_year
 
             Range.new(
-              name: range.name, start_date: range.start_date.clone,
+              name: range.name, start_date: range.start_date.western.clone,
               start_year: range_start_year, last_year: range_last_year
             )
           end
