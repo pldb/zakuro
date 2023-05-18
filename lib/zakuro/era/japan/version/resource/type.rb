@@ -4,6 +4,9 @@ require_relative '../../../western/calendar'
 
 require_relative '../../calendar'
 
+require_relative '../../type/base/both/date'
+require_relative '../../type/base/both/year'
+
 # :nodoc:
 module Zakuro
   # :nodoc:
@@ -22,9 +25,9 @@ module Zakuro
         class Range
           # @return [String] 暦名
           attr_reader :name
-          # @return [Both::Year] 開始年（和暦/西暦）
+          # @return [Type::Base::Both::Year] 開始年（和暦/西暦）
           attr_reader :start_year
-          # @return [Both::Date] 開始日（和暦/西暦）
+          # @return [Type::Base::Both::Date] 開始日（和暦/西暦）
           attr_reader :start_date
           # @return [Integer] 終了年
           attr_reader :last_year
@@ -40,15 +43,16 @@ module Zakuro
           # 初期化
           #
           # @param [String] name 暦名
-          # @param [Both::Year] start_year 開始年（和暦/西暦）
-          # @param [Both::Date] start_date 開始日（和暦/西暦）
+          # @param [Type::Base::Both::Year] start_year 開始年（和暦/西暦）
+          # @param [Type::Base::Both::Date] start_date 開始日（和暦/西暦）
           # @param [Integer] last_date 終了年
           # @param [Western::Calendar] last_date 終了日
           # @param [True, False] released リリース有無
           #
           def initialize(
-            name: '', start_year: Both::Year.new, start_date: Both::Date.new,
-            last_date: Western::Calendar.new, last_year: Both::Year::INVALID,
+            name: '', start_year: Type::Base::Both::Year.new,
+            start_date: Type::Base::Both::Date.new,
+            last_date: Western::Calendar.new, last_year: Type::Base::Both::Year::INVALID,
             released: false
           )
             @name = name
@@ -183,75 +187,6 @@ module Zakuro
               return false unless date
 
               date.is_a?(Western::Calendar)
-            end
-          end
-        end
-
-        #
-        # Both 和暦/西暦
-        #
-        module Both
-          #
-          # Year 年
-          #
-          class Year
-            # @return [Integer] 不正値
-            INVALID = -1
-            # @return [Integer] 和暦元号年
-            attr_reader :japan
-            # @return [Integer] 西暦年
-            attr_reader :western
-
-            #
-            # 初期化
-            #
-            # @param [Integer] japan 和暦元号年
-            # @param [Integer] western 西暦年
-            #
-            def initialize(japan: INVALID, western: INVALID)
-              @japan = japan
-              @western = western
-            end
-
-            #
-            # 不正か
-            #
-            # @return [True] 不正
-            # @return [False] 不正なし
-            #
-            def invalid?
-              japan == INVALID || western == INVALID
-            end
-          end
-
-          #
-          # Date 日
-          #
-          class Date
-            # @return [Japan::Calendar] 和暦日
-            attr_reader :japan
-            # @return [Western::Calendar] 西暦日
-            attr_reader :western
-
-            #
-            # 初期化
-            #
-            # @param [Japan::Calendar] japan 和暦日
-            # @param [Western::Calendar] western 西暦日
-            #
-            def initialize(japan: Japan::Calendar.new, western: Western::Calendar.new)
-              @japan = japan
-              @western = western
-            end
-
-            #
-            # 不正か
-            #
-            # @return [True] 不正
-            # @return [False] 不正なし
-            #
-            def invalid?
-              japan.invalid? || western.invalid?
             end
           end
         end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../../../western/calendar'
+require_relative '../../type/base/both/date'
+require_relative '../../type/base/both/year'
 require_relative './type'
 require_relative './validator'
 require 'yaml'
@@ -189,13 +191,13 @@ module Zakuro
               #
               # 年情報を生成する
               #
-              # @return [Both::Year] 年情報
+              # @return [Type::Base::Both::Year] 年情報
               #
               def create
                 japan_year = japan.to_i
                 western_year = western.to_i
 
-                Japan::Version::Resource::Both::Year.new(
+                Type::Base::Both::Year.new(
                   japan: japan_year, western: western_year
                 )
               end
@@ -223,7 +225,7 @@ module Zakuro
               #
               # 日情報を生成する
               #
-              # @return [Both::Date] 日情報
+              # @return [Type::Base::Both::Date] 日情報
               #
               def create
                 japan_date = Japan::Calendar.new
@@ -232,7 +234,7 @@ module Zakuro
                 japan_date = Japan::Calendar.parse(text: japan) unless japan == ''
                 western_date = Western::Calendar.parse(text: western) unless western == ''
 
-                Japan::Version::Resource::Both::Date.new(
+                Type::Base::Both::Date.new(
                   japan: japan_date, western: western_date
                 )
               end

@@ -68,13 +68,13 @@ describe 'Zakuro' do
                   Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
                     gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
                       name: '元号',
-                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1,
                         western: 450
                       ),
-                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
-                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
-                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                      start_date: Zakuro::Japan::Type::Base::SwitchDate.new(
+                        calculation: Zakuro::Japan::Type::Base::Both::Date.new,
+                        operation: Zakuro::Japan::Type::Base::Both::Date.new(
                           japan: Zakuro::Japan::Calendar.parse(text: '元号1年12月1日'),
                           western: Zakuro::Western::Calendar.parse(text: '0449-12-02')
                         ),

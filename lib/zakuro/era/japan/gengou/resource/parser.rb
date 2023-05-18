@@ -207,7 +207,7 @@ module Zakuro
               calculation_date = Both::DateParser.new(hash: calculation).create
               operation_date = Both::DateParser.new(hash: operation).create
 
-              Japan::Gengou::Resource::SwitchDate.new(
+              Type::Base::SwitchDate.new(
                 calculation: calculation_date, operation: operation_date,
                 operated: operated
               )
@@ -246,7 +246,7 @@ module Zakuro
                 japan_year = japan.to_i
                 western_year = western.to_i
 
-                Japan::Gengou::Resource::Both::Year.new(
+                Type::Base::Both::Year.new(
                   japan: japan_year, western: western_year
                 )
               end
@@ -274,7 +274,7 @@ module Zakuro
               #
               # 日情報を生成する
               #
-              # @return [Both::Date] 日情報
+              # @return [Type::Base::Both::Date] 日情報
               #
               def create
                 japan_date = Japan::Calendar.new
@@ -283,7 +283,7 @@ module Zakuro
                 japan_date = Japan::Calendar.parse(text: japan) unless japan == ''
                 western_date = Western::Calendar.parse(text: western) unless western == ''
 
-                Japan::Gengou::Resource::Both::Date.new(
+                Type::Base::Both::Date.new(
                   japan: japan_date, western: western_date
                 )
               end
