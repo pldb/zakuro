@@ -2,6 +2,9 @@
 
 require_relative '../../../japan/calendar'
 require_relative '../../../western/calendar'
+
+require_relative '../../type/validation/switch_date'
+
 require_relative './type'
 require 'yaml'
 
@@ -96,7 +99,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_last_year
-              Both::Year.new(hash: last_year).validate
+              Type::Validation::Both::Year.new(hash: last_year).validate
             end
 
             #
@@ -105,7 +108,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_last_date
-              SwitchDate.new(hash: last_date).validate
+              Type::Validation::SwitchDate.new(hash: last_date).validate
             end
 
             #
@@ -198,7 +201,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_start_year
-              Both::Year.new(hash: start_year).validate
+              Type::Validation::Both::Year.new(hash: start_year).validate
             end
 
             #
@@ -207,205 +210,7 @@ module Zakuro
             # @return [Array<String>] 不正メッセージ
             #
             def validate_start_date
-              SwitchDate.new(hash: start_date).validate
-            end
-          end
-
-          #
-          # SwitchDate 切替日（運用/計算）
-          #
-          class SwitchDate
-            # @return [Hash<String, Strin>] 計算値
-            attr_reader :calculation
-            # @return [Hash<String, Strin>] 運用値
-            attr_reader :operation
-
-            #
-            # 初期化
-            #
-            # @param [Hash<String, Strin>] hash 切替日（運用/計算）
-            #
-            def initialize(hash:)
-              @calculation = hash['calculation']
-              @operation = hash['operation']
-            end
-
-            #
-            # 検証する
-            #
-            # @return [Array<String>] 不正メッセージ
-            #
-            def validate
-              failed = []
-
-              failed |= validate_calculation_date
-
-              failed |= validate_operation_date
-
-              failed
-            end
-
-            private
-
-            #
-            # 日（計算値）を検証する
-            #
-            # @return [Array<String>] 不正メッセージ
-            #
-            def validate_calculation_date
-              Both::Date.new(hash: calculation, optional: true).validate
-            end
-
-            #
-            # 日（運用値）を検証する
-            #
-            # @return [Array<String>] 不正メッセージ
-            #
-            def validate_operation_date
-              Both::Date.new(hash: operation).validate
-            end
-          end
-
-          #
-          # Both 和暦/西暦
-          #
-          module Both
-            #
-            # Year 年
-            #
-            class Year
-              # @return [String] 和暦元号年
-              attr_reader :japan
-              # @return [String] 西暦年
-              attr_reader :western
-
-              #
-              # 初期化
-              #
-              # @param [Hash<String, Strin>] hash 年情報
-              #
-              def initialize(hash:)
-                @japan = hash['japan']
-                @western = hash['western']
-              end
-
-              #
-              # 検証する
-              #
-              # @return [Array<String>] 不正メッセージ
-              #
-              def validate
-                failed = []
-
-                failed.push("invalid japan year. #{japan}") unless japan?
-
-                failed.push("invalid western year. #{western}") unless western?
-
-                failed
-              end
-
-              #
-              # 和暦元号年を検証する
-              #
-              # @return [True] 正しい
-              # @return [False] 正しくない
-              #
-              def japan?
-                return false unless @japan
-
-                japan.is_a?(Integer)
-              end
-
-              #
-              # 和暦元号年を検証する
-              #
-              # @return [True] 正しい
-              # @return [False] 正しくない
-              #
-              def western?
-                return false unless @western
-
-                western.is_a?(Integer)
-              end
-            end
-
-            #
-            # Date 日
-            #
-            class Date
-              # @return [String] 和暦日
-              attr_reader :japan
-              # @return [String] 西暦日
-              attr_reader :western
-              # @return [True] 省略可
-              # @return [False] 省略不可
-              attr_reader :optional
-
-              #
-              # 初期化
-              #
-              # @param [Hash<String, Strin>] hash 日情報
-              #
-              def initialize(hash:, optional: false)
-                @japan = hash['japan']
-                @western = hash['western']
-                @optional = optional
-              end
-
-              #
-              # 検証する
-              #
-              # @return [Array<String>] 不正メッセージ
-              #
-              def validate
-                failed = []
-
-                failed.push("invalid japan date. #{japan}") unless japan?
-
-                failed.push("invalid western date. #{western}") unless western?
-
-                failed
-              end
-
-              #
-              # 和暦日を検証する
-              #
-              # @return [True] 正しい
-              # @return [False] 正しくない
-              #
-              def japan?
-                return true if optional?(text: japan)
-
-                Japan::Calendar.valid_date_text(text: japan)
-              end
-
-              #
-              # 西暦日を検証する
-              #
-              # @return [True] 正しい
-              # @return [False] 正しくない
-              #
-              def western?
-                return true if optional?(text: western)
-
-                Western::Calendar.valid_date_text(text: western)
-              end
-
-              #
-              # 省略可で省略されているか
-              #
-              # @param [String] text 文字列
-              #
-              # @return [True] 省略あり
-              # @return [False] 省略なし
-              #
-              def optional?(text: '')
-                return false unless optional
-
-                return true if text == ''
-
-                false
-              end
+              Type::Validation::SwitchDate.new(hash: start_date).validate
             end
           end
 

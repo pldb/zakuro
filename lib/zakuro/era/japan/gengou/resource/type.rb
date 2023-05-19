@@ -5,7 +5,6 @@ require_relative '../../../western/calendar'
 require_relative '../../calendar'
 
 require_relative '../../type/base/switch_date'
-require_relative '../../type/base/both/year'
 
 # :nodoc:
 module Zakuro
