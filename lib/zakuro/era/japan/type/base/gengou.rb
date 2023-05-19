@@ -1,30 +1,25 @@
 # frozen_string_literal: true
 
 require_relative '../../../western/calendar'
-
-require_relative '../../calendar'
-
-require_relative '../../type/base/switch_date'
+require_relative './switch_date'
 
 # :nodoc:
 module Zakuro
   # :nodoc:
   module Japan
     # :nodoc:
-    module Gengou
-      #
-      # Resource yaml解析結果
-      #
-      module Resource
+    module Type
+      # :nodoc:
+      module Base
         #
         # Gengou 元号情報
         #
         class Gengou
           # @return [String] 元号名
           attr_reader :name
-          # @return [Type::Base::Both::Year] 開始年（和暦/西暦）
+          # @return [Both::Year] 開始年（和暦/西暦）
           attr_reader :start_year
-          # @return [Type::Base::SwitchDate] 開始日（和暦/西暦）
+          # @return [SwitchDate] 開始日（和暦/西暦）
           attr_reader :start_date
           # @return [Integer] 終了年
           attr_reader :last_year
@@ -35,15 +30,15 @@ module Zakuro
           # 初期化
           #
           # @param [String] name 元号名
-          # @param [Type::Base::Both::Year] start_year 開始年（和暦/西暦）
-          # @param [Type::Base::SwitchDate] start_date 開始日（和暦/西暦）
+          # @param [Both::Year] start_year 開始年（和暦/西暦）
+          # @param [SwitchDate] start_date 開始日（和暦/西暦）
           # @param [Integer] last_date 終了年
           # @param [Western::Calendar] last_date 終了日
           #
-          def initialize(name: '', start_year: Type::Base::Both::Year.new,
-                         start_date: Type::Base::SwitchDate.new,
+          def initialize(name: '', start_year: Both::Year.new,
+                         start_date: SwitchDate.new,
                          last_date: Western::Calendar.new,
-                         last_year: Type::Base::Both::Year::INVALID)
+                         last_year: Both::Year::INVALID)
             @name = name
             @start_year = start_year
             @start_date = start_date
@@ -174,66 +169,6 @@ module Zakuro
 
               date.is_a?(Western::Calendar)
             end
-          end
-        end
-
-        #
-        # Set 元号セット
-        #
-        class Set
-          # @return [Integer] 不正値
-          INVALID = -1
-          # @return [Integer] 元号セットID
-          attr_reader :id
-          # @return [String] 元号セット名
-          attr_reader :name
-          # @return [Type::Base::Both::Year] 元号セットでの終了年
-          attr_reader :last_year
-          # @return [Type::Base::Both::Date] 元号セットでの終了日
-          attr_reader :last_date
-          # @return [Array<Gengou>] 元号リスト
-          attr_reader :list
-
-          #
-          # 初期化
-          #
-          # @param [Integer] id 元号セットID
-          # @param [String] name 元号セット名
-          # @param [Western::Calendar] last_date 元号セットでの終了日
-          # @param [Array<Gengou>] list 元号リスト
-          #
-          def initialize(id: INVALID, name: '', last_year: Type::Base::Both::Year.new,
-                         last_date: Type::Base::Both::Date.new, list: [])
-            @id = id
-            @name = name
-            @last_year = last_year
-            @last_date = last_date
-            @list = list
-          end
-
-          #
-          # 指定した日付を含む元号を返す
-          #
-          # @param [Western::Calendar] date 日
-          #
-          # @return [Gengou] 元号
-          #
-          def include_item(date:)
-            list.each do |item|
-              return item if item.include?(date: date)
-            end
-
-            Gengou.new
-          end
-
-          #
-          # 元号セットが不正かどうかを確認する
-          #
-          # @return [True] 正しくない
-          # @return [False] 正しい
-          #
-          def invalid?
-            @id == INVALID
           end
         end
       end

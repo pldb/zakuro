@@ -239,7 +239,7 @@ describe 'Zakuro' do
                 list.instance_variable_set(
                   '@list', [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -283,7 +283,7 @@ describe 'Zakuro' do
                 result.instance_variable_set(
                   :@list, [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -301,7 +301,7 @@ describe 'Zakuro' do
                       )
                     ),
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号2',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -354,7 +354,7 @@ describe 'Zakuro' do
                 result.instance_variable_set(
                   :@list, [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -372,7 +372,7 @@ describe 'Zakuro' do
                       )
                     ),
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号2',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -390,7 +390,7 @@ describe 'Zakuro' do
                       )
                     ),
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号3',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -449,7 +449,7 @@ describe 'Zakuro' do
                 list.instance_variable_set(
                   '@list', [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,

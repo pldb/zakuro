@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../western/calendar'
-require_relative './type'
+require_relative '../../type/base/gengou_set'
 require_relative './validator'
 require 'yaml'
 
@@ -54,21 +54,21 @@ module Zakuro
             #
             # 元号情報を生成する
             #
-            # @return [Gengou] 元号情報
+            # @return [Type::Base::Gengou] 元号情報
             #
             def create
               year = Both::YearParser.new(hash: start_year).create
               date = SwitchDateParser.new(hash: start_date, operated: operated).create
 
-              Gengou.new(name: name, start_year: year,
-                         start_date: date)
+              Type::Base::Gengou.new(name: name, start_year: year,
+                                     start_date: date)
             end
           end
 
           #
-          # SetParser 元号セット情報の検証/展開
+          # GengouSetParser 元号セット情報の検証/展開
           #
-          class SetParser
+          class GengouSetParser
             # @return [String] 元号セットID
             attr_reader :id
             # @return [String] 元号セット名
@@ -100,12 +100,12 @@ module Zakuro
             #
             # 元号セット情報を生成する
             #
-            # @return [Set] 元号セット情報
+            # @return [Type::Base::GengouSet] 元号セット情報
             #
             def create
               date = SwitchDateParser.new(hash: last_date, operated: operated).create
               list = create_list
-              Set.new(
+              Type::Base::GengouSet.new(
                 id: id, name: name, last_date: date, list: list
               )
             end
@@ -115,7 +115,7 @@ module Zakuro
             #
             # 元号情報を生成する
             #
-            # @return [Array<Gengou>] 元号情報
+            # @return [Array<Type::Base::Gengou>] 元号情報
             #
             def create_list
               result = []
@@ -201,7 +201,7 @@ module Zakuro
             #
             # 切替日（運用/計算）情報を生成する
             #
-            # @return [SwitchDate] 切替日（運用/計算）情報
+            # @return [Type::Base::SwitchDate] 切替日（運用/計算）情報
             #
             def create
               calculation_date = Both::DateParser.new(hash: calculation).create
@@ -297,7 +297,7 @@ module Zakuro
             # @param [String] filepath 元号セットファイルパス
             # @param [True, False] operated 運用値設定
             #
-            # @return [Set] 元号セット情報
+            # @return [Type::Base::GengouSet] 元号セット情報
             #
             # @raise [ArgumentError] 引数エラー
             #
@@ -308,7 +308,7 @@ module Zakuro
 
               raise ArgumentError, failed.join("\n") unless failed.empty?
 
-              parser = SetParser.new(hash: yaml, operated: operated)
+              parser = GengouSetParser.new(hash: yaml, operated: operated)
               parser.create
             end
           end

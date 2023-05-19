@@ -144,7 +144,7 @@ module Zakuro
             #
             def create_empty_counter(start_date:, last_date:)
               Gengou::Counter.new(
-                gengou: Japan::Gengou::Resource::Gengou.new,
+                gengou: Japan::Type::Base::Gengou.new,
                 start_date: start_date, last_date: last_date
               )
             end

@@ -32,7 +32,7 @@ describe 'Zakuro' do
               let!(:counters) do
                 [
                   Zakuro::Calculation::Gengou::Counter.new(
-                    gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                    gengou: Zakuro::Japan::Type::Base::Gengou.new(
                       name: '元号甲',
                       start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1, western: 446
@@ -88,7 +88,7 @@ describe 'Zakuro' do
               let!(:counters) do
                 [
                   Zakuro::Calculation::Gengou::Counter.new(
-                    gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                    gengou: Zakuro::Japan::Type::Base::Gengou.new(
                       name: '元号甲',
                       start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1, western: 446
@@ -108,7 +108,7 @@ describe 'Zakuro' do
                     last_date: Zakuro::Western::Calendar.parse(text: '0446-03-12')
                   ),
                   Zakuro::Calculation::Gengou::Counter.new(
-                    gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                    gengou: Zakuro::Japan::Type::Base::Gengou.new(
                       name: '元号乙',
                       start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1, western: 446
@@ -128,7 +128,7 @@ describe 'Zakuro' do
                     last_date: Zakuro::Western::Calendar.parse(text: '0446-05-12')
                   ),
                   Zakuro::Calculation::Gengou::Counter.new(
-                    gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                    gengou: Zakuro::Japan::Type::Base::Gengou.new(
                       name: '元号丙',
                       start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1, western: 446

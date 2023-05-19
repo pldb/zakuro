@@ -19,7 +19,7 @@ describe 'Zakuro' do
             line = Zakuro::Japan::Gengou::Alignment::Line.new
             list = [
               Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                gengou: Zakuro::Japan::Type::Base::Gengou.new(
                   name: '安康天皇',
                   start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                     japan: 1,
@@ -41,7 +41,7 @@ describe 'Zakuro' do
                 )
               ),
               Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                gengou: Zakuro::Japan::Type::Base::Gengou.new(
                   name: '雄略天皇',
                   start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                     japan: 1,
@@ -77,7 +77,7 @@ describe 'Zakuro' do
                 let(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '允恭天皇',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 34,
@@ -127,7 +127,7 @@ describe 'Zakuro' do
                 let!(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '清寧天皇',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -179,7 +179,7 @@ describe 'Zakuro' do
                 let!(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 34,
@@ -254,7 +254,7 @@ describe 'Zakuro' do
                 let!(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号2',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -331,7 +331,7 @@ describe 'Zakuro' do
                 let!(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号1',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,
@@ -406,7 +406,7 @@ describe 'Zakuro' do
                 let!(:param) do
                   [
                     Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                      gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                      gengou: Zakuro::Japan::Type::Base::Gengou.new(
                         name: '元号2',
                         start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                           japan: 1,

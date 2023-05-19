@@ -5,7 +5,6 @@ require_relative '../../../western/calendar'
 
 require_relative '../../type/validation/switch_date'
 
-require_relative './type'
 require 'yaml'
 
 # :nodoc:
