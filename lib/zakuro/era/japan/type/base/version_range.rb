@@ -1,33 +1,26 @@
 # frozen_string_literal: true
 
 require_relative '../../../western/calendar'
-
-require_relative '../../calendar'
-
-require_relative '../../type/base/both/date'
-require_relative '../../type/base/both/year'
+require_relative './both/date'
+require_relative './both/year'
 
 # :nodoc:
 module Zakuro
   # :nodoc:
   module Japan
     # :nodoc:
-    module Version
-      #
-      # Resource yaml解析結果
-      #
-      module Resource
-        # TODO: Zakuro::Japan::Gengou::Resource と統合する
-
+    module Type
+      # :nodoc:
+      module Base
         #
-        # Range 暦情報
+        # VersionRange 暦範囲情報
         #
-        class Range
+        class VersionRange
           # @return [String] 暦名
           attr_reader :name
-          # @return [Type::Base::Both::Year] 開始年（和暦/西暦）
+          # @return [Both::Year] 開始年（和暦/西暦）
           attr_reader :start_year
-          # @return [Type::Base::Both::Date] 開始日（和暦/西暦）
+          # @return [Both::Date] 開始日（和暦/西暦）
           attr_reader :start_date
           # @return [Integer] 終了年
           attr_reader :last_year
@@ -43,16 +36,16 @@ module Zakuro
           # 初期化
           #
           # @param [String] name 暦名
-          # @param [Type::Base::Both::Year] start_year 開始年（和暦/西暦）
-          # @param [Type::Base::Both::Date] start_date 開始日（和暦/西暦）
+          # @param [Both::Year] start_year 開始年（和暦/西暦）
+          # @param [Both::Date] start_date 開始日（和暦/西暦）
           # @param [Integer] last_date 終了年
           # @param [Western::Calendar] last_date 終了日
           # @param [True, False] released リリース有無
           #
           def initialize(
-            name: '', start_year: Type::Base::Both::Year.new,
-            start_date: Type::Base::Both::Date.new,
-            last_date: Western::Calendar.new, last_year: Type::Base::Both::Year::INVALID,
+            name: '', start_year: Both::Year.new,
+            start_date: Both::Date.new,
+            last_date: Western::Calendar.new, last_year: Both::Year::INVALID,
             released: false
           )
             @name = name

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../western/calendar'
-require_relative '../../type/base/both/date'
-require_relative '../../type/base/both/year'
-require_relative './type'
+require_relative '../../type/base/version_range'
 require_relative './validator'
 require 'yaml'
 
@@ -60,7 +57,7 @@ module Zakuro
               year = Both::YearParser.new(hash: start_year).create
               date = Both::DateParser.new(hash: start_date).create
 
-              Range.new(
+              Type::Base::VersionRange.new(
                 name: name, start_year: year,
                 start_date: date, released: released
               )
