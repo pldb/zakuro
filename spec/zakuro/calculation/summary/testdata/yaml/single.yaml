@@ -20,11 +20,11 @@
           remainder: "27.6157"
           western_date: "0445-01-24"
         odd_solar_terms:
-          index: 3
-          remainder: "37.2649"
+          - index: 3
+            remainder: "37.2649"
         even_solar_terms:
-          index: 4
-          remainder: "52.4836"
+          - index: 4
+            remainder: "52.4836"
       day:
         number: 1
         zodiac_name: "辛卯"
@@ -61,11 +61,11 @@
             remainder: "27.6157"
             western_date: "0445-01-24"
           odd_solar_terms:
-            index: 3
-            remainder: "37.2649"
+            - index: 3
+              remainder: "37.2649"
           even_solar_terms:
-            index: 4
-            remainder: "52.4836"
+            - index: 4
+              remainder: "52.4836"
         day:
           number: 1
           zodiac_name: "辛卯"
@@ -93,11 +93,11 @@
           remainder: "21.9827"
           western_date: "0446-01-13"
         odd_solar_terms:
-          index: 3
-          remainder: "42.5117"
+          - index: 3
+            remainder: "42.5117"
         even_solar_terms:
-          index: 2
-          remainder: "27.2930"
+          - index: 2
+            remainder: "27.2930"
       day:
         number: 30
         zodiac_name: "甲寅"
@@ -134,11 +134,11 @@
             remainder: "21.9827"
             western_date: "0446-01-13"
           odd_solar_terms:
-            index: 3
-            remainder: "42.5117"
+            - index: 3
+              remainder: "42.5117"
           even_solar_terms:
-            index: 2
-            remainder: "27.2930"
+            - index: 2
+              remainder: "27.2930"
         day:
           number: 30
           zodiac_name: "甲寅"
@@ -166,11 +166,11 @@
           remainder: "34.4495"
           western_date: "0697-01-28"
         odd_solar_terms:
-          index: 3
-          remainder: "39.4360"
+          - index: 3
+            remainder: "39.4360"
         even_solar_terms:
-          index: 4
-          remainder: "54.6546"
+          - index: 4
+            remainder: "54.6546"
       day:
         number: 1
         zodiac_name: "戊戌"
@@ -207,11 +207,11 @@
             remainder: "34.4495"
             western_date: "0697-01-28"
           odd_solar_terms:
-            index: 3
-            remainder: "39.4360"
+            - index: 3
+              remainder: "39.4360"
           even_solar_terms:
-            index: 4
-            remainder: "54.6546"
+            - index: 4
+              remainder: "54.6546"
         day:
           number: 1
           zodiac_name: "戊戌"
@@ -239,11 +239,11 @@
           remainder: "29.8165"
           western_date: "0698-01-18"
         odd_solar_terms:
-          index: 3
-          remainder: "44.6827"
+          - index: 3
+            remainder: "44.6827"
         even_solar_terms:
-          index: 2
-          remainder: "29.4641"
+          - index: 2
+            remainder: "29.4641"
       day:
         number: 29
         zodiac_name: "辛酉"
@@ -284,11 +284,11 @@
             remainder: "28.8165"
             western_date: "0698-01-17"
           odd_solar_terms:
-            index: 3
-            remainder: "44.6827"
+            - index: 3
+              remainder: "44.6827"
           even_solar_terms:
-            index: 2
-            remainder: "29.4641"
+            - index: 2
+              remainder: "29.4641"
         day:
           number: 30
           zodiac_name: "辛酉"
@@ -316,11 +316,11 @@
           remainder: "58-1109"
           western_date: "0698-02-16"
         odd_solar_terms:
-          index: 5
-          remainder: "14-796"
+          - index: 5
+            remainder: "14-796"
         even_solar_terms:
-          index: 4
-          remainder: "59-503"
+          - index: 4
+            remainder: "59-503"
       day:
         number: 1
         zodiac_name: "壬戌"
@@ -357,11 +357,11 @@
             remainder: "58-1109"
             western_date: "0698-02-16"
           odd_solar_terms:
-            index: 5
-            remainder: "14-796"
+            - index: 5
+              remainder: "14-796"
           even_solar_terms:
-            index: 4
-            remainder: "59-503"
+            - index: 4
+              remainder: "59-503"
         day:
           number: 1
           zodiac_name: "壬戌"
@@ -389,11 +389,11 @@
           remainder: "10-670"
           western_date: "0701-04-13"
         odd_solar_terms:
-          index: 9
-          remainder: "31-271"
+          - index: 9
+            remainder: "31-271"
         even_solar_terms:
-          index: 8
-          remainder: "15-1318"
+          - index: 8
+            remainder: "15-1318"
       day:
         number: 21
         zodiac_name: "甲午"
@@ -430,11 +430,11 @@
             remainder: "10-670"
             western_date: "0701-04-13"
           odd_solar_terms:
-            index: 9
-            remainder: "31-271"
+            - index: 9
+              remainder: "31-271"
           even_solar_terms:
-            index: 8
-            remainder: "15-1318"
+            - index: 8
+              remainder: "15-1318"
         day:
           number: 21
           zodiac_name: "甲午"
@@ -462,11 +462,11 @@
           remainder: "39-756"
           western_date: "0711-09-17"
         odd_solar_terms:
-          index: 19
-          remainder: "55-1119"
+          - index: 19
+            remainder: "55-1119"
         even_solar_terms:
-          index: 18
-          remainder: "40-827"
+          - index: 18
+            remainder: "40-827"
       day:
         number: 30
         zodiac_name: "壬申"
@@ -505,11 +505,11 @@
             remainder: "8-1330"
             western_date: "0711-10-16"
           odd_solar_terms:
-            index: 21
-            remainder: "26-365"
+            - index: 21
+              remainder: "26-365"
           even_solar_terms:
-            index: 20
-            remainder: "11-72"
+            - index: 20
+              remainder: "11-72"
         day:
           number: 1
           zodiac_name: "壬申"
@@ -537,8 +537,8 @@
           remainder: "11-439"
           western_date: "0763-01-19"
         odd_solar_terms:
-          index: 3
-          remainder: "25-90"
+          - index: 3
+            remainder: "25-90"
         even_solar_terms:
       day:
         number: 1
@@ -580,11 +580,11 @@
             remainder: "11-439"
             western_date: "0763-01-19"
           odd_solar_terms:
-            index: 3
-            remainder: "25-90"
+            - index: 3
+              remainder: "25-90"
           even_solar_terms:
-            index: 4
-            remainder: "40-383"
+            - index: 4
+              remainder: "40-383"
         day:
           number: 1
           zodiac_name: "乙亥"
@@ -612,11 +612,11 @@
           remainder: "5-630"
           western_date: "0764-01-08"
         odd_solar_terms:
-          index: 3
-          remainder: "30-418"
+          - index: 3
+            remainder: "30-418"
         even_solar_terms:
-          index: 2
-          remainder: "15-125"
+          - index: 2
+            remainder: "15-125"
       day:
         number: 30
         zodiac_name: "戊戌"
@@ -653,11 +653,11 @@
             remainder: "5-630"
             western_date: "0764-01-08"
           odd_solar_terms:
-            index: 3
-            remainder: "30-418"
+            - index: 3
+              remainder: "30-418"
           even_solar_terms:
-            index: 2
-            remainder: "15-125"
+            - index: 2
+              remainder: "15-125"
         day:
           number: 30
           zodiac_name: "戊戌"
@@ -685,11 +685,11 @@
           remainder: "35-324"
           western_date: "0764-02-07"
         odd_solar_terms:
-          index: 5
-          remainder: "0-1861"
+          - index: 5
+            remainder: "0-1861"
         even_solar_terms:
-          index: 4
-          remainder: "45-1197"
+          - index: 4
+            remainder: "45-1197"
       day:
         number: 1
         zodiac_name: "己亥"
@@ -726,11 +726,11 @@
             remainder: "35-324"
             western_date: "0764-02-07"
           odd_solar_terms:
-            index: 5
-            remainder: "0-1861"
+            - index: 5
+              remainder: "0-1861"
           even_solar_terms:
-            index: 4
-            remainder: "45-1197"
+            - index: 4
+              remainder: "45-1197"
         day:
           number: 1
           zodiac_name: "己亥"
@@ -758,11 +758,11 @@
           remainder: "29-1267"
           western_date: "0765-01-26"
         odd_solar_terms:
-          index: 3
-          remainder: "35-1275"
+          - index: 3
+            remainder: "35-1275"
         even_solar_terms:
-          index: 4
-          remainder: "50-1940"
+          - index: 4
+            remainder: "50-1940"
       day:
         number: 7
         zodiac_name: "己亥"
@@ -799,11 +799,11 @@
             remainder: "29-1267"
             western_date: "0765-01-26"
           odd_solar_terms:
-            index: 3
-            remainder: "35-1275"
+            - index: 3
+              remainder: "35-1275"
           even_solar_terms:
-            index: 4
-            remainder: "50-1940"
+            - index: 4
+              remainder: "50-1940"
         day:
           number: 7
           zodiac_name: "己亥"
@@ -831,11 +831,11 @@
           remainder: "52-1182"
           western_date: "0766-04-14"
         odd_solar_terms:
-          index: 9
-          remainder: "11-2964"
+          - index: 9
+            remainder: "11-2964"
         even_solar_terms:
-          index: 8
-          remainder: "56-2300"
+          - index: 8
+            remainder: "56-2300"
       day:
         number: 30
         zodiac_name: "乙酉"
@@ -874,11 +874,11 @@
             remainder: "21-2848"
             western_date: "0766-05-13"
           odd_solar_terms:
-            index: 11
-            remainder: "42-1253"
+            - index: 11
+              remainder: "42-1253"
           even_solar_terms:
-            index: 10
-            remainder: "27-588"
+            - index: 10
+              remainder: "27-588"
         day:
           number: 1
           zodiac_name: "乙酉"
@@ -906,11 +906,11 @@
           remainder: "9-1691"
           western_date: "0768-06-19"
         odd_solar_terms:
-          index: 13
-          remainder: "23-1027"
+          - index: 13
+            remainder: "23-1027"
         even_solar_terms:
-          index: 14
-          remainder: "38-1692"
+          - index: 14
+            remainder: "38-1692"
       day:
         number: 30
         zodiac_name: "壬寅"
@@ -949,11 +949,11 @@
             remainder: "38-2994"
             western_date: "0768-07-18"
           odd_solar_terms:
-            index: 15
-            remainder: "53-2356"
+            - index: 15
+              remainder: "53-2356"
           even_solar_terms:
-            index: 14
-            remainder: "38-1692"
+            - index: 14
+              remainder: "38-1692"
         day:
           number: 1
           zodiac_name: "壬寅"
@@ -981,11 +981,11 @@
           remainder: "57-1857"
           western_date: "0781-01-30"
         odd_solar_terms:
-          index: 3
-          remainder: "59-1003"
+          - index: 3
+            remainder: "59-1003"
         even_solar_terms:
-          index: 4
-          remainder: "14-1668"
+          - index: 4
+            remainder: "14-1668"
       day:
         number: 1
         zodiac_name: "辛酉"
@@ -1024,11 +1024,11 @@
             remainder: "56-1857"
             western_date: "0781-01-29"
           odd_solar_terms:
-            index: 3
-            remainder: "59-1003"
+            - index: 3
+              remainder: "59-1003"
           even_solar_terms:
-            index: 4
-            remainder: "14-1668"
+            - index: 4
+              remainder: "14-1668"
         day:
           number: 2
           zodiac_name: "辛酉"
@@ -1056,11 +1056,11 @@
           remainder: "26-1031"
           western_date: "0781-02-28"
         odd_solar_terms:
-          index: 5
-          remainder: "29-2332"
+          - index: 5
+            remainder: "29-2332"
         even_solar_terms:
-          index: 6
-          remainder: "44-2996"
+          - index: 6
+            remainder: "44-2996"
       day:
         number: 2
         zodiac_name: "辛卯"
@@ -1097,11 +1097,11 @@
             remainder: "26-1031"
             western_date: "0781-02-28"
           odd_solar_terms:
-            index: 5
-            remainder: "29-2332"
+            - index: 5
+              remainder: "29-2332"
           even_solar_terms:
-            index: 6
-            remainder: "44-2996"
+            - index: 6
+              remainder: "44-2996"
         day:
           number: 2
           zodiac_name: "辛卯"
@@ -1129,11 +1129,11 @@
           remainder: "36-1692"
           western_date: "0862-01-04"
         odd_solar_terms:
-          index: 3
-          remainder: "4-386"
+          - index: 3
+            remainder: "4-386"
         even_solar_terms:
-          index: 2
-          remainder: "48-2762"
+          - index: 2
+            remainder: "48-2762"
       day:
         number: 30
         zodiac_name: "己巳"
@@ -1170,11 +1170,11 @@
             remainder: "36-1692"
             western_date: "0862-01-04"
           odd_solar_terms:
-            index: 3
-            remainder: "4-386"
+            - index: 3
+              remainder: "4-386"
           even_solar_terms:
-            index: 2
-            remainder: "48-2762"
+            - index: 2
+              remainder: "48-2762"
         day:
           number: 30
           zodiac_name: "己巳"
@@ -1202,11 +1202,11 @@
           remainder: "6-1282"
           western_date: "0862-02-03"
         odd_solar_terms:
-          index: 5
-          remainder: "34-5368"
+          - index: 5
+            remainder: "34-5368"
         even_solar_terms:
-          index: 4
-          remainder: "19-3532"
+          - index: 4
+            remainder: "19-3532"
       day:
         number: 1
         zodiac_name: "庚午"
@@ -1243,11 +1243,11 @@
             remainder: "6-1282"
             western_date: "0862-02-03"
           odd_solar_terms:
-            index: 5
-            remainder: "34-5368"
+            - index: 5
+              remainder: "34-5368"
           even_solar_terms:
-            index: 4
-            remainder: "19-3532"
+            - index: 4
+              remainder: "19-3532"
         day:
           number: 1
           zodiac_name: "庚午"
@@ -1275,11 +1275,11 @@
           remainder: "6-1282"
           western_date: "0862-02-03"
         odd_solar_terms:
-          index: 5
-          remainder: "34-5368"
+          - index: 5
+            remainder: "34-5368"
         even_solar_terms:
-          index: 4
-          remainder: "19-3532"
+          - index: 4
+            remainder: "19-3532"
       day:
         number: 2
         zodiac_name: "辛未"
@@ -1316,11 +1316,11 @@
             remainder: "6-1282"
             western_date: "0862-02-03"
           odd_solar_terms:
-            index: 5
-            remainder: "34-5368"
+            - index: 5
+              remainder: "34-5368"
           even_solar_terms:
-            index: 4
-            remainder: "19-3532"
+            - index: 4
+              remainder: "19-3532"
         day:
           number: 2
           zodiac_name: "辛未"
@@ -1349,8 +1349,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-          index: 6
-          remainder: "49-7203"
+          - index: 6
+            remainder: "49-7203"
       day:
         number: 1
         zodiac_name: "庚子"
@@ -1388,8 +1388,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+            - index: 6
+              remainder: "49-7203"
         day:
           number: 1
           zodiac_name: "庚子"
@@ -1418,8 +1418,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-          index: 6
-          remainder: "49-7203"
+          - index: 6
+            remainder: "49-7203"
       day:
         number: 2
         zodiac_name: "辛丑"
@@ -1457,8 +1457,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+            - index: 6
+              remainder: "49-7203"
         day:
           number: 2
           zodiac_name: "辛丑"
@@ -1487,8 +1487,8 @@
           western_date: "0862-03-05"
         odd_solar_terms:
         even_solar_terms:
-          index: 6
-          remainder: "49-7203"
+          - index: 6
+            remainder: "49-7203"
       day:
         number: 29
         zodiac_name: "戊辰"
@@ -1526,8 +1526,8 @@
             western_date: "0862-03-05"
           odd_solar_terms:
           even_solar_terms:
-            index: 6
-            remainder: "49-7203"
+            - index: 6
+              remainder: "49-7203"
         day:
           number: 29
           zodiac_name: "戊辰"
@@ -1555,11 +1555,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-          index: 23
-          remainder: "8-4809"
+          - index: 23
+            remainder: "8-4809"
         even_solar_terms:
-          index: 0
-          remainder: "23-6645"
+          - index: 0
+            remainder: "23-6645"
       day:
         number: 1
         zodiac_name: "乙丑"
@@ -1596,11 +1596,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+            - index: 23
+              remainder: "8-4809"
           even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+            - index: 0
+              remainder: "23-6645"
         day:
           number: 1
           zodiac_name: "乙丑"
@@ -1628,11 +1628,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-          index: 23
-          remainder: "8-4809"
+          - index: 23
+            remainder: "8-4809"
         even_solar_terms:
-          index: 0
-          remainder: "23-6645"
+          - index: 0
+            remainder: "23-6645"
       day:
         number: 2
         zodiac_name: "丙寅"
@@ -1669,11 +1669,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+            - index: 23
+              remainder: "8-4809"
           even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+            - index: 0
+              remainder: "23-6645"
         day:
           number: 2
           zodiac_name: "丙寅"
@@ -1701,11 +1701,11 @@
           remainder: "1-5584"
           western_date: "0862-11-25"
         odd_solar_terms:
-          index: 23
-          remainder: "8-4809"
+          - index: 23
+            remainder: "8-4809"
         even_solar_terms:
-          index: 0
-          remainder: "23-6645"
+          - index: 0
+            remainder: "23-6645"
       day:
         number: 30
         zodiac_name: "甲午"
@@ -1742,11 +1742,11 @@
             remainder: "1-5584"
             western_date: "0862-11-25"
           odd_solar_terms:
-            index: 23
-            remainder: "8-4809"
+            - index: 23
+              remainder: "8-4809"
           even_solar_terms:
-            index: 0
-            remainder: "23-6645"
+            - index: 0
+              remainder: "23-6645"
         day:
           number: 30
           zodiac_name: "甲午"
@@ -1774,11 +1774,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-          index: 1
-          remainder: "39-80"
+          - index: 1
+            remainder: "39-80"
         even_solar_terms:
-          index: 2
-          remainder: "54-1916"
+          - index: 2
+            remainder: "54-1916"
       day:
         number: 1
         zodiac_name: "乙未"
@@ -1815,11 +1815,11 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+            - index: 1
+              remainder: "39-80"
           even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+            - index: 2
+              remainder: "54-1916"
         day:
           number: 1
           zodiac_name: "乙未"
@@ -1847,11 +1847,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-          index: 1
-          remainder: "39-80"
+          - index: 1
+            remainder: "39-80"
         even_solar_terms:
-          index: 2
-          remainder: "54-1916"
+          - index: 2
+            remainder: "54-1916"
       day:
         number: 2
         zodiac_name: "丙申"
@@ -1888,11 +1888,11 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+            - index: 1
+              remainder: "39-80"
           even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+            - index: 2
+              remainder: "54-1916"
         day:
           number: 2
           zodiac_name: "丙申"
@@ -1920,11 +1920,11 @@
           remainder: "31-941"
           western_date: "0862-12-25"
         odd_solar_terms:
-          index: 1
-          remainder: "39-80"
+          - index: 1
+            remainder: "39-80"
         even_solar_terms:
-          index: 2
-          remainder: "54-1916"
+          - index: 2
+            remainder: "54-1916"
       day:
         number: 29
         zodiac_name: "癸亥"
@@ -1961,11 +1961,11 @@
             remainder: "31-941"
             western_date: "0862-12-25"
           odd_solar_terms:
-            index: 1
-            remainder: "39-80"
+            - index: 1
+              remainder: "39-80"
           even_solar_terms:
-            index: 2
-            remainder: "54-1916"
+            - index: 2
+              remainder: "54-1916"
         day:
           number: 29
           zodiac_name: "癸亥"
@@ -1993,11 +1993,11 @@
           remainder: "0-4964"
           western_date: "0863-01-23"
         odd_solar_terms:
-          index: 3
-          remainder: "9-3751"
+          - index: 3
+            remainder: "9-3751"
         even_solar_terms:
-          index: 4
-          remainder: "24-5587"
+          - index: 4
+            remainder: "24-5587"
       day:
         number: 1
         zodiac_name: "甲子"
@@ -2034,11 +2034,11 @@
             remainder: "0-4964"
             western_date: "0863-01-23"
           odd_solar_terms:
-            index: 3
-            remainder: "9-3751"
+            - index: 3
+              remainder: "9-3751"
           even_solar_terms:
-            index: 4
-            remainder: "24-5587"
+            - index: 4
+              remainder: "24-5587"
         day:
           number: 1
           zodiac_name: "甲子"
@@ -2066,11 +2066,11 @@
           remainder: "0-4964"
           western_date: "0863-01-23"
         odd_solar_terms:
-          index: 3
-          remainder: "9-3751"
+          - index: 3
+            remainder: "9-3751"
         even_solar_terms:
-          index: 4
-          remainder: "24-5587"
+          - index: 4
+            remainder: "24-5587"
       day:
         number: 2
         zodiac_name: "乙丑"
@@ -2107,11 +2107,11 @@
             remainder: "0-4964"
             western_date: "0863-01-23"
           odd_solar_terms:
-            index: 3
-            remainder: "9-3751"
+            - index: 3
+              remainder: "9-3751"
           even_solar_terms:
-            index: 4
-            remainder: "24-5587"
+            - index: 4
+              remainder: "24-5587"
         day:
           number: 2
           zodiac_name: "乙丑"
@@ -2139,11 +2139,11 @@
           remainder: "0-4964"
           western_date: "0863-01-23"
         odd_solar_terms:
-          index: 3
-          remainder: "9-3751"
+          - index: 3
+            remainder: "9-3751"
         even_solar_terms:
-          index: 4
-          remainder: "24-5587"
+          - index: 4
+            remainder: "24-5587"
       day:
         number: 30
         zodiac_name: "癸巳"
@@ -2180,11 +2180,11 @@
             remainder: "0-4964"
             western_date: "0863-01-23"
           odd_solar_terms:
-            index: 3
-            remainder: "9-3751"
+            - index: 3
+              remainder: "9-3751"
           even_solar_terms:
-            index: 4
-            remainder: "24-5587"
+            - index: 4
+              remainder: "24-5587"
         day:
           number: 30
           zodiac_name: "癸巳"
@@ -2212,8 +2212,8 @@
           remainder: "58-8284"
           western_date: "0863-07-20"
         odd_solar_terms:
-          index: 15
-          remainder: "12-579"
+          - index: 15
+            remainder: "12-579"
         even_solar_terms:
       day:
         number: 1
@@ -2251,8 +2251,8 @@
             remainder: "58-8284"
             western_date: "0863-07-20"
           odd_solar_terms:
-            index: 15
-            remainder: "12-579"
+            - index: 15
+              remainder: "12-579"
           even_solar_terms:
         day:
           number: 1
@@ -2281,8 +2281,8 @@
           remainder: "58-8284"
           western_date: "0863-07-20"
         odd_solar_terms:
-          index: 15
-          remainder: "12-579"
+          - index: 15
+            remainder: "12-579"
         even_solar_terms:
       day:
         number: 2
@@ -2320,8 +2320,8 @@
             remainder: "58-8284"
             western_date: "0863-07-20"
           odd_solar_terms:
-            index: 15
-            remainder: "12-579"
+            - index: 15
+              remainder: "12-579"
           even_solar_terms:
         day:
           number: 2
@@ -2350,8 +2350,8 @@
           remainder: "58-8284"
           western_date: "0863-07-20"
         odd_solar_terms:
-          index: 15
-          remainder: "12-579"
+          - index: 15
+            remainder: "12-579"
         even_solar_terms:
       day:
         number: 29
@@ -2389,8 +2389,8 @@
             remainder: "58-8284"
             western_date: "0863-07-20"
           odd_solar_terms:
-            index: 15
-            remainder: "12-579"
+            - index: 15
+              remainder: "12-579"
           even_solar_terms:
         day:
           number: 29
@@ -2419,11 +2419,11 @@
           remainder: "33-1832"
           western_date: "0873-01-03"
         odd_solar_terms:
-          index: 3
-          remainder: "1-7501"
+          - index: 3
+            remainder: "1-7501"
         even_solar_terms:
-          index: 2
-          remainder: "46-5666"
+          - index: 2
+            remainder: "46-5666"
       day:
         number: 1
         zodiac_name: "丁酉"
@@ -2462,11 +2462,11 @@
             remainder: "33-1832"
             western_date: "0873-01-03"
           odd_solar_terms:
-            index: 3
-            remainder: "1-7501"
+            - index: 3
+              remainder: "1-7501"
           even_solar_terms:
-            index: 2
-            remainder: "46-5666"
+            - index: 2
+              remainder: "46-5666"
         day:
           number: 1
           zodiac_name: "丁酉"
@@ -2494,11 +2494,11 @@
           remainder: "15-5502"
           western_date: "0876-01-30"
         odd_solar_terms:
-          index: 3
-          remainder: "17-5266"
+          - index: 3
+            remainder: "17-5266"
         even_solar_terms:
-          index: 4
-          remainder: "32-7102"
+          - index: 4
+            remainder: "32-7102"
       day:
         number: 1
         zodiac_name: "己卯"
@@ -2535,11 +2535,11 @@
             remainder: "15-5502"
             western_date: "0876-01-30"
           odd_solar_terms:
-            index: 3
-            remainder: "17-5266"
+            - index: 3
+              remainder: "17-5266"
           even_solar_terms:
-            index: 4
-            remainder: "32-7102"
+            - index: 4
+              remainder: "32-7102"
         day:
           number: 1
           zodiac_name: "己卯"
@@ -2567,11 +2567,11 @@
           remainder: "15-5502"
           western_date: "0876-01-30"
         odd_solar_terms:
-          index: 3
-          remainder: "17-5266"
+          - index: 3
+            remainder: "17-5266"
         even_solar_terms:
-          index: 4
-          remainder: "32-7102"
+          - index: 4
+            remainder: "32-7102"
       day:
         number: 2
         zodiac_name: "庚辰"
@@ -2608,11 +2608,11 @@
             remainder: "15-5502"
             western_date: "0876-01-30"
           odd_solar_terms:
-            index: 3
-            remainder: "17-5266"
+            - index: 3
+              remainder: "17-5266"
           even_solar_terms:
-            index: 4
-            remainder: "32-7102"
+            - index: 4
+              remainder: "32-7102"
         day:
           number: 2
           zodiac_name: "庚辰"
@@ -2640,11 +2640,11 @@
           remainder: "15-5502"
           western_date: "0876-01-30"
         odd_solar_terms:
-          index: 3
-          remainder: "17-5266"
+          - index: 3
+            remainder: "17-5266"
         even_solar_terms:
-          index: 4
-          remainder: "32-7102"
+          - index: 4
+            remainder: "32-7102"
       day:
         number: 30
         zodiac_name: "戊申"
@@ -2681,11 +2681,11 @@
             remainder: "15-5502"
             western_date: "0876-01-30"
           odd_solar_terms:
-            index: 3
-            remainder: "17-5266"
+            - index: 3
+              remainder: "17-5266"
           even_solar_terms:
-            index: 4
-            remainder: "32-7102"
+            - index: 4
+              remainder: "32-7102"
         day:
           number: 30
           zodiac_name: "戊申"
@@ -2713,11 +2713,11 @@
           remainder: "40-7755"
           western_date: "0876-12-20"
         odd_solar_terms:
-          index: 1
-          remainder: "52-3650"
+          - index: 1
+            remainder: "52-3650"
         even_solar_terms:
-          index: 2
-          remainder: "7-5486"
+          - index: 2
+            remainder: "7-5486"
       day:
         number: 1
         zodiac_name: "甲辰"
@@ -2754,11 +2754,11 @@
             remainder: "40-7755"
             western_date: "0876-12-20"
           odd_solar_terms:
-            index: 1
-            remainder: "52-3650"
+            - index: 1
+              remainder: "52-3650"
           even_solar_terms:
-            index: 2
-            remainder: "7-5486"
+            - index: 2
+              remainder: "7-5486"
         day:
           number: 1
           zodiac_name: "甲辰"
@@ -2786,11 +2786,11 @@
           remainder: "40-7755"
           western_date: "0876-12-20"
         odd_solar_terms:
-          index: 1
-          remainder: "52-3650"
+          - index: 1
+            remainder: "52-3650"
         even_solar_terms:
-          index: 2
-          remainder: "7-5486"
+          - index: 2
+            remainder: "7-5486"
       day:
         number: 2
         zodiac_name: "乙巳"
@@ -2827,11 +2827,11 @@
             remainder: "40-7755"
             western_date: "0876-12-20"
           odd_solar_terms:
-            index: 1
-            remainder: "52-3650"
+            - index: 1
+              remainder: "52-3650"
           even_solar_terms:
-            index: 2
-            remainder: "7-5486"
+            - index: 2
+              remainder: "7-5486"
         day:
           number: 2
           zodiac_name: "乙巳"
@@ -2859,11 +2859,11 @@
           remainder: "40-7755"
           western_date: "0876-12-20"
         odd_solar_terms:
-          index: 1
-          remainder: "52-3650"
+          - index: 1
+            remainder: "52-3650"
         even_solar_terms:
-          index: 2
-          remainder: "7-5486"
+          - index: 2
+            remainder: "7-5486"
       day:
         number: 29
         zodiac_name: "壬申"
@@ -2900,11 +2900,11 @@
             remainder: "40-7755"
             western_date: "0876-12-20"
           odd_solar_terms:
-            index: 1
-            remainder: "52-3650"
+            - index: 1
+              remainder: "52-3650"
           even_solar_terms:
-            index: 2
-            remainder: "7-5486"
+            - index: 2
+              remainder: "7-5486"
         day:
           number: 29
           zodiac_name: "壬申"
@@ -2932,11 +2932,11 @@
           remainder: "8-1019"
           western_date: "0877-05-17"
         odd_solar_terms:
-          index: 11
-          remainder: "24-5206"
+          - index: 11
+            remainder: "24-5206"
         even_solar_terms:
-          index: 10
-          remainder: "9-3371"
+          - index: 10
+            remainder: "9-3371"
       day:
         number: 15
         zodiac_name: "丙戌"
@@ -2973,11 +2973,11 @@
             remainder: "8-1019"
             western_date: "0877-05-17"
           odd_solar_terms:
-            index: 11
-            remainder: "24-5206"
+            - index: 11
+              remainder: "24-5206"
           even_solar_terms:
-            index: 10
-            remainder: "9-3371"
+            - index: 10
+              remainder: "9-3371"
         day:
           number: 15
           zodiac_name: "丙戌"
@@ -3005,11 +3005,11 @@
           remainder: "8-1019"
           western_date: "0877-05-17"
         odd_solar_terms:
-          index: 11
-          remainder: "24-5206"
+          - index: 11
+            remainder: "24-5206"
         even_solar_terms:
-          index: 10
-          remainder: "9-3371"
+          - index: 10
+            remainder: "9-3371"
       day:
         number: 16
         zodiac_name: "丁亥"
@@ -3046,11 +3046,11 @@
             remainder: "8-1019"
             western_date: "0877-05-17"
           odd_solar_terms:
-            index: 11
-            remainder: "24-5206"
+            - index: 11
+              remainder: "24-5206"
           even_solar_terms:
-            index: 10
-            remainder: "9-3371"
+            - index: 10
+              remainder: "9-3371"
         day:
           number: 16
           zodiac_name: "丁亥"
@@ -3078,11 +3078,11 @@
           remainder: "50-2479"
           western_date: "0937-02-13"
         odd_solar_terms:
-          index: 5
-          remainder: "7-8293"
+          - index: 5
+            remainder: "7-8293"
         even_solar_terms:
-          index: 4
-          remainder: "52-6457"
+          - index: 4
+            remainder: "52-6457"
       day:
         number: 2
         zodiac_name: "乙卯"
@@ -3121,11 +3121,11 @@
             remainder: "51-2479"
             western_date: "0937-02-14"
           odd_solar_terms:
-            index: 5
-            remainder: "7-8293"
+            - index: 5
+              remainder: "7-8293"
           even_solar_terms:
-            index: 4
-            remainder: "52-6457"
+            - index: 4
+              remainder: "52-6457"
         day:
           number: 1
           zodiac_name: "乙卯"
@@ -3153,8 +3153,8 @@
           remainder: "41-7048"
           western_date: "1031-11-18"
         odd_solar_terms:
-          index: 23
-          remainder: "54-7704"
+          - index: 23
+            remainder: "54-7704"
         even_solar_terms:
       day:
         number: 1
@@ -3192,8 +3192,8 @@
             remainder: "41-7048"
             western_date: "1031-11-18"
           odd_solar_terms:
-            index: 23
-            remainder: "54-7704"
+            - index: 23
+              remainder: "54-7704"
           even_solar_terms:
         day:
           number: 1
@@ -3222,11 +3222,11 @@
           remainder: "5-5236"
           western_date: "1032-10-07"
         odd_solar_terms:
-          index: 21
-          remainder: "29-6088"
+          - index: 21
+            remainder: "29-6088"
         even_solar_terms:
-          index: 20
-          remainder: "14-4252"
+          - index: 20
+            remainder: "14-4252"
       day:
         number: 1
         zodiac_name: "己巳"
@@ -3263,11 +3263,11 @@
             remainder: "5-5236"
             western_date: "1032-10-07"
           odd_solar_terms:
-            index: 21
-            remainder: "29-6088"
+            - index: 21
+              remainder: "29-6088"
           even_solar_terms:
-            index: 20
-            remainder: "14-4252"
+            - index: 20
+              remainder: "14-4252"
         day:
           number: 1
           zodiac_name: "己巳"
@@ -3295,8 +3295,8 @@
           remainder: "38-7186"
           western_date: "1202-11-17"
         odd_solar_terms:
-          index: 23
-          remainder: "51-6309"
+          - index: 23
+            remainder: "51-6309"
         even_solar_terms:
       day:
         number: 1
@@ -3336,11 +3336,11 @@
             remainder: "38-7186"
             western_date: "1202-11-17"
           odd_solar_terms:
-            index: 23
-            remainder: "51-6309"
+            - index: 23
+              remainder: "51-6309"
           even_solar_terms:
-            index: 0
-            remainder: "6-8145"
+            - index: 0
+              remainder: "6-8145"
         day:
           number: 1
           zodiac_name: "壬寅"
@@ -3368,11 +3368,11 @@
           remainder: "7-5375"
           western_date: "1202-12-16"
         odd_solar_terms:
-          index: 1
-          remainder: "22-1580"
+          - index: 1
+            remainder: "22-1580"
         even_solar_terms:
-          index: 0
-          remainder: "7-8145"
+          - index: 0
+            remainder: "7-8145"
       day:
         number: 1
         zodiac_name: "辛未"
@@ -3411,8 +3411,8 @@
             remainder: "7-5375"
             western_date: "1202-12-16"
           odd_solar_terms:
-            index: 1
-            remainder: "22-1580"
+            - index: 1
+              remainder: "22-1580"
           even_solar_terms:
         day:
           number: 1
@@ -3441,11 +3441,11 @@
           remainder: "7-4787"
           western_date: "1332-01-28"
         odd_solar_terms:
-          index: 3
-          remainder: "9-1546"
+          - index: 3
+            remainder: "9-1546"
         even_solar_terms:
-          index: 4
-          remainder: "24-3382"
+          - index: 4
+            remainder: "24-3382"
       day:
         number: 1
         zodiac_name: "辛未"
@@ -3482,11 +3482,11 @@
             remainder: "7-4787"
             western_date: "1332-01-28"
           odd_solar_terms:
-            index: 3
-            remainder: "9-1546"
+            - index: 3
+              remainder: "9-1546"
           even_solar_terms:
-            index: 4
-            remainder: "24-3382"
+            - index: 4
+              remainder: "24-3382"
         day:
           number: 1
           zodiac_name: "辛未"
@@ -3514,11 +3514,11 @@
           remainder: "7-4787"
           western_date: "1332-01-28"
         odd_solar_terms:
-          index: 3
-          remainder: "9-1546"
+          - index: 3
+            remainder: "9-1546"
         even_solar_terms:
-          index: 4
-          remainder: "24-3382"
+          - index: 4
+            remainder: "24-3382"
       day:
         number: 2
         zodiac_name: "壬申"
@@ -3555,11 +3555,11 @@
             remainder: "7-4787"
             western_date: "1332-01-28"
           odd_solar_terms:
-            index: 3
-            remainder: "9-1546"
+            - index: 3
+              remainder: "9-1546"
           even_solar_terms:
-            index: 4
-            remainder: "24-3382"
+            - index: 4
+              remainder: "24-3382"
         day:
           number: 2
           zodiac_name: "壬申"
@@ -3587,11 +3587,11 @@
           remainder: "7-4787"
           western_date: "1332-01-28"
         odd_solar_terms:
-          index: 3
-          remainder: "9-1546"
+          - index: 3
+            remainder: "9-1546"
         even_solar_terms:
-          index: 4
-          remainder: "24-3382"
+          - index: 4
+            remainder: "24-3382"
       day:
         number: 30
         zodiac_name: "庚子"
@@ -3628,11 +3628,11 @@
             remainder: "7-4787"
             western_date: "1332-01-28"
           odd_solar_terms:
-            index: 3
-            remainder: "9-1546"
+            - index: 3
+              remainder: "9-1546"
           even_solar_terms:
-            index: 4
-            remainder: "24-3382"
+            - index: 4
+              remainder: "24-3382"
         day:
           number: 30
           zodiac_name: "庚子"
@@ -3660,11 +3660,11 @@
           remainder: "19-977"
           western_date: "1340-06-26"
         odd_solar_terms:
-          index: 13
-          remainder: "23-2743"
+          - index: 13
+            remainder: "23-2743"
         even_solar_terms:
-          index: 14
-          remainder: "38-4578"
+          - index: 14
+            remainder: "38-4578"
       day:
         number: 11
         zodiac_name: "癸巳"
@@ -3701,11 +3701,11 @@
             remainder: "19-977"
             western_date: "1340-06-26"
           odd_solar_terms:
-            index: 13
-            remainder: "23-2743"
+            - index: 13
+              remainder: "23-2743"
           even_solar_terms:
-            index: 14
-            remainder: "38-4578"
+            - index: 14
+              remainder: "38-4578"
         day:
           number: 11
           zodiac_name: "癸巳"
@@ -3733,11 +3733,11 @@
           remainder: "58-6335"
           western_date: "1344-01-16"
         odd_solar_terms:
-          index: 3
-          remainder: "12-1006"
+          - index: 3
+            remainder: "12-1006"
         even_solar_terms:
-          index: 4
-          remainder: "27-2842"
+          - index: 4
+            remainder: "27-2842"
       day:
         number: 1
         zodiac_name: "壬戌"
@@ -3776,11 +3776,11 @@
             remainder: "29-814"
             western_date: "1343-12-18"
           odd_solar_terms:
-            index: 1
-            remainder: "41-5735"
+            - index: 1
+              remainder: "41-5735"
           even_solar_terms:
-            index: 2
-            remainder: "56-7571"
+            - index: 2
+              remainder: "56-7571"
         day:
           number: 30
           zodiac_name: "壬戌"
@@ -3808,11 +3808,11 @@
           remainder: "19-2126"
           western_date: "1392-01-25"
         odd_solar_terms:
-          index: 3
-          remainder: "23-7246"
+          - index: 3
+            remainder: "23-7246"
         even_solar_terms:
-          index: 4
-          remainder: "39-682"
+          - index: 4
+            remainder: "39-682"
       day:
         number: 1
         zodiac_name: "癸未"
@@ -3849,11 +3849,11 @@
             remainder: "19-2126"
             western_date: "1392-01-25"
           odd_solar_terms:
-            index: 3
-            remainder: "23-7246"
+            - index: 3
+              remainder: "23-7246"
           even_solar_terms:
-            index: 4
-            remainder: "39-682"
+            - index: 4
+              remainder: "39-682"
         day:
           number: 1
           zodiac_name: "癸未"
@@ -3881,11 +3881,11 @@
           remainder: "19-2126"
           western_date: "1392-01-25"
         odd_solar_terms:
-          index: 3
-          remainder: "23-7246"
+          - index: 3
+            remainder: "23-7246"
         even_solar_terms:
-          index: 4
-          remainder: "39-682"
+          - index: 4
+            remainder: "39-682"
       day:
         number: 2
         zodiac_name: "甲申"
@@ -3922,11 +3922,11 @@
             remainder: "19-2126"
             western_date: "1392-01-25"
           odd_solar_terms:
-            index: 3
-            remainder: "23-7246"
+            - index: 3
+              remainder: "23-7246"
           even_solar_terms:
-            index: 4
-            remainder: "39-682"
+            - index: 4
+              remainder: "39-682"
         day:
           number: 2
           zodiac_name: "甲申"
@@ -3954,11 +3954,11 @@
           remainder: "19-2126"
           western_date: "1392-01-25"
         odd_solar_terms:
-          index: 3
-          remainder: "23-7246"
+          - index: 3
+            remainder: "23-7246"
         even_solar_terms:
-          index: 4
-          remainder: "39-682"
+          - index: 4
+            remainder: "39-682"
       day:
         number: 30
         zodiac_name: "壬子"
@@ -3995,11 +3995,11 @@
             remainder: "19-2126"
             western_date: "1392-01-25"
           odd_solar_terms:
-            index: 3
-            remainder: "23-7246"
+            - index: 3
+              remainder: "23-7246"
           even_solar_terms:
-            index: 4
-            remainder: "39-682"
+            - index: 4
+              remainder: "39-682"
         day:
           number: 30
           zodiac_name: "壬子"
@@ -4027,8 +4027,8 @@
           remainder: "14-3986"
           western_date: "1392-11-15"
         odd_solar_terms:
-          index: 23
-          remainder: "28-1959"
+          - index: 23
+            remainder: "28-1959"
         even_solar_terms:
       day:
         number: 5
@@ -4068,11 +4068,11 @@
             remainder: "14-3986"
             western_date: "1392-11-15"
           odd_solar_terms:
-            index: 23
-            remainder: "28-1959"
+            - index: 23
+              remainder: "28-1959"
           even_solar_terms:
-            index: 0
-            remainder: "43-3795"
+            - index: 0
+              remainder: "43-3795"
         day:
           number: 5
           zodiac_name: "壬午"
@@ -4100,11 +4100,11 @@
           remainder: "43-1067"
           western_date: "1393-02-12"
         odd_solar_terms:
-          index: 5
-          remainder: "59-4573"
+          - index: 5
+            remainder: "59-4573"
         even_solar_terms:
-          index: 4
-          remainder: "44-2737"
+          - index: 4
+            remainder: "44-2737"
       day:
         number: 1
         zodiac_name: "丁未"
@@ -4141,11 +4141,11 @@
             remainder: "43-1067"
             western_date: "1393-02-12"
           odd_solar_terms:
-            index: 5
-            remainder: "59-4573"
+            - index: 5
+              remainder: "59-4573"
           even_solar_terms:
-            index: 4
-            remainder: "44-2737"
+            - index: 4
+              remainder: "44-2737"
         day:
           number: 1
           zodiac_name: "丁未"
@@ -4173,11 +4173,11 @@
           remainder: "43-1067"
           western_date: "1393-02-12"
         odd_solar_terms:
-          index: 5
-          remainder: "59-4573"
+          - index: 5
+            remainder: "59-4573"
         even_solar_terms:
-          index: 4
-          remainder: "44-2737"
+          - index: 4
+            remainder: "44-2737"
       day:
         number: 2
         zodiac_name: "戊申"
@@ -4214,11 +4214,11 @@
             remainder: "43-1067"
             western_date: "1393-02-12"
           odd_solar_terms:
-            index: 5
-            remainder: "59-4573"
+            - index: 5
+              remainder: "59-4573"
           even_solar_terms:
-            index: 4
-            remainder: "44-2737"
+            - index: 4
+              remainder: "44-2737"
         day:
           number: 2
           zodiac_name: "戊申"
@@ -4246,11 +4246,11 @@
           remainder: "43-1067"
           western_date: "1393-02-12"
         odd_solar_terms:
-          index: 5
-          remainder: "59-4573"
+          - index: 5
+            remainder: "59-4573"
         even_solar_terms:
-          index: 4
-          remainder: "44-2737"
+          - index: 4
+            remainder: "44-2737"
       day:
         number: 29
         zodiac_name: "乙亥"
@@ -4287,11 +4287,11 @@
             remainder: "43-1067"
             western_date: "1393-02-12"
           odd_solar_terms:
-            index: 5
-            remainder: "59-4573"
+            - index: 5
+              remainder: "59-4573"
           even_solar_terms:
-            index: 4
-            remainder: "44-2737"
+            - index: 4
+              remainder: "44-2737"
         day:
           number: 29
           zodiac_name: "乙亥"
@@ -4319,11 +4319,11 @@
           remainder: "35-7979"
           western_date: "1394-07-29"
         odd_solar_terms:
-          index: 15
-          remainder: "36-8184"
+          - index: 15
+            remainder: "36-8184"
         even_solar_terms:
-          index: 16
-          remainder: "52-1620"
+          - index: 16
+            remainder: "52-1620"
       day:
         number: 5
         zodiac_name: "癸卯"
@@ -4360,11 +4360,11 @@
             remainder: "35-7979"
             western_date: "1394-07-29"
           odd_solar_terms:
-            index: 15
-            remainder: "36-8184"
+            - index: 15
+              remainder: "36-8184"
           even_solar_terms:
-            index: 16
-            remainder: "52-1620"
+            - index: 16
+              remainder: "52-1620"
         day:
           number: 5
           zodiac_name: "癸卯"
@@ -4392,11 +4392,11 @@
           remainder: "58-588"
           western_date: "1685-02-04"
         odd_solar_terms:
-          index: 3
-          remainder: "0-4561"
+          - index: 3
+            remainder: "0-4561"
         even_solar_terms:
-          index: 4
-          remainder: "15-6397"
+          - index: 4
+            remainder: "15-6397"
       day:
         number: 1
         zodiac_name: "壬戌"
@@ -4433,11 +4433,11 @@
             remainder: "58-588"
             western_date: "1685-02-04"
           odd_solar_terms:
-            index: 3
-            remainder: "0-4561"
+            - index: 3
+              remainder: "0-4561"
           even_solar_terms:
-            index: 4
-            remainder: "15-6397"
+            - index: 4
+              remainder: "15-6397"
         day:
           number: 1
           zodiac_name: "壬戌"
@@ -4465,11 +4465,11 @@
           remainder: "58-588"
           western_date: "1685-02-04"
         odd_solar_terms:
-          index: 3
-          remainder: "0-4561"
+          - index: 3
+            remainder: "0-4561"
         even_solar_terms:
-          index: 4
-          remainder: "15-6397"
+          - index: 4
+            remainder: "15-6397"
       day:
         number: 2
         zodiac_name: "癸亥"
@@ -4506,11 +4506,11 @@
             remainder: "58-588"
             western_date: "1685-02-04"
           odd_solar_terms:
-            index: 3
-            remainder: "0-4561"
+            - index: 3
+              remainder: "0-4561"
           even_solar_terms:
-            index: 4
-            remainder: "15-6397"
+            - index: 4
+              remainder: "15-6397"
         day:
           number: 2
           zodiac_name: "癸亥"
@@ -4538,11 +4538,11 @@
           remainder: "58-588"
           western_date: "1685-02-04"
         odd_solar_terms:
-          index: 3
-          remainder: "0-4561"
+          - index: 3
+            remainder: "0-4561"
         even_solar_terms:
-          index: 4
-          remainder: "15-6397"
+          - index: 4
+            remainder: "15-6397"
       day:
         number: 29
         zodiac_name: "庚寅"
@@ -4579,11 +4579,11 @@
             remainder: "58-588"
             western_date: "1685-02-04"
           odd_solar_terms:
-            index: 3
-            remainder: "0-4561"
+            - index: 3
+              remainder: "0-4561"
           even_solar_terms:
-            index: 4
-            remainder: "15-6397"
+            - index: 4
+              remainder: "15-6397"
         day:
           number: 29
           zodiac_name: "庚寅"

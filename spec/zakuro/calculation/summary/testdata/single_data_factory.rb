@@ -33,13 +33,19 @@ module SingleDataFactory
     def solar_term(hash:)
       return [] unless hash
 
-      # TODO: 複数対応
-      [
-        Zakuro::Result::Data::SolarTerm.new(
-          index: hash['index'],
-          remainder: hash['remainder']
+      return [] unless hash.is_a?(Array)
+
+      result = []
+      hash.each do |term|
+        result.push(
+          Zakuro::Result::Data::SolarTerm.new(
+            index: term['index'],
+            remainder: term['remainder']
+          )
         )
-      ]
+      end
+
+      result
     end
 
     def month(hash:)
