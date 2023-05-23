@@ -4,7 +4,7 @@ require_relative './gateway/single'
 
 require_relative './gateway/range'
 
-require_relative './condition'
+require_relative './parameter/condition'
 
 require_relative './exception/exception'
 
@@ -19,7 +19,7 @@ module Zakuro
   class Merchant
     # @return [Output::Logger] ロガー
     LOGGER = Output::Logger.new(location: Merchant)
-    # @return [Hash<Symbol, Object>] 条件
+    # @return [Parameter::Condition] 条件
     attr_reader :condition
 
     #
@@ -30,10 +30,10 @@ module Zakuro
     # @raise [Exception::ZakuroError] ライブラリ内エラー
     #
     def initialize(condition: {})
-      failed = Condition.validate(hash: condition)
+      failed = Parameter::Condition.validate(hash: condition)
       raise Exception.get(presets: failed) unless failed.empty?
 
-      @condition = Condition.new(hash: condition)
+      @condition = Parameter::Condition.new(hash: condition)
     rescue Exception::ZakuroError => e
       raise e
     rescue StandardError => e
@@ -50,7 +50,7 @@ module Zakuro
     # @raise [Exception::ZakuroError] ライブラリ内エラー
     #
     def offer(condition: {})
-      failed = Condition.validate(hash: condition)
+      failed = Parameter::Condition.validate(hash: condition)
       raise Exception.get(presets: failed) unless failed.empty?
 
       condition.rewrite(hash: condition)
