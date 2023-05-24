@@ -70,7 +70,6 @@ describe 'Zakuro' do
                 expect(actual.list[-1].data.day.western_date.format).to eq last_date.format
               end
             end
-            # TODO: single.yaml でも検証できるようにする
             context 'all range data' do
               filepath = File.expand_path(
                 '../testdata/yaml/range.yaml',
@@ -90,6 +89,39 @@ describe 'Zakuro' do
                 expected_range = Zakuro::Result::Range.new(list: list)
 
                 note = "#{test['japan']['japan_date']}: #{test['description']}"
+                it "#{start_date} - #{last_date}: #{note}" do
+                  actual = Zakuro::Calculation::Summary::Western::Range.get(
+                    context: Zakuro::Context::Context.new(version: ''),
+                    start_date: Zakuro::Western::Calendar.parse(text: start_date),
+                    last_date: Zakuro::Western::Calendar.parse(text: last_date)
+                  )
+
+                  TestTool::Stringifier.eql?(
+                    expected: expected_range,
+                    actual: actual,
+                    class_prefix: 'Zakuro::Result'
+                  )
+                end
+              end
+            end
+            context 'all single data as range data' do
+              filepath = File.expand_path(
+                '../testdata/yaml/single.yaml',
+                __dir__
+              )
+              hash = YAML.load_file(filepath)
+
+              hash.each do |test|
+                western_date = test['western_date']
+                start_date = western_date
+                last_date = western_date
+                # TODO: 暦を指定できるようになった段階で使用する
+                # version = test['version']
+                single = SingleDataFactory.create(hash: test['expected'])
+
+                expected_range = Zakuro::Result::Range.new(list: [single])
+
+                note = "#{test['japan_date']}: #{test['description']}"
                 it "#{start_date} - #{last_date}: #{note}" do
                   actual = Zakuro::Calculation::Summary::Western::Range.get(
                     context: Zakuro::Context::Context.new(version: ''),
