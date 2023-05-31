@@ -6,12 +6,13 @@ require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# NOTE: 現状は全て通っている
+require_relative './single_date_printer'
+
+# @return [True] 滅日チェックを実施する
+# @return [False] 滅日チェックを実施しない
 #
 # 非常に重い試験のため通常は実施しない
-#
-# @return [Array<String>] 没日誤りのある和暦日文字列
-METSUNICHI_FAILED_PATTERNS = %w[].freeze
+METSUNICHI_ENABLED = false
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -21,40 +22,44 @@ describe 'Zakuro' do
         it 'should be equal to a reference' do
           years = Zakuro::All::Motsumetsu::Parser.get
           before_gengou = Zakuro::All::Motsumetsu::Gengou.new
-          years.each do |year|
-            gengou = year.gengou
-            year.dates.each do |date|
-              next unless date.vanished
 
-              date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
-                date: date, current_gengou: gengou, before_gengou: before_gengou
-              )
+          File.open('./metsunichi.log', 'w') do |f|
+            break unless METSUNICHI_ENABLED
 
-              next unless METSUNICHI_FAILED_PATTERNS.include?(date_text)
+            years.each do |year|
+              gengou = year.gengou
+              year.dates.each do |date|
+                next unless date.vanished
 
-              actual = Zakuro::Merchant.new(
-                condition: {
-                  date: date_text,
-                  options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
-                }
-              ).commit
+                date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
+                  date: date, current_gengou: gengou, before_gengou: before_gengou
+                )
 
-              options = actual.data.options
+                actual = Zakuro::Merchant.new(
+                  condition: {
+                    date: date_text,
+                    options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
+                  }
+                ).commit
 
-              vanished_date = options['vanished_date']
+                actual_printer = SingleDatePrinter.new(date: actual)
 
-              # next if vanished_date.matched
+                # TODO: 対象日が没日でなかった場合はテスト失敗にする
 
-              # TODO: refactor
-              p '-------------'
-              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-              p date_text
-              p actual.data.day.western_date.format
+                # next if vanished_date.matched
 
-              p "【結果】: #{vanished_date.matched} / #{vanished_date.calculation.remainder}"
-              p "経朔： #{vanished_date.calculation.average_remainder}"
+                f.puts('-------------')
+                f.puts(
+                  "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+                )
+                f.puts(date_text)
+                f.puts(actual_printer.western_date)
+
+                f.puts("【結果】: #{actual_printer.vanished_date_result}")
+                f.puts("経朔： #{actual_printer.vanished_date_average_remainder}")
+              end
+              before_gengou = gengou
             end
-            before_gengou = gengou
           end
         end
       end
