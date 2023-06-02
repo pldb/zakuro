@@ -52,19 +52,13 @@ describe 'Zakuro' do
                 }
               ).commit
 
-              options = actual.data.options
-
-              dropped_date = options['dropped_date']
-
-              vanished_date = options['vanished_date']
-
-              next unless dropped_date.matched || vanished_date.matched
-
               actual_printer = SingleDatePrinter.new(date: actual)
 
+              next unless actual_printer.event?
+
               line = "western_date: #{actual_printer.western_date} / japan_date: " \
-              "#{actual_printer.japan_date} / dropped_date: #{dropped_date.matched} / " \
-              "vanished_date: #{vanished_date.matched}"
+              "#{actual_printer.japan_date} / dropped_date: #{actual_printer.dropped_date?} / " \
+              "vanished_date: #{actual_printer.vanished_date?}"
 
               f.puts(line)
             end

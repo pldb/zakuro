@@ -23,7 +23,10 @@ describe 'Zakuro' do
           years = Zakuro::All::Motsumetsu::Parser.get
           before_gengou = Zakuro::All::Motsumetsu::Gengou.new
 
-          File.open('./metsunichi.log', 'w') do |f|
+          log_file_path = './metsunichi.log'
+          failed = false
+
+          File.open(log_file_path, 'w') do |f|
             break unless METSUNICHI_ENABLED
 
             years.each do |year|
@@ -44,9 +47,7 @@ describe 'Zakuro' do
 
                 actual_printer = SingleDatePrinter.new(date: actual)
 
-                # TODO: 対象日が没日でなかった場合はテスト失敗にする
-
-                # next if vanished_date.matched
+                failed = true unless actual_printer.vanished_date?
 
                 f.puts('-------------')
                 f.puts(
@@ -61,6 +62,8 @@ describe 'Zakuro' do
               before_gengou = gengou
             end
           end
+
+          expect(failed).to be_falsey, "invalid dropped date. please read [#{log_file_path}]"
         end
       end
     end

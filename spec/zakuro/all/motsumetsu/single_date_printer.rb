@@ -61,6 +61,40 @@ class SingleDatePrinter
   end
 
   #
+  # 没日か
+  #
+  # @return [True] 没日あり
+  # @return [False] 没日なし
+  #
+  def dropped_date?
+    dropped_date = date.data.options['dropped_date']
+
+    dropped_date.matched
+  end
+
+  #
+  # 滅日か
+  #
+  # @return [True] 滅日あり
+  # @return [False] 滅日なし
+  #
+  def vanished_date?
+    vanished_date = date.data.options['vanished_date']
+
+    vanished_date.matched
+  end
+
+  #
+  # 没日・滅日か
+  #
+  # @return [True] 没日・滅日あり
+  # @return [False] 没日・滅日なし
+  #
+  def event?
+    dropped_date? || vanished_date?
+  end
+
+  #
   # 和暦日を返す
   #
   # @return [String] 和暦日
