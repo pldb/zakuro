@@ -29,7 +29,7 @@ describe 'Zakuro' do
                 date: date
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected,
                 actual: actual,
                 class_prefix: 'Zakuro::Result'
@@ -46,7 +46,9 @@ describe 'Zakuro' do
                 japan_date = test['japan_date']
                 # TODO: 暦を指定できるようになった段階で使用する
                 # version = test['version']
-                expected = SingleDataFactory.create(hash: test['expected'])
+                expected = Zakuro::Calculation::Summary::Testdata::SingleDataFactory.create(
+                  hash: test['expected']
+                )
 
                 message = "#{test['western_date']}[#{test['operation']}]: #{test['description']}"
                 it "#{japan_date}: #{message}" do

@@ -25,7 +25,7 @@ describe 'Zakuro' do
           id = '156-1-1'
           result = Zakuro::Operation.month_histories
           expect = result.select { |history| history.id == id }
-          TestTool::Stringifier.eql?(
+          Zakuro::TestTool::Stringifier.eql?(
             expected: Zakuro::Operation::MonthHistory.new(
               id: id,
               reference: Zakuro::Operation::Reference.new(

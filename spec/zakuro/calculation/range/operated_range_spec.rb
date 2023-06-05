@@ -110,7 +110,7 @@ describe 'Zakuro' do
                 )]
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -186,7 +186,7 @@ describe 'Zakuro' do
                 )]
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -269,7 +269,7 @@ describe 'Zakuro' do
                 ]
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -318,7 +318,7 @@ describe 'Zakuro' do
                 ]
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end

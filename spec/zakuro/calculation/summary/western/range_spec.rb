@@ -83,7 +83,9 @@ describe 'Zakuro' do
                 last_date = western['last_date']
                 list = []
                 test['expected'].each do |day|
-                  single_data = SingleDataFactory.create(hash: day)
+                  single_data = Zakuro::Calculation::Summary::Testdata::SingleDataFactory.create(
+                    hash: day
+                  )
                   list.push(single_data)
                 end
                 expected_range = Zakuro::Result::Range.new(list: list)
@@ -96,7 +98,7 @@ describe 'Zakuro' do
                     last_date: Zakuro::Western::Calendar.parse(text: last_date)
                   )
 
-                  TestTool::Stringifier.eql?(
+                  Zakuro::TestTool::Stringifier.eql?(
                     expected: expected_range,
                     actual: actual,
                     class_prefix: 'Zakuro::Result'
@@ -117,7 +119,9 @@ describe 'Zakuro' do
                 last_date = western_date
                 # TODO: 暦を指定できるようになった段階で使用する
                 # version = test['version']
-                single = SingleDataFactory.create(hash: test['expected'])
+                single = Zakuro::Calculation::Summary::Testdata::SingleDataFactory.create(
+                  hash: test['expected']
+                )
 
                 expected_range = Zakuro::Result::Range.new(list: [single])
 
@@ -129,7 +133,7 @@ describe 'Zakuro' do
                     last_date: Zakuro::Western::Calendar.parse(text: last_date)
                   )
 
-                  TestTool::Stringifier.eql?(
+                  Zakuro::TestTool::Stringifier.eql?(
                     expected: expected_range,
                     actual: actual,
                     class_prefix: 'Zakuro::Result'

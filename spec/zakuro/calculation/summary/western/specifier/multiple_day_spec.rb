@@ -75,7 +75,7 @@ describe 'Zakuro' do
                     date = Zakuro::Western::Calendar.new(year: 862, month: 2, day: 3)
                     actual = pre(start_date: date, last_date: date)
 
-                    TestTool::Stringifier.eql?(
+                    Zakuro::TestTool::Stringifier.eql?(
                       expected: [first_day],
                       actual: actual,
                       class_prefix: 'Zakuro::Result'
@@ -94,7 +94,7 @@ describe 'Zakuro' do
 
                     actual = pre(start_date: date, last_date: date)
 
-                    TestTool::Stringifier.eql?(
+                    Zakuro::TestTool::Stringifier.eql?(
                       expected: [second_day],
                       actual: actual,
                       class_prefix: 'Zakuro::Result'

@@ -25,7 +25,9 @@ describe 'Zakuro' do
           example '貞観4年1月1日' do
             date = Date.new(862, 2, 3)
             actual = Zakuro::Merchant.new(condition: { date: date }).commit
-            expect(actual.to_pretty_json).to eql(Const::SENMYOU_FIRST_DAY.to_pretty_json)
+            expect(actual.to_pretty_json).to eql(
+              Zakuro::TestTool::Const::SENMYOU_FIRST_DAY.to_pretty_json
+            )
           end
         end
       end
@@ -36,7 +38,9 @@ describe 'Zakuro' do
             actual = Zakuro::Merchant.new(
               condition: { date: date, options: { 'dropped_date' => true } }
             ).commit
-            expect(actual.to_pretty_json).to eql(Const::DAY_WITH_DROPPED_DATE.to_pretty_json)
+            expect(actual.to_pretty_json).to eql(
+              Zakuro::TestTool::Const::DAY_WITH_DROPPED_DATE.to_pretty_json
+            )
           end
         end
       end
@@ -47,7 +51,9 @@ describe 'Zakuro' do
             actual = Zakuro::Merchant.new(
               condition: { date: date, options: { 'vanished_date' => true } }
             ).commit
-            expect(actual.to_pretty_json).to eql(Const::DAY_WITH_VANISHED_DATE.to_pretty_json)
+            expect(actual.to_pretty_json).to eql(
+              Zakuro::TestTool::Const::DAY_WITH_VANISHED_DATE.to_pretty_json
+            )
           end
         end
         context '貞観4年3月29日' do
@@ -56,7 +62,9 @@ describe 'Zakuro' do
             actual = Zakuro::Merchant.new(
               condition: { date: date, options: { 'vanished_date' => true } }
             ).commit
-            expect(actual.to_pretty_json).to eql(Const::DAY_WITH_VANISHED_DATE.to_pretty_json)
+            expect(actual.to_pretty_json).to eql(
+              Zakuro::TestTool::Const::DAY_WITH_VANISHED_DATE.to_pretty_json
+            )
           end
         end
       end

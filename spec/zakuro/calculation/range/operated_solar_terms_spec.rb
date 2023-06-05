@@ -54,7 +54,7 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: Zakuro::Senmyou::Cycle::SolarTerm.new(index: 2),
                 actual: solar_term,
                 class_prefix: 'Zakuro::Senmyou'
@@ -70,7 +70,7 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
                   index: 2,
                   remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 3, minute: 1961, second: 0)
@@ -90,7 +90,7 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
                   index: 0,
                   remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 49, minute: 6585, second: 0)

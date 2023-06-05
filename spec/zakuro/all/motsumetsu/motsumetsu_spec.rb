@@ -52,7 +52,7 @@ describe 'Zakuro' do
                 }
               ).commit
 
-              actual_printer = SingleDatePrinter.new(date: actual)
+              actual_printer = Zakuro::All::Motsumetsu::SingleDatePrinter.new(date: actual)
 
               next unless actual_printer.event?
 

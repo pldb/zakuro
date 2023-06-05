@@ -32,7 +32,7 @@ describe 'Zakuro' do
                 years: full_range.get, date: date
               )
 
-              TestTool::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: result,
                 actual: expected,
                 class_prefix: 'Zakuro::Result'

@@ -18,16 +18,18 @@ describe 'Zakuro' do
             date = '貞観4年1月1日'
             actual = Zakuro::Merchant.new(condition: { date: date }).commit
 
-            TestTool::Stringifier.eql?(
-              expected: Const::SENMYOU_FIRST_DAY, actual: actual, class_prefix: 'Zakuro::Result'
+            Zakuro::TestTool::Stringifier.eql?(
+              expected: Zakuro::TestTool::Const::SENMYOU_FIRST_DAY,
+              actual: actual, class_prefix: 'Zakuro::Result'
             )
           end
           example 'western' do
             date = Date.new(862, 2, 3)
             actual = Zakuro::Merchant.new(condition: { date: date }).commit
 
-            TestTool::Stringifier.eql?(
-              expected: Const::SENMYOU_FIRST_DAY, actual: actual, class_prefix: 'Zakuro::Result'
+            Zakuro::TestTool::Stringifier.eql?(
+              expected: Zakuro::TestTool::Const::SENMYOU_FIRST_DAY,
+              actual: actual, class_prefix: 'Zakuro::Result'
             )
           end
         end
@@ -38,8 +40,9 @@ describe 'Zakuro' do
               condition: { range: { start: date, last: date } }
             ).commit
 
-            TestTool::Stringifier.eql?(
-              expected: Const::SENMYOU_RANGE, actual: actual, class_prefix: 'Zakuro::Result'
+            Zakuro::TestTool::Stringifier.eql?(
+              expected: Zakuro::TestTool::Const::SENMYOU_RANGE,
+              actual: actual, class_prefix: 'Zakuro::Result'
             )
           end
         end
