@@ -2,6 +2,8 @@
 
 require_relative '../../../../lib/zakuro/merchant'
 
+require_relative '../../../testtool/setting'
+
 require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
@@ -9,12 +11,6 @@ require_relative './testdata/parser'
 require_relative './single_date_printer'
 
 require 'date'
-
-# @return [True] 没日滅日全体チェックを実施する
-# @return [False] 没日滅日全体チェックを実施しない
-#
-# 非常に重い試験のため通常は実施しない
-MOTSUMETSU_ENABLED = false
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -38,7 +34,7 @@ describe 'Zakuro' do
           current_date -= 1
 
           File.open('./motsumetsu.log', 'w') do |f|
-            break unless MOTSUMETSU_ENABLED
+            break unless Zakuro::TestTool::Setting::MOTSUMETSU_ENABLED
 
             days.times.each do |_index|
               current_date += 1

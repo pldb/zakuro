@@ -2,17 +2,13 @@
 
 require_relative '../../../../lib/zakuro/merchant'
 
+require_relative '../../../testtool/setting'
+
 require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
 require_relative './single_date_printer'
-
-# @return [True] 滅日チェックを実施する
-# @return [False] 滅日チェックを実施しない
-#
-# 非常に重い試験のため通常は実施しない
-METSUNICHI_ENABLED = false
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -27,7 +23,7 @@ describe 'Zakuro' do
           failed = false
 
           File.open(log_file_path, 'w') do |f|
-            break unless METSUNICHI_ENABLED
+            break unless Zakuro::TestTool::Setting::METSUNICHI_ENABLED
 
             years.each do |year|
               gengou = year.gengou
