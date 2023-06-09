@@ -59,15 +59,15 @@ describe 'Zakuro' do
             context 'parameter with valid solar terms' do
               let!(:solar_terms) do
                 [
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 1,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 15, minute: 0, second: 0
                     )
                   ),
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 2,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 30, minute: 0, second: 0
                     )
                   )
@@ -75,21 +75,21 @@ describe 'Zakuro' do
               end
               let!(:all_solar_terms) do
                 [
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 0,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 0, minute: 8236, second: 7
                     )
                   ),
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 1,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 15, minute: 0, second: 0
                     )
                   ),
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 2,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 30, minute: 0, second: 0
                     )
                   )
@@ -108,7 +108,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   ),
                   solar_terms: solar_terms,
                   meta: Zakuro::Calculation::Monthly::Meta.new(all_solar_terms: all_solar_terms)
@@ -116,7 +116,7 @@ describe 'Zakuro' do
                 day = Zakuro::Calculation::Base::Day.new(
                   number: 1,
                   western_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 1),
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 2, minute: 1000, second: 0
                   )
                 )
@@ -181,8 +181,8 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new,
-                    average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new,
+                    average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 22, minute: 320, second: 0
                     )
                   ),
@@ -192,7 +192,7 @@ describe 'Zakuro' do
                   number: 1,
                   western_date: Zakuro::Western::Calendar.new(year: 1000, month: 1, day: 1),
                   # 大余は滅余の計算結果（24-1714）の大余と一致させる
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 24, minute: 1000, second: 0
                   )
                 )

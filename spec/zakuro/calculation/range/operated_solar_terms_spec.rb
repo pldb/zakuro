@@ -55,9 +55,9 @@ describe 'Zakuro' do
               expect(matched).to eq true
 
               Zakuro::TestTool::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(index: 2),
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(index: 2),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
 
@@ -71,12 +71,14 @@ describe 'Zakuro' do
               expect(matched).to eq true
 
               Zakuro::TestTool::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 2,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 3, minute: 1961, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 3, minute: 1961, second: 0
+                  )
                 ),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
 
@@ -91,12 +93,14 @@ describe 'Zakuro' do
               expect(matched).to eq true
 
               Zakuro::TestTool::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 0,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 49, minute: 6585, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 49, minute: 6585, second: 0
+                  )
                 ),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
           end

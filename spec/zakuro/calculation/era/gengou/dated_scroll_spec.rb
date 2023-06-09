@@ -34,7 +34,7 @@ describe 'Zakuro' do
                   number: 3, is_many_days: false, leaped: false
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                 )
               )
             end
@@ -121,7 +121,7 @@ describe 'Zakuro' do
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                   western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                 )
               )
             end
@@ -221,7 +221,7 @@ describe 'Zakuro' do
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                   western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                 )
               )
             end
@@ -327,7 +327,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 449, month: 12, day: 2),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -337,7 +337,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 )
               ]
@@ -442,7 +442,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1331, month: 9, day: 3),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -452,7 +452,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1331, month: 10, day: 3),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -462,7 +462,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 1),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -472,7 +472,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1331, month: 11, day: 30),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -482,7 +482,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1331, month: 12, day: 30),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -492,7 +492,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1332, month: 1, day: 28),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -502,7 +502,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1332, month: 2, day: 27),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -512,7 +512,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1332, month: 3, day: 27),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -522,7 +522,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 1332, month: 4, day: 26),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 )
               ]

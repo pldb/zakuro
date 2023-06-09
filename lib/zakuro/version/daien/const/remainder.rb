@@ -5,52 +5,55 @@ require_relative '../cycle/remainder'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Daien
-    #
-    # Const 定数
-    #
-    module Const
+  module Version
+    # :nodoc:
+    module Daien
       #
-      # Remainder 大余小余
+      # Const 定数
       #
-      module Remainder
+      module Const
         #
-        # Solar 太陽
+        # Remainder 大余小余
         #
-        module Solar
-          # @return [Remainder] 気策（24分の1年）
-          # 1年（1_110_343） / 24 / 1日（3040）= 15 余り 664.2916666666642
-          #   * 0.2916666666642 * 24（1分=24秒） = 6.999999999940799 ≒ 7
-          SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 664, second: 7)
+        module Remainder
           #
-          # @note 揲法 89773 = 29-1613
-          #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
-          #   * 0.25 * 24（1分=24秒） = 6
+          # Solar 太陽
           #
-          # @return [Cycle::Remainder] 弦（1分=80秒）
-          QUARTER = Cycle::Remainder.new(day: 7, minute: 1163, second: 6)
+          module Solar
+            # @return [Remainder] 気策（24分の1年）
+            # 1年（1_110_343） / 24 / 1日（3040）= 15 余り 664.2916666666642
+            #   * 0.2916666666642 * 24（1分=24秒） = 6.999999999940799 ≒ 7
+            SOLAR_TERM_AVERAGE = Cycle::Remainder.new(day: 15, minute: 664, second: 7)
+            #
+            # @note 揲法 89773 = 29-1613
+            #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
+            #   * 0.25 * 24（1分=24秒） = 6
+            #
+            # @return [Cycle::Remainder] 弦（1分=80秒）
+            QUARTER = Cycle::Remainder.new(day: 7, minute: 1163, second: 6)
 
-          # @return [Cycle::Remainder] 有没判定
-          DROPPED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 2375, second: 17)
+            # @return [Cycle::Remainder] 有没判定
+            DROPPED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 2375, second: 17)
 
-          # @return [Cycle::Remainder] 有滅判定
-          VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 1427, second: 0)
-        end
+            # @return [Cycle::Remainder] 有滅判定
+            VANISHED_DATE_LIMIT = Cycle::Remainder.new(day: 0, minute: 1427, second: 0)
+          end
 
-        #
-        # Lunar 月
-        #
-        module Lunar
-          # @return [Cycle::LunarRemainder] 転日（1近点月）
-          ANOMALISTIC_MONTH = \
-            Cycle::LunarRemainder.new(day: 27, minute: 1685, second: 79)
           #
-          # @note 揲法 89773 = 29-1613
-          #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
-          #   * 0.25 * 80（1分=80秒） = 20
+          # Lunar 月
           #
-          # @return [Cycle::LunarRemainder] 弦（1分=80秒）
-          QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20)
+          module Lunar
+            # @return [Cycle::LunarRemainder] 転日（1近点月）
+            ANOMALISTIC_MONTH = \
+              Cycle::LunarRemainder.new(day: 27, minute: 1685, second: 79)
+            #
+            # @note 揲法 89773 = 29-1613
+            #   * 89773 / 4 = 22443.25 / 3040 = 7 余り 1163.25
+            #   * 0.25 * 80（1分=80秒） = 20
+            #
+            # @return [Cycle::LunarRemainder] 弦（1分=80秒）
+            QUARTER = Cycle::LunarRemainder.new(day: 7, minute: 1163, second: 20)
+          end
         end
       end
     end

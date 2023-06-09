@@ -28,7 +28,7 @@ describe 'Zakuro' do
         let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         let(:first_day) do
           Zakuro::Calculation::Monthly::FirstDay.new(
-            remainder: Zakuro::Senmyou::Cycle::Remainder.new
+            remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
           )
         end
         let(:operated_solar_term) do

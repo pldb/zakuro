@@ -9,22 +9,25 @@ require_relative '../../cycle/remainder'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Senmyou
+  module Version
     # :nodoc:
-    module Option
+    module Senmyou
       # :nodoc:
-      module DroppedDate
-        #
-        # Parameter 引数
-        #
-        class Parameter < Calculation::Option::DroppedDate::AbstractParameter
+      module Option
+        # :nodoc:
+        module DroppedDate
           #
-          # 初期化
+          # Parameter 引数
           #
-          def initialize
-            super(valid: true, year: Const::Number::Cycle::YEAR,
-                  limit: Const::Remainder::Solar::DROPPED_DATE_LIMIT,
-                  remainder_class: Cycle::DroppedRemainder)
+          class Parameter < Calculation::Option::DroppedDate::AbstractParameter
+            #
+            # 初期化
+            #
+            def initialize
+              super(valid: true, year: Const::Number::Cycle::YEAR,
+                    limit: Const::Remainder::Solar::DROPPED_DATE_LIMIT,
+                    remainder_class: Cycle::DroppedRemainder)
+            end
           end
         end
       end

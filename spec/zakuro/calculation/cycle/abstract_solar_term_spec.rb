@@ -20,11 +20,11 @@ describe 'Zakuro' do
         let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         describe '.prev_term' do
           let(:solar_term_remainder) do
-            Zakuro::Senmyou::Cycle::Remainder.new(day: 0, minute: 0, second: 0)
+            Zakuro::Version::Senmyou::Cycle::Remainder.new(day: 0, minute: 0, second: 0)
           end
           context 'solar term that remainder go back and advance' do
             it 'should be same as before ' do
-              solar_term = Zakuro::Senmyou::Cycle::SolarTerm.new(
+              solar_term = Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                 index: 0,
                 remainder: solar_term_remainder
               )

@@ -23,7 +23,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_CONDITION_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_CONDITION_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'date' do
@@ -35,7 +36,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'range' do
@@ -47,7 +49,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_RANGE_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_RANGE_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'start date in range' do
@@ -59,7 +62,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'last date in range' do
@@ -71,7 +75,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_DATE_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'columns' do
@@ -83,7 +88,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_COLUMN_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_COLUMN_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
         context 'options' do
@@ -95,7 +101,8 @@ describe 'Zakuro' do
             expect(failed.size).to eq 1
           end
           it 'should be a specified code' do
-            expect(failed[0].code).to eq Zakuro::Exception::Case::Pattern::INVALID_OPTION_TYPE.code
+            code = Zakuro::Exception::Case::Pattern::INVALID_OPTION_TYPE.code
+            expect(failed[0].code).to eq code
           end
         end
       end

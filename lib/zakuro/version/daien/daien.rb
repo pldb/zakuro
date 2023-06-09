@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Daien 大衍暦
-  #
-  module Daien
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Daien 大衍暦
+    #
+    module Daien
+      # none
+    end
   end
 end
