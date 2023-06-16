@@ -25,6 +25,12 @@ module Zakuro
       #
       # 非常に重い試験のため通常は実施しない
       MOTSUNICHI_ENABLED = false
+
+      # @return [True] 逆引きチェックを実施する
+      # @return [False] 逆引きチェックを実施しない
+      #
+      # 非常に重い試験のため通常は実施しない
+      REVERSE_ENABLED = false
     end
   end
 end
