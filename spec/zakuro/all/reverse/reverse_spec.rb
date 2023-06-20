@@ -21,35 +21,19 @@ describe 'Zakuro' do
           actual_printer.western_date
         end
 
-        it 'should be equal to a reverse resolution' do
-          # TODO: malti thread
-
-          # |764/02/07|大衍暦|A|✓|✓|✓|
-          # | | |B|-|-|-|
-          # | | |C|-|-|-|
-          # |862/02/03|宣明暦| |✓|✓|✓|
-          # |1685/02/04|貞享暦| |-|-|-|
-          start_date = Date.new(764, 2, 7)
-          # # last_date = Date.new(766, 2, 3)
-          last_date = Date.new(1685, 2, 3)
-
-          # start_date = Date.new(1350, 1, 1)
-          # last_date = Date.new(1350, 2, 1)
-
+        def output(index:, start_date:, last_date:)
+          # TODO: refactor
           current_date = start_date.clone
 
-          days = (last_date - start_date).to_i
+          days = (last_date - start_date).to_i + 1
 
           current_date -= 1
 
-          File.open('./reverse.log', 'w') do |f|
-            break unless Zakuro::TestTool::Setting::REVERSE_ENABLED
-
+          file_name = "./reverse-#{format('%<index>03d', { index: index })}-#{start_date}-#{last_date}.log"
+          File.open(file_name, 'w') do |f|
             days.times.each do |_index|
               current_date += 1
               matched = true
-
-              # next unless current_date == Date.new(764, 8, 16)
 
               line = "western_date: #{current_date} "
 
@@ -80,6 +64,45 @@ describe 'Zakuro' do
               line += " / matched : #{matched}"
 
               f.puts(line)
+            end
+          end
+        end
+
+        it 'should be equal to a reverse resolution' do
+          # TODO: multi threads
+
+          # パターン数が多いためスレッド制御とする
+          thread_size = 10
+
+          # |764/02/07|大衍暦|A|✓|✓|✓|
+          # | | |B|-|-|-|
+          # | | |C|-|-|-|
+          # |862/02/03|宣明暦| |✓|✓|✓|
+          # |1685/02/04|貞享暦| |-|-|-|
+          start_date = Date.new(764, 2, 7)
+          last_date = Date.new(1685, 2, 3)
+
+          # start_date = Date.new(1350, 1, 1)
+          # last_date = Date.new(1350, 2, 1)
+
+          total = (last_date - start_date).to_i
+
+          interval = total / thread_size
+          mod = total % thread_size
+
+          current_date = start_date.clone
+
+          File.open('./reverse.log', 'w') do |f|
+            break unless Zakuro::TestTool::Setting::REVERSE_ENABLED
+
+            (1..thread_size).each do |thread|
+              diff = interval
+              diff -= 1 unless thread == 1
+              diff += mod if thread == thread_size
+
+              last_date = current_date.clone + diff
+              output(index: thread, start_date: current_date, last_date: last_date)
+              current_date = last_date.clone + 1
             end
           end
         end
