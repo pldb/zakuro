@@ -56,14 +56,14 @@ module Zakuro
           #
           # 指定した範囲内の元号を取得する（元号名）
           #
-          # @param [Integer] line 行
           # @param [String] name 元号名
+          # @param [Integer] line 行
           # @param [True, False] operated 運用値設定
           # @param [True, False] restored 運用値から計算値に戻すか
           #
           # @return [Array<LinearGengou>] 元号
           #
-          def get_by_name(line: FIRST_LINE, name:, operated: false, restored: false)
+          def get_by_name(name:, line: FIRST_LINE, operated: false, restored: false)
             if operated
               result = OPERATED_SUMMARY.get_by_name(line: line, name: name)
               return result unless restored

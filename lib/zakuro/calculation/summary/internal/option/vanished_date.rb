@@ -46,11 +46,9 @@ module Zakuro
                 return option if option.matched
               end
 
-              option = vanished_date(
+              vanished_date(
                 context: context, remainder: remainder, average_remainder: average_remainder
               )
-
-              option
             end
 
             private

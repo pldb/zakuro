@@ -13,16 +13,7 @@ describe 'Zakuro' do
   describe 'All' do
     describe 'Reverse' do
       context 'all date' do
-        def to_western_date(japan_date:)
-          actual = Zakuro::Merchant.new(condition: { date: japan_date }).commit
-
-          actual_printer = Zakuro::All::Reverse::SingleDatePrinter.new(date: actual)
-
-          actual_printer.western_date
-        end
-
         def output(index:, start_date:, last_date:)
-          # TODO: refactor
           current_date = start_date.clone
 
           days = (last_date - start_date).to_i + 1
@@ -34,39 +25,56 @@ describe 'Zakuro' do
           File.open(file_name, 'w') do |f|
             days.times.each do |_index|
               current_date += 1
-              matched = true
 
-              line = "western_date: #{current_date} "
-
-              actual = Zakuro::Merchant.new(condition: { date: current_date.clone }).commit
-
-              actual_printer = Zakuro::All::Reverse::SingleDatePrinter.new(date: actual)
-
-              line += '[result:first_gengou]:'
-              line += "japan_date: #{actual_printer.first_japan_date} / "
-
-              western_date = to_western_date(japan_date: actual_printer.first_japan_date)
-
-              line += "western_date: #{western_date}"
-
-              matched = false unless current_date.to_s == western_date
-
-              if actual_printer.second?
-                line += ' [result:second_gengou]:'
-                line += "japan_date: #{actual_printer.second_japan_date} / "
-
-                western_date = to_western_date(japan_date: actual_printer.second_japan_date)
-
-                line += "western_date: #{western_date}"
-
-                matched = false unless current_date.to_s == western_date
-              end
-
-              line += " / matched : #{matched}"
+              line = create_line(current_date: current_date)
 
               f.puts(line)
             end
           end
+        end
+
+        def to_western_date(japan_date:)
+          actual = Zakuro::Merchant.new(condition: { date: japan_date }).commit
+
+          actual_printer = Zakuro::All::Reverse::SingleDatePrinter.new(date: actual)
+
+          actual_printer.western_date
+        end
+
+        def get_japan_date_result(japan_date:)
+          line = "japan_date: #{japan_date} / "
+
+          western_date = to_western_date(japan_date: japan_date)
+
+          line += "western_date: #{western_date}"
+
+          [line, western_date]
+        end
+
+        def create_line(current_date:) # rubocop:disable Metrics/AbcSize
+          matched = true
+
+          line = "western_date: #{current_date} "
+
+          actual = Zakuro::Merchant.new(condition: { date: current_date.clone }).commit
+
+          actual_printer = Zakuro::All::Reverse::SingleDatePrinter.new(date: actual)
+
+          text, western_date = get_japan_date_result(japan_date: actual_printer.first_japan_date)
+          line += "[result:first_gengou]:#{text}"
+
+          matched = false unless current_date.to_s == western_date
+
+          if actual_printer.second?
+            text, western_date = get_japan_date_result(japan_date: actual_printer.second_japan_date)
+            line += " [result:second_gengou]:#{text}"
+
+            matched = false unless current_date.to_s == western_date
+          end
+
+          line += " / matched : #{matched}"
+
+          line
         end
 
         it 'should be equal to a reverse resolution' do

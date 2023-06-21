@@ -103,7 +103,7 @@ describe 'Zakuro' do
         context 'first_line' do
           def first_line(name:)
             line = Zakuro::Japan::Gengou::FIRST_LINE
-            Zakuro::Japan::Gengou.line_by_name(line: line, name: name)
+            Zakuro::Japan::Gengou.line_by_name(name: name, line: line)
           end
           context 'set-001 only' do
             it 'should be got a element' do
@@ -130,7 +130,7 @@ describe 'Zakuro' do
         context 'second_line' do
           def second_line(name:)
             line = Zakuro::Japan::Gengou::SECOND_LINE
-            Zakuro::Japan::Gengou.line_by_name(line: line, name: name)
+            Zakuro::Japan::Gengou.line_by_name(name: name, line: line)
           end
           context 'set-001 and set-002' do
             it 'should be got a set-002 element' do

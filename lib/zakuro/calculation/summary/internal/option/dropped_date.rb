@@ -35,11 +35,10 @@ module Zakuro
               solar_term = month.solar_term_by_day(day: day.remainder.day)
 
               remainder = day.remainder
-              option = dropped_date(
+
+              dropped_date(
                 context: context, remainder: remainder, solar_term: solar_term
               )
-
-              option
             end
 
             private

@@ -145,7 +145,7 @@ module Zakuro
               )
             end
 
-            def shave_gengou(this:, other:) # rubocop:disable Metrics/AbcSize
+            def shave_gengou(this:, other:)
               start = this.start_date
               last = this.last_date
 

@@ -43,15 +43,15 @@ module Zakuro
         #
         # 該当行の元号を取得する（元号名）
         #
-        # @param [Integer] line 行番号
         # @param [String] name 元号名
+        # @param [Integer] line 行番号
         # @param [True, False] operated 運用値設定
         # @param [True, False] restored 運用値から計算値に戻すか
         #
         # @return [Array<LinearGengou>] 該当行の元号
         #
-        def line_by_name(line: FIRST_LINE, name:, operated: false, restored: false)
-          Alignment.get_by_name(line: line, name: name, operated: operated, restored: restored)
+        def line_by_name(name:, line: FIRST_LINE, operated: false, restored: false)
+          Alignment.get_by_name(name: name, line: line, operated: operated, restored: restored)
         end
       end
     end
