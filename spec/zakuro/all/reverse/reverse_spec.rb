@@ -29,7 +29,8 @@ describe 'Zakuro' do
 
           current_date -= 1
 
-          file_name = "./reverse-#{format('%<index>03d', { index: index })}-#{start_date}-#{last_date}.log"
+          file_name = "./reverse-#{format('%<index>03d', { index: index })}" \
+            "-#{start_date}-#{last_date}.log"
           File.open(file_name, 'w') do |f|
             days.times.each do |_index|
               current_date += 1
@@ -69,8 +70,6 @@ describe 'Zakuro' do
         end
 
         it 'should be equal to a reverse resolution' do
-          # TODO: multi threads
-
           # パターン数が多いためスレッド制御とする
           thread_size = 10
 
@@ -95,15 +94,24 @@ describe 'Zakuro' do
           File.open('./reverse.log', 'w') do |f|
             break unless Zakuro::TestTool::Setting::REVERSE_ENABLED
 
-            (1..thread_size).each do |thread|
+            threads = []
+            (1..thread_size).each do |index|
               diff = interval
-              diff -= 1 unless thread == 1
-              diff += mod if thread == thread_size
+              diff -= 1 unless index == 1
+              diff += mod if index == thread_size
 
               last_date = current_date.clone + diff
-              output(index: thread, start_date: current_date, last_date: last_date)
+
+              thread = Thread.start(index, current_date, last_date) do |num, start, last|
+                output(index: num, start_date: start, last_date: last)
+              end
+              threads.push(thread)
               current_date = last_date.clone + 1
             end
+
+            f.puts('begin')
+            threads.each(&:join)
+            f.puts('end')
           end
         end
       end
