@@ -186,14 +186,12 @@ module Zakuro
             return gengou unless range
 
             from = range['from']
-            unless from.invalid?
-              return range['gengou'] if date > from
-            end
+
+            return range['gengou'] if !from.invalid? && date > from
 
             to = range['to']
-            unless to.invalid?
-              return range['gengou'] if to > date
-            end
+
+            return range['gengou'] if !to.invalid? && to > date
 
             gengou
           end

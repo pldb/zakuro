@@ -2,7 +2,7 @@
 
 require 'json'
 
-require_relative '../tools/stringifier'
+require_relative '../tool/stringifier'
 
 # :nodoc:
 module Zakuro
@@ -25,7 +25,7 @@ module Zakuro
       # @return [Hash<String, Object>] ハッシュ
       #
       def to_h
-        Tools::Stringifier.to_h(obj: self, class_prefix: 'Zakuro::Result')
+        Tool::Stringifier.to_h(obj: self, class_prefix: 'Zakuro::Result')
       end
 
       #

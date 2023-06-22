@@ -51,7 +51,7 @@ describe 'Zakuro' do
             fails = []
             expected.each do |year, expects|
               actuals = \
-                Zakuro::Genka::Range::AnnualRange.get(
+                Zakuro::Version::Genka::Range::AnnualRange.get(
                   context: Zakuro::Context::Context.new(version: 'Genka'),
                   western_year: year
                 )

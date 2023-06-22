@@ -102,7 +102,7 @@ module Zakuro
 
           str.to_i
         end
-    end
+      end
     end
 
     #
@@ -266,7 +266,7 @@ module Zakuro
 
           relations[id] = relation_id
         end
-    end
+      end
 
       #
       # 注釈を特定する

@@ -85,7 +85,7 @@ module Zakuro
             def connect(list: []) # rubocop:disable Metrics/MethodLength
               result = []
               list.each do |linear_gengou|
-                if result.size.zero?
+                if result.empty?
                   result.push(linear_gengou)
                   next
                 end
@@ -145,7 +145,7 @@ module Zakuro
               )
             end
 
-            def shave_gengou(this:, other:) # rubocop:disable Metrics/AbcSize
+            def shave_gengou(this:, other:)
               start = this.start_date
               last = this.last_date
 

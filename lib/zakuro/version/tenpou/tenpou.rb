@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Tenpou 天保暦
-  #
-  module Tenpou
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Tenpou 天保暦
+    #
+    module Tenpou
+      # none
+    end
   end
 end

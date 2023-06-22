@@ -9,51 +9,54 @@ require_relative './interval'
 # :nodoc:
 module Zakuro
   # :nodoc:
-  module Daien
+  module Version
     # :nodoc:
-    module Solar
-      #
-      # Location 入定気
-      #
-      class Location < Calculation::Solar::AbstractLocation
-        # @return [Cycle::Remainder] 弦
-        QUARTER = Const::Remainder::Solar::QUARTER
+    module Daien
+      # :nodoc:
+      module Solar
+        #
+        # Location 入定気
+        #
+        class Location < Calculation::Solar::AbstractLocation
+          # @return [Cycle::Remainder] 弦
+          QUARTER = Const::Remainder::Solar::QUARTER
 
-        #
-        # 初期化
-        #
-        # @param [Cycle::Remainder] lunar_age 天正閏余（大余小余）
-        #
-        def initialize(lunar_age:)
-          super(lunar_age: lunar_age, quarter: QUARTER)
-        end
+          #
+          # 初期化
+          #
+          # @param [Cycle::Remainder] lunar_age 天正閏余（大余小余）
+          #
+          def initialize(lunar_age:)
+            super(lunar_age: lunar_age, quarter: QUARTER)
+          end
 
-        # :reek:UtilityFunction
+          # :reek:UtilityFunction
 
-        #
-        # 二十四節気番号に対応する入気定日加減数を返す
-        #
-        # @note 継承のためクラスメソッドにしない
-        #
-        # @param [Integer] index 二十四節気番号
-        #
-        # @return [Cycle::Remainder] 入気定日加減数
-        #
-        def interval(index:)
-          Interval.index_of(index)
-        end
+          #
+          # 二十四節気番号に対応する入気定日加減数を返す
+          #
+          # @note 継承のためクラスメソッドにしない
+          #
+          # @param [Integer] index 二十四節気番号
+          #
+          # @return [Cycle::Remainder] 入気定日加減数
+          #
+          def interval(index:)
+            Interval.index_of(index)
+          end
 
-        # :reek:UtilityFunction
+          # :reek:UtilityFunction
 
-        #
-        # 入気定日加減数の要素数を返す
-        #
-        # @note 継承のためクラスメソッドにしない
-        #
-        # @return [Integer] 入気定日加減数の要素数
-        #
-        def interval_size
-          Interval.size
+          #
+          # 入気定日加減数の要素数を返す
+          #
+          # @note 継承のためクラスメソッドにしない
+          #
+          # @return [Integer] 入気定日加減数の要素数
+          #
+          def interval_size
+            Interval.size
+          end
         end
       end
     end

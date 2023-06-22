@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../testtools/stringifier', __dir__)
+require File.expand_path('../../../testtool/stringifier', __dir__)
 
 require File.expand_path('../../../../' \
                         'lib/zakuro/calculation/monthly/month',
@@ -19,7 +19,7 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/tools/stringifier',
+                         'lib/zakuro/tool/stringifier',
                          __dir__)
 
 # rubocop:disable Metrics/BlockLength
@@ -95,22 +95,24 @@ describe 'Zakuro' do
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                   # 2-5359 -> 3-5359
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 3, minute: 5359, second: 0
                   ),
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 2, minute: 4607, second: 0
                   ),
                   # 873-2-1 -> 873-2-2
                   western_date: Zakuro::Western::Calendar.new(year: 873, month: 2, day: 2)
                 ),
-                solar_terms: [Zakuro::Senmyou::Cycle::SolarTerm.new(
+                solar_terms: [Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 4,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 17, minute: 937, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 17, minute: 937, second: 0
+                  )
                 )]
               )
 
-              TestTools::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -171,22 +173,24 @@ describe 'Zakuro' do
                   number: 10, is_many_days: false, leaped: true
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 38, minute: 7186, second: 0
                   ),
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 37, minute: 7110, second: 0
                   ),
                   western_date: date
                 ),
                 # 計算上は冬至(0)がある
-                solar_terms: [Zakuro::Senmyou::Cycle::SolarTerm.new(
+                solar_terms: [Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 23,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 51, minute: 6309, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 51, minute: 6309, second: 0
+                  )
                 )]
               )
 
-              TestTools::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -242,10 +246,10 @@ describe 'Zakuro' do
                   number: 11, is_many_days: true, leaped: false
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 7, minute: 5375, second: 0
                   ),
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 7, minute: 3167, second: 0
                   ),
                   western_date: date
@@ -254,22 +258,22 @@ describe 'Zakuro' do
                 # 移動した冬至は大余を1増やす（=冬至を1日分、後日にする）
                 solar_terms: [
                   # 6-8145 -> 7-8145
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 0,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 7, minute: 8145, second: 0
                     )
                   ),
-                  Zakuro::Senmyou::Cycle::SolarTerm.new(
+                  Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                     index: 1,
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                       day: 22, minute: 1580, second: 0
                     )
                   )
                 ]
               )
 
-              TestTools::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end
@@ -297,28 +301,32 @@ describe 'Zakuro' do
                   number: 1, is_many_days: false, leaped: false
                 ),
                 first_day: Zakuro::Calculation::Monthly::FirstDay.new(
-                  remainder: Zakuro::Daien::Cycle::Remainder.new(
+                  remainder: Zakuro::Version::Daien::Cycle::Remainder.new(
                     day: 57, minute: 1857, second: 0
                   ),
-                  average_remainder: Zakuro::Daien::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Daien::Cycle::Remainder.new(
                     day: 56, minute: 2184, second: 0
                   ),
                   western_date: date
                 ),
                 # 計算上は冬至(0)がある
                 solar_terms: [
-                  Zakuro::Daien::Cycle::SolarTerm.new(
+                  Zakuro::Version::Daien::Cycle::SolarTerm.new(
                     index: 3,
-                    remainder: Zakuro::Daien::Cycle::Remainder.new(day: 59, minute: 1003, second: 0)
+                    remainder: Zakuro::Version::Daien::Cycle::Remainder.new(
+                      day: 59, minute: 1003, second: 0
+                    )
                   ),
-                  Zakuro::Daien::Cycle::SolarTerm.new(
+                  Zakuro::Version::Daien::Cycle::SolarTerm.new(
                     index: 4,
-                    remainder: Zakuro::Daien::Cycle::Remainder.new(day: 14, minute: 1668, second: 0)
+                    remainder: Zakuro::Version::Daien::Cycle::Remainder.new(
+                      day: 14, minute: 1668, second: 0
+                    )
                   )
                 ]
               )
 
-              TestTools::Stringifier.eql?(
+              Zakuro::TestTool::Stringifier.eql?(
                 expected: expected, actual: actual, class_prefix: 'Zakuro'
               )
             end

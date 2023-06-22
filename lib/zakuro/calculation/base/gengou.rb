@@ -78,9 +78,7 @@ module Zakuro
           result = match_first_line_by_name(name: name)
           return result unless result.invalid?
 
-          result = match_second_line_by_name(name: name)
-
-          result
+          match_second_line_by_name(name: name)
         end
 
         #
@@ -120,7 +118,7 @@ module Zakuro
         # @return [False] 不正なし
         #
         def invalid?
-          first_line.size.zero? && second_line.size.zero?
+          first_line.empty? && second_line.empty?
         end
       end
     end

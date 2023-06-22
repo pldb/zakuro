@@ -1,0 +1,80 @@
+---
+last_date:
+  western: '9999-12-31'
+  japan: '令和7981年12月31日'
+last_year:
+  japan: 7981
+  western: 9999
+list:
+- name: 'Genka'
+  start_date:
+    western: '445-1-24'
+    japan: '允恭天皇34年01月01日'
+  start_year:
+    western: 445
+    japan: 34
+  released: true
+- name: 'Gihou'
+  start_date:
+    western: '698-2-16'
+    japan: '文武天皇02年01月01日'
+  start_year:
+    western: 698
+    japan: 2
+  released: true
+- name: 'Daien'
+  start_date:
+    western: '764-2-7'
+    japan: '天平宝字08年01月01日'
+  start_year:
+    western: 764
+    japan: 8
+  released: true
+- name: 'Senmyou'
+  start_date:
+    western: '862-2-3'
+    japan: '貞観02年01月01日'
+  start_year:
+    western: 862
+    japan: 2
+  released: true
+- name: 'Joukyou'
+  start_date:
+    western: '1685-2-4'
+    japan: '貞享02年01月01日'
+  start_year:
+    western: 1685
+    japan: 2
+  released: false
+- name: 'Houryaku'
+  start_date:
+    western: '1755-2-11'
+    japan: '宝暦05年01月01日'
+  start_year:
+    western: 1755
+    japan: 5
+  released: false
+- name: 'Kansei'
+  start_date:
+    western: '1798-2-16'
+    japan: '寛政10年01月01日'
+  start_year:
+    western: 1798
+    japan: 10
+  released: false
+- name: 'Tenpou'
+  start_date:
+    western: '1844-2-18'
+    japan: '天保13年01月01日'
+  start_year:
+    western: 1844
+    japan: 13
+  released: false
+- name: 'Gregorio'
+  start_date:
+    western: '1868-10-23'
+    japan: '明治01年09月08日'
+  start_year:
+    western: 1868
+    japan: 1
+  released: false

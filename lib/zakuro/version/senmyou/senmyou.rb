@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Senmyou 宣明暦
-  #
-  module Senmyou
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Senmyou 宣明暦
+    #
+    module Senmyou
+      # none
+    end
   end
 end

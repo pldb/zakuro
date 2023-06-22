@@ -13,14 +13,6 @@ require File.expand_path('../../../../' \
                          __dir__)
 
 require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/monthly/first_day',
-                         __dir__)
-
-require File.expand_path('../../../../' \
-                         'lib/zakuro/calculation/monthly/month_label',
-                         __dir__)
-
-require File.expand_path('../../../../' \
                          'lib/zakuro/calculation/base/operated_year',
                          __dir__)
 
@@ -36,7 +28,7 @@ describe 'Zakuro' do
         let(:context) { Zakuro::Context::Context.new(version: 'Senmyou') }
         let(:first_day) do
           Zakuro::Calculation::Monthly::FirstDay.new(
-            remainder: Zakuro::Senmyou::Cycle::Remainder.new
+            remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
           )
         end
         let(:operated_solar_term) do

@@ -13,8 +13,8 @@ end
 
 group :development do
   gem 'debase'
-  gem 'reek'
-  gem 'rubocop-performance'
+  gem 'reek', '6.1.4'
+  gem 'rubocop', '1.52.1'
   gem 'ruby-debug-ide'
   gem 'solargraph'
   gem 'yard'

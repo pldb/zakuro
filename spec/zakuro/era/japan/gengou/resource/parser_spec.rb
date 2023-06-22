@@ -4,14 +4,17 @@ require File.expand_path('../../../../../../../zakuro/lib/zakuro/era/japan/gengo
                          __dir__)
 require 'yaml'
 
-ACTUAL_YAML_PATH = File.expand_path(
-  '../../../../../../lib/zakuro/era/japan/gengou/resource/yaml/set-001-until-south.yaml',
-  __dir__
-)
-TEST_YAML_PATH = File.expand_path(
-  './yaml/set-test-001.yaml',
-  __dir__
-)
+# :nodoc:
+module Zakuro
+  Zakuro::ACTUAL_YAML_PATH = File.expand_path(
+    '../../../../../../lib/zakuro/era/japan/gengou/resource/yaml/set-001-until-south.yaml',
+    __dir__
+  )
+  Zakuro::TEST_YAML_PATH = File.expand_path(
+    './yaml/set-test-001.yaml',
+    __dir__
+  )
+end
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -22,7 +25,7 @@ describe 'Zakuro' do
           describe '.validate' do
             context 'actual yaml path' do
               it 'should be no error' do
-                yaml = YAML.load_file(ACTUAL_YAML_PATH)
+                yaml = YAML.load_file(Zakuro::ACTUAL_YAML_PATH)
                 fails = Zakuro::Japan::Gengou::Resource::Validator.run(yaml_hash: yaml)
                 expect(fails).to be_empty
               end
@@ -31,22 +34,28 @@ describe 'Zakuro' do
           describe '.run' do
             context 'actual file' do
               it 'should be no error' do
-                expect { Zakuro::Japan::Gengou::Resource::Parser.run(filepath: ACTUAL_YAML_PATH) }
-                  .to_not raise_error
+                expect do
+                  Zakuro::Japan::Gengou::Resource::Parser.run(filepath: Zakuro::ACTUAL_YAML_PATH)
+                end.to_not raise_error
               end
             end
             context 'test file' do
               it 'should be no error' do
-                expect { Zakuro::Japan::Gengou::Resource::Parser.run(filepath: TEST_YAML_PATH) }
-                  .to_not raise_error
+                expect do
+                  Zakuro::Japan::Gengou::Resource::Parser.run(filepath: Zakuro::TEST_YAML_PATH)
+                end.to_not raise_error
               end
               it 'is created Set class' do
-                actual = Zakuro::Japan::Gengou::Resource::Parser.run(filepath: TEST_YAML_PATH)
-                expect(actual).to be_a(Zakuro::Japan::Gengou::Resource::Set)
+                actual = Zakuro::Japan::Gengou::Resource::Parser.run(
+                  filepath: Zakuro::TEST_YAML_PATH
+                )
+                expect(actual).to be_a(Zakuro::Japan::Type::Base::GengouSet)
               end
             end
             context 'internal data' do
-              let(:actual) { Zakuro::Japan::Gengou::Resource::Parser.run(filepath: TEST_YAML_PATH) }
+              let(:actual) do
+                Zakuro::Japan::Gengou::Resource::Parser.run(filepath: Zakuro::TEST_YAML_PATH)
+              end
               context 'id' do
                 it 'is the same data in file' do
                   expect(actual.id).to eq(1)
@@ -81,7 +90,7 @@ describe 'Zakuro' do
               context 'list item data type' do
                 it 'is created gengou class' do
                   item = actual.list[0]
-                  expect(item).to be_a(Zakuro::Japan::Gengou::Resource::Gengou)
+                  expect(item).to be_a(Zakuro::Japan::Type::Base::Gengou)
                 end
               end
               context 'first-list[0]' do

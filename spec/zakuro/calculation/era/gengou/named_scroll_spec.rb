@@ -36,7 +36,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 449, month: 12, day: 2),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 ),
                 Zakuro::Calculation::Monthly::Month.new(
@@ -46,7 +46,7 @@ describe 'Zakuro' do
                   ),
                   first_day: Zakuro::Calculation::Monthly::FirstDay.new(
                     western_date: Zakuro::Western::Calendar.new(year: 450, month: 1, day: 1),
-                    remainder: Zakuro::Senmyou::Cycle::Remainder.new
+                    remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new
                   )
                 )
               ]
@@ -66,15 +66,15 @@ describe 'Zakuro' do
               list.instance_variable_set(
                 '@list', [
                   Zakuro::Japan::Gengou::Alignment::LinearGengou.new(
-                    gengou: Zakuro::Japan::Gengou::Resource::Gengou.new(
+                    gengou: Zakuro::Japan::Type::Base::Gengou.new(
                       name: '元号',
-                      start_year: Zakuro::Japan::Gengou::Resource::Both::Year.new(
+                      start_year: Zakuro::Japan::Type::Base::Both::Year.new(
                         japan: 1,
                         western: 450
                       ),
-                      start_date: Zakuro::Japan::Gengou::Resource::SwitchDate.new(
-                        calculation: Zakuro::Japan::Gengou::Resource::Both::Date.new,
-                        operation: Zakuro::Japan::Gengou::Resource::Both::Date.new(
+                      start_date: Zakuro::Japan::Type::Base::SwitchDate.new(
+                        calculation: Zakuro::Japan::Type::Base::Both::Date.new,
+                        operation: Zakuro::Japan::Type::Base::Both::Date.new(
                           japan: Zakuro::Japan::Calendar.parse(text: '元号1年12月1日'),
                           western: Zakuro::Western::Calendar.parse(text: '0449-12-02')
                         ),

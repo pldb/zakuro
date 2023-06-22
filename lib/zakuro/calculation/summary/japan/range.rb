@@ -48,8 +48,8 @@ module Zakuro
               )
 
               list = create_list(
-                context: context,
-                operated_years: operated_years, years: years, range: range
+                context: context, range: range,
+                operated_years: operated_years, years: years
               )
 
               Result::Range.new(list: list)
@@ -82,14 +82,13 @@ module Zakuro
             # 1日検索結果リストを生成する
             #
             # @param [Context::Context] context 暦コンテキスト
+            # @param [SpecifiedRange] range 特定範囲
             # @param [Array<Base::OperatedYear>] operated_years 運用結果範囲
             # @param [Array<Base::Year>] years 完全範囲
-            # @param [SpecifiedRange] range 特定範囲
             #
             # @return [Array<Result::Single>] 結果リスト
             #
-            def create_list(context:, operated_years: [], years: [],
-                            range:)
+            def create_list(context:, range:, operated_years: [], years: [])
               western_start_date = range.start_date.day.western_date
               western_last_date = range.last_date.day.western_date
 

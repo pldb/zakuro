@@ -2,8 +2,6 @@
 
 require_relative '../../output/logger'
 require_relative '../monthly/initialized_month'
-require_relative '../monthly/month_label'
-require_relative '../monthly/first_day'
 
 # :nodoc:
 module Zakuro

@@ -23,7 +23,7 @@ describe 'Zakuro' do
               it 'should be true' do
                 vanished_date = Zakuro::Calculation::Option::VanishedDate::Location.new(
                   context: context,
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 25, minute: 0, second: 0
                   )
                 )
@@ -34,7 +34,7 @@ describe 'Zakuro' do
               it 'should be true' do
                 vanished_date = Zakuro::Calculation::Option::VanishedDate::Location.new(
                   context: context,
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 25, minute: 3943, second: 0
                   )
                 )
@@ -45,7 +45,7 @@ describe 'Zakuro' do
               it 'should be false' do
                 vanished_date = Zakuro::Calculation::Option::VanishedDate::Location.new(
                   context: context,
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 25, minute: 3942, second: 0
                   )
                 )
@@ -58,7 +58,7 @@ describe 'Zakuro' do
               it 'should be same result' do
                 vanished_date = Zakuro::Calculation::Option::VanishedDate::Location.new(
                   context: context,
-                  average_remainder: Zakuro::Senmyou::Cycle::Remainder.new(
+                  average_remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
                     day: 22, minute: 320, second: 0
                   )
                 )

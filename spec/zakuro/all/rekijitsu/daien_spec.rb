@@ -24,7 +24,7 @@ describe 'Zakuro' do
             fails = []
             expected.each_with_index do |(year, expects), hash_index|
               actuals = \
-                Zakuro::Daien::Range::AnnualRange.get(
+                Zakuro::Version::Daien::Range::AnnualRange.get(
                   context: Zakuro::Context::Context.new(version: 'Daien'),
                   western_year: year + 1
                 )

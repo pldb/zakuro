@@ -37,11 +37,11 @@ module Zakuro
 
       # @return [Hash<String, String>] 関連
       CLASSES = {
-        'remainder' => 'Zakuro::$VERSION::Cycle::Remainder',
-        'solar_term' => 'Zakuro::$VERSION::Cycle::SolarTerm',
-        'annual_range' => 'Zakuro::$VERSION::Range::AnnualRange',
-        'dropped_date_parameter' => 'Zakuro::$VERSION::Option::DroppedDate::Parameter',
-        'vanished_date_parameter' => 'Zakuro::$VERSION::Option::VanishedDate::Parameter'
+        'remainder' => 'Zakuro::Version::$VERSION::Cycle::Remainder',
+        'solar_term' => 'Zakuro::Version::$VERSION::Cycle::SolarTerm',
+        'annual_range' => 'Zakuro::Version::$VERSION::Range::AnnualRange',
+        'dropped_date_parameter' => 'Zakuro::Version::$VERSION::Option::DroppedDate::Parameter',
+        'vanished_date_parameter' => 'Zakuro::Version::$VERSION::Option::VanishedDate::Parameter'
       }.freeze
 
       #

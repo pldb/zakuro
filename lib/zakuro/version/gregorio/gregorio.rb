@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Gregorio グレゴリオ暦
-  #
-  module Gregorio
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Gregorio グレゴリオ暦
+    #
+    module Gregorio
+      # none
+    end
   end
 end

@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Kansei 寛政暦
-  #
-  module Kansei
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Kansei 寛政暦
+    #
+    module Kansei
+      # none
+    end
   end
 end

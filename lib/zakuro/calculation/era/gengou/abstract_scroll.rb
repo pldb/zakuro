@@ -179,9 +179,9 @@ module Zakuro
         # @return [Array<Counter>] 差し替え結果
         #
         def replace_gengou(source: [], destination: [])
-          return destination if destination.size.zero?
+          return destination if destination.empty?
 
-          return destination if source.size.zero?
+          return destination if source.empty?
 
           last = source[-1]
           destination[0] = last if destination[0].name == last.name

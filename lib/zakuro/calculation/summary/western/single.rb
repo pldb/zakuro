@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../tools/gengou_range_comparer'
-
 require_relative '../../range/dated_operation_range'
 
 require_relative '../../range/dated_full_range'

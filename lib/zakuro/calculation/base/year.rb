@@ -70,7 +70,7 @@ module Zakuro
         def new_year_date
           return Western::Calendar.new unless months
 
-          return Western::Calendar.new if months.size.zero?
+          return Western::Calendar.new if months.empty?
 
           months[0].western_date
         end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../../../testtools/stringifier', __dir__)
+require File.expand_path('../../../testtool/stringifier', __dir__)
 
 require File.expand_path('../../../../' \
                         'lib/zakuro/era/western/calendar',
@@ -54,10 +54,10 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTools::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(index: 2),
+              Zakuro::TestTool::Stringifier.eql?(
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(index: 2),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
 
@@ -70,13 +70,15 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTools::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
+              Zakuro::TestTool::Stringifier.eql?(
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 2,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 3, minute: 1961, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 3, minute: 1961, second: 0
+                  )
                 ),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
 
@@ -90,13 +92,15 @@ describe 'Zakuro' do
 
               expect(matched).to eq true
 
-              TestTools::Stringifier.eql?(
-                expected: Zakuro::Senmyou::Cycle::SolarTerm.new(
+              Zakuro::TestTool::Stringifier.eql?(
+                expected: Zakuro::Version::Senmyou::Cycle::SolarTerm.new(
                   index: 0,
-                  remainder: Zakuro::Senmyou::Cycle::Remainder.new(day: 49, minute: 6585, second: 0)
+                  remainder: Zakuro::Version::Senmyou::Cycle::Remainder.new(
+                    day: 49, minute: 6585, second: 0
+                  )
                 ),
                 actual: solar_term,
-                class_prefix: 'Zakuro::Senmyou'
+                class_prefix: 'Zakuro::Version::Senmyou'
               )
             end
           end

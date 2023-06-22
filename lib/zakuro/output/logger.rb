@@ -36,7 +36,7 @@ module Zakuro
       def debug(*messages)
         return if none?
 
-        return if LEVEL >= LEVELS[:debug]
+        return if LEVELS[:debug] < LEVEL
 
         output('DEBUG', *messages)
       end
@@ -49,7 +49,7 @@ module Zakuro
       def info(*messages)
         return if none?
 
-        return if LEVEL >= LEVELS[:info]
+        return if LEVELS[:info] < LEVEL
 
         output('INFO', *messages)
       end
@@ -63,7 +63,7 @@ module Zakuro
       def error(error, *messages)
         return if none?
 
-        return if LEVEL >= LEVELS[:error]
+        return if LEVELS[:error] < LEVEL
 
         output('ERROR', *messages)
         output('ERROR', error.message)
@@ -79,7 +79,7 @@ module Zakuro
       # @return [False] 出力あり
       #
       def none?
-        LEVEL < LEVELS[:debug]
+        LEVELS[:debug] >= LEVEL
       end
 
       #

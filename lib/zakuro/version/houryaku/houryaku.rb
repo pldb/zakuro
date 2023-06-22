@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Houryaku 宝暦暦
-  #
-  module Houryaku
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Houryaku 宝暦暦
+    #
+    module Houryaku
+      # none
+    end
   end
 end

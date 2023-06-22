@@ -33,7 +33,7 @@ module Zakuro
             #
             def fill(counters:, start_date: Western::Calendar.new,
                      last_date: Western::Calendar.new)
-              if counters.size.zero?
+              if counters.empty?
                 counters.push(
                   create_empty_counter(
                     start_date: start_date.clone,
@@ -104,7 +104,7 @@ module Zakuro
             # @param [Array<Gengou::Counter>] counters 加算元号リスト
             #
             def fill_middle(counters:)
-              return if counters.size.zero?
+              return if counters.empty?
 
               size = counters.size - 1
               (0..size).reverse_each do |index|
@@ -144,7 +144,7 @@ module Zakuro
             #
             def create_empty_counter(start_date:, last_date:)
               Gengou::Counter.new(
-                gengou: Japan::Gengou::Resource::Gengou.new,
+                gengou: Japan::Type::Base::Gengou.new,
                 start_date: start_date, last_date: last_date
               )
             end

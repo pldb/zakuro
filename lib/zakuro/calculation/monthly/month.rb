@@ -3,10 +3,13 @@
 require_relative '../cycle/abstract_solar_term'
 
 require_relative '../base/gengou'
-require_relative './first_day'
-require_relative './meta'
-require_relative './month_label'
-require_relative './meta/meta_collector'
+require_relative './internal/part/first_day'
+require_relative './internal/part/meta'
+require_relative './internal/part/month_label'
+require_relative './internal/meta/meta_collector'
+
+require_relative './internal/solar_term_selector'
+require_relative './internal/date_comparer'
 
 # :nodoc:
 module Zakuro
@@ -24,8 +27,8 @@ module Zakuro
         attr_reader :month_label
         # @return [FirstDay] 月初日（朔日）
         attr_reader :first_day
-        # @return [Array<Cyle::AbstractSolarTerm>] 二十四節気
-        attr_reader :solar_terms
+        # @return [SolarTermSelector] 二十四節気検索
+        attr_reader :solar_term_selector
         # @return [Base::Gengou] 元号
         attr_reader :gengou
         # @return [Meta] 付加情報
@@ -49,7 +52,7 @@ module Zakuro
           @context = context
           @month_label = month_label
           @first_day = first_day
-          @solar_terms = solar_terms
+          @solar_term_selector = SolarTermSelector.new(context: context, solar_terms: solar_terms)
           @gengou = gengou
           @meta = meta
         end
@@ -160,7 +163,7 @@ module Zakuro
         # @return [False] 設定あり
         #
         def empty_solar_term?
-          solar_terms.empty?
+          solar_term_selector.empty?
         end
 
         #
@@ -169,11 +172,7 @@ module Zakuro
         # @return [Cycle::AbstractSolarTerm] 中気
         #
         def even_term
-          solar_terms.each do |term|
-            return term if term.index.even?
-          end
-
-          context.resolver.solar_term.new
+          solar_term_selector.even_term
         end
 
         #
@@ -182,11 +181,16 @@ module Zakuro
         # @return [Cycle::AbstractSolarTerm] 節気
         #
         def odd_term
-          solar_terms.each do |term|
-            return term if term.index.odd?
-          end
+          solar_term_selector.odd_term
+        end
 
-          context.resolver.solar_term.new
+        #
+        # 二十四節気を返す
+        #
+        # @return [Array<Cyle::AbstractSolarTerm>] 二十四節気
+        #
+        def solar_terms
+          solar_term_selector.solar_terms
         end
 
         #
@@ -195,7 +199,7 @@ module Zakuro
         # @param [SolarTerm] term 二十四節気
         #
         def add_term(term:)
-          solar_terms.push(term)
+          solar_term_selector.add_term(term: term)
         end
 
         #
@@ -232,14 +236,9 @@ module Zakuro
         def include?(date:)
           return false if invalid?
 
-          start_date = western_date
-          return false if start_date.invalid?
-
-          return false if date < start_date
-
-          return false if date > last_date
-
-          true
+          DateComparer.include?(
+            date: date, start_date: western_date, last_date: last_date
+          )
         end
 
         #
@@ -253,46 +252,16 @@ module Zakuro
         def include_by_japan_date?(date:)
           return false if invalid?
 
-          linear_gengou = gengou.match_by_name(name: date.gengou)
-          return false if linear_gengou.invalid?
-
-          return false unless linear_gengou.name == date.gengou
-
-          return false unless linear_gengou.year == date.year
-
-          same_by_japan_date?(date: date)
+          DateComparer.include_by_japan_date?(
+            date: date, gengou: gengou, month_label: month_label
+          )
         end
 
         #
         # 二十四節気を正しい順序にソートする
         #
         def sort_solar_terms
-          # TODO: refactor
-          sorted = (solar_terms.sort do |termx, termy|
-            termx.index <=> termy.index
-          end)
-
-          unless reset_term?(solar_terms: sorted)
-            @solar_terms = sorted
-            return
-          end
-
-          first = []
-          second = []
-
-          sorted.each do |term|
-            if term.index >= (23 - 2)
-              second.push(term)
-              next
-            end
-
-            first.push(term)
-          end
-
-          # 0以前を先頭にする
-          second += first
-
-          @solar_terms = second
+          solar_term_selector.sort
         end
 
         #
@@ -303,28 +272,7 @@ module Zakuro
         # @return [Cycle::AbstractSolarTerm] 二十四節気
         #
         def solar_term_by_day(day:)
-          # TODO: refactor
-          target = context.resolver.remainder.new(day: day, minute: 0, second: 0)
-
-          meta.all_solar_terms.each_cons(2) do |current_solar_term, next_solar_term|
-            in_range = Tools::RemainderComparer.in_range?(
-              target: target, start: current_solar_term.remainder, last: next_solar_term.remainder
-            )
-            return current_solar_term if in_range
-          end
-
-          last_solar_term = meta.all_solar_terms[-1]
-
-          empty_solar_term = context.resolver.solar_term.new
-
-          return empty_solar_term unless last_solar_term
-          # NOTE: 大余20を上限として範囲チェックする
-          if Tools::RemainderComparer.in_limit?(target: target, start: last_solar_term.remainder,
-                                                limit: 20)
-            return last_solar_term
-          end
-
-          empty_solar_term
+          solar_term_selector.solar_term_by_day(day: day, meta: meta)
         end
 
         #
@@ -337,49 +285,6 @@ module Zakuro
             before_month: last,
             current_month: self
           )
-        end
-
-        private
-
-        #
-        # 同一の月情報かを検証する
-        #
-        # @param [Japan::Calendar] date 日付
-        #
-        # @return [True] 同一の月
-        # @return [False] 異なる月
-        #
-        def same_by_japan_date?(date: Japan::Calendar.new)
-          return false unless number == date.month
-
-          return false unless leaped? == date.leaped
-
-          true
-        end
-
-        #
-        # 二十四節気の折り返し（23 -> 0）があるか
-        #
-        # @param [Array<Cyle::AbstractSolarTerm>] solar_terms 二十四節気
-        #
-        # @return [True] 折り返しあり
-        # @return [False] 折り返しなし
-        #
-        def reset_term?(solar_terms: [])
-          first = false
-          last = false
-
-          solar_terms.each do |term|
-            index = term.index
-            case index
-            when Cycle::AbstractSolarTerm::FIRST_INDEX
-              first = true
-            when Cycle::AbstractSolarTerm::LAST_INDEX
-              last = true
-            end
-          end
-
-          first && last
         end
       end
     end

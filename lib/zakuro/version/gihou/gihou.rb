@@ -2,10 +2,13 @@
 
 # :nodoc:
 module Zakuro
-  #
-  # Gihou 儀鳳暦
-  #
-  module Gihou
-    # none
+  # :nodoc:
+  module Version
+    #
+    # Gihou 儀鳳暦
+    #
+    module Gihou
+      # none
+    end
   end
 end

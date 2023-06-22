@@ -2,7 +2,7 @@
 
 require_relative '../../../western/calendar'
 
-require_relative '../resource/type'
+require_relative '../../type/base/gengou_set'
 
 # :nodoc:
 module Zakuro
@@ -33,7 +33,7 @@ module Zakuro
           # @param [Resource::Gengou] gengou 元号
           #
           def initialize(start_date: Western::Calendar.new, last_date: Western::Calendar.new,
-                         gengou: Resource::Gengou.new)
+                         gengou: Type::Base::Gengou.new)
             @gengou = gengou
             @start_date = start_date.invalid? ? native_start_date : start_date
             @last_date = last_date.invalid? ? native_last_date : last_date

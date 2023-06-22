@@ -2,17 +2,15 @@
 
 require_relative '../../../../lib/zakuro/merchant'
 
+require_relative '../../../testtool/setting'
+
 require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-require 'date'
+require_relative './single_date_printer'
 
-# @return [True] 没日滅日全体チェックを実施する
-# @return [False] 没日滅日全体チェックを実施しない
-#
-# 非常に重い試験のため通常は実施しない
-MOTSUMETSU_ENABLED = false
+require 'date'
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -35,16 +33,13 @@ describe 'Zakuro' do
 
           current_date -= 1
 
-          # TODO: refactor
-          File.open('./temp.log', 'w') do |f|
-            break unless MOTSUMETSU_ENABLED
+          File.open('./motsumetsu.log', 'w') do |f|
+            break unless Zakuro::TestTool::Setting::MOTSUMETSU_ENABLED
 
             days.times.each do |_index|
               current_date += 1
 
-              # TODO: 不具合箇所の分析
               # next unless current_date == Date.new(764, 8, 16)
-              # next unless current_date == Date.new(764, 8, 26)
 
               actual = Zakuro::Merchant.new(
                 condition: {
@@ -53,23 +48,15 @@ describe 'Zakuro' do
                 }
               ).commit
 
-              options = actual.data.options
+              actual_printer = Zakuro::All::Motsumetsu::SingleDatePrinter.new(date: actual)
 
-              dropped_date = options['dropped_date']
+              next unless actual_printer.event?
 
-              vanished_date = options['vanished_date']
+              line = "western_date: #{actual_printer.western_date} / japan_date: " \
+              "#{actual_printer.japan_date} / dropped_date: #{actual_printer.dropped_date?} / " \
+              "vanished_date: #{actual_printer.vanished_date?}"
 
-              next unless dropped_date.matched || vanished_date.matched
-
-              data = actual.data
-              japan_date = "#{data.year.first_gengou.name}#{data.year.first_gengou.number}年" \
-              "#{data.month.leaped ? '閏' : ''}#{data.month.number}月#{data.day.number}日"
-
-              line = "western_date: #{actual.data.day.western_date.format}, japan_date: " \
-              "#{japan_date}, dropped_date: #{dropped_date.matched}, " \
-              "vanished_date: #{vanished_date.matched}\n"
-
-              f.write(line)
+              f.puts(line)
             end
           end
         end

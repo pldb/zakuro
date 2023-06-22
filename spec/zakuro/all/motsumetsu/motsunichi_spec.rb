@@ -2,16 +2,13 @@
 
 require_relative '../../../../lib/zakuro/merchant'
 
+require_relative '../../../testtool/setting'
+
 require_relative './testdata/current_date'
 
 require_relative './testdata/parser'
 
-# NOTE: 現状は全て通っている
-#
-# 非常に重い試験のため通常は実施しない
-#
-# @return [Array<String>] 滅日誤りのある和暦日文字列
-MOTSUNICHI_FAILED_PATTERNS = %w[].freeze
+require_relative './single_date_printer'
 
 # rubocop:disable Metrics/BlockLength
 describe 'Zakuro' do
@@ -21,44 +18,47 @@ describe 'Zakuro' do
         it 'should be equal to a reference' do
           years = Zakuro::All::Motsumetsu::Parser.get
           before_gengou = Zakuro::All::Motsumetsu::Gengou.new
-          years.each do |year|
-            gengou = year.gengou
-            year.dates.each do |date|
-              next unless date.dropped
 
-              date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
-                date: date, current_gengou: gengou, before_gengou: before_gengou
-              )
+          log_file_path = './motsunichi.log'
+          failed = false
 
-              # TODO: refactor
+          File.open(log_file_path, 'w') do |f|
+            break unless Zakuro::TestTool::Setting::MOTSUNICHI_ENABLED
 
-              next unless MOTSUNICHI_FAILED_PATTERNS.include?(date_text)
+            years.each do |year|
+              gengou = year.gengou
+              year.dates.each do |date|
+                next unless date.dropped
 
-              p '-------------'
+                date_text = Zakuro::All::Motsumetsu::CurrentDate.get(
+                  date: date, current_gengou: gengou, before_gengou: before_gengou
+                )
 
-              actual = Zakuro::Merchant.new(
-                condition: {
-                  date: date_text,
-                  options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
-                }
-              ).commit
-              # TODO: expect
-              options = actual.data.options
-              p "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
-              p date_text
-              p actual.data.day.western_date.format
-              dropped_date = options['dropped_date']
+                actual = Zakuro::Merchant.new(
+                  condition: {
+                    date: date_text,
+                    options: { 'dropped_date' => date.dropped, 'vanished_date' => date.vanished }
+                  }
+                ).commit
 
-              p "【結果】没日: #{dropped_date.matched} / #{dropped_date.calculation.remainder}"
-              actual.data.month.odd_solar_terms.each do |solar_term|
-                p "二十四節気（節気）: #{solar_term.index} / #{solar_term.remainder}"
+                actual_printer = Zakuro::All::Motsumetsu::SingleDatePrinter.new(date: actual)
+
+                failed = true unless actual_printer.dropped_date?
+
+                f.puts('-------------')
+                f.puts(
+                  "#{gengou.name}#{gengou.year}年#{date.leaped ? '閏' : ''}#{date.month}月#{date.day}日"
+                )
+                f.puts(date_text)
+                f.puts(actual_printer.western_date)
+
+                f.puts("【結果】没日: #{actual_printer.dropped_date_result}")
               end
-              actual.data.month.even_solar_terms.each do |solar_term|
-                p "二十四節気（中気）: #{solar_term.index} / #{solar_term.remainder}"
-              end
+              before_gengou = gengou
             end
-            before_gengou = gengou
           end
+
+          expect(failed).to be_falsey, "invalid valished date. please read [#{log_file_path}]"
         end
       end
     end

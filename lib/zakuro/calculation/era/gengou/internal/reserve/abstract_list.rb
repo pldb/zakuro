@@ -160,7 +160,7 @@ module Zakuro
           def western_last_year
             return INVALID_YEAR if invalid?
 
-            return INVALID_YEAR if list.size.zero?
+            return INVALID_YEAR if list.empty?
 
             list[-1].gengou.last_year
           end
@@ -174,7 +174,7 @@ module Zakuro
           def invalid?
             return true unless list
 
-            return true if list.size.zero?
+            return true if list.empty?
 
             false
           end
@@ -185,7 +185,7 @@ module Zakuro
           # @return [Western::Calendar]設定された元号の開始日
           #
           def native_start_date
-            return Western::Calendar.new if list.size.zero?
+            return Western::Calendar.new if list.empty?
 
             list[0].native_start_date
           end
@@ -197,7 +197,7 @@ module Zakuro
           # @return [False] 同一
           #
           def change_start_date?
-            return false if list.size.zero?
+            return false if list.empty?
 
             list[0].change_start_date?
           end
