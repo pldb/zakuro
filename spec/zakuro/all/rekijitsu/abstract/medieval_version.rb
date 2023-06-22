@@ -49,7 +49,7 @@ module Zakuro
           MedievalGengou.new(text: '天正 2年')
         ].freeze
 
-        class << self
+        class << self # rubocop:disable Metrics/ClassLength
           #
           # データを取得する
           #
