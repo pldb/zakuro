@@ -1125,13 +1125,13 @@ list:
   start_date:
     calculation:
       japan: ''
-      western: ''
+      western: '1037-5-8'
     operation:
       japan: 長暦01年04月21日
       western: '1037-5-9'
   disuse:
     new_year_date: '1037-1-19'
-    note: ''
+    note: '行親記（計算：1037-5-8）'
 - name: 長久
   start_year:
     japan: 1
