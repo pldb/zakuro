@@ -1,3 +1,5 @@
+![logo](images/logo-text.png)
+
 # Zakuro - 石榴
 zakuro は日本の暦を扱う暦算ライブラリです。
 
@@ -139,6 +141,12 @@ Or install it yourself as:
 バグ報告/修正はこちらまで。
 
 https://github.com/pldb/zakuro
+
+## ロゴ・バナー
+
+* 制作: [migut.t](https://www.instagram.com/migut.t/#)
+* 調整: [pldb](https://github.com/pldb)
+
 
 ## ライセンス
 
