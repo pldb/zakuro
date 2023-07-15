@@ -40,16 +40,18 @@ module Zakuro
 
           private
 
-          def to_line
+          def to_line # rubocop:disable Metrics/MethodLength
             lines = []
 
-            filepath = File.expand_path(
-              '../../../../../../zakuro-data/text/rekijitu.txt',
-              __dir__
-            )
+            path = filepath
+
+            if path == ''
+              p 'test data does not exist.skip test.'
+              return lines
+            end
 
             num = 0
-            File.open(filepath, 'r') do |f|
+            File.open(path, 'r') do |f|
               f.each_line do |line|
                 num += 1
                 month = Month.new(text: line)
@@ -61,6 +63,17 @@ module Zakuro
             end
 
             lines
+          end
+
+          def filepath
+            path = File.expand_path(
+              '../../../../../../zakuro-data/text/rekijitu.txt',
+              __dir__
+            )
+
+            return path if File.exist?(path)
+
+            ''
           end
         end
       end
